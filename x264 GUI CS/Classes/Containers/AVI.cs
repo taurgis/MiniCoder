@@ -6,12 +6,13 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Windows.Forms;
+using x264_GUI_CS.General;
 namespace x264_GUI_CS.Containers
 {
     class clAVI : ifContainer
     {
         private static Process mainProcess = null;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
+        ProcessSettings proc = new ProcessSettings();
         Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
@@ -24,6 +25,7 @@ namespace x264_GUI_CS.Containers
             this.log = log;
         }
         Package vdubmod;
+        
         public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
         {
             this.proc = proc;
