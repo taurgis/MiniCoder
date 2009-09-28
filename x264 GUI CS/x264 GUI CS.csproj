@@ -194,6 +194,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="bin\Debug\temp\AMIENNE_.TTF" />
+    <None Include="bin\Debug\temp\ARIALN.TTF" />
+    <None Include="bin\Debug\temp\BAUHS93.TTF" />
+    <None Include="bin\Debug\temp\boopee_regular.ttf" />
+    <None Include="bin\Debug\temp\CHERI__.TTF" />
+    <None Include="bin\Debug\temp\CHERL__.TTF" />
+    <None Include="bin\Debug\temp\Coprgtb.TTF" />
+    <None Include="bin\Debug\temp\Jester.ttf" />
+    <None Include="bin\Debug\temp\tahoma.ttf" />
+    <None Include="bin\Debug\temp\TektonPro-Bold.otf" />
+    <None Include="bin\Debug\temp\TektonPro-BoldCond.otf" />
+    <None Include="bin\Debug\temp\TektonPro-BoldExt.otf" />
+    <None Include="bin\Debug\temp\TektonPro-BoldObl.otf" />
+    <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B]-Audio Track-0.aac" />
+    <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B]-Subtitle Track-0.ass" />
+    <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B]-Video Track.264" />
+    <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B]-Video Track.log" />
+    <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B].dga" />
     <None Include="bin\Debug\x264 GUI CS.vshost.exe.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -219,6 +237,7 @@
     <Content Include="bin\Debug\Images\Wizard\VidQual\VeryHigh.jpg" />
     <Content Include="bin\Debug\MediaInfo_32.dll" />
     <Content Include="bin\Debug\MediaInfo_64.dll" />
+    <Content Include="bin\Debug\temp\chapters.xml" />
     <Content Include="bin\Debug\x264 GUI CS.vshost.exe" />
   </ItemGroup>
   <ItemGroup>
@@ -242,9 +261,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\temp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
