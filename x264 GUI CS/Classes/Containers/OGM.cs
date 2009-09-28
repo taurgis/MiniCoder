@@ -42,7 +42,7 @@ namespace x264_GUI_CS.Containers
                 string path = dir.tempDIR.Substring(0, dir.tempDIR.Length - 1);
 
                 mainProcess.StartInfo.FileName = Path.Combine(ogmtools.getInstallPath(), "OGMDemuxer.exe");
-                string tempArg = "tracks \"" + details.fileName + "\" -p " + details.vid_id + ": \"" + dir.tempDIR + details.name + "-Video Track." + details.extension[details.vid_codec] + "\"";
+                string tempArg = "tracks \"" + details.fileName + "\" -p " + details.vid_id + ":\"" + dir.tempDIR + details.name + "-Video Track." + details.extension[details.vid_codec] + "\"";
 
                 details.demuxAudio = new string[details.audioCount];
                 details.demuxSub = new string[details.subCount];
