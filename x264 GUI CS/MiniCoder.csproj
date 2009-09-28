@@ -88,7 +88,7 @@
     <Compile Include="Classes\Containers\OGM.cs" />
     <Compile Include="Classes\Containers\MP4.cs" />
     <Compile Include="Classes\Containers\MKV.cs" />
-    <Compile Include="Classes\Containers\ifContainer.cs" />
+    <Compile Include="Classes\Containers\Container.cs" />
     <Compile Include="Classes\General\Calc.cs" />
     <Compile Include="Classes\General\EncodingOptions.cs" />
     <Compile Include="Classes\General\FileInformation.cs" />
@@ -239,6 +239,7 @@
     <Content Include="bin\Debug\MediaInfo_64.dll" />
     <Content Include="bin\Debug\temp\chapters.xml" />
     <Content Include="bin\Debug\x264 GUI CS.vshost.exe" />
+    <Content Include="ChangeLog.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
