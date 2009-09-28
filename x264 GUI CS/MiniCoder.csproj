@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Containers\AVI.cs" />
-    <Compile Include="Classes\Containers\clOGM.cs" />
+    <Compile Include="Classes\Containers\OGM.cs" />
     <Compile Include="Classes\Containers\MP4.cs" />
     <Compile Include="Classes\Containers\MKV.cs" />
     <Compile Include="Classes\Containers\ifContainer.cs" />
