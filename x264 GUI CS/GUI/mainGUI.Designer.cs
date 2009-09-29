@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainGUI));
             this.inputMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsCustomSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.addMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsCustomSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.clearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openInput = new System.Windows.Forms.OpenFileDialog();
@@ -138,18 +138,6 @@
             this.inputMenuStrip.Size = new System.Drawing.Size(164, 104);
             this.inputMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.inputMenuStrip_Opening);
             // 
-            // tsCustomSettings
-            // 
-            this.tsCustomSettings.Name = "tsCustomSettings";
-            this.tsCustomSettings.Size = new System.Drawing.Size(163, 22);
-            this.tsCustomSettings.Text = "Custom Settings";
-            this.tsCustomSettings.Click += new System.EventHandler(this.customSettingsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
-            // 
             // addMenuItem
             // 
             this.addMenuItem.Name = "addMenuItem";
@@ -163,6 +151,18 @@
             this.removeMenuItem.Size = new System.Drawing.Size(163, 22);
             this.removeMenuItem.Text = "Remove";
             this.removeMenuItem.Click += new System.EventHandler(this.removeMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+            // 
+            // tsCustomSettings
+            // 
+            this.tsCustomSettings.Name = "tsCustomSettings";
+            this.tsCustomSettings.Size = new System.Drawing.Size(163, 22);
+            this.tsCustomSettings.Text = "Custom Settings";
+            this.tsCustomSettings.Click += new System.EventHandler(this.customSettingsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -635,7 +635,6 @@
             this.widthText.Name = "widthText";
             this.widthText.Size = new System.Drawing.Size(35, 22);
             this.widthText.TabIndex = 8;
-            
             this.widthText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.widthText_KeyDown);
             this.widthText.Leave += new System.EventHandler(this.widthText_TextLeave);
             // 
@@ -837,6 +836,7 @@
             // videoCombo
             // 
             this.videoCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.videoCombo.DropDownWidth = 80;
             this.videoCombo.FormattingEnabled = true;
             this.videoCombo.Items.AddRange(new object[] {
             "x264",
@@ -850,16 +850,16 @@
             // vidQualCombo
             // 
             this.vidQualCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vidQualCombo.DropDownWidth = 140;
+            this.vidQualCombo.DropDownWidth = 180;
             this.vidQualCombo.FormattingEnabled = true;
             this.vidQualCombo.Items.AddRange(new object[] {
             "Medium",
             "High",
             "Very High",
-            "MT (+50mb Anime)",
-            "MT-2 (-50mb Anime)",
-            "MT-3 (TV-Shows/Movies)",
-            "AniStash (CRF)"});
+            "Very High (+50mb Anime)",
+            "Very High (-50mb Anime)",
+            "Very High (TV-Shows/Movies)",
+            "CRF (Anime)"});
             this.vidQualCombo.Location = new System.Drawing.Point(84, 75);
             this.vidQualCombo.Name = "vidQualCombo";
             this.vidQualCombo.Size = new System.Drawing.Size(73, 24);

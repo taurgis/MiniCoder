@@ -52,6 +52,7 @@
             this.cVersion,
             this.cRequired,
             this.cDownload});
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(AppManagement_FormClosing);
             this.dgPrograms.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgPrograms.Location = new System.Drawing.Point(0, 0);
             this.dgPrograms.Name = "dgPrograms";
@@ -113,6 +114,8 @@
             this.ResumeLayout(false);
 
         }
+
+     
 
         #endregion
 

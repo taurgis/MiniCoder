@@ -399,7 +399,6 @@
             0,
             0,
             0});
-            
             this.NudHorizontalResolution.Leave += new System.EventHandler(this.widthText_TextLeave);
             // 
             // label15
@@ -633,20 +632,21 @@
             // vidQualCombo
             // 
             this.vidQualCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vidQualCombo.DropDownWidth = 140;
+            this.vidQualCombo.DropDownWidth = 180;
             this.vidQualCombo.FormattingEnabled = true;
             this.vidQualCombo.Items.AddRange(new object[] {
             "Medium",
             "High",
             "Very High",
-            "MT (+50mb Anime)",
-            "MT-2 (-50mb Anime)",
-            "MT-3 (TV-Shows/Movies)",
-            "AniStash (CRF)"});
+            "Very High (+50mb Anime)",
+            "Very High (-50mb Anime)",
+            "Very High (TV-Shows/Movies)",
+            "CRF (Anime)"});
             this.vidQualCombo.Location = new System.Drawing.Point(84, 75);
             this.vidQualCombo.Name = "vidQualCombo";
             this.vidQualCombo.Size = new System.Drawing.Size(73, 24);
             this.vidQualCombo.TabIndex = 5;
+            this.vidQualCombo.SelectedIndexChanged += new System.EventHandler(this.vidQualCombo_SelectedIndexChanged);
             // 
             // label20
             // 

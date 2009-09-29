@@ -17,10 +17,13 @@ namespace x264_GUI_CS
         private string registrySubpath;
       //  private string appversion;
         private string registrySubKey;
+        private string customPath;
         private string appBasePath = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Tools\\";
         private ApplicationSettings appSettings;
         public String dlStatus;
-        public Package(string appName, string appType, Boolean isRegistry, string registrySubpath, ApplicationSettings appSettings, string registrySubKey, string downloadurl)
+       
+        
+        public Package(string appName, string appType, Boolean isRegistry, string registrySubpath, ApplicationSettings appSettings, string registrySubKey, string downloadurl, string customPath)
         {
           this.appName = appName;
           this.appType = appType;
@@ -32,8 +35,39 @@ namespace x264_GUI_CS
               this.registrySubKey = registrySubKey;
           }
           this.appSettings = appSettings;
+          this.customPath = customPath;
         }
 
+        public void setCustomPath(string path)
+        {
+            this.customPath = path;
+        }
+        public Boolean getIsRegistry()
+        {
+            return isRegistry;
+        }
+
+      
+
+        public String getRegistrySubKey()
+        {
+            return registrySubKey;
+        }
+
+        public String getRegistrySubPath()
+        {
+            return registrySubpath;
+        }
+        public String getCustomPath()
+        {
+            return customPath;
+        }
+        public String getDownloadUrl()
+        {
+            return downloadPath;
+        }
+
+        
         public Boolean isInstalled()
         {
             if (isRegistry)
@@ -95,7 +129,10 @@ namespace x264_GUI_CS
 
         public string getInstallPath()
         {
-            
+            if (customPath != "")
+                return customPath;
+
+
             if (isRegistry)
             {
                 RegistryKey key;
@@ -144,10 +181,7 @@ namespace x264_GUI_CS
             return "";
         }
 
-        public string getDownloadUrl()
-        {
-            return downloadPath;
-        }
+       
 
         public string getAppType()
         {
