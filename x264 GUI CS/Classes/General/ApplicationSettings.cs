@@ -12,17 +12,28 @@ namespace x264_GUI_CS
 
         Packages pcRequired;
         public Hashtable htRequired;
-        string appPath;
+        private string appPath;
+        
         public ApplicationSettings(string appPath)
         {
-            pcRequired = new Packages(this);
+           
             this.appPath = appPath;
             setAppPath();
+            pcRequired = new Packages(this);
             htRequired = pcRequired.getPackages();
         }
 
         public string tempDIR;
 
+        public string getAppPath()
+        {
+            return appPath;
+        }
+
+        public void SavePackages()
+        {
+            pcRequired.savePackages();
+        }
 
         public bool is64bit()
         {

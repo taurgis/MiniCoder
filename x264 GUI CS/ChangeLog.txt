@@ -1,6 +1,8 @@
 ﻿Unreleased version
 
 - Fixed error with demuxing OGM
+- Changed template names
+- Add custom paths
 
 Version 1.1.0.0
 

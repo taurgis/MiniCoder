@@ -690,7 +690,8 @@ namespace x264_GUI_CS
         private void btnApps_Click(object sender, EventArgs e)
         {
             GUI.AppManagement apps = new GUI.AppManagement(appSettings);
-            apps.Show();
+            apps.ShowDialog();
+            appSettings = new ApplicationSettings(Application.StartupPath);
         }
 
      
@@ -989,47 +990,44 @@ namespace x264_GUI_CS
         {
             if (videoCombo.SelectedIndex == 0)
             {
-          
-            
                 for (int i = 0; i < vidQualCombo.Items.Count; i++)
                 {
-                    if (vidQualCombo.Items[i].ToString() == "MT (+50mb Anime)")
-                       goto next;
+                    if (vidQualCombo.Items[i].ToString() == "Very High (+50mb Anime)")
+                        goto next;
                 }
-                vidQualCombo.Items.Add("MT (+50mb Anime)");
+                vidQualCombo.Items.Add("Very High (+50mb Anime)");
             next:
                 for (int i = 0; i < vidQualCombo.Items.Count; i++)
                 {
-                    if (vidQualCombo.Items[i].ToString() == "MT-2 (-50mb Anime)")
+                    if (vidQualCombo.Items[i].ToString() == "Very High (-50mb Anime)")
                         goto next2;
                 }
-                vidQualCombo.Items.Add("MT-2 (-50mb Anime)");
+                vidQualCombo.Items.Add("Very High (-50mb Anime)");
             next2:
-                     for (int i = 0; i < vidQualCombo.Items.Count; i++)
+                for (int i = 0; i < vidQualCombo.Items.Count; i++)
                 {
-                    if (vidQualCombo.Items[i].ToString() == "MT-3 (TV-Shows/Movies)")
+                    if (vidQualCombo.Items[i].ToString() == "Very High (TV-Shows/Movies)")
                         goto next3;
                 }
-                vidQualCombo.Items.Add("MT-3 (TV-Shows/Movies)");
+                vidQualCombo.Items.Add("Very High (TV-Shows/Movies)");
             next3:
                 for (int i = 0; i < vidQualCombo.Items.Count; i++)
                 {
-                    if (vidQualCombo.Items[i].ToString() == "AniStash (CRF)")
+                    if (vidQualCombo.Items[i].ToString() == "CRF (Anime)")
                         return;
                 }
-                vidQualCombo.Items.Add("AniStash (CRF)");
+                vidQualCombo.Items.Add("CRF (Anime)");
             }
             else
             {
-                
+                vidQualCombo.Items.Remove("Very High (+50mb Anime)");
+                vidQualCombo.Items.Remove("Very High (-50mb Anime)");
+                vidQualCombo.Items.Remove("Very High (TV-Shows/Movies)");
+                vidQualCombo.Items.Remove("CRF (Anime)");
 
-                vidQualCombo.Items.Remove("MT (+50mb Anime)");
-                vidQualCombo.Items.Remove("MT-2 (-50mb Anime)");
-                vidQualCombo.Items.Remove("MT-3 (TV-Shows/Movies)");
-                vidQualCombo.Items.Remove("AniStash (CRF)");
-            
             }
         }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -1106,7 +1104,7 @@ namespace x264_GUI_CS
 
         private void vidQualCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (vidQualCombo.SelectedItem.ToString() == "AniStash (CRF)")
+            if (vidQualCombo.SelectedItem.ToString() == "CRF (Anime)")
             {
              if(crfValue == 0)
                 crfValue = Convert.ToInt32(InputBox.Show("Please enter CRF value!", "CRF Value", "20"));

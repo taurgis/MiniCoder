@@ -23,13 +23,14 @@ namespace x264_GUI_CS.GUI
             InitializeComponent();
             this.appSettings = appSettings;
         }
-
+        Hashtable programs = new Hashtable();
         private void AppManagement_Load(object sender, EventArgs e)
         {
-            Hashtable programs = appSettings.htRequired;
+            programs = appSettings.htRequired;
             foreach (string key in programs.Keys)
             {
                 Package tempPackage = (Package)programs[key];
+                
                 addRow(key, tempPackage.getAppType(), tempPackage.getInstallPath(), tempPackage.getVersion(), "dunno", tempPackage.getDownloadUrl());
 
 
@@ -117,6 +118,26 @@ namespace x264_GUI_CS.GUI
 
         private void dgPrograms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (e.ColumnIndex == 2)
+            {
+                OpenFileDialog programSelect = new OpenFileDialog();
+                programSelect.InitialDirectory = dgPrograms[e.ColumnIndex, e.RowIndex].Value.ToString();
+                programSelect.ShowDialog();
+                if (programSelect.FileName != "")
+                {
+                    dgPrograms[e.ColumnIndex, e.RowIndex].Value = programSelect.FileName;
+
+                    Package tempProgram = (Package)programs[dgPrograms[0, e.RowIndex].Value.ToString()];
+                    tempProgram.setCustomPath((programSelect.FileName.ToString()));
+                    programs.Remove(dgPrograms[0, e.RowIndex].Value.ToString());
+                    programs.Add(dgPrograms[0, e.RowIndex].Value.ToString(), tempProgram);
+                }
+
+
+            }
+
+
             
             if (e.ColumnIndex == 5 && dgPrograms[e.ColumnIndex, e.RowIndex].Value.ToString() != "Installed")
             {
@@ -166,6 +187,11 @@ namespace x264_GUI_CS.GUI
                 dgPrograms[e.ColumnIndex, e.RowIndex].ToolTipText = "";
             }
             }
+
+        private void AppManagement_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            appSettings.SavePackages();
+        }
     }
 }
 
