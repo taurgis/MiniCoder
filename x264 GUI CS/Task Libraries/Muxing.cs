@@ -19,6 +19,7 @@ namespace x264_GUI_CS.Task_Libraries
         bool finishedTask = false;
         LogBook log;
         Package mkvtoolnix;
+        Package mp4box;
         int exitCode;
         
         public Muxing(LogBook log)
@@ -30,8 +31,8 @@ namespace x264_GUI_CS.Task_Libraries
         {
             this.proc = proc;
             mkvtoolnix = (Package)dir.htRequired["mkvtoolnix"];
-            if (!mkvtoolnix.isInstalled())
-                mkvtoolnix.download();
+            mp4box = (Package)dir.htRequired["mp4box"];
+        
             mainProcess = new Process();
             log.addLine("Muxing");
             string args;
@@ -59,6 +60,8 @@ namespace x264_GUI_CS.Task_Libraries
             switch (encOpts.containerFormat)
             {
                 case 0:
+                    if (!mkvtoolnix.isInstalled())
+                        mkvtoolnix.download();
                     mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvmerge.exe");
                     details.outFile += ".mkv";
 
@@ -121,6 +124,74 @@ namespace x264_GUI_CS.Task_Libraries
                     mainProcess.StartInfo.Arguments = args;
                                             
                     break;
+                case 1:
+                    if (!mp4box.isInstalled())
+                        mp4box.download();
+                //"MP4Box.exe" -fps 29.971 -add "x-001_new_EncoderOutput.264#video:name=Video" -add "i_ sbr.aac:lang=eng:sbr" -add "ish.ass:lang=eng" -new "C:\D001_new.mp4"
+                    mainProcess.StartInfo.FileName = Path.Combine(mp4box.getInstallPath(), "mp4box.exe");
+                    details.outFile += ".mp4";
+
+                   
+
+                    //if (details.vfr && File.Exists(details.vfrCode))
+                    //    arg1 += "--timecodes 0:\"" + details.vfrCode + "\" ";
+
+                    //arg1 += "--title \"Encoded with MiniCoder\" ";
+                    //if (File.Exists(dir.tempDIR + "chapters.xml"))
+                    //    arg1 += "--chapters \"" + dir.tempDIR + "chapters.xml\" ";
+
+                    if (details.fps > 400)
+                        args = "-fps " + details.fps.ToString().Replace(".0", "").Substring(0, 2) + "." + details.fps.ToString().Replace(".0", "").Substring(2, details.fps.ToString().Replace(".0", "").Length - 2) + " -add \"" + details.encodedVideo + "#video:name=Video\" ";
+                    else
+                        args = "-fps " + details.fps + " -add \"" + details.encodedVideo + "#video:name=Video\" ";
+
+
+                    
+
+                    for (int i = 0; i < details.audioCount; i++)
+                    {
+                        args += "-add \"" + details.encodedAudio[i] + ":lang=" + details.lang[details.aud_Languages[i]] + "\" ";
+                    }
+
+
+                    //-add "i_ sbr.aac:lang=eng:sbr" -add "ish.ass:lang=eng" -new "C:\D001_new.mp4"
+                    for (int i = 0; i < details.subCount; i++)
+                    {
+                        args += "-add \"" + details.demuxSub[i] + ":lang=" + details.lang[details.sub_lang[i]] + "\" "; 
+                        
+                    }
+
+                    args += "-new \"" + details.outFile + "\"";
+
+                    //if (details.attachments != null)
+                    //{
+                    //    for (int i = 0; i < details.attachments.Count(); i++)
+                    //    {
+                    //        if (File.Exists(dir.tempDIR + details.attachments[i]))
+                    //            args += "--attachment-mime-type application/x-truetype-font --attachment-name \"" + details.attachments[i] + "\" --attach-file \"" + dir.tempDIR + details.attachments[i] + "\" ";
+                    //    }
+                    //}
+
+                    //args += "--track-order 0:0,";
+
+                    //for (int i = 0; i < details.audioCount; i++)
+                    //    args += (i + 1).ToString() + ":1,";
+
+                    //int step = details.audioCount + 1;
+
+                    //for (int i = 0; i < details.subCount; i++)
+                    //    args += (i + step).ToString() + ":0,";
+
+
+
+
+
+                    log.addLine(args);
+
+                    mainProcess.StartInfo.Arguments = args;
+
+                    break;
+
             }
 
             taskProcess();

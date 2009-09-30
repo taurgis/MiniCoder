@@ -121,15 +121,15 @@ namespace x264_GUI_CS.GUI
 
             if (e.ColumnIndex == 2)
             {
-                OpenFileDialog programSelect = new OpenFileDialog();
-                programSelect.InitialDirectory = dgPrograms[e.ColumnIndex, e.RowIndex].Value.ToString();
+                FolderBrowserDialog programSelect = new FolderBrowserDialog();
+           
                 programSelect.ShowDialog();
-                if (programSelect.FileName != "")
+                if (programSelect.SelectedPath != "")
                 {
-                    dgPrograms[e.ColumnIndex, e.RowIndex].Value = programSelect.FileName;
+                    dgPrograms[e.ColumnIndex, e.RowIndex].Value = programSelect.SelectedPath + "\\";
 
                     Package tempProgram = (Package)programs[dgPrograms[0, e.RowIndex].Value.ToString()];
-                    tempProgram.setCustomPath((programSelect.FileName.ToString()));
+                    tempProgram.setCustomPath((programSelect.SelectedPath.ToString() + "\\"));
                     programs.Remove(dgPrograms[0, e.RowIndex].Value.ToString());
                     programs.Add(dgPrograms[0, e.RowIndex].Value.ToString(), tempProgram);
                 }
@@ -191,6 +191,24 @@ namespace x264_GUI_CS.GUI
         private void AppManagement_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             appSettings.SavePackages();
+        }
+
+        private void customPathMenuItem_Click(object sender, EventArgs e)
+        {
+            int row = dgPrograms.SelectedCells[0].RowIndex;
+            FolderBrowserDialog programSelect = new FolderBrowserDialog();
+            
+            programSelect.ShowDialog();
+            if (programSelect.SelectedPath != "")
+            {
+                dgPrograms[2, row].Value = programSelect.SelectedPath + "\\";
+
+                Package tempProgram = (Package)programs[dgPrograms[0,row].Value.ToString()];
+                tempProgram.setCustomPath((programSelect.SelectedPath.ToString()) + "\\");
+             
+                programs.Remove(dgPrograms[0, row].Value.ToString());
+                programs.Add(dgPrograms[0, row].Value.ToString(), tempProgram);
+            }
         }
     }
 }
