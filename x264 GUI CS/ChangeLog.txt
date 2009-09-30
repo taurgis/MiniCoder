@@ -4,6 +4,7 @@
 - Changed template names
 - Added custom paths for programs
 - Added target container MP4
+- Added hardsub support for MP4
 
 Version 1.1.0.0
 
