@@ -40,8 +40,8 @@ namespace x264_GUI_CS
        
         bool encoding = false;
         bool encOptsErr;
-                              
-   
+
+        private int hardSub = 0;
         public string[] customFiltOpts = new string[4];
         public string currentProc;
                          
@@ -181,15 +181,17 @@ namespace x264_GUI_CS
                         log.addLine("Found custom settings for " + details.name);
                         encodingOpts = (General.EncodingOptions)customSettings[details.name];
                         General.EncodingOptions tempOps = getEncodeOpts();
-
+                        
                         encodingOpts.customFilter = tempOps.customFilter;
-
+                       
                     }
                     else
                     {
                         log.addLine("Found no custom settings for this file. Using general settings.");
                         encodingOpts = getEncodeOpts();
                     }
+
+                   
                     if (encOptsErr)
                     {
                         MessageBox.Show("Incorrect Encoding Options");
@@ -312,7 +314,7 @@ namespace x264_GUI_CS
                                 proc.errflag = container.demux(appSettings, details, proc);
                                 break;
                         }
-
+                       
                         if (!proc.errflag)
                         {
                             inputList.Items[fileindex].SubItems[1].Text = "error";
@@ -379,7 +381,10 @@ namespace x264_GUI_CS
                     {
                         Avisynth avs = new Avisynth(log);
                         encodingOpts.customFilter = customFiltOpts;
-                        string script = avs.createScript(appSettings, details, getEncodeOpts());
+                        if (encodingOpts.hardSub != 0)
+                            encodingOpts.hardSubLocation = details.demuxSub[encodingOpts.hardSub - 1];
+
+                        string script = avs.createScript(appSettings, details, encodingOpts);
                         avs.writeScript(appSettings, details, script);
                         proc.errflag = avs.checkErrors(details.avsFile, appSettings);
 
@@ -719,7 +724,7 @@ namespace x264_GUI_CS
 
                 encOpts.vidCodec = videoCombo.SelectedIndex;
                 encOpts.vidQual = vidQualCombo.SelectedIndex;
-
+                encOpts.hardSub = hardSub;
                 encOpts.audBR = int.Parse(audioBR.Text);
                 encOpts.audCodec = audioCombo.SelectedIndex;
 
@@ -1296,6 +1301,25 @@ namespace x264_GUI_CS
             catch
             {
 
+            }
+        }
+
+        private void containerCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (containerCombo.SelectedIndex)
+            {
+                case 1:
+                    try
+                    {
+                        hardSub = Convert.ToInt32(InputBox.Show("Please select wich sub you wish to add to the MP4 file. 1,2,3... 1 = First sub file, 2 = Second sub file,... 0 means that you will add subfiles softsubbed.", "Hardsub", "0"));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Please enter a number");
+                        containerCombo_SelectedIndexChanged(sender, e);
+                       
+                    }
+                    break;
             }
         }
 

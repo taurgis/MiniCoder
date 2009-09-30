@@ -710,6 +710,7 @@
             this.containerCombo.Name = "containerCombo";
             this.containerCombo.Size = new System.Drawing.Size(73, 21);
             this.containerCombo.TabIndex = 5;
+            this.containerCombo.SelectedIndexChanged += new System.EventHandler(this.containerCombo_SelectedIndexChanged);
             // 
             // openSub
             // 

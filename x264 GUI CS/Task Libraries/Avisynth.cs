@@ -183,6 +183,12 @@ namespace x264_GUI_CS.Task_Libraries
                 filtOpts += "# Subtitle\r\n" + filt.addSub(encOpts.subtitle) + "\r\n\r\n";
                 log.addLine(filt.addSub(encOpts.subtitle));
             }
+
+            if (encOpts.hardSub != 0)
+            {
+                filtOpts += "TextSub(\"" + encOpts.hardSubLocation + "\")";
+            }
+
             return filtOpts;
         }
         public string addFiltersNoLog(General.EncodingOptions encOpts, ApplicationSettings dir)

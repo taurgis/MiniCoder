@@ -2,7 +2,8 @@
 
 - Fixed error with demuxing OGM
 - Changed template names
-- Add custom paths
+- Added custom paths for programs
+- Added target container MP4
 
 Version 1.1.0.0
 

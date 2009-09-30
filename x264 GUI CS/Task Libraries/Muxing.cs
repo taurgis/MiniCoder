@@ -155,12 +155,15 @@ namespace x264_GUI_CS.Task_Libraries
 
 
                     //-add "i_ sbr.aac:lang=eng:sbr" -add "ish.ass:lang=eng" -new "C:\D001_new.mp4"
-                    for (int i = 0; i < details.subCount; i++)
-                    {
-                        args += "-add \"" + details.demuxSub[i] + ":lang=" + details.lang[details.sub_lang[i]] + "\" "; 
-                        
-                    }
 
+                    if (encOpts.hardSub == 0)
+                    {
+                        for (int i = 0; i < details.subCount; i++)
+                        {
+                            args += "-add \"" + details.demuxSub[i] + ":lang=" + details.lang[details.sub_lang[i]] + "\" ";
+
+                        }
+                    }
                     args += "-new \"" + details.outFile + "\"";
 
                     //if (details.attachments != null)
