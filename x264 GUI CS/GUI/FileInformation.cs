@@ -13,6 +13,7 @@ namespace x264_GUI_CS.GUI
     {
         General.FileInformation fileInformation;
         mainGUI frmMain;
+        int hardSub = 0;
         //public frmFileInformation(General.FileInformation fileInformation, mainGUI frmMain)
         //{
         //    InitializeComponent();
@@ -272,7 +273,7 @@ namespace x264_GUI_CS.GUI
 
                 encOpts.vidCodec = videoCombo.SelectedIndex;
                 encOpts.vidQual = vidQualCombo.SelectedIndex;
-
+                encOpts.hardSub = hardSub;
                 encOpts.audBR = int.Parse(audioBR.Text);
                 encOpts.audCodec = audioCombo.SelectedIndex;
 
@@ -311,6 +312,25 @@ namespace x264_GUI_CS.GUI
              else
                  fileInformation.crfValue = Convert.ToInt32(InputBox.Show("Please enter CRF value!", "CRF Value", fileInformation.crfValue.ToString()));
             }
+       }
+
+       private void containerCombo_SelectedIndexChanged(object sender, EventArgs e)
+       {
+           switch (containerCombo.SelectedIndex)
+           {
+               case 1:
+                   try
+                   {
+                       hardSub = Convert.ToInt32(InputBox.Show("Please select wich sub you wish to add to the MP4 file. 1,2,3... 1 = First sub file, 2 = Second sub file,... 0 means that you will add subfiles softsubbed.", "Hardsub", "0"));
+                   }
+                   catch
+                   {
+                       MessageBox.Show("Please enter a number");
+                       containerCombo_SelectedIndexChanged(sender, e);
+
+                   }
+                   break;
+           }
        }
 
   

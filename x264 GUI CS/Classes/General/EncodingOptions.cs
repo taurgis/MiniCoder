@@ -20,7 +20,8 @@ namespace x264_GUI_CS.General
         public int audCodec = 0;
 
         public int containerFormat = 0;
-
+        public int hardSub = 0;
+        public string hardSubLocation;
         public int filtField = 0;
         public int filtResize = 0;
         public int resizeWidth;
