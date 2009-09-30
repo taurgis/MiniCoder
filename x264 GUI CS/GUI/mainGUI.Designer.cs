@@ -450,7 +450,8 @@
             this.containerCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.containerCombo.FormattingEnabled = true;
             this.containerCombo.Items.AddRange(new object[] {
-            "Matroska"});
+            "Matroska",
+            "MP4"});
             this.containerCombo.Location = new System.Drawing.Point(78, 20);
             this.containerCombo.Name = "containerCombo";
             this.containerCombo.Size = new System.Drawing.Size(73, 24);

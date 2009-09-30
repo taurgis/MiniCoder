@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgPrograms = new System.Windows.Forms.DataGridView();
             this.cProgram = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -35,7 +36,10 @@
             this.cVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRequired = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDownload = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.appMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.customPathMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgPrograms)).BeginInit();
+            this.appMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgPrograms
@@ -52,7 +56,7 @@
             this.cVersion,
             this.cRequired,
             this.cDownload});
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(AppManagement_FormClosing);
+            this.dgPrograms.ContextMenuStrip = this.appMenu;
             this.dgPrograms.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgPrograms.Location = new System.Drawing.Point(0, 0);
             this.dgPrograms.Name = "dgPrograms";
@@ -97,6 +101,20 @@
             this.cDownload.Name = "cDownload";
             this.cDownload.ReadOnly = true;
             // 
+            // appMenu
+            // 
+            this.appMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customPathMenuItem});
+            this.appMenu.Name = "appMenu";
+            this.appMenu.Size = new System.Drawing.Size(164, 48);
+            // 
+            // customPathMenuItem
+            // 
+            this.customPathMenuItem.Name = "customPathMenuItem";
+            this.customPathMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.customPathMenuItem.Text = "Set custom path";
+            this.customPathMenuItem.Click += new System.EventHandler(this.customPathMenuItem_Click);
+            // 
             // AppManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,7 +128,9 @@
             this.Text = "Applications";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AppManagement_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AppManagement_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgPrograms)).EndInit();
+            this.appMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -126,5 +146,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRequired;
         private System.Windows.Forms.DataGridViewButtonColumn cDownload;
+        private System.Windows.Forms.ContextMenuStrip appMenu;
+        private System.Windows.Forms.ToolStripMenuItem customPathMenuItem;
     }
 }
