@@ -202,9 +202,15 @@ namespace x264_GUI_CS
 
                     startDate = DateTime.Now;
                     string[] files = Directory.GetFiles(appSettings.tempDIR);
-                    foreach (string file in files)
-                        File.Delete(file);
-
+                    try
+                    {
+                        foreach (string file in files)
+                            File.Delete(file);
+                    }
+                    catch
+                    {
+                        log.addLine("Problems deleting file.");
+                    }
                     inputList.Items[fileindex].SubItems[1].Text = "encoding";
                   
                     
