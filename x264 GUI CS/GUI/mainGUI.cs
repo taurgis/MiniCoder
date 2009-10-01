@@ -672,13 +672,11 @@ namespace x264_GUI_CS
         {
             if (resizeCombo.SelectedIndex != 0)
             {
-                widthText.Enabled = true;
-                heightText.Enabled = true;
+                widthHeight.Enabled = true;
             }
             else
             {
-                widthText.Enabled = false;
-                heightText.Enabled = false;
+                widthHeight.Enabled = false;
             }
         }
 
@@ -741,8 +739,9 @@ namespace x264_GUI_CS
 
                 if (encOpts.filtResize != 0)
                 {
-                    encOpts.resizeHeight = int.Parse(heightText.Text);
-                    encOpts.resizeWidth = int.Parse(widthText.Text);
+                    string[] splitWidthHeight = widthHeight.Text.Split(Convert.ToChar(":"));
+                    encOpts.resizeHeight = int.Parse(splitWidthHeight[0]);
+                    encOpts.resizeWidth = int.Parse(splitWidthHeight[1]);
                 }
 
                 encOpts.filtNoise = noiseCombo.SelectedIndex;
@@ -903,8 +902,8 @@ namespace x264_GUI_CS
 
                 if (encodingOpts.filtResize != 0)
                 {
-                    heightText.Text = encodingOpts.resizeHeight.ToString(); ;
-                    widthText.Text = encodingOpts.resizeWidth.ToString(); ;
+                    widthHeight.Text = encodingOpts.resizeWidth + ":" + encodingOpts.resizeHeight; 
+           
                 }
 
                 noiseCombo.SelectedIndex = encodingOpts.filtNoise;
@@ -1248,41 +1247,8 @@ namespace x264_GUI_CS
             }
         }
 
-        private void widthText_TextLeave(object sender, EventArgs e)
-        {
-            try
-            {
-                checkSize();
-            }
-            catch
-            {
-            }
-        }
-
-        private void heightText_TextLeave(object sender, EventArgs e)
-        {
-            try
-            {
-            checkSize();
-            }
-            catch
-            {
-            }
-        }
-
-        private void checkSize()
-        {
-            if((Convert.ToInt32(widthText.Text) % 16) != 0 )
-            {
-                MessageBox.Show("Width should be a multiple of 16 for error prevention and quality!");
-                
-            }
-            if ((Convert.ToInt32(heightText.Text) % 16) != 0)
-            {
-                MessageBox.Show("Height should be a multiple of 16 for error prevention and quality!");
-                
-            }
-        }
+      
+       
 
         private void inputMenuStrip_Opening(object sender, CancelEventArgs e)
         {
