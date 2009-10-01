@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -43,7 +43,7 @@ namespace x264_GUI_CS.Task_Libraries
 
             details.decodedAudio=new string[details.audioCount];
 
-            for (int i = 0; i < details.demuxAudio.Count(); i++)
+            for (int i = 0; i < details.demuxAudio.Length; i++)
             {
                 details.decodedAudio[i] = dir.tempDIR + details.name + "-Decoded Audio Track-" + i.ToString() + ".wav";
                 string ext = details.extension[details.aud_codec[i]];

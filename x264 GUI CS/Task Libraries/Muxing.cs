@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -98,7 +98,7 @@ namespace x264_GUI_CS.Task_Libraries
 
                     if (details.attachments != null)
                     {
-                        for (int i = 0; i < details.attachments.Count(); i++)
+                        for (int i = 0; i < details.attachments.Length; i++)
                         {
                             if(File.Exists(dir.tempDIR + details.attachments[i]))
                             args += "--attachment-mime-type application/x-truetype-font --attachment-name \"" + details.attachments[i] + "\" --attach-file \"" + dir.tempDIR + details.attachments[i] + "\" ";

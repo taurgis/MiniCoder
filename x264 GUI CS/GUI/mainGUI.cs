@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -740,8 +740,8 @@ namespace x264_GUI_CS
                 if (encOpts.filtResize != 0)
                 {
                     string[] splitWidthHeight = widthHeight.Text.Split(Convert.ToChar(":"));
-                    encOpts.resizeHeight = int.Parse(splitWidthHeight[0]);
-                    encOpts.resizeWidth = int.Parse(splitWidthHeight[1]);
+                    encOpts.resizeHeight = int.Parse(splitWidthHeight[1]);
+                    encOpts.resizeWidth = int.Parse(splitWidthHeight[0]);
                 }
 
                 encOpts.filtNoise = noiseCombo.SelectedIndex;
