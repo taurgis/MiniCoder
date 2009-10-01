@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -111,8 +111,8 @@ namespace x264_GUI_CS.Containers
                 string[] split = Regex.Split(outputLog, "\\+ File name: ");
                                                
                 string temp;
-                
-                details.attachments = new string[split.Count() - 1];
+
+                details.attachments = new string[split.Length - 1];
 
                 char[] sep1 = { ':' };
                 char[] sep2 = { '\r' };
@@ -131,8 +131,8 @@ namespace x264_GUI_CS.Containers
                     details.muxwidth = width;
                     details.muxheight = height;
 
-                    log.addLine("Number of attachments: " + split.Count());
-                    for (int i = 1; i < split.Count(); i++)
+                    log.addLine("Number of attachments: " + split.Length);
+                    for (int i = 1; i < split.Length; i++)
                         details.attachments[i - 1] = split[i].Substring(0, split[i].IndexOf("\r\n"));
 
                     mainProcess = new Process();
@@ -140,7 +140,7 @@ namespace x264_GUI_CS.Containers
                     mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe");
                     tempArg = "attachments \"" + details.fileName + "\"";
 
-                    for (int i = 1; i <= details.attachments.Count(); i++)
+                    for (int i = 1; i <= details.attachments.Length; i++)
                         tempArg += " " + i.ToString() + ":\"" + dir.tempDIR + details.attachments[i - 1] + "\"";
 
                     mainProcess.StartInfo.Arguments = tempArg;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using MediaInfoLib;
 using System.Collections;
@@ -316,8 +316,8 @@ namespace x264_GUI_CS.Task_Libraries
 
         private string[] trim(string[] temp)
         {
-            string[] trimmed = new string[temp.Count()];
-            for (int i = 0; i < temp.Count(); i++)
+            string[] trimmed = new string[temp.Length];
+            for (int i = 0; i < temp.Length; i++)
                 trimmed[i] = temp[i].Trim();
             return trimmed;
         }
@@ -615,8 +615,8 @@ namespace x264_GUI_CS.Task_Libraries
 
         private string[] trim(string[] temp)
         {
-            string[] trimmed = new string[temp.Count()];
-            for (int i = 0; i < temp.Count(); i++)
+            string[] trimmed = new string[temp.Length];
+            for (int i = 0; i < temp.Length; i++)
                 trimmed[i] = temp[i].Trim();
             return trimmed;
         }
