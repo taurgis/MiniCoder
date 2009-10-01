@@ -1000,33 +1000,18 @@ namespace x264_GUI_CS
         {
             if (videoCombo.SelectedIndex == 0)
             {
-                for (int i = 0; i < vidQualCombo.Items.Count; i++)
-                {
-                    if (vidQualCombo.Items[i].ToString() == "Very High (+50mb Anime)")
-                        goto next;
-                }
+                vidQualCombo.Items.Clear();
+
+                vidQualCombo.Items.Add("Medium");
+                vidQualCombo.Items.Add("High");
+                vidQualCombo.Items.Add("Very High");
                 vidQualCombo.Items.Add("Very High (+50mb Anime)");
-            next:
-                for (int i = 0; i < vidQualCombo.Items.Count; i++)
-                {
-                    if (vidQualCombo.Items[i].ToString() == "Very High (-50mb Anime)")
-                        goto next2;
-                }
                 vidQualCombo.Items.Add("Very High (-50mb Anime)");
-            next2:
-                for (int i = 0; i < vidQualCombo.Items.Count; i++)
-                {
-                    if (vidQualCombo.Items[i].ToString() == "Very High (TV-Shows/Movies)")
-                        goto next3;
-                }
                 vidQualCombo.Items.Add("Very High (TV-Shows/Movies)");
-            next3:
-                for (int i = 0; i < vidQualCombo.Items.Count; i++)
-                {
-                    if (vidQualCombo.Items[i].ToString() == "CRF (Anime)")
-                        return;
-                }
                 vidQualCombo.Items.Add("CRF (Anime)");
+                vidQualCombo.Items.Add("Ipod");
+                vidQualCombo.Items.Add("PSP");
+                vidQualCombo.Items.Add("PS3");
             }
             else
             {
@@ -1034,6 +1019,9 @@ namespace x264_GUI_CS
                 vidQualCombo.Items.Remove("Very High (-50mb Anime)");
                 vidQualCombo.Items.Remove("Very High (TV-Shows/Movies)");
                 vidQualCombo.Items.Remove("CRF (Anime)");
+                vidQualCombo.Items.Remove("Ipod");
+                vidQualCombo.Items.Remove("PSP");
+                vidQualCombo.Items.Remove("PS3");
 
             }
         }
