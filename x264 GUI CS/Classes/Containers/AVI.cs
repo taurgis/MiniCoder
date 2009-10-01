@@ -75,7 +75,7 @@ namespace x264_GUI_CS.Containers
             catch (KeyNotFoundException e)
             {
                 log.addLine("Can't find codec " + e.Message );
-                MessageBox.Show("Can't find codec");
+                MessageBox.Show("Can't find codec " + details.aud_codec[0]);
                 return false;
             }
             

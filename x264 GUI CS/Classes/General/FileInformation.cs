@@ -127,6 +127,7 @@ namespace x264_GUI_CS.General
             extension.Add("AVC", "264");
             extension.Add("20", "avi");
             extension.Add("V_MPEG2", "avi");
+            extension.Add("tscc", "avi");
 
             lang.Add("English", "eng");
             lang.Add("Japanese", "jpn");

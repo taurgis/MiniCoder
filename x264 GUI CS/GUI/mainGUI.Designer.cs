@@ -75,10 +75,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.noiseCombo = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.heightText = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.widthText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.resizeCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -108,6 +105,7 @@
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.widthHeight = new System.Windows.Forms.ComboBox();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -454,7 +452,7 @@
             "MP4"});
             this.containerCombo.Location = new System.Drawing.Point(78, 20);
             this.containerCombo.Name = "containerCombo";
-            this.containerCombo.Size = new System.Drawing.Size(73, 24);
+            this.containerCombo.Size = new System.Drawing.Size(94, 24);
             this.containerCombo.TabIndex = 5;
             this.containerCombo.SelectedIndexChanged += new System.EventHandler(this.containerCombo_SelectedIndexChanged);
             // 
@@ -550,7 +548,7 @@
             "Insane"});
             this.sharpCombo.Location = new System.Drawing.Point(78, 56);
             this.sharpCombo.Name = "sharpCombo";
-            this.sharpCombo.Size = new System.Drawing.Size(73, 24);
+            this.sharpCombo.Size = new System.Drawing.Size(94, 24);
             this.sharpCombo.TabIndex = 13;
             // 
             // label12
@@ -576,15 +574,13 @@
             "Insane"});
             this.noiseCombo.Location = new System.Drawing.Point(78, 26);
             this.noiseCombo.Name = "noiseCombo";
-            this.noiseCombo.Size = new System.Drawing.Size(73, 24);
+            this.noiseCombo.Size = new System.Drawing.Size(94, 24);
             this.noiseCombo.TabIndex = 12;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.heightText);
-            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.widthHeight);
             this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Controls.Add(this.widthText);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.resizeCombo);
             this.groupBox6.Controls.Add(this.label1);
@@ -596,49 +592,16 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pre-Processing";
             // 
-            // heightText
-            // 
-            this.heightText.Enabled = false;
-            this.heightText.Location = new System.Drawing.Point(146, 87);
-            this.heightText.MaxLength = 4;
-            this.heightText.Name = "heightText";
-            this.heightText.Size = new System.Drawing.Size(35, 22);
-            this.heightText.TabIndex = 13;
-            this.heightText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.heightText_KeyDown);
-            this.heightText.Leave += new System.EventHandler(this.heightText_TextLeave);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(97, 90);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 15);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "Height";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 90);
+            this.label3.Location = new System.Drawing.Point(16, 91);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Width";
+            this.label3.Text = "Width/Heigth";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // widthText
-            // 
-            this.widthText.Enabled = false;
-            this.widthText.Location = new System.Drawing.Point(61, 86);
-            this.widthText.MaxLength = 4;
-            this.widthText.Name = "widthText";
-            this.widthText.Size = new System.Drawing.Size(35, 22);
-            this.widthText.TabIndex = 8;
-            this.widthText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.widthText_KeyDown);
-            this.widthText.Leave += new System.EventHandler(this.widthText_TextLeave);
             // 
             // label2
             // 
@@ -665,7 +628,7 @@
             "Very Sharp (Spline36)"});
             this.resizeCombo.Location = new System.Drawing.Point(78, 56);
             this.resizeCombo.Name = "resizeCombo";
-            this.resizeCombo.Size = new System.Drawing.Size(73, 24);
+            this.resizeCombo.Size = new System.Drawing.Size(94, 24);
             this.resizeCombo.TabIndex = 9;
             this.resizeCombo.SelectedIndexChanged += new System.EventHandler(this.resizeCombo_SelectedIndexChanged);
             // 
@@ -690,7 +653,7 @@
             "FieldDeInterlace"});
             this.fieldCombo.Location = new System.Drawing.Point(78, 26);
             this.fieldCombo.Name = "fieldCombo";
-            this.fieldCombo.Size = new System.Drawing.Size(73, 24);
+            this.fieldCombo.Size = new System.Drawing.Size(94, 24);
             this.fieldCombo.TabIndex = 8;
             // 
             // groupBox3
@@ -718,7 +681,7 @@
             "Vorbis"});
             this.audioCombo.Location = new System.Drawing.Point(78, 56);
             this.audioCombo.Name = "audioCombo";
-            this.audioCombo.Size = new System.Drawing.Size(73, 24);
+            this.audioCombo.Size = new System.Drawing.Size(94, 24);
             this.audioCombo.TabIndex = 9;
             // 
             // label10
@@ -845,7 +808,7 @@
             "Xvid"});
             this.videoCombo.Location = new System.Drawing.Point(84, 105);
             this.videoCombo.Name = "videoCombo";
-            this.videoCombo.Size = new System.Drawing.Size(73, 24);
+            this.videoCombo.Size = new System.Drawing.Size(94, 24);
             this.videoCombo.TabIndex = 6;
             this.videoCombo.SelectedIndexChanged += new System.EventHandler(this.videoCombo_SelectedIndexChanged);
             // 
@@ -864,7 +827,7 @@
             "CRF (Anime)"});
             this.vidQualCombo.Location = new System.Drawing.Point(84, 75);
             this.vidQualCombo.Name = "vidQualCombo";
-            this.vidQualCombo.Size = new System.Drawing.Size(73, 24);
+            this.vidQualCombo.Size = new System.Drawing.Size(94, 24);
             this.vidQualCombo.TabIndex = 5;
             this.vidQualCombo.SelectedIndexChanged += new System.EventHandler(this.vidQualCombo_SelectedIndexChanged);
             // 
@@ -972,6 +935,22 @@
             this.nfIcon.Text = "x264 Encoder";
             this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
             // 
+            // widthHeight
+            // 
+            this.widthHeight.DropDownWidth = 150;
+            this.widthHeight.FormattingEnabled = true;
+            this.widthHeight.Items.AddRange(new object[] {
+            "320:240",
+            "512:384",
+            "640:360",
+            "640:480",
+            "736:416",
+            "1280:720"});
+            this.widthHeight.Location = new System.Drawing.Point(99, 87);
+            this.widthHeight.Name = "widthHeight";
+            this.widthHeight.Size = new System.Drawing.Size(73, 24);
+            this.widthHeight.TabIndex = 12;
+            // 
             // mainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1051,7 +1030,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox widthText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox resizeCombo;
         private System.Windows.Forms.Label label1;
@@ -1064,8 +1042,6 @@
         private System.Windows.Forms.ComboBox noiseCombo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.OpenFileDialog openSub;
-        private System.Windows.Forms.TextBox heightText;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button saveOptButton;
         private System.Windows.Forms.Button customButton;
         private System.Windows.Forms.Button btnApps;
@@ -1095,6 +1071,7 @@
         private System.Windows.Forms.Button btnDeleteTemplate;
         private System.Windows.Forms.ToolStripMenuItem tsCustomSettings;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ComboBox widthHeight;
     }
 }
 
