@@ -94,8 +94,18 @@ namespace x264_GUI_CS.Task_Libraries
 
                         case 6:
                             pass1Arg = "--pass 1 --crf " + details.crfValue + " --level 5.1 --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-adapt 1 --b-pyramid --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb --threads auto --output";
-                          
                             break;
+                        case 7:
+                            pass1Arg = "--profile baseline --level 1.3 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output";
+                            pass2Arg = "--profile baseline --level 1.3 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
+                            break;
+                        case 8:
+                            pass1Arg = "--profile main --level 3 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output"; 
+                            pass2Arg = "--profile main --level 3 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
+                            break;
+                        case 9:
+                            pass1Arg = "--profile high --level 4.1 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output";
+                            pass2Arg = "--profile high --level 4.1 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
                     }
 
                     if(pass2Arg != "")

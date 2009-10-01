@@ -641,7 +641,10 @@
             "Very High (+50mb Anime)",
             "Very High (-50mb Anime)",
             "Very High (TV-Shows/Movies)",
-            "CRF (Anime)"});
+            "CRF (Anime)",
+            "Ipod",
+            "PSP",
+            "PS3"});
             this.vidQualCombo.Location = new System.Drawing.Point(84, 75);
             this.vidQualCombo.Name = "vidQualCombo";
             this.vidQualCombo.Size = new System.Drawing.Size(73, 24);

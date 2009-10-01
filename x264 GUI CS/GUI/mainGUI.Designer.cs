@@ -75,6 +75,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.noiseCombo = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.widthHeight = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.resizeCombo = new System.Windows.Forms.ComboBox();
@@ -105,7 +106,6 @@
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.widthHeight = new System.Windows.Forms.ComboBox();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -592,6 +592,22 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pre-Processing";
             // 
+            // widthHeight
+            // 
+            this.widthHeight.DropDownWidth = 150;
+            this.widthHeight.FormattingEnabled = true;
+            this.widthHeight.Items.AddRange(new object[] {
+            "320:240",
+            "512:384",
+            "640:360",
+            "640:480",
+            "736:416",
+            "1280:720"});
+            this.widthHeight.Location = new System.Drawing.Point(99, 87);
+            this.widthHeight.Name = "widthHeight";
+            this.widthHeight.Size = new System.Drawing.Size(73, 24);
+            this.widthHeight.TabIndex = 12;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -824,7 +840,10 @@
             "Very High (+50mb Anime)",
             "Very High (-50mb Anime)",
             "Very High (TV-Shows/Movies)",
-            "CRF (Anime)"});
+            "CRF (Anime)",
+            "Ipod",
+            "PSP",
+            "PS3"});
             this.vidQualCombo.Location = new System.Drawing.Point(84, 75);
             this.vidQualCombo.Name = "vidQualCombo";
             this.vidQualCombo.Size = new System.Drawing.Size(94, 24);
@@ -934,22 +953,6 @@
             this.nfIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("nfIcon.Icon")));
             this.nfIcon.Text = "x264 Encoder";
             this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
-            // 
-            // widthHeight
-            // 
-            this.widthHeight.DropDownWidth = 150;
-            this.widthHeight.FormattingEnabled = true;
-            this.widthHeight.Items.AddRange(new object[] {
-            "320:240",
-            "512:384",
-            "640:360",
-            "640:480",
-            "736:416",
-            "1280:720"});
-            this.widthHeight.Location = new System.Drawing.Point(99, 87);
-            this.widthHeight.Name = "widthHeight";
-            this.widthHeight.Size = new System.Drawing.Size(73, 24);
-            this.widthHeight.TabIndex = 12;
             // 
             // mainGUI
             // 
