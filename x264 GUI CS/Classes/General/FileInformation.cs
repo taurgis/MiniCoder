@@ -57,6 +57,7 @@ namespace x264_GUI_CS.General
         public string demuxVideo;
         public string[] demuxAudio;
         public string[] demuxSub;
+        public int[] audBitrate;
         public string avsFile;
         public string dgaFile;
         public string avsAudioFile;
@@ -97,6 +98,7 @@ namespace x264_GUI_CS.General
             extension.Add("A_AAC", "aac");
             extension.Add("A_AC3", "ac3");
             extension.Add("AC-3", "ac3");
+            extension.Add("", "d2v");
             extension.Add("A_DTS", "dts");
             extension.Add("A_FLAC", "flac");
             extension.Add("A_MPEG/L1", "mpa");

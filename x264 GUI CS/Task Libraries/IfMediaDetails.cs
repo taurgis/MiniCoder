@@ -15,6 +15,7 @@ namespace x264_GUI_CS
         string fileExt(string file);
         string vidFormat(string file);
         string vidCodec(string file);
+        int[] audBitrate(string file);
         int width(string file);
         string chapters(string file);
         int height(string file);

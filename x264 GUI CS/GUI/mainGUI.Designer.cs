@@ -176,7 +176,7 @@
             // 
             // openInput
             // 
-            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4";
+            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*.vob";
             this.openInput.Multiselect = true;
             // 
             // logTab

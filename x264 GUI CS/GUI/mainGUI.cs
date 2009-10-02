@@ -319,6 +319,11 @@ namespace x264_GUI_CS
                                 container = new Containers.clMP4(log);
                                 proc.errflag = container.demux(appSettings, details, proc);
                                 break;
+                            case ".VOB":
+                            case ".vob":
+                                container = new Containers.VOB(log);
+                                proc.errflag = container.demux(appSettings, details, proc);
+                                break;
                         }
                        
                         if (!proc.errflag)
@@ -550,7 +555,7 @@ namespace x264_GUI_CS
             tempDetail.audLength = (int)(temp.audLength(fileList[i].ToString()) / 1000);
             tempDetail.audTitles = temp.audTitle(fileList[i].ToString());
             tempDetail.completeinfo = temp.completeInfo(fileList[i].ToString());
-           
+            tempDetail.audBitrate = temp.audBitrate(fileList[i].ToString());
             
             tempDetail.width = temp.width(fileList[i].ToString());
             tempDetail.height = temp.height(fileList[i].ToString());
