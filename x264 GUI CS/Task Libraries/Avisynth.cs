@@ -302,6 +302,7 @@ namespace x264_GUI_CS.Task_Libraries
             while (backGround.IsAlive)
             {
                 Thread.Sleep(500);
+                
                 if (!finishedTask)
                     continue;
 

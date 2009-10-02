@@ -45,6 +45,7 @@
             this.cmLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputTab = new System.Windows.Forms.TabPage();
+            this.processPriority = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbAfterEncode = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -232,6 +233,7 @@
             // 
             // inputTab
             // 
+            this.inputTab.Controls.Add(this.processPriority);
             this.inputTab.Controls.Add(this.label7);
             this.inputTab.Controls.Add(this.cbAfterEncode);
             this.inputTab.Controls.Add(this.btnDelete);
@@ -246,6 +248,24 @@
             this.inputTab.TabIndex = 0;
             this.inputTab.Text = "Input";
             this.inputTab.UseVisualStyleBackColor = true;
+            // 
+            // processPriority
+            // 
+            this.processPriority.DisplayMember = "Low";
+            this.processPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.processPriority.FormattingEnabled = true;
+            this.processPriority.Items.AddRange(new object[] {
+            "Low",
+            "Below Normal",
+            "Normal",
+            "Above Normal",
+            "High",
+            "Realtime"});
+            this.processPriority.Location = new System.Drawing.Point(12, 327);
+            this.processPriority.Name = "processPriority";
+            this.processPriority.Size = new System.Drawing.Size(123, 24);
+            this.processPriority.TabIndex = 11;
+            this.processPriority.SelectedIndexChanged += new System.EventHandler(this.processPriority_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -1075,6 +1095,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsCustomSettings;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ComboBox widthHeight;
+        private System.Windows.Forms.ComboBox processPriority;
     }
 }
 
