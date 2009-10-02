@@ -93,7 +93,14 @@ namespace x264_GUI_CS.Task_Libraries
             while (backGround.IsAlive)
             {
                 Thread.Sleep(500);
+                try
+                {
+                    mainProcess.PriorityClass = proc.getPriority();
+                }
+                catch
+                {
 
+                }
                 if (proc.abandon)
                 {
                     if (backGround.IsAlive)
@@ -138,7 +145,7 @@ namespace x264_GUI_CS.Task_Libraries
             try
             {
                 mainProcess.Start();
-                mainProcess.PriorityClass = ProcessPriorityClass.Idle;
+                mainProcess.PriorityClass = proc.getPriority();
 
                 stderr = mainProcess.StandardError;
                 //stdout = mainProcess.StandardOutput;

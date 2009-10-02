@@ -512,10 +512,16 @@ namespace x264_GUI_CS
                     MessageBox.Show("Aborted");
                     break;
                 }
-                             
-                string[] files2 = Directory.GetFiles(appSettings.tempDIR);
-                foreach (string file in files2)
-                    File.Delete(file);
+                try
+                {
+                    string[] files2 = Directory.GetFiles(appSettings.tempDIR);
+                    foreach (string file in files2)
+                        File.Delete(file);
+                }
+                catch
+                {
+                    log.addLine("Error deleting files!");
+                }
 
             remove:
                 if (!proc.errflag)
@@ -838,7 +844,7 @@ namespace x264_GUI_CS
             try
             {
                 updateRequired();
-
+                processPriority.SelectedIndex = 0;
                 if (!File.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\default.tpl"))
                 {
                     Wizard frmWizard = new Wizard(appSettings);
@@ -1293,6 +1299,11 @@ namespace x264_GUI_CS
                     }
                     break;
             }
+        }
+
+        private void processPriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            proc.processPriority = processPriority.SelectedIndex;
         }
 
 
