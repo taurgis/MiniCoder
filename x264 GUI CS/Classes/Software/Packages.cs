@@ -65,6 +65,7 @@ namespace x264_GUI_CS
             htPackages.Add("DGAVCIndex", newPackage("DGAVCIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/DGAVCIndex.zip", ""));
             htPackages.Add("DGAVCDecode", newPackage("DGAVCDecode", "dll", true, "Avisynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/DGAVCDecode.dll", ""));
             htPackages.Add("DGIndex", newPackage("DGIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/dgindex.zip", ""));
+          
         }
         }
 
