@@ -99,8 +99,8 @@ namespace x264_GUI_CS
             strw.Write(getLog());
             strw.Close();
             
-            MessageBox.Show("Closing Application to prevent further errors!");
-            Application.Exit();
+            //MessageBox.Show("Closing Application to prevent further errors!");
+            //Application.Exit();
 
 
         

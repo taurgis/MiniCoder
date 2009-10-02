@@ -149,9 +149,15 @@ namespace x264_GUI_CS
                 CheckForIllegalCrossThreadCalls = false;
 
                 string[] files = Directory.GetFiles(appSettings.tempDIR);
-                foreach (string file in files)
-                    File.Delete(file);
+                try
+                {
+                    foreach (string file in files)
+                        File.Delete(file);
+                }
+                catch
+                {
 
+                }
                 encodeBatchTask = new Thread(new ThreadStart(encodeBatch));
                 proc.abandon = false;
                 encodeBatchTask.Start();
@@ -555,6 +561,7 @@ namespace x264_GUI_CS
             tempDetail.audLength = (int)(temp.audLength(fileList[i].ToString()) / 1000);
             tempDetail.audTitles = temp.audTitle(fileList[i].ToString());
             tempDetail.completeinfo = temp.completeInfo(fileList[i].ToString());
+           if(tempDetail.ext.ToUpper() == ".VOB")
             tempDetail.audBitrate = temp.audBitrate(fileList[i].ToString());
             
             tempDetail.width = temp.width(fileList[i].ToString());
