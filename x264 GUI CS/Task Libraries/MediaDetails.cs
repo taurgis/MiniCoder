@@ -161,6 +161,18 @@ namespace x264_GUI_CS.Task_Libraries
             return ch;
         }
 
+        public int[] audBitrate(string file)
+        {
+            media.Open(file);
+            int[] temp = new int[media.Count_Get(StreamKind.Audio)];
+
+            for (int i = 0; i < media.Count_Get(StreamKind.Audio); i++)
+                temp[i] = Convert.ToInt32(media.Get(StreamKind.Audio, i, "BitRate"));
+
+            media.Close();
+            return temp;
+        }
+
         public int audioCount(string file)
         {
             media.Open(file);
@@ -360,7 +372,17 @@ namespace x264_GUI_CS.Task_Libraries
             media.Close();
             return asp;
         }
+        public int[] audBitrate(string file)
+        {
+            media.Open(file);
+            int[] temp = new int[media.Count_Get(StreamKind.Audio)];
 
+            for (int i = 0; i < media.Count_Get(StreamKind.Audio); i++)
+                temp[i] = Convert.ToInt32(media.Get(StreamKind.Audio, i, "Bit_rate"));
+
+            media.Close();
+            return temp;
+        }
         public string frameRateType(string file)
         {
             media.Open(file);
@@ -468,7 +490,7 @@ namespace x264_GUI_CS.Task_Libraries
         public int channels(string file)
         {
             media.Open(file);
-            int ch = int.Parse(media.Get(StreamKind.Audio, 0, "Channels"));
+            int ch = int.Parse(media.Get(StreamKind.Audio, 0, "Channel(s)"));
             media.Close();
             return ch;
         }

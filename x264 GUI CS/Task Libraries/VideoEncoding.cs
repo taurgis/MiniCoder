@@ -106,6 +106,7 @@ namespace x264_GUI_CS.Task_Libraries
                         case 9:
                             pass1Arg = "--profile high --level 4.1 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output";
                             pass2Arg = "--profile high --level 4.1 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
+                            break;
                     }
 
                     if(pass2Arg != "")

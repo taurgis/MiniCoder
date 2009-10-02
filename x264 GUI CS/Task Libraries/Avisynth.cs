@@ -107,6 +107,16 @@ namespace x264_GUI_CS.Task_Libraries
                             break;
                      }
                     break;
+             case "":                   
+                        switch (details.ext)
+                        {
+
+                            default:
+                                sourceline = "DGDecode_mpeg2source(\"" + details.demuxVideo + "\", info=3)\r\nColorMatrix(hints=true, threads=0)";
+                                break;
+                        }
+                        break;
+                    
                 default:
                     switch(details.ext)
                     {
@@ -127,6 +137,8 @@ namespace x264_GUI_CS.Task_Libraries
                             break;
                     }
                     break;
+
+              
             }
             log.addLine("================= AVS FILE =================");
             log.addLine(sourceline);
