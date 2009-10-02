@@ -58,7 +58,7 @@ namespace x264_GUI_CS.Containers
                         details.audTitles = new string[details.audioCount];
                         for (int i = 0; i < details.audioCount; i++)
                         {
-                            details.demuxAudio[i] = dir.tempDIR + details.name + " " + "T" + (80 + i) + " 3_2ch" + " " + (details.audBitrate[i] / 1000) + "Kbps DELAY 0ms." + details.extension[details.aud_codec[i]];
+                            details.demuxAudio[i] = dir.tempDIR + details.name + " " + "T" + (80 + i) + " 3_2ch" + " " + (Convert.ToInt32(details.audBitrate[i]) / 1000) + "Kbps DELAY 0ms." + details.extension[details.aud_codec[i]];
                             details.aud_Languages[i] = "";
                             details.audTitles[i] = "DVD Audio";
                             
