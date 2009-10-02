@@ -74,6 +74,9 @@ namespace x264_GUI_CS.Task_Libraries
                     if (File.Exists(dir.tempDIR + "chapters.xml"))
                         arg1 += "--chapters \"" + dir.tempDIR + "chapters.xml\" ";
 
+                    if (File.Exists(dir.tempDIR + "chapters.txt"))
+                        arg1 += "--chapters \"" + dir.tempDIR + "chapters.txt\" ";
+
                     if (details.fps > 400)
                         args = "-o \"" + details.outFile + "\" --default-duration 0:" + details.fps.ToString().Replace(".0", "").Substring(0, 2) + "." + details.fps.ToString().Replace(".0", "").Substring(2, details.fps.ToString().Replace(".0", "").Length - 2) + "fps --display-dimensions 0:" + details.muxwidth.ToString() + "x" + details.muxheight.ToString() + " " + arg1 + "-d 0 -A -S \"" + details.encodedVideo + "\" ";
                     else
