@@ -70,7 +70,9 @@ namespace x264_GUI_CS.Task_Libraries
                     if (details.vfr && File.Exists(details.vfrCode))
                         arg1 += "--timecodes 0:\"" + details.vfrCode + "\" ";
 
+                    if(!encOpts.advert)
                     arg1 += "--title \"Encoded with MiniCoder\" ";
+
                     if (File.Exists(dir.tempDIR + "chapters.xml"))
                         arg1 += "--chapters \"" + dir.tempDIR + "chapters.xml\" ";
 

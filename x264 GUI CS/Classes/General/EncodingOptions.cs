@@ -15,7 +15,7 @@ namespace x264_GUI_CS.General
         public int sizeOpt = 0;
         public int fileSize = 60;
         public string type = "bitrate";
-
+        public bool advert = false;
         public int audBR = 40;
         public int audCodec = 0;
 
