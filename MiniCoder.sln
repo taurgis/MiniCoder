@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniCoder", "x264 GUI CS\MiniCoder.csproj", "{0E4F2592-60DD-4ECC-B032-C9A7306D36BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCUpdater", "MCUpdater\MCUpdater.csproj", "{09D16651-A6AE-4D01-AC6B-19D3811EB025}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,12 @@ Global
 		{0E4F2592-60DD-4ECC-B032-C9A7306D36BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E4F2592-60DD-4ECC-B032-C9A7306D36BC}.Release|x86.ActiveCfg = Release|x86
 		{0E4F2592-60DD-4ECC-B032-C9A7306D36BC}.Release|x86.Build.0 = Release|x86
+		{09D16651-A6AE-4D01-AC6B-19D3811EB025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D16651-A6AE-4D01-AC6B-19D3811EB025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D16651-A6AE-4D01-AC6B-19D3811EB025}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{09D16651-A6AE-4D01-AC6B-19D3811EB025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D16651-A6AE-4D01-AC6B-19D3811EB025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D16651-A6AE-4D01-AC6B-19D3811EB025}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
