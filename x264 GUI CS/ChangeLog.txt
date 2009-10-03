@@ -1,4 +1,4 @@
-﻿Unreleased version
+﻿Version 1.2.0.0
 
 - Fixed error with demuxing OGM
 - Changed template names
@@ -7,6 +7,11 @@
 - Added hardsub support for MP4
 - Improved code here and there
 - Added new profiles: Ipod, PSP and PS3/XBOX
+- Added DVD ripping (.VOB files)
+- Added extracting chapters from .VOB files
+- Added extracting subs from .VOB files
+- Ability to remove auto MiniCoder add titles
+- Ability to manage process priority
 
 Version 1.1.0.0
 

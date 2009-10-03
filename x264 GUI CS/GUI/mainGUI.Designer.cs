@@ -45,6 +45,7 @@
             this.cmLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputTab = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.processPriority = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbAfterEncode = new System.Windows.Forms.ComboBox();
@@ -107,6 +108,7 @@
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.titleAdvert = new System.Windows.Forms.CheckBox();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -134,7 +136,7 @@
             this.toolStripMenuItem2,
             this.clearMenuItem});
             this.inputMenuStrip.Name = "inputMenu";
-            this.inputMenuStrip.Size = new System.Drawing.Size(164, 104);
+            this.inputMenuStrip.Size = new System.Drawing.Size(164, 126);
             this.inputMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.inputMenuStrip_Opening);
             // 
             // addMenuItem
@@ -233,6 +235,7 @@
             // 
             // inputTab
             // 
+            this.inputTab.Controls.Add(this.label15);
             this.inputTab.Controls.Add(this.processPriority);
             this.inputTab.Controls.Add(this.label7);
             this.inputTab.Controls.Add(this.cbAfterEncode);
@@ -249,10 +252,19 @@
             this.inputTab.Text = "Input";
             this.inputTab.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(3, 329);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 21);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "Priority:";
+            // 
             // processPriority
             // 
             this.processPriority.DisplayMember = "Low";
             this.processPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.processPriority.DropDownWidth = 100;
             this.processPriority.FormattingEnabled = true;
             this.processPriority.Items.AddRange(new object[] {
             "Low",
@@ -261,9 +273,9 @@
             "Above Normal",
             "High",
             "Realtime"});
-            this.processPriority.Location = new System.Drawing.Point(12, 327);
+            this.processPriority.Location = new System.Drawing.Point(60, 326);
             this.processPriority.Name = "processPriority";
-            this.processPriority.Size = new System.Drawing.Size(123, 24);
+            this.processPriority.Size = new System.Drawing.Size(100, 24);
             this.processPriority.TabIndex = 11;
             this.processPriority.SelectedIndexChanged += new System.EventHandler(this.processPriority_SelectedIndexChanged);
             // 
@@ -294,7 +306,7 @@
             // 
             this.btnDelete.Location = new System.Drawing.Point(39, 295);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(21, 30);
+            this.btnDelete.Size = new System.Drawing.Size(21, 25);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "x";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -304,7 +316,7 @@
             // 
             this.btnAdd.Location = new System.Drawing.Point(12, 295);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(21, 30);
+            this.btnAdd.Size = new System.Drawing.Size(21, 25);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -314,7 +326,7 @@
             // 
             this.stopButton.Location = new System.Drawing.Point(296, 295);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(90, 30);
+            this.stopButton.Size = new System.Drawing.Size(90, 27);
             this.stopButton.TabIndex = 6;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
@@ -363,7 +375,7 @@
             // 
             this.startButton.Location = new System.Drawing.Point(200, 295);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(90, 30);
+            this.startButton.Size = new System.Drawing.Size(90, 27);
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -974,11 +986,22 @@
             this.nfIcon.Text = "x264 Encoder";
             this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
             // 
+            // titleAdvert
+            // 
+            this.titleAdvert.AutoSize = true;
+            this.titleAdvert.Location = new System.Drawing.Point(265, 14);
+            this.titleAdvert.Name = "titleAdvert";
+            this.titleAdvert.Size = new System.Drawing.Size(142, 17);
+            this.titleAdvert.TabIndex = 2;
+            this.titleAdvert.Text = "Disable video title advert";
+            this.titleAdvert.UseVisualStyleBackColor = true;
+            // 
             // mainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 423);
+            this.Controls.Add(this.titleAdvert);
             this.Controls.Add(this.mainTabPage);
             this.Controls.Add(this.infoLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1010,6 +1033,7 @@
             this.aboutTab.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1096,6 +1120,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ComboBox widthHeight;
         private System.Windows.Forms.ComboBox processPriority;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox titleAdvert;
     }
 }
 

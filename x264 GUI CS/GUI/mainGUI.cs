@@ -196,7 +196,7 @@ namespace x264_GUI_CS
                         log.addLine("Found no custom settings for this file. Using general settings.");
                         encodingOpts = getEncodeOpts();
                     }
-
+                    encodingOpts.advert = titleAdvert.Checked;
                    
                     if (encOptsErr)
                     {
@@ -423,8 +423,14 @@ namespace x264_GUI_CS
                     if (!proc.abandon)
                     {
                         AudioDecoding dec = new AudioDecoding(log);
-                        proc.errflag = dec.decode(appSettings, details, proc);
-
+                        try
+                        {
+                            proc.errflag = dec.decode(appSettings, details, proc);
+                        }
+                        catch
+                        {
+                            proc.errflag = true;
+                        }
                         if (!proc.errflag)
                         {
                             inputList.Items[fileindex].SubItems[1].Text = "error";
@@ -811,9 +817,9 @@ namespace x264_GUI_CS
                     if (Onlineversion > Appversion)
                     {
                         log.addLine("Update Required!");
-                        if (MessageBox.Show("There is an update! Do you wish to see the changelog?", "Changelog", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("There is an update! Do you wish to download it??", "Download", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            Process.Start("http://encoder.minitheatre.org/index.php/Changelog");
+                            Process.Start("https://sourceforge.net/projects/minicoder/");
                         }
                       
                     
@@ -1305,6 +1311,10 @@ namespace x264_GUI_CS
         {
             proc.processPriority = processPriority.SelectedIndex;
         }
+
+  
+
+        
 
 
      
