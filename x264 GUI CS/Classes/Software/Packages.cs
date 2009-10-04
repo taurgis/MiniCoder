@@ -51,7 +51,7 @@ namespace MiniCoder
             defaultPackages.Add("x264", newPackage("x264", "zip", false, "", "", "http://www.gamerzzheaven.be/x264.zip", "video", ""));
             defaultPackages.Add("mkv2vfr", newPackage("mkv2vfr", "zip", false, "", "", "http://www.gamerzzheaven.be/mkv2vfr.zip", "muxer", ""));
             defaultPackages.Add("avs", newPackage("avs", "exe", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Avisynth_258.exe","other", ""));
-            defaultPackages.Add("mp4box", newPackage("mp4box", "zip", false, "", "", "http://www.minitheatre.org/x264prog/mp4box.zip","muxer", ""));
+            defaultPackages.Add("mp4box", newPackage("mp4box", "zip", false, "", "", "http://www.gamerzzheaven.be/mp4box.zip", "muxer", ""));
             defaultPackages.Add("besweet", newPackage("besweet", "zip", false, "", "", "http://www.gamerzzheaven.be/BeSweet.zip", "audio", ""));
             defaultPackages.Add("ogmtools", newPackage("ogmtools", "zip", false, "", "", "http://www.gamerzzheaven.be/OGMTools.zip", "muxer", ""));
             defaultPackages.Add("VirtualDubMod", newPackage("VirtualDubMod", "zip", false, "", "", "http://www.gamerzzheaven.be/VirtualDubMod.zip", "muxer", ""));

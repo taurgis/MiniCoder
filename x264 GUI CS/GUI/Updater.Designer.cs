@@ -54,6 +54,12 @@
             this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
             this.videoTab = new System.Windows.Forms.TabPage();
+            this.videoList = new System.Windows.Forms.ListView();
+            this.columnHeader21 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader22 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader23 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader24 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader25 = new System.Windows.Forms.ColumnHeader();
             this.muxTab = new System.Windows.Forms.TabPage();
             this.muxingList = new System.Windows.Forms.ListView();
             this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
@@ -70,12 +76,6 @@
             this.columnHeader20 = new System.Windows.Forms.ColumnHeader();
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
-            this.videoList = new System.Windows.Forms.ListView();
-            this.columnHeader21 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader22 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader23 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader24 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader25 = new System.Windows.Forms.ColumnHeader();
             this.applicationTabs.SuspendLayout();
             this.coreTab.SuspendLayout();
             this.pluginTab.SuspendLayout();
@@ -292,6 +292,51 @@
             this.videoTab.Text = "Video";
             this.videoTab.UseVisualStyleBackColor = true;
             // 
+            // videoList
+            // 
+            this.videoList.CheckBoxes = true;
+            this.videoList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader21,
+            this.columnHeader22,
+            this.columnHeader23,
+            this.columnHeader24,
+            this.columnHeader25});
+            this.videoList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoList.FullRowSelect = true;
+            this.videoList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.videoList.Location = new System.Drawing.Point(0, 0);
+            this.videoList.Name = "videoList";
+            this.videoList.Size = new System.Drawing.Size(521, 170);
+            this.videoList.TabIndex = 9;
+            this.videoList.UseCompatibleStateImageBehavior = false;
+            this.videoList.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Update";
+            this.columnHeader21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader21.Width = 50;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Name";
+            this.columnHeader22.Width = 100;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Existing Version";
+            this.columnHeader23.Width = 100;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Latest Version";
+            this.columnHeader24.Width = 100;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Status";
+            this.columnHeader25.Width = 135;
+            // 
             // muxTab
             // 
             this.muxTab.Controls.Add(this.muxingList);
@@ -410,6 +455,7 @@
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // updateButton
             // 
@@ -420,51 +466,6 @@
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // videoList
-            // 
-            this.videoList.CheckBoxes = true;
-            this.videoList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader21,
-            this.columnHeader22,
-            this.columnHeader23,
-            this.columnHeader24,
-            this.columnHeader25});
-            this.videoList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.videoList.FullRowSelect = true;
-            this.videoList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.videoList.Location = new System.Drawing.Point(0, 0);
-            this.videoList.Name = "videoList";
-            this.videoList.Size = new System.Drawing.Size(521, 170);
-            this.videoList.TabIndex = 9;
-            this.videoList.UseCompatibleStateImageBehavior = false;
-            this.videoList.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader21
-            // 
-            this.columnHeader21.Text = "Update";
-            this.columnHeader21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader21.Width = 50;
-            // 
-            // columnHeader22
-            // 
-            this.columnHeader22.Text = "Name";
-            this.columnHeader22.Width = 100;
-            // 
-            // columnHeader23
-            // 
-            this.columnHeader23.Text = "Existing Version";
-            this.columnHeader23.Width = 100;
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "Latest Version";
-            this.columnHeader24.Width = 100;
-            // 
-            // columnHeader25
-            // 
-            this.columnHeader25.Text = "Status";
-            this.columnHeader25.Width = 135;
             // 
             // Updater
             // 
@@ -477,9 +478,11 @@
             this.Controls.Add(this.updateLog);
             this.Controls.Add(this.downloadProgress);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Updater";
             this.Text = "MiniCoder Updater";
-            
+            this.Load += new System.EventHandler(this.Updater_Load);
             this.applicationTabs.ResumeLayout(false);
             this.coreTab.ResumeLayout(false);
             this.pluginTab.ResumeLayout(false);

@@ -13,7 +13,7 @@ namespace x264_GUI_CS
 {
     public partial class CustomFilter : Form
     {
-        public string[] customFiltOpts = new string[4];
+        public string customFiltOpts;
         public EncodingOptions encOpts = new EncodingOptions();
         ApplicationSettings dir;
                 
@@ -25,18 +25,12 @@ namespace x264_GUI_CS
 
         public void init()
         {
-                fieldFilterText.Text = customFiltOpts[0];
-                resizeFilterText.Text = customFiltOpts[1];
-                noiseFilterText.Text = customFiltOpts[2];
-                sharpFilterText.Text = customFiltOpts[3];
+            fieldFilterText.Text = customFiltOpts;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            customFiltOpts[0] = fieldFilterText.Text;
-            customFiltOpts[1] = resizeFilterText.Text;
-            customFiltOpts[2] = noiseFilterText.Text;
-            customFiltOpts[3] = sharpFilterText.Text;
+            customFiltOpts = fieldFilterText.Text;
             this.Close();
         }
 
@@ -50,12 +44,10 @@ namespace x264_GUI_CS
             
             Task_Libraries.Avisynth avs = new Task_Libraries.Avisynth();
 
-            encOpts.customFilter = new string[4];
+           
 
-            encOpts.customFilter[0] = fieldFilterText.Text;
-            encOpts.customFilter[1] = resizeFilterText.Text;
-            encOpts.customFilter[2] = noiseFilterText.Text;
-            encOpts.customFilter[3] = sharpFilterText.Text;
+            encOpts.customFilter = fieldFilterText.Text;
+      
 
             string script = avs.addFiltersNoLog(encOpts, dir);
 
