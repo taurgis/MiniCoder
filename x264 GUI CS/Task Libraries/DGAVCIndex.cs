@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MiniCoder;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-
+using MiniCoder.General;
 namespace x264_GUI_CS.Task_Libraries
 {
     class DGAVCIndex

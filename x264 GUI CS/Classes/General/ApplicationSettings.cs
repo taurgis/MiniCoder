@@ -5,7 +5,9 @@ using System.IO;
 using System;
 using x264_GUI_CS.GUI;
 using System.Windows.Forms;
-namespace x264_GUI_CS
+using MiniCoder.General;
+using MiniCoder;
+namespace MiniCoder.General
 {
     public class ApplicationSettings
     {

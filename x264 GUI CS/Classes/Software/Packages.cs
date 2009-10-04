@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MiniCoder.General;
 using System.Text;
 using System.Collections;
 using System.IO;
-namespace x264_GUI_CS
+using MiniCoder;
+namespace MiniCoder
 {
     class Packages
     {
@@ -26,53 +27,67 @@ namespace x264_GUI_CS
         {
             if(File.Exists(appSettings.getAppPath() + "\\apps.txt"))
             {
-                StreamReader streamReader = new StreamReader(appSettings.getAppPath() + "\\apps.txt");
-                while (!streamReader.EndOfStream)
+                try
                 {
-                    String[] appInfo = streamReader.ReadLine().Split(Convert.ToChar(";"));
-                    htPackages.Add(appInfo[0], newPackage(appInfo[0], appInfo[1],Convert.ToBoolean(appInfo[2]),appInfo[3],appInfo[4],appInfo[5],appInfo[6]));
+                StreamReader streamReader = new StreamReader(appSettings.getAppPath() + "\\apps.txt");
                 
+                    while (!streamReader.EndOfStream)
+                    {
+                        String[] appInfo = streamReader.ReadLine().Split(Convert.ToChar(";"));
+                        htPackages.Add(appInfo[0], newPackage(appInfo[0], appInfo[1], Convert.ToBoolean(appInfo[2]), appInfo[3], appInfo[4], appInfo[5], appInfo[6], appInfo[7]));
+
+                    }
+
+                    streamReader.Close();
                 }
-                streamReader.Close();
+                catch
+                {
+                   
+                }
             }
-            else
-            {
-            htPackages.Add("mkvtoolnix", newPackage("mkvmerge", "exe", true, "mkvmergeGUI\\GUI\\", "installation_path", "http://www.gamerzzheaven.be/mkvtoolnix.exe",""));
-            htPackages.Add("x264", newPackage("x264", "zip", false, "", "", "http://www.gamerzzheaven.be/x264.zip", ""));
-            htPackages.Add("mkv2vfr", newPackage("mkv2vfr", "zip", false, "", "", "http://www.gamerzzheaven.be/mkv2vfr.zip", ""));
-            htPackages.Add("avs", newPackage("avs", "exe", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Avisynth_258.exe", ""));
-            htPackages.Add("mp4box", newPackage("mp4box", "zip", false, "", "", "http://www.minitheatre.org/x264prog/mp4box.zip", ""));
-            htPackages.Add("besweet", newPackage("besweet", "zip", false, "", "", "http://www.gamerzzheaven.be/BeSweet.zip", ""));
-            htPackages.Add("ogmtools", newPackage("ogmtools", "zip", false, "", "", "http://www.gamerzzheaven.be/OGMTools.zip", ""));
-            htPackages.Add("VirtualDubMod", newPackage("VirtualDubMod", "zip", false, "", "", "http://www.gamerzzheaven.be/VirtualDubMod.zip", ""));
-            htPackages.Add("avs2yuv", newPackage("avs2yuv", "zip", false, "", "", "http://www.gamerzzheaven.be/avs2yuv.zip", ""));
-            htPackages.Add("madplay", newPackage("madplay", "zip", false, "", "", "http://www.gamerzzheaven.be/madplay.zip", ""));
-            htPackages.Add("flac", newPackage("flac", "zip", false, "", "", "http://www.gamerzzheaven.be/flac.zip", ""));
-            htPackages.Add("valdec", newPackage("valdec", "zip", false, "", "", "http://www.gamerzzheaven.be/valdec.zip", ""));
-            htPackages.Add("faad", newPackage("faad", "zip", false, "", "", "http://www.gamerzzheaven.be/faad.zip", ""));
-            htPackages.Add("oggdec", newPackage("oggdec", "zip", false, "", "", "http://www.gamerzzheaven.be/oggdec.zip", ""));
-            htPackages.Add("Deen", newPackage("Deen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Deen.dll", ""));
-            htPackages.Add("VSFilter", newPackage("VSFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/VSFilter.dll", ""));
-            htPackages.Add("Decomb", newPackage("Decomb", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Decomb.dll", ""));
-            htPackages.Add("UnDot", newPackage("UnDot", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnDot.dll", ""));
-            htPackages.Add("FluxSmooth", newPackage("FluxSmooth", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/FluxSmooth.dll", ""));
-            htPackages.Add("HQDN3D", newPackage("HQDN3D", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/HQDN3D.dll", ""));
-            htPackages.Add("UnFilter", newPackage("UnFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnFilter.dll", ""));
-            htPackages.Add("Toon-v1.0-lite", newPackage("Toon-v1.0-lite", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Toon-v1.0-lite.dll", ""));
-            htPackages.Add("aWarpSharp", newPackage("aWarpSharp", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/aWarpSharp.dll", ""));
-            htPackages.Add("MSharpen", newPackage("MSharpen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/MSharpen.dll", ""));
-            htPackages.Add("xvid_encraw", newPackage("xvid_encraw", "zip", false, "", "", "http://www.gamerzzheaven.be/xvid_encraw.zip", ""));
-            htPackages.Add("DGAVCIndex", newPackage("DGAVCIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/DGAVCIndex.zip", ""));
-            htPackages.Add("DGAVCDecode", newPackage("DGAVCDecode", "dll", true, "Avisynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/DGAVCDecode.dll", ""));
-            htPackages.Add("DGIndex", newPackage("DGIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/dgindex.zip", ""));
+            Hashtable defaultPackages = new Hashtable();
+
+            defaultPackages.Add("mkvtoolnix", newPackage("mkvtoolnix", "zip", false, "", "", "http://www.gamerzzheaven.be/mkvtoolnix.zip", "muxer", ""));
+            defaultPackages.Add("x264", newPackage("x264", "zip", false, "", "", "http://www.gamerzzheaven.be/x264.zip", "video", ""));
+            defaultPackages.Add("mkv2vfr", newPackage("mkv2vfr", "zip", false, "", "", "http://www.gamerzzheaven.be/mkv2vfr.zip", "muxer", ""));
+            defaultPackages.Add("avs", newPackage("avs", "exe", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Avisynth_258.exe","other", ""));
+            defaultPackages.Add("mp4box", newPackage("mp4box", "zip", false, "", "", "http://www.minitheatre.org/x264prog/mp4box.zip","muxer", ""));
+            defaultPackages.Add("besweet", newPackage("besweet", "zip", false, "", "", "http://www.gamerzzheaven.be/BeSweet.zip", "audio", ""));
+            defaultPackages.Add("ogmtools", newPackage("ogmtools", "zip", false, "", "", "http://www.gamerzzheaven.be/OGMTools.zip", "muxer", ""));
+            defaultPackages.Add("VirtualDubMod", newPackage("VirtualDubMod", "zip", false, "", "", "http://www.gamerzzheaven.be/VirtualDubMod.zip", "muxer", ""));
+            defaultPackages.Add("avs2yuv", newPackage("avs2yuv", "zip", false, "", "", "http://www.gamerzzheaven.be/avs2yuv.zip", "other", ""));
+            defaultPackages.Add("madplay", newPackage("madplay", "zip", false, "", "", "http://www.gamerzzheaven.be/madplay.zip", "audio",""));
+            defaultPackages.Add("flac", newPackage("flac", "zip", false, "", "", "http://www.gamerzzheaven.be/flac.zip", "audio", ""));
+            defaultPackages.Add("valdec", newPackage("valdec", "zip", false, "", "", "http://www.gamerzzheaven.be/valdec.zip", "audio", ""));
+            defaultPackages.Add("faad", newPackage("faad", "zip", false, "", "", "http://www.gamerzzheaven.be/faad.zip", "audio",""));
+            defaultPackages.Add("oggdec", newPackage("oggdec", "zip", false, "", "", "http://www.gamerzzheaven.be/oggdec.zip","audio", ""));
+            defaultPackages.Add("Deen", newPackage("Deen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Deen.dll", "plugin", ""));
+            defaultPackages.Add("VSFilter", newPackage("VSFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/VSFilter.dll", "plugin", ""));
+            defaultPackages.Add("Decomb", newPackage("Decomb", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Decomb.dll","plugin", ""));
+            defaultPackages.Add("UnDot", newPackage("UnDot", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnDot.dll", "plugin",""));
+            defaultPackages.Add("FluxSmooth", newPackage("FluxSmooth", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/FluxSmooth.dll", "plugin", ""));
+            defaultPackages.Add("HQDN3D", newPackage("HQDN3D", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/HQDN3D.dll", "plugin", ""));
+            defaultPackages.Add("UnFilter", newPackage("UnFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnFilter.dll", "plugin", ""));
+            defaultPackages.Add("Toon-v1.0-lite", newPackage("Toon-v1.0-lite", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Toon-v1.0-lite.dll", "plugin", ""));
+            defaultPackages.Add("aWarpSharp", newPackage("aWarpSharp", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/aWarpSharp.dll", "plugin", ""));
+            defaultPackages.Add("MSharpen", newPackage("MSharpen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/MSharpen.dll", "plugin", ""));
+            defaultPackages.Add("xvid_encraw", newPackage("xvid_encraw", "zip", false, "", "", "http://www.gamerzzheaven.be/xvid_encraw.zip", "video", ""));
+            defaultPackages.Add("DGAVCIndex", newPackage("DGAVCIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/DGAVCIndex.zip", "video", ""));
+            defaultPackages.Add("DGAVCDecode", newPackage("DGAVCDecode", "dll", true, "Avisynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/DGAVCDecode.dll", "plugin", ""));
+            defaultPackages.Add("DGIndex", newPackage("DGIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/dgindex.zip", "muxer", ""));
           
-        }
+            foreach(string key in defaultPackages.Keys)
+            {
+                if (!htPackages.Contains(key))
+                    htPackages.Add(key, defaultPackages[key]);
+            }
+        
         }
 
-        private Package newPackage(string appName, string appType, Boolean isRegistry, string registrySubPath, string registrySubKey, string downloadurl, string customPath)
+        private Package newPackage(string appName, string appType, Boolean isRegistry, string registrySubPath, string registrySubKey, string downloadurl, string category, string customPath)
         {
              Package tempPackage;
-             return tempPackage = new Package(appName, appType, isRegistry, registrySubPath, appSettings, registrySubKey, downloadurl, customPath);
+             return tempPackage = new Package(appName, appType, isRegistry, registrySubPath, appSettings, registrySubKey, downloadurl, category, customPath);
         }
 
         public void savePackages()
@@ -82,7 +97,8 @@ namespace x264_GUI_CS
             foreach(string key in htPackages.Keys)
             {
                 Package package = (Package)htPackages[key];
-                streamWriter.WriteLine(key + ";" + package.getAppType() + ";" + package.getIsRegistry() + ";" + package.getRegistrySubPath() + ";" + package.getRegistrySubKey() + ";" + package.getDownloadUrl() + ";" + package.getCustomPath());
+                if(package.getCustomPath() != "")
+                streamWriter.WriteLine(key + ";" + package.getAppType() + ";" + package.getIsRegistry() + ";" + package.getRegistrySubPath() + ";" + package.getRegistrySubKey() + ";" + package.getDownloadUrl() + ";" + package.getCategory() + ";" + package.getCustomPath());
 
                
             }

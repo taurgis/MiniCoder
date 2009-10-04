@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace MCUpdater
 {
-    public partial class Form1 : Form
+    public partial class Updater : Form
     {
-        public Form1()
+        public Updater()
         {
             InitializeComponent();
+        }
+
+        private void Updater_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

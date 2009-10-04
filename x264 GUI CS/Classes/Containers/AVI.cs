@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Windows.Forms;
 using x264_GUI_CS.General;
+using MiniCoder;
 namespace x264_GUI_CS.Containers
 {
     class clAVI : ifContainer

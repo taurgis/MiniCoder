@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 namespace x264_GUI_CS
 {
-    class LogBook
+    public class LogBook
     {
         mainGUI mainFrame;
    

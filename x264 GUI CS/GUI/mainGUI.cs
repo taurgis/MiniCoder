@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-
+using MiniCoder.General;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -719,10 +719,10 @@ namespace x264_GUI_CS
             DialogResult result = customFilt.ShowDialog();
             customFiltOpts = customFilt.customFiltOpts;
         }
-
+        
         private void btnApps_Click(object sender, EventArgs e)
         {
-            GUI.AppManagement apps = new GUI.AppManagement(appSettings);
+            MiniCoder.Updater apps = new MiniCoder.Updater(appSettings);
             apps.ShowDialog();
             appSettings = new ApplicationSettings(Application.StartupPath);
         }
@@ -787,43 +787,18 @@ namespace x264_GUI_CS
         {
             try
             {
-                int Onlineversion = Convert.ToInt32((GetText("http://www.gamerzzheaven.be/version.txt").Replace(Convert.ToChar("."), Convert.ToChar("0"))));
-                //int Appversion = Convert.ToInt32((Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(Convert.ToChar("."), Convert.ToChar("0"))));
-                int revision = Assembly.GetExecutingAssembly().GetName().Version.Revision;
-                int majorRevision = Assembly.GetExecutingAssembly().GetName().Version.Build;
-                int minorRevision = Assembly.GetExecutingAssembly().GetName().Version.MinorRevision;
-                int minor = Assembly.GetExecutingAssembly().GetName().Version.Minor;
-                int major = Assembly.GetExecutingAssembly().GetName().Version.Major;
-
-
-                if (major < 10)
-                    major = Convert.ToInt32(major + "0");
-
-                if (minor < 10)
-                    minor = Convert.ToInt32(minor + "0");
-                if (majorRevision < 10)
-                    majorRevision = Convert.ToInt32(majorRevision + "0");
-
-                if (minorRevision < 10)
-                    minorRevision = Convert.ToInt32(minorRevision + "0");
-
-                int Appversion = Convert.ToInt32(major + "0" + minor + "0" + majorRevision + "0" + minorRevision);
-
-                log.addLine("Online Version: " + Onlineversion.ToString());
-                log.addLine("Current Version: " + Appversion.ToString());
-                if ((GetText("http://www.gamerzzheaven.be/version.txt") != Assembly.GetExecutingAssembly().GetName().Version.ToString()))
+                MiniCoder.Updater updater = new MiniCoder.Updater(appSettings, log);
+                if (updater.needUpdate())
                 {
-                   
-                    if (Onlineversion > Appversion)
+                    if (MessageBox.Show("Updates found. Do you want to install them now?", "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        log.addLine("Update Required!");
-                        if (MessageBox.Show("There is an update! Do you wish to download it??", "Download", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            Process.Start("https://sourceforge.net/projects/minicoder/");
-                        }
-                      
-                    
+                        updater = new MiniCoder.Updater(appSettings);
+                        updater.Show();
                     }
+                    else
+                        updater.Close();
+
+                    
                 }
             }
             catch 

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MiniCoder.General;
 using System.Text;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
-
+using MiniCoder;
 using x264_GUI_CS;
 
 namespace x264_GUI_CS.Task_Libraries
