@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MiniCoder.General;
 using System.Text;
 using Microsoft.Win32;
 using System.IO;
 using x264_GUI_CS.GUI;
 
-namespace x264_GUI_CS
+namespace MiniCoder
 {
     class Package
     {
@@ -21,14 +21,15 @@ namespace x264_GUI_CS
         private string appBasePath = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Tools\\";
         private ApplicationSettings appSettings;
         public String dlStatus;
-       
+        private string category;
         
-        public Package(string appName, string appType, Boolean isRegistry, string registrySubpath, ApplicationSettings appSettings, string registrySubKey, string downloadurl, string customPath)
+        public Package(string appName, string appType, Boolean isRegistry, string registrySubpath, ApplicationSettings appSettings, string registrySubKey, string downloadurl, string category, string customPath)
         {
           this.appName = appName;
           this.appType = appType;
           this.isRegistry = isRegistry;
           this.downloadPath = downloadurl;
+          this.category = category;
           if (this.isRegistry)
           {
               this.registrySubpath = registrySubpath;
@@ -47,6 +48,10 @@ namespace x264_GUI_CS
             return isRegistry;
         }
 
+        public string getCategory()
+        {
+            return category;
+        }
       
 
         public String getRegistrySubKey()
@@ -162,17 +167,24 @@ namespace x264_GUI_CS
 
         public void download()
         {
-            Download frmDownload;
-            if(appType == "zip")
-                      frmDownload = new Download(downloadPath, getInstallPath(), appType);
-            else if(appType == "exe")
-                frmDownload = new Download(downloadPath,"", appType);
-            else
-                      frmDownload = new Download(downloadPath, getInstallPath() + appName, appType);
-            frmDownload.startDownload();
-            frmDownload.ShowDialog();
-            dlStatus = "bussy";
-           
+            try
+            {
+                Download frmDownload;
+                if (appType == "zip")
+                    frmDownload = new Download(downloadPath, getInstallPath(), appType);
+                else if (appType == "exe")
+                    frmDownload = new Download(downloadPath, "", appType);
+                else
+                    frmDownload = new Download(downloadPath, getInstallPath() + appName, appType);
+                frmDownload.startDownload();
+
+                frmDownload.ShowDialog();
+                dlStatus = "bussy";
+            }
+            catch
+            {
+               
+            }
             
         }
    

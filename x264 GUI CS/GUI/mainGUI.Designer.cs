@@ -136,7 +136,7 @@
             this.toolStripMenuItem2,
             this.clearMenuItem});
             this.inputMenuStrip.Name = "inputMenu";
-            this.inputMenuStrip.Size = new System.Drawing.Size(164, 126);
+            this.inputMenuStrip.Size = new System.Drawing.Size(164, 104);
             this.inputMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.inputMenuStrip_Opening);
             // 
             // addMenuItem
@@ -364,7 +364,7 @@
             // 
             // inputHeader
             // 
-            this.inputHeader.Text = "Input";
+            this.inputHeader.Text = "Input (Mark if file has VFR)";
             this.inputHeader.Width = 265;
             // 
             // statusHeader

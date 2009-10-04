@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MiniCoder;
 using System.Text;
-
+using MiniCoder.General;
 using x264_GUI_CS;
 
 namespace x264_GUI_CS.Task_Libraries

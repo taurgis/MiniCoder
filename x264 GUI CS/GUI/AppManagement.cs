@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-
+using MiniCoder;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
 using System.Diagnostics;
 using System.Collections;
-
+using MiniCoder.General;
 
 namespace x264_GUI_CS.GUI
 {

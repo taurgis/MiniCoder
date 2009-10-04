@@ -93,7 +93,7 @@ namespace x264_GUI_CS.GUI
 
                 fz.ExtractZip("dl.zip", appfolder + "\\x264Encoder\\Tools", "");
             }
-            MessageBox.Show("Install Completed");
+           // MessageBox.Show("Install Completed");
             dlFinished = true;
             this.Close();
         }
