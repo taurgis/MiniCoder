@@ -31,7 +31,7 @@ namespace x264_GUI_CS.GUI
             {
                 Package tempPackage = (Package)programs[key];
                 
-                addRow(key, tempPackage.getAppType(), tempPackage.getInstallPath(), tempPackage.getVersion(), "dunno", tempPackage.getDownloadUrl());
+                addRow(key, tempPackage.getAppType(), tempPackage.getInstallPath(), "", "dunno", tempPackage.getDownloadUrl());
 
 
             }
