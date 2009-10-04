@@ -37,18 +37,26 @@ namespace MiniCoder
         }
         public Updater(ApplicationSettings applicationSettings, x264_GUI_CS.LogBook log)
         {
-            InitializeComponent();
-            this.log = log;
-            this.applicationSettings = applicationSettings;
-            string updaterText = GetText("http://www.gamerzzheaven.be/updater.txt");
-            string[] applicationInfo = updaterText.Split(Convert.ToChar("\n"));
-
-            for (int i = 0; i < applicationInfo.Length; i++)
+            try
             {
-                string[] application = applicationInfo[i].Split(Convert.ToChar(";"));
-                applicationVersions.Add(application[0], application[1]);
+                InitializeComponent();
+                this.log = log;
+                this.applicationSettings = applicationSettings;
+                string updaterText = GetText("http://www.gamerzzheaven.be/updater.txt");
+                string[] applicationInfo = updaterText.Split(Convert.ToChar("\n"));
+
+                for (int i = 0; i < applicationInfo.Length; i++)
+                {
+                    string[] application = applicationInfo[i].Split(Convert.ToChar(";"));
+                    applicationVersions.Add(application[0], application[1]);
+                }
+                warnUser = Updater_Load_NoWindow();
             }
-            warnUser = Updater_Load_NoWindow();
+            catch
+            {
+                log.addLine("Error updating, can't find file or connection.");
+                log.sendmail();
+            }
         }
 
         public Boolean needUpdate()
@@ -58,10 +66,18 @@ namespace MiniCoder
 
         private bool Updater_Load_NoWindow()
         {
-            String[] core = { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Up to date" };
-            coreList.Items.Add(new ListViewItem(core));
-            applicationInfo = applicationSettings.htRequired;
+            String[] core;
             Boolean updateRequired = false;
+            if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != applicationVersions["Core"].ToString().Replace("\r", ""))
+            {
+            core = new String[]{ "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Update required" };
+            updateRequired = true;
+            }
+            else
+                 core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Up to date" };
+                coreList.Items.Add(new ListViewItem(core));
+            applicationInfo = applicationSettings.htRequired;
+           
             
 
             foreach (string key in applicationInfo.Keys)
@@ -112,11 +128,25 @@ namespace MiniCoder
             return false;
 
         }
-        private void Updater_Load()
+        private void Updater_Load(object sender, EventArgs e)
         {
-            String[] core = { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Up to date" };
-            coreList.Items.Add(new ListViewItem(core));
+            String[] core;
+            if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != applicationVersions["Core"].ToString().Replace("\r", ""))
+            {
+                core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Update required" };
+                ListViewItem tempList = new ListViewItem(core);
+                tempList.Checked = true;
+                coreList.Items.Add(tempList);
+                
+            }
+            else
+            {
+                core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Up to date" };
+                coreList.Items.Add(new ListViewItem(core));
+            }
             applicationInfo = applicationSettings.htRequired;
+
+
 
             bool updateAvailable = false;
 
@@ -200,15 +230,10 @@ namespace MiniCoder
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < coreList.Items.Count; i++)
-            {
-                if (coreList.Items[i].Checked)
-                {
-            //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
-                    Process.Start("https://sourceforge.net/projects/minicoder");
-                    
-                }
-            }
+            downloadProgress.Value = 0;
+            downloadProgress.Minimum = 0;
+            downloadProgress.Maximum = audioList.CheckedItems.Count + videoList.CheckedItems.Count + muxingList.CheckedItems.Count + pluginsList.CheckedItems.Count + otherList.CheckedItems.Count + coreList.CheckedItems.Count; 
+
 
             for (int i = 0; i < audioList.Items.Count; i++)
             {
@@ -217,6 +242,8 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[audioList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + audioList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    audioList.Items[i].Checked = false;
+                    downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                 }
             }
@@ -228,6 +255,8 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[videoList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + videoList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    videoList.Items[i].Checked = false;
+                    downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                 }
             }
@@ -239,6 +268,8 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[pluginsList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    pluginsList.Items[i].Checked = false;
+                    downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                 }
             }
@@ -250,6 +281,8 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[muxingList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + muxingList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    muxingList.Items[i].Checked = false;
+                    downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                 }
             }
@@ -261,9 +294,33 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[otherList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + otherList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    otherList.Items[i].Checked = false;
+                    downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                 }
             }
+
+            for (int i = 0; i < coreList.Items.Count; i++)
+            {
+                if (coreList.Items[i].Checked)
+                {
+                    //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
+                    Process.Start("https://sourceforge.net/projects/minicoder");
+                    downloadProgress.Value++;
+                    Application.Exit();
+                }
+            }
+
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Updater_Load()
+        {
 
         }
     }

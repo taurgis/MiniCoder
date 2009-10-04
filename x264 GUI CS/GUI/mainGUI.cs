@@ -42,7 +42,7 @@ namespace x264_GUI_CS
         bool encOptsErr;
 
         private int hardSub = 0;
-        public string[] customFiltOpts = new string[4];
+        public string customFiltOpts;
         public string currentProc;
                          
         public mainGUI()
@@ -793,6 +793,7 @@ namespace x264_GUI_CS
                     if (MessageBox.Show("Updates found. Do you want to install them now?", "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         updater = new MiniCoder.Updater(appSettings);
+                        updater.TopMost = true;
                         updater.Show();
                     }
                     else

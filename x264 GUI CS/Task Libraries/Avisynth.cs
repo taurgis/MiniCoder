@@ -65,6 +65,7 @@ namespace x264_GUI_CS.Task_Libraries
                     break;
                 case "avc1":
                 case "H264":
+                case "h264":
                 case "V_MPEG4/ISO/AVC":
                 case "Intel H.264":
                 case "x264":
@@ -156,39 +157,27 @@ namespace x264_GUI_CS.Task_Libraries
         {
             Filters filt = new Filters(dir);
             string filtOpts = "";
-                    
+            if (encOpts.customFilter != "")
+            {
+                filtOpts += "# Custom\r\n" + encOpts.customFilter + "\r\n\r\n";
+                log.addLine(encOpts.customFilter);
+            }       
             filtOpts += "# Field\r\n" + filt.addField(encOpts.filtField) + "\r\n";
             if(filt.addField(encOpts.filtField) != "")
             log.addLine(filt.addField(encOpts.filtField));
-            if (encOpts.customFilter[0] != "")
-            {
-                filtOpts += encOpts.customFilter[0] + "\r\n\r\n";
-                log.addLine(encOpts.customFilter[0]);
-            }
+            
             filtOpts += "# Resizer\r\n" + filt.addResize(encOpts.filtResize, encOpts.resizeWidth, encOpts.resizeHeight) + "\r\n";
             if (filt.addResize(encOpts.filtResize, encOpts.resizeWidth, encOpts.resizeHeight) != "")
             log.addLine(filt.addResize(encOpts.filtResize, encOpts.resizeWidth, encOpts.resizeHeight));
-            if (encOpts.customFilter[1] != "")
-            {
-                filtOpts += encOpts.customFilter[1] + "\r\n\r\n";
-                log.addLine(encOpts.customFilter[1]);
-            }
+           
             filtOpts += "# Denoiser\r\n" + filt.addNoise(encOpts.filtNoise) + "\r\n";
             if (filt.addNoise(encOpts.filtNoise) != "")
             log.addLine(filt.addNoise(encOpts.filtNoise));
-            if (encOpts.customFilter[2] != "")
-            {
-                filtOpts += encOpts.customFilter[2] + "\r\n\r\n";
-                log.addLine(encOpts.customFilter[2]);
-            }
+           
             filtOpts += "# Sharpener\r\n" + filt.addSharp(encOpts.filtSharp) + "\r\n";
             if(filt.addSharp(encOpts.filtSharp) != "")
             log.addLine(filt.addSharp(encOpts.filtSharp));
-            if (encOpts.customFilter[3] != "")
-            {
-                filtOpts += encOpts.customFilter[3] + "\r\n\r\n";
-                log.addLine(encOpts.customFilter[3]);
-            }
+            
 
             if (encOpts.subtitle != "")
             {
@@ -207,29 +196,19 @@ namespace x264_GUI_CS.Task_Libraries
         {
             Filters filt = new Filters(dir);
             string filtOpts = "";
-
+            if (encOpts.customFilter != "")
+            {
+                filtOpts += "# Custom\r\n" + encOpts.customFilter + "\r\n\r\n";
+                
+            }    
             filtOpts += "# Field\r\n" + filt.addField(encOpts.filtField) + "\r\n";
            
-            if (encOpts.customFilter[0] != "")
-            {
-                filtOpts += encOpts.customFilter[0] + "\r\n\r\n";
-              
-            }
             filtOpts += "# Resizer\r\n" + filt.addResize(encOpts.filtResize, encOpts.resizeWidth, encOpts.resizeHeight) + "\r\n";
-            if (encOpts.customFilter[1] != "")
-            {
-                filtOpts += encOpts.customFilter[1] + "\r\n\r\n";
-             }
+            
             filtOpts += "# Denoiser\r\n" + filt.addNoise(encOpts.filtNoise) + "\r\n";
-            if (encOpts.customFilter[2] != "")
-            {
-                filtOpts += encOpts.customFilter[2] + "\r\n\r\n";
-             }
+           
             filtOpts += "# Sharpener\r\n" + filt.addSharp(encOpts.filtSharp) + "\r\n";
-            if (encOpts.customFilter[3] != "")
-            {
-                filtOpts += encOpts.customFilter[3] + "\r\n\r\n";
-             }
+            
             if (encOpts.subtitle != "")
             {
                 filtOpts += "# Subtitle\r\n" + filt.addSub(encOpts.subtitle) + "\r\n\r\n";
@@ -271,14 +250,12 @@ namespace x264_GUI_CS.Task_Libraries
             {
                 if (err.Contains("line 1"))
                 {
-                    log.addLine("Error on line 1. Attemtping to resolve with ConvertToYV12!");
-                    StreamWriter sw;
-                    sw = File.AppendText(file);
-                    sw.WriteLine("\r\nConvertToYV12()");
-                    sw.Close();
-                    return true;
+                    MessageBox.Show("Error on this line indicates an AVS error caused by Windows Vista/7 UAC. Please disable UAC and try again!");
                 }
-                MessageBox.Show("Avisynth Error");
+                else
+                {
+                    MessageBox.Show("Avisynth Error");
+                }
                 return false;
             }
 

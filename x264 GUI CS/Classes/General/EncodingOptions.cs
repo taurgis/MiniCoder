@@ -30,8 +30,8 @@ namespace x264_GUI_CS.General
         public int filtNoise = 0;
         public int filtSharp = 0;
         public string subtitle;
-        
-        public string[] customFilter = {"","","",""};
+
+        public string customFilter;
         public string templateName;
         string tempStr;
 
@@ -55,14 +55,10 @@ namespace x264_GUI_CS.General
             strTemplate.WriteLine(filtSharp);
             strTemplate.WriteLine(subtitle);
             
-            for (int i = 0; i < customFilter.Length; i++)
-            {
-                if (i != 0)
-                    tempStr += ";" + customFilter[i];
-                else
-                    tempStr = customFilter[i];
-            }
-            strTemplate.WriteLine(tempStr);
+           
+                    
+          
+            strTemplate.WriteLine(customFilter);
             
             strTemplate.Close();
         }
@@ -93,7 +89,7 @@ namespace x264_GUI_CS.General
             filtNoise = Convert.ToInt32(strTemplate.ReadLine());
             filtSharp = Convert.ToInt32(strTemplate.ReadLine());
             subtitle = strTemplate.ReadLine();
-            customFilter = strTemplate.ReadLine().Split(Convert.ToChar(";"));
+            customFilter = strTemplate.ReadLine();
 
             strTemplate.Close();
         }
