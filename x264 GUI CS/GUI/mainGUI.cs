@@ -793,8 +793,9 @@ namespace x264_GUI_CS
                     if (MessageBox.Show("Updates found. Do you want to install them now?", "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         updater = new MiniCoder.Updater(appSettings);
-                        updater.TopMost = true;
-                        updater.Show();
+                        updater.ShowDialog();
+                        
+
                     }
                     else
                         updater.Close();
@@ -825,13 +826,14 @@ namespace x264_GUI_CS
         {
             try
             {
-                updateRequired();
+                
                 processPriority.SelectedIndex = 0;
                 if (!File.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\default.tpl"))
                 {
                     Wizard frmWizard = new Wizard(appSettings);
                     frmWizard.ShowDialog();
                 }
+                updateRequired();
                 if (!Directory.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\"))
                 {
                     log.addLine("Template folder not found, creating!");

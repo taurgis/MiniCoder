@@ -187,14 +187,7 @@ namespace MiniCoder
             }
             
         }
-   
-        public string getVersion()
-        {
-            return "";
-        }
-
-       
-
+    
         public string getAppType()
         {
             return appType;
