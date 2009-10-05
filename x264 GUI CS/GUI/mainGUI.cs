@@ -828,11 +828,7 @@ namespace x264_GUI_CS
             {
                 
                 processPriority.SelectedIndex = 0;
-                if (!File.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\default.tpl"))
-                {
-                    Wizard frmWizard = new Wizard(appSettings);
-                    frmWizard.ShowDialog();
-                }
+             
                 updateRequired();
                 if (!Directory.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\"))
                 {

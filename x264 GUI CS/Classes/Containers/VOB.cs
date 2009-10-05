@@ -89,7 +89,7 @@ namespace x264_GUI_CS.Containers
                 taskProcess();
 
                 if (exitCode != 0)
-                    return false;
+                   log.addLine("Error demuxing chapters. None present?");
 
                 log.addLine(tempArg);
 
@@ -144,9 +144,11 @@ namespace x264_GUI_CS.Containers
                     log.setInfoLabel("Demuxing Complete");
 
                 if (exitCode != 0)
-                    return false;
+                   log.addLine("Errors demuxing subs. None present?");
                 else
                     return true;
+
+                return true;
             }
             catch (KeyNotFoundException e)
             {

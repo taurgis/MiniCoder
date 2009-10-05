@@ -175,7 +175,7 @@ namespace MiniCoder
                 else if (appType == "exe")
                     frmDownload = new Download(downloadPath, "", appType);
                 else
-                    frmDownload = new Download(downloadPath, getInstallPath() + appName, appType);
+                    frmDownload = new Download(downloadPath, getInstallPath(), appType);
                 frmDownload.startDownload();
 
                 frmDownload.ShowDialog();
