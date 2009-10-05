@@ -61,19 +61,19 @@ namespace MiniCoder
             defaultPackages.Add("valdec", newPackage("valdec", "zip", false, "", "", "http://www.gamerzzheaven.be/valdec.zip", "audio", ""));
             defaultPackages.Add("faad", newPackage("faad", "zip", false, "", "", "http://www.gamerzzheaven.be/faad.zip", "audio",""));
             defaultPackages.Add("oggdec", newPackage("oggdec", "zip", false, "", "", "http://www.gamerzzheaven.be/oggdec.zip","audio", ""));
-            defaultPackages.Add("Deen", newPackage("Deen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Deen.dll", "plugin", ""));
-            defaultPackages.Add("VSFilter", newPackage("VSFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/VSFilter.dll", "plugin", ""));
-            defaultPackages.Add("Decomb", newPackage("Decomb", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Decomb.dll","plugin", ""));
-            defaultPackages.Add("UnDot", newPackage("UnDot", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnDot.dll", "plugin",""));
-            defaultPackages.Add("FluxSmooth", newPackage("FluxSmooth", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/FluxSmooth.dll", "plugin", ""));
-            defaultPackages.Add("HQDN3D", newPackage("HQDN3D", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/HQDN3D.dll", "plugin", ""));
-            defaultPackages.Add("UnFilter", newPackage("UnFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnFilter.dll", "plugin", ""));
-            defaultPackages.Add("Toon-v1.0-lite", newPackage("Toon-v1.0-lite", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Toon-v1.0-lite.dll", "plugin", ""));
-            defaultPackages.Add("aWarpSharp", newPackage("aWarpSharp", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/aWarpSharp.dll", "plugin", ""));
-            defaultPackages.Add("MSharpen", newPackage("MSharpen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/MSharpen.dll", "plugin", ""));
+            defaultPackages.Add("Deen", newPackage("Deen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Deen.zip", "plugin", ""));
+            defaultPackages.Add("VSFilter", newPackage("VSFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/VSFilter.zip", "plugin", ""));
+            defaultPackages.Add("Decomb", newPackage("Decomb", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Decomb.zip","plugin", ""));
+            defaultPackages.Add("UnDot", newPackage("UnDot", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnDot.zip", "plugin",""));
+            defaultPackages.Add("FluxSmooth", newPackage("FluxSmooth", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/FluxSmooth.zip", "plugin", ""));
+            defaultPackages.Add("HQDN3D", newPackage("HQDN3D", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/HQDN3D.zip", "plugin", ""));
+            defaultPackages.Add("UnFilter", newPackage("UnFilter", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/UnFilter.zip", "plugin", ""));
+            defaultPackages.Add("Toon-v1.0-lite", newPackage("Toon-v1.0-lite", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Toon-v1.0-lite.zip", "plugin", ""));
+            defaultPackages.Add("aWarpSharp", newPackage("aWarpSharp", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/aWarpSharp.zip", "plugin", ""));
+            defaultPackages.Add("MSharpen", newPackage("MSharpen", "dll", true, "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/MSharpen.zip", "plugin", ""));
             defaultPackages.Add("xvid_encraw", newPackage("xvid_encraw", "zip", false, "", "", "http://www.gamerzzheaven.be/xvid_encraw.zip", "video", ""));
             defaultPackages.Add("DGAVCIndex", newPackage("DGAVCIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/DGAVCIndex.zip", "video", ""));
-            defaultPackages.Add("DGAVCDecode", newPackage("DGAVCDecode", "dll", true, "Avisynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/DGAVCDecode.dll", "plugin", ""));
+            defaultPackages.Add("DGAVCDecode", newPackage("DGAVCDecode", "dll", true, "Avisynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/DGAVCDecode.zip", "plugin", ""));
             defaultPackages.Add("DGIndex", newPackage("DGIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/dgindex.zip", "muxer", ""));
           
             foreach(string key in defaultPackages.Keys)

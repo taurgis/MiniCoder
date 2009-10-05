@@ -86,17 +86,32 @@ namespace MiniCoder
                 Package tempPackage = (Package)applicationInfo[key];
                 string appVersion = "";
                 string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
-            
-
-                if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                if (tempPackage.getCategory() == "plugin")
                 {
-                    StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                    appVersion = streamReader.ReadLine();
-                    streamReader.Close();
+                    if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
+                    {
+                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
+                        appVersion = streamReader.ReadLine();
+                        streamReader.Close();
+                    }
+                    else
+                    {
+                        appVersion = "Not Installed";
+                    }
                 }
                 else
                 {
-                    appVersion = "Not Installed";
+
+                    if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                    {
+                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                        appVersion = streamReader.ReadLine();
+                        streamReader.Close();
+                    }
+                    else
+                    {
+                        appVersion = "Not Installed";
+                    }
                 }
                 if (key == "avs")
                 {
@@ -157,15 +172,31 @@ namespace MiniCoder
                 string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
                 string requiredUpdate = "";
 
-                if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                if (tempPackage.getCategory() == "plugin")
                 {
-                    StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                    appVersion = streamReader.ReadLine();
-                    streamReader.Close();
+                    if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
+                    {
+                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
+                        appVersion = streamReader.ReadLine();
+                        streamReader.Close();
+                    }
+                    else
+                    {
+                        appVersion = "Not Installed";
+                    }
                 }
                 else
                 {
-                    appVersion = "Not Installed";
+                    if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                    {
+                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                        appVersion = streamReader.ReadLine();
+                        streamReader.Close();
+                    }
+                    else
+                    {
+                        appVersion = "Not Installed";
+                    }
                 }
                 if (key == "avs")
                 {
@@ -230,6 +261,7 @@ namespace MiniCoder
 
         private void updateButton_Click(object sender, EventArgs e)
         {
+            updateButton.Enabled = false;
             downloadProgress.Value = 0;
             downloadProgress.Minimum = 0;
             downloadProgress.Maximum = audioList.CheckedItems.Count + videoList.CheckedItems.Count + muxingList.CheckedItems.Count + pluginsList.CheckedItems.Count + otherList.CheckedItems.Count + coreList.CheckedItems.Count; 
@@ -310,7 +342,7 @@ namespace MiniCoder
                     Application.Exit();
                 }
             }
-
+            updateButton.Enabled = true;
 
         }
 

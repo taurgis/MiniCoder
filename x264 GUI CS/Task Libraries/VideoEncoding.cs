@@ -41,6 +41,13 @@ namespace x264_GUI_CS.Task_Libraries
             mainProcess = new Process();
             totframes = details.framecount;
             DateTime tempStart = new DateTime();
+
+            int Processors = Environment.ProcessorCount;
+            String extra;
+            if (Processors > 1)
+                extra = "--threads auto --thread-input";
+            else
+                extra = "--threads auto";
             details.statsfile = dir.tempDIR + details.name + ".stats";
 
             if (encopts.sizeOpt == 1)
@@ -63,50 +70,50 @@ namespace x264_GUI_CS.Task_Libraries
                     switch (encopts.vidQual)
                     {
                         case 0:
-                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 3.1 --bframes 1 --weightb --direct temporal --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia --threads auto --thread-input --output";
-                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 3.1 --bframes 1 --weightb --direct temporal --deblock 1:1 --partitions p8x8,b8x8,i4x4 --vbv-bufsize 14000 --vbv-maxrate 17500 --threads auto --thread-input --output";
+                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 3.1 --bframes 1 --weightb --direct temporal --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
+                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 3.1 --bframes 1 --weightb --direct temporal --deblock 1:1 --partitions p8x8,b8x8,i4x4 --vbv-bufsize 14000 --vbv-maxrate 17500 " + extra + " --output";
                             break;
 
                         case 1:
-                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 4.1 --bframes 2 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 1 --partitions none  --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia --threads auto --thread-input --output";
-                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 4.1 --ref 3 --mixed-refs --bframes 2 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all  --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh --threads auto --thread-input --output";
+                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 4.1 --bframes 2 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 1 --partitions none  --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
+                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 4.1 --ref 3 --mixed-refs --bframes 2 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all  --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
                             break;
 
                         case 2:
-                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --bframes 3 --b-adapt 1 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia --threads auto --thread-input --output";
-                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 5 --mixed-refs --bframes 3 --b-adapt 1 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh --threads auto --thread-input --output";
+                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --bframes 3 --b-adapt 1 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
+                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 5 --mixed-refs --bframes 3 --b-adapt 1 --b-pyramid --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
                             break;
 
                         case 3:
-                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree --threads auto --subme 2 --partitions none --me dia --output";
-                            pass3Arg = "--pass 3 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree --threads auto --subme 2 --partitions none --me dia --output";
-                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 --no-mbtree --threads auto --output";
+                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
+                            pass3Arg = "--pass 3 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
+                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 --no-mbtree " + extra + " --output";
                             break;
                         
                         case 4:
-                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree --threads auto --output";
-                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree --threads auto --output";
+                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
+                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
                             break;
                   
                         case 5:
-                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree --threads auto --output";
-                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree --threads auto --output";
+                            pass1Arg = "--pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
+                            pass2Arg = "--pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
                             break;
 
                         case 6:
-                            pass1Arg = "--pass 1 --crf " + details.crfValue + " --level 5.1 --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-adapt 1 --b-pyramid --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb --threads auto --output";
+                            pass1Arg = "--pass 1 --crf " + details.crfValue + " --level 5.1 --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-adapt 1 --b-pyramid --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb " + extra + " --output";
                             break;
                         case 7:
-                            pass1Arg = "--profile baseline --level 1.3 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output";
-                            pass2Arg = "--profile baseline --level 1.3 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
+                            pass1Arg = "--profile baseline --level 1.3 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" " + extra + " --output";
+                            pass2Arg = "--profile baseline --level 1.3 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" " + extra + " --aud --output";
                             break;
                         case 8:
-                            pass1Arg = "--profile main --level 3 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output"; 
-                            pass2Arg = "--profile main --level 3 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
+                            pass1Arg = "--profile main --level 3 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" " + extra + " --output"; 
+                            pass2Arg = "--profile main --level 3 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" " + extra + " --aud --output";
                             break;
                         case 9:
-                            pass1Arg = "--profile high --level 4.1 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --output";
-                            pass2Arg = "--profile high --level 4.1 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" --threads auto --aud --output";
+                            pass1Arg = "--profile high --level 4.1 --preset fast --pass 1 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" " + extra + " --output";
+                            pass2Arg = "--profile high --level 4.1 --preset fast --pass 2 --bitrate " + encopts.vidBR + " --stats \"" + details.statsfile + "\" " + extra + " --aud --output";
                             break;
                     }
 
