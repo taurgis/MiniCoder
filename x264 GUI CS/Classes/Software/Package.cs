@@ -174,6 +174,8 @@ namespace MiniCoder
                     frmDownload = new Download(downloadPath, getInstallPath(), appType);
                 else if (appType == "exe")
                     frmDownload = new Download(downloadPath, "", appType);
+                else if (appType == "core")
+                    frmDownload = new Download(downloadPath, "", appType);
                 else
                     frmDownload = new Download(downloadPath, getInstallPath(), appType);
                 frmDownload.startDownload();
