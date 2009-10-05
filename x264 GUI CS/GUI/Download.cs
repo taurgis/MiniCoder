@@ -38,6 +38,8 @@ namespace x264_GUI_CS.GUI
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
             if (typedl == "exe")
                 client.DownloadFileAsync(url, "dl.exe");
+            if (typedl == "core")
+                client.DownloadFileAsync(url, "dl.zip");
             else if (typedl == "dll")
                 client.DownloadFileAsync(url, "dl.zip");
             else
@@ -54,6 +56,8 @@ namespace x264_GUI_CS.GUI
                 client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
                 if (typedl == "exe")
                     client.DownloadFileAsync(url, "dl.exe");
+                if (typedl == "core")
+                    client.DownloadFileAsync(url, "dl.zip");
                 else if (typedl == "dll")
                     client.DownloadFileAsync(url, "dl.zip");
                 else
@@ -86,6 +90,15 @@ namespace x264_GUI_CS.GUI
 
                 if (System.IO.Directory.Exists(appfolder))
                       fz.ExtractZip("dl.zip", appfolder, "");
+            }
+            else if (typedl == "core")
+            {
+                
+
+                FastZip fz = new FastZip();
+
+                if (!System.IO.Directory.Exists(Application.StartupPath))
+                    fz.ExtractZip("dl.zip", Application.StartupPath, "");
             }
             else
             {

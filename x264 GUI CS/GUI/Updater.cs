@@ -31,9 +31,10 @@ namespace MiniCoder
             for (int i = 0; i < applicationInfo.Length; i++)
             {
                 string[] application = applicationInfo[i].Split(Convert.ToChar(";"));
+                
                 applicationVersions.Add(application[0], application[1]);
             }
-            Updater_Load();
+            
         }
         public Updater(ApplicationSettings applicationSettings, x264_GUI_CS.LogBook log)
         {
@@ -48,6 +49,7 @@ namespace MiniCoder
                 for (int i = 0; i < applicationInfo.Length; i++)
                 {
                     string[] application = applicationInfo[i].Split(Convert.ToChar(";"));
+                   
                     applicationVersions.Add(application[0], application[1]);
                 }
                 warnUser = Updater_Load_NoWindow();
@@ -78,70 +80,72 @@ namespace MiniCoder
                 coreList.Items.Add(new ListViewItem(core));
             applicationInfo = applicationSettings.htRequired;
            
-            
 
-            foreach (string key in applicationInfo.Keys)
-            {
-                
-                Package tempPackage = (Package)applicationInfo[key];
-                string appVersion = "";
-                string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
-                if (tempPackage.getCategory() == "plugin")
-                {
-                    if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
-                    {
-                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
-                        appVersion = streamReader.ReadLine();
-                        streamReader.Close();
-                    }
-                    else
-                    {
-                        appVersion = "Not Installed";
-                    }
-                }
-                else
-                {
 
-                    if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
-                    {
-                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                        appVersion = streamReader.ReadLine();
-                        streamReader.Close();
-                    }
-                    else
-                    {
-                        appVersion = "Not Installed";
-                    }
-                }
-                if (key == "avs")
-                {
-                    if (tempPackage.isInstalled())
-                        appVersion = "2.5";
-                }
+           foreach (string key in applicationInfo.Keys)
+           {
+               if (key != "Core")
+               {
+                   Package tempPackage = (Package)applicationInfo[key];
+                   string appVersion = "";
+                   string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
+                   if (tempPackage.getCategory() == "plugin")
+                   {
+                       if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
+                       {
+                           StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
+                           appVersion = streamReader.ReadLine();
+                           streamReader.Close();
+                       }
+                       else
+                       {
+                           appVersion = "Not Installed";
+                       }
+                   }
+                   else
+                   {
 
-                if ((appVersion != onlineVersion))
-                {
-                    log.addLine("Updates available for " + key + ".");
-                    updateRequired = true;
-                }
-                else
-                {
-                    
-                }
+                       if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                       {
+                           StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                           appVersion = streamReader.ReadLine();
+                           streamReader.Close();
+                       }
+                       else
+                       {
+                           appVersion = "Not Installed";
+                       }
+                   }
+                   if (key == "avs")
+                   {
+                       if (tempPackage.isInstalled())
+                           appVersion = "2.5";
+                   }
 
-               
-              
+                   if ((appVersion != onlineVersion))
+                   {
+                       log.addLine("Updates available for " + key + ".");
+                       updateRequired = true;
+                   }
+                   else
+                   {
+
+                   }
 
 
 
 
-              
-            }
-            if (updateRequired)
-                return true;
-            else
-            return false;
 
+
+
+
+               }
+               if (updateRequired)
+                   return true;
+               else
+                   return false;
+           }
+           return false;
         }
         private void Updater_Load(object sender, EventArgs e)
         {
@@ -161,88 +165,90 @@ namespace MiniCoder
             }
             applicationInfo = applicationSettings.htRequired;
 
-
+           
 
             bool updateAvailable = false;
 
             foreach (string key in applicationInfo.Keys)
             {
-                Package tempPackage = (Package)applicationInfo[key];
-                string appVersion ="";
-                string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
-                string requiredUpdate = "";
-
-                if (tempPackage.getCategory() == "plugin")
+                if (key != "Core")
                 {
-                    if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
+                    Package tempPackage = (Package)applicationInfo[key];
+                    string appVersion = "";
+                    string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
+                    string requiredUpdate = "";
+
+                    if (tempPackage.getCategory() == "plugin")
                     {
-                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
-                        appVersion = streamReader.ReadLine();
-                        streamReader.Close();
+                        if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
+                        {
+                            StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
+                            appVersion = streamReader.ReadLine();
+                            streamReader.Close();
+                        }
+                        else
+                        {
+                            appVersion = "Not Installed";
+                        }
                     }
                     else
                     {
-                        appVersion = "Not Installed";
+                        if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                        {
+                            StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                            appVersion = streamReader.ReadLine();
+                            streamReader.Close();
+                        }
+                        else
+                        {
+                            appVersion = "Not Installed";
+                        }
                     }
-                }
-                else
-                {
-                    if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                    if (key == "avs")
                     {
-                        StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                        appVersion = streamReader.ReadLine();
-                        streamReader.Close();
+                        if (tempPackage.isInstalled())
+                            appVersion = "2.5";
+                    }
+
+                    if ((appVersion != onlineVersion))
+                    {
+                        requiredUpdate = "Update Required";
+                        updateAvailable = true;
                     }
                     else
+                        requiredUpdate = "Up to date";
+
+                    String[] appInfo = { "", key, appVersion, onlineVersion, requiredUpdate };
+
+
+
+
+                    ListViewItem tempListViewItem = new ListViewItem(appInfo);
+
+                    if (requiredUpdate == "Update Required")
+                        tempListViewItem.Checked = true;
+                    switch (tempPackage.getCategory())
                     {
-                        appVersion = "Not Installed";
+                        case "plugin":
+                            pluginsList.Items.Add(tempListViewItem);
+                            break;
+                        case "audio":
+                            audioList.Items.Add(tempListViewItem);
+                            break;
+                        case "video":
+                            videoList.Items.Add(tempListViewItem);
+                            break;
+                        case "muxer":
+                            muxingList.Items.Add(tempListViewItem);
+                            break;
+                        case "other":
+                            otherList.Items.Add(tempListViewItem);
+                            break;
                     }
                 }
-                if (key == "avs")
-                {
-                    if(tempPackage.isInstalled())
-                    appVersion = "2.5";
-                }
-
-                if ((appVersion != onlineVersion))
-                {
-                    requiredUpdate = "Update Required";
-                    updateAvailable = true;
-                }
-                else
-                    requiredUpdate = "Up to date";
-
-                String[] appInfo = { "", key, appVersion, onlineVersion, requiredUpdate };
-               
-                
-
-
-                ListViewItem tempListViewItem = new ListViewItem(appInfo);
-
-                if (requiredUpdate == "Update Required")
-                    tempListViewItem.Checked = true;
-                switch (tempPackage.getCategory())
-                {
-                    case "plugin":
-                        pluginsList.Items.Add(tempListViewItem);
-                        break;
-                    case "audio":
-                        audioList.Items.Add(tempListViewItem);
-                        break;
-                    case "video":
-                        videoList.Items.Add(tempListViewItem);
-                        break;
-                    case "muxer":
-                        muxingList.Items.Add(tempListViewItem);
-                        break;
-                    case "other":
-                        otherList.Items.Add(tempListViewItem);
-                        break;
-                }
+                if (updateAvailable)
+                    updateLog.Text += "Update Available\r\n";
             }
-            if (updateAvailable)
-                updateLog.Text += "Update Available\r\n";
-
         }
 
         public string GetText(string url)
@@ -274,6 +280,7 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[audioList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + audioList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    audioList.Items[i].SubItems[4].Text = "Up to date";
                     audioList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
@@ -287,6 +294,7 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[videoList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + videoList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    videoList.Items[i].SubItems[4].Text = "Up to date";
                     videoList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
@@ -300,6 +308,7 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[pluginsList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    pluginsList.Items[i].SubItems[4].Text = "Up to date";
                     pluginsList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
@@ -313,6 +322,7 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[muxingList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + muxingList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    muxingList.Items[i].SubItems[4].Text = "Up to date";
                     muxingList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
@@ -326,6 +336,7 @@ namespace MiniCoder
                     Package tempPackage = (Package)applicationInfo[otherList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + otherList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    otherList.Items[i].SubItems[4].Text = "Up to date";
                     otherList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
@@ -336,10 +347,14 @@ namespace MiniCoder
             {
                 if (coreList.Items[i].Checked)
                 {
+
+                    Package tempPackage = (Package)applicationSettings.htRequired["Core"];
+                    updateLog.Text += "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n";
+                    tempPackage.download();
                     //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
-                    Process.Start("https://sourceforge.net/projects/minicoder");
-                    downloadProgress.Value++;
                     Application.Exit();
+                    Process.Start("CoreUpdater.exe");
+                    
                 }
             }
             updateButton.Enabled = true;
@@ -351,9 +366,6 @@ namespace MiniCoder
             this.Close();
         }
 
-        private void Updater_Load()
-        {
-
-        }
+     
     }
 }
