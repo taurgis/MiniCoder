@@ -59,7 +59,7 @@ namespace x264_GUI_CS
                 noiseCombo.SelectedIndex = 0;
                 sharpCombo.SelectedIndex = 0;
                 log = new LogBook(this);
-
+                log.addLine("Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString());
                 if (!Directory.Exists(appSettings.tempDIR))
                     Directory.CreateDirectory(appSettings.tempDIR);
 

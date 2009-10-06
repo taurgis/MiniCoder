@@ -7,7 +7,7 @@ using System.IO;
 using MiniCoder;
 namespace MiniCoder
 {
-    class Packages
+    public class Packages
     {
         Hashtable htPackages = new Hashtable();
         ApplicationSettings appSettings;

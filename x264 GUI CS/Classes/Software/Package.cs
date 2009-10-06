@@ -121,8 +121,17 @@ namespace MiniCoder
             }
             else
             {
-
-                if (Directory.Exists(appBasePath + appName + "\\"))
+                if(appName == "mkvtoolnix")
+                {
+                    if(File.Exists(appBasePath + appName + "\\" + "mkvextract" + ".exe"))
+                        return true;
+                }
+                    else if(appName=="ogmtools")
+                {
+                    if (File.Exists(appBasePath + appName + "\\" + "OGMDemuxer" + ".exe"))
+                        return true;
+                }
+                if (File.Exists(appBasePath + appName + "\\" + appName + ".exe"))
                     return true;
                 else
                     return false;
