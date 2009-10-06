@@ -217,6 +217,7 @@
     </Compile>
     <Compile Include="Task Libraries\Muxing.cs" />
     <Compile Include="Task Libraries\VideoEncoding.cs" />
+    <Compile Include="Task Libraries\Worker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bigIcon.ico" />

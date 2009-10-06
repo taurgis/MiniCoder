@@ -72,95 +72,87 @@ namespace MiniCoder
             Boolean updateRequired = false;
             if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != applicationVersions["Core"].ToString().Replace("\r", ""))
             {
-            core = new String[]{ "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Update required" };
-            updateRequired = true;
+                core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Update required" };
+                updateRequired = true;
             }
             else
-                 core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Up to date" };
-                coreList.Items.Add(new ListViewItem(core));
+            {
+                core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Up to date" };
+            }
+
+            coreList.Items.Add(new ListViewItem(core));
             applicationInfo = applicationSettings.htRequired;
-           
 
+            foreach (string key in applicationInfo.Keys)
+            {
+                if (key != "Core")
+                {
+                    Package tempPackage = (Package)applicationInfo[key];
+                    string appVersion = "";
+                    string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
+                    if (tempPackage.getCategory() == "plugin")
+                    {
+                        if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
+                        {
+                            StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
+                            appVersion = streamReader.ReadLine();
+                            streamReader.Close();
+                        }
+                        else
+                        {
+                            appVersion = "Not Installed";
+                        }
+                    }
+                    else
+                    {
+                        if (tempPackage.getCustomPath() == "")
+                        {
+                            if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                            {
+                                StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                                appVersion = streamReader.ReadLine();
+                                streamReader.Close();
+                            }
+                            else
+                            {
+                                appVersion = "Not Installed";
+                            }
+                        }
+                        else
+                        {
+                            appVersion = "Custom Path";
+                        }
+                    }
+                    if (key == "avs")
+                    {
+                        if (tempPackage.isInstalled())
+                            appVersion = "2.5";
+                    }
 
-           foreach (string key in applicationInfo.Keys)
-           {
-               if (key != "Core")
-               {
-                   Package tempPackage = (Package)applicationInfo[key];
-                   string appVersion = "";
-                   string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
-                   if (tempPackage.getCategory() == "plugin")
-                   {
-                       if (File.Exists(tempPackage.getInstallPath() + "\\version_" + key + ".txt"))
-                       {
-                           StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version_" + key + ".txt");
-                           appVersion = streamReader.ReadLine();
-                           streamReader.Close();
-                       }
-                       else
-                       {
-                           appVersion = "Not Installed";
-                       }
-                   }
-                   else
-                   {
-                       if (tempPackage.getCustomPath() == "")
-                       {
-                           if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
-                           {
-                               StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                               appVersion = streamReader.ReadLine();
-                               streamReader.Close();
-                           }
-                           else
-                           {
-                               appVersion = "Not Installed";
-                           }
-                       }
-                       else
-                       {
-                           appVersion = "Custom Path";
-                       }
-                   }
-                   if (key == "avs")
-                   {
-                       if (tempPackage.isInstalled())
-                           appVersion = "2.5";
-                   }
+                    if ((appVersion != onlineVersion || !tempPackage.isInstalled()))
+                    {
+                        string test = tempPackage.getCustomPath();
+                        if (tempPackage.getCustomPath() == "")
+                        {
+                            log.addLine("Updates available for " + key + ".");
+                            updateRequired = true;
+                        }
+                        else
+                        {
+                            updateRequired = false;
+                        }
+                    }
+                }
 
-                   if ((appVersion != onlineVersion || !tempPackage.isInstalled()))
-                   {
-                       string test = tempPackage.getCustomPath();
-                       if (tempPackage.getCustomPath() == "")
-                       {
-                           log.addLine("Updates available for " + key + ".");
-                           updateRequired = true;
-                       }
-                       else
-                       {
-                           updateRequired = false;
-                       }
-                   }
-                   else
-                   {
-
-                   }
-
-
-
-
-
-
-
-
-               }
-               
-           }
-           if (updateRequired)
-               return true;
-           else
-               return false;
-           
+            }
+            if (updateRequired)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         private void Updater_Load(object sender, EventArgs e)
         {

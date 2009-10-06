@@ -169,379 +169,89 @@ namespace x264_GUI_CS
             }
         }
         int fileindex = 0;
+
+        public void setEncoding(bool encoding)
+        {
+            this.encoding = encoding;
+        }
+
+        public bool isFileVFR()
+        {
+            if (inputList.Items[fileindex].Checked)
+                return true;
+
+            return false;
+        }
+
+        public void updateStatus(string status)
+        {
+            inputList.Items[fileindex].SubItems[1].Text = status;
+        }
+
+        public int getCrfValue()
+        {
+            return crfValue;
+        }
         private void encodeBatch()
         {
-            
+
             DateTime startDate = new DateTime();
             
 
             while(fileList.Count!=0)
             {
-                if (!proc.abandon)
+                startDate = DateTime.Now;
+                MiniCoder.Task_Libraries.Worker worker = new MiniCoder.Task_Libraries.Worker(proc, log, getEncodeOpts(), this, appSettings);
+                Boolean breakWhile = false;
+                details = mediainfo(0);
+
+                if (customSettings.Contains(details.name))
                 {
-                    details = new x264_GUI_CS.General.FileInformation();
-                    details = mediainfo(0);
+                    log.addLine("Found custom settings for " + details.name);
+                    encodingOpts = (General.EncodingOptions)customSettings[details.name];
+                    General.EncodingOptions tempOps = getEncodeOpts();
 
-                    if (customSettings.Contains(details.name))
-                    {
-                        log.addLine("Found custom settings for " + details.name);
-                        encodingOpts = (General.EncodingOptions)customSettings[details.name];
-                        General.EncodingOptions tempOps = getEncodeOpts();
-                        
-                        encodingOpts.customFilter = tempOps.customFilter;
-                       
-                    }
-                    else
-                    {
-                        log.addLine("Found no custom settings for this file. Using general settings.");
-                        encodingOpts = getEncodeOpts();
-                    }
-                    encodingOpts.advert = titleAdvert.Checked;
-                   
-                    if (encOptsErr)
-                    {
-                        MessageBox.Show("Incorrect Encoding Options");
-                        return;
-                    }
-                     encoding = true;
+                    encodingOpts.customFilter = tempOps.customFilter;
 
-
-                    startDate = DateTime.Now;
-                    string[] files = Directory.GetFiles(appSettings.tempDIR);
-                    try
-                    {
-                        foreach (string file in files)
-                            File.Delete(file);
-                    }
-                    catch
-                    {
-                        log.addLine("Problems deleting file.");
-                    }
-                    inputList.Items[fileindex].SubItems[1].Text = "encoding";
-                  
-                    
-                    string fpsTest = details.fps.ToString().Substring(0,2);
-                    if (fpsTest != "23" && fpsTest != "29" && fpsTest != "25")
-                    {
-                        log.addLine("Suspecting this file to be VFR.");
-                        if (inputList.Items[fileindex].Checked)
-                            log.addLine("User confirms VFR");
-                        else
-                        {
-                            log.addLine("User does not state this file to be VFR.");
-                           // MessageBox.Show("I suspect this file to be VFR, but you have not marked it.");
-                        }
-                        
-                    }
-                    else
-                        log.addLine("File passed VFR test, this is Constant Framerate");
-                    details.vfr = inputList.Items[fileindex].Checked;
-                  
-                    if (details.ext == ".mkv" && details.vfr)
-                    {
-                       // log.addLine("User says that the file is VFR (Variable Frame Rate - Using mkv2vfr");
-
-                        if (!proc.abandon)
-                        {
-                            proc.currProcess = "mkv2vfr";
-                            ifContainer ctMKV = new Containers.clMKV(log);
-                            proc.errflag = ctMKV.mkv2vfr(appSettings, details, proc);
-
-                            if (!proc.errflag)
-                            {
-                                inputList.Items[fileindex].SubItems[1].Text = "error";
-                                MessageBox.Show("VFR Parsing Error");
-                                log.addLine("Error in VFR Parsing");
-                                log.sendmail(details);
-                                goto remove;
-                            }
-                        }
-                        else
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                            MessageBox.Show("Aborted");
-                            break;
-                        }
-
-                        log.addLine("Reading VFR file");
-
-                        /*string temp;
-                        StreamReader vfr = File.OpenText(appSettings.tempDIR + "timecode.txt");
-                        while((temp = vfr.ReadLine())!=null)
-                        {
-                            if(temp.Contains("Assume"))
-                            {
-                                int startInd=temp.IndexOf(" ");
-                                int endInd = temp.Length;
-                                float fpsTemp=float.Parse(temp.Substring(startInd+1,endInd-startInd-1));
-                                details.fps = fpsTemp;
-                                log.addLine("FPS: " + fpsTemp);
-                                break;
-                            }
-                        }
-                        vfr.Close();
-                        log.addLine("Finished reading VFR - FPS: " + details.fps);*/
-                        details.vfrCode = appSettings.tempDIR + "timecode.txt";
-                        details.vfrName = appSettings.tempDIR + details.name + "-Video Track.avi";
-
-                        IfMediaDetails tempmedia;
-                        if (IntPtr.Size == 8)
-                            tempmedia = new MediaDetails64();
-                        else
-                            tempmedia = new MediaDetails32();
-                        details.fps = tempmedia.fps(details.vfrName);
-                        long tempFrames = tempmedia.frameCount(details.vfrName);
-                        if (tempFrames < (details.framecount - (details.framecount / 5)))
-                        {
-                            log.addLine("Seems atleast 1/5th of the frames has dissapeared during conversion.");
-                            log.addLine("Something went wrong.");
-                            log.addLine("Remuxing the sourcefile usually solves this problem.");
-                        }
-                      
-                    }
-                    log.addLine("FPS:" + details.fps);
-                    ifContainer container;
-
-                    if (!proc.abandon)
-                    {
-
-                        proc.currProcess = "demux";
-                        switch (details.ext)
-                        {
-                            case ".mkv":
-                                container = new Containers.clMKV(log);
-                                proc.errflag = container.demux(appSettings, details, proc);
-                                break;
-                            case ".ogm":
-                                container = new Containers.clOGM(log);
-                                proc.errflag = container.demux(appSettings, details, proc);
-                                break;
-                            case ".avi":
-                            case ".divx":
-                                container = new Containers.clAVI(log);
-                                proc.errflag = container.demux(appSettings, details, proc);
-                                break;
-                            case ".mp4":
-                                container = new Containers.clMP4(log);
-                                proc.errflag = container.demux(appSettings, details, proc);
-                                break;
-                            case ".VOB":
-                            case ".vob":
-                                container = new Containers.VOB(log);
-                                proc.errflag = container.demux(appSettings, details, proc);
-                                break;
-                        }
-                       
-                        if (!proc.errflag)
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "error";
-                            log.addLine("Error demuxing");
-                            log.sendmail(details);
-                            MessageBox.Show("Demuxing Error");
-                            goto remove;
-                        }
-                    }
-
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-
-                    //if (!proc.abandon && File.Exists(dir.tempDIR + "chapters.xml"))
-                    //{
-                    //    XMLValidator xmlValidator = new XMLValidator(dir.tempDIR + "chapters.xml");
-                    //    if (!xmlValidator.Validate())
-                    //    {
-                    //        log.addLine("Error in XML parsing");
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                    //    MessageBox.Show("Aborted");
-                    //    break;
-                    //}
-
-                    if (!proc.abandon)
-                    {
-                       
-                            if (details.vid_codec == "x264" || details.vid_codec == "avc1" || details.vid_codec == "H264" || details.vid_codec == "V_MPEG4/ISO/AVC")
-                            {
-                                if (details.ext != ".avi")
-                                {
-                                    DGAVCIndex avc = new DGAVCIndex(log);
-                                    proc.errflag = avc.index(appSettings, details, proc);
-
-                                    if (!proc.errflag)
-                                    {
-                                        inputList.Items[fileindex].SubItems[1].Text = "error";
-                                        log.sendmail(details);
-                                        MessageBox.Show("DGAVC Encoding Error");
-                                        goto remove;
-                                    }
-                                }
-                            }
-                        
-                    }
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-                    
-                    
-
-                    if (!proc.abandon)
-                    {
-                        Avisynth avs = new Avisynth(log);
-                        encodingOpts.customFilter = customFiltOpts;
-                        if (encodingOpts.hardSub != 0)
-                            encodingOpts.hardSubLocation = details.demuxSub[encodingOpts.hardSub - 1];
-
-                        string script = avs.createScript(appSettings, details, encodingOpts);
-                        avs.writeScript(appSettings, details, script);
-                        proc.errflag = avs.checkErrors(details.avsFile, appSettings);
-
-                        if (!proc.errflag)
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "error";
-                            log.sendmail(details);
-                            MessageBox.Show("Avisynth Error");
-                            goto remove;
-                        }
-                    }
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-
-                    if (!proc.abandon)
-                    {
-                        AudioDecoding dec = new AudioDecoding(log);
-                        try
-                        {
-                            proc.errflag = dec.decode(appSettings, details, proc);
-                        }
-                        catch
-                        {
-                            proc.errflag = true;
-                        }
-                        if (!proc.errflag)
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "error";
-                            log.sendmail(details);
-                            MessageBox.Show("Audio Decoding Error");
-                            goto remove;
-                        }
-                    }
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-
-                    if (!proc.abandon)
-                    {
-                        AudioEncoding enc = new AudioEncoding(log);
-                        proc.errflag = enc.encode(appSettings, details, encodingOpts, proc);
-
-                        if (!proc.errflag)
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "error";
-                            log.sendmail(details);
-                            MessageBox.Show("Audio Encoding Error");
-                            goto remove;
-                        }
-                    }
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-
-                    if (!proc.abandon)
-                    {
-                        VideoEncoding encvid = new VideoEncoding(log);
-                        proc.errflag = encvid.encode(appSettings, encodingOpts, details, proc);
-
-                        if (!proc.errflag)
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "error";
-                            log.sendmail(details);
-                            MessageBox.Show("Video Encoding Error");
-                            goto remove;
-                        }
-                    }
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-
-                    if (!proc.abandon)
-                    {
-                        Muxing muxOut = new Muxing(log);
-                        proc.errflag = muxOut.Mux(appSettings, details, encodingOpts, proc);
-
-                        if (!proc.errflag)
-                        {
-                            inputList.Items[fileindex].SubItems[1].Text = "error";
-                            log.sendmail(details);
-                            MessageBox.Show("Muxing Error");
-                            goto remove;
-                        }
-                    }
-                    else
-                    {
-                        inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                        MessageBox.Show("Aborted");
-                        break;
-                    }
-
-                }
-
-                if (!proc.abandon)
-                {
-                    fileList.RemoveAt(0);
                 }
                 else
                 {
-                    inputList.Items[fileindex].SubItems[1].Text = "aborted";
-                    MessageBox.Show("Aborted");
+                    log.addLine("Found no custom settings for this file. Using general settings.");
+                    encodingOpts = getEncodeOpts();
+                }
+
+                encodingOpts.advert = titleAdvert.Checked;
+
+                if (encOptsErr)
+                {
+                    MessageBox.Show("Incorrect Encoding Options");
+                    return;
+                }
+
+                string result = worker.encodeFile(details);
+
+                switch (result)
+                {
+                    case "Remove":
+                        fileindex++;
+                        fileList.RemoveAt(0);
+                        break;
+
+                    case "Aborted":
+                        breakWhile = true;
+                           break;
+                    case "Completed":
+                           fileList.RemoveAt(0);
+                           inputList.Items[fileindex].SubItems[1].Text = "Done";
+                        fileindex++;
+                        log.addLine("It took " + (DateTime.Now - startDate).Hours.ToString() + " hours and " + (DateTime.Now - startDate).Minutes.ToString() + " minutes to encode this file.");
+                       afterEncode();
+                       break;
+
+                }
+
+                if (breakWhile)
                     break;
-                }
-                try
-                {
-                    string[] files2 = Directory.GetFiles(appSettings.tempDIR);
-                    foreach (string file in files2)
-                        File.Delete(file);
-                }
-                catch
-                {
-                    log.addLine("Error deleting files!");
-                }
-
-            remove:
-                if (!proc.errflag)
-                {
-                    fileindex++;
-                    fileList.RemoveAt(0);
-                }
-                else
-                {
-                    inputList.Items[fileindex].SubItems[1].Text = "Done";
-                    fileindex++;
-                    log.addLine("It took " + (DateTime.Now - startDate).Hours.ToString() + " hours and " + (DateTime.Now - startDate).Minutes.ToString() + " minutes to encode this file.");
-                    afterEncode();
-                }
             }
             encoding = false;
         }
