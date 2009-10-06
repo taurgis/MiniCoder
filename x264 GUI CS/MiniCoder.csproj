@@ -92,11 +92,11 @@
     <Compile Include="Classes\General\XmlValidator.cs" />
     <Compile Include="Classes\Software\Package.cs" />
     <Compile Include="Classes\Software\Packages.cs" />
-    <Compile Include="GUI\AppManagement.cs">
+    <Compile Include="GUI\AppLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\AppManagement.Designer.cs">
-      <DependentUpon>AppManagement.cs</DependentUpon>
+    <Compile Include="GUI\AppLocation.Designer.cs">
+      <DependentUpon>AppLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CustomFilter.cs">
       <SubType>Form</SubType>
@@ -147,8 +147,8 @@
     <Compile Include="Task Libraries\MediaInfoDLL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\AppManagement.resx">
-      <DependentUpon>AppManagement.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\AppLocation.resx">
+      <DependentUpon>AppLocation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CustomFilter.resx">

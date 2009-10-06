@@ -76,6 +76,7 @@
             this.columnHeader20 = new System.Windows.Forms.ColumnHeader();
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
+            this.customPath = new System.Windows.Forms.Button();
             this.applicationTabs.SuspendLayout();
             this.coreTab.SuspendLayout();
             this.pluginTab.SuspendLayout();
@@ -467,11 +468,22 @@
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
+            // customPath
+            // 
+            this.customPath.Location = new System.Drawing.Point(12, 299);
+            this.customPath.Name = "customPath";
+            this.customPath.Size = new System.Drawing.Size(75, 23);
+            this.customPath.TabIndex = 5;
+            this.customPath.Text = "Custom Path";
+            this.customPath.UseVisualStyleBackColor = true;
+            this.customPath.Click += new System.EventHandler(this.customPath_Click);
+            // 
             // Updater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 329);
+            this.Controls.Add(this.customPath);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.applicationTabs);
@@ -544,6 +556,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.ColumnHeader columnHeader25;
+        private System.Windows.Forms.Button customPath;
     }
 }
 

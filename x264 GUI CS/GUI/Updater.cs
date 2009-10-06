@@ -104,16 +104,22 @@ namespace MiniCoder
                    }
                    else
                    {
-
-                       if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                       if (tempPackage.getCustomPath() == "")
                        {
-                           StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                           appVersion = streamReader.ReadLine();
-                           streamReader.Close();
+                           if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                           {
+                               StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                               appVersion = streamReader.ReadLine();
+                               streamReader.Close();
+                           }
+                           else
+                           {
+                               appVersion = "Not Installed";
+                           }
                        }
                        else
                        {
-                           appVersion = "Not Installed";
+                           appVersion = "Custom Path";
                        }
                    }
                    if (key == "avs")
@@ -124,8 +130,16 @@ namespace MiniCoder
 
                    if ((appVersion != onlineVersion || !tempPackage.isInstalled()))
                    {
-                       log.addLine("Updates available for " + key + ".");
-                       updateRequired = true;
+                       string test = tempPackage.getCustomPath();
+                       if (tempPackage.getCustomPath() == "")
+                       {
+                           log.addLine("Updates available for " + key + ".");
+                           updateRequired = true;
+                       }
+                       else
+                       {
+                           updateRequired = false;
+                       }
                    }
                    else
                    {
@@ -140,12 +154,13 @@ namespace MiniCoder
 
 
                }
-               if (updateRequired)
-                   return true;
-               else
-                   return false;
+               
            }
-           return false;
+           if (updateRequired)
+               return true;
+           else
+               return false;
+           
         }
         private void Updater_Load(object sender, EventArgs e)
         {
@@ -174,6 +189,7 @@ namespace MiniCoder
                 if (key != "Core")
                 {
                     Package tempPackage = (Package)applicationInfo[key];
+                   
                     string appVersion = "";
                     string onlineVersion = applicationVersions[key].ToString().Replace("\r", "");
                     string requiredUpdate = "";
@@ -193,15 +209,22 @@ namespace MiniCoder
                     }
                     else
                     {
-                        if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                        if (tempPackage.getCustomPath() == "")
                         {
-                            StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
-                            appVersion = streamReader.ReadLine();
-                            streamReader.Close();
+                            if (File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
+                            {
+                                StreamReader streamReader = new StreamReader(tempPackage.getInstallPath() + "\\version.txt");
+                                appVersion = streamReader.ReadLine();
+                                streamReader.Close();
+                            }
+                            else
+                            {
+                                appVersion = "Not Installed";
+                            }
                         }
                         else
                         {
-                            appVersion = "Not Installed";
+                            appVersion = "Custom Path";
                         }
                     }
                     if (key == "avs")
@@ -212,8 +235,16 @@ namespace MiniCoder
 
                     if ((appVersion != onlineVersion || !tempPackage.isInstalled()))
                     {
-                        requiredUpdate = "Update Required";
-                        updateAvailable = true;
+                        if (tempPackage.getCustomPath() == "")
+                        {
+                            requiredUpdate = "Update Required";
+                            updateAvailable = true;
+                        }
+                        else
+                        {
+                            requiredUpdate = "Up to date";
+                            updateAvailable = false;
+                        }
                     }
                     else
                         requiredUpdate = "Up to date";
@@ -365,6 +396,14 @@ namespace MiniCoder
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void customPath_Click(object sender, EventArgs e)
+        {
+            MiniCoder.GUI.AppLocation appLoc = new MiniCoder.GUI.AppLocation(applicationSettings.htRequired);
+            appLoc.ShowDialog();
+            if(appLoc.doSave())
+            applicationSettings.SavePackages();
         }
 
      
