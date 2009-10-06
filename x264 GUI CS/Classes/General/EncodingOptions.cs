@@ -89,7 +89,7 @@ namespace x264_GUI_CS.General
             filtNoise = Convert.ToInt32(strTemplate.ReadLine());
             filtSharp = Convert.ToInt32(strTemplate.ReadLine());
             subtitle = strTemplate.ReadLine();
-            customFilter = strTemplate.ReadLine();
+            customFilter = strTemplate.ReadToEnd();
 
             strTemplate.Close();
         }
