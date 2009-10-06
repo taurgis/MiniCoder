@@ -122,7 +122,7 @@ namespace MiniCoder
                            appVersion = "2.5";
                    }
 
-                   if ((appVersion != onlineVersion))
+                   if ((appVersion != onlineVersion || !tempPackage.isInstalled()))
                    {
                        log.addLine("Updates available for " + key + ".");
                        updateRequired = true;
@@ -210,7 +210,7 @@ namespace MiniCoder
                             appVersion = "2.5";
                     }
 
-                    if ((appVersion != onlineVersion))
+                    if ((appVersion != onlineVersion || !tempPackage.isInstalled()))
                     {
                         requiredUpdate = "Update Required";
                         updateAvailable = true;
@@ -352,6 +352,7 @@ namespace MiniCoder
                     updateLog.Text += "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
                     //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
+                    MessageBox.Show("Minicoder has to restart to update its core files.");
                     Application.Exit();
                     Process.Start("CoreUpdater.exe");
                     
