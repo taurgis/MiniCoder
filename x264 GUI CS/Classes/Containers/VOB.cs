@@ -71,6 +71,16 @@ namespace x264_GUI_CS.Containers
                 mainProcess.StartInfo.Arguments = tempArg;
                 taskProcess();
 
+                DirectoryInfo info = new DirectoryInfo(dir.tempDIR);
+                int count = 0;
+                foreach (FileInfo fInfo in info.GetFiles())
+                {
+                    if (fInfo.Extension == ".ac3")
+                        details.demuxAudio[count++] = fInfo.FullName;
+                }
+
+               
+
                 if (exitCode != 0)
                     return false;
 
