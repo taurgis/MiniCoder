@@ -63,6 +63,9 @@
             this.x264Path = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.audioTab = new System.Windows.Forms.TabPage();
+            this.ffmpegSelect = new System.Windows.Forms.Button();
+            this.ffmpegPath = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.besweetSelect = new System.Windows.Forms.Button();
             this.besweetPath = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -84,9 +87,6 @@
             this.applicationTabs = new System.Windows.Forms.TabControl();
             this.saveApps = new System.Windows.Forms.Button();
             this.cancelApps = new System.Windows.Forms.Button();
-            this.ffmpegSelect = new System.Windows.Forms.Button();
-            this.ffmpegLocation = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.otherTab.SuspendLayout();
             this.muxTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -414,7 +414,7 @@
             // audioTab
             // 
             this.audioTab.Controls.Add(this.ffmpegSelect);
-            this.audioTab.Controls.Add(this.ffmpegLocation);
+            this.audioTab.Controls.Add(this.ffmpegPath);
             this.audioTab.Controls.Add(this.label17);
             this.audioTab.Controls.Add(this.besweetSelect);
             this.audioTab.Controls.Add(this.besweetPath);
@@ -440,6 +440,32 @@
             this.audioTab.TabIndex = 2;
             this.audioTab.Text = "Audio";
             this.audioTab.UseVisualStyleBackColor = true;
+            // 
+            // ffmpegSelect
+            // 
+            this.ffmpegSelect.Location = new System.Drawing.Point(429, 173);
+            this.ffmpegSelect.Name = "ffmpegSelect";
+            this.ffmpegSelect.Size = new System.Drawing.Size(26, 23);
+            this.ffmpegSelect.TabIndex = 20;
+            this.ffmpegSelect.Text = "...";
+            this.ffmpegSelect.UseVisualStyleBackColor = true;
+            this.ffmpegSelect.Click += new System.EventHandler(this.ffmpegSelect_Click);
+            // 
+            // ffmpegPath
+            // 
+            this.ffmpegPath.Location = new System.Drawing.Point(86, 175);
+            this.ffmpegPath.Name = "ffmpegPath";
+            this.ffmpegPath.Size = new System.Drawing.Size(337, 20);
+            this.ffmpegPath.TabIndex = 19;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 178);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "ffmpeg";
             // 
             // besweetSelect
             // 
@@ -629,32 +655,6 @@
             this.cancelApps.UseVisualStyleBackColor = true;
             this.cancelApps.Click += new System.EventHandler(this.cancelApps_Click);
             // 
-            // ffmpegSelect
-            // 
-            this.ffmpegSelect.Location = new System.Drawing.Point(429, 173);
-            this.ffmpegSelect.Name = "ffmpegSelect";
-            this.ffmpegSelect.Size = new System.Drawing.Size(26, 23);
-            this.ffmpegSelect.TabIndex = 20;
-            this.ffmpegSelect.Text = "...";
-            this.ffmpegSelect.UseVisualStyleBackColor = true;
-            this.ffmpegSelect.Click += new System.EventHandler(this.ffmpegSelect_Click);
-            // 
-            // ffmpegLocation
-            // 
-            this.ffmpegLocation.Location = new System.Drawing.Point(86, 175);
-            this.ffmpegLocation.Name = "ffmpegLocation";
-            this.ffmpegLocation.Size = new System.Drawing.Size(337, 20);
-            this.ffmpegLocation.TabIndex = 19;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 178);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(39, 13);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "ffmpeg";
-            // 
             // AppLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -739,7 +739,7 @@
         private System.Windows.Forms.Button saveApps;
         private System.Windows.Forms.Button cancelApps;
         private System.Windows.Forms.Button ffmpegSelect;
-        private System.Windows.Forms.TextBox ffmpegLocation;
+        private System.Windows.Forms.TextBox ffmpegPath;
         private System.Windows.Forms.Label label17;
     }
 }

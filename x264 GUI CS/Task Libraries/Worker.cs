@@ -129,6 +129,7 @@ namespace MiniCoder.Task_Libraries
                             proc.errflag = container.demux(appSettings, details, proc);
                             break;
                         case ".mkv":
+                            
                             container = new clMKV(log);
                             proc.errflag = container.demux(appSettings, details, proc);
                             break;
@@ -350,56 +351,6 @@ namespace MiniCoder.Task_Libraries
             //}
         }
 
-        public FileInformation mediainfo(string filename)
-        {
-           log.setInfoLabel("Gathering Media Info");
-
-            IfMediaDetails temp;
-            if (IntPtr.Size == 8)
-                temp = new MediaDetails64();
-            else
-                temp = new MediaDetails32();
-
-            FileInformation tempDetail = new FileInformation();
-
-            tempDetail.fileName = temp.fileName(filename);
-            tempDetail.fileSize = temp.fileSize(filename);
-            tempDetail.format = temp.fileFormat(filename);
-            tempDetail.name = temp.name(filename);
-            tempDetail.ext = temp.fileExt(filename);
-            tempDetail.outDIR = Path.GetDirectoryName(tempDetail.fileName) + "\\";
-            tempDetail.crfValue = main.getCrfValue();
-            tempDetail.audioCount = temp.audioCount(filename);
-            tempDetail.aud_Languages = temp.audLanguage(filename);
-            if (tempDetail.ext != ".avi")
-                tempDetail.aud_id = temp.audID(filename);
-            tempDetail.aud_codec = temp.audCodec(filename);
-            tempDetail.audLength = (int)(temp.audLength(filename) / 1000);
-            tempDetail.audTitles = temp.audTitle(filename);
-            tempDetail.completeinfo = temp.completeInfo(filename);
-            if (tempDetail.ext.ToUpper() == ".VOB")
-                tempDetail.audBitrate = temp.audBitrate(filename);
-
-            tempDetail.width = temp.width(filename);
-            tempDetail.height = temp.height(filename);
-            tempDetail.fps = temp.fps(filename);
-            tempDetail.vid_codec = temp.vidCodec(filename);
-            tempDetail.framecount = temp.frameCount(filename);
-            //     tempDetail.frameType = temp.frameRateType(filename);
-            tempDetail.subCount = temp.subCount(filename);
-            if (tempDetail.subCount != 0)
-            {
-                tempDetail.sub_Titles = temp.subCaption(filename);
-                tempDetail.sub_id = temp.subID(filename);
-                tempDetail.sub_codec = temp.subCodec(filename);
-                tempDetail.sub_lang = temp.subLang(filename);
-            }
-            tempDetail.chapters = temp.chapters(filename);
-            tempDetail.vfrCode = null;
-            tempDetail.vfrName = null;
-
-            log.setInfoLabel("");
-            return tempDetail;
-        }
+       
     }
 }

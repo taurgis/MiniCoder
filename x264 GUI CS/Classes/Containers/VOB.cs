@@ -109,11 +109,10 @@ namespace x264_GUI_CS.Containers
                 details.demuxSub[0] = dir.tempDIR + details.name + ".idx";
                 details.sub_lang = new string[1];
                 details.sub_Titles = new string[1];
-                for (int i = 0; i < details.subCount; i++)
-                {
-                    details.sub_lang[i] = "";
-                    details.sub_Titles[i] = "Dvd Sub";
-                }
+                
+                    details.sub_lang[0] = "";
+                    details.sub_Titles[0] = "Dvd Sub";
+                
                 
                 
                 
