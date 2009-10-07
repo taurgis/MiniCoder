@@ -225,7 +225,6 @@
     <Content Include="bin\Debug\MediaInfo_64.dll" />
     <Content Include="bin\Debug\temp\chapters.xml" />
     <Content Include="bin\Debug\x264 GUI CS.vshost.exe" />
-    <Content Include="ChangeLog.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
