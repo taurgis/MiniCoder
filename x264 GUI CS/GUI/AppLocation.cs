@@ -154,5 +154,10 @@ namespace MiniCoder.GUI
         {
             this.Close();
         }
+
+        private void ffmpegSelect_Click(object sender, EventArgs e)
+        {
+            customPath("ffmpeg");
+        }
     }
 }

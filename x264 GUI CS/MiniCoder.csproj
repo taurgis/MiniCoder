@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Containers\AVI.cs" />
+    <Compile Include="Classes\Containers\WMV.cs" />
     <Compile Include="Classes\Containers\VOB.cs" />
     <Compile Include="Classes\Containers\OGM.cs" />
     <Compile Include="Classes\Containers\MP4.cs" />
@@ -88,7 +89,6 @@
     </Compile>
     <Compile Include="Classes\General\LogBook.cs" />
     <Compile Include="Classes\General\ProcessSettings.cs" />
-    <Compile Include="Classes\General\Shell.cs" />
     <Compile Include="Classes\General\XmlValidator.cs" />
     <Compile Include="Classes\Software\Package.cs" />
     <Compile Include="Classes\Software\Packages.cs" />

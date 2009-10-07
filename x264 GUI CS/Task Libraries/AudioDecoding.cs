@@ -12,6 +12,7 @@ namespace x264_GUI_CS.Task_Libraries
     {
         Package flac;
         Package oggdec;
+        Package ffmpeg;
         Package faad;
         Package madplay;
         Package valdec;
@@ -36,7 +37,7 @@ namespace x264_GUI_CS.Task_Libraries
             faad = (Package)dir.htRequired["faad"];
             oggdec = (Package)dir.htRequired["oggdec"];
             valdec = (Package)dir.htRequired["valdec"];
-
+            ffmpeg = (Package)dir.htRequired["ffmpeg"];
             mainProcess = new Process();
             log.addLine("Decoding Audio");
             log.setInfoLabel("Decoding Audio");
@@ -50,6 +51,13 @@ namespace x264_GUI_CS.Task_Libraries
 
                 switch (ext)
                 {
+                    case "wma":
+                        if (!ffmpeg.isInstalled())
+                            ffmpeg.download();
+                        mainProcess.StartInfo.FileName = Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe");
+                        mainProcess.StartInfo.Arguments = "-i \"" + details.fileName + "\" -f wav -y \"" + details.decodedAudio[i] + "\"";
+                      
+                        break;
                     case "flac":
                         if (!flac.isInstalled())
                             flac.download();

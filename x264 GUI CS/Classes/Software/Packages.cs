@@ -47,6 +47,7 @@ namespace MiniCoder
             }
             Hashtable defaultPackages = new Hashtable();
             defaultPackages.Add("Core", newPackage("Core", "Core", false, "", "", "http://www.gamerzzheaven.be/core.zip", "core", ""));
+            defaultPackages.Add("ffmpeg", newPackage("ffmpeg", "zip", false, "", "", "http://www.gamerzzheaven.be/ffmpeg.zip", "audio",""));
             defaultPackages.Add("mkvtoolnix", newPackage("mkvtoolnix", "zip", false, "", "", "http://www.gamerzzheaven.be/mkvtoolnix.zip", "muxer", ""));
             defaultPackages.Add("x264", newPackage("x264", "zip", false, "", "", "http://www.gamerzzheaven.be/x264.zip", "video", ""));
             defaultPackages.Add("mkv2vfr", newPackage("mkv2vfr", "zip", false, "", "", "http://www.gamerzzheaven.be/mkv2vfr.zip", "muxer", ""));

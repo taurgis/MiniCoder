@@ -13,7 +13,7 @@ namespace x264_GUI_CS.General
         public bool errflag = true;
         public int processPriority = 0;
         public string currProcess = "";
-
+     
         public ProcessPriorityClass getPriority()
         {
             switch (processPriority)

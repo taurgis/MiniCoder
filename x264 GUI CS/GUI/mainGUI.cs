@@ -204,7 +204,8 @@ namespace x264_GUI_CS
                 MiniCoder.Task_Libraries.Worker worker = new MiniCoder.Task_Libraries.Worker(proc, log, getEncodeOpts(), this, appSettings);
                 Boolean breakWhile = false;
                 details = mediainfo(0);
-
+                if(outPutLocation.Text != "")
+                details.outDIR = outPutLocation.Text + "\\";
                 if (customSettings.Contains(details.name))
                 {
                     log.addLine("Found custom settings for " + details.name);
@@ -879,25 +880,7 @@ namespace x264_GUI_CS
         const string MenuText = "Encode With MiniCoder";
         string menuCommand = string.Format(
                     "\"{0}\" \"%L\"", Application.ExecutablePath);
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            //Shell.FileShellExtension.Register("*",
-            //        KeyName, MenuText,
-            //        menuCommand);
-            Shell.FileShellExtension.Register("*",
-                KeyName, MenuText,
-                menuCommand);
-        }
-
-        private void btnUnregister_Click(object sender, EventArgs e)
-        {
-            //Shell.FileShellExtension.Unregister("*",
-            //       KeyName);
-            Shell.FileShellExtension.Unregister("*",
-                   KeyName);
-        }
-
-        private void btnDeleteTemplate_Click(object sender, EventArgs e)
+              private void btnDeleteTemplate_Click(object sender, EventArgs e)
         {
             int tempIndex = cbTemplates.SelectedIndex;
             encodingOpts = getEncodeOpts();
@@ -943,9 +926,7 @@ namespace x264_GUI_CS
             }
         }
 
-      
-       
-
+         
         private void inputMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             try
@@ -995,6 +976,23 @@ namespace x264_GUI_CS
         {
             proc.processPriority = processPriority.SelectedIndex;
         }
+
+        private void outputSelect_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+            folderBrowser.ShowDialog();
+            if(folderBrowser.SelectedPath != "")
+            outPutLocation.Text = folderBrowser.SelectedPath;
+        }
+
+        private void clearOutput_Click(object sender, EventArgs e)
+        {
+            outPutLocation.Text = "";
+        }
+
+       
+
+       
 
   
 

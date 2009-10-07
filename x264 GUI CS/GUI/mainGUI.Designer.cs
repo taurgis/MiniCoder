@@ -45,8 +45,6 @@
             this.cmLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputTab = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.processPriority = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbAfterEncode = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -101,14 +99,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.videoBR = new System.Windows.Forms.TextBox();
             this.aboutTab = new System.Windows.Forms.TabPage();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.btnUnregister = new System.Windows.Forms.Button();
             this.llReport = new System.Windows.Forms.LinkLabel();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.titleAdvert = new System.Windows.Forms.CheckBox();
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.titleAdvert = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.processPriority = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.outPutLocation = new System.Windows.Forms.TextBox();
+            this.outputSelect = new System.Windows.Forms.Button();
+            this.clearOutput = new System.Windows.Forms.Button();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -123,7 +127,9 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.aboutTab.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // inputMenuStrip
@@ -179,7 +185,7 @@
             // 
             // openInput
             // 
-            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*.vob";
+            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*.vob;*.wmv";
             this.openInput.Multiselect = true;
             // 
             // logTab
@@ -235,8 +241,6 @@
             // 
             // inputTab
             // 
-            this.inputTab.Controls.Add(this.label15);
-            this.inputTab.Controls.Add(this.processPriority);
             this.inputTab.Controls.Add(this.label7);
             this.inputTab.Controls.Add(this.cbAfterEncode);
             this.inputTab.Controls.Add(this.btnDelete);
@@ -251,33 +255,6 @@
             this.inputTab.TabIndex = 0;
             this.inputTab.Text = "Input";
             this.inputTab.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.Location = new System.Drawing.Point(3, 329);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 21);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "Priority:";
-            // 
-            // processPriority
-            // 
-            this.processPriority.DisplayMember = "Low";
-            this.processPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.processPriority.DropDownWidth = 100;
-            this.processPriority.FormattingEnabled = true;
-            this.processPriority.Items.AddRange(new object[] {
-            "Low",
-            "Below Normal",
-            "Normal",
-            "Above Normal",
-            "High",
-            "Realtime"});
-            this.processPriority.Location = new System.Drawing.Point(60, 326);
-            this.processPriority.Name = "processPriority";
-            this.processPriority.Size = new System.Drawing.Size(100, 24);
-            this.processPriority.TabIndex = 11;
-            this.processPriority.SelectedIndexChanged += new System.EventHandler(this.processPriority_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -385,6 +362,7 @@
             // 
             this.mainTabPage.Controls.Add(this.inputTab);
             this.mainTabPage.Controls.Add(this.settingsTab);
+            this.mainTabPage.Controls.Add(this.tabPage1);
             this.mainTabPage.Controls.Add(this.logTab);
             this.mainTabPage.Controls.Add(this.aboutTab);
             this.mainTabPage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -398,7 +376,6 @@
             // 
             this.settingsTab.Controls.Add(this.btnDeleteTemplate);
             this.settingsTab.Controls.Add(this.cbTemplates);
-            this.settingsTab.Controls.Add(this.btnApps);
             this.settingsTab.Controls.Add(this.saveOptButton);
             this.settingsTab.Controls.Add(this.groupBox5);
             this.settingsTab.Controls.Add(this.customButton);
@@ -435,9 +412,9 @@
             // 
             // btnApps
             // 
-            this.btnApps.Location = new System.Drawing.Point(98, 324);
+            this.btnApps.Location = new System.Drawing.Point(9, 172);
             this.btnApps.Name = "btnApps";
-            this.btnApps.Size = new System.Drawing.Size(89, 26);
+            this.btnApps.Size = new System.Drawing.Size(101, 26);
             this.btnApps.TabIndex = 4;
             this.btnApps.Text = "Applications";
             this.btnApps.UseVisualStyleBackColor = true;
@@ -459,7 +436,7 @@
             this.groupBox5.Controls.Add(this.containerCombo);
             this.groupBox5.Location = new System.Drawing.Point(199, 102);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(197, 50);
+            this.groupBox5.Size = new System.Drawing.Size(197, 51);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Container";
@@ -914,7 +891,6 @@
             // 
             // aboutTab
             // 
-            this.aboutTab.Controls.Add(this.groupBox8);
             this.aboutTab.Controls.Add(this.llReport);
             this.aboutTab.Location = new System.Drawing.Point(4, 25);
             this.aboutTab.Name = "aboutTab";
@@ -922,37 +898,6 @@
             this.aboutTab.TabIndex = 4;
             this.aboutTab.Text = "About";
             this.aboutTab.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.btnRegister);
-            this.groupBox8.Controls.Add(this.btnUnregister);
-            this.groupBox8.Location = new System.Drawing.Point(76, 110);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(200, 100);
-            this.groupBox8.TabIndex = 3;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Shell Integration";
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Location = new System.Drawing.Point(52, 32);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(75, 23);
-            this.btnRegister.TabIndex = 1;
-            this.btnRegister.Text = "Register Shell";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // btnUnregister
-            // 
-            this.btnUnregister.Location = new System.Drawing.Point(52, 71);
-            this.btnUnregister.Name = "btnUnregister";
-            this.btnUnregister.Size = new System.Drawing.Size(75, 23);
-            this.btnUnregister.TabIndex = 2;
-            this.btnUnregister.Text = "Unregister Shell";
-            this.btnUnregister.UseVisualStyleBackColor = true;
-            this.btnUnregister.Click += new System.EventHandler(this.btnUnregister_Click);
             // 
             // llReport
             // 
@@ -964,6 +909,53 @@
             this.llReport.TabStop = true;
             this.llReport.Text = "Report Bugs";
             this.llReport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReport_LinkClicked);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btnApps);
+            this.tabPage1.Controls.Add(this.groupBox10);
+            this.tabPage1.Controls.Add(this.groupBox9);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(399, 356);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Options";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label15);
+            this.groupBox10.Controls.Add(this.processPriority);
+            this.groupBox10.Location = new System.Drawing.Point(9, 94);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(378, 63);
+            this.groupBox10.TabIndex = 13;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Process Settings";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.clearOutput);
+            this.groupBox9.Controls.Add(this.outputSelect);
+            this.groupBox9.Controls.Add(this.outPutLocation);
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Controls.Add(this.titleAdvert);
+            this.groupBox9.Location = new System.Drawing.Point(9, 14);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(378, 74);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Output Settings";
+            // 
+            // titleAdvert
+            // 
+            this.titleAdvert.AutoSize = true;
+            this.titleAdvert.Location = new System.Drawing.Point(6, 21);
+            this.titleAdvert.Name = "titleAdvert";
+            this.titleAdvert.Size = new System.Drawing.Size(166, 20);
+            this.titleAdvert.TabIndex = 2;
+            this.titleAdvert.Text = "Disable video title advert";
+            this.titleAdvert.UseVisualStyleBackColor = true;
             // 
             // infoLabel
             // 
@@ -986,22 +978,74 @@
             this.nfIcon.Text = "x264 Encoder";
             this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
             // 
-            // titleAdvert
+            // label15
             // 
-            this.titleAdvert.AutoSize = true;
-            this.titleAdvert.Location = new System.Drawing.Point(265, 14);
-            this.titleAdvert.Name = "titleAdvert";
-            this.titleAdvert.Size = new System.Drawing.Size(142, 17);
-            this.titleAdvert.TabIndex = 2;
-            this.titleAdvert.Text = "Disable video title advert";
-            this.titleAdvert.UseVisualStyleBackColor = true;
+            this.label15.Location = new System.Drawing.Point(6, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 21);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Priority:";
+            // 
+            // processPriority
+            // 
+            this.processPriority.DisplayMember = "Low";
+            this.processPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.processPriority.DropDownWidth = 100;
+            this.processPriority.FormattingEnabled = true;
+            this.processPriority.Items.AddRange(new object[] {
+            "Low",
+            "Below Normal",
+            "Normal",
+            "Above Normal",
+            "High",
+            "Realtime"});
+            this.processPriority.Location = new System.Drawing.Point(73, 25);
+            this.processPriority.Name = "processPriority";
+            this.processPriority.Size = new System.Drawing.Size(100, 24);
+            this.processPriority.TabIndex = 13;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 49);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 16);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Output Dir:";
+            // 
+            // outPutLocation
+            // 
+            this.outPutLocation.Enabled = false;
+            this.outPutLocation.Location = new System.Drawing.Point(73, 46);
+            this.outPutLocation.Name = "outPutLocation";
+            this.outPutLocation.Size = new System.Drawing.Size(219, 22);
+            this.outPutLocation.TabIndex = 4;
+            // 
+            // outputSelect
+            // 
+            this.outputSelect.Location = new System.Drawing.Point(298, 46);
+            this.outputSelect.Name = "outputSelect";
+            this.outputSelect.Size = new System.Drawing.Size(33, 23);
+            this.outputSelect.TabIndex = 5;
+            this.outputSelect.Text = "...";
+            this.outputSelect.UseVisualStyleBackColor = true;
+            this.outputSelect.Click += new System.EventHandler(this.outputSelect_Click);
+            // 
+            // clearOutput
+            // 
+            this.clearOutput.Location = new System.Drawing.Point(337, 46);
+            this.clearOutput.Name = "clearOutput";
+            this.clearOutput.Size = new System.Drawing.Size(33, 23);
+            this.clearOutput.TabIndex = 6;
+            this.clearOutput.Text = "X";
+            this.clearOutput.UseVisualStyleBackColor = true;
+            this.clearOutput.Click += new System.EventHandler(this.clearOutput_Click);
             // 
             // mainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 423);
-            this.Controls.Add(this.titleAdvert);
             this.Controls.Add(this.mainTabPage);
             this.Controls.Add(this.infoLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1031,9 +1075,11 @@
             this.groupBox2.PerformLayout();
             this.aboutTab.ResumeLayout(false);
             this.aboutTab.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1112,16 +1158,20 @@
         private System.Windows.Forms.ToolStripMenuItem copyLogToolStripMenuItem;
         private System.Windows.Forms.TabPage aboutTab;
         private System.Windows.Forms.LinkLabel llReport;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnUnregister;
-        private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button btnDeleteTemplate;
         private System.Windows.Forms.ToolStripMenuItem tsCustomSettings;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ComboBox widthHeight;
-        private System.Windows.Forms.ComboBox processPriority;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox titleAdvert;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox processPriority;
+        private System.Windows.Forms.Button outputSelect;
+        private System.Windows.Forms.TextBox outPutLocation;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button clearOutput;
     }
 }
 

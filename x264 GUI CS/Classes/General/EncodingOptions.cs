@@ -30,10 +30,9 @@ namespace x264_GUI_CS.General
         public int filtNoise = 0;
         public int filtSharp = 0;
         public string subtitle;
-
         public string customFilter;
         public string templateName;
-        string tempStr;
+        
 
         public void save()
         {
