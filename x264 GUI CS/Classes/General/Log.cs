@@ -26,8 +26,12 @@ namespace x264_GUI_CS
             ListViewItem.ListViewSubItem statusSub = new ListViewItem.ListViewSubItem();
 
 
+            if (System.DateTime.Now.TimeOfDay.Minutes < 10)
+                inputListItem.Text = System.DateTime.Now.TimeOfDay.Hours.ToString() + ":0" + System.DateTime.Now.TimeOfDay.Minutes.ToString();
+            else
+                inputListItem.Text = System.DateTime.Now.TimeOfDay.Hours.ToString() + ":" + System.DateTime.Now.TimeOfDay.Minutes.ToString();
 
-            inputListItem.Text = System.DateTime.Now.TimeOfDay.Hours.ToString() + ":" + System.DateTime.Now.TimeOfDay.Minutes.ToString();
+            
             
             inputListItem.SubItems.Add(statusSub);
           
