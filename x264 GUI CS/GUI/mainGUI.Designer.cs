@@ -937,6 +937,7 @@
             this.processPriority.Name = "processPriority";
             this.processPriority.Size = new System.Drawing.Size(100, 24);
             this.processPriority.TabIndex = 13;
+            this.processPriority.SelectedIndexChanged += new System.EventHandler(this.processPriority_SelectedIndexChanged);
             // 
             // groupBox9
             // 

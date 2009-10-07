@@ -197,7 +197,15 @@ namespace x264_GUI_CS.Task_Libraries
             try
             {
                 mainProcess.Start();
-                mainProcess.PriorityClass = proc.getPriority();
+                try
+                {
+                    mainProcess.PriorityClass = proc.getPriority();
+                }
+                catch
+                {
+
+                }
+                
 
                 stderr = mainProcess.StandardError;
                 stdout = mainProcess.StandardOutput;

@@ -62,7 +62,7 @@ namespace x264_GUI_CS
 
                 var fromAddress = new MailAddress("x264errorreporter@gmail.com", "X264 errorreporter");
                 var toAddress = new MailAddress("x264errorreporter@gmail.com", "Errorreporter");
-                const string fromPassword = "wiske123";
+                const string fromPassword = "encoder123";
                 const string subject = "ErrorReporting";
                 Attachment attach;
                 

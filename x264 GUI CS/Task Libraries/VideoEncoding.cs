@@ -228,7 +228,7 @@ namespace x264_GUI_CS.Task_Libraries
             finishedTask = false;
 
             mainProcess.EnableRaisingEvents = true;
-
+        
             mainProcess.StartInfo.UseShellExecute = false;
             mainProcess.StartInfo.CreateNoWindow = true;
             mainProcess.StartInfo.RedirectStandardError = true;
