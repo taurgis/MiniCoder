@@ -88,6 +88,7 @@ namespace x264_GUI_CS.General
             extension.Add("S_TEXT/USF", "usf");
             extension.Add("S_TEXT/UTF8", "srt");
             extension.Add("UTF-8", "srt");
+            extension.Add("WMA2", "wma");
             extension.Add("S_VOBSUB", "idx");
             extension.Add("avc1","264");
             extension.Add("AAC", "aac");

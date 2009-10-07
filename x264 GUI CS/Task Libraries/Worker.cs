@@ -124,6 +124,10 @@ namespace MiniCoder.Task_Libraries
                     proc.currProcess = "demux";
                     switch (details.ext)
                     {
+                        case ".wmv":
+                            container = new WMV(log);
+                            proc.errflag = container.demux(appSettings, details, proc);
+                            break;
                         case ".mkv":
                             container = new clMKV(log);
                             proc.errflag = container.demux(appSettings, details, proc);
