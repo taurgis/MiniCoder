@@ -59,7 +59,6 @@
             this.settingsTab = new System.Windows.Forms.TabPage();
             this.btnDeleteTemplate = new System.Windows.Forms.Button();
             this.cbTemplates = new System.Windows.Forms.ComboBox();
-            this.btnApps = new System.Windows.Forms.Button();
             this.saveOptButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -98,21 +97,22 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.videoBR = new System.Windows.Forms.TextBox();
-            this.aboutTab = new System.Windows.Forms.TabPage();
-            this.llReport = new System.Windows.Forms.LinkLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnApps = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.processPriority = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.clearOutput = new System.Windows.Forms.Button();
+            this.outputSelect = new System.Windows.Forms.Button();
+            this.outPutLocation = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
+            this.aboutTab = new System.Windows.Forms.TabPage();
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.label15 = new System.Windows.Forms.Label();
-            this.processPriority = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.outPutLocation = new System.Windows.Forms.TextBox();
-            this.outputSelect = new System.Windows.Forms.Button();
-            this.clearOutput = new System.Windows.Forms.Button();
+            this.llReport = new System.Windows.Forms.LinkLabel();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -126,10 +126,10 @@
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.aboutTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.aboutTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // inputMenuStrip
@@ -185,7 +185,7 @@
             // 
             // openInput
             // 
-            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*.vob;*.wmv";
+            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv";
             this.openInput.Multiselect = true;
             // 
             // logTab
@@ -409,16 +409,6 @@
             this.cbTemplates.TabIndex = 5;
             this.cbTemplates.Text = "<Template>";
             this.cbTemplates.SelectedIndexChanged += new System.EventHandler(this.cbTemplates_SelectedIndexChanged);
-            // 
-            // btnApps
-            // 
-            this.btnApps.Location = new System.Drawing.Point(9, 172);
-            this.btnApps.Name = "btnApps";
-            this.btnApps.Size = new System.Drawing.Size(101, 26);
-            this.btnApps.TabIndex = 4;
-            this.btnApps.Text = "Applications";
-            this.btnApps.UseVisualStyleBackColor = true;
-            this.btnApps.Click += new System.EventHandler(this.btnApps_Click);
             // 
             // saveOptButton
             // 
@@ -889,27 +879,6 @@
             this.videoBR.Text = "300";
             this.videoBR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.videoBR_KeyDown);
             // 
-            // aboutTab
-            // 
-            this.aboutTab.Controls.Add(this.llReport);
-            this.aboutTab.Location = new System.Drawing.Point(4, 25);
-            this.aboutTab.Name = "aboutTab";
-            this.aboutTab.Size = new System.Drawing.Size(399, 356);
-            this.aboutTab.TabIndex = 4;
-            this.aboutTab.Text = "About";
-            this.aboutTab.UseVisualStyleBackColor = true;
-            // 
-            // llReport
-            // 
-            this.llReport.AutoSize = true;
-            this.llReport.Location = new System.Drawing.Point(132, 34);
-            this.llReport.Name = "llReport";
-            this.llReport.Size = new System.Drawing.Size(80, 16);
-            this.llReport.TabIndex = 0;
-            this.llReport.TabStop = true;
-            this.llReport.Text = "Report Bugs";
-            this.llReport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReport_LinkClicked);
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.btnApps);
@@ -922,6 +891,16 @@
             this.tabPage1.Text = "Options";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnApps
+            // 
+            this.btnApps.Location = new System.Drawing.Point(9, 172);
+            this.btnApps.Name = "btnApps";
+            this.btnApps.Size = new System.Drawing.Size(101, 26);
+            this.btnApps.TabIndex = 4;
+            this.btnApps.Text = "Applications";
+            this.btnApps.UseVisualStyleBackColor = true;
+            this.btnApps.Click += new System.EventHandler(this.btnApps_Click);
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.label15);
@@ -932,51 +911,6 @@
             this.groupBox10.TabIndex = 13;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Process Settings";
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.clearOutput);
-            this.groupBox9.Controls.Add(this.outputSelect);
-            this.groupBox9.Controls.Add(this.outPutLocation);
-            this.groupBox9.Controls.Add(this.label16);
-            this.groupBox9.Controls.Add(this.titleAdvert);
-            this.groupBox9.Location = new System.Drawing.Point(9, 14);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(378, 74);
-            this.groupBox9.TabIndex = 3;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Output Settings";
-            // 
-            // titleAdvert
-            // 
-            this.titleAdvert.AutoSize = true;
-            this.titleAdvert.Location = new System.Drawing.Point(6, 21);
-            this.titleAdvert.Name = "titleAdvert";
-            this.titleAdvert.Size = new System.Drawing.Size(166, 20);
-            this.titleAdvert.TabIndex = 2;
-            this.titleAdvert.Text = "Disable video title advert";
-            this.titleAdvert.UseVisualStyleBackColor = true;
-            // 
-            // infoLabel
-            // 
-            this.infoLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoLabel.Location = new System.Drawing.Point(1, 394);
-            this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(410, 22);
-            this.infoLabel.TabIndex = 1;
-            this.infoLabel.Text = "GUI Ready";
-            this.infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // openSub
-            // 
-            this.openSub.FileName = "openFileDialog1";
-            this.openSub.Filter = "Subtitle Files|*.ssa;*.ass;*.srt;*.sub;*.idx";
-            // 
-            // nfIcon
-            // 
-            this.nfIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("nfIcon.Icon")));
-            this.nfIcon.Text = "x264 Encoder";
-            this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
             // 
             // label15
             // 
@@ -1004,22 +938,29 @@
             this.processPriority.Size = new System.Drawing.Size(100, 24);
             this.processPriority.TabIndex = 13;
             // 
-            // label16
+            // groupBox9
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 49);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 16);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Output Dir:";
+            this.groupBox9.Controls.Add(this.clearOutput);
+            this.groupBox9.Controls.Add(this.outputSelect);
+            this.groupBox9.Controls.Add(this.outPutLocation);
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Controls.Add(this.titleAdvert);
+            this.groupBox9.Location = new System.Drawing.Point(9, 14);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(378, 74);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Output Settings";
             // 
-            // outPutLocation
+            // clearOutput
             // 
-            this.outPutLocation.Enabled = false;
-            this.outPutLocation.Location = new System.Drawing.Point(73, 46);
-            this.outPutLocation.Name = "outPutLocation";
-            this.outPutLocation.Size = new System.Drawing.Size(219, 22);
-            this.outPutLocation.TabIndex = 4;
+            this.clearOutput.Location = new System.Drawing.Point(337, 46);
+            this.clearOutput.Name = "clearOutput";
+            this.clearOutput.Size = new System.Drawing.Size(33, 23);
+            this.clearOutput.TabIndex = 6;
+            this.clearOutput.Text = "X";
+            this.clearOutput.UseVisualStyleBackColor = true;
+            this.clearOutput.Click += new System.EventHandler(this.clearOutput_Click);
             // 
             // outputSelect
             // 
@@ -1031,15 +972,74 @@
             this.outputSelect.UseVisualStyleBackColor = true;
             this.outputSelect.Click += new System.EventHandler(this.outputSelect_Click);
             // 
-            // clearOutput
+            // outPutLocation
             // 
-            this.clearOutput.Location = new System.Drawing.Point(337, 46);
-            this.clearOutput.Name = "clearOutput";
-            this.clearOutput.Size = new System.Drawing.Size(33, 23);
-            this.clearOutput.TabIndex = 6;
-            this.clearOutput.Text = "X";
-            this.clearOutput.UseVisualStyleBackColor = true;
-            this.clearOutput.Click += new System.EventHandler(this.clearOutput_Click);
+            this.outPutLocation.Enabled = false;
+            this.outPutLocation.Location = new System.Drawing.Point(73, 46);
+            this.outPutLocation.Name = "outPutLocation";
+            this.outPutLocation.Size = new System.Drawing.Size(219, 22);
+            this.outPutLocation.TabIndex = 4;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 49);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 16);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Output Dir:";
+            // 
+            // titleAdvert
+            // 
+            this.titleAdvert.AutoSize = true;
+            this.titleAdvert.Location = new System.Drawing.Point(6, 21);
+            this.titleAdvert.Name = "titleAdvert";
+            this.titleAdvert.Size = new System.Drawing.Size(166, 20);
+            this.titleAdvert.TabIndex = 2;
+            this.titleAdvert.Text = "Disable video title advert";
+            this.titleAdvert.UseVisualStyleBackColor = true;
+            // 
+            // aboutTab
+            // 
+            this.aboutTab.Controls.Add(this.llReport);
+            this.aboutTab.Location = new System.Drawing.Point(4, 25);
+            this.aboutTab.Name = "aboutTab";
+            this.aboutTab.Size = new System.Drawing.Size(399, 356);
+            this.aboutTab.TabIndex = 4;
+            this.aboutTab.Text = "About";
+            this.aboutTab.UseVisualStyleBackColor = true;
+            // 
+            // infoLabel
+            // 
+            this.infoLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoLabel.Location = new System.Drawing.Point(1, 394);
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Size = new System.Drawing.Size(410, 22);
+            this.infoLabel.TabIndex = 1;
+            this.infoLabel.Text = "GUI Ready";
+            this.infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // openSub
+            // 
+            this.openSub.FileName = "openFileDialog1";
+            this.openSub.Filter = "Subtitle Files|*.ssa;*.ass;*.srt;*.sub;*.idx";
+            // 
+            // nfIcon
+            // 
+            this.nfIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("nfIcon.Icon")));
+            this.nfIcon.Text = "x264 Encoder";
+            this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
+            // 
+            // llReport
+            // 
+            this.llReport.AutoSize = true;
+            this.llReport.Location = new System.Drawing.Point(132, 34);
+            this.llReport.Name = "llReport";
+            this.llReport.Size = new System.Drawing.Size(80, 16);
+            this.llReport.TabIndex = 0;
+            this.llReport.TabStop = true;
+            this.llReport.Text = "Report Bugs";
+            this.llReport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReport_LinkClicked);
             // 
             // mainGUI
             // 
@@ -1073,12 +1073,12 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.aboutTab.ResumeLayout(false);
-            this.aboutTab.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.aboutTab.ResumeLayout(false);
+            this.aboutTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1157,7 +1157,6 @@
         private System.Windows.Forms.ContextMenuStrip cmLog;
         private System.Windows.Forms.ToolStripMenuItem copyLogToolStripMenuItem;
         private System.Windows.Forms.TabPage aboutTab;
-        private System.Windows.Forms.LinkLabel llReport;
         private System.Windows.Forms.Button btnDeleteTemplate;
         private System.Windows.Forms.ToolStripMenuItem tsCustomSettings;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -1172,6 +1171,7 @@
         private System.Windows.Forms.TextBox outPutLocation;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button clearOutput;
+        private System.Windows.Forms.LinkLabel llReport;
     }
 }
 

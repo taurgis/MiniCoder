@@ -97,6 +97,11 @@ namespace x264_GUI_CS.Task_Libraries
                         break;
 
                     default:
+                        if (!ffmpeg.isInstalled())
+                            ffmpeg.download();
+                        mainProcess.StartInfo.FileName = Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe");
+                        mainProcess.StartInfo.Arguments = "-i \"" + details.fileName + "\" -f wav -y \"" + details.decodedAudio[i] + "\"";
+                        
                         break;
                 }
 

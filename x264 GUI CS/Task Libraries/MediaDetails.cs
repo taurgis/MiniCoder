@@ -269,17 +269,25 @@ namespace x264_GUI_CS.Task_Libraries
 
         public int[] audID(string file)
         {
-            media.Open(file);
-            int j = media.Count_Get(StreamKind.Audio);
-            int[] temp = new int[2];
-            
-            for (int i = 0; i < j; i++)
+            try
             {
-                int trackID = int.Parse(media.Get(StreamKind.Audio, i, "ID"));
-                temp.SetValue(trackID, i);
+                media.Open(file);
+                int j = media.Count_Get(StreamKind.Audio);
+                int[] temp = new int[2];
+
+                for (int i = 0; i < j; i++)
+                {
+                    int trackID = int.Parse(media.Get(StreamKind.Audio, i, "ID"));
+                    temp.SetValue(trackID, i);
+                }
+                media.Close();
+                return temp;
             }
-            media.Close();
-            return temp;
+            catch
+            {
+                int[] temp = new int[2];
+                return temp;
+            }
         }
 
         public int[] subID(string file)
