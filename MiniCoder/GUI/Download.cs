@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
 using ICSharpCode.SharpZipLib.Zip;
-namespace x264_GUI_CS.GUI
+namespace MiniCoder
 {
     public partial class Download : Form
     {

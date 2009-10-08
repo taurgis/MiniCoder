@@ -5,14 +5,16 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace System.Windows.Forms
-{
+
+
     /// 
     /// This static class contains methods named Show() to display a dialog box 
     /// with an input field, similar in appearance to the one in Visual Basic.
     /// The Show() method returns null if the user clicks Cancel, and non-null
     /// if the user clicks OK.
     /// 
+namespace MiniCoder
+{
     public class InputBox
     {
         static public string Show(string Prompt)
@@ -35,7 +37,7 @@ namespace System.Windows.Forms
         }
     }
 
-    internal class InputBoxDialog : Form
+    public class InputBoxDialog : Form
     {
         private System.Windows.Forms.Label lblPrompt;
         public System.Windows.Forms.TextBox txtInput;
@@ -138,5 +140,5 @@ namespace System.Windows.Forms
         }
         #endregion
     }
-}
 
+}

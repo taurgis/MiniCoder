@@ -3,64 +3,67 @@ using System.Collections;
 using System.Xml;
 using System.Xml.Schema;
 
-public class XMLValidator
+namespace MiniCoder
 {
-    private string fileName;
-    static private ArrayList errors = new ArrayList();
-    static private bool bValid;
-
-    public XMLValidator(string fileName)
+    public class XMLValidator
     {
-        this.fileName = fileName;
-        bValid = true;
-    }
+        private string fileName;
+        static private ArrayList errors = new ArrayList();
+        static private bool bValid;
 
-    public ArrayList GetErrors()
-    {
-        return errors;
-    }
-
-    public bool Validate()
-    {
-        XmlValidatingReader reader = null;
-        try
+        public XMLValidator(string fileName)
         {
-            errors.Clear();
+            this.fileName = fileName;
             bValid = true;
-            XmlTextReader txtreader = new XmlTextReader(fileName);
-            reader = new XmlValidatingReader(txtreader);
-
-
-
-            // Set the validation event handler
-
-            reader.ValidationEventHandler +=
-                   new ValidationEventHandler(ValidationCallBack);
-
-            // Read XML data
-
-            while (reader.Read()) { }
-
         }
-        catch (Exception e)
+
+        public ArrayList GetErrors()
+        {
+            return errors;
+        }
+
+        public bool Validate()
+        {
+            XmlValidatingReader reader = null;
+            try
+            {
+                errors.Clear();
+                bValid = true;
+                XmlTextReader txtreader = new XmlTextReader(fileName);
+                reader = new XmlValidatingReader(txtreader);
+
+
+
+                // Set the validation event handler
+
+                reader.ValidationEventHandler +=
+                       new ValidationEventHandler(ValidationCallBack);
+
+                // Read XML data
+
+                while (reader.Read()) { }
+
+            }
+            catch (Exception e)
+            {
+                bValid = false;
+                errors.Add(e.Message);
+            }
+            finally
+            {
+                //Close the reader.
+
+                reader.Close();
+            }
+
+            return bValid;
+        }
+
+        private void ValidationCallBack(object sender, ValidationEventArgs args)
         {
             bValid = false;
-            errors.Add(e.Message);
-        }
-        finally
-        {
-            //Close the reader.
-
-            reader.Close();
+            errors.Add(args.Message);
         }
 
-        return bValid;
     }
-
-    private void ValidationCallBack(object sender, ValidationEventArgs args)
-    {
-        bValid = false;
-        errors.Add(args.Message);
-    }
-
 }
