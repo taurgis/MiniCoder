@@ -661,7 +661,7 @@ namespace x264_GUI_CS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            log.sendmail(details);
+            log.sendmail(details,appSettings);
         }
 
         public void setMessage(string message)
