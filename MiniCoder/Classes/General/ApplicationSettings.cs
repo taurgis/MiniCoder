@@ -20,7 +20,7 @@ namespace MiniCoder
             this.appPath = appPath;
             setAppPath();
             pcRequired = new Packages(this);
-            htRequired = pcRequired.getPackages();
+            htRequired = pcRequired.FetchPackageHT();
         }
 
         public string tempDIR;

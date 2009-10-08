@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections;
 using System.IO;
 using MiniCoder;
+using System.Globalization;
 namespace MiniCoder
 {
     public class Packages
@@ -17,7 +18,7 @@ namespace MiniCoder
             fillPackages();
         }
 
-        public Hashtable getPackages()
+        public Hashtable FetchPackageHT()
         {
             return htPackages;
         }
@@ -30,17 +31,19 @@ namespace MiniCoder
                 {
                 StreamReader streamReader = new StreamReader(appSettings.getAppPath() + "\\apps.txt");
                 
+                   
                     while (!streamReader.EndOfStream)
                     {
-                        String[] appInfo = streamReader.ReadLine().Split(Convert.ToChar(";"));
-                        htPackages.Add(appInfo[0], newPackage(appInfo[0], appInfo[1], Convert.ToBoolean(appInfo[2]), appInfo[3], appInfo[4], appInfo[5], appInfo[6], appInfo[7]));
+                        String[] appInfo = streamReader.ReadLine().Split(Convert.ToChar(";", Provider.getProvider()));
+                        htPackages.Add(appInfo[0], newPackage(appInfo[0], appInfo[1], Convert.ToBoolean(appInfo[2], Provider.getProvider()), appInfo[3], appInfo[4], appInfo[5], appInfo[6], appInfo[7]));
 
                     }
 
                     streamReader.Close();
                 }
-                catch
+                catch  (IOException)
                 {
+                   
                    
                 }
             }

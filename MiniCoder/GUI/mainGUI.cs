@@ -530,7 +530,7 @@ namespace MiniCoder
 
                 if (encOpts.filtResize != 0)
                 {
-                    string[] splitWidthHeight = widthHeight.Text.Split(Convert.ToChar(":"));
+                    string[] splitWidthHeight = widthHeight.Text.Split(Convert.ToChar(":", Provider.getProvider()));
                     encOpts.resizeHeight = int.Parse(splitWidthHeight[1]);
                     encOpts.resizeWidth = int.Parse(splitWidthHeight[0]);
                 }
