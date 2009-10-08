@@ -252,7 +252,7 @@ namespace MiniCoder
             while (fileList.Count != 0)
             {
                 startDate = DateTime.Now;
-                Worker worker = new Worker(proc, log, getEncodeOpts(), this, appSettings);
+              
                 Boolean breakWhile = false;
                 details = mediainfo(0);
                 
@@ -291,7 +291,7 @@ namespace MiniCoder
                     MessageBox.Show("Incorrect Encoding Options");
                     return;
                 }
-
+                Worker worker = new Worker(proc, log, encodingOpts, this, appSettings);
                 string result = worker.encodeFile(details);
 
                 switch (result)

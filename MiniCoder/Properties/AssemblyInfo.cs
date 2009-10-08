@@ -6,12 +6,12 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MiniCoder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MiniCoder - Video Encoder")]
+[assembly: AssemblyDescription("Encode videos as easily as possible!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Home")]
-[assembly: AssemblyProduct("MiniCoder")]
-[assembly: AssemblyCopyright("Copyright © Home 2009")]
+[assembly: AssemblyProduct("MiniCoder - Video Encoder")]
+[assembly: AssemblyCopyright("Copyright 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

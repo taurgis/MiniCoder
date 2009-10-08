@@ -46,6 +46,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <ApplicationIcon>bigIcon.ico</ApplicationIcon>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MiniCoder.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -198,6 +200,7 @@
     <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B]-Video Track.log" />
     <None Include="bin\Debug\temp\[SFW]_Natsu_No_Arashi_-_09_[720p][E26BC08B].dga" />
     <None Include="bin\Debug\x264 GUI CS.vshost.exe.manifest" />
+    <None Include="MiniCoder.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

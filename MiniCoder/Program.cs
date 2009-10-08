@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using System.Windows.Forms;
-
+[assembly: CLSCompliant(true)]
 namespace MiniCoder
 {
     static class Program

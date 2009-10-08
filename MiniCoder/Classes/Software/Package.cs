@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Win32;
 using System.IO;
-using x264_GUI_CS.GUI;
+
 
 namespace MiniCoder
 {

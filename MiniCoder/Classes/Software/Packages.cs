@@ -90,14 +90,14 @@ namespace MiniCoder
              return tempPackage = new Package(appName, appType, isRegistry, registrySubPath, appSettings, registrySubKey, downloadurl, category, customPath);
         }
 
-        public void savePackages()
+        public void SavePackages()
         {
             StreamWriter streamWriter = new StreamWriter(appSettings.getAppPath() + "\\apps.txt", false);
            
             foreach(string key in htPackages.Keys)
             {
                 Package package = (Package)htPackages[key];
-                if(package.getCustomPath() != "")
+                if(!String.IsNullOrEmpty(package.getCustomPath()))
                 streamWriter.WriteLine(key + ";" + package.getAppType() + ";" + package.getIsRegistry() + ";" + package.getRegistrySubPath() + ";" + package.getRegistrySubKey() + ";" + package.getDownloadUrl() + ";" + package.getCategory() + ";" + package.getCustomPath());
 
                
