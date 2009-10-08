@@ -159,6 +159,9 @@ namespace x264_GUI_CS.Task_Libraries
             string filtOpts = "";
             if (encOpts.customFilter != "")
             {
+                if(encOpts.customFilter.Contains(";;;"))
+                    encOpts.customFilter = encOpts.customFilter.Replace(";;;","");
+
                 filtOpts += "# Custom\r\n" + encOpts.customFilter + "\r\n\r\n";
                 log.addLine(encOpts.customFilter);
             }       
