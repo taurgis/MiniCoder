@@ -1,4 +1,4 @@
-﻿namespace x264_GUI_CS
+﻿namespace MiniCoder
 {
     partial class mainGUI
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace x264_GUI_CS.General
+namespace MiniCoder
 {
     public class Calc
     {

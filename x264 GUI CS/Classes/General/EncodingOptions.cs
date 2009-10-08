@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using x264_GUI_CS;
 
-namespace x264_GUI_CS.General
+namespace MiniCoder
 {
     public class EncodingOptions
     {

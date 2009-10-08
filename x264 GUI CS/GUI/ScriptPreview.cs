@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace x264_GUI_CS
+namespace MiniCoder
 {
     public partial class ScriptPreview : Form
     {
@@ -25,6 +25,11 @@ namespace x264_GUI_CS
         public void setScript(string script)
         {
             previewText.Text = script;
+        }
+
+        private void ScriptPreview_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

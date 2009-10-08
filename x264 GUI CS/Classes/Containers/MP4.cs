@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -11,20 +10,18 @@ namespace x264_GUI_CS.Containers
 {
     class clMP4 : ifContainer
     {
-    
+        Package mp4box;
         LogBook log;
-        General.ProcessSettings proc;
-        bool finishedTask = false;
-        
+        ProcessSettings proc;
         int exitCode;
 
         public clMP4(LogBook log)
         {
             this.log = log;
-            proc = new x264_GUI_CS.General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
-        Package mp4box;
-        public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+
+        public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);
@@ -39,7 +36,6 @@ namespace x264_GUI_CS.Containers
                 log.setInfoLabel("Demuxing Video Track");
                 proc.initProcess();
                 
-
                 string path = dir.tempDIR.Substring(0, dir.tempDIR.Length - 1);
 
                 details.demuxAudio = new string[details.audioCount];
@@ -75,10 +71,8 @@ namespace x264_GUI_CS.Containers
                 log.setInfoLabel("Demuxing Audio Track");
                 details.demuxAudio[0] = dir.tempDIR + details.name + "-Audio Track-" + "1" + "." + details.extension[details.aud_codec[0]];
                 tempArg = "\"" + details.fileName + "\" -raw 2 -out \"" + details.demuxAudio[0] + "\"";
-               proc.setArguments(tempArg);
+                proc.setArguments(tempArg);
                 exitCode = proc.startProcess();
-                              
-                log.addLine(tempArg);
 
                 if (proc.abandon)
                     log.setInfoLabel("Demuxing Aborted");
@@ -89,6 +83,7 @@ namespace x264_GUI_CS.Containers
                     return false;
                 else
                     return true;
+
             }
             catch (KeyNotFoundException e)
             {
@@ -96,15 +91,14 @@ namespace x264_GUI_CS.Containers
                 MessageBox.Show("Can't find codec");
                 return false;
             }
-            
-        }
 
-      
-        public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        }
+        
+        public bool mkv2vfr(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             return true;
         }
 
-   
+
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -12,20 +11,20 @@ namespace x264_GUI_CS.Containers
     class clOGM : ifContainer
     {
         
-        General.ProcessSettings proc;
+        ProcessSettings proc;
         
-        bool finishedTask = false;
+       
         LogBook log;
-        int exitCode;
+      
 
         public clOGM(LogBook log)
         {
             this.log = log;
-            proc = new x264_GUI_CS.General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
         Package ogmtools;
 
-        public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);
@@ -87,7 +86,7 @@ namespace x264_GUI_CS.Containers
 
         }
        
-        public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool mkv2vfr(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             return true;
         }

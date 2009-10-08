@@ -7,11 +7,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace x264_GUI_CS.GUI
+namespace MiniCoder
 {
     public partial class frmFileInformation : Form
     {
-        General.FileInformation fileInformation;
+        FileInformation fileInformation;
         mainGUI frmMain;
         int hardSub = 0;
         //public frmFileInformation(General.FileInformation fileInformation, mainGUI frmMain)
@@ -23,8 +23,8 @@ namespace x264_GUI_CS.GUI
         //    this.TopMost = true;
             
         //}
-        General.EncodingOptions encOptsExisting;
-        public frmFileInformation(General.FileInformation fileInformation, mainGUI frmMain, General.EncodingOptions encodingOpts)
+        EncodingOptions encOptsExisting;
+        public frmFileInformation(FileInformation fileInformation, mainGUI frmMain, EncodingOptions encodingOpts)
         {
 
             InitializeComponent();
@@ -239,7 +239,7 @@ namespace x264_GUI_CS.GUI
 
        private void btnSave_Click(object sender, EventArgs e)
        {
-            General.EncodingOptions encOpts = new General.EncodingOptions();
+            EncodingOptions encOpts = new EncodingOptions();
 
             
 

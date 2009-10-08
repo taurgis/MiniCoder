@@ -6,25 +6,25 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.General;
+
 namespace x264_GUI_CS.Containers
 {
     class VOB : ifContainer
     {
        
-        General.ProcessSettings proc;
-        bool finishedTask = false;
+        ProcessSettings proc;
+       
         LogBook log;
         int exitCode;
 
         public VOB(LogBook log)
         {
             this.log = log;
-            proc = new General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
         Package DGIndex;
         Package virtualDubMod;
-        public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);
@@ -171,7 +171,7 @@ namespace x264_GUI_CS.Containers
 
      
         
-        public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool mkv2vfr(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             return true;
         }

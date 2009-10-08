@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -15,7 +14,7 @@ namespace x264_GUI_CS.Containers
     {
         Package mkvtoolnix;
         Package pcmkv2vfr;
-        General.ProcessSettings proc;
+        ProcessSettings proc;
         private static String outputLog = "";
         private static string logs = "";
         private static Process mainProcess = null;
@@ -31,10 +30,10 @@ namespace x264_GUI_CS.Containers
         public clMKV(LogBook log)
         {
             this.log = log;
-            proc = new General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
            
-        public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             outputLog = "";
@@ -372,7 +371,7 @@ namespace x264_GUI_CS.Containers
                 Thread.Sleep(0);
             }
         }
-        public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool mkv2vfr(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             pcmkv2vfr = (Package)dir.htRequired["mkv2vfr"];

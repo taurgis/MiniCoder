@@ -7,7 +7,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
-namespace x264_GUI_CS
+namespace MiniCoder
 {
     public class LogBook
     {
@@ -61,7 +61,7 @@ namespace x264_GUI_CS
             mainFrame.setMessage(info);
          
         }
-        public void sendmail(x264_GUI_CS.General.FileInformation details, MiniCoder.General.ApplicationSettings dir)
+        public void sendmail(FileInformation details, ApplicationSettings dir)
         {
             if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
@@ -90,7 +90,7 @@ namespace x264_GUI_CS
 
         
         }
-        public void sendmail(MiniCoder.General.ApplicationSettings dir)
+        public void sendmail(ApplicationSettings dir)
         {
             if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {

@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Classes\General\LogBook.cs" />
     <Compile Include="Classes\General\ProcessSettings.cs" />
+    <Compile Include="Classes\General\Static.cs" />
     <Compile Include="Classes\General\XmlValidator.cs" />
     <Compile Include="Classes\Software\Package.cs" />
     <Compile Include="Classes\Software\Packages.cs" />
@@ -136,15 +137,6 @@
     <Compile Include="GUI\Updater.Designer.cs">
       <DependentUpon>Updater.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task Libraries\AudioDecoding.cs" />
-    <Compile Include="Task Libraries\AudioEncoding.cs" />
-    <Compile Include="Task Libraries\Avisynth.cs" />
-    <Compile Include="Task Libraries\DGAVCIndex.cs" />
-    <Compile Include="Task Libraries\Filters.cs">
-    </Compile>
-    <Compile Include="Task Libraries\IfMediaDetails.cs" />
-    <Compile Include="Task Libraries\MediaDetails.cs" />
-    <Compile Include="Task Libraries\MediaInfoDLL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\AppLocation.resx">
@@ -215,6 +207,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Task Libraries\AudioDecoding.cs" />
+    <Compile Include="Task Libraries\AudioEncoding.cs" />
+    <Compile Include="Task Libraries\Avisynth.cs" />
+    <Compile Include="Task Libraries\DGAVCIndex.cs" />
+    <Compile Include="Task Libraries\Filters.cs" />
+    <Compile Include="Task Libraries\IfMediaDetails.cs" />
+    <Compile Include="Task Libraries\MediaDetails.cs" />
+    <Compile Include="Task Libraries\MediaInfoDLL.cs" />
     <Compile Include="Task Libraries\Muxing.cs" />
     <Compile Include="Task Libraries\VideoEncoding.cs" />
     <Compile Include="Task Libraries\Worker.cs" />
