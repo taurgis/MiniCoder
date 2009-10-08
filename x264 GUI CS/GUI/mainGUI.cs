@@ -568,14 +568,18 @@ namespace x264_GUI_CS
                     {
                         cbTemplates.Items.Add(FI.Name.Replace(".tpl", ""));
                     }
+                
 
                 
                 if (File.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\default.tpl"))
                 {
                     for (int i = 0; i < cbTemplates.Items.Count; i++)
                     {
-                        if (cbTemplates.Items[i].ToString() == "default")
+                        if (cbTemplates.Items[i].ToString().ToUpper() == "DEFAULT")
+                        {
                             cbTemplates.SelectedIndex = i;
+                            
+                        }
                     }
                 }
 
@@ -640,7 +644,15 @@ namespace x264_GUI_CS
         {
             int tempIndex = cbTemplates.SelectedIndex;
             encodingOpts = getEncodeOpts();
-            encodingOpts.templateName = InputBox.Show("Enter template name", "Template Name", cbTemplates.Items[cbTemplates.SelectedIndex].ToString());
+            try
+            {
+                encodingOpts.templateName = InputBox.Show("Enter template name", "Template Name", cbTemplates.Items[cbTemplates.SelectedIndex].ToString());
+            }
+            catch
+            {
+                
+                encodingOpts.templateName = InputBox.Show("Enter template name", "Template Name", "default");
+            }
             encodingOpts.save();
             cbTemplates.Items.Clear();
             DirectoryInfo Dir = new DirectoryInfo(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
@@ -893,20 +905,30 @@ namespace x264_GUI_CS
         const string MenuText = "Encode With MiniCoder";
         string menuCommand = string.Format(
                     "\"{0}\" \"%L\"", Application.ExecutablePath);
-              private void btnDeleteTemplate_Click(object sender, EventArgs e)
+        private void btnDeleteTemplate_Click(object sender, EventArgs e)
         {
-            int tempIndex = cbTemplates.SelectedIndex;
-            encodingOpts = getEncodeOpts();
-            encodingOpts.templateName = cbTemplates.Items[cbTemplates.SelectedIndex].ToString();
-            encodingOpts.delete();
-            cbTemplates.Items.Clear();
-            DirectoryInfo Dir = new DirectoryInfo(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
-            FileInfo[] FileList = Dir.GetFiles("*.tpl", SearchOption.AllDirectories);
-            foreach (FileInfo FI in FileList)
+            if (MessageBox.Show("Are you sure?","Delete",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                cbTemplates.Items.Add(FI.Name.Replace(".tpl", ""));
+                int tempIndex = cbTemplates.SelectedIndex;
+                encodingOpts = getEncodeOpts();
+                encodingOpts.templateName = cbTemplates.Items[cbTemplates.SelectedIndex].ToString();
+                if (encodingOpts.templateName.ToUpper() != "DEFAULT")
+                {
+                    encodingOpts.delete();
+                }
+                else
+                {
+                    MessageBox.Show("Deleting default profile not allowed.");
+                }
+                cbTemplates.Items.Clear();
+                DirectoryInfo Dir = new DirectoryInfo(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
+                FileInfo[] FileList = Dir.GetFiles("*.tpl", SearchOption.AllDirectories);
+                foreach (FileInfo FI in FileList)
+                {
+                    cbTemplates.Items.Add(FI.Name.Replace(".tpl", ""));
+                }
+                cbTemplates.SelectedIndex = tempIndex;
             }
-            cbTemplates.SelectedIndex = tempIndex;
         }
 
         private void customSettingsToolStripMenuItem_Click(object sender, EventArgs e)
