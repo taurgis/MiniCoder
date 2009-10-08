@@ -78,7 +78,7 @@ namespace x264_GUI_CS
             {
                 log.addLine("Error Starting up");
                 log.addLine(er.Message);
-                log.sendmail();
+                log.sendmail(appSettings);
             }
         }
 
@@ -533,13 +533,26 @@ namespace x264_GUI_CS
 
             return url;
         }
+
+        private bool checkInternet()
+        {
+            try
+            {
+                System.Net.IPHostEntry objIPHE = System.Net.Dns.GetHostEntry("www.google.com");
+                return true;
+            }
+            catch
+            {
+                return false; // host not reachable.
+            } 
+        }
         private void mainGUI_Load(object sender, EventArgs e)
         {
             try
             {
                 
                 processPriority.SelectedIndex = 0;
-             
+             if(checkInternet())
                 updateRequired();
                 if (!Directory.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\"))
                 {
@@ -571,7 +584,7 @@ namespace x264_GUI_CS
             {
                 log.addLine("Error during startup");
                 log.addLine(exc.Message.ToString());
-                log.sendmail();
+                log.sendmail(appSettings);
             }
 
         }

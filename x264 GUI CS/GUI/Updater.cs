@@ -57,7 +57,7 @@ namespace MiniCoder
             catch
             {
                 log.addLine("Error updating, can't find file or connection.");
-                log.sendmail();
+                log.sendmail(applicationSettings);
             }
         }
 
