@@ -13,14 +13,12 @@ namespace x264_GUI_CS.Task_Libraries
 {
     class Avisynth
     {
-        private static Process mainProcess = null;
-        Thread backGround;
-        private static StreamReader stdout = null;
-        private static StreamReader stderr = null;
+   
         bool finishedTask = false;
         LogBook log;
         Package avs2yuv;
         Package avisynth;
+        General.ProcessSettings proc;
         
         public Avisynth(LogBook log)
         {
@@ -227,9 +225,12 @@ namespace x264_GUI_CS.Task_Libraries
 
             avs.Close();
         }
-        
-        public bool checkErrors(string file,ApplicationSettings dir)
+
+        public bool checkErrors(string file, ApplicationSettings dir, General.ProcessSettings proc)
         {
+            this.proc = proc;
+            proc.stdErrDisabled(false);
+            proc.stdOutDisabled(false);
             avs2yuv = (Package)dir.htRequired["avs2yuv"];
             avisynth = (Package)dir.htRequired["avs"];
 
@@ -239,13 +240,14 @@ namespace x264_GUI_CS.Task_Libraries
             if (!avs2yuv.isInstalled())
                 avs2yuv.download();
 
-            mainProcess = new Process();
+            proc.initProcess();
+            
 
             log.addLine("Verifying Avisynth script");
-            mainProcess.StartInfo.FileName = Path.Combine(avs2yuv.getInstallPath(), "avs2yuv.exe");
-            mainProcess.StartInfo.Arguments = "\"" + file + "\" NUL";
+            proc.setFilename(Path.Combine(avs2yuv.getInstallPath(), "avs2yuv.exe"));
+            proc.setArguments("\"" + file + "\" NUL");
 
-            taskProcess();
+            proc.startProcess();
 
             string err = log.getLog();
 
@@ -265,110 +267,6 @@ namespace x264_GUI_CS.Task_Libraries
             return true;
         }
 
-        private void taskProcess()
-        {
-            finishedTask = false;
-
-            mainProcess.EnableRaisingEvents = true;
-
-            mainProcess.StartInfo.UseShellExecute = false;
-            mainProcess.StartInfo.CreateNoWindow = true;
-            mainProcess.StartInfo.RedirectStandardError = true;
-            mainProcess.StartInfo.RedirectStandardOutput = true;
-
-            backGround = new Thread(new ThreadStart(runprocess));
-            backGround.Start();
-
-            while (backGround.IsAlive)
-            {
-                Thread.Sleep(500);
-                
-                if (!finishedTask)
-                    continue;
-
-                if (backGround.IsAlive)
-                {
-                    if (!mainProcess.HasExited)
-                    {
-                        mainProcess.Kill();
-                    }
-                    mainProcess.Close();
-                    backGround.Abort();
-                }
-
-            }
-
-        }
-
-        private void runprocess()
-        {
-            Thread stdErrThread = null;
-            Thread stdOutThread = null;
-
-            try
-            {
-                mainProcess.Start();
-                mainProcess.PriorityClass = ProcessPriorityClass.Idle;
-
-                stderr = mainProcess.StandardError;
-                stdout = mainProcess.StandardOutput;
-
-                stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
-
-                stdErrThread.Start();
-                stdOutThread.Start();
-
-                Thread.Sleep(2000);
-
-                if(!mainProcess.HasExited)
-                    mainProcess.Kill();
-
-                Thread.Sleep(2000);
-            }
-            finally
-            {
-                if (null != stdOutThread)
-                {
-
-                    stdOutThread.Interrupt();
-                    stdOutThread.Abort();
-                }
-                if (null != stdErrThread)
-                {
-                    stdErrThread.Interrupt();
-                    stdErrThread.Abort();
-                }
-            }
-        }
-
-        private void stderrProcess()
-        {
-            while (stderr.ReadLine() != null)
-            {
-                log.addLine(stderr.ReadLine());
-                Thread.Sleep(0);
-            }
-            //while ((testText.Text = stderr.ReadLine()) != null)
-            //{
-            //    outputLog += testText.Text + "\r\n";
-            //    Thread.Sleep(0);
-            //}
-        }
-
-        private void stdoutProcess()
-        {
-            while (stdout.ReadLine() != null)
-            {
-                log.addLine(stdout.ReadLine());
-                log.setInfoLabel(stdout.ReadLine());
-                Thread.Sleep(0);
-            }
-            //while ((testText.Text = stdout.ReadLine()) != null)
-            //{
-            //    outputLog += testText.Text + "\r\n";
-            //    Thread.Sleep(0);
-            //}
-        }
+       
     }
 }

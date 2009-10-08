@@ -11,29 +11,30 @@ namespace x264_GUI_CS.Task_Libraries
 {
     class Muxing
     {
-        private static Process mainProcess = null;
-        Thread backGround;
-        private static StreamReader stdout = null;
-        private static StreamReader stderr = null;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
-        bool finishedTask = false;
+        
         LogBook log;
+        General.ProcessSettings proc;
+        bool finishedTask = false;
+        
         Package mkvtoolnix;
         Package mp4box;
-        int exitCode;
+      
         
         public Muxing(LogBook log)
         {
             this.log = log;
+            proc = new x264_GUI_CS.General.ProcessSettings(log);
         }
 
         public bool Mux(ApplicationSettings dir, General.FileInformation details, General.EncodingOptions encOpts, General.ProcessSettings proc)
         {
             this.proc = proc;
+            proc.stdErrDisabled(false);
+            proc.stdOutDisabled(false);
             mkvtoolnix = (Package)dir.htRequired["mkvtoolnix"];
             mp4box = (Package)dir.htRequired["mp4box"];
-        
-            mainProcess = new Process();
+
+            proc.initProcess();
             log.addLine("Muxing");
             string args;
 
@@ -62,7 +63,7 @@ namespace x264_GUI_CS.Task_Libraries
                 case 0:
                     if (!mkvtoolnix.isInstalled())
                         mkvtoolnix.download();
-                    mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvmerge.exe");
+                   proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvmerge.exe"));
                     details.outFile += ".mkv";
 
                     string arg1 = "";
@@ -126,24 +127,18 @@ namespace x264_GUI_CS.Task_Libraries
 
                     log.addLine(args);
 
-                    mainProcess.StartInfo.Arguments = args;
+                    proc.setArguments(args);
                                             
                     break;
                 case 1:
                     if (!mp4box.isInstalled())
                         mp4box.download();
-                //"MP4Box.exe" -fps 29.971 -add "x-001_new_EncoderOutput.264#video:name=Video" -add "i_ sbr.aac:lang=eng:sbr" -add "ish.ass:lang=eng" -new "C:\D001_new.mp4"
-                    mainProcess.StartInfo.FileName = Path.Combine(mp4box.getInstallPath(), "mp4box.exe");
+              
+                    proc.setFilename(Path.Combine(mp4box.getInstallPath(), "mp4box.exe"));
                     details.outFile += ".mp4";
 
                    
 
-                    //if (details.vfr && File.Exists(details.vfrCode))
-                    //    arg1 += "--timecodes 0:\"" + details.vfrCode + "\" ";
-
-                    //arg1 += "--title \"Encoded with MiniCoder\" ";
-                    //if (File.Exists(dir.tempDIR + "chapters.xml"))
-                    //    arg1 += "--chapters \"" + dir.tempDIR + "chapters.xml\" ";
 
                     if (details.fps > 400)
                         args = "-fps " + details.fps.ToString().Replace(".0", "").Substring(0, 2) + "." + details.fps.ToString().Replace(".0", "").Substring(2, details.fps.ToString().Replace(".0", "").Length - 2) + " -add \"" + details.encodedVideo + "#video:name=Video\" ";
@@ -159,7 +154,7 @@ namespace x264_GUI_CS.Task_Libraries
                     }
 
 
-                    //-add "i_ sbr.aac:lang=eng:sbr" -add "ish.ass:lang=eng" -new "C:\D001_new.mp4"
+                   
 
                     if (encOpts.hardSub == 0)
                     {
@@ -171,159 +166,28 @@ namespace x264_GUI_CS.Task_Libraries
                     }
                     args += "-new \"" + details.outFile + "\"";
 
-                    //if (details.attachments != null)
-                    //{
-                    //    for (int i = 0; i < details.attachments.Count(); i++)
-                    //    {
-                    //        if (File.Exists(dir.tempDIR + details.attachments[i]))
-                    //            args += "--attachment-mime-type application/x-truetype-font --attachment-name \"" + details.attachments[i] + "\" --attach-file \"" + dir.tempDIR + details.attachments[i] + "\" ";
-                    //    }
-                    //}
-
-                    //args += "--track-order 0:0,";
-
-                    //for (int i = 0; i < details.audioCount; i++)
-                    //    args += (i + 1).ToString() + ":1,";
-
-                    //int step = details.audioCount + 1;
-
-                    //for (int i = 0; i < details.subCount; i++)
-                    //    args += (i + step).ToString() + ":0,";
-
-
-
-
-
+                   
                     log.addLine(args);
 
-                    mainProcess.StartInfo.Arguments = args;
+                    proc.setArguments(args);
 
                     break;
 
             }
 
-            taskProcess();
+            
 
             if (proc.abandon)
                 return true;
 
-            if (exitCode != 0)
+            if (proc.startProcess() != 0)
                 return false;
             else
+            {
                 return true;
-        }
-
-        private void taskProcess()
-        {
-            finishedTask = false;
-
-            mainProcess.EnableRaisingEvents = true;
-
-            mainProcess.StartInfo.UseShellExecute = false;
-            mainProcess.StartInfo.CreateNoWindow = true;
-            mainProcess.StartInfo.RedirectStandardError = true;
-            mainProcess.StartInfo.RedirectStandardOutput = true;
-
-            backGround = new Thread(new ThreadStart(runprocess));
-            backGround.Start();
-
-            while (backGround.IsAlive)
-            {
-                Thread.Sleep(500);
-                try
-                {
-                    mainProcess.PriorityClass = proc.getPriority();
-                }
-                catch
-                {
-                }
-                if (proc.abandon)
-                {
-                    if (backGround.IsAlive)
-                    {
-                        if (!mainProcess.HasExited)
-                        {
-                            mainProcess.Kill();
-                        }
-                        mainProcess.Close();
-                        backGround.Abort();
-                    }
-                }
-
-                if (!finishedTask)
-                    continue;
-
-                if (backGround.IsAlive)
-                {
-                    if (!mainProcess.HasExited)
-                    {
-                        mainProcess.Kill();
-                    }
-                    mainProcess.Close();
-                    backGround.Abort();
-                }
-
-            }
-
-        }
-
-        private void runprocess()
-        {
-            Thread stdErrThread = null;
-            Thread stdOutThread = null;
-
-            try
-            {
-                mainProcess.Start();
-                mainProcess.PriorityClass = proc.getPriority();
-
-                stderr = mainProcess.StandardError;
-                stdout = mainProcess.StandardOutput;
-
-                stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
-
-                stdErrThread.Start();
-                stdOutThread.Start();
-
-                mainProcess.WaitForExit();
-                exitCode = mainProcess.ExitCode;
-                
-                Thread.Sleep(2000);
-            }
-            finally
-            {
-                if (null != stdOutThread)
-                {
-
-                    stdOutThread.Interrupt();
-                    stdOutThread.Abort();
-                }
-                if (null != stdErrThread)
-                {
-                    stdErrThread.Interrupt();
-                    stdErrThread.Abort();
-                }
             }
         }
 
-        private void stderrProcess()
-        {
-            while (stderr.ReadLine() != null)
-            {
-                log.addLine(stderr.ReadLine());
-                Thread.Sleep(0);
-            }
-        }
-
-        private void stdoutProcess()
-        {
-            while (stdout.ReadLine() != null)
-            {
-                log.addLine(stdout.ReadLine());
-                log.setInfoLabel(stdout.ReadLine());
-                Thread.Sleep(0);
-            }
-        }
+      
     }
 }

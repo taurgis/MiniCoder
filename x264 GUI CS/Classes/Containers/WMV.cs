@@ -13,7 +13,7 @@ namespace x264_GUI_CS.Containers
     class WMV : ifContainer
     {
         private static Process mainProcess = null;
-        ProcessSettings proc = new ProcessSettings();
+        ProcessSettings proc;
         Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
@@ -24,6 +24,7 @@ namespace x264_GUI_CS.Containers
         public WMV(LogBook log)
         {
             this.log = log;
+            proc = new General.ProcessSettings(log);
         }
        // Package vdubmod;
         
