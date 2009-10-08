@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Windows.Forms;
 using MiniCoder;
-namespace x264_GUI_CS.Task_Libraries
+namespace MiniCoder
 {
     class Muxing
     {
         
         LogBook log;
-        General.ProcessSettings proc;
-        bool finishedTask = false;
+        ProcessSettings proc;
+       
         
         Package mkvtoolnix;
         Package mp4box;
@@ -23,10 +22,10 @@ namespace x264_GUI_CS.Task_Libraries
         public Muxing(LogBook log)
         {
             this.log = log;
-            proc = new x264_GUI_CS.General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
 
-        public bool Mux(ApplicationSettings dir, General.FileInformation details, General.EncodingOptions encOpts, General.ProcessSettings proc)
+        public bool Mux(ApplicationSettings dir, FileInformation details, EncodingOptions encOpts, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.IO;
 using System.Threading;
@@ -9,16 +8,16 @@ using System.Windows.Forms;
 using MiniCoder;
 using x264_GUI_CS;
 
-namespace x264_GUI_CS.Task_Libraries
+namespace MiniCoder
 {
     class Avisynth
     {
    
-        bool finishedTask = false;
+        
         LogBook log;
         Package avs2yuv;
         Package avisynth;
-        General.ProcessSettings proc;
+        ProcessSettings proc;
         
         public Avisynth(LogBook log)
         {
@@ -29,7 +28,7 @@ namespace x264_GUI_CS.Task_Libraries
         {
         }
 
-        public string createScript(ApplicationSettings dir, General.FileInformation details,General.EncodingOptions encOpts)
+        public string createScript(ApplicationSettings dir, FileInformation details,EncodingOptions encOpts)
         {
             string script = "";
             string sourceline = "";
@@ -151,7 +150,7 @@ namespace x264_GUI_CS.Task_Libraries
          
         }
 
-        public string addFilters(General.EncodingOptions encOpts, ApplicationSettings dir)
+        public string addFilters(EncodingOptions encOpts, ApplicationSettings dir)
         {
             Filters filt = new Filters(dir);
             string filtOpts = "";
@@ -193,7 +192,7 @@ namespace x264_GUI_CS.Task_Libraries
 
             return filtOpts;
         }
-        public string addFiltersNoLog(General.EncodingOptions encOpts, ApplicationSettings dir)
+        public string addFiltersNoLog(EncodingOptions encOpts, ApplicationSettings dir)
         {
             Filters filt = new Filters(dir);
             string filtOpts = "";
@@ -216,7 +215,7 @@ namespace x264_GUI_CS.Task_Libraries
             }
             return filtOpts;
         }
-        public void writeScript(ApplicationSettings dir, General.FileInformation details,string avsLine)
+        public void writeScript(ApplicationSettings dir, FileInformation details,string avsLine)
         {
             StreamWriter avs;
 
@@ -226,7 +225,7 @@ namespace x264_GUI_CS.Task_Libraries
             avs.Close();
         }
 
-        public bool checkErrors(string file, ApplicationSettings dir, General.ProcessSettings proc)
+        public bool checkErrors(string file, ApplicationSettings dir, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);

@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 using x264_GUI_CS;
 
-namespace x264_GUI_CS.Task_Libraries
+namespace MiniCoder
 {
     public class MediaDetails32 : IfMediaDetails
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -9,12 +8,12 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MiniCoder;
 
-namespace x264_GUI_CS.Task_Libraries
+namespace MiniCoder
 {
     class VideoEncoding
     {
       
-        General.ProcessSettings proc;
+        ProcessSettings proc;
         
         LogBook log;
         Package x264;
@@ -25,10 +24,10 @@ namespace x264_GUI_CS.Task_Libraries
         public VideoEncoding(LogBook log)
         {
             this.log = log;
-            proc = new x264_GUI_CS.General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
 
-        public bool encode(ApplicationSettings dir, General.EncodingOptions encopts, General.FileInformation details, General.ProcessSettings proc)
+        public bool encode(ApplicationSettings dir, EncodingOptions encopts, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);
@@ -50,7 +49,7 @@ namespace x264_GUI_CS.Task_Libraries
 
             if (encopts.sizeOpt == 1)
             {
-                General.Calc brCalc = new x264_GUI_CS.General.Calc(details, encopts);
+                Calc brCalc = new Calc(details, encopts);
                 encopts.vidBR = brCalc.getVideoBitrate();
              
                 log.addLine("Video Bitrate: " + encopts.vidBR);
