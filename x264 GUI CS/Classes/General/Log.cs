@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using System.Text;
 using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
 using System.IO;
+using ICSharpCode.SharpZipLib.Zip;
 namespace x264_GUI_CS
 {
     public class LogBook
@@ -26,11 +27,8 @@ namespace x264_GUI_CS
             ListViewItem.ListViewSubItem statusSub = new ListViewItem.ListViewSubItem();
 
 
-            if (System.DateTime.Now.TimeOfDay.Minutes < 10)
-                inputListItem.Text = System.DateTime.Now.TimeOfDay.Hours.ToString() + ":0" + System.DateTime.Now.TimeOfDay.Minutes.ToString();
-            else
-                inputListItem.Text = System.DateTime.Now.TimeOfDay.Hours.ToString() + ":" + System.DateTime.Now.TimeOfDay.Minutes.ToString();
-
+            
+                inputListItem.Text = System.DateTime.Now.ToString("t");
             
             
             inputListItem.SubItems.Add(statusSub);
@@ -59,53 +57,32 @@ namespace x264_GUI_CS
             mainFrame.setMessage(info);
          
         }
-        public void sendmail(x264_GUI_CS.General.FileInformation details)
+        public void sendmail(x264_GUI_CS.General.FileInformation details, MiniCoder.General.ApplicationSettings dir)
         {
             if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
+                StreamWriter streamWriter = new StreamWriter(dir.tempDIR + "\\log.txt");
+                streamWriter.Write(getLog());
+                streamWriter.Close();
+                string fileFilter = @"\.avs;\.txt";
+                using (FileStream stream = new FileStream("errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
+                {
 
-                var fromAddress = new MailAddress("x264errorreporter@gmail.com", "X264 errorreporter");
-                var toAddress = new MailAddress("x264errorreporter@gmail.com", "Errorreporter");
-                const string fromPassword = "encoder123";
-                const string subject = "ErrorReporting";
-                Attachment attach;
-                
-                   
-                
-                string body = details.completeinfo + "\n" + getLog();
-                var smtp = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 20000
-                };
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body,
-                    
-                    
-                })
-                {
-                    if (File.Exists(details.avsFile))
-                    {
-                        attach = new Attachment(details.avsFile);
-                        message.Attachments.Add(attach);
-                    }
-                    smtp.Send(message);
-                    
+                    FastZip fz = new FastZip();
+
+                    fz.CreateZip(stream, dir.tempDIR, true, fileFilter, null);
+
                 }
+                
+                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreporton sourceforge!");
+                Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
+                
+                
+               // fz.CreateZip("errorlog.zip", dir.tempDIR, false, fileFilter);
+                
+                string test = Environment.SpecialFolder.Desktop.ToString();
+                
             }
-            StreamWriter strw = new StreamWriter(details.outDIR + "Minicoder_crashlog.txt");
-            strw.Write(getLog());
-            strw.Close();
-            
-            //MessageBox.Show("Closing Application to prevent further errors!");
-            //Application.Exit();
-
 
         
         }
@@ -114,28 +91,26 @@ namespace x264_GUI_CS
             if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
 
-                var fromAddress = new MailAddress("x264errorreporter@gmail.com", "X264 errorreporter");
-                var toAddress = new MailAddress("x264errorreporter@gmail.com", "Errorreporter");
-                const string fromPassword = "wiske123";
-                const string subject = "ErrorReporting";
-                string body = getLog();
-                var smtp = new SmtpClient
+                StreamWriter streamWriter = new StreamWriter(dir.tempDIR + "\\log.txt");
+                streamWriter.Write(getLog());
+                streamWriter.Close();
+                string fileFilter = @"\.avs;\.txt";
+                using (FileStream stream = new FileStream("errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
                 {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 20000
-                };
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body
-                })
-                {
-                    smtp.Send(message);
+
+                    FastZip fz = new FastZip();
+
+                    fz.CreateZip(stream, dir.tempDIR, true, fileFilter, null);
+
                 }
+
+                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreporton sourceforge!");
+                Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
+
+
+                // fz.CreateZip("errorlog.zip", dir.tempDIR, false, fileFilter);
+
+              //  string test = Environment.SpecialFolder.Desktop.ToString();
             }
         
         }

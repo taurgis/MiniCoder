@@ -83,7 +83,7 @@ namespace MiniCoder.Task_Libraries
                         {
                             main.updateStatus("error");
                             log.addLine("Error in VFR Parsing");
-                            log.sendmail(details);
+                            log.sendmail(details,appSettings);
                             return "Remove";
                         }
                     }
@@ -157,7 +157,7 @@ namespace MiniCoder.Task_Libraries
                     {
                         main.updateStatus("error");
                         log.addLine("Error demuxing");
-                        log.sendmail(details);
+                        log.sendmail(details, appSettings);
                        // MessageBox.Show("Demuxing Error");
                         return "Remove";
                     }
@@ -183,7 +183,7 @@ namespace MiniCoder.Task_Libraries
                             if (!proc.errflag)
                             {
                                 main.updateStatus("error");
-                                log.sendmail(details);
+                                log.sendmail(details, appSettings);
                                 //MessageBox.Show("DGAVC Encoding Error");
                                 return "Remove";
                             }
@@ -214,7 +214,7 @@ namespace MiniCoder.Task_Libraries
                     if (!proc.errflag)
                     {
                         main.updateStatus("error");
-                        log.sendmail(details);
+                        log.sendmail(details, appSettings);
                         //MessageBox.Show("Avisynth Error");
                         return "Remove";
                     }
@@ -240,7 +240,7 @@ namespace MiniCoder.Task_Libraries
                     if (!proc.errflag)
                     {
                          main.updateStatus("error");
-                        log.sendmail(details);
+                         log.sendmail(details, appSettings);
                         //MessageBox.Show("Audio Decoding Error");
                         return "Remove";
                     }
@@ -260,7 +260,7 @@ namespace MiniCoder.Task_Libraries
                     if (!proc.errflag)
                     {
                          main.updateStatus("error");
-                        log.sendmail(details);
+                         log.sendmail(details, appSettings);
                        // MessageBox.Show("Audio Encoding Error");
                         return "Remove";
                     }
@@ -280,7 +280,7 @@ namespace MiniCoder.Task_Libraries
                     if (!proc.errflag)
                     {
                         main.updateStatus("error");
-                        log.sendmail(details);
+                        log.sendmail(details, appSettings);
                         //MessageBox.Show("Video Encoding Error");
                         return "Remove";
                     }
@@ -300,7 +300,7 @@ namespace MiniCoder.Task_Libraries
                     if (!proc.errflag)
                     {
                         main.updateStatus("error");
-                        log.sendmail(details);
+                        log.sendmail(details, appSettings);
                         //MessageBox.Show("Muxing Error");
                         return "Remove";
                     }
