@@ -12,8 +12,8 @@ namespace x264_GUI_CS
     public class LogBook
     {
         mainGUI mainFrame;
-   
 
+        string fileFilter = @"\.avs;\.txt;\.xml;\.vcf";
         public LogBook(mainGUI mainFrame)
         {
             this.mainFrame = mainFrame;
@@ -64,7 +64,7 @@ namespace x264_GUI_CS
                 StreamWriter streamWriter = new StreamWriter(dir.tempDIR + "\\log.txt");
                 streamWriter.Write(getLog());
                 streamWriter.Close();
-                string fileFilter = @"\.avs;\.txt";
+                
                 using (FileStream stream = new FileStream("errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
                 {
 
@@ -74,7 +74,7 @@ namespace x264_GUI_CS
 
                 }
                 
-                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreporton sourceforge!");
+                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreport on sourceforge!");
                 Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
                 
                 
@@ -86,7 +86,7 @@ namespace x264_GUI_CS
 
         
         }
-        public void sendmail()
+        public void sendmail(MiniCoder.General.ApplicationSettings dir)
         {
             if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
@@ -94,7 +94,7 @@ namespace x264_GUI_CS
                 StreamWriter streamWriter = new StreamWriter(dir.tempDIR + "\\log.txt");
                 streamWriter.Write(getLog());
                 streamWriter.Close();
-                string fileFilter = @"\.avs;\.txt";
+                
                 using (FileStream stream = new FileStream("errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
                 {
 
@@ -104,7 +104,7 @@ namespace x264_GUI_CS
 
                 }
 
-                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreporton sourceforge!");
+                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreport on sourceforge!");
                 Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
 
 
