@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using System.Text;
 using System.Collections;
-namespace x264_GUI_CS.General
+namespace MiniCoder
 {
     public class FileInformation
     {

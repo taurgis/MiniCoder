@@ -1,4 +1,4 @@
-﻿namespace x264_GUI_CS
+﻿namespace MiniCoder
 {
     partial class ScriptPreview
     {
@@ -75,6 +75,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ScriptPreview";
             this.Text = "ScriptPreview";
+            this.Load += new System.EventHandler(this.ScriptPreview_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

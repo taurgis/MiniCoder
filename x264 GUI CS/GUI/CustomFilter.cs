@@ -6,10 +6,9 @@ using System.Drawing;
 
 using System.Text;
 using System.Windows.Forms;
-using MiniCoder.General;
-using x264_GUI_CS.General;
 
-namespace x264_GUI_CS
+
+namespace MiniCoder
 {
     public partial class CustomFilter : Form
     {
@@ -42,7 +41,7 @@ namespace x264_GUI_CS
         private void previewBtn_Click(object sender, EventArgs e)
         {
             
-            Task_Libraries.Avisynth avs = new Task_Libraries.Avisynth();
+            Avisynth avs = new Avisynth();
 
            
 

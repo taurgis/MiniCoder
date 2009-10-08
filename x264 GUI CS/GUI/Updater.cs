@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using MiniCoder.General;
 using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
@@ -20,7 +19,7 @@ namespace MiniCoder
         Hashtable applicationVersions = new Hashtable();
         Hashtable applicationInfo;
         Boolean warnUser = false;
-        x264_GUI_CS.LogBook log;
+        LogBook log;
         public Updater(ApplicationSettings applicationSettings)
         {
             InitializeComponent();
@@ -36,7 +35,7 @@ namespace MiniCoder
             }
             
         }
-        public Updater(ApplicationSettings applicationSettings, x264_GUI_CS.LogBook log)
+        public Updater(ApplicationSettings applicationSettings, LogBook log)
         {
             try
             {

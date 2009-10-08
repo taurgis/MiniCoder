@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using MiniCoder.General;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -13,38 +12,38 @@ using System.Diagnostics;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Net;
-using x264_GUI_CS.Task_Libraries;
+
 using System.Reflection;
 
 
-namespace x264_GUI_CS
+namespace MiniCoder
 {
     public partial class mainGUI : Form
     {
         ApplicationSettings appSettings = new ApplicationSettings(Application.StartupPath);
-        General.FileInformation details = new General.FileInformation();
-        General.EncodingOptions encodingOpts = new General.EncodingOptions();
-        General.EncodingOptions preview = new x264_GUI_CS.General.EncodingOptions();
-        General.ProcessSettings proc;
+        FileInformation details = new FileInformation();
+        EncodingOptions encodingOpts = new EncodingOptions();
+        EncodingOptions preview = new EncodingOptions();
+        ProcessSettings proc;
         ArrayList fileList = new ArrayList();
         Thread encodeBatchTask;
         int crfValue = 0;
         LogBook log;
         Hashtable customSettings = new Hashtable();
-                
+
         [DllImport("user32.dll")]
         internal static extern short GetKeyState(int keyCode);
         [DllImport("user32.dll")]
         internal static extern int ExitWindowsEx(int uFlags, int dwReason);
 
-       
+
         bool encoding = false;
         bool encOptsErr;
 
         private int hardSub = 0;
         public string customFiltOpts;
         public string currentProc;
-                         
+
         public mainGUI()
         {
             try
@@ -59,7 +58,7 @@ namespace x264_GUI_CS
                 noiseCombo.SelectedIndex = 0;
                 sharpCombo.SelectedIndex = 0;
                 log = new LogBook(this);
-                proc = new General.ProcessSettings(log);
+                proc = new ProcessSettings(log);
                 log.addLine("Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString());
                 if (!Directory.Exists(appSettings.tempDIR))
                     Directory.CreateDirectory(appSettings.tempDIR);
@@ -75,7 +74,7 @@ namespace x264_GUI_CS
                     fileSize.Enabled = true;
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 log.addLine("Error Starting up");
                 log.addLine(er.Message);
@@ -83,9 +82,60 @@ namespace x264_GUI_CS
             }
         }
 
-        public void addCustomSettings(String fileName, General.EncodingOptions encOpts)
+        private void mainGUI_Load(object sender, EventArgs e)
         {
-            if(customSettings.Contains(fileName))
+            try
+            {
+                string startupDisk = Application.StartupPath.Substring(0, 2);
+                int freeDiskSpace = Convert.ToInt32(Startup.getFreeSpace(startupDisk) / 1048576);
+                if(freeDiskSpace < 1000)
+                    MessageBox.Show("Less than 1gb free on disk " + startupDisk + ". Please free up more space!");
+                log.addLine(freeDiskSpace.ToString());
+                processPriority.SelectedIndex = 0;
+                if (Startup.checkInternet())
+                    updateRequired();
+                if (!Directory.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\"))
+                {
+                    log.addLine("Template folder not found, creating!");
+                    Directory.CreateDirectory(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
+                }
+                else
+                    log.addLine("Template folder found!");
+
+                DirectoryInfo Dir = new DirectoryInfo(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
+                FileInfo[] FileList = Dir.GetFiles("*.tpl", SearchOption.AllDirectories);
+                foreach (FileInfo FI in FileList)
+                {
+                    cbTemplates.Items.Add(FI.Name.Replace(".tpl", ""));
+                }
+
+
+
+                if (File.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\default.tpl"))
+                {
+                    for (int i = 0; i < cbTemplates.Items.Count; i++)
+                    {
+                        if (cbTemplates.Items[i].ToString().ToUpper() == "DEFAULT")
+                        {
+                            cbTemplates.SelectedIndex = i;
+
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exc)
+            {
+                log.addLine("Error during startup");
+                log.addLine(exc.Message.ToString());
+                log.sendmail(appSettings);
+            }
+
+        }
+
+        public void addCustomSettings(String fileName, EncodingOptions encOpts)
+        {
+            if (customSettings.Contains(fileName))
             {
                 customSettings.Remove(fileName);
             }
@@ -118,7 +168,7 @@ namespace x264_GUI_CS
 
         private void removeMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             foreach (ListViewItem eachItem in inputList.SelectedItems)
             {
                 if (eachItem.Index < fileindex)
@@ -130,10 +180,10 @@ namespace x264_GUI_CS
                         fileList.RemoveAt(i);
                 }
                 inputList.Items.Remove(eachItem);
-           
+
             }
 
-          
+
         }
 
         private void clearMenuItem_Click(object sender, EventArgs e)
@@ -162,7 +212,7 @@ namespace x264_GUI_CS
                 encodeBatchTask = new Thread(new ThreadStart(encodeBatch));
                 proc.abandon = false;
                 encodeBatchTask.Start();
-               
+
             }
             else
             {
@@ -197,21 +247,33 @@ namespace x264_GUI_CS
         {
 
             DateTime startDate = new DateTime();
-            
 
-            while(fileList.Count!=0)
+
+            while (fileList.Count != 0)
             {
                 startDate = DateTime.Now;
-                MiniCoder.Task_Libraries.Worker worker = new MiniCoder.Task_Libraries.Worker(proc, log, getEncodeOpts(), this, appSettings);
+                Worker worker = new Worker(proc, log, getEncodeOpts(), this, appSettings);
                 Boolean breakWhile = false;
                 details = mediainfo(0);
-                if(outPutLocation.Text != "")
-                details.outDIR = outPutLocation.Text + "\\";
+                
+
+                if (outPutLocation.Text != "")
+                    details.outDIR = outPutLocation.Text + "\\";
+
+                string outputDisk = details.outDIR.Substring(0, 2);
+                int freeDiskSpace = Convert.ToInt32(Startup.getFreeSpace(outputDisk) / 1048576);
+
+                log.addLine(freeDiskSpace + "mb available for output file.");
+
+                if (freeDiskSpace < 200)
+                    MessageBox.Show("Less than 200mb available on target disk. Muxing might be impossible.");
+
+
                 if (customSettings.Contains(details.name))
                 {
                     log.addLine("Found custom settings for " + details.name);
-                    encodingOpts = (General.EncodingOptions)customSettings[details.name];
-                    General.EncodingOptions tempOps = getEncodeOpts();
+                    encodingOpts = (EncodingOptions)customSettings[details.name];
+                    EncodingOptions tempOps = getEncodeOpts();
 
                     encodingOpts.customFilter = tempOps.customFilter;
 
@@ -241,14 +303,14 @@ namespace x264_GUI_CS
 
                     case "Aborted":
                         breakWhile = true;
-                           break;
+                        break;
                     case "Completed":
-                           fileList.RemoveAt(0);
-                           inputList.Items[fileindex].SubItems[1].Text = "Done";
+                        fileList.RemoveAt(0);
+                        inputList.Items[fileindex].SubItems[1].Text = "Done";
                         fileindex++;
                         log.addLine("It took " + (DateTime.Now - startDate).Hours.ToString() + " hours and " + (DateTime.Now - startDate).Minutes.ToString() + " minutes to encode this file.");
-                       afterEncode();
-                       break;
+                        afterEncode();
+                        break;
 
                 }
 
@@ -258,43 +320,43 @@ namespace x264_GUI_CS
             encoding = false;
         }
 
-        private General.FileInformation mediainfo(int i)
+        private FileInformation mediainfo(int i)
         {
             infoLabel.Text = "Gathering Media Info";
 
             IfMediaDetails temp;
-                if (IntPtr.Size == 8)
-                    temp = new MediaDetails64();
-                else
-                    temp  = new MediaDetails32();
+            if (IntPtr.Size == 8)
+                temp = new MediaDetails64();
+            else
+                temp = new MediaDetails32();
 
-            General.FileInformation tempDetail = new General.FileInformation();
+            FileInformation tempDetail = new FileInformation();
 
             tempDetail.fileName = temp.fileName(fileList[i].ToString());
             tempDetail.fileSize = temp.fileSize(fileList[i].ToString());
             tempDetail.format = temp.fileFormat(fileList[i].ToString());
             tempDetail.name = temp.name(fileList[i].ToString());
-            tempDetail.ext=temp.fileExt(fileList[i].ToString());
+            tempDetail.ext = temp.fileExt(fileList[i].ToString());
             tempDetail.outDIR = Path.GetDirectoryName(tempDetail.fileName) + "\\";
             tempDetail.crfValue = crfValue;
             tempDetail.audioCount = temp.audioCount(fileList[i].ToString());
             tempDetail.aud_Languages = temp.audLanguage(fileList[i].ToString());
-            if(tempDetail.ext!=".avi")
+            if (tempDetail.ext != ".avi")
                 tempDetail.aud_id = temp.audID(fileList[i].ToString());
             tempDetail.aud_codec = temp.audCodec(fileList[i].ToString());
             tempDetail.audLength = (int)(temp.audLength(fileList[i].ToString()) / 1000);
             tempDetail.audTitles = temp.audTitle(fileList[i].ToString());
             tempDetail.completeinfo = temp.completeInfo(fileList[i].ToString());
-           if(tempDetail.ext.ToUpper() == ".VOB")
-            tempDetail.audBitrate = temp.audBitrate(fileList[i].ToString());
-            
+            if (tempDetail.ext.ToUpper() == ".VOB")
+                tempDetail.audBitrate = temp.audBitrate(fileList[i].ToString());
+
             tempDetail.width = temp.width(fileList[i].ToString());
             tempDetail.height = temp.height(fileList[i].ToString());
             tempDetail.fps = temp.fps(fileList[i].ToString());
             tempDetail.vid_codec = temp.vidCodec(fileList[i].ToString());
             tempDetail.framecount = temp.frameCount(fileList[i].ToString());
-       //     tempDetail.frameType = temp.frameRateType(fileList[i].ToString());
-            tempDetail.subCount=temp.subCount(fileList[i].ToString());
+            //     tempDetail.frameType = temp.frameRateType(fileList[i].ToString());
+            tempDetail.subCount = temp.subCount(fileList[i].ToString());
             if (tempDetail.subCount != 0)
             {
                 tempDetail.sub_Titles = temp.subCaption(fileList[i].ToString());
@@ -307,27 +369,9 @@ namespace x264_GUI_CS
             tempDetail.vfrName = null;
 
             infoLabel.Text = "";
-            return tempDetail;                                     
+            return tempDetail;
         }
-       
 
-        //private void stderrProcess()
-        //{
-        //    while ((testText.Text = stderr.ReadLine()) != null)
-        //    {
-        //        Thread.Sleep(0);
-        //    }
-        //}
-
-        //private void stdoutProcess()
-        //{
-        //    while ((testText.Text = stdout.ReadLine()) != null)
-        //    {
-        //        Thread.Sleep(0);
-        //    }
-        //}
-      
-       
         private void stopButton_Click(object sender, EventArgs e)
         {
             proc.abandon = true;
@@ -422,7 +466,7 @@ namespace x264_GUI_CS
             customFilt.encOpts = getEncodeOpts();
             customFilt.customFiltOpts = customFiltOpts;
             customFilt.init();
-            
+
             if (encOptsErr)
             {
                 MessageBox.Show("Incorrect Encoding Options");
@@ -431,10 +475,10 @@ namespace x264_GUI_CS
             DialogResult result = customFilt.ShowDialog();
             customFiltOpts = customFilt.customFiltOpts;
         }
-        
+
         private void btnApps_Click(object sender, EventArgs e)
         {
-            if (checkInternet())
+            if (Startup.checkInternet())
             {
                 MiniCoder.Updater apps = new MiniCoder.Updater(appSettings);
                 apps.ShowDialog();
@@ -450,10 +494,10 @@ namespace x264_GUI_CS
             }
         }
 
-     
-        public General.EncodingOptions getEncodeOpts()
+
+        public EncodingOptions getEncodeOpts()
         {
-            General.EncodingOptions encOpts = new General.EncodingOptions();
+            EncodingOptions encOpts = new EncodingOptions();
 
             encOptsErr = false;
 
@@ -494,7 +538,7 @@ namespace x264_GUI_CS
                 encOpts.filtNoise = noiseCombo.SelectedIndex;
                 encOpts.filtSharp = sharpCombo.SelectedIndex;
                 encOpts.subtitle = subText.Text;
-                
+
                 encOpts.customFilter = customFiltOpts;
 
                 return encOpts;
@@ -517,16 +561,16 @@ namespace x264_GUI_CS
                     {
                         updater = new MiniCoder.Updater(appSettings);
                         updater.ShowDialog();
-                        
+
 
                     }
                     else
                         updater.Close();
 
-                    
+
                 }
             }
-            catch 
+            catch
             {
                 log.addLine("No internet found. Please check your connection");
             }
@@ -546,64 +590,8 @@ namespace x264_GUI_CS
             return url;
         }
 
-        private bool checkInternet()
-        {
-            try
-            {
-                System.Net.IPHostEntry objIPHE = System.Net.Dns.GetHostEntry("www.google.com");
-                return true;
-            }
-            catch
-            {
-                return false; // host not reachable.
-            } 
-        }
-        private void mainGUI_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                
-                processPriority.SelectedIndex = 0;
-             if(checkInternet())
-                updateRequired();
-                if (!Directory.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\"))
-                {
-                    log.addLine("Template folder not found, creating!");
-                    Directory.CreateDirectory(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
-                }
-                else
-                    log.addLine("Template folder found!");
 
-                    DirectoryInfo Dir = new DirectoryInfo(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\");
-                    FileInfo[] FileList = Dir.GetFiles("*.tpl", SearchOption.AllDirectories);
-                    foreach (FileInfo FI in FileList)
-                    {
-                        cbTemplates.Items.Add(FI.Name.Replace(".tpl", ""));
-                    }
-                
-
-                
-                if (File.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\default.tpl"))
-                {
-                    for (int i = 0; i < cbTemplates.Items.Count; i++)
-                    {
-                        if (cbTemplates.Items[i].ToString().ToUpper() == "DEFAULT")
-                        {
-                            cbTemplates.SelectedIndex = i;
-                            
-                        }
-                    }
-                }
-
-            }
-            catch (Exception exc)
-            {
-                log.addLine("Error during startup");
-                log.addLine(exc.Message.ToString());
-                log.sendmail(appSettings);
-            }
-
-        }
+      
 
         private void cbTemplates_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -640,15 +628,15 @@ namespace x264_GUI_CS
 
                 if (encodingOpts.filtResize != 0)
                 {
-                    widthHeight.Text = encodingOpts.resizeWidth + ":" + encodingOpts.resizeHeight; 
-           
+                    widthHeight.Text = encodingOpts.resizeWidth + ":" + encodingOpts.resizeHeight;
+
                 }
 
                 noiseCombo.SelectedIndex = encodingOpts.filtNoise;
                 sharpCombo.SelectedIndex = encodingOpts.filtSharp;
-                subText.Text=  encodingOpts.subtitle ;
+                subText.Text = encodingOpts.subtitle;
 
-               customFiltOpts = encodingOpts.customFilter;
+                customFiltOpts = encodingOpts.customFilter;
             }
         }
 
@@ -662,7 +650,7 @@ namespace x264_GUI_CS
             }
             catch
             {
-                
+
                 encodingOpts.templateName = InputBox.Show("Enter template name", "Template Name", "default");
             }
             encodingOpts.save();
@@ -681,7 +669,7 @@ namespace x264_GUI_CS
             if (FormWindowState.Minimized == this.WindowState)
             {
                 nfIcon.Visible = true;
-             
+
                 this.Hide();
             }
             else if (FormWindowState.Normal == this.WindowState)
@@ -698,7 +686,7 @@ namespace x264_GUI_CS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            log.sendmail(details,appSettings);
+            log.sendmail(details, appSettings);
         }
 
         public void setMessage(string message)
@@ -739,7 +727,7 @@ namespace x264_GUI_CS
             {
                 videoBR.Enabled = false;
                 fileSize.Enabled = true;
-            }            
+            }
         }
 
         private void videoCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -843,21 +831,21 @@ namespace x264_GUI_CS
 
         private void copyLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         Clipboard.SetText(log.getLog());
+            Clipboard.SetText(log.getLog());
         }
 
         private void vidQualCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (vidQualCombo.SelectedItem.ToString() == "CRF (Anime)")
             {
-             if(crfValue == 0)
-                crfValue = Convert.ToInt32(InputBox.Show("Please enter CRF value!", "CRF Value", "20"));
-             else
-                 crfValue = Convert.ToInt32(InputBox.Show("Please enter CRF value!", "CRF Value", crfValue.ToString()));
+                if (crfValue == 0)
+                    crfValue = Convert.ToInt32(InputBox.Show("Please enter CRF value!", "CRF Value", "20"));
+                else
+                    crfValue = Convert.ToInt32(InputBox.Show("Please enter CRF value!", "CRF Value", crfValue.ToString()));
             }
         }
 
-      
+
 
         private void llReport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -893,33 +881,33 @@ namespace x264_GUI_CS
                 inputList.Items.Add(inputListItem);
                 log.addLine("Drag & Drop: " + str);
             }
-           
+
         }
 
         public void addFIles(string[] files)
         {
-           
-                ListViewItem inputListItem = new ListViewItem();
-                ListViewItem.ListViewSubItem statusSub = new ListViewItem.ListViewSubItem();
-                fileList.Add(files[0]);
-                string fName = Path.GetFileName(files[0]);
-                inputListItem.ToolTipText = "Check if file has a variable framerate";
-                inputListItem.Text = fName;
-                inputListItem.SubItems.Add(statusSub);
-                statusSub.Text = "Ready";
-                inputList.Items.Add(inputListItem);
-                log.addLine("Drag & Drop: " + files[0]);
-            
+
+            ListViewItem inputListItem = new ListViewItem();
+            ListViewItem.ListViewSubItem statusSub = new ListViewItem.ListViewSubItem();
+            fileList.Add(files[0]);
+            string fName = Path.GetFileName(files[0]);
+            inputListItem.ToolTipText = "Check if file has a variable framerate";
+            inputListItem.Text = fName;
+            inputListItem.SubItems.Add(statusSub);
+            statusSub.Text = "Ready";
+            inputList.Items.Add(inputListItem);
+            log.addLine("Drag & Drop: " + files[0]);
+
         }
         const string KeyName = "MiniCoder";
 
-        
+
         const string MenuText = "Encode With MiniCoder";
         string menuCommand = string.Format(
                     "\"{0}\" \"%L\"", Application.ExecutablePath);
         private void btnDeleteTemplate_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure?","Delete",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int tempIndex = cbTemplates.SelectedIndex;
                 encodingOpts = getEncodeOpts();
@@ -948,7 +936,7 @@ namespace x264_GUI_CS
             //if nothing is selected prevent error
             try
             {
-               
+
                 int completedFiles = 0;
                 for (int i = 0; i < inputList.Items.Count; i++)
                 {
@@ -957,14 +945,14 @@ namespace x264_GUI_CS
                         completedFiles++;
                     }
                 }
-                if (!(customSettings.Contains(inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length-4))))
+                if (!(customSettings.Contains(inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length - 4))))
                 {
-                    GUI.frmFileInformation frmFileInfo = new x264_GUI_CS.GUI.frmFileInformation(mediainfo(inputList.SelectedItems[0].Index - completedFiles), this, getEncodeOpts());
+                    frmFileInformation frmFileInfo = new frmFileInformation(mediainfo(inputList.SelectedItems[0].Index - completedFiles), this, getEncodeOpts());
                     frmFileInfo.Show();
                 }
                 else
                 {
-                    GUI.frmFileInformation frmFileInfo = new x264_GUI_CS.GUI.frmFileInformation(mediainfo(inputList.SelectedItems[0].Index - completedFiles), this, (General.EncodingOptions)customSettings[inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length - 4)]);
+                    frmFileInformation frmFileInfo = new frmFileInformation(mediainfo(inputList.SelectedItems[0].Index - completedFiles), this, (EncodingOptions)customSettings[inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length - 4)]);
                     frmFileInfo.Show();
                 }
             }
@@ -973,7 +961,7 @@ namespace x264_GUI_CS
             }
         }
 
-         
+
         private void inputMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             try
@@ -1013,7 +1001,7 @@ namespace x264_GUI_CS
                     {
                         MessageBox.Show("Please enter a number");
                         containerCombo_SelectedIndexChanged(sender, e);
-                       
+
                     }
                     break;
             }
@@ -1028,8 +1016,8 @@ namespace x264_GUI_CS
         {
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.ShowDialog();
-            if(folderBrowser.SelectedPath != "")
-            outPutLocation.Text = folderBrowser.SelectedPath;
+            if (folderBrowser.SelectedPath != "")
+                outPutLocation.Text = folderBrowser.SelectedPath;
         }
 
         private void clearOutput_Click(object sender, EventArgs e)
@@ -1037,18 +1025,5 @@ namespace x264_GUI_CS
             outPutLocation.Text = "";
         }
 
-    
-       
-
-       
-
-  
-
-        
-
-
-     
-
-  
     }
 }

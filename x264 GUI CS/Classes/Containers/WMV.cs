@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Windows.Forms;
-using x264_GUI_CS.General;
+
 using MiniCoder;
 namespace x264_GUI_CS.Containers
 {
@@ -22,11 +21,11 @@ namespace x264_GUI_CS.Containers
         public WMV(LogBook log)
         {
             this.log = log;
-            proc = new General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
        // Package vdubmod;
         
-        public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
 
   
@@ -40,7 +39,7 @@ namespace x264_GUI_CS.Containers
 
        
         
-        public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool mkv2vfr(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             return true;
         }

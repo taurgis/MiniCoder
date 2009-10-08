@@ -1,4 +1,4 @@
-﻿namespace x264_GUI_CS.GUI
+﻿namespace MiniCoder
 {
     partial class frmFileInformation
     {

@@ -6,7 +6,7 @@ using System.Collections;
 using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace x264_GUI_CS.General
+namespace MiniCoder
 {
     public class ProcessSettings
     {
