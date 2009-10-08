@@ -11,10 +11,7 @@ namespace x264_GUI_CS.Containers
 {
     class VOB : ifContainer
     {
-        private static Process mainProcess = null;
-        Thread backGround;
-        private static StreamReader stdout = null;
-        private static StreamReader stderr = null;
+       
         General.ProcessSettings proc;
         bool finishedTask = false;
         LogBook log;
@@ -30,6 +27,8 @@ namespace x264_GUI_CS.Containers
         public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
         {
             this.proc = proc;
+            proc.stdErrDisabled(false);
+            proc.stdOutDisabled(false);
             try
             {
                 DGIndex = (Package)dir.htRequired["DGIndex"];
@@ -41,7 +40,8 @@ namespace x264_GUI_CS.Containers
 
                 log.addLine("Started indexing VOB files");
                 log.setInfoLabel("Started indexing VOB files.");
-                mainProcess = new Process();
+                proc.initProcess();
+                
 
                 string path = dir.tempDIR.Substring(0, dir.tempDIR.Length - 1);
 
@@ -49,7 +49,7 @@ namespace x264_GUI_CS.Containers
                 details.demuxSub = new string[details.subCount];
                 details.attachments = new string[0];
 
-                mainProcess.StartInfo.FileName = Path.Combine(DGIndex.getInstallPath(), "DGIndex.exe");
+                proc.setFilename(Path.Combine(DGIndex.getInstallPath(), "DGIndex.exe"));
                 
                 switch (details.vid_codec)
                 {
@@ -69,8 +69,8 @@ namespace x264_GUI_CS.Containers
                         tempArg = "-SD=< -AIF=<" + details.fileName +"< -OF=<" + dir.tempDIR + details.name + "< -exit -hide -OM=2 -TN=80";
                         break;
                 }
-                mainProcess.StartInfo.Arguments = tempArg;
-                taskProcess();
+                proc.setArguments(tempArg);
+                exitCode = proc.startProcess();
 
                 DirectoryInfo info = new DirectoryInfo(dir.tempDIR);
                 int count = 0;
@@ -90,14 +90,14 @@ namespace x264_GUI_CS.Containers
                 //ChapterXtractor
                 log.addLine("Started fetching chapters.");
                 log.setInfoLabel("Started fetching chapters.");
-                mainProcess = new Process();
+                proc.initProcess();
 
               
               
-                mainProcess.StartInfo.FileName = Path.Combine(DGIndex.getInstallPath(), "ChapterXtractor.exe");
+                proc.setFilename(Path.Combine(DGIndex.getInstallPath(), "ChapterXtractor.exe"));
                 tempArg =  "\"" + details.outDIR + details.name.Replace("_1","_0") + ".IFO\" " + "\"" + dir.tempDIR + "chapters.txt\" -p5 -t1";
-                mainProcess.StartInfo.Arguments = tempArg;
-                taskProcess();
+                proc.setArguments(tempArg);
+                exitCode = proc.startProcess();
 
                 if (exitCode != 0)
                    log.addLine("Error demuxing chapters. None present?");
@@ -113,7 +113,7 @@ namespace x264_GUI_CS.Containers
                 log.addLine("Started fetching subs.");
                 log.setInfoLabel("Started fetching subs.");
 
-                mainProcess = new Process();
+                proc.initProcess();
                 details.demuxSub = new string[1];
                 details.subCount = 1;
                 
@@ -137,14 +137,14 @@ namespace x264_GUI_CS.Containers
                 streamWriter.WriteLine("CLOSE");
                 streamWriter.Close();
 
-                mainProcess.StartInfo.FileName = "C:\\WINDOWS\\system32\\rundll32.exe";
+                proc.setFilename("C:\\WINDOWS\\system32\\rundll32.exe");
                 //    "C:\WINDOWS\system32\rundll32.exe" vobsub.dll,Configure C:\Samurai 7\VIDEO_TS\VTS_03_0.vobsub
 
                 tempArg = "VOBSUB.DLL,Configure " + dir.tempDIR + details.name + ".vobsub";
                 log.addLine(tempArg);
 
-                mainProcess.StartInfo.Arguments = tempArg;
-                taskProcess();
+                proc.setArguments(tempArg);
+                exitCode = proc.startProcess();
 
 
 
@@ -169,127 +169,7 @@ namespace x264_GUI_CS.Containers
             
         }
 
-        private void taskProcess()
-        {
-            finishedTask = false;
-
-            mainProcess.EnableRaisingEvents = true;
-
-            mainProcess.StartInfo.UseShellExecute = false;
-            mainProcess.StartInfo.CreateNoWindow = true;
-            mainProcess.StartInfo.RedirectStandardError = true;
-            mainProcess.StartInfo.RedirectStandardOutput = true;
-
-            backGround = new Thread(new ThreadStart(runprocess));
-            backGround.Start();
-
-            while (backGround.IsAlive)
-            {
-                Thread.Sleep(500);
-                try
-                {
-                    mainProcess.PriorityClass = proc.getPriority();
-                }
-                catch
-                {
-                }
-                if (proc.abandon)
-                {
-                    if (backGround.IsAlive)
-                    {
-                        if (!mainProcess.HasExited)
-                        {
-                            mainProcess.Kill();
-                        }
-                        mainProcess.Close();
-                        backGround.Abort();
-                    }
-                }
-
-                if (!finishedTask)
-                    continue;
-
-                if (backGround.IsAlive)
-                {
-                    if (!mainProcess.HasExited)
-                    {
-                        mainProcess.Kill();
-                    }
-                    mainProcess.Close();
-                    backGround.Abort();
-                }
-
-            }
-
-        }
-        private void runprocess()
-        {
-            Thread stdErrThread = null;
-            Thread stdOutThread = null;
-
-            try
-            {
-                mainProcess.Start();
-                mainProcess.PriorityClass = proc.getPriority();
-
-                stderr = mainProcess.StandardError;
-                stdout = mainProcess.StandardOutput;
-
-                stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
-
-                stdErrThread.Start();
-                stdOutThread.Start();
-
-                mainProcess.WaitForExit();
-                exitCode = mainProcess.ExitCode;
-                
-                Thread.Sleep(2000);
-            }
-            finally
-            {
-                if (null != stdOutThread)
-                {
-
-                    stdOutThread.Interrupt();
-                    stdOutThread.Abort();
-                }
-                if (null != stdErrThread)
-                {
-                    stdErrThread.Interrupt();
-                    stdErrThread.Abort();
-                }
-            }
-        }
-
-        private void stderrProcess()
-        {
-            while (stderr.ReadLine() != null)
-            {
-                log.addLine(stderr.ReadLine());
-                Thread.Sleep(0);
-            }
-            //while ((testText.Text = stderr.ReadLine()) != null)
-            //{
-            //    outputLog += testText.Text + "\r\n";
-            //    Thread.Sleep(0);
-            //}
-        }
-
-        private void stdoutProcess()
-        {
-            while (stdout.ReadLine() != null)
-            {
-               // log.addLine(stdout.ReadLine());
-                log.setInfoLabel(stdout.ReadLine());
-                Thread.Sleep(0);
-            }
-            //while ((testText.Text = stdout.ReadLine()) != null)
-            //{
-            //    outputLog += testText.Text + "\r\n";
-            //    Thread.Sleep(0);
-            //}
-        }
+     
         
         public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
         {
