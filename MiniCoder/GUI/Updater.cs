@@ -42,7 +42,15 @@ namespace MiniCoder
                 InitializeComponent();
                 this.log = log;
                 this.applicationSettings = applicationSettings;
-                string updaterText = GetText("http://www.gamerzzheaven.be/updater.txt");
+                string updaterText = "";
+                if (Startup.checkInternet())
+                {
+                    updaterText = GetText("http://www.gamerzzheaven.be/updater.txt");
+                }
+                else
+                {
+                    this.Close();
+                }
                 string[] applicationInfo = updaterText.Split(Convert.ToChar("\n"));
 
                 for (int i = 0; i < applicationInfo.Length; i++)

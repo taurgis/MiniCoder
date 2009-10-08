@@ -48,6 +48,7 @@
     <ApplicationIcon>bigIcon.ico</ApplicationIcon>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MiniCoder.pfx</AssemblyOriginatorKeyFile>
+    <ApplicationManifest>app_x86.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
