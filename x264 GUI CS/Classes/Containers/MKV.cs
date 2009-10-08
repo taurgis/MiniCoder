@@ -15,7 +15,7 @@ namespace x264_GUI_CS.Containers
     {
         Package mkvtoolnix;
         Package pcmkv2vfr;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
+        General.ProcessSettings proc;
         private static String outputLog = "";
         private static string logs = "";
         private static Process mainProcess = null;
@@ -31,7 +31,7 @@ namespace x264_GUI_CS.Containers
         public clMKV(LogBook log)
         {
             this.log = log;
-          
+            proc = new General.ProcessSettings(log);
         }
            
         public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)

@@ -12,7 +12,7 @@ namespace x264_GUI_CS.Containers
     class clOGM : ifContainer
     {
         private static Process mainProcess = null;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
+        General.ProcessSettings proc;
         Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
@@ -23,6 +23,7 @@ namespace x264_GUI_CS.Containers
         public clOGM(LogBook log)
         {
             this.log = log;
+            proc = new x264_GUI_CS.General.ProcessSettings(log);
         }
         Package ogmtools;
 

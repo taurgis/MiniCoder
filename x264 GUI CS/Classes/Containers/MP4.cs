@@ -15,14 +15,16 @@ namespace x264_GUI_CS.Containers
         Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
-        bool finishedTask = false;
         LogBook log;
+        General.ProcessSettings proc;
+        bool finishedTask = false;
+        
         int exitCode;
 
         public clMP4(LogBook log)
         {
             this.log = log;
+            proc = new x264_GUI_CS.General.ProcessSettings(log);
         }
         Package mp4box;
         public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)

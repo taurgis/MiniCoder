@@ -13,33 +13,31 @@ namespace x264_GUI_CS.Task_Libraries
 {
     class VideoEncoding
     {
-        private static Process mainProcess = null;
-          Thread backGround;
-        private static StreamReader stdout = null;
-        private static StreamReader stderr = null;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
-        bool finishedTask = false;
+      
+        General.ProcessSettings proc;
+        
         LogBook log;
         Package x264;
         Package xvid_encraw;
-        string errlog, outlog;
-        int pass;
-        string codec;
         int exitCode;
+
 
         public VideoEncoding(LogBook log)
         {
             this.log = log;
+            proc = new x264_GUI_CS.General.ProcessSettings(log);
         }
 
         public bool encode(ApplicationSettings dir, General.EncodingOptions encopts, General.FileInformation details, General.ProcessSettings proc)
         {
             this.proc = proc;
+            proc.stdErrDisabled(false);
+            proc.stdOutDisabled(false);
             x264=(Package)dir.htRequired["x264"];
             xvid_encraw = (Package)dir.htRequired["xvid_encraw"];
             string pass1Arg = "", pass2Arg = "", pass3Arg = null;
-            mainProcess = new Process();
-            totframes = details.framecount;
+            proc.initProcess();
+            proc.setTotalFrames(details.framecount);
             DateTime tempStart = new DateTime();
 
             int Processors = Environment.ProcessorCount;
@@ -61,10 +59,10 @@ namespace x264_GUI_CS.Task_Libraries
             switch (encopts.vidCodec)
             {
                 case 0:
-                    codec = "x264";
+                    
                     if (!x264.isInstalled())
                         x264.download();
-                    mainProcess.StartInfo.FileName = Path.Combine(x264.getInstallPath(), "x264.exe");
+                    proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                     details.encodedVideo = dir.tempDIR + details.name + "_video output.264";
 
                     switch (encopts.vidQual)
@@ -118,20 +116,20 @@ namespace x264_GUI_CS.Task_Libraries
                     }
 
                     if(pass2Arg != "")
-                        mainProcess.StartInfo.Arguments = pass1Arg + " NUL \"" + details.avsFile + "\"";
+                        proc.setArguments(pass1Arg + " NUL \"" + details.avsFile + "\"");
                     else
-                        mainProcess.StartInfo.Arguments = pass1Arg + " \"" + details.encodedVideo + "\" \"" + details.avsFile + "\"";    //--output ".264" "avs"
+                        proc.setArguments(pass1Arg + " \"" + details.encodedVideo + "\" \"" + details.avsFile + "\"");    //--output ".264" "avs"
 
                 
                     
-                    log.addLine(mainProcess.StartInfo.Arguments);
+                   
                     break;
 
                 case 1:
-                    codec = "xvid";
+                   
                     if (!xvid_encraw.isInstalled())
                         xvid_encraw.download();
-                    mainProcess.StartInfo.FileName = Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe");
+                    proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
                     details.encodedVideo = dir.tempDIR + details.name + "_video output.avi";
 
                     switch (encopts.vidQual)
@@ -154,30 +152,31 @@ namespace x264_GUI_CS.Task_Libraries
 
                     }
 
-                    mainProcess.StartInfo.Arguments = "-i \"" + details.avsFile + "\" " + pass1Arg + " NUL";
-                    log.addLine(mainProcess.StartInfo.Arguments);
+                    proc.setArguments("-i \"" + details.avsFile + "\" " + pass1Arg + " NUL");
+                    
                     break;
               
             }
             tempStart = DateTime.Now;
-            pass = 1;
-            taskProcess();
+            proc.setPass(1);
+            exitCode = proc.startProcess();
             log.addLine("Start time:" + tempStart.ToShortTimeString());
             log.addLine("End Time:" + DateTime.Now.ToShortTimeString());
             log.addLine("Encoding Time:" + (DateTime.Now-tempStart).TotalMinutes.ToString() +" minites.");
             if (proc.abandon)
                 return true;
 
-            if (exitCode != 0)
-                return false;
+             if (exitCode != 0)
+                   return false;
+
 
             if (pass3Arg != null)
             {
               tempStart = DateTime.Now;
-                pass = 2;
-                mainProcess.StartInfo.Arguments = mainProcess.StartInfo.Arguments = pass3Arg + " NUL \"" + details.avsFile + "\"";
-                log.addLine(mainProcess.StartInfo.Arguments);
-                taskProcess();
+            proc.setPass(2);
+                proc.setArguments(pass3Arg + " NUL \"" + details.avsFile + "\"");
+
+                exitCode = proc.startProcess();
                        log.addLine("Start time:" + tempStart.ToShortTimeString());
             log.addLine("End Time:" + DateTime.Now.ToShortTimeString());
             log.addLine("Encoding Time:" + (DateTime.Now-tempStart).TotalMinutes.ToString() +" minites.");
@@ -186,6 +185,7 @@ namespace x264_GUI_CS.Task_Libraries
 
                 if (exitCode != 0)
                     return false;
+               
             }
 
             if (pass2Arg != "")
@@ -193,24 +193,24 @@ namespace x264_GUI_CS.Task_Libraries
                 switch (encopts.vidCodec)
                 {
                     case 0:
-                        mainProcess.StartInfo.Arguments = pass2Arg + " \"" + details.encodedVideo + "\" \"" + details.avsFile + "\"";
-                        log.addLine(mainProcess.StartInfo.Arguments);
+                        proc.setArguments(pass2Arg + " \"" + details.encodedVideo + "\" \"" + details.avsFile + "\"");
+                        
                         break;
 
                     case 1:
-                        mainProcess.StartInfo.Arguments = "-i \"" + details.avsFile + "\" " + pass2Arg + " \"" + details.encodedVideo + "\"";
-                        log.addLine(mainProcess.StartInfo.Arguments);
+                        proc.setArguments("-i \"" + details.avsFile + "\" " + pass2Arg + " \"" + details.encodedVideo + "\"");
+                        
                         break;
                 }
            
             if (pass3Arg != null)
-                pass = 3;
+                proc.setPass(3);
             else
-                pass = 2;
+               proc.setPass(2);
 
             tempStart = DateTime.Now;
-            taskProcess();
-            log.addLine("Start time:" + tempStart.ToShortTimeString());
+           exitCode =  proc.startProcess();
+                log.addLine("Start time:" + tempStart.ToShortTimeString());
             log.addLine("End Time:" + DateTime.Now.ToShortTimeString());
             log.addLine("Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.");
             }
@@ -219,154 +219,10 @@ namespace x264_GUI_CS.Task_Libraries
 
             if (exitCode != 0)
                 return false;
-            else
+           else
                 return true;
         }
 
-        private void taskProcess()
-        {
-            finishedTask = false;
-
-            mainProcess.EnableRaisingEvents = true;
-        
-            mainProcess.StartInfo.UseShellExecute = false;
-            mainProcess.StartInfo.CreateNoWindow = true;
-            mainProcess.StartInfo.RedirectStandardError = true;
-            mainProcess.StartInfo.RedirectStandardOutput = true;
-
-            backGround = new Thread(new ThreadStart(runprocess));
-            backGround.Start();
-
-            while (backGround.IsAlive)
-            {
-                Thread.Sleep(500);
-                try
-                {
-                    mainProcess.PriorityClass = proc.getPriority();
-                }
-                catch
-                {
-                }
-                if (proc.abandon)
-                {
-                    if (backGround.IsAlive)
-                    {
-
-                        try
-                        {
-                            if (!mainProcess.HasExited)
-                            {
-
-                                mainProcess.Kill();
-
-                            }
-                            mainProcess.Close();
-                            backGround.Abort();
-                        }
-                        catch
-                        {
-                        }
-                    }
-                }
-
-                if (!finishedTask)
-                    continue;
-
-                if (backGround.IsAlive)
-                {
-                    if (!mainProcess.HasExited)
-                    {
-                        mainProcess.Kill();
-                    }
-                    mainProcess.Close();
-                    backGround.Abort();
-                }
-
-            }
-
-        }
-
-        private void runprocess()
-        {
-            Thread stdErrThread = null;
-            Thread stdOutThread = null;
-
-            try
-            {
-                mainProcess.Start();
-                mainProcess.PriorityClass = proc.getPriority();
-
-                stderr = mainProcess.StandardError;
-                stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                stdErrThread.Start();
-                
-                stdout = mainProcess.StandardOutput;
-                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
-                stdOutThread.Start();
-            
-                mainProcess.WaitForExit();
-                exitCode = mainProcess.ExitCode;
-                
-                Thread.Sleep(2000);
-            }
-            finally
-            {
-                if (null != stdOutThread)
-                {
-
-                    stdOutThread.Interrupt();
-                    stdOutThread.Abort();
-                }
-                if (null != stdErrThread)
-                {
-                    stdErrThread.Interrupt();
-                    stdErrThread.Abort();
-                }
-            }
-        }
-        int totframes = 0;
-        private void stderrProcess()
-        {
-            string percent;
-            while ((errlog = stderr.ReadLine()) != null)
-            {
-                if (codec == "x264")
-                {
-                    if (errlog.Contains("eta"))
-                    {
-                        percent = errlog.Substring(errlog.IndexOf('[') + 1, errlog.IndexOf(']') - errlog.IndexOf('[') - 1);
-                        log.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent);
-                    }
-                    else
-                    {
-                        log.addLine(errlog);
-                    }
-
-                }
-                
-                Thread.Sleep(0);
-            }
-        }
-
-        private void stdoutProcess()
-        {
-            while ((outlog = stdout.ReadLine()) != null)
-            {
-                if (codec == "xvid")
-                {
-                    if (outlog.Contains("time="))
-                    {
-                        int currframe = int.Parse(outlog.Trim().Substring(0, outlog.Trim().IndexOf(':')));
-                        float percent = (float)currframe / (float)totframes;
-                        if (percent < 0)
-                            percent = 1.0F;
-                        log.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
-                    }
-                    if (outlog.Contains("fps"))
-                        log.addLine(outlog);
-                }
-                Thread.Sleep(0);
-            }
-        }
+      
     }
 }

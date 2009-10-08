@@ -13,17 +13,19 @@ namespace x264_GUI_CS.Containers
     class clAVI : ifContainer
     {
         private static Process mainProcess = null;
-        ProcessSettings proc = new ProcessSettings();
+        
         Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
         bool finishedTask = false;
-        LogBook log;
+        LogBook log = new LogBook();
         int exitCode;
+        ProcessSettings proc;
 
         public clAVI(LogBook log)
         {
             this.log = log;
+            proc = new ProcessSettings(log);
         }
         Package vdubmod;
         

@@ -209,7 +209,7 @@ namespace MiniCoder.Task_Libraries
 
                     string script = avs.createScript(appSettings, details, encodingOpts);
                     avs.writeScript(appSettings, details, script);
-                    proc.errflag = avs.checkErrors(details.avsFile, appSettings);
+                    proc.errflag = avs.checkErrors(details.avsFile, appSettings, proc);
 
                     if (!proc.errflag)
                     {

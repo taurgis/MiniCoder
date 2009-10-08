@@ -15,7 +15,7 @@ namespace x264_GUI_CS.Containers
         Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
-        General.ProcessSettings proc = new x264_GUI_CS.General.ProcessSettings();
+        General.ProcessSettings proc;
         bool finishedTask = false;
         LogBook log;
         int exitCode;
@@ -23,6 +23,7 @@ namespace x264_GUI_CS.Containers
         public VOB(LogBook log)
         {
             this.log = log;
+            proc = new General.ProcessSettings(log);
         }
         Package DGIndex;
         Package virtualDubMod;

@@ -25,7 +25,7 @@ namespace x264_GUI_CS
         General.FileInformation details = new General.FileInformation();
         General.EncodingOptions encodingOpts = new General.EncodingOptions();
         General.EncodingOptions preview = new x264_GUI_CS.General.EncodingOptions();
-        General.ProcessSettings proc = new General.ProcessSettings();
+        General.ProcessSettings proc;
         ArrayList fileList = new ArrayList();
         Thread encodeBatchTask;
         int crfValue = 0;
@@ -59,6 +59,7 @@ namespace x264_GUI_CS
                 noiseCombo.SelectedIndex = 0;
                 sharpCombo.SelectedIndex = 0;
                 log = new LogBook(this);
+                proc = new General.ProcessSettings(log);
                 log.addLine("Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString());
                 if (!Directory.Exists(appSettings.tempDIR))
                     Directory.CreateDirectory(appSettings.tempDIR);
@@ -433,9 +434,20 @@ namespace x264_GUI_CS
         
         private void btnApps_Click(object sender, EventArgs e)
         {
-            MiniCoder.Updater apps = new MiniCoder.Updater(appSettings);
-            apps.ShowDialog();
-            appSettings = new ApplicationSettings(Application.StartupPath);
+            if (checkInternet())
+            {
+                MiniCoder.Updater apps = new MiniCoder.Updater(appSettings);
+                apps.ShowDialog();
+                appSettings = new ApplicationSettings(Application.StartupPath);
+            }
+            else
+            {
+                MiniCoder.GUI.AppLocation apps = new MiniCoder.GUI.AppLocation(appSettings.htRequired);
+                apps.ShowDialog();
+                if (apps.doSave())
+                    appSettings.SavePackages();
+                appSettings = new ApplicationSettings(Application.StartupPath);
+            }
         }
 
      

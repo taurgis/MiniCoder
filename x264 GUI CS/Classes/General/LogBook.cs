@@ -14,6 +14,10 @@ namespace x264_GUI_CS
         mainGUI mainFrame;
 
         string fileFilter = @"\.avs;\.txt;\.xml;\.vcf";
+
+        public LogBook()
+        {
+        }
         public LogBook(mainGUI mainFrame)
         {
             this.mainFrame = mainFrame;

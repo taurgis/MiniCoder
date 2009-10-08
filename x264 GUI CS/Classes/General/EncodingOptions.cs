@@ -53,11 +53,9 @@ namespace x264_GUI_CS.General
             strTemplate.WriteLine(filtNoise);
             strTemplate.WriteLine(filtSharp);
             strTemplate.WriteLine(subtitle);
-            
-           
-                    
+                  
           
-            strTemplate.WriteLine(customFilter);
+            strTemplate.Write(customFilter);
             
             strTemplate.Close();
         }
