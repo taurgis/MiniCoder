@@ -207,17 +207,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Task Libraries\AudioDecoding.cs" />
-    <Compile Include="Task Libraries\AudioEncoding.cs" />
-    <Compile Include="Task Libraries\Avisynth.cs" />
-    <Compile Include="Task Libraries\DGAVCIndex.cs" />
-    <Compile Include="Task Libraries\Filters.cs" />
-    <Compile Include="Task Libraries\IfMediaDetails.cs" />
-    <Compile Include="Task Libraries\MediaDetails.cs" />
-    <Compile Include="Task Libraries\MediaInfoDLL.cs" />
-    <Compile Include="Task Libraries\Muxing.cs" />
-    <Compile Include="Task Libraries\VideoEncoding.cs" />
-    <Compile Include="Task Libraries\Worker.cs" />
+    <Compile Include="Classes\Task Libraries\AudioDecoding.cs" />
+    <Compile Include="Classes\Task Libraries\AudioEncoding.cs" />
+    <Compile Include="Classes\Task Libraries\Avisynth.cs" />
+    <Compile Include="Classes\Task Libraries\DGAVCIndex.cs" />
+    <Compile Include="Classes\Task Libraries\Filters.cs" />
+    <Compile Include="Classes\Task Libraries\IfMediaDetails.cs" />
+    <Compile Include="Classes\Task Libraries\MediaDetails.cs" />
+    <Compile Include="Classes\Task Libraries\MediaInfoDLL.cs" />
+    <Compile Include="Classes\Task Libraries\Muxing.cs" />
+    <Compile Include="Classes\Task Libraries\VideoEncoding.cs" />
+    <Compile Include="Classes\Task Libraries\Worker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bigIcon.ico" />

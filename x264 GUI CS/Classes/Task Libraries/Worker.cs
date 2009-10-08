@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
-using x264_GUI_CS.General;
-using MiniCoder.General;
-using x264_GUI_CS.Task_Libraries;
+
+
 using x264_GUI_CS;
 using x264_GUI_CS.Containers;
 using System.IO;
-namespace MiniCoder.Task_Libraries
+namespace MiniCoder
 {
     public class Worker
     {
         ProcessSettings proc;
-        FileInformation details;
+       
         LogBook log;
         EncodingOptions encodingOpts;
         ApplicationSettings appSettings;

@@ -7,26 +7,26 @@ using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using MiniCoder.General;
-namespace x264_GUI_CS.Task_Libraries
+
+namespace MiniCoder
 {
     class DGAVCIndex
     {
-        General.ProcessSettings proc;
+        ProcessSettings proc;
        
-        bool finishedTask = false;
+       
         LogBook log;
-        int exitCode;
+      
         Package dgavcindex;
         Package dgavcdecode;
 
         public DGAVCIndex(LogBook log)
         {
             this.log = log;
-            proc = new General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
 
-        public bool index(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool index(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);

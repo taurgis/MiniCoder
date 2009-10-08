@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
@@ -8,15 +7,15 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MiniCoder;
-namespace x264_GUI_CS.Task_Libraries
+namespace MiniCoder
 {
     class AudioEncoding
     {
         Package besweet;
     
       
-        General.ProcessSettings proc;
-        bool finishedTask = false;
+        ProcessSettings proc;
+        
         LogBook log;
         
        
@@ -25,10 +24,10 @@ namespace x264_GUI_CS.Task_Libraries
         public AudioEncoding(LogBook log)
         {
             this.log = log;
-            proc = new General.ProcessSettings(log);
+            proc = new ProcessSettings(log);
         }
 
-        public bool encode(ApplicationSettings dir, General.FileInformation details, General.EncodingOptions encOpts, General.ProcessSettings proc)
+        public bool encode(ApplicationSettings dir, FileInformation details, EncodingOptions encOpts, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(false);
@@ -66,7 +65,7 @@ namespace x264_GUI_CS.Task_Libraries
                 if (proc.abandon)
                     return true;
 
-                int exitcode = proc.startProcess();
+                 exitCode = proc.startProcess();
                     
                 
 

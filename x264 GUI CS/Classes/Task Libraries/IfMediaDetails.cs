@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using System.Text;
 
-namespace x264_GUI_CS
+namespace MiniCoder
 {
     interface IfMediaDetails
     {

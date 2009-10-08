@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MiniCoder.General;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using MiniCoder;
-namespace x264_GUI_CS.Task_Libraries
+namespace MiniCoder
 {
     class AudioDecoding
     {
@@ -17,7 +16,7 @@ namespace x264_GUI_CS.Task_Libraries
         Package madplay;
         Package valdec;
    
-        General.ProcessSettings proc;
+        ProcessSettings proc;
        
         LogBook log;
 
@@ -27,7 +26,7 @@ namespace x264_GUI_CS.Task_Libraries
             
         }
 
-        public bool decode(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
+        public bool decode(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
             proc.stdErrDisabled(true);
