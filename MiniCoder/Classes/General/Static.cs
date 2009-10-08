@@ -41,11 +41,11 @@ namespace MiniCoder
             }
         }
 
-        public static ulong getFreeSpace(string disk)
+        public static long getFreeSpace(string disk)
         {
             ulong freeBytesAvailable, totalBytes, freeBytes;
             GetDiskFreeSpaceEx(disk, out freeBytesAvailable, out totalBytes, out freeBytes);
-            return freeBytes;
+            return Convert.ToInt64(freeBytes, Provider.getProvider());
         }
     }
 
@@ -62,7 +62,7 @@ namespace MiniCoder
                 argStr = "Empty";
             argStr = argStr.Substring(argStr.LastIndexOf('.') + 1);
 
-            Console.Write("{0,-20}", argStr);
+            //Console.Write("{0,-20}", argStr);
             return null;
         }
     }

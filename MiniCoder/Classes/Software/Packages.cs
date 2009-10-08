@@ -89,8 +89,7 @@ namespace MiniCoder
 
         private Package newPackage(string appName, string appType, Boolean isRegistry, string registrySubPath, string registrySubKey, string downloadurl, string category, string customPath)
         {
-             Package tempPackage;
-             return tempPackage = new Package(appName, appType, isRegistry, registrySubPath, appSettings, registrySubKey, downloadurl, category, customPath);
+            return new Package(appName, appType, isRegistry, registrySubPath, appSettings, registrySubKey, downloadurl, category, customPath);
         }
 
         public void SavePackages()
