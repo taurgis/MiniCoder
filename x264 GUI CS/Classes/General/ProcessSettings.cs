@@ -128,15 +128,15 @@ namespace x264_GUI_CS.General
                 if (!finishedTask)
                     continue;
 
-                if (backGround.IsAlive)
-                {
-                    if (!mainProcess.HasExited)
-                    {
-                        mainProcess.Kill();
-                    }
-                    mainProcess.Close();
-                    backGround.Abort();
-                }
+                //if (backGround.IsAlive)
+                //{
+                //    if (!mainProcess.HasExited)
+                //    {
+                //        mainProcess.Kill();
+                //    }
+                //    mainProcess.Close();
+                //    backGround.Abort();
+                //}
 
             }
 
@@ -169,10 +169,25 @@ namespace x264_GUI_CS.General
                 stdErrThread.Start();
                 stdOutThread.Start();
 
-                mainProcess.WaitForExit();
-                exitCode = mainProcess.ExitCode;
-
+                if (mainProcess.StartInfo.FileName.Contains("avs2yuv.exe"))
+                {
+                    Thread.Sleep(2000);
+                    if (!mainProcess.HasExited)
+                        mainProcess.Kill();
+                }
+                else
+                {
+                    mainProcess.WaitForExit();
+                    exitCode = mainProcess.ExitCode;
+                }
                 Thread.Sleep(2000);
+                if (mainProcess.StartInfo.FileName.Contains("avs2yuv.exe"))
+                {
+                    if (!mainProcess.HasExited)
+                        mainProcess.Kill();
+
+                    Thread.Sleep(2000);
+                }
             }
             finally
             {
