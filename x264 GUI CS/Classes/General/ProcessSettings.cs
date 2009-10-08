@@ -181,13 +181,7 @@ namespace x264_GUI_CS.General
                     exitCode = mainProcess.ExitCode;
                 }
                 Thread.Sleep(2000);
-                if (mainProcess.StartInfo.FileName.Contains("avs2yuv.exe"))
-                {
-                    if (!mainProcess.HasExited)
-                        mainProcess.Kill();
-
-                    Thread.Sleep(2000);
-                }
+               
             }
             finally
             {

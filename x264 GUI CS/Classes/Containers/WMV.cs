@@ -12,14 +12,12 @@ namespace x264_GUI_CS.Containers
 {
     class WMV : ifContainer
     {
-        private static Process mainProcess = null;
+       
         ProcessSettings proc;
-        Thread backGround;
-        private static StreamReader stdout = null;
-        private static StreamReader stderr = null;
-        bool finishedTask = false;
+       
+      
         LogBook log;
-        int exitCode;
+      
 
         public WMV(LogBook log)
         {

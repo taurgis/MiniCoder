@@ -12,14 +12,11 @@ namespace x264_GUI_CS.Containers
 {
     class clAVI : ifContainer
     {
-        private static Process mainProcess = null;
-        
-        Thread backGround;
-        private static StreamReader stdout = null;
-        private static StreamReader stderr = null;
+       
+       
         bool finishedTask = false;
         LogBook log = new LogBook();
-        int exitCode;
+      
         ProcessSettings proc;
 
         public clAVI(LogBook log)
@@ -32,7 +29,8 @@ namespace x264_GUI_CS.Containers
         public bool demux(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
         {
             this.proc = proc;
-
+            proc.stdErrDisabled(false);
+            proc.stdOutDisabled(false);
             try
             {
                 vdubmod = (Package)dir.htRequired["VirtualDubMod"];
@@ -40,7 +38,8 @@ namespace x264_GUI_CS.Containers
                     vdubmod.download();
 
                 log.setInfoLabel("Demuxing AVI Tracks");
-                mainProcess = new Process();
+                proc.initProcess();
+                
 
                 log.addLine("Writing VirtulDubMod script");
                 StreamWriter vcf = File.CreateText(dir.tempDIR + details.name + "_demux.vcf"); ;
@@ -60,10 +59,11 @@ namespace x264_GUI_CS.Containers
                 vcf.Close();
                 log.addLine("=============== END ===============");
                 log.addLine("Started demuxing AVI file");
-                mainProcess.StartInfo.FileName = Path.Combine(vdubmod.getInstallPath(), "VirtualDubMod.exe");
-                mainProcess.StartInfo.Arguments = "/s\"" + dir.tempDIR + details.name + "_demux.vcf\" /x";
+                proc.setFilename(Path.Combine(vdubmod.getInstallPath(), "VirtualDubMod.exe"));
+                proc.setArguments("/s\"" + dir.tempDIR + details.name + "_demux.vcf\" /x");
 
-                taskProcess();
+                proc.startProcess();
+                
 
                 if (proc.abandon)
                     log.setInfoLabel("Demuxing Aborted");
@@ -84,117 +84,7 @@ namespace x264_GUI_CS.Containers
             
         }
 
-        private void taskProcess()
-        {
-            finishedTask = false;
-
-            mainProcess.EnableRaisingEvents = true;
-
-            mainProcess.StartInfo.UseShellExecute = false;
-            mainProcess.StartInfo.RedirectStandardError = true;
-            mainProcess.StartInfo.RedirectStandardOutput = true;
-            mainProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-            backGround = new Thread(new ThreadStart(runprocess));
-            backGround.Start();
-
-            while (backGround.IsAlive)
-            {
-                Thread.Sleep(500);
-                try
-                {
-                    mainProcess.PriorityClass = proc.getPriority();
-                }
-                catch
-                {
-                }
-                if (proc.abandon)
-                {
-                    if (backGround.IsAlive)
-                    {
-                        if (!mainProcess.HasExited)
-                        {
-                            mainProcess.Kill();
-                        }
-                        mainProcess.Close();
-                        backGround.Abort();
-                    }
-                }
-
-                if (!finishedTask)
-                    continue;
-
-                if (backGround.IsAlive)
-                {
-                    if (!mainProcess.HasExited)
-                    {
-                        mainProcess.Kill();
-                    }
-                    mainProcess.Close();
-                    backGround.Abort();
-                }
-
-            }
-
-        }
-        private void runprocess()
-        {
-            Thread stdErrThread = null;
-            Thread stdOutThread = null;
-
-            try
-            {
-                mainProcess.Start();
-                mainProcess.PriorityClass = proc.getPriority();
-                
-                stderr = mainProcess.StandardError;
-                stdout = mainProcess.StandardOutput;
-
-                stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
-
-                stdErrThread.Start();
-                stdOutThread.Start();
-
-                mainProcess.WaitForExit();
-                exitCode = mainProcess.ExitCode;
-                
-                Thread.Sleep(2000);
-            }
-            finally
-            {
-                if (null != stdOutThread)
-                {
-
-                    stdOutThread.Interrupt();
-                    stdOutThread.Abort();
-                }
-                if (null != stdErrThread)
-                {
-                    stdErrThread.Interrupt();
-                    stdErrThread.Abort();
-                }
-            }
-        }
-
-        private void stderrProcess()
-        {
-            while (stderr.ReadLine() != null)
-            {
-                log.addLine(stderr.ReadLine());
-                Thread.Sleep(0);
-            }
-        }
-
-        private void stdoutProcess()
-        {
-            while (stdout.ReadLine() != null)
-            {
-                log.addLine(stdout.ReadLine());
-                log.setInfoLabel(stdout.ReadLine());
-                Thread.Sleep(0);
-            }
-        }
+       
         
         public bool mkv2vfr(ApplicationSettings dir, General.FileInformation details, General.ProcessSettings proc)
         {
