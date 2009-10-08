@@ -74,6 +74,7 @@ namespace MiniCoder
             {
                 core = new String[] { "", "Core Files", Assembly.GetExecutingAssembly().GetName().Version.ToString(), applicationVersions["Core"].ToString().Replace("\r", ""), "Update required" };
                 updateRequired = true;
+                log.addLine("Updates available for core.");
             }
             else
             {
@@ -156,6 +157,7 @@ namespace MiniCoder
         }
         private void Updater_Load(object sender, EventArgs e)
         {
+               bool updateAvailable = false;
             String[] core;
             if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != applicationVersions["Core"].ToString().Replace("\r", ""))
             {
@@ -163,7 +165,7 @@ namespace MiniCoder
                 ListViewItem tempList = new ListViewItem(core);
                 tempList.Checked = true;
                 coreList.Items.Add(tempList);
-                
+                updateAvailable = true;
             }
             else
             {
@@ -174,7 +176,7 @@ namespace MiniCoder
 
            
 
-            bool updateAvailable = false;
+         
 
             foreach (string key in applicationInfo.Keys)
             {
@@ -269,9 +271,10 @@ namespace MiniCoder
                             break;
                     }
                 }
-                if (updateAvailable)
-                    updateLog.Text += "Update Available\r\n";
+               
             }
+            if (updateAvailable)
+                updateLog.Text += "Update Available\r\n";
         }
 
         public string GetText(string url)
