@@ -139,7 +139,7 @@ namespace MiniCoder
                         }
                         else
                         {
-                            updateRequired = false;
+                           // updateRequired = false;
                         }
                     }
                 }
@@ -235,7 +235,7 @@ namespace MiniCoder
                         else
                         {
                             requiredUpdate = "Up to date";
-                            updateAvailable = false;
+                           // updateAvailable = false;
                         }
                     }
                     else
