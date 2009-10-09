@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-
+using System.Text.RegularExpressions;
 using x264_GUI_CS;
 using x264_GUI_CS.Containers;
 using System.IO;
@@ -38,41 +38,49 @@ namespace MiniCoder
 
                 main.updateStatus("encoding");
 
-                //VFR Information & Encoding
-                details.vfr = main.isFileVFR();
-                encodingStatus = VFRStep(details);
+                if (!details.ext.Equals(".avs"))
+                {
+                    //VFR Information & Encoding
+                    details.vfr = main.isFileVFR();
+                    encodingStatus = VFRStep(details);
 
-                if (!String.IsNullOrEmpty(encodingStatus))
-                    return encodingStatus;
+                    if (!String.IsNullOrEmpty(encodingStatus))
+                        return encodingStatus;
 
-                //Demuxing File
-                encodingStatus = DemuxingStep(details);
-                if (!String.IsNullOrEmpty(encodingStatus))
-                    return encodingStatus;
-
-
-                //AVC Indexing
-                encodingStatus = AVCIndexingStep(details);
-                if (!String.IsNullOrEmpty(encodingStatus))
-                    return encodingStatus;
+                    //Demuxing File
+                    encodingStatus = DemuxingStep(details);
+                    if (!String.IsNullOrEmpty(encodingStatus))
+                        return encodingStatus;
 
 
-                //AVISynth Script Generation
-                encodingStatus = AviSynthStep(details);
-                if (!String.IsNullOrEmpty(encodingStatus))
-                    return encodingStatus;
+                    //AVC Indexing
+                    encodingStatus = AVCIndexingStep(details);
+                    if (!String.IsNullOrEmpty(encodingStatus))
+                        return encodingStatus;
 
 
-                //Audio Decoding
-                encodingStatus = AudioDecodingStep(details);
-                if (!String.IsNullOrEmpty(encodingStatus))
-                    return encodingStatus;
+                    //AVISynth Script Generation
+                    encodingStatus = AviSynthStep(details);
+                    if (!String.IsNullOrEmpty(encodingStatus))
+                        return encodingStatus;
 
-                //Audio Encoding
-                encodingStatus = AudioEncodingStep(details);
-                if (!String.IsNullOrEmpty(encodingStatus))
-                    return encodingStatus;
 
+                    //Audio Decoding
+                    encodingStatus = AudioDecodingStep(details);
+                    if (!String.IsNullOrEmpty(encodingStatus))
+                        return encodingStatus;
+
+                    //Audio Encoding
+                    encodingStatus = AudioEncodingStep(details);
+                    if (!String.IsNullOrEmpty(encodingStatus))
+                        return encodingStatus;
+                }
+                else
+                {
+                    details = AvsDetails(details.fileName, details, encodingOpts);
+                    
+                    details.avsFile = details.fileName;
+                }
                 //Video Encoding
                 encodingStatus = VideoEncodingStep(details);
                 if (!String.IsNullOrEmpty(encodingStatus))
@@ -106,6 +114,99 @@ namespace MiniCoder
 
             return "Completed";
      
+        }
+
+        private String[] getResize(string avsFile)
+        {
+              string re1 = "(Resize)";	// Variable Name 1
+            string re2 = "(.)";	// Any Single Character 1
+            string re3 = "(\\d+)";	// Integer Number 1
+            string re4 = "(,)";	// Any Single Character 2
+            string re5 = "(\\d+)";	// Integer Number 2
+            string re6 = "(.)";	// Any Single Character 3
+
+            Regex r2 = new Regex(re1 + re2 + re3 + re4 + re5 + re6, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+
+
+
+            Match m = r2.Match(avsFile);
+             
+            string[] resize = new string[2];
+           
+            if (m.Success)
+            {
+                resize[0] = m.Groups[3].ToString();
+                resize[1] = m.Groups[5].ToString();
+            }
+
+            return resize;
+        }
+
+        private String getAvsSource(string avsFile)
+        {
+            string re1 = "(Source)";	// Word 1
+            string re2 = "(\\()";	// Any Single Character 1
+            string re3 = "(\".*?\")";	// Double Quote String 1
+
+
+
+
+
+
+            Regex r = new Regex(re1 + re2 + re3, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            Match m = r.Match(avsFile);
+            if (m.Success)
+            {
+
+                String fqdn1 = m.Groups[3].ToString();
+              
+                return fqdn1;
+            }
+            return "";
+        }
+
+        private FileInformation AvsDetails(string avsFile, FileInformation details, EncodingOptions encOpts)
+        {
+
+            StreamReader streamReader = new StreamReader(details.fileName);
+            string txt = streamReader.ReadToEnd();
+            streamReader.Close();
+            String sourceFile = getAvsSource(txt).Replace("\"", "");
+            String[] fileResolution = getResize(txt);
+
+          
+
+
+
+            IfMediaDetails temp;
+            if (IntPtr.Size == 8)
+                temp = new MediaDetails64();
+            else
+                temp = new MediaDetails32();
+
+            FileInformation tempInformation = new FileInformation()
+           {
+               fps = temp.fps(sourceFile),
+             audioCount = 0,
+             subCount = 0,
+             vid_codec = temp.vidCodec(sourceFile),
+             fileName = details.fileName,
+               muxheight = int.Parse(fileResolution[1]),
+               muxwidth = int.Parse(fileResolution[0]),
+               width = temp.width(sourceFile),
+               height = temp.height(sourceFile),
+            name = details.name,
+              
+            
+
+           };
+            tempInformation.outDIR = details.outDIR;
+            encOpts.sizeOpt = 0;
+            return tempInformation;
+            
+
+
         }
 
         private String VFRStep(FileInformation details)
