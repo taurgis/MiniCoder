@@ -149,11 +149,6 @@ namespace MiniCoder
             string re2 = "(\\()";	// Any Single Character 1
             string re3 = "(\".*?\")";	// Double Quote String 1
 
-
-
-
-
-
             Regex r = new Regex(re1 + re2 + re3, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             Match m = r.Match(avsFile);
             if (m.Success)
@@ -174,10 +169,6 @@ namespace MiniCoder
             streamReader.Close();
             String sourceFile = getAvsSource(txt).Replace("\"", "");
             String[] fileResolution = getResize(txt);
-
-          
-
-
 
             IfMediaDetails temp;
             if (IntPtr.Size == 8)

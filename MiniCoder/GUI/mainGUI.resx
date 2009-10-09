@@ -126,6 +126,79 @@
   <metadata name="cmLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>440, 17</value>
   </metadata>
+  <metadata name="settingsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>524, 17</value>
+  </metadata>
+  <data name="containerCombo.ToolTip" xml:space="preserve">
+    <value>Matroska: 
+The Matroska Multimedia Container is an open standard free container format, a file 
+format that can hold an unlimited number of video, audio, picture or subtitle tracks
+ inside a single file.
+
+MP4:
+It is a multimedia container format standard specified as a part of MPEG-4. It is most 
+commonly used to store digital audio and digital video streams, especially those defined
+ by MPEG.</value>
+  </data>
+  <metadata name="settingsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>524, 17</value>
+  </metadata>
+  <data name="resizeCombo.ToolTip" xml:space="preserve">
+    <value>With a resizing filter you can easily resize a video to a 
+preferred aspect ratio. Using these filters you can either
+soften the image or sharpen it.
+
+Recommended: 
+- Soft for low bitrates
+- Sharp for high bitrates
+</value>
+  </data>
+  <metadata name="settingsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>524, 17</value>
+  </metadata>
+  <data name="fileSize.ToolTip" xml:space="preserve">
+    <value>Target File Size means that the program will try to get the
+output filesize as close as it can to the determined size.
+
+Things that could make the output bigger than set:
+- Attachments (Some fonts take over 5mb)
+- VFR (Variable FrameRate)
+
+Recommended
+- Minimum 50 mb for 20 min anime
+- Minimum 120 mb for TV-Show
+- Minmum 300mb for a Movie</value>
+  </data>
+  <data name="videoCombo.ToolTip" xml:space="preserve">
+    <value>X264: It is a free software library for encoding video streams 
+into the H.264/MPEG-4 AVC format.
+
+Xvid (formerly "XviD") is a video codec library following the MPEG-4 standard,
+ specifically MPEG-4 Part 2 Advanced Simple Profile (ASP). It uses ASP 
+features.</value>
+  </data>
+  <data name="vidQualCombo.ToolTip" xml:space="preserve">
+    <value>Quality determines the video quality of the outputted file.
+
+Settings:
+- Medium (Fast encoding time)
+- High (Normal encoding time)
+- Verry High (Long encoding time)
+- PSP (Fast, can be played on PSP)
+- IPOD (Fast, can be played on Ipod)
+- PS3/XBOX (Fast, can be played on Ipod)</value>
+  </data>
+  <data name="videoBR.ToolTip" xml:space="preserve">
+    <value>Average (Variable) Bit Rate is used to determine the best quality at the lowest possible quantizizer 
+while maintaining the average bit rate. The higher the bitrate, the better the output quality. 
+
+In this mode the target video filesize can be predicted. 
+A basic calculation is 50 bitrate equals 10mb every 20 mins.
+
+Recommended: 
+- Minimum 250 for anime
+- Minimum 300 for TV-Shows/movies</value>
+  </data>
   <metadata name="openSub.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>254, 17</value>
   </metadata>

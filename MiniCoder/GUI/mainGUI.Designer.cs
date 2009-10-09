@@ -113,6 +113,7 @@
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.settingsTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -453,6 +454,7 @@
             this.containerCombo.Name = "containerCombo";
             this.containerCombo.Size = new System.Drawing.Size(94, 24);
             this.containerCombo.TabIndex = 5;
+            this.settingsTooltip.SetToolTip(this.containerCombo, resources.GetString("containerCombo.ToolTip"));
             this.containerCombo.SelectedIndexChanged += new System.EventHandler(this.containerCombo_SelectedIndexChanged);
             // 
             // customButton
@@ -511,6 +513,7 @@
             this.openSubBtn.TabIndex = 15;
             this.openSubBtn.Text = "...";
             this.openSubBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.settingsTooltip.SetToolTip(this.openSubBtn, "Add a hardsubbed subtitle to the video.");
             this.openSubBtn.UseVisualStyleBackColor = true;
             this.openSubBtn.Click += new System.EventHandler(this.openSubBtn_Click);
             // 
@@ -575,6 +578,7 @@
             this.noiseCombo.Name = "noiseCombo";
             this.noiseCombo.Size = new System.Drawing.Size(94, 24);
             this.noiseCombo.TabIndex = 12;
+            this.settingsTooltip.SetToolTip(this.noiseCombo, "Video denoising is the process of removing noise \r\nfrom a video signal.");
             // 
             // groupBox6
             // 
@@ -606,6 +610,7 @@
             this.widthHeight.Name = "widthHeight";
             this.widthHeight.Size = new System.Drawing.Size(73, 24);
             this.widthHeight.TabIndex = 12;
+            this.settingsTooltip.SetToolTip(this.widthHeight, "The width and heigth of the re-encoded video.");
             // 
             // label3
             // 
@@ -645,6 +650,7 @@
             this.resizeCombo.Name = "resizeCombo";
             this.resizeCombo.Size = new System.Drawing.Size(94, 24);
             this.resizeCombo.TabIndex = 9;
+            this.settingsTooltip.SetToolTip(this.resizeCombo, resources.GetString("resizeCombo.ToolTip"));
             this.resizeCombo.SelectedIndexChanged += new System.EventHandler(this.resizeCombo_SelectedIndexChanged);
             // 
             // label1
@@ -670,6 +676,8 @@
             this.fieldCombo.Name = "fieldCombo";
             this.fieldCombo.Size = new System.Drawing.Size(94, 24);
             this.fieldCombo.TabIndex = 8;
+            this.settingsTooltip.SetToolTip(this.fieldCombo, "FieldDeinterlace: \r\nThis filter provides functionality similar to the postprocess" +
+                    "ing function \r\nof Telecide. You can use it for pure interlaced streams ");
             // 
             // groupBox3
             // 
@@ -698,6 +706,7 @@
             this.audioCombo.Name = "audioCombo";
             this.audioCombo.Size = new System.Drawing.Size(94, 24);
             this.audioCombo.TabIndex = 9;
+            this.settingsTooltip.SetToolTip(this.audioCombo, "Both audio codecs provide high quality at low bitrates.\r\n\r\nRecommended: Nero AAC");
             // 
             // label10
             // 
@@ -727,6 +736,8 @@
             this.audioBR.Size = new System.Drawing.Size(52, 22);
             this.audioBR.TabIndex = 1;
             this.audioBR.Text = "40";
+            this.settingsTooltip.SetToolTip(this.audioBR, "Variable Audio Bitrate determines the quality of the audio output.\r\nThe higher th" +
+                    "e bitrate the better the quality.\r\n\r\nRecommended: Minimum 32 Kbps");
             this.audioBR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.audioBR_KeyDown);
             // 
             // label4
@@ -800,6 +811,7 @@
             this.fileSize.Size = new System.Drawing.Size(52, 22);
             this.fileSize.TabIndex = 8;
             this.fileSize.Text = "60";
+            this.settingsTooltip.SetToolTip(this.fileSize, resources.GetString("fileSize.ToolTip"));
             this.fileSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fileSize_KeyDown);
             // 
             // label9
@@ -825,6 +837,7 @@
             this.videoCombo.Name = "videoCombo";
             this.videoCombo.Size = new System.Drawing.Size(94, 24);
             this.videoCombo.TabIndex = 6;
+            this.settingsTooltip.SetToolTip(this.videoCombo, resources.GetString("videoCombo.ToolTip"));
             this.videoCombo.SelectedIndexChanged += new System.EventHandler(this.videoCombo_SelectedIndexChanged);
             // 
             // vidQualCombo
@@ -847,6 +860,7 @@
             this.vidQualCombo.Name = "vidQualCombo";
             this.vidQualCombo.Size = new System.Drawing.Size(94, 24);
             this.vidQualCombo.TabIndex = 5;
+            this.settingsTooltip.SetToolTip(this.vidQualCombo, resources.GetString("vidQualCombo.ToolTip"));
             this.vidQualCombo.SelectedIndexChanged += new System.EventHandler(this.vidQualCombo_SelectedIndexChanged);
             // 
             // label8
@@ -877,6 +891,7 @@
             this.videoBR.Size = new System.Drawing.Size(52, 22);
             this.videoBR.TabIndex = 3;
             this.videoBR.Text = "300";
+            this.settingsTooltip.SetToolTip(this.videoBR, resources.GetString("videoBR.ToolTip"));
             this.videoBR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.videoBR_KeyDown);
             // 
             // tabPage1
@@ -1042,6 +1057,16 @@
             this.nfIcon.Text = "x264 Encoder";
             this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
             // 
+            // settingsTooltip
+            // 
+            this.settingsTooltip.AutoPopDelay = 100000;
+            this.settingsTooltip.InitialDelay = 500;
+            this.settingsTooltip.IsBalloon = true;
+            this.settingsTooltip.ReshowDelay = 1000;
+            this.settingsTooltip.ShowAlways = true;
+            this.settingsTooltip.UseAnimation = false;
+            this.settingsTooltip.UseFading = false;
+            // 
             // mainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1173,6 +1198,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button clearOutput;
         private System.Windows.Forms.LinkLabel llReport;
+        private System.Windows.Forms.ToolTip settingsTooltip;
     }
 }
 
