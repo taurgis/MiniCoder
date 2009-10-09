@@ -36,7 +36,9 @@ namespace MiniCoder
             xvid_encraw = (Package)dir.htRequired["xvid_encraw"];
             string pass1Arg = "", pass2Arg = "", pass3Arg = null;
             proc.initProcess();
+           
             proc.setTotalFrames(details.framecount);
+            
             DateTime tempStart = new DateTime();
 
             int Processors = Environment.ProcessorCount;

@@ -109,10 +109,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
             this.aboutTab = new System.Windows.Forms.TabPage();
+            this.llReport = new System.Windows.Forms.LinkLabel();
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.llReport = new System.Windows.Forms.LinkLabel();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -185,7 +185,7 @@
             // 
             // openInput
             // 
-            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv";
+            this.openInput.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv;*.avs";
             this.openInput.Multiselect = true;
             // 
             // logTab
@@ -1010,6 +1010,17 @@
             this.aboutTab.Text = "About";
             this.aboutTab.UseVisualStyleBackColor = true;
             // 
+            // llReport
+            // 
+            this.llReport.AutoSize = true;
+            this.llReport.Location = new System.Drawing.Point(132, 34);
+            this.llReport.Name = "llReport";
+            this.llReport.Size = new System.Drawing.Size(80, 16);
+            this.llReport.TabIndex = 0;
+            this.llReport.TabStop = true;
+            this.llReport.Text = "Report Bugs";
+            this.llReport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReport_LinkClicked);
+            // 
             // infoLabel
             // 
             this.infoLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1030,17 +1041,6 @@
             this.nfIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("nfIcon.Icon")));
             this.nfIcon.Text = "x264 Encoder";
             this.nfIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfIcon_MouseDoubleClick);
-            // 
-            // llReport
-            // 
-            this.llReport.AutoSize = true;
-            this.llReport.Location = new System.Drawing.Point(132, 34);
-            this.llReport.Name = "llReport";
-            this.llReport.Size = new System.Drawing.Size(80, 16);
-            this.llReport.TabIndex = 0;
-            this.llReport.TabStop = true;
-            this.llReport.Text = "Report Bugs";
-            this.llReport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReport_LinkClicked);
             // 
             // mainGUI
             // 

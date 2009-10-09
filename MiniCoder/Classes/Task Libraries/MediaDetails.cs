@@ -90,18 +90,33 @@ namespace MiniCoder
 
         public int width(string file)
         {
-            media.Open(file);
-            int w = int.Parse(media.Get(StreamKind.Video, 0, "Width"));
-            media.Close();
-            return w;
+            try
+            {
+                media.Open(file);
+                int w = int.Parse(media.Get(StreamKind.Video, 0, "Width"));
+                media.Close();
+                return w;
+            }
+            catch (FormatException)
+            {
+                return 0;
+            }
+
         }
 
         public int height(string file)
         {
-            media.Open(file);
-            int h = int.Parse(media.Get(StreamKind.Video, 0, "Height"));
-            media.Close();
-            return h;
+            try
+            {
+                media.Open(file);
+                int h = int.Parse(media.Get(StreamKind.Video, 0, "Height"));
+                media.Close();
+                return h;
+            }
+            catch (FormatException)
+            {
+                return 0;
+            }
         }
 
         public string chapters(string file)
@@ -129,10 +144,17 @@ namespace MiniCoder
 
         public float fps(string file)
         {
-            media.Open(file);
-            float fp = float.Parse(media.Get(StreamKind.Video, 0, "FrameRate"));
-            media.Close();
-            return fp;
+            try
+            {
+                media.Open(file);
+                float fp = float.Parse(media.Get(StreamKind.Video, 0, "FrameRate"));
+                media.Close();
+                return fp;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public string audFormat(string file)
@@ -307,31 +329,46 @@ namespace MiniCoder
 
         public int audLength(string file)
         {
-            media.Open(file);
-            int length = int.Parse(media.Get(StreamKind.Audio, 0, "Duration"));
-            media.Close();
-            return length;
+            try
+            {
+                media.Open(file);
+                int length = int.Parse(media.Get(StreamKind.Audio, 0, "Duration"));
+                media.Close();
+                return length;
+            }
+            catch (FormatException)
+            {
+                return 0;
+            }
         }
 
         public int frameCount(string file)
         {
-            media.Open(file);
-            string temp = media.Get(StreamKind.Video, 0, "FrameCount");
+            try
+            {
+                media.Open(file);
+                string temp = media.Get(StreamKind.Video, 0, "FrameCount");
 
-            if (temp == "")
-            {
-                float fps = float.Parse(media.Get(StreamKind.Video, 0, "FrameRate"));
-                string temp1 = media.Get(StreamKind.General, 0, "Duration");
-                float dur = int.Parse(temp1) / 1000;
-                int frames = (int)(fps * dur);
-                media.Close();
-                return frames;
+                if (temp == "")
+                {
+                    float fps = float.Parse(media.Get(StreamKind.Video, 0, "FrameRate"));
+                    string temp1 = media.Get(StreamKind.General, 0, "Duration");
+                    float dur = int.Parse(temp1) / 1000;
+                    int frames = (int)(fps * dur);
+                    media.Close();
+                    return frames;
+                }
+                else
+                {
+                    int frames = int.Parse(temp);
+                    return frames;
+                }
             }
-            else
+            catch
             {
-                int frames = int.Parse(temp);
-                return frames;
+                return 0;
             }
+
         }
 
         private string[] trim(string[] temp)
