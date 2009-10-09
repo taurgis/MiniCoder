@@ -2,9 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
-
+using System.IO;
 namespace MiniCoder
 {
+
+
+    public static class Encoding
+    {
+        public static Boolean DeleteFiles(ApplicationSettings appSettings)
+        {
+            string[] files = Directory.GetFiles(appSettings.tempDIR);
+            try
+            {
+                foreach (string file in files)
+                    File.Delete(file);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 
     public static class Provider
     {

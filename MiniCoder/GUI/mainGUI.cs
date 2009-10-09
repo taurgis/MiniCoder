@@ -90,7 +90,7 @@ namespace MiniCoder
                 int freeDiskSpace = Convert.ToInt32(Startup.getFreeSpace(startupDisk) / 1048576);
                 if(freeDiskSpace < 1000)
                     MessageBox.Show("Less than 1gb free on disk " + startupDisk + ". Please free up more space!");
-                log.addLine(freeDiskSpace.ToString());
+                log.addLine(freeDiskSpace.ToString()+"Mb free on HD.");
                 processPriority.SelectedIndex = 0;
                 if (Startup.checkInternet())
                     updateRequired();
@@ -554,7 +554,7 @@ namespace MiniCoder
         {
             try
             {
-                MiniCoder.Updater updater = new MiniCoder.Updater(appSettings, log);
+                Updater updater = new Updater(appSettings, log);
                 if (updater.needUpdate())
                 {
                     if (MessageBox.Show("Updates found. Do you want to install them now?", "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
