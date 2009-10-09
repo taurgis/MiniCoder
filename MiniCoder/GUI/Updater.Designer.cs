@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
             this.downloadProgress = new System.Windows.Forms.ProgressBar();
             this.updateLog = new System.Windows.Forms.TextBox();
@@ -77,6 +78,9 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.customPath = new System.Windows.Forms.Button();
+            this.appMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ignoreUpdatesMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopIgnoringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applicationTabs.SuspendLayout();
             this.coreTab.SuspendLayout();
             this.pluginTab.SuspendLayout();
@@ -84,6 +88,7 @@
             this.videoTab.SuspendLayout();
             this.muxTab.SuspendLayout();
             this.otherTab.SuspendLayout();
+            this.appMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // downloadProgress
@@ -136,6 +141,7 @@
             this.colExistingVersion,
             this.colLatestVersion,
             this.colStatus});
+            this.coreList.ContextMenuStrip = this.appMenu;
             this.coreList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.coreList.FullRowSelect = true;
             this.coreList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -192,6 +198,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.pluginsList.ContextMenuStrip = this.appMenu;
             this.pluginsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pluginsList.FullRowSelect = true;
             this.pluginsList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -247,6 +254,7 @@
             this.columnHeader8,
             this.columnHeader9,
             this.columnHeader10});
+            this.audioList.ContextMenuStrip = this.appMenu;
             this.audioList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.audioList.FullRowSelect = true;
             this.audioList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -302,6 +310,7 @@
             this.columnHeader23,
             this.columnHeader24,
             this.columnHeader25});
+            this.videoList.ContextMenuStrip = this.appMenu;
             this.videoList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoList.FullRowSelect = true;
             this.videoList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -357,6 +366,7 @@
             this.columnHeader13,
             this.columnHeader14,
             this.columnHeader15});
+            this.muxingList.ContextMenuStrip = this.appMenu;
             this.muxingList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.muxingList.FullRowSelect = true;
             this.muxingList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -412,6 +422,7 @@
             this.columnHeader18,
             this.columnHeader19,
             this.columnHeader20});
+            this.otherList.ContextMenuStrip = this.appMenu;
             this.otherList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.otherList.FullRowSelect = true;
             this.otherList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -478,6 +489,29 @@
             this.customPath.UseVisualStyleBackColor = true;
             this.customPath.Click += new System.EventHandler(this.customPath_Click);
             // 
+            // appMenu
+            // 
+            this.appMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ignoreUpdatesMenuStrip,
+            this.stopIgnoringToolStripMenuItem});
+            this.appMenu.Name = "appMenu";
+            this.appMenu.Size = new System.Drawing.Size(161, 70);
+            
+            // 
+            // ignoreUpdatesMenuStrip
+            // 
+            this.ignoreUpdatesMenuStrip.Name = "ignoreUpdatesMenuStrip";
+            this.ignoreUpdatesMenuStrip.Size = new System.Drawing.Size(160, 22);
+            this.ignoreUpdatesMenuStrip.Text = "Ignore Updates";
+            this.ignoreUpdatesMenuStrip.Click += new System.EventHandler(this.ignoreUpdatesMenuStrip_Click);
+            // 
+            // stopIgnoringToolStripMenuItem
+            // 
+            this.stopIgnoringToolStripMenuItem.Name = "stopIgnoringToolStripMenuItem";
+            this.stopIgnoringToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.stopIgnoringToolStripMenuItem.Text = "Stop Ignoring";
+            this.stopIgnoringToolStripMenuItem.Click += new System.EventHandler(this.stopIgnoringToolStripMenuItem_Click);
+            // 
             // Updater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,6 +537,7 @@
             this.videoTab.ResumeLayout(false);
             this.muxTab.ResumeLayout(false);
             this.otherTab.ResumeLayout(false);
+            this.appMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,6 +593,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.ColumnHeader columnHeader25;
         private System.Windows.Forms.Button customPath;
+        private System.Windows.Forms.ContextMenuStrip appMenu;
+        private System.Windows.Forms.ToolStripMenuItem ignoreUpdatesMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem stopIgnoringToolStripMenuItem;
     }
 }
 
