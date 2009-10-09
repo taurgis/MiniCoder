@@ -25,14 +25,14 @@ namespace x264_GUI_CS.Containers
         LogBook log;
         int exitCode;
         string chapters;
-       // Boolean errorInchapter = false;
+        
         Boolean fetchChapters = false;
         public clMKV(LogBook log)
         {
             this.log = log;
             proc = new ProcessSettings(log);
         }
-           
+
         public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
         {
             this.proc = proc;
@@ -51,46 +51,31 @@ namespace x264_GUI_CS.Containers
                 mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe");
                 string tempArg = tempArg = "tracks \"" + details.fileName + "\" ";
 
-                //if (details.vfr)
-                //{
-                //    details.demuxVideo = details.vfrName;
-                //}
-                //else
-                //{
-                    //if (details.vid_codec == "avc1" || details.vid_codec == "H264" || details.vid_codec == "V_MPEG4/ISO/AVC")
-                    //{
-                        tempArg += "1:\"" + dir.tempDIR + details.name + "-Video Track" + "." + details.extension[details.vid_codec] + "\" ";
-                        details.demuxVideo = dir.tempDIR + details.name + "-Video Track" + "." + details.extension[details.vid_codec];
-                    //}
-                    //else
-                    //{
 
-                    //    tempArg = "tracks \"" + details.fileName + "\" " + details.vid_id + ":\"" + dir.tempDIR + details.name + "-Video Track" + "." + details.extension[details.vid_codec] + "\"";
-                    //    details.demuxVideo = details.vfrName;
-                    //}
-                
-                //}
+                tempArg += "1:\"" + dir.tempDIR + details.name + "-Video Track" + "." + details.extension[details.vid_codec] + "\" ";
+                details.demuxVideo = dir.tempDIR + details.name + "-Video Track" + "." + details.extension[details.vid_codec];
+
                 log.addLine("Demuxed Video: " + details.demuxVideo);
                 details.demuxAudio = new string[details.audioCount];
                 log.addLine("Audio Count: " + details.audioCount);
                 for (int i = 0; i < details.audioCount; i++)
                 {
                     details.demuxAudio[i] = dir.tempDIR + details.name + "-Audio Track-" + i.ToString() + "." + details.extension[details.aud_codec[i]];
-                    tempArg +=details.aud_id[i] + ":\"" + details.demuxAudio[i] + "\" ";
+                    tempArg += details.aud_id[i] + ":\"" + details.demuxAudio[i] + "\" ";
                 }
                 details.demuxSub = new string[details.subCount];
                 log.addLine("Sub Count: " + details.subCount);
                 for (int i = 0; i < details.subCount; i++)
                 {
                     details.demuxSub[i] = dir.tempDIR + details.name + "-Subtitle Track-" + i.ToString() + "." + details.extension[details.sub_codec[i]];
-                    tempArg +=details.sub_id[i] + ":\"" + details.demuxSub[i] + "\" ";
+                    tempArg += details.sub_id[i] + ":\"" + details.demuxSub[i] + "\" ";
                 }
 
                 log.addLine(tempArg);
                 mainProcess.StartInfo.Arguments = tempArg;
-             
+
                 taskProcess();
-                               
+
                 if (exitCode != 0)
                     return false;
 
@@ -108,7 +93,7 @@ namespace x264_GUI_CS.Containers
                 taskProcess();
 
                 string[] split = Regex.Split(outputLog, "\\+ File name: ");
-                                               
+
                 string temp;
 
                 details.attachments = new string[split.Length - 1];
@@ -154,37 +139,36 @@ namespace x264_GUI_CS.Containers
                 log.addLine("Done Demuxing");
 
 
-          
+
                 if (details.chapters != "")
                 {
-                       XMLValidator xmlValidator = new XMLValidator(dir.tempDIR + "chapters.xml");
+                    XMLValidator xmlValidator = new XMLValidator(dir.tempDIR + "chapters.xml");
                     int chapterFetchRetries = 0;
-                    while(!xmlValidator.Validate() && chapterFetchRetries++ < 5)
+                    while (!xmlValidator.Validate() && chapterFetchRetries++ < 5)
                     {
-                        if(!xmlValidator.Validate() && File.Exists(dir.tempDIR + "chapters.xml"))
+                        if (!xmlValidator.Validate() && File.Exists(dir.tempDIR + "chapters.xml"))
                         {
                             log.addLine("Error in XML");
                         }
-                      
-                            log.addLine("Attempt " + chapterFetchRetries + " to fetch chapters.");
-                        
-                    mainProcess = new Process();
-                    log.addLine("Fetching Chapters");
-                    mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe");
-                    tempArg = "chapters \"" + details.fileName + "\"";
-                    fetchChapters = true;
-                    mainProcess.StartInfo.Arguments = tempArg;
-                    taskProcess();
-                    log.addLine("==================== CHAPTER INFO ====================");
-                    log.addLine(chapters);
-                    log.addLine("==================== END CHAPTER  ====================");
-                    //if (!errorInchapter)
-                    //{
+
+                        log.addLine("Attempt " + chapterFetchRetries + " to fetch chapters.");
+
+                        mainProcess = new Process();
+                        log.addLine("Fetching Chapters");
+                        mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe");
+                        tempArg = "chapters \"" + details.fileName + "\"";
+                        fetchChapters = true;
+                        mainProcess.StartInfo.Arguments = tempArg;
+                        taskProcess();
+                        log.addLine("==================== CHAPTER INFO ====================");
+                        log.addLine(chapters);
+                        log.addLine("==================== END CHAPTER  ====================");
+
                         StreamWriter strChapters = new StreamWriter((dir.tempDIR + "chapters.xml"), false);
                         strChapters.Write(chapters);
-                        strChapters.Close();                     
-                                         
-                    //}
+                        strChapters.Close();
+
+
                     }
 
                     if (!xmlValidator.Validate())
@@ -194,15 +178,7 @@ namespace x264_GUI_CS.Containers
                         log.addLine("Continuing without the chapters.");
                     }
                 }
-                /*mainProcess = new Process();
 
-                mainProcess.StartInfo.FileName = Path.Combine(dir.mkvtoolnixDIR, "mkvextract.exe");
-                mainProcess.StartInfo.Arguments = "cuesheet \"" + details.fileName + "\" > \"D:\\chapters.cue\"";
-
-                MessageBox.Show(mainProcess.StartInfo.Arguments);
-                taskProcess();
-                log.setInfoLabel"";
-                textBox1.Text = mainProcess.StartInfo.Arguments;*/
 
                 if (proc.abandon)
                     log.setInfoLabel("Demuxing Aborted");
@@ -213,21 +189,21 @@ namespace x264_GUI_CS.Containers
 
             }
 
-            catch(KeyNotFoundException e)
+            catch (KeyNotFoundException e)
             {
                 String errormessage = "";
-                errormessage += "VIDEO: " ;
+                errormessage += "VIDEO: ";
                 errormessage += details.vid_codec;
-                errormessage += ", AUDIO: " ;
-                 for (int i = 0; i < details.audioCount; i++)
+                errormessage += ", AUDIO: ";
+                for (int i = 0; i < details.audioCount; i++)
                 {
-                     errormessage += " " + i + ": " + details.aud_codec[i] + ", " + details.aud_Languages[i];
-                 }
-                 errormessage += ", SUBS: ";
-                 for (int i = 0; i < details.subCount; i++)
+                    errormessage += " " + i + ": " + details.aud_codec[i] + ", " + details.aud_Languages[i];
+                }
+                errormessage += ", SUBS: ";
+                for (int i = 0; i < details.subCount; i++)
                 {
                     errormessage += " " + i + ": " + details.sub_codec[i] + ", " + details.sub_lang[i];
-                 }
+                }
 
 
                 log.addLine("Can't find codec :-(" + e.Message + ", " + errormessage);
@@ -317,7 +293,7 @@ namespace x264_GUI_CS.Containers
 
                 mainProcess.WaitForExit();
                 exitCode = mainProcess.ExitCode;
-                
+
                 Thread.Sleep(2000);
             }
             finally
@@ -364,7 +340,7 @@ namespace x264_GUI_CS.Containers
                 outputLog += logs + "\r\n";
                 if (fetchChapters)
                 {
-                   
+
                     chapters += logs + "\r\n";
 
                 }
@@ -399,7 +375,7 @@ namespace x264_GUI_CS.Containers
                 return true;
             else
                 return false;
-            
+
         }
 
     }

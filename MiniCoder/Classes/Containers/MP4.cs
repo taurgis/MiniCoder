@@ -67,7 +67,7 @@ namespace x264_GUI_CS.Containers
                 if (exitCode != 0)
                     return false;
 
-                log.addLine(tempArg);
+                
                 log.setInfoLabel("Demuxing Audio Track");
                 details.demuxAudio[0] = dir.tempDIR + details.name + "-Audio Track-" + "1" + "." + details.extension[details.aud_codec[0]];
                 tempArg = "\"" + details.fileName + "\" -raw 2 -out \"" + details.demuxAudio[0] + "\"";
