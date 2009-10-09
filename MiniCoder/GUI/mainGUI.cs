@@ -86,6 +86,7 @@ namespace MiniCoder
         {
             try
             {
+                
                 string startupDisk = Application.StartupPath.Substring(0, 2);
                 int freeDiskSpace = Convert.ToInt32(Startup.getFreeSpace(startupDisk) / 1048576);
                 if(freeDiskSpace < 1000)
@@ -93,7 +94,10 @@ namespace MiniCoder
                 log.addLine(freeDiskSpace.ToString()+"Mb free on HD.");
                 processPriority.SelectedIndex = 0;
                 if (Startup.checkInternet())
+                {
                     updateRequired();
+                    Startup.GetNews(newsList);
+                }
                 if (!Directory.Exists(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\x264Encoder\\Templates\\"))
                 {
                     log.addLine("Template folder not found, creating!");
@@ -576,19 +580,7 @@ namespace MiniCoder
             }
 
         }
-        public string GetText(string url)
-        {
-            WebRequest req = WebRequest.Create((url));
-
-            WebResponse response = req.GetResponse();
-            return StringFromResponse(response);
-        }
-        private string StringFromResponse(WebResponse response)
-        {
-            String url = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            return url;
-        }
+       
 
 
       
@@ -1023,6 +1015,12 @@ namespace MiniCoder
         private void clearOutput_Click(object sender, EventArgs e)
         {
             outPutLocation.Text = "";
+        }
+
+        private void newsList_SelectedDoubleClick(object sender, EventArgs e)
+        {
+            ListView tempList = (ListView)sender;
+            Process.Start(tempList.SelectedItems[0].SubItems[2].Text);
         }
 
     }

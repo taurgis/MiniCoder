@@ -109,7 +109,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
             this.aboutTab = new System.Windows.Forms.TabPage();
-            this.llReport = new System.Windows.Forms.LinkLabel();
+            this.newsList = new System.Windows.Forms.ListView();
+            this.dateHeader = new System.Windows.Forms.ColumnHeader();
+            this.newsHeader = new System.Windows.Forms.ColumnHeader();
+            this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -1017,24 +1020,48 @@
             // 
             // aboutTab
             // 
-            this.aboutTab.Controls.Add(this.llReport);
+            this.aboutTab.Controls.Add(this.newsList);
             this.aboutTab.Location = new System.Drawing.Point(4, 25);
             this.aboutTab.Name = "aboutTab";
             this.aboutTab.Size = new System.Drawing.Size(399, 356);
             this.aboutTab.TabIndex = 4;
-            this.aboutTab.Text = "About";
+            this.aboutTab.Text = "News";
             this.aboutTab.UseVisualStyleBackColor = true;
             // 
-            // llReport
+            // newsList
             // 
-            this.llReport.AutoSize = true;
-            this.llReport.Location = new System.Drawing.Point(132, 34);
-            this.llReport.Name = "llReport";
-            this.llReport.Size = new System.Drawing.Size(80, 16);
-            this.llReport.TabIndex = 0;
-            this.llReport.TabStop = true;
-            this.llReport.Text = "Report Bugs";
-            this.llReport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReport_LinkClicked);
+            this.newsList.Alignment = System.Windows.Forms.ListViewAlignment.Default;
+            this.newsList.AutoArrange = false;
+            this.newsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.dateHeader,
+            this.newsHeader,
+            this.urlHeader});
+            this.newsList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsList.FullRowSelect = true;
+            this.newsList.GridLines = true;
+            this.newsList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.newsList.Location = new System.Drawing.Point(0, 0);
+            this.newsList.Name = "newsList";
+            this.newsList.Size = new System.Drawing.Size(399, 356);
+            this.newsList.TabIndex = 1;
+            this.settingsTooltip.SetToolTip(this.newsList, "Doubleclick to see news-item.");
+            this.newsList.UseCompatibleStateImageBehavior = false;
+            this.newsList.View = System.Windows.Forms.View.Details;
+            this.newsList.DoubleClick += new System.EventHandler(this.newsList_SelectedDoubleClick);
+            // 
+            // dateHeader
+            // 
+            this.dateHeader.Text = "Date";
+            this.dateHeader.Width = 72;
+            // 
+            // newsHeader
+            // 
+            this.newsHeader.Text = "News";
+            this.newsHeader.Width = 315;
+            // 
+            // urlHeader
+            // 
+            this.urlHeader.Width = 0;
             // 
             // infoLabel
             // 
@@ -1104,7 +1131,6 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.aboutTab.ResumeLayout(false);
-            this.aboutTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1197,8 +1223,11 @@
         private System.Windows.Forms.TextBox outPutLocation;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button clearOutput;
-        private System.Windows.Forms.LinkLabel llReport;
         private System.Windows.Forms.ToolTip settingsTooltip;
+        private System.Windows.Forms.ListView newsList;
+        private System.Windows.Forms.ColumnHeader dateHeader;
+        private System.Windows.Forms.ColumnHeader newsHeader;
+        private System.Windows.Forms.ColumnHeader urlHeader;
     }
 }
 

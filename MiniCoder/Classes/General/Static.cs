@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Windows.Forms;
+using System.Net;
 namespace MiniCoder
 {
 
@@ -66,6 +68,44 @@ namespace MiniCoder
             GetDiskFreeSpaceEx(disk, out freeBytesAvailable, out totalBytes, out freeBytes);
             return Convert.ToInt64(freeBytes, Provider.getProvider());
         }
+
+        public static void GetNews(ListView list)
+        {
+            String news = GetText("http://www.gamerzzheaven.be/news.txt");
+           
+           String[] newsItems = news.Split(Char.Parse("\n"));
+           for (int i = 0; i < newsItems.Length; i++)
+           {
+               string[] newsItem = newsItems[i].Split(Char.Parse(";"));
+               ListViewItem temp = new ListViewItem();
+               ListViewItem.ListViewSubItem newsMessage = new ListViewItem.ListViewSubItem();
+               ListViewItem.ListViewSubItem newsUrl = new ListViewItem.ListViewSubItem();
+               temp.SubItems[0].Text = newsItem[0];
+               newsMessage.Text = newsItem[1];
+               newsUrl.Text = newsItem[2];
+
+               temp.SubItems.Add(newsMessage);
+               temp.SubItems.Add(newsUrl);
+               list.Items.Add(temp);
+           }
+          
+
+        }
+
+        private static string GetText(string url)
+        {
+            WebRequest req = WebRequest.Create((url));
+
+            WebResponse response = req.GetResponse();
+            return StringFromResponse(response);
+        }
+        private static string StringFromResponse(WebResponse response)
+        {
+            String url = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            return url;
+        }
+
     }
 
     public class DummyProvider : IFormatProvider
