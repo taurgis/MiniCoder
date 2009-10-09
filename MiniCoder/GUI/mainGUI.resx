@@ -140,9 +140,6 @@ It is a multimedia container format standard specified as a part of MPEG-4. It i
 commonly used to store digital audio and digital video streams, especially those defined
  by MPEG.</value>
   </data>
-  <metadata name="settingsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>524, 17</value>
-  </metadata>
   <data name="resizeCombo.ToolTip" xml:space="preserve">
     <value>With a resizing filter you can easily resize a video to a 
 preferred aspect ratio. Using these filters you can either
@@ -153,9 +150,6 @@ Recommended:
 - Sharp for high bitrates
 </value>
   </data>
-  <metadata name="settingsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>524, 17</value>
-  </metadata>
   <data name="fileSize.ToolTip" xml:space="preserve">
     <value>Target File Size means that the program will try to get the
 output filesize as close as it can to the determined size.
