@@ -120,12 +120,6 @@ namespace MiniCoder
                     for (int i = 0; i < details.subCount; i++)
                         args += (i + step).ToString() + ":0,";
 
-                    
-
-                  
-
-                    log.addLine(args);
-
                     proc.setArguments(args);
                                             
                     break;
@@ -136,16 +130,11 @@ namespace MiniCoder
                     proc.setFilename(Path.Combine(mp4box.getInstallPath(), "mp4box.exe"));
                     details.outFile += ".mp4";
 
-                   
-
-
                     if (details.fps > 400)
                         args = "-fps " + details.fps.ToString().Replace(".0", "").Substring(0, 2) + "." + details.fps.ToString().Replace(".0", "").Substring(2, details.fps.ToString().Replace(".0", "").Length - 2) + " -add \"" + details.encodedVideo + "#video:name=Video\" ";
                     else
                         args = "-fps " + details.fps + " -add \"" + details.encodedVideo + "#video:name=Video\" ";
-
-
-                    
+      
 
                     for (int i = 0; i < details.audioCount; i++)
                     {

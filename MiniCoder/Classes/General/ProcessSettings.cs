@@ -46,7 +46,7 @@ namespace MiniCoder
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-                log.addLine(mainProcess.StartInfo.Arguments);
+                log.addLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments);
                 taskProcess();
                 return exitCode;
             }
