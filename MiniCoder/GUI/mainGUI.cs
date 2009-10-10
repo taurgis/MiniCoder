@@ -258,7 +258,7 @@ namespace MiniCoder
                 startDate = DateTime.Now;
               
                 Boolean breakWhile = false;
-                details = mediainfo(0);
+                details = Encoding.mediainfo(fileList[0].ToString(), crfValue);
                 
 
                 if (outPutLocation.Text != "")
@@ -324,57 +324,7 @@ namespace MiniCoder
             encoding = false;
         }
 
-        private FileInformation mediainfo(int i)
-        {
-            infoLabel.Text = "Gathering Media Info";
-
-            IfMediaDetails temp;
-            if (IntPtr.Size == 8)
-                temp = new MediaDetails64();
-            else
-                temp = new MediaDetails32();
-
-            FileInformation tempDetail = new FileInformation();
-
-            tempDetail.fileName = temp.fileName(fileList[i].ToString());
-            tempDetail.fileSize = temp.fileSize(fileList[i].ToString());
-            tempDetail.format = temp.fileFormat(fileList[i].ToString());
-            tempDetail.name = temp.name(fileList[i].ToString());
-            tempDetail.ext = temp.fileExt(fileList[i].ToString());
-            tempDetail.outDIR = Path.GetDirectoryName(tempDetail.fileName) + "\\";
-            tempDetail.crfValue = crfValue;
-            tempDetail.audioCount = temp.audioCount(fileList[i].ToString());
-            tempDetail.aud_Languages = temp.audLanguage(fileList[i].ToString());
-            if (tempDetail.ext != ".avi")
-                tempDetail.aud_id = temp.audID(fileList[i].ToString());
-            tempDetail.aud_codec = temp.audCodec(fileList[i].ToString());
-            tempDetail.audLength = (int)(temp.audLength(fileList[i].ToString()) / 1000);
-            tempDetail.audTitles = temp.audTitle(fileList[i].ToString());
-            tempDetail.completeinfo = temp.completeInfo(fileList[i].ToString());
-            if (tempDetail.ext.ToUpper() == ".VOB")
-                tempDetail.audBitrate = temp.audBitrate(fileList[i].ToString());
-
-            tempDetail.width = temp.width(fileList[i].ToString());
-            tempDetail.height = temp.height(fileList[i].ToString());
-            tempDetail.fps = temp.fps(fileList[i].ToString());
-            tempDetail.vid_codec = temp.vidCodec(fileList[i].ToString());
-            tempDetail.framecount = temp.frameCount(fileList[i].ToString());
-            //     tempDetail.frameType = temp.frameRateType(fileList[i].ToString());
-            tempDetail.subCount = temp.subCount(fileList[i].ToString());
-            if (tempDetail.subCount != 0)
-            {
-                tempDetail.sub_Titles = temp.subCaption(fileList[i].ToString());
-                tempDetail.sub_id = temp.subID(fileList[i].ToString());
-                tempDetail.sub_codec = temp.subCodec(fileList[i].ToString());
-                tempDetail.sub_lang = temp.subLang(fileList[i].ToString());
-            }
-            tempDetail.chapters = temp.chapters(fileList[i].ToString());
-            tempDetail.vfrCode = null;
-            tempDetail.vfrName = null;
-
-            infoLabel.Text = "";
-            return tempDetail;
-        }
+       
 
         private void stopButton_Click(object sender, EventArgs e)
         {
@@ -939,12 +889,12 @@ namespace MiniCoder
                 }
                 if (!(customSettings.Contains(inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length - 4))))
                 {
-                    frmFileInformation frmFileInfo = new frmFileInformation(mediainfo(inputList.SelectedItems[0].Index - completedFiles), this, getEncodeOpts());
+                    frmFileInformation frmFileInfo = new frmFileInformation(Encoding.mediainfo(fileList[inputList.SelectedItems[0].Index - completedFiles].ToString(),crfValue), this, getEncodeOpts());
                     frmFileInfo.Show();
                 }
                 else
                 {
-                    frmFileInformation frmFileInfo = new frmFileInformation(mediainfo(inputList.SelectedItems[0].Index - completedFiles), this, (EncodingOptions)customSettings[inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length - 4)]);
+                    frmFileInformation frmFileInfo = new frmFileInformation(Encoding.mediainfo(fileList[inputList.SelectedItems[0].Index - completedFiles].ToString(),crfValue), this, (EncodingOptions)customSettings[inputList.SelectedItems[0].Text.Substring(0, inputList.SelectedItems[0].Text.Length - 4)]);
                     frmFileInfo.Show();
                 }
             }

@@ -28,7 +28,7 @@ namespace MiniCoder
 
         public string encodeFile(FileInformation details)
         {
-
+            Boolean isAvs = false;
             if (!proc.abandon)
             {
                 main.setEncoding(true);
@@ -38,8 +38,15 @@ namespace MiniCoder
 
                 main.updateStatus("encoding");
 
-                if (!details.ext.Equals(".avs"))
+                if (details.ext.Equals(".avs"))
                 {
+                    isAvs = true;
+                      details = AvsDetails(details.fileName, details, encodingOpts);
+                    
+                    
+
+                }
+                
                     //VFR Information & Encoding
                     details.vfr = main.isFileVFR();
                     encodingStatus = VFRStep(details);
@@ -52,19 +59,19 @@ namespace MiniCoder
                     if (!String.IsNullOrEmpty(encodingStatus))
                         return encodingStatus;
 
+                    if (!isAvs)
+                    {
+                        //AVC Indexing
+                        encodingStatus = AVCIndexingStep(details);
+                        if (!String.IsNullOrEmpty(encodingStatus))
+                            return encodingStatus;
 
-                    //AVC Indexing
-                    encodingStatus = AVCIndexingStep(details);
-                    if (!String.IsNullOrEmpty(encodingStatus))
-                        return encodingStatus;
+                        //AVISynth Script Generation
+                        encodingStatus = AviSynthStep(details);
+                        if (!String.IsNullOrEmpty(encodingStatus))
+                            return encodingStatus;
 
-
-                    //AVISynth Script Generation
-                    encodingStatus = AviSynthStep(details);
-                    if (!String.IsNullOrEmpty(encodingStatus))
-                        return encodingStatus;
-
-
+                    }
                     //Audio Decoding
                     encodingStatus = AudioDecodingStep(details);
                     if (!String.IsNullOrEmpty(encodingStatus))
@@ -75,12 +82,7 @@ namespace MiniCoder
                     if (!String.IsNullOrEmpty(encodingStatus))
                         return encodingStatus;
                 }
-                else
-                {
-                    details = AvsDetails(details.fileName, details, encodingOpts);
-                    
-                    details.avsFile = details.fileName;
-                }
+               
                 //Video Encoding
                 encodingStatus = VideoEncodingStep(details);
                 if (!String.IsNullOrEmpty(encodingStatus))
@@ -93,7 +95,7 @@ namespace MiniCoder
               
                
 
-            }
+            
 
             if (proc.abandon)
             {
@@ -176,24 +178,19 @@ namespace MiniCoder
             else
                 temp = new MediaDetails32();
 
-            FileInformation tempInformation = new FileInformation()
-           {
-               fps = temp.fps(sourceFile),
-             audioCount = 0,
-             subCount = 0,
-             vid_codec = temp.vidCodec(sourceFile),
-             fileName = details.fileName,
-               muxheight = int.Parse(fileResolution[1]),
-               muxwidth = int.Parse(fileResolution[0]),
-               width = temp.width(sourceFile),
-               height = temp.height(sourceFile),
-            name = details.name,
-              
-            
+            FileInformation tempInformation = Encoding.mediainfo(sourceFile, details.crfValue);
 
-           };
-            tempInformation.outDIR = details.outDIR;
-            encOpts.sizeOpt = 0;
+            tempInformation.avsFile = details.fileName;
+            if(!String.IsNullOrEmpty(fileResolution[0]))
+            {
+            encOpts.resizeHeight = int.Parse(fileResolution[1]);
+            encOpts.resizeWidth = int.Parse(fileResolution[0]);
+            tempInformation.muxheight = encOpts.resizeHeight;
+            tempInformation.muxwidth = encOpts.resizeWidth;
+            }
+            //tempInformation.outDIR = details.outDIR;
+            
+            
             return tempInformation;
             
 
