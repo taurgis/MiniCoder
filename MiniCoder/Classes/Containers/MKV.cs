@@ -44,7 +44,7 @@ namespace x264_GUI_CS.Containers
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
 
-                log.addLine("MKVToolnix Dir:" + mkvtoolnix.getInstallPath());
+                
                 log.setInfoLabel("Demuxing MKV Tracks");
                 mainProcess = new Process();
                 log.addLine("Started demuxing MKV file");

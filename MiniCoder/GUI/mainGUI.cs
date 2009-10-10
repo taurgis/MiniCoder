@@ -49,14 +49,7 @@ namespace MiniCoder
             try
             {
                 InitializeComponent();
-                videoCombo.SelectedIndex = 0;
-                audioCombo.SelectedIndex = 0;
-                containerCombo.SelectedIndex = 0;
-                vidQualCombo.SelectedIndex = 1;
-                resizeCombo.SelectedIndex = 0;
-                fieldCombo.SelectedIndex = 0;
-                noiseCombo.SelectedIndex = 0;
-                sharpCombo.SelectedIndex = 0;
+              
                 log = new LogBook(this);
                 proc = new ProcessSettings(log);
                 log.addLine("Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString());
@@ -303,6 +296,7 @@ namespace MiniCoder
                     case "Remove":
                         fileindex++;
                         fileList.RemoveAt(0);
+                        breakWhile = true;
                         break;
 
                     case "Aborted":

@@ -56,7 +56,7 @@ namespace MiniCoder
                             sourceline = "AVISource(\"" + dir.tempDIR + details.name + "-Video Track.avi\", audio=false)";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + details.fileName + "\")";
+                            sourceline = "DirectshowSource(\"" + details.fileName + "\")\r\nConvertToYV12()";
                             break;
                     }
                     break;
@@ -81,7 +81,7 @@ namespace MiniCoder
                             sourceline = "AVCSource(\"" + details.dgaFile + "\")";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + details.dgaFile + "\")";
+                            sourceline = "DirectshowSource(\"" + details.dgaFile + "\")\r\nConvertToYV12()";
                             break;
                     }
                     break;
@@ -101,7 +101,7 @@ namespace MiniCoder
                             sourceline = "AVISource(\"" + dir.tempDIR + details.name + "-Video Track.avi\", audio=false)";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + details.fileName + "\")";
+                            sourceline = "DirectshowSource(\"" + details.fileName + "\")\r\nConvertToYV12()";
                             break;
                      }
                     break;
@@ -119,19 +119,19 @@ namespace MiniCoder
                     switch(details.ext)
                     {
                         case ".mkv":
-                            sourceline = "DirectshowSource(\"" + dir.tempDIR + details.name + "-Video Track.avi\")";
+                            sourceline = "DirectshowSource(\"" + dir.tempDIR + details.name + "-Video Track.avi\")\r\nConvertToYV12()";
                             break;
                         case ".ogm":
-                            sourceline = "DirectshowSource(\"" + details.fileName + "\")";
+                            sourceline = "DirectshowSource(\"" + details.fileName + "\")\r\nConvertToYV12()";
                             break;
                         case ".avi":
-                            sourceline = "DirectshowSource(\"" + details.fileName + "\")";
+                            sourceline = "DirectshowSource(\"" + details.fileName + "\")\r\nConvertToYV12()";
                             break;
                         case ".mp4":
-                            sourceline = "DirectshowSource(\"" + details.fileName + "\")";
+                            sourceline = "DirectshowSource(\"" + details.fileName + "\")\r\nConvertToYV12()";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + details.fileName + "\")";
+                            sourceline = "DirectshowSource(\"" + details.fileName + "\")\r\nConvertToYV12()";
                             break;
                     }
                     break;
@@ -254,7 +254,7 @@ namespace MiniCoder
             {
                 if (err.Contains("line 1"))
                 {
-                    MessageBox.Show("Error on this line indicates an AVS error caused by Windows Vista/7 UAC. Please disable UAC and try again!");
+                    MessageBox.Show("Error on this line 1 - Possible causes\r\n - Vista UAC is enabled\r\n - ffdShow is not installed.");
                 }
                 else
                 {
