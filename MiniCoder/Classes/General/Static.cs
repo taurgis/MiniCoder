@@ -25,6 +25,58 @@ namespace MiniCoder
             }
             return true;
         }
+
+        public static FileInformation mediainfo(string fileName, int crf)
+        {
+            //infoLabel.Text = "Gathering Media Info";
+
+            IfMediaDetails temp;
+            if (IntPtr.Size == 8)
+                temp = new MediaDetails64();
+            else
+                temp = new MediaDetails32();
+
+            FileInformation tempDetail = new FileInformation();
+
+            tempDetail.fileName = temp.fileName(fileName);
+            tempDetail.fileSize = temp.fileSize(fileName);
+            tempDetail.format = temp.fileFormat(fileName);
+            tempDetail.name = temp.name(fileName);
+            tempDetail.ext = temp.fileExt(fileName);
+            tempDetail.outDIR = Path.GetDirectoryName(tempDetail.fileName) + "\\";
+            tempDetail.crfValue = crf;
+            tempDetail.audioCount = temp.audioCount(fileName);
+            tempDetail.aud_Languages = temp.audLanguage(fileName);
+            if (tempDetail.ext != ".avi")
+                tempDetail.aud_id = temp.audID(fileName);
+            tempDetail.aud_codec = temp.audCodec(fileName);
+            tempDetail.audLength = (int)(temp.audLength(fileName) / 1000);
+            tempDetail.audTitles = temp.audTitle(fileName);
+            tempDetail.completeinfo = temp.completeInfo(fileName);
+            if (tempDetail.ext.ToUpper() == ".VOB")
+                tempDetail.audBitrate = temp.audBitrate(fileName);
+
+            tempDetail.width = temp.width(fileName);
+            tempDetail.height = temp.height(fileName);
+            tempDetail.fps = temp.fps(fileName);
+            tempDetail.vid_codec = temp.vidCodec(fileName);
+            tempDetail.framecount = temp.frameCount(fileName);
+            //     tempDetail.frameType = temp.frameRateType(fileName);
+            tempDetail.subCount = temp.subCount(fileName);
+            if (tempDetail.subCount != 0)
+            {
+                tempDetail.sub_Titles = temp.subCaption(fileName);
+                tempDetail.sub_id = temp.subID(fileName);
+                tempDetail.sub_codec = temp.subCodec(fileName);
+                tempDetail.sub_lang = temp.subLang(fileName);
+            }
+            tempDetail.chapters = temp.chapters(fileName);
+            tempDetail.vfrCode = null;
+            tempDetail.vfrName = null;
+
+           // infoLabel.Text = "";
+            return tempDetail;
+        }
     }
 
     public static class Provider

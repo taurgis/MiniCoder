@@ -166,7 +166,7 @@ namespace MiniCoder
                     args += "-new \"" + details.outFile + "\"";
 
                    
-                    log.addLine(args);
+                  
 
                     proc.setArguments(args);
 
