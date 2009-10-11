@@ -18,6 +18,7 @@ namespace MiniCoder
         LogBook log;
         Package x264;
         Package xvid_encraw;
+        Package theora;
         int exitCode;
 
 
@@ -34,6 +35,7 @@ namespace MiniCoder
             proc.stdOutDisabled(false);
             x264=(Package)dir.htRequired["x264"];
             xvid_encraw = (Package)dir.htRequired["xvid_encraw"];
+            theora = (Package)dir.htRequired["theora"];
             string pass1Arg = "", pass2Arg = "", pass3Arg = null;
             proc.initProcess();
            
@@ -65,7 +67,7 @@ namespace MiniCoder
                         x264.download();
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                     details.encodedVideo = dir.tempDIR + details.name + "_video output.264";
-
+                    
                     switch (encopts.vidQual)
                     {
                         case 0:
@@ -155,6 +157,36 @@ namespace MiniCoder
 
                     proc.setArguments("-i \"" + details.avsFile + "\" " + pass1Arg + " NUL");
                     
+                    break;
+
+                case 2:
+                    proc.stdOutDisabled(true);
+                    proc.stdErrDisabled(true);
+                    log.setInfoLabel("Encoding Theora video");
+                    if (!theora.isInstalled())
+                        theora.download();
+                    proc.setFilename(Path.Combine(theora.getInstallPath(), "theora.exe"));
+                    details.encodedVideo = dir.tempDIR + details.name + "_video output.m2v";
+
+                    switch (encopts.vidQual)
+                    {
+                        case 0:
+                            pass1Arg = "\"" + details.fileName + "\" --width " + encopts.resizeWidth + " --height " + encopts.resizeHeight + " -a 10 -A " + encopts.audBR + " -v 4 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";  
+                            
+                            break;
+
+                        case 1:
+                            pass1Arg = "\"" + details.fileName + "\" --width " + encopts.resizeWidth + " --height " + encopts.resizeHeight + " -a 10 -A " + encopts.audBR + " -v 7 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";
+                            break;
+
+                        case 2:
+                        case 3:
+                            pass1Arg = "\"" + details.fileName + "\" --width " + encopts.resizeWidth + " --height " + encopts.resizeHeight + " -a 10 -A " + encopts.audBR + " -v 10 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";
+                            break;
+
+                    }
+
+                    proc.setArguments(pass1Arg);
                     break;
               
             }

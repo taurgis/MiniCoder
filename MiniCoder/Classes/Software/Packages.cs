@@ -78,7 +78,8 @@ namespace MiniCoder
             defaultPackages.Add("DGAVCIndex", newPackage("DGAVCIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/DGAVCIndex.zip", "video", ""));
             defaultPackages.Add("DGAVCDecode", newPackage("DGAVCDecode", "dll", true, "Avisynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/DGAVCDecode.zip", "plugin", ""));
             defaultPackages.Add("DGIndex", newPackage("DGIndex", "zip", false, "", "", "http://www.gamerzzheaven.be/dgindex.zip", "muxer", ""));
-          
+            defaultPackages.Add("theora", newPackage("theora", "zip", false, "", "", "http://www.gamerzzheaven.be/theora.zip", "video", ""));
+
             foreach(string key in defaultPackages.Keys)
             {
                 if (!htPackages.Contains(key))

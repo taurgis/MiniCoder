@@ -29,6 +29,9 @@ namespace MiniCoder
         public string encodeFile(FileInformation details)
         {
             Boolean isAvs = false;
+            if (encodingOpts.vidCodec == 2)
+                encodingOpts.skipAudio = true;
+
             if (!proc.abandon)
             {
                 main.setEncoding(true);
@@ -65,12 +68,13 @@ namespace MiniCoder
                     encodingStatus = AVCIndexingStep(details);
                     if (!String.IsNullOrEmpty(encodingStatus))
                         return encodingStatus;
-
-                    //AVISynth Script Generation
-                    encodingStatus = AviSynthStep(details);
-                    if (!String.IsNullOrEmpty(encodingStatus))
-                        return encodingStatus;
-
+                    if (!(encodingOpts.vidCodec == 2))
+                    {
+                        //AVISynth Script Generation
+                        encodingStatus = AviSynthStep(details);
+                        if (!String.IsNullOrEmpty(encodingStatus))
+                            return encodingStatus;
+                    }
                 }
                 if (!encodingOpts.skipAudio)
                 {
@@ -94,7 +98,8 @@ namespace MiniCoder
                     return encodingStatus;
 
                 //muxing
-                encodingStatus = MuxingStep(details);
+                if(encodingOpts.vidCodec != 2)
+                    encodingStatus = MuxingStep(details);
                 if (!String.IsNullOrEmpty(encodingStatus))
                     return encodingStatus;
 
