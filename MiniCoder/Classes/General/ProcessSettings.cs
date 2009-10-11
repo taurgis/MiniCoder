@@ -128,15 +128,7 @@ namespace MiniCoder
                 if (!finishedTask)
                     continue;
 
-                //if (backGround.IsAlive)
-                //{
-                //    if (!mainProcess.HasExited)
-                //    {
-                //        mainProcess.Kill();
-                //    }
-                //    mainProcess.Close();
-                //    backGround.Abort();
-                //}
+              
 
             }
 
@@ -185,6 +177,7 @@ namespace MiniCoder
             }
             finally
             {
+                Thread.Sleep(2000);
                 if (null != stdOutThread)
                 {
 

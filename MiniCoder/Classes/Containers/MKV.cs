@@ -25,12 +25,14 @@ namespace x264_GUI_CS.Containers
         LogBook log;
         int exitCode;
         string chapters;
+        EncodingOptions encOpts;
         
         Boolean fetchChapters = false;
-        public clMKV(LogBook log)
+        public clMKV(LogBook log, EncodingOptions encOpts)
         {
             this.log = log;
             proc = new ProcessSettings(log);
+            this.encOpts = encOpts;
         }
 
         public bool demux(ApplicationSettings dir, FileInformation details, ProcessSettings proc)
@@ -64,13 +66,20 @@ namespace x264_GUI_CS.Containers
                     tempArg += details.aud_id[i] + ":\"" + details.demuxAudio[i] + "\" ";
                 }
                 details.demuxSub = new string[details.subCount];
-                log.addLine("Sub Count: " + details.subCount);
-                for (int i = 0; i < details.subCount; i++)
+             
+                if (!encOpts.ignoreSubs)
                 {
-                    details.demuxSub[i] = dir.tempDIR + details.name + "-Subtitle Track-" + i.ToString() + "." + details.extension[details.sub_codec[i]];
-                    tempArg += details.sub_id[i] + ":\"" + details.demuxSub[i] + "\" ";
+                    for (int i = 0; i < details.subCount; i++)
+                    {
+                        details.demuxSub[i] = dir.tempDIR + details.name + "-Subtitle Track-" + i.ToString() + "." + details.extension[details.sub_codec[i]];
+                        tempArg += details.sub_id[i] + ":\"" + details.demuxSub[i] + "\" ";
+                    }
                 }
-
+                else
+                {
+                    details.subCount = 0;
+                }
+                log.addLine("Sub Count: " + details.subCount);
                 log.addLine(tempArg);
                 mainProcess.StartInfo.Arguments = tempArg;
 
@@ -84,63 +93,68 @@ namespace x264_GUI_CS.Containers
                 else
                     log.setInfoLabel("Demuxing Complete");
 
-                log.setInfoLabel("Demuxing Attachments");
-                mainProcess = new Process();
 
-                mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvinfo.exe");
-                mainProcess.StartInfo.Arguments = "\"" + details.fileName + "\"";
-
-                taskProcess();
-
-                string[] split = Regex.Split(outputLog, "\\+ File name: ");
-
-                string temp;
-
-                details.attachments = new string[split.Length - 1];
-
-                char[] sep1 = { ':' };
-                char[] sep2 = { '\r' };
-                try
+                if (!encOpts.ignoreAttachments)
                 {
-                    int start = outputLog.IndexOfAny(sep1, outputLog.IndexOf("Display width")) + 2;
-                    int end = outputLog.IndexOfAny(sep2, outputLog.IndexOf("Display width"));
-                    temp = outputLog.Substring(start, end - start);
-                    int width = int.Parse(temp);
-
-                    start = outputLog.IndexOfAny(sep1, outputLog.IndexOf("Display height")) + 2;
-                    end = outputLog.IndexOfAny(sep2, outputLog.IndexOf("Display height"));
-                    temp = outputLog.Substring(start, end - start);
-                    int height = int.Parse(temp);
-
-                    details.muxwidth = width;
-                    details.muxheight = height;
-
-                    log.addLine("Number of attachments: " + split.Length);
-                    for (int i = 1; i < split.Length; i++)
-                        details.attachments[i - 1] = split[i].Substring(0, split[i].IndexOf("\r\n"));
-
+                    log.setInfoLabel("Demuxing Attachments");
                     mainProcess = new Process();
 
-                    mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe");
-                    tempArg = "attachments \"" + details.fileName + "\"";
+                    mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvinfo.exe");
+                    mainProcess.StartInfo.Arguments = "\"" + details.fileName + "\"";
 
-                    for (int i = 1; i <= details.attachments.Length; i++)
-                        tempArg += " " + i.ToString() + ":\"" + dir.tempDIR + details.attachments[i - 1] + "\"";
-
-                    mainProcess.StartInfo.Arguments = tempArg;
                     taskProcess();
+
+                    string[] split = Regex.Split(outputLog, "\\+ File name: ");
+
+                    string temp;
+
+                    details.attachments = new string[split.Length - 1];
+
+                    char[] sep1 = { ':' };
+                    char[] sep2 = { '\r' };
+                    try
+                    {
+                        int start = outputLog.IndexOfAny(sep1, outputLog.IndexOf("Display width")) + 2;
+                        int end = outputLog.IndexOfAny(sep2, outputLog.IndexOf("Display width"));
+                        temp = outputLog.Substring(start, end - start);
+                        int width = int.Parse(temp);
+
+                        start = outputLog.IndexOfAny(sep1, outputLog.IndexOf("Display height")) + 2;
+                        end = outputLog.IndexOfAny(sep2, outputLog.IndexOf("Display height"));
+                        temp = outputLog.Substring(start, end - start);
+                        int height = int.Parse(temp);
+
+                        details.muxwidth = width;
+                        details.muxheight = height;
+
+                        log.addLine("Number of attachments: " + split.Length);
+                        for (int i = 1; i < split.Length; i++)
+                            details.attachments[i - 1] = split[i].Substring(0, split[i].IndexOf("\r\n"));
+
+                        mainProcess = new Process();
+
+                        mainProcess.StartInfo.FileName = Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe");
+                        tempArg = "attachments \"" + details.fileName + "\"";
+
+                        for (int i = 1; i <= details.attachments.Length; i++)
+                            tempArg += " " + i.ToString() + ":\"" + dir.tempDIR + details.attachments[i - 1] + "\"";
+
+                        mainProcess.StartInfo.Arguments = tempArg;
+                        taskProcess();
+                    }
+                    catch
+                    {
+                        log.addLine("Error demuxing!");
+                        log.addLine("Remuxing the MKV file might solve this problem.");
+                    }
                 }
-                catch
-                {
-                    log.addLine("Error demuxing!");
-                    log.addLine("Remuxing the MKV file might solve this problem.");
-                }
+               
                 log.setInfoLabel("Done Demuxing");
                 log.addLine("Done Demuxing");
 
 
 
-                if (details.chapters != "")
+                if (details.chapters != "" && !encOpts.ignoreChapters)
                 {
                     XMLValidator xmlValidator = new XMLValidator(dir.tempDIR + "chapters.xml");
                     int chapterFetchRetries = 0;

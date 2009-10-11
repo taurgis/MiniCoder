@@ -41,37 +41,39 @@ namespace MiniCoder
                 if (details.ext.Equals(".avs"))
                 {
                     isAvs = true;
-                      details = AvsDetails(details.fileName, details, encodingOpts);
-                    
-                    
+                    details = AvsDetails(details.fileName, details, encodingOpts);
+
+
 
                 }
-                
-                    //VFR Information & Encoding
-                    details.vfr = main.isFileVFR();
-                    encodingStatus = VFRStep(details);
 
+                //VFR Information & Encoding
+                details.vfr = main.isFileVFR();
+                encodingStatus = VFRStep(details);
+
+                if (!String.IsNullOrEmpty(encodingStatus))
+                    return encodingStatus;
+
+                //Demuxing File
+                encodingStatus = DemuxingStep(details);
+                if (!String.IsNullOrEmpty(encodingStatus))
+                    return encodingStatus;
+
+                if (!isAvs)
+                {
+                    //AVC Indexing
+                    encodingStatus = AVCIndexingStep(details);
                     if (!String.IsNullOrEmpty(encodingStatus))
                         return encodingStatus;
 
-                    //Demuxing File
-                    encodingStatus = DemuxingStep(details);
+                    //AVISynth Script Generation
+                    encodingStatus = AviSynthStep(details);
                     if (!String.IsNullOrEmpty(encodingStatus))
                         return encodingStatus;
 
-                    if (!isAvs)
-                    {
-                        //AVC Indexing
-                        encodingStatus = AVCIndexingStep(details);
-                        if (!String.IsNullOrEmpty(encodingStatus))
-                            return encodingStatus;
-
-                        //AVISynth Script Generation
-                        encodingStatus = AviSynthStep(details);
-                        if (!String.IsNullOrEmpty(encodingStatus))
-                            return encodingStatus;
-
-                    }
+                }
+                if (!encodingOpts.skipAudio)
+                {
                     //Audio Decoding
                     encodingStatus = AudioDecodingStep(details);
                     if (!String.IsNullOrEmpty(encodingStatus))
@@ -82,7 +84,10 @@ namespace MiniCoder
                     if (!String.IsNullOrEmpty(encodingStatus))
                         return encodingStatus;
                 }
-               
+                else
+                    details.audioCount = 0;
+
+
                 //Video Encoding
                 encodingStatus = VideoEncodingStep(details);
                 if (!String.IsNullOrEmpty(encodingStatus))
@@ -92,9 +97,9 @@ namespace MiniCoder
                 encodingStatus = MuxingStep(details);
                 if (!String.IsNullOrEmpty(encodingStatus))
                     return encodingStatus;
-              
-               
 
+
+            }
             
 
             if (proc.abandon)
@@ -206,7 +211,7 @@ namespace MiniCoder
                 if (!proc.abandon)
                 {
                     proc.currProcess = "mkv2vfr";
-                    ifContainer ctMKV = new clMKV(log);
+                    ifContainer ctMKV = new clMKV(log, encodingOpts);
                     proc.errflag = ctMKV.mkv2vfr(appSettings, details, proc);
 
                     if (!proc.errflag)
@@ -265,7 +270,7 @@ namespace MiniCoder
                         break;
                     case ".mkv":
 
-                        container = new clMKV(log);
+                        container = new clMKV(log, encodingOpts);
                         proc.errflag = container.demux(appSettings, details, proc);
                         break;
                     case ".ogm":

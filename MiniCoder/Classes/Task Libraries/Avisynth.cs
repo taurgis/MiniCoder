@@ -254,7 +254,7 @@ namespace MiniCoder
             {
                 if (err.Contains("line 1"))
                 {
-                    MessageBox.Show("Error on this line 1 - Possible causes\r\n - Vista UAC is enabled\r\n - ffdShow is not installed.");
+                    MessageBox.Show("Error on line 1 - Possible causes\r\n - Vista UAC is enabled\r\n - ffdShow is not installed");
                 }
                 else
                 {

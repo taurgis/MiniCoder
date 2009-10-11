@@ -75,6 +75,8 @@ namespace MiniCoder
             }
         }
 
+     
+
         private void mainGUI_Load(object sender, EventArgs e)
         {
             try
@@ -472,7 +474,7 @@ namespace MiniCoder
                 encOpts.audCodec = audioCombo.SelectedIndex;
 
                 encOpts.containerFormat = containerCombo.SelectedIndex;
-
+                encOpts.skipAudio = audioSkip.Checked;
                 encOpts.filtField = fieldCombo.SelectedIndex;
                 encOpts.filtResize = resizeCombo.SelectedIndex;
 
@@ -486,6 +488,10 @@ namespace MiniCoder
                 encOpts.filtNoise = noiseCombo.SelectedIndex;
                 encOpts.filtSharp = sharpCombo.SelectedIndex;
                 encOpts.subtitle = subText.Text;
+
+                encOpts.ignoreAttachments = ignoreAttachments.Checked;
+                encOpts.ignoreChapters = ignoreChapters.Checked;
+                encOpts.ignoreSubs = ignoreSubs.Checked;
 
                 encOpts.customFilter = customFiltOpts;
 
@@ -966,6 +972,9 @@ namespace MiniCoder
             ListView tempList = (ListView)sender;
             Process.Start(tempList.SelectedItems[0].SubItems[2].Text);
         }
+
+       
+
 
     }
 }

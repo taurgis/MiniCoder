@@ -18,7 +18,9 @@ namespace MiniCoder
         public bool advert = false;
         public int audBR = 40;
         public int audCodec = 0;
-
+        public bool ignoreChapters;
+        public bool ignoreSubs;
+        public bool ignoreAttachments;
         public int containerFormat = 0;
         public int hardSub = 0;
         public string hardSubLocation;
@@ -26,7 +28,7 @@ namespace MiniCoder
         public int filtResize = 0;
         public int resizeWidth;
         public int resizeHeight;
-
+        public bool skipAudio;
         public int filtNoise = 0;
         public int filtSharp = 0;
         public string subtitle;
