@@ -99,6 +99,9 @@
             this.videoBR = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.ignoreAttachments = new System.Windows.Forms.CheckBox();
+            this.ignoreSubs = new System.Windows.Forms.CheckBox();
+            this.ignoreChapters = new System.Windows.Forms.CheckBox();
             this.audioSkip = new System.Windows.Forms.CheckBox();
             this.btnApps = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -119,9 +122,6 @@
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.settingsTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.ignoreChapters = new System.Windows.Forms.CheckBox();
-            this.ignoreSubs = new System.Windows.Forms.CheckBox();
-            this.ignoreAttachments = new System.Windows.Forms.CheckBox();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -842,7 +842,8 @@
             this.videoCombo.FormattingEnabled = true;
             this.videoCombo.Items.AddRange(new object[] {
             "x264",
-            "Xvid"});
+            "Xvid",
+            "Theora"});
             this.videoCombo.Location = new System.Drawing.Point(84, 105);
             this.videoCombo.Name = "videoCombo";
             this.videoCombo.Size = new System.Drawing.Size(94, 24);
@@ -929,6 +930,36 @@
             this.groupBox8.TabIndex = 14;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Encoding";
+            // 
+            // ignoreAttachments
+            // 
+            this.ignoreAttachments.AutoSize = true;
+            this.ignoreAttachments.Location = new System.Drawing.Point(162, 56);
+            this.ignoreAttachments.Name = "ignoreAttachments";
+            this.ignoreAttachments.Size = new System.Drawing.Size(140, 20);
+            this.ignoreAttachments.TabIndex = 3;
+            this.ignoreAttachments.Text = "Ignore Attachments";
+            this.ignoreAttachments.UseVisualStyleBackColor = true;
+            // 
+            // ignoreSubs
+            // 
+            this.ignoreSubs.AutoSize = true;
+            this.ignoreSubs.Location = new System.Drawing.Point(9, 56);
+            this.ignoreSubs.Name = "ignoreSubs";
+            this.ignoreSubs.Size = new System.Drawing.Size(94, 20);
+            this.ignoreSubs.TabIndex = 2;
+            this.ignoreSubs.Text = "Ignore subs";
+            this.ignoreSubs.UseVisualStyleBackColor = true;
+            // 
+            // ignoreChapters
+            // 
+            this.ignoreChapters.AutoSize = true;
+            this.ignoreChapters.Location = new System.Drawing.Point(162, 30);
+            this.ignoreChapters.Name = "ignoreChapters";
+            this.ignoreChapters.Size = new System.Drawing.Size(118, 20);
+            this.ignoreChapters.TabIndex = 1;
+            this.ignoreChapters.Text = "Ignore Chapters";
+            this.ignoreChapters.UseVisualStyleBackColor = true;
             // 
             // audioSkip
             // 
@@ -1124,36 +1155,6 @@
             this.settingsTooltip.ShowAlways = true;
             this.settingsTooltip.UseAnimation = false;
             this.settingsTooltip.UseFading = false;
-            // 
-            // ignoreChapters
-            // 
-            this.ignoreChapters.AutoSize = true;
-            this.ignoreChapters.Location = new System.Drawing.Point(162, 30);
-            this.ignoreChapters.Name = "ignoreChapters";
-            this.ignoreChapters.Size = new System.Drawing.Size(118, 20);
-            this.ignoreChapters.TabIndex = 1;
-            this.ignoreChapters.Text = "Ignore Chapters";
-            this.ignoreChapters.UseVisualStyleBackColor = true;
-            // 
-            // ignoreSubs
-            // 
-            this.ignoreSubs.AutoSize = true;
-            this.ignoreSubs.Location = new System.Drawing.Point(9, 56);
-            this.ignoreSubs.Name = "ignoreSubs";
-            this.ignoreSubs.Size = new System.Drawing.Size(94, 20);
-            this.ignoreSubs.TabIndex = 2;
-            this.ignoreSubs.Text = "Ignore subs";
-            this.ignoreSubs.UseVisualStyleBackColor = true;
-            // 
-            // ignoreAttachments
-            // 
-            this.ignoreAttachments.AutoSize = true;
-            this.ignoreAttachments.Location = new System.Drawing.Point(162, 56);
-            this.ignoreAttachments.Name = "ignoreAttachments";
-            this.ignoreAttachments.Size = new System.Drawing.Size(140, 20);
-            this.ignoreAttachments.TabIndex = 3;
-            this.ignoreAttachments.Text = "Ignore Attachments";
-            this.ignoreAttachments.UseVisualStyleBackColor = true;
             // 
             // mainGUI
             // 

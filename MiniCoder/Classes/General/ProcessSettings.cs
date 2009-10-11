@@ -89,10 +89,18 @@ namespace MiniCoder
             mainProcess.EnableRaisingEvents = true;
 
             mainProcess.StartInfo.UseShellExecute = false;
-            mainProcess.StartInfo.CreateNoWindow = true;
-            mainProcess.StartInfo.RedirectStandardError = true;
-            mainProcess.StartInfo.RedirectStandardOutput = true;
-
+            if (mainProcess.StartInfo.FileName.Contains("theora.exe"))
+            {
+                mainProcess.StartInfo.CreateNoWindow = false;
+                mainProcess.StartInfo.RedirectStandardError = false;
+                mainProcess.StartInfo.RedirectStandardOutput = false;
+            }
+            else
+            {
+                mainProcess.StartInfo.CreateNoWindow = true;
+                mainProcess.StartInfo.RedirectStandardError = true;
+                mainProcess.StartInfo.RedirectStandardOutput = true;
+            }
             backGround = new Thread(new ThreadStart(runprocess));
             backGround.Start();
 
@@ -151,15 +159,17 @@ namespace MiniCoder
 
                 }
 
+                if (!mainProcess.StartInfo.FileName.Contains("theora.exe"))
+                {
+                    stderr = mainProcess.StandardError;
+                    stdout = mainProcess.StandardOutput;
 
-                stderr = mainProcess.StandardError;
-                stdout = mainProcess.StandardOutput;
+                    stdErrThread = new Thread(new ThreadStart(stderrProcess));
+                    stdOutThread = new Thread(new ThreadStart(stdoutProcess));
 
-                stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
-
-                stdErrThread.Start();
-                stdOutThread.Start();
+                    stdErrThread.Start();
+                    stdOutThread.Start();
+                }
 
                 if (mainProcess.StartInfo.FileName.Contains("avs2yuv.exe"))
                 {
