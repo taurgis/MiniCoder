@@ -98,6 +98,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.videoBR = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.audioSkip = new System.Windows.Forms.CheckBox();
             this.btnApps = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -117,6 +119,9 @@
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.settingsTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.ignoreChapters = new System.Windows.Forms.CheckBox();
+            this.ignoreSubs = new System.Windows.Forms.CheckBox();
+            this.ignoreAttachments = new System.Windows.Forms.CheckBox();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -131,6 +136,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.aboutTab.SuspendLayout();
@@ -899,6 +905,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Controls.Add(this.btnApps);
             this.tabPage1.Controls.Add(this.groupBox10);
             this.tabPage1.Controls.Add(this.groupBox9);
@@ -908,6 +915,29 @@
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Options";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.ignoreAttachments);
+            this.groupBox8.Controls.Add(this.ignoreSubs);
+            this.groupBox8.Controls.Add(this.ignoreChapters);
+            this.groupBox8.Controls.Add(this.audioSkip);
+            this.groupBox8.Location = new System.Drawing.Point(9, 205);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(378, 135);
+            this.groupBox8.TabIndex = 14;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Encoding";
+            // 
+            // audioSkip
+            // 
+            this.audioSkip.AutoSize = true;
+            this.audioSkip.Location = new System.Drawing.Point(9, 30);
+            this.audioSkip.Name = "audioSkip";
+            this.audioSkip.Size = new System.Drawing.Size(90, 20);
+            this.audioSkip.TabIndex = 0;
+            this.audioSkip.Text = "Skip Audio";
+            this.audioSkip.UseVisualStyleBackColor = true;
             // 
             // btnApps
             // 
@@ -1094,6 +1124,36 @@
             this.settingsTooltip.UseAnimation = false;
             this.settingsTooltip.UseFading = false;
             // 
+            // ignoreChapters
+            // 
+            this.ignoreChapters.AutoSize = true;
+            this.ignoreChapters.Location = new System.Drawing.Point(9, 56);
+            this.ignoreChapters.Name = "ignoreChapters";
+            this.ignoreChapters.Size = new System.Drawing.Size(118, 20);
+            this.ignoreChapters.TabIndex = 1;
+            this.ignoreChapters.Text = "Ignore Chapters";
+            this.ignoreChapters.UseVisualStyleBackColor = true;
+            // 
+            // ignoreSubs
+            // 
+            this.ignoreSubs.AutoSize = true;
+            this.ignoreSubs.Location = new System.Drawing.Point(9, 82);
+            this.ignoreSubs.Name = "ignoreSubs";
+            this.ignoreSubs.Size = new System.Drawing.Size(94, 20);
+            this.ignoreSubs.TabIndex = 2;
+            this.ignoreSubs.Text = "Ignore subs";
+            this.ignoreSubs.UseVisualStyleBackColor = true;
+            // 
+            // ignoreAttachments
+            // 
+            this.ignoreAttachments.AutoSize = true;
+            this.ignoreAttachments.Location = new System.Drawing.Point(9, 109);
+            this.ignoreAttachments.Name = "ignoreAttachments";
+            this.ignoreAttachments.Size = new System.Drawing.Size(140, 20);
+            this.ignoreAttachments.TabIndex = 3;
+            this.ignoreAttachments.Text = "Ignore Attachments";
+            this.ignoreAttachments.UseVisualStyleBackColor = true;
+            // 
             // mainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1127,6 +1187,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -1228,6 +1290,11 @@
         private System.Windows.Forms.ColumnHeader dateHeader;
         private System.Windows.Forms.ColumnHeader newsHeader;
         private System.Windows.Forms.ColumnHeader urlHeader;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.CheckBox audioSkip;
+        private System.Windows.Forms.CheckBox ignoreSubs;
+        private System.Windows.Forms.CheckBox ignoreChapters;
+        private System.Windows.Forms.CheckBox ignoreAttachments;
     }
 }
 

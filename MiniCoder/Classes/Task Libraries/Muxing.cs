@@ -169,7 +169,9 @@ namespace MiniCoder
                 return true;
 
             if (proc.startProcess() != 0)
+            {
                 return false;
+            }
             else
             {
                 return true;
