@@ -85,8 +85,8 @@ namespace MiniCoder
                 string startupDisk = Application.StartupPath.Substring(0, 2);
                 int freeDiskSpace = Convert.ToInt32(Startup.getFreeSpace(startupDisk) / 1048576);
                 if(freeDiskSpace < 1000)
-                    MessageBox.Show("Less than 1gb free on disk " + startupDisk + ". Please free up more space!");
-                log.addLine(freeDiskSpace.ToString()+"Mb free on HD.");
+                    MessageBox.Show("Less than 1 gb free on disk " + startupDisk + ". Please free up more space!");
+                log.addLine(freeDiskSpace.ToString()+" Mb free on HD.");
                 processPriority.SelectedIndex = 0;
                 if (Startup.checkInternet())
                 {
