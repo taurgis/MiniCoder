@@ -973,6 +973,21 @@ namespace MiniCoder
             Process.Start(tempList.SelectedItems[0].SubItems[2].Text);
         }
 
+        private void audioCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (audioCombo.SelectedIndex == 0)
+            {
+                Package tempPackage = (Package)appSettings.htRequired["besweet"];
+                if (!File.Exists(tempPackage.getInstallPath() + "neroAacEnc.exe"))
+                {
+                    MessageBox.Show("Due to licensing we are not allowed to put Nero AAC in the package automaticly.\r\nPlease download Nero Aac and put it in the folder about to open.(BeSweet)");
+                       Process.Start("http://www.nero.com/eng/downloads-nerodigital-nero-aac-codec.php");
+                    Process.Start(tempPackage.getInstallPath());
+                    audioCombo.SelectedIndex = 1;
+                }
+            }
+        }
+
        
 
 

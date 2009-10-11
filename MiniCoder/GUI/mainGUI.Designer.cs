@@ -716,6 +716,7 @@
             this.audioCombo.Size = new System.Drawing.Size(94, 24);
             this.audioCombo.TabIndex = 9;
             this.settingsTooltip.SetToolTip(this.audioCombo, "Both audio codecs provide high quality at low bitrates.\r\n\r\nRecommended: Nero AAC");
+            this.audioCombo.SelectedIndexChanged += new System.EventHandler(this.audioCombo_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -922,9 +923,9 @@
             this.groupBox8.Controls.Add(this.ignoreSubs);
             this.groupBox8.Controls.Add(this.ignoreChapters);
             this.groupBox8.Controls.Add(this.audioSkip);
-            this.groupBox8.Location = new System.Drawing.Point(9, 205);
+            this.groupBox8.Location = new System.Drawing.Point(9, 163);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(378, 135);
+            this.groupBox8.Size = new System.Drawing.Size(378, 90);
             this.groupBox8.TabIndex = 14;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Encoding";
@@ -934,14 +935,14 @@
             this.audioSkip.AutoSize = true;
             this.audioSkip.Location = new System.Drawing.Point(9, 30);
             this.audioSkip.Name = "audioSkip";
-            this.audioSkip.Size = new System.Drawing.Size(90, 20);
+            this.audioSkip.Size = new System.Drawing.Size(99, 20);
             this.audioSkip.TabIndex = 0;
-            this.audioSkip.Text = "Skip Audio";
+            this.audioSkip.Text = "Ignore Audio";
             this.audioSkip.UseVisualStyleBackColor = true;
             // 
             // btnApps
             // 
-            this.btnApps.Location = new System.Drawing.Point(9, 172);
+            this.btnApps.Location = new System.Drawing.Point(9, 259);
             this.btnApps.Name = "btnApps";
             this.btnApps.Size = new System.Drawing.Size(101, 26);
             this.btnApps.TabIndex = 4;
@@ -1127,7 +1128,7 @@
             // ignoreChapters
             // 
             this.ignoreChapters.AutoSize = true;
-            this.ignoreChapters.Location = new System.Drawing.Point(9, 56);
+            this.ignoreChapters.Location = new System.Drawing.Point(162, 30);
             this.ignoreChapters.Name = "ignoreChapters";
             this.ignoreChapters.Size = new System.Drawing.Size(118, 20);
             this.ignoreChapters.TabIndex = 1;
@@ -1137,7 +1138,7 @@
             // ignoreSubs
             // 
             this.ignoreSubs.AutoSize = true;
-            this.ignoreSubs.Location = new System.Drawing.Point(9, 82);
+            this.ignoreSubs.Location = new System.Drawing.Point(9, 56);
             this.ignoreSubs.Name = "ignoreSubs";
             this.ignoreSubs.Size = new System.Drawing.Size(94, 20);
             this.ignoreSubs.TabIndex = 2;
@@ -1147,7 +1148,7 @@
             // ignoreAttachments
             // 
             this.ignoreAttachments.AutoSize = true;
-            this.ignoreAttachments.Location = new System.Drawing.Point(9, 109);
+            this.ignoreAttachments.Location = new System.Drawing.Point(162, 56);
             this.ignoreAttachments.Name = "ignoreAttachments";
             this.ignoreAttachments.Size = new System.Drawing.Size(140, 20);
             this.ignoreAttachments.TabIndex = 3;
