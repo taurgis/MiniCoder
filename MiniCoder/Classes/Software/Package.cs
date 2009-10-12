@@ -143,7 +143,7 @@ namespace MiniCoder
         public string getInstallPath()
         {
             if (customPath != "")
-                return customPath;
+                return customPath +"\\";
 
 
             if (isRegistry)
