@@ -468,6 +468,11 @@ namespace MiniCoder
                     encOpts.sizeOpt = 1;
                 }
 
+                if (overWriteFPS.Checked)
+                {
+                    encOpts.overWriteFps = overWriteFPS.Checked;
+                    encOpts.fpsValue = fpsValue.Text;
+                }
                 encOpts.vidCodec = videoCombo.SelectedIndex;
                 encOpts.vidQual = vidQualCombo.SelectedIndex;
                 encOpts.hardSub = hardSub;
@@ -1000,6 +1005,15 @@ namespace MiniCoder
                     audioCombo.SelectedIndex = 1;
                 }
             }
+        }
+
+        private void overWriteFPS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (overWriteFPS.Checked)
+                fpsValue.Enabled = true;
+            else
+                fpsValue.Enabled = false;
+            
         }
 
        

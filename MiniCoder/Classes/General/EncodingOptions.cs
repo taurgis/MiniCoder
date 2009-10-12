@@ -18,6 +18,8 @@ namespace MiniCoder
         public bool advert = false;
         public int audBR = 40;
         public int audCodec = 0;
+        public bool overWriteFps;
+        public string fpsValue;
         public bool ignoreChapters;
         public bool ignoreSubs;
         public bool ignoreAttachments;

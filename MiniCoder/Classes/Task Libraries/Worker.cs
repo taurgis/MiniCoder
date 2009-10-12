@@ -29,6 +29,9 @@ namespace MiniCoder
         public string encodeFile(FileInformation details)
         {
             Boolean isAvs = false;
+            if (encodingOpts.overWriteFps)
+                details.fps = float.Parse(encodingOpts.fpsValue);
+
             if (encodingOpts.vidCodec == 2)
                 encodingOpts.skipAudio = true;
 
