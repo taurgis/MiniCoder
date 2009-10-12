@@ -167,21 +167,24 @@ namespace MiniCoder
                         theora.download();
                     proc.setFilename(Path.Combine(theora.getInstallPath(), "theora.exe"));
                     details.encodedVideo = dir.tempDIR + details.name + "_video output.m2v";
+                    string resize ="";
+                    if(encopts.filtResize != 0)
+                    resize = "--width " + encopts.resizeWidth + " --height " + encopts.resizeHeight;
 
                     switch (encopts.vidQual)
                     {
                         case 0:
-                            pass1Arg = "\"" + details.fileName + "\" --width " + encopts.resizeWidth + " --height " + encopts.resizeHeight + " -a 10 -A " + encopts.audBR + " -v 4 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";  
+                            pass1Arg = "\"" + details.fileName + "\" " + resize + " -a 10 -A " + encopts.audBR + " -v 4 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";  
                             
                             break;
 
                         case 1:
-                            pass1Arg = "\"" + details.fileName + "\" --width " + encopts.resizeWidth + " --height " + encopts.resizeHeight + " -a 10 -A " + encopts.audBR + " -v 7 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";
+                            pass1Arg = "\"" + details.fileName + "\" " + resize + " -a 10 -A " + encopts.audBR + " -v 7 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";
                             break;
 
                         case 2:
                         case 3:
-                            pass1Arg = "\"" + details.fileName + "\" --width " + encopts.resizeWidth + " --height " + encopts.resizeHeight + " -a 10 -A " + encopts.audBR + " -v 10 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";
+                            pass1Arg = "\"" + details.fileName + "\" " + resize + " -a 10 -A " + encopts.audBR + " -v 10 -V " + encopts.vidBR + " -o \"" + details.outDIR + details.name + "_output.ogg" + "\"";
                             break;
 
                     }

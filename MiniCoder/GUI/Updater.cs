@@ -431,21 +431,45 @@ namespace MiniCoder
             {
                 String tempName = tempListbox.SelectedItems[i].SubItems[1].Text;
                 Package tempPackage = (Package)applicationSettings.htRequired[tempName];
-                try
+                
+                if (!Directory.Exists(tempPackage.getInstallPath()) || !File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
                 {
-                    if (tempPackage.getCategory() == "plugin")
-                        File.Copy(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt", tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt");
-                    else
-                        File.Copy(tempPackage.getInstallPath() + "\\version.txt", tempPackage.getInstallPath() + "\\version_old.txt");
+                    if (tempPackage.getCategory() != "plugin")
+                    {
+                        Directory.CreateDirectory(tempPackage.getInstallPath());
+
+                        StreamWriter streamWrite = new StreamWriter(tempPackage.getInstallPath() + "\\version.txt");
+                        streamWrite.WriteLine("Ignore");
+                        streamWrite.Close();
+                    }
 
                 }
-                catch (IOException)
+                else
                 {
-                }
+                    try
+                    {
+                        StreamWriter streamWriter;
+                        if (tempPackage.getCategory() == "plugin")
+                        {
+                            File.Copy(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt", tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt");
+                             streamWriter = new StreamWriter(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt", false);
+                            streamWriter.WriteLine("Ignore");
+                            streamWriter.Close();
+                        }
+                        else
+                        {
+                            File.Copy(tempPackage.getInstallPath() + "\\version.txt", tempPackage.getInstallPath() + "\\version_old.txt");
+                             streamWriter = new StreamWriter(tempPackage.getInstallPath() + "\\version.txt", false);
+                            streamWriter.WriteLine("Ignore");
+                            streamWriter.Close();
+                        }
+                    }
+                    catch (IOException)
+                    {
+                    }
 
-                StreamWriter streamWriter = new StreamWriter(tempPackage.getInstallPath() + "\\version_" + tempName +".txt", false);
-                streamWriter.WriteLine("Ignore");
-                streamWriter.Close();
+                   
+                }
             }
         }
 
@@ -465,6 +489,7 @@ namespace MiniCoder
                 {
                     try
                     {
+                        
                         File.Delete(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt");
                         File.Copy(tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt", tempPackage.getInstallPath() + "\\version_" + tempName + ".txt");
                         File.Delete(tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt");
