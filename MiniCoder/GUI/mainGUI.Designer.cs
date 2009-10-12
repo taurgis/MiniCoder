@@ -122,6 +122,8 @@
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.nfIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.settingsTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.overWriteFPS = new System.Windows.Forms.CheckBox();
+            this.fpsValue = new System.Windows.Forms.TextBox();
             this.inputMenuStrip.SuspendLayout();
             this.logTab.SuspendLayout();
             this.cmLog.SuspendLayout();
@@ -920,13 +922,15 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.fpsValue);
+            this.groupBox8.Controls.Add(this.overWriteFPS);
             this.groupBox8.Controls.Add(this.ignoreAttachments);
             this.groupBox8.Controls.Add(this.ignoreSubs);
             this.groupBox8.Controls.Add(this.ignoreChapters);
             this.groupBox8.Controls.Add(this.audioSkip);
             this.groupBox8.Location = new System.Drawing.Point(9, 163);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(378, 90);
+            this.groupBox8.Size = new System.Drawing.Size(378, 108);
             this.groupBox8.TabIndex = 14;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Encoding";
@@ -973,7 +977,7 @@
             // 
             // btnApps
             // 
-            this.btnApps.Location = new System.Drawing.Point(9, 259);
+            this.btnApps.Location = new System.Drawing.Point(4, 290);
             this.btnApps.Name = "btnApps";
             this.btnApps.Size = new System.Drawing.Size(101, 26);
             this.btnApps.TabIndex = 4;
@@ -1156,6 +1160,25 @@
             this.settingsTooltip.UseAnimation = false;
             this.settingsTooltip.UseFading = false;
             // 
+            // overWriteFPS
+            // 
+            this.overWriteFPS.AutoSize = true;
+            this.overWriteFPS.Location = new System.Drawing.Point(9, 83);
+            this.overWriteFPS.Name = "overWriteFPS";
+            this.overWriteFPS.Size = new System.Drawing.Size(110, 20);
+            this.overWriteFPS.TabIndex = 4;
+            this.overWriteFPS.Text = "Overwrite FPS";
+            this.overWriteFPS.UseVisualStyleBackColor = true;
+            this.overWriteFPS.CheckedChanged += new System.EventHandler(this.overWriteFPS_CheckedChanged);
+            // 
+            // fpsValue
+            // 
+            this.fpsValue.Enabled = false;
+            this.fpsValue.Location = new System.Drawing.Point(135, 83);
+            this.fpsValue.Name = "fpsValue";
+            this.fpsValue.Size = new System.Drawing.Size(50, 22);
+            this.fpsValue.TabIndex = 5;
+            // 
             // mainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1297,6 +1320,8 @@
         private System.Windows.Forms.CheckBox ignoreSubs;
         private System.Windows.Forms.CheckBox ignoreChapters;
         private System.Windows.Forms.CheckBox ignoreAttachments;
+        private System.Windows.Forms.TextBox fpsValue;
+        private System.Windows.Forms.CheckBox overWriteFPS;
     }
 }
 
