@@ -675,10 +675,12 @@ namespace MiniCoder
 
         private void videoCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            audioCombo.Enabled = true;
             if (videoCombo.SelectedIndex == 0)
             {
                 vidQualCombo.Items.Clear();
-
+             
+               
                 vidQualCombo.Items.Add("Medium");
                 vidQualCombo.Items.Add("High");
                 vidQualCombo.Items.Add("Very High");
@@ -689,9 +691,19 @@ namespace MiniCoder
                 vidQualCombo.Items.Add("Ipod");
                 vidQualCombo.Items.Add("PSP");
                 vidQualCombo.Items.Add("PS3");
+                vidQualCombo.SelectedIndex = 0;
             }
             else
             {
+                if (videoCombo.SelectedIndex == 2)
+                {
+                    if (int.Parse(audioBR.Text) < 50)
+                        audioBR.Text = "50";
+
+                        audioCombo.SelectedIndex = 1;
+                        audioCombo.Enabled = false;
+                    
+                }
                 vidQualCombo.Items.Remove("Very High (+50mb Anime)");
                 vidQualCombo.Items.Remove("Very High (-50mb Anime)");
                 vidQualCombo.Items.Remove("Very High (TV-Shows/Movies)");
@@ -699,6 +711,7 @@ namespace MiniCoder
                 vidQualCombo.Items.Remove("Ipod");
                 vidQualCombo.Items.Remove("PSP");
                 vidQualCombo.Items.Remove("PS3");
+                vidQualCombo.SelectedIndex = 0;
 
             }
         }
