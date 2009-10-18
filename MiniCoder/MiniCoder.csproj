@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B60D7654-3F18-4057-87BA-95B8E5A33551}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MiniCoder</RootNamespace>
+    <AssemblyName>MiniCoder</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>bigIcon.ico</ApplicationIcon>
+    <ApplicationManifest>app_x86.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Encoding\XmlValidator.cs" />
+    <Compile Include="Core\Other\Codec.cs" />
+    <Compile Include="Encoding\Audio\Decoding\Ffmpeg.cs" />
+    <Compile Include="Encoding\Audio\Decoding\Madplay.cs" />
+    <Compile Include="Encoding\Audio\Decoding\Faad.cs" />
+    <Compile Include="Encoding\Audio\Decoding\Oggdec.cs" />
+    <Compile Include="Encoding\Audio\Decoding\Valdec.cs" />
+    <Compile Include="Encoding\Audio\Decoding\MiniDecoder.cs" />
+    <Compile Include="Encoding\Audio\Decoding\Flac.cs" />
+    <Compile Include="Encoding\Audio\Encoding\FFmpegAc-3.cs" />
+    <Compile Include="Encoding\Audio\Encoding\Vorbis.cs" />
+    <Compile Include="Encoding\Audio\Encoding\MiniEncoder.cs" />
+    <Compile Include="Encoding\Audio\Encoding\NeroAac.cs" />
+    <Compile Include="Encoding\AviSynth\AvsCreator.cs" />
+    <Compile Include="Encoding\AviSynth\AviSynthWrapper.cs" />
+    <Compile Include="Encoding\AviSynth\Plugins\Sharpen.cs" />
+    <Compile Include="Encoding\AviSynth\Plugins\Denoise.cs" />
+    <Compile Include="Encoding\AviSynth\Plugins\Field.cs" />
+    <Compile Include="Encoding\AviSynth\Plugins\Plugin.cs" />
+    <Compile Include="Encoding\AviSynth\Plugins\Resize.cs" />
+    <Compile Include="Encoding\AviSynth\Plugins\Source.cs" />
+    <Compile Include="Encoding\Encode.cs" />
+    <Compile Include="Encoding\Input\Avi.cs" />
+    <Compile Include="Encoding\Input\Avs.cs" />
+    <Compile Include="Encoding\Input\Vob.cs" />
+    <Compile Include="Encoding\Input\Wmv.cs" />
+    <Compile Include="Encoding\Input\Mkv.cs" />
+    <Compile Include="Encoding\Input\Ogm.cs" />
+    <Compile Include="Encoding\Input\Mp4.cs" />
+    <Compile Include="Encoding\Input\InputFile.cs" />
+    <Compile Include="Encoding\Input\Tracks\Audio.cs" />
+    <Compile Include="Encoding\Input\Tracks\Attachment.cs" />
+    <Compile Include="Encoding\Input\Tracks\Chapter.cs" />
+    <Compile Include="Encoding\Input\Tracks\Sub.cs" />
+    <Compile Include="Encoding\Input\Tracks\Track.cs" />
+    <Compile Include="Encoding\Input\Tracks\Video.cs" />
+    <Compile Include="Encoding\MediaInfo\IfMediaDetails.cs" />
+    <Compile Include="Encoding\MediaInfo\MediaDetails.cs" />
+    <Compile Include="Encoding\MediaInfo\MediaInfoDLL.cs" />
+    <Compile Include="Encoding\Output\Container.cs" />
+    <Compile Include="Encoding\Output\Mp4.cs" />
+    <Compile Include="Encoding\Output\Matroska.cs" />
+    <Compile Include="Encoding\Process Management\AttachmentProcess.cs" />
+    <Compile Include="Encoding\Process Management\Audio\AudioProcess.cs" />
+    <Compile Include="Encoding\Process Management\TheoraProcess.cs" />
+    <Compile Include="Encoding\Process Management\XvidProcess.cs" />
+    <Compile Include="Encoding\Process Management\X264Process.cs" />
+    <Compile Include="Encoding\Process Management\DefaultProcess.cs" />
+    <Compile Include="Encoding\Process Management\MiniProcess.cs" />
+    <Compile Include="Core\Other\MiniOnline.cs" />
+    <Compile Include="Core\Other\Language.cs" />
+    <Compile Include="Core\Other\LogBook.cs" />
+    <Compile Include="Core\Other\MiniSystem.cs" />
+    <Compile Include="Encoding\Process Management\ProcessWatcher.cs" />
+    <Compile Include="Encoding\Video\DGAVCIndex.cs" />
+    <Compile Include="Encoding\Video\Encoding\Calc.cs" />
+    <Compile Include="Encoding\Video\Encoding\Theora.cs" />
+    <Compile Include="Encoding\Video\Encoding\Xvid.cs" />
+    <Compile Include="Encoding\Video\Encoding\VideoEncoder.cs" />
+    <Compile Include="Encoding\Video\Encoding\x264.cs" />
+    <Compile Include="Encoding\Video\Vfr.cs" />
+    <Compile Include="External\Core.cs" />
+    <Compile Include="External\AvsPlugin.cs" />
+    <Compile Include="External\RegistryApp.cs" />
+    <Compile Include="External\Tool.cs" />
+    <Compile Include="External\Zip.cs" />
+    <Compile Include="GUI\AviSynth\CustomFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AviSynth\CustomFilter.designer.cs">
+      <DependentUpon>CustomFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\EncodeOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\EncodeOptions.Designer.cs">
+      <DependentUpon>EncodeOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\EncodeSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\EncodeSettings.Designer.cs">
+      <DependentUpon>EncodeSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Download.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Download.designer.cs">
+      <DependentUpon>Download.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tools\AppLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Tools\AppLocation.designer.cs">
+      <DependentUpon>AppLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tools\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Tools\Updater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Tools\Updater.designer.cs">
+      <DependentUpon>Updater.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\AviSynth\CustomFilter.resx">
+      <DependentUpon>CustomFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\EncodeOptions.resx">
+      <DependentUpon>EncodeOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\EncodeSettings.resx">
+      <DependentUpon>EncodeSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Download.resx">
+      <DependentUpon>Download.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tools\AppLocation.resx">
+      <DependentUpon>AppLocation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tools\Updater.resx">
+      <DependentUpon>Updater.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app_x86.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="External\Tools.cs" />
+    <Compile Include="Templates\Simple\MainTemplate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bigIcon.ico" />
+    <Content Include="bin\Debug\bigIcon.ico" />
+    <Content Include="bin\Debug\MediaInfo_32.dll" />
+    <Content Include="bin\Debug\MediaInfo_64.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
