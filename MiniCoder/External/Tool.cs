@@ -13,6 +13,10 @@ namespace MiniCoder.External
         string getCustomPath();
         string getInstallPath();
         string getDownloadPath();
+        string localVersion { get; set; }
+        string onlineVersion { get; set; }
+        string registrySubpath { get; set; }
+        string registrySubKey { get; set; }
         void download();
     }
 }

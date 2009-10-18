@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Win32;
 using System.IO;
 using MiniCoder.GUI;
+using System.Xml;
 
 namespace MiniCoder.External
 {
@@ -14,11 +15,12 @@ namespace MiniCoder.External
         private string customPath;
         private string category;
         private string appType;
+        public string localVersion { get; set; }
+        public string onlineVersion { get; set; }
+        public string registrySubpath { get; set; }
+        public string registrySubKey { get; set; }
 
-        private string registrySubpath;
-        private string registrySubKey;
-
-        public RegistryApp(string toolName, string appType, string registrySubpath, string registrySubKey, string downloadurl, string category, string customPath)
+        public RegistryApp(string toolName, string appType, string registrySubpath, string registrySubKey, string downloadurl, string category, string customPath, string localVersion)
         {
             this.toolName = toolName;
             this.appType = appType;
@@ -27,8 +29,28 @@ namespace MiniCoder.External
             this.registrySubKey = registrySubKey;
             this.registrySubpath = registrySubpath;
             this.category = category;
+            this.localVersion = localVersion;
+            getOnlineVersion();
         }
+        private void getOnlineVersion()
+        {
+            try
+            {
 
+
+                XmlDocument doc = new XmlDocument();
+
+                string xmlFile = "http://www.gamerzzheaven.be/applications.xml";
+                doc.Load(xmlFile);
+                XmlNodeList xmlnode = doc.SelectNodes("//Application[@name=\"" + toolName + "\"]");
+                onlineVersion = xmlnode[0].ChildNodes[0].InnerText;
+
+            }
+            catch
+            {
+
+            }
+        }
         public void setCustomPath(string path)
         {
             this.customPath = path;
@@ -102,7 +124,7 @@ namespace MiniCoder.External
 
         public string getInstallPath()
         {
-             if (customPath != "")
+             if (customPath != "" && !customPath.Equals("\r\n    "))
                 return customPath +"\\";
 
 

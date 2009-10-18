@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using MiniCoder.GUI;
-
+using System.Xml;
 namespace MiniCoder.External
 {
     class Zip : Tool
@@ -15,16 +15,40 @@ namespace MiniCoder.External
         private string category;
         private string appBasePath = Application.StartupPath + "\\Tools\\";
         private string appType;
+        public string localVersion { get; set; }
+        public string onlineVersion { get; set; }
+        public string registrySubpath { get; set; }
+        public string registrySubKey { get; set; }
 
-        public Zip(string toolName, string appType, string downloadurl, string category, string customPath)
+        public Zip(string toolName, string appType, string downloadurl, string category, string customPath, string localVersion)
         {
+            this.localVersion = localVersion;
             this.toolName = toolName;
             this.downloadPath = downloadurl;
             this.customPath = customPath;
             this.appType = appType;
             this.category = category;
+            getOnlineVersion();
         }
+        private void getOnlineVersion()
+        {
+            try
+            {
 
+
+                XmlDocument doc = new XmlDocument();
+
+                string xmlFile = "http://www.gamerzzheaven.be/applications.xml";
+                doc.Load(xmlFile);
+                XmlNodeList xmlnode = doc.SelectNodes("//Application[@name=\"" + toolName + "\"]");
+                onlineVersion = xmlnode[0].ChildNodes[0].InnerText;
+
+            }
+            catch
+            {
+
+            }
+        }
         public string getAppType()
         {
             return appType;
@@ -61,7 +85,7 @@ namespace MiniCoder.External
                    
             }
 
-            if (!string.IsNullOrEmpty(customPath))
+            if (!string.IsNullOrEmpty(customPath) && !customPath.Equals("\r\n    "))
             {
                 if (File.Exists(customPath + "\\" + tempToolname + ".exe"))
                     return true;
