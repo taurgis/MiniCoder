@@ -37,13 +37,17 @@ namespace MiniCoder.GUI
             encodeOptions.setProcessWatcher(processWatcher);
             if (MiniOnline.checkInternet())
             {
-                Updater tempUpdater = new Updater(tools, "");
+                Updater tempUpdater = new Updater(tools);
                 tempUpdater.Dispose();
                 MiniOnline.GetNews(newsList);
             }
-            if(!Directory.Exists(Application.StartupPath + "\\Temp\\"))
+            if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
                 Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
-            }
+        }
+        void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            tools.SavePackages();
+        }
 
         #region "File Management"
 

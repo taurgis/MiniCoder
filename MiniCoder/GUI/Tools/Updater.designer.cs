@@ -529,7 +529,7 @@
             this.MinimizeBox = false;
             this.Name = "Updater";
             this.Text = "MiniCoder Updater";
-            this.Load += new System.EventHandler(this.Updater_Load);
+            //this.Load += new System.EventHandler(this.Updater_Load);
             this.applicationTabs.ResumeLayout(false);
             this.coreTab.ResumeLayout(false);
             this.pluginTab.ResumeLayout(false);

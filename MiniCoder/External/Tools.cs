@@ -21,7 +21,6 @@ namespace MiniCoder.External
 
         public SortedList<String, Tool> getTools()
         {
-
             return tools;
         }
 
@@ -36,6 +35,9 @@ namespace MiniCoder.External
                     String appType = "";
                     String category = "";
                     string customPath ="";
+                    string registrySubKey = "";
+                    string registrySubpath = "";
+                    string localVersion = "";
                     Boolean complete = false;
                     XmlTextReader xmlReader = new XmlTextReader(Application.StartupPath + "\\applications.xml");
 
@@ -57,6 +59,14 @@ namespace MiniCoder.External
                                     xmlReader.Read();
                                     appType = xmlReader.Value;
                                     break;
+                                case "registrySubKey":
+                                    xmlReader.Read();
+                                    registrySubKey = xmlReader.Value;
+                                    break;
+                                case "registrySubpath":
+                                    xmlReader.Read();
+                                    registrySubpath = xmlReader.Value;
+                                    break;
                                 case "Download":
                                     xmlReader.Read();
                                     downloadPath = xmlReader.Value;
@@ -68,6 +78,10 @@ namespace MiniCoder.External
                                 case "Custom_Path":
                                     xmlReader.Read();
                                     customPath = xmlReader.Value;
+                                    break;
+                                case "LocalVersion":
+                                    xmlReader.Read();
+                                    localVersion = xmlReader.Value;
                                     complete = true;
                                     break;
                             }
@@ -76,11 +90,28 @@ namespace MiniCoder.External
                             {
                                 if (!String.IsNullOrEmpty(name))
                                 {
-                                    tools.Add(name, new Zip(name, appType, downloadPath, category, customPath));
+                                    switch (appType)
+                                    {
+                                        case "exe":
+                                            tools.Add(name, new RegistryApp(name, appType, registrySubpath,registrySubKey, downloadPath, category, customPath, localVersion));
+                                            break;
+                                        case "zip":
+                                            tools.Add(name, new Zip(name, appType, downloadPath, category, customPath, localVersion));
+                                            break;
+                                        case "plugin":
+                                            tools.Add(name, new AvsPlugin(name, downloadPath, category, tools["avs"], localVersion));
+                                            break;
+                                        case "Core":
+                                            tools.Add(name, new Core(name, appType, downloadPath, category, customPath, localVersion));
+                                            break;
+                                    }
+
+
+                                   
                                     
-                                    LogBook.addLogLine("Found custom path for " + name +".",1);
                                     if (!tools[name].isInstalled())
                                     {
+                                        LogBook.addLogLine("Found custom path for " + name + ".", 1);
                                         LogBook.addLogLine("Custom path invalid! Resetting to default.", 2);
                                         tools.Remove(name);
                                     }
@@ -105,36 +136,36 @@ namespace MiniCoder.External
                 }
             }
             SortedList<String, Tool> defaultPackages = new SortedList<string, Tool>();
-            defaultPackages.Add("Core", new Core("Core", "Core", "http://www.gamerzzheaven.be/core.zip", "core", ""));
-            defaultPackages.Add("ffmpeg", new Zip("ffmpeg", "zip", "http://www.gamerzzheaven.be/ffmpeg.zip", "audio", ""));
-            defaultPackages.Add("mkvtoolnix", new Zip("mkvtoolnix", "zip", "http://www.gamerzzheaven.be/mkvtoolnix.zip", "muxer", ""));
-            defaultPackages.Add("x264", new Zip("x264", "zip", "http://www.gamerzzheaven.be/x264.zip", "video", ""));
-            defaultPackages.Add("mkv2vfr", new Zip("mkv2vfr", "zip", "http://www.gamerzzheaven.be/mkv2vfr.zip", "muxer", ""));
-            defaultPackages.Add("avs", new RegistryApp("avs", "exe", "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Avisynth_258.exe", "other", ""));
-            defaultPackages.Add("mp4box", new Zip("mp4box", "zip", "http://www.gamerzzheaven.be/mp4box.zip", "muxer", ""));
-            defaultPackages.Add("besweet", new Zip("besweet", "zip", "http://www.gamerzzheaven.be/BeSweet.zip", "audio", ""));
-            defaultPackages.Add("ogmtools", new Zip("ogmtools", "zip", "http://www.gamerzzheaven.be/OGMTools.zip", "muxer", ""));
-            defaultPackages.Add("VirtualDubMod", new Zip("VirtualDubMod", "zip", "http://www.gamerzzheaven.be/VirtualDubMod.zip", "muxer", ""));
-            defaultPackages.Add("madplay", new Zip("madplay", "zip", "http://www.gamerzzheaven.be/madplay.zip", "audio", ""));
-            defaultPackages.Add("flac", new Zip("flac", "zip", "http://www.gamerzzheaven.be/flac.zip", "audio", ""));
-            defaultPackages.Add("valdec", new Zip("valdec", "zip", "http://www.gamerzzheaven.be/valdec.zip", "audio", ""));
-            defaultPackages.Add("faad", new Zip("faad", "zip", "http://www.gamerzzheaven.be/faad.zip", "audio", ""));
-            defaultPackages.Add("oggdec", new Zip("oggdec", "zip", "http://www.gamerzzheaven.be/oggdec.zip", "audio", ""));
-            defaultPackages.Add("Deen", new AvsPlugin("Deen", "http://www.gamerzzheaven.be/Deen.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("VSFilter", new AvsPlugin("VSFilter", "http://www.gamerzzheaven.be/VSFilter.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("Decomb", new AvsPlugin("Decomb", "http://www.gamerzzheaven.be/Decomb.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("UnDot", new AvsPlugin("UnDot", "http://www.gamerzzheaven.be/UnDot.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("FluxSmooth", new AvsPlugin("FluxSmooth", "http://www.gamerzzheaven.be/FluxSmooth.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("HQDN3D", new AvsPlugin("HQDN3D", "http://www.gamerzzheaven.be/HQDN3D.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("UnFilter", new AvsPlugin("UnFilter", "http://www.gamerzzheaven.be/UnFilter.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("Toon-v1.0-lite", new AvsPlugin("Toon-v1.0-lite", "http://www.gamerzzheaven.be/Toon-v1.0-lite.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("aWarpSharp", new AvsPlugin("aWarpSharp", "http://www.gamerzzheaven.be/aWarpSharp.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("MSharpen", new AvsPlugin("MSharpen", "http://www.gamerzzheaven.be/MSharpen.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("DGAVCDecode", new AvsPlugin("DGAVCDecode", "http://www.gamerzzheaven.be/DGAVCDecode.zip", "plugin", defaultPackages["avs"]));
-            defaultPackages.Add("xvid_encraw", new Zip("xvid_encraw", "zip", "http://www.gamerzzheaven.be/xvid_encraw.zip", "video", ""));
-            defaultPackages.Add("DGAVCIndex", new Zip("DGAVCIndex", "zip", "http://www.gamerzzheaven.be/DGAVCIndex.zip", "video", ""));
-            defaultPackages.Add("DGIndex", new Zip("DGIndex", "zip", "http://www.gamerzzheaven.be/dgindex.zip", "muxer", ""));
-            defaultPackages.Add("theora", new Zip("theora", "zip", "http://www.gamerzzheaven.be/theora.zip", "video", ""));
+            defaultPackages.Add("Core", new Core("Core", "Core", "http://www.gamerzzheaven.be/core.zip", "core", "","First Time"));
+            defaultPackages.Add("ffmpeg", new Zip("ffmpeg", "zip", "http://www.gamerzzheaven.be/ffmpeg.zip", "audio", "","First Time"));
+            defaultPackages.Add("mkvtoolnix", new Zip("mkvtoolnix", "zip", "http://www.gamerzzheaven.be/mkvtoolnix.zip", "muxer", "","First Time"));
+            defaultPackages.Add("x264", new Zip("x264", "zip", "http://www.gamerzzheaven.be/x264.zip", "video", "","First Time"));
+            defaultPackages.Add("mkv2vfr", new Zip("mkv2vfr", "zip", "http://www.gamerzzheaven.be/mkv2vfr.zip", "muxer", "","First Time"));
+            defaultPackages.Add("avs", new RegistryApp("avs", "exe", "AviSynth\\", "plugindir2_5", "http://www.gamerzzheaven.be/Avisynth_258.exe", "other", "","First Time"));
+            defaultPackages.Add("mp4box", new Zip("mp4box", "zip", "http://www.gamerzzheaven.be/mp4box.zip", "muxer", "", "First Time"));
+            defaultPackages.Add("besweet", new Zip("besweet", "zip", "http://www.gamerzzheaven.be/BeSweet.zip", "audio", "", "First Time"));
+            defaultPackages.Add("ogmtools", new Zip("ogmtools", "zip", "http://www.gamerzzheaven.be/OGMTools.zip", "muxer", "", "First Time"));
+            defaultPackages.Add("VirtualDubMod", new Zip("VirtualDubMod", "zip", "http://www.gamerzzheaven.be/VirtualDubMod.zip", "muxer", "", "First Time"));
+            defaultPackages.Add("madplay", new Zip("madplay", "zip", "http://www.gamerzzheaven.be/madplay.zip", "audio", "", "First Time"));
+            defaultPackages.Add("flac", new Zip("flac", "zip", "http://www.gamerzzheaven.be/flac.zip", "audio", "", "First Time"));
+            defaultPackages.Add("valdec", new Zip("valdec", "zip", "http://www.gamerzzheaven.be/valdec.zip", "audio", "", "First Time"));
+            defaultPackages.Add("faad", new Zip("faad", "zip", "http://www.gamerzzheaven.be/faad.zip", "audio", "", "First Time"));
+            defaultPackages.Add("oggdec", new Zip("oggdec", "zip", "http://www.gamerzzheaven.be/oggdec.zip", "audio", "", "First Time"));
+            defaultPackages.Add("Deen", new AvsPlugin("Deen", "http://www.gamerzzheaven.be/Deen.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("VSFilter", new AvsPlugin("VSFilter", "http://www.gamerzzheaven.be/VSFilter.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("Decomb", new AvsPlugin("Decomb", "http://www.gamerzzheaven.be/Decomb.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("UnDot", new AvsPlugin("UnDot", "http://www.gamerzzheaven.be/UnDot.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("FluxSmooth", new AvsPlugin("FluxSmooth", "http://www.gamerzzheaven.be/FluxSmooth.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("HQDN3D", new AvsPlugin("HQDN3D", "http://www.gamerzzheaven.be/HQDN3D.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("UnFilter", new AvsPlugin("UnFilter", "http://www.gamerzzheaven.be/UnFilter.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("Toon-v1.0-lite", new AvsPlugin("Toon-v1.0-lite", "http://www.gamerzzheaven.be/Toon-v1.0-lite.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("aWarpSharp", new AvsPlugin("aWarpSharp", "http://www.gamerzzheaven.be/aWarpSharp.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("MSharpen", new AvsPlugin("MSharpen", "http://www.gamerzzheaven.be/MSharpen.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("DGAVCDecode", new AvsPlugin("DGAVCDecode", "http://www.gamerzzheaven.be/DGAVCDecode.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("xvid_encraw", new Zip("xvid_encraw", "zip", "http://www.gamerzzheaven.be/xvid_encraw.zip", "video", "", "First Time"));
+            defaultPackages.Add("DGAVCIndex", new Zip("DGAVCIndex", "zip", "http://www.gamerzzheaven.be/DGAVCIndex.zip", "video", "", "First Time"));
+            defaultPackages.Add("DGIndex", new Zip("DGIndex", "zip", "http://www.gamerzzheaven.be/dgindex.zip", "muxer", "", "First Time"));
+            defaultPackages.Add("theora", new Zip("theora", "zip", "http://www.gamerzzheaven.be/theora.zip", "video", "", "First Time"));
 
             foreach (string key in defaultPackages.Keys)
             {
@@ -144,6 +175,7 @@ namespace MiniCoder.External
 
         }
 
+       
 
 
         public void SavePackages()
@@ -159,18 +191,21 @@ namespace MiniCoder.External
             foreach (string key in tools.Keys)
             {
                 Tool tempTool = tools[key];
-                if (!String.IsNullOrEmpty(tempTool.getCustomPath()))
-                {
+               
                     xmlWriter.WriteStartElement("Application");
                     xmlWriter.WriteElementString("Name", key);
                     xmlWriter.WriteElementString("Type", tempTool.getAppType());
-                    xmlWriter.WriteElementString("Download", tempTool.getDownloadPath());
+                    if (tempTool.getAppType().Equals("exe"))
+                    {
+                        xmlWriter.WriteElementString("registrySubpath", tempTool.registrySubpath);
+                        xmlWriter.WriteElementString("registrySubKey", tempTool.registrySubKey);
+                    }
+                        xmlWriter.WriteElementString("Download", tempTool.getDownloadPath());
                     xmlWriter.WriteElementString("Category", tempTool.getCategory());
                     xmlWriter.WriteElementString("Custom_Path", tempTool.getCustomPath());
+                    xmlWriter.WriteElementString("LocalVersion", tempTool.localVersion);
                     xmlWriter.WriteEndElement();
-                }
-
-
+                
             }
             xmlWriter.WriteEndElement();
             //  xmlWriter.WriteFullEndElement();

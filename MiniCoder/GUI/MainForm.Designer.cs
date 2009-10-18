@@ -76,6 +76,7 @@ namespace MiniCoder.GUI
             this.logMenu.SuspendLayout();
             this.aboutTab.SuspendLayout();
             this.SuspendLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(MainForm_FormClosing);
             // 
             // mainTabPage
             // 
@@ -422,6 +423,8 @@ namespace MiniCoder.GUI
             this.ResumeLayout(false);
 
         }
+
+      
 
      
 
