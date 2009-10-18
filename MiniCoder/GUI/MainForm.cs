@@ -37,7 +37,7 @@ namespace MiniCoder.GUI
             encodeOptions.setProcessWatcher(processWatcher);
             if (MiniOnline.checkInternet())
             {
-                Updater tempUpdater = new Updater(tools);
+                Updater tempUpdater = new Updater(tools,true);
                 tempUpdater.Dispose();
                 MiniOnline.GetNews(newsList);
             }
@@ -46,7 +46,7 @@ namespace MiniCoder.GUI
         }
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            tools.SavePackages();
+            
         }
 
         #region "File Management"

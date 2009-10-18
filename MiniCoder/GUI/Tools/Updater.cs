@@ -21,18 +21,57 @@ namespace MiniCoder.GUI.External
         Boolean warnUser = false;
         Tools tools;
        
-        public Updater(Tools tools)
+        public Updater(Tools tools, Boolean hide)
         {
             InitializeComponent();
-
+            this.tools = tools;
             toolInfo = tools.getTools();
-
+            LogBook.addLogLine("Checking for updates", 0);
             foreach (string key in toolInfo.Keys)
             {
                 Tool tempTool = toolInfo[key];
-                string[] tempInfo = { "", key, tempTool.localVersion, tempTool.onlineVersion,""};
+                
+                String updateText="";
+                if (tempTool.localVersion != tempTool.onlineVersion)
+                {
+                    if (!tempTool.localVersion.Equals("Offline") && !tempTool.localVersion.Equals("Custom"))
+                    {
+                        if (!key.Equals("avs"))
+                            updateText = "Update Required";
+                        else
+                        {
+                            if (!tempTool.isInstalled())
+                                updateText = "Update Required";
+                            else
+                            {
+                                updateText = "Up to Date";
+                                tempTool.localVersion = tempTool.onlineVersion;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    updateText = "Up to Date";
+                }
+                string[] tempInfo = { "", key, tempTool.localVersion, tempTool.onlineVersion, updateText};
                 ListViewItem tempListItem = new ListViewItem(tempInfo);
 
+                if (updateText.Equals("Update Required"))
+                {
+                    LogBook.addLogLine("Updates available for " + key + ".",1);
+                    if (hide)
+                    {
+                        if (MessageBox.Show("Updates available. Do you wish to download them now?", "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            Updater upd = new Updater(tools, false);
+                            this.Close();
+                            upd.ShowDialog();
+                           
+                        }
+                    }
+                    tempListItem.Checked = true;
+                }
                 switch (tempTool.getCategory())
                 {
                     case "core":
@@ -85,6 +124,7 @@ namespace MiniCoder.GUI.External
                     Tool tempPackage = (Tool)toolInfo[audioList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + audioList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    tempPackage.localVersion = tempPackage.onlineVersion;
                     audioList.Items[i].SubItems[4].Text = "Up to date";
                     audioList.Items[i].Checked = false;
                     downloadProgress.Value++;
@@ -99,6 +139,7 @@ namespace MiniCoder.GUI.External
                     Tool tempPackage = (Tool)toolInfo[videoList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + videoList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    tempPackage.localVersion = tempPackage.onlineVersion;
                     videoList.Items[i].SubItems[4].Text = "Up to date";
                     videoList.Items[i].Checked = false;
                     downloadProgress.Value++;
@@ -113,6 +154,7 @@ namespace MiniCoder.GUI.External
                     Tool tempPackage = (Tool)toolInfo[pluginsList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    tempPackage.localVersion = tempPackage.onlineVersion;
                     pluginsList.Items[i].SubItems[4].Text = "Up to date";
                     pluginsList.Items[i].Checked = false;
                     downloadProgress.Value++;
@@ -127,6 +169,7 @@ namespace MiniCoder.GUI.External
                     Tool tempPackage = (Tool)toolInfo[muxingList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + muxingList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    tempPackage.localVersion = tempPackage.onlineVersion;
                     muxingList.Items[i].SubItems[4].Text = "Up to date";
                     muxingList.Items[i].Checked = false;
                     downloadProgress.Value++;
@@ -141,13 +184,14 @@ namespace MiniCoder.GUI.External
                     Tool tempPackage = (Tool)toolInfo[otherList.Items[i].SubItems[1].Text];
                     updateLog.Text += "Downloading " + otherList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    tempPackage.localVersion = tempPackage.onlineVersion;
                     otherList.Items[i].SubItems[4].Text = "Up to date";
                     otherList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                 }
             }
-
+            tools.SavePackages();
             for (int i = 0; i < coreList.Items.Count; i++)
             {
                 if (coreList.Items[i].Checked)

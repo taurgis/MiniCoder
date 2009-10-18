@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml;
-
+using System.Reflection;
 using System.Windows.Forms;
 namespace MiniCoder.External
 {
@@ -136,7 +136,7 @@ namespace MiniCoder.External
                 }
             }
             SortedList<String, Tool> defaultPackages = new SortedList<string, Tool>();
-            defaultPackages.Add("Core", new Core("Core", "Core", "http://www.gamerzzheaven.be/core.zip", "core", "","First Time"));
+            defaultPackages.Add("Core", new Core("Core", "Core", "http://www.gamerzzheaven.be/core.zip", "core", "", Assembly.GetExecutingAssembly().GetName().Version.ToString()));
             defaultPackages.Add("ffmpeg", new Zip("ffmpeg", "zip", "http://www.gamerzzheaven.be/ffmpeg.zip", "audio", "","First Time"));
             defaultPackages.Add("mkvtoolnix", new Zip("mkvtoolnix", "zip", "http://www.gamerzzheaven.be/mkvtoolnix.zip", "muxer", "","First Time"));
             defaultPackages.Add("x264", new Zip("x264", "zip", "http://www.gamerzzheaven.be/x264.zip", "video", "","First Time"));

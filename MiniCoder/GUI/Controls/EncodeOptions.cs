@@ -26,7 +26,7 @@ namespace MiniCOder.GUI.Controls
 
         private void btnApps_Click(object sender, EventArgs e)
         {
-            Updater updater = new Updater(tools);
+            Updater updater = new Updater(tools, false);
             updater.Show();
         }
 
