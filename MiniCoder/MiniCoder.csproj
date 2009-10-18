@@ -38,12 +38,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Encoding\XmlValidator.cs" />
     <Compile Include="Core\Other\Codec.cs" />
+    <Compile Include="Core\Other\OsInfo.cs" />
     <Compile Include="Encoding\Audio\Decoding\Ffmpeg.cs" />
     <Compile Include="Encoding\Audio\Decoding\Madplay.cs" />
     <Compile Include="Encoding\Audio\Decoding\Faad.cs" />

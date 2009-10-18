@@ -31,6 +31,10 @@ namespace MiniCoder.GUI
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            LogBook.addLogLine("System Info", 0);
+            LogBook.addLogLine(MiniSystem.getOSName(), 1);
+            LogBook.addLogLine(MiniSystem.getDotNetFramework(), 1);
+            LogBook.addLogLine(MiniSystem.getProcessorInfo(), 1);
             cbAfterEncode.SelectedIndex = 0;
             tools = new Tools(true);
             encodeOptions.setTools(tools);
