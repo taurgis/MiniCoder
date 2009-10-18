@@ -52,7 +52,7 @@ namespace MiniCoder.External
             }
             catch
             {
-
+                onlineVersion = "Offline";
             }
         }
 
