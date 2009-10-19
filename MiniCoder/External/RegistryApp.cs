@@ -30,18 +30,13 @@ namespace MiniCoder.External
             this.registrySubpath = registrySubpath;
             this.category = category;
             this.localVersion = localVersion;
-            getOnlineVersion();
+        
         }
-        private void getOnlineVersion()
+        public void getOnlineVersion(XmlDocument doc)
         {
             try
             {
 
-
-                XmlDocument doc = new XmlDocument();
-
-                string xmlFile = "http://www.gamerzzheaven.be/applications.xml";
-                doc.Load(xmlFile);
                 XmlNodeList xmlnode = doc.SelectNodes("//Application[@name=\"" + toolName + "\"]");
                 onlineVersion = xmlnode[0].ChildNodes[0].InnerText;
 

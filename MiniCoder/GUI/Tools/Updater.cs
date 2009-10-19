@@ -34,7 +34,7 @@ namespace MiniCoder.GUI.External
                 String updateText="";
                 if (tempTool.localVersion != tempTool.onlineVersion)
                 {
-                    if (!tempTool.localVersion.Equals("Offline") && !tempTool.localVersion.Equals("Custom"))
+                    if (!String.IsNullOrEmpty(tempTool.onlineVersion) && !tempTool.localVersion.Equals("Custom"))
                     {
                         if (!key.Equals("avs"))
                             updateText = "Update Required";
