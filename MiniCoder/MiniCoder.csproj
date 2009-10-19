@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -54,6 +54,7 @@
     <Compile Include="Encoding\Audio\Decoding\Valdec.cs" />
     <Compile Include="Encoding\Audio\Decoding\MiniDecoder.cs" />
     <Compile Include="Encoding\Audio\Decoding\Flac.cs" />
+    <Compile Include="Encoding\Audio\Encoding\Lame.cs" />
     <Compile Include="Encoding\Audio\Encoding\FFmpegAc-3.cs" />
     <Compile Include="Encoding\Audio\Encoding\Vorbis.cs" />
     <Compile Include="Encoding\Audio\Encoding\MiniEncoder.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Encoding\MediaInfo\MediaDetails.cs" />
     <Compile Include="Encoding\MediaInfo\MediaInfoDLL.cs" />
     <Compile Include="Encoding\Output\Container.cs" />
+    <Compile Include="Encoding\Output\Avi.cs" />
     <Compile Include="Encoding\Output\Mp4.cs" />
     <Compile Include="Encoding\Output\Matroska.cs" />
     <Compile Include="Encoding\Process Management\AttachmentProcess.cs" />

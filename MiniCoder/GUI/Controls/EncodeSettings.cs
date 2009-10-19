@@ -37,7 +37,10 @@ namespace MiniCOder.GUI.Controls
         {
             SortedList<string, string> options = new SortedList<string, string>();
             options.Add("audbr", audioBR.Text);
+            if(containerCombo.SelectedIndex != 2)
             options.Add("audcodec", audioCombo.SelectedIndex.ToString());
+            else
+                options.Add("audcodec", (audioCombo.SelectedIndex + 2).ToString());
             options.Add("field", fieldCombo.SelectedIndex.ToString());
             options.Add("resize", resizeCombo.SelectedIndex.ToString());
             if (resizeCombo.SelectedIndex != 0)
@@ -282,6 +285,14 @@ namespace MiniCOder.GUI.Controls
 
         private void containerCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int index = audioCombo.SelectedIndex;
+            audioCombo.Items.Clear();
+          
+                audioCombo.Items.Add("Nero AAC");
+                audioCombo.Items.Add("Vorbis");
+                audioCombo.Items.Add("FFmpeg AC-3");
+                audioCombo.Items.Add("Lame MP3");
+                audioCombo.SelectedIndex = index;
             switch (containerCombo.SelectedIndex)
             {
                 case 1:
@@ -294,6 +305,13 @@ namespace MiniCOder.GUI.Controls
                         MessageBox.Show("Please enter a number");
                         containerCombo_SelectedIndexChanged(sender, e);
 
+                    }
+                    break;
+                case 2:
+                    {
+                        audioCombo.Items.Remove("Nero AAC");
+                        audioCombo.Items.Remove("Vorbis");
+                        audioCombo.SelectedIndex = 0;
                     }
                     break;
             }

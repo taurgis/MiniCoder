@@ -135,7 +135,8 @@
             this.containerCombo.FormattingEnabled = true;
             this.containerCombo.Items.AddRange(new object[] {
             "Matroska",
-            "MP4"});
+            "MP4",
+            "Avi"});
             this.containerCombo.Location = new System.Drawing.Point(75, 20);
             this.containerCombo.Name = "containerCombo";
             this.containerCombo.Size = new System.Drawing.Size(94, 21);
@@ -381,7 +382,8 @@
             this.audioCombo.Items.AddRange(new object[] {
             "Nero AAC",
             "Vorbis",
-            "FFmpeg AC-3"});
+            "FFmpeg AC-3",
+            "Lame MP3"});
             this.audioCombo.Location = new System.Drawing.Point(75, 56);
             this.audioCombo.Name = "audioCombo";
             this.audioCombo.Size = new System.Drawing.Size(94, 24);

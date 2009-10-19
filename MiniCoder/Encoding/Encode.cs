@@ -97,6 +97,9 @@ namespace MiniCoder.Encoding
                 case "1":
                     container = new Mp4Out();
                     return container.mux(tools["mp4box"], fileDetails, encodeSet, processWatcher, fileTracks);
+                case "2":
+                    container = new AviOut();
+                    return container.mux(tools["ffmpeg"], fileDetails, encodeSet, processWatcher, fileTracks);
             }
             return false;
         }
