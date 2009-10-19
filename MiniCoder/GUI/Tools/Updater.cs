@@ -68,7 +68,13 @@ namespace MiniCoder.GUI.External
                             Updater upd = new Updater(tools, false);
                             this.Close();
                             upd.ShowDialog();
-                           
+                            return;
+
+                        }
+                        else
+                        {
+                            this.Close();
+                            return;
                         }
                     }
                     tempListItem.Checked = true;
@@ -201,6 +207,8 @@ namespace MiniCoder.GUI.External
                     Tool tempPackage = (Tool)tools.getTools()["Core"];
                     updateLog.Text += "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n";
                     tempPackage.download();
+                    tempPackage.localVersion = tempPackage.onlineVersion;
+                    tools.SavePackages();
                     //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
                     MessageBox.Show("Minicoder has to restart to update its core files.");
                     Application.Exit();

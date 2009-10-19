@@ -6,7 +6,7 @@ using MiniCoder.Encoding.Input.Tracks;
 using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
-
+using System.Diagnostics;
 namespace MiniCoder.Encoding.Sound.Encoding
 {
     class NeroAac : MiniEncoder
@@ -28,7 +28,14 @@ namespace MiniCoder.Encoding.Sound.Encoding
 
             LogBook.addLogLine("Encoding Audio",1);
             proc.initProcess();
-           
+
+
+            if (!File.Exists(besweet.getInstallPath() + "neroAacEnc.exe"))
+              {
+                  MessageBox.Show("Due to licensing we are not allowed to put Nero AAC in the package automaticly.\r\nPlease download Nero Aac and put it in the folder about to open.('NeroAacEnc.exe' directly in Besweet folder.)");
+                  Process.Start("http://www.nero.com/eng/downloads-nerodigital-nero-aac-codec.php");
+                  Process.Start(besweet.getInstallPath());
+              }
 
           
             
