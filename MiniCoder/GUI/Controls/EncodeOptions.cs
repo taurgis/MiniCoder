@@ -9,7 +9,7 @@ using MiniCoder.GUI.External;
 using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using MiniCoder.GUI;
-
+using MiniCoder.Core.Settings;
 
 namespace MiniCOder.GUI.Controls
 {
@@ -75,6 +75,19 @@ namespace MiniCOder.GUI.Controls
         private void clearOutput_Click(object sender, EventArgs e)
         {
             outPutLocation.Text = "";
+        }
+
+        public void saveMe()
+        {
+            MainSettings main = new MainSettings();
+            main.ignoreAttachments = ignoreAttachments.Checked;
+            main.ignoreAudio = audioSkip.Checked;
+            main.ignoreChapters = ignoreChapters.Checked;
+            main.ignoreSubs = ignoreSubs.Checked;
+            main.outputPath = outPutLocation.Text;
+            main.processPriority = processPriority.SelectedIndex.ToString();
+
+            main.saveSettings();
         }
     }
 }

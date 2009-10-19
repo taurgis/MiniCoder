@@ -46,6 +46,7 @@
     <Compile Include="Core\Encoding\XmlValidator.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
+    <Compile Include="Core\Settings\MainSettings.cs" />
     <Compile Include="Encoding\Audio\Decoding\Ffmpeg.cs" />
     <Compile Include="Encoding\Audio\Decoding\Madplay.cs" />
     <Compile Include="Encoding\Audio\Decoding\Faad.cs" />
