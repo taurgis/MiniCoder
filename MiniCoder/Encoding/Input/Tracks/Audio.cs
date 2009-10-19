@@ -93,6 +93,9 @@ namespace MiniCoder.Encoding.Input.Tracks
                 case "2":
                     encoder = new FFmpegAc3();
                     return encoder.encode(tools["ffmpeg"], fileDetails, id, this, EncOpts, processWatcher);
+                case "3":
+                    encoder = new Lame();
+                    return encoder.encode(tools["lame"], fileDetails, id, this, EncOpts, processWatcher);
             }
             return encoder.encode(tools["besweet"], fileDetails, id, this, EncOpts, processWatcher);
         }

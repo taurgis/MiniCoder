@@ -163,7 +163,7 @@ namespace MiniCoder.External
             defaultPackages.Add("DGAVCIndex", new Zip("DGAVCIndex", "zip", "http://www.gamerzzheaven.be/DGAVCIndex.zip", "video", "", "First Time"));
             defaultPackages.Add("DGIndex", new Zip("DGIndex", "zip", "http://www.gamerzzheaven.be/dgindex.zip", "muxer", "", "First Time"));
             defaultPackages.Add("theora", new Zip("theora", "zip", "http://www.gamerzzheaven.be/theora.zip", "video", "", "First Time"));
-
+            defaultPackages.Add("lame", new Zip("lame", "zip", "http://www.gamerzzheaven.be/lame.zip", "audio", "", "First Time"));
             foreach (string key in defaultPackages.Keys)
             {
                 if (!tools.ContainsKey(key))
