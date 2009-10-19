@@ -54,9 +54,20 @@ namespace MiniCOder.GUI.Controls
             this.tools = tools;
         }
 
+        public void loadSettings(MainSettings settings)
+        {
+            titleAdvert.Checked = settings.disableVideoAdvert;
+            outPutLocation.Text = settings.outputPath;
+            processPriority.SelectedIndex= int.Parse(settings.processPriority);
+            audioSkip.Checked = settings.ignoreAudio;
+            ignoreAttachments.Checked = settings.ignoreAttachments;
+            ignoreChapters.Checked = settings.ignoreChapters;
+            ignoreSubs.Checked = settings.ignoreSubs;
+        }
+
         private void EncodeOptions_Load(object sender, EventArgs e)
         {
-            processPriority.SelectedIndex = 0;
+           // processPriority.SelectedIndex = 0;
         }
 
         private void processPriority_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,6 +91,7 @@ namespace MiniCOder.GUI.Controls
         public void saveMe()
         {
             MainSettings main = new MainSettings();
+            main.disableVideoAdvert = titleAdvert.Checked;
             main.ignoreAttachments = ignoreAttachments.Checked;
             main.ignoreAudio = audioSkip.Checked;
             main.ignoreChapters = ignoreChapters.Checked;

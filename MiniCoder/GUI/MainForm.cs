@@ -12,6 +12,7 @@ using MiniCoder.Encoding;
 using System.Threading;
 using System.Collections;
 using MiniCoder.Encoding.Process_Management;
+using MiniCoder.Core.Settings;
 namespace MiniCoder.GUI
 {
     public partial class MainForm : Form
@@ -31,6 +32,10 @@ namespace MiniCoder.GUI
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            MainSettings main = new MainSettings();
+            main.loadSettings();
+
+
             LogBook.addLogLine("System Info", 0);
             LogBook.addLogLine(MiniSystem.getOSName(), 1);
             LogBook.addLogLine(MiniSystem.getDotNetFramework(), 1);
@@ -40,6 +45,7 @@ namespace MiniCoder.GUI
             
             encodeOptions.setTools(tools);
             encodeOptions.setProcessWatcher(processWatcher);
+            encodeOptions.loadSettings(main);
             if (MiniOnline.checkInternet())
             {
                 Updater tempUpdater = new Updater(tools,true);

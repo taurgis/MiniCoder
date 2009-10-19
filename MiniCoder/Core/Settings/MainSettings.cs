@@ -5,7 +5,7 @@ using System.Xml;
 using System.Windows.Forms;
 namespace MiniCoder.Core.Settings
 {
-    class MainSettings
+    public class MainSettings
     {
         public string outputPath { get; set; }
         public bool disableVideoAdvert { get; set; }
@@ -44,6 +44,38 @@ namespace MiniCoder.Core.Settings
             writer.WriteAttributeString("name", element);
             writer.WriteElementString("setting", value);
             writer.WriteEndElement();
+        }
+
+        public void loadSettings()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            string xmlFile = Application.StartupPath + "\\settings.xml";
+            doc.Load(xmlFile);
+            XmlNodeList xmlnode = doc.SelectNodes("//Setting[@name=\"" + "outputPath" + "\"]");
+            outputPath = xmlnode[0].ChildNodes[0].InnerText;
+
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "disableVideoAdvert" + "\"]");
+            disableVideoAdvert = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "processPriority" + "\"]");
+            processPriority = xmlnode[0].ChildNodes[0].InnerText;
+
+             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreAudio" + "\"]");
+            ignoreAudio = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreSubs" + "\"]");
+            ignoreSubs = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreAttachments" + "\"]");
+            ignoreAttachments = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreChapters" + "\"]");
+            ignoreChapters = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+            
+
         }
     }
 }
