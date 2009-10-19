@@ -23,6 +23,7 @@ namespace MiniCoder.GUI.External
        
         public Updater(Tools tools, Boolean hide)
         {
+            
             InitializeComponent();
             this.tools = tools;
             toolInfo = tools.getTools();

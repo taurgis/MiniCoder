@@ -58,5 +58,26 @@ namespace System
 
             return url;
         }
+
+        public static void clearIECache()
+        {
+            ClearFolder(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.InternetCache)));
+        }
+
+       private static void ClearFolder(DirectoryInfo folder)
+        {
+            foreach (FileInfo file in folder.GetFiles())
+            {
+                try
+                {
+                    file.Delete();
+                }
+                catch
+                {
+                }
+            }
+            foreach (DirectoryInfo subfolder in folder.GetDirectories())
+            { ClearFolder(subfolder); }
+        } 
     }
 }
