@@ -13,6 +13,7 @@ using System.Threading;
 using System.Collections;
 using MiniCoder.Encoding.Process_Management;
 using MiniCoder.Core.Settings;
+using System.Diagnostics;
 namespace MiniCoder.GUI
 {
     public partial class MainForm : Form
@@ -499,6 +500,19 @@ namespace MiniCoder.GUI
             inputList.Items.Clear();
             FileList.Clear();
             curEncode = 0;
+        }
+
+        private void newsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ListView tempList = (ListView)sender;
+                Process.Start(tempList.SelectedItems[0].SubItems[2].Text);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

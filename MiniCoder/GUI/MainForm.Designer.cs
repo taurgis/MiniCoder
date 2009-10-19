@@ -51,7 +51,9 @@ namespace MiniCoder.GUI
             this.clearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
             this.settingsTab = new System.Windows.Forms.TabPage();
+            this.encodeSettings = new MiniCOder.GUI.Controls.EncodeSettings();
             this.optionsTab = new System.Windows.Forms.TabPage();
+            this.encodeOptions = new MiniCOder.GUI.Controls.EncodeOptions();
             this.logTab = new System.Windows.Forms.TabPage();
             this.logView = new System.Windows.Forms.TreeView();
             this.logMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -64,8 +66,6 @@ namespace MiniCoder.GUI
             this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.notifyMiniCoder = new System.Windows.Forms.NotifyIcon(this.components);
-            this.encodeSettings = new MiniCOder.GUI.Controls.EncodeSettings();
-            this.encodeOptions = new MiniCOder.GUI.Controls.EncodeOptions();
             this.mainTabPage.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -76,7 +76,6 @@ namespace MiniCoder.GUI
             this.logMenu.SuspendLayout();
             this.aboutTab.SuspendLayout();
             this.SuspendLayout();
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(MainForm_FormClosing);
             // 
             // mainTabPage
             // 
@@ -265,6 +264,16 @@ namespace MiniCoder.GUI
             this.settingsTab.Text = "Settings";
             this.settingsTab.UseVisualStyleBackColor = true;
             // 
+            // encodeSettings
+            // 
+            this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.encodeSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.encodeSettings.Location = new System.Drawing.Point(3, 3);
+            this.encodeSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.encodeSettings.Name = "encodeSettings";
+            this.encodeSettings.Size = new System.Drawing.Size(396, 350);
+            this.encodeSettings.TabIndex = 0;
+            // 
             // optionsTab
             // 
             this.optionsTab.Controls.Add(this.encodeOptions);
@@ -274,6 +283,13 @@ namespace MiniCoder.GUI
             this.optionsTab.TabIndex = 5;
             this.optionsTab.Text = "Options";
             this.optionsTab.UseVisualStyleBackColor = true;
+            // 
+            // encodeOptions
+            // 
+            this.encodeOptions.Location = new System.Drawing.Point(0, 0);
+            this.encodeOptions.Name = "encodeOptions";
+            this.encodeOptions.Size = new System.Drawing.Size(385, 309);
+            this.encodeOptions.TabIndex = 0;
             // 
             // logTab
             // 
@@ -349,6 +365,7 @@ namespace MiniCoder.GUI
             this.newsList.TabIndex = 1;
             this.newsList.UseCompatibleStateImageBehavior = false;
             this.newsList.View = System.Windows.Forms.View.Details;
+            this.newsList.SelectedIndexChanged += new System.EventHandler(this.newsList_SelectedIndexChanged);
             // 
             // dateHeader
             // 
@@ -380,23 +397,6 @@ namespace MiniCoder.GUI
             this.notifyMiniCoder.Text = "MiniCoder";
             this.notifyMiniCoder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMiniCoder_MouseDoubleClick);
             // 
-            // encodeSettings
-            // 
-            this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.encodeSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.encodeSettings.Location = new System.Drawing.Point(3, 3);
-            this.encodeSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.encodeSettings.Name = "encodeSettings";
-            this.encodeSettings.Size = new System.Drawing.Size(396, 350);
-            this.encodeSettings.TabIndex = 0;
-            // 
-            // encodeOptions
-            // 
-            this.encodeOptions.Location = new System.Drawing.Point(0, 0);
-            this.encodeOptions.Name = "encodeOptions";
-            this.encodeOptions.Size = new System.Drawing.Size(385, 309);
-            this.encodeOptions.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,6 +410,7 @@ namespace MiniCoder.GUI
             this.Name = "MainForm";
             this.Text = "MiniCoder - Encoding GUI";
             this.Load += new System.EventHandler(this.mainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.mainTabPage.ResumeLayout(false);
             this.inputTab.ResumeLayout(false);
