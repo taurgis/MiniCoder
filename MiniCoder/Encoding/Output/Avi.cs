@@ -14,12 +14,13 @@ namespace MiniCoder.Encoding.Output
         public Boolean mux(Tool ffmpeg, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
             MiniProcess proc = new DefaultProcess("Muxing to AVI");
-            proc.stdErrDisabled(false);
+            proc.stdErrDisabled(true);
             proc.stdOutDisabled(false);
 
 
             proc.initProcess();
             LogBook.addLogLine("Muxing", 1);
+            LogBook.setInfoLabel("Muxing to avi...");
             string args;
 
             try
@@ -47,8 +48,12 @@ namespace MiniCoder.Encoding.Output
 
             proc.setFilename(Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe"));
 
+            if (int.Parse(fileDetails["fps"][0]) > 400)
+                args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
+            else
+                args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0] + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
+            
 
-            args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy ";
             for (int i = 0; i < fileTracks["audio"].Length; i++)
             {
                 args += "-i \"" + fileTracks["audio"][i].encodePath + "\" -acodec copy ";
@@ -72,7 +77,9 @@ namespace MiniCoder.Encoding.Output
             }
             else
             {
+                LogBook.setInfoLabel("Muxing Complete");
                 return true;
+
             }
 
 
