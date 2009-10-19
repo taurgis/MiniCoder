@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Xml;
 namespace MiniCoder.External
 {
     public interface Tool
@@ -18,5 +18,6 @@ namespace MiniCoder.External
         string registrySubpath { get; set; }
         string registrySubKey { get; set; }
         void download();
+        void getOnlineVersion(XmlDocument doc);
     }
 }

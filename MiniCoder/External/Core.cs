@@ -26,7 +26,7 @@ namespace MiniCoder.External
             this.downloadPath = downloadurl;
             this.appType = appType;
             this.category = category;
-            getOnlineVersion();
+          
         }
         public string getAppType()
         {
@@ -36,26 +36,21 @@ namespace MiniCoder.External
         {
             return "";
         }
-        private void getOnlineVersion()
+
+        public void getOnlineVersion(XmlDocument doc)
         {
             try
             {
 
-
-                XmlDocument doc = new XmlDocument();
-
-                string xmlFile = "http://www.gamerzzheaven.be/applications.xml";
-                doc.Load(xmlFile);
                 XmlNodeList xmlnode = doc.SelectNodes("//Application[@name=\"" + toolName + "\"]");
                 onlineVersion = xmlnode[0].ChildNodes[0].InnerText;
 
             }
             catch
             {
-                onlineVersion = "Offline";
+
             }
         }
-
         public string getCategory()
         {
             return category;

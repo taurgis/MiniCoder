@@ -77,7 +77,7 @@ namespace MiniCoder.External
                                     break;
                                 case "Custom_Path":
                                     xmlReader.Read();
-                                    customPath = xmlReader.Value;
+                                    customPath = xmlReader.Value.Replace("\r\n    ","");
                                     break;
                                 case "LocalVersion":
                                     xmlReader.Read();
@@ -169,6 +169,20 @@ namespace MiniCoder.External
                 if (!tools.ContainsKey(key))
                     tools.Add(key, defaultPackages[key]);
             }
+
+            //set online versions
+            XmlDocument doc = new XmlDocument();
+            if (MiniOnline.checkInternet())
+            {
+                doc.Load("http://www.gamerzzheaven.be/applications.xml");
+                foreach (string key in tools.Keys)
+                {
+                    tools[key].getOnlineVersion(doc);
+                }
+            }
+            
+            
+           
 
         }
 
