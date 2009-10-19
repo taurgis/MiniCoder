@@ -275,6 +275,7 @@ namespace MiniCOder.GUI.Controls
                    if(!String.IsNullOrEmpty(templateName))
                        mainTemplate.saveTemplate(templateName);
                 }
+
                 loadSettings();
             }
             catch 

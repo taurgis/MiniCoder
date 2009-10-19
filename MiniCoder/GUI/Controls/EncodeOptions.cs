@@ -21,6 +21,7 @@ namespace MiniCOder.GUI.Controls
         public EncodeOptions()
         {
             InitializeComponent();
+            processPriority.SelectedIndex = 0;
           
         }
 
@@ -56,6 +57,7 @@ namespace MiniCOder.GUI.Controls
 
         public void loadSettings(MainSettings settings)
         {
+
             titleAdvert.Checked = settings.disableVideoAdvert;
             outPutLocation.Text = settings.outputPath;
             processPriority.SelectedIndex= int.Parse(settings.processPriority);

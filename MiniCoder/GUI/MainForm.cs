@@ -32,8 +32,12 @@ namespace MiniCoder.GUI
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            MainSettings main = new MainSettings();
-            main.loadSettings();
+            if (File.Exists(Application.StartupPath + "\\settings.xml"))
+            {
+                MainSettings main = new MainSettings();
+                main.loadSettings();
+                encodeOptions.loadSettings(main);
+            }
 
 
             LogBook.addLogLine("System Info", 0);
@@ -45,7 +49,7 @@ namespace MiniCoder.GUI
             
             encodeOptions.setTools(tools);
             encodeOptions.setProcessWatcher(processWatcher);
-            encodeOptions.loadSettings(main);
+            
             if (MiniOnline.checkInternet())
             {
                 Updater tempUpdater = new Updater(tools,true);
@@ -229,7 +233,7 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
                         setFileStatus("Done");
-                      
+                        LogBook.setInfoLabel("Encoding completed");
                         curEncode++;
                     }
                     else
@@ -252,8 +256,9 @@ namespace MiniCoder.GUI
                     if (tempEncode.startTheoraEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus("Done");
                         
+                        setFileStatus("Done");
+                        LogBook.setInfoLabel("Encoding completed");
                         curEncode++;
                     }
                     else
@@ -279,7 +284,7 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
                         setFileStatus("Done");
-                      
+                        LogBook.setInfoLabel("Encoding completed");
                         curEncode++;
                     }
                     else
