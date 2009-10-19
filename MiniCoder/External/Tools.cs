@@ -106,9 +106,6 @@ namespace MiniCoder.External
                                             break;
                                     }
 
-
-                                   
-                                    
                                     if (!tools[name].isInstalled())
                                     {
                                         LogBook.addLogLine("Found custom path for " + name + ".", 1);

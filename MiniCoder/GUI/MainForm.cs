@@ -37,6 +37,7 @@ namespace MiniCoder.GUI
             LogBook.addLogLine(MiniSystem.getProcessorInfo(), 1);
             cbAfterEncode.SelectedIndex = 0;
             tools = new Tools(true);
+            
             encodeOptions.setTools(tools);
             encodeOptions.setProcessWatcher(processWatcher);
             if (MiniOnline.checkInternet())
@@ -50,7 +51,7 @@ namespace MiniCoder.GUI
         }
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            
+            encodeOptions.saveMe();
         }
 
         #region "File Management"

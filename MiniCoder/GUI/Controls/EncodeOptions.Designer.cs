@@ -47,6 +47,7 @@
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
+            
             // 
             // groupBox8
             // 
