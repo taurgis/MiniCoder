@@ -39,6 +39,8 @@ namespace MiniCoder.Encoding.Input.Tracks
         {
             MiniDecoder decoder;
             Tool tempTool;
+            LogBook.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
+           
             switch (Codec.getExtention(this.codec))
             {
                 case "flac":
@@ -81,6 +83,9 @@ namespace MiniCoder.Encoding.Input.Tracks
 
         private Boolean encodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
         {
+
+            LogBook.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
+           
             MiniEncoder encoder = null;
             switch (EncOpts["audcodec"])
             {

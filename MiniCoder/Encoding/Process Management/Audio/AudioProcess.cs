@@ -20,17 +20,18 @@ namespace MiniCoder.Encoding.Process_Management
         public bool errflag = true;
         public int processPriority = 0;
         public string currProcess = "";
-        
+        private string loglocation = "";
         private bool disablestderr = false;
         private bool disablestdout = false;
         private string frontMessage;
         
         int exitCode;
 
-        public AudioProcess(string totaltime, string frontMessage)
+        public AudioProcess(string totaltime, string frontMessage, string loglocation)
         {
             this.totaltime = int.Parse(totaltime);
             this.frontMessage = frontMessage;
+            this.loglocation = loglocation;
         }
 
         public string getAdditionalOutput()
@@ -66,7 +67,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
+               LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -275,7 +276,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.addLogLine(read2, 2);
+                            LogBook.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

@@ -18,12 +18,12 @@ namespace MiniCoder.Encoding.VideoEnc
 
         public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
         {
-            MiniProcess proc = new DefaultProcess("Indexing AVC");
+            MiniProcess proc = new DefaultProcess("Indexing AVC", fileDetails["name"][0] + "DGAVCStepProcess");
             processWatcher.setProcess(proc);
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
             LogBook.setInfoLabel("Indexing AVC");
-            LogBook.addLogLine("Started Indexin AVC",1);
+            LogBook.addLogLine("Started Indexing AVC", fileDetails["name"][0] + "DGAVCStep", fileDetails["name"][0] + "DGAVCStepProcess", false);
             proc.initProcess();
            
             if (!dgavcindex.isInstalled())
@@ -37,15 +37,17 @@ namespace MiniCoder.Encoding.VideoEnc
 
             proc.startProcess();
             video.demuxPath = dgaFile;
-            LogBook.addLogLine("Finished Indexing AVC",1);
+           // // LogBook.addLogLine(""Finished Indexing AVC",1);
             if (proc.getAbandonStatus())
             {
                 LogBook.setInfoLabel("Indexing Aborted");
                 return false;
             }
             else
+            {
                 LogBook.setInfoLabel("Finished Indexing AVC");
-
+                LogBook.addLogLine("Finished Indexing AVC", fileDetails["name"][0] + "DGAVCStep", "", false);
+            }
             if (File.Exists(dgaFile))
                 return true;
             else

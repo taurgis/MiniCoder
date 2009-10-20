@@ -41,19 +41,19 @@ namespace MiniCoder.GUI
             }
 
 
-            LogBook.addLogLine("System Info", 0);
-            LogBook.addLogLine(MiniSystem.getOSName(), 1);
-            LogBook.addLogLine(MiniSystem.getDotNetFramework(), 1);
-            LogBook.addLogLine(MiniSystem.getProcessorInfo(), 1);
+            LogBook.addLogLine("System Info","","SysInfo",false);
+            LogBook.addLogLine(MiniSystem.getOSName(),"SysInfo","",false);
+            LogBook.addLogLine(MiniSystem.getDotNetFramework(),"SysInfo","",false);
+            LogBook.addLogLine(MiniSystem.getProcessorInfo(),"SysInfo","",false);
             cbAfterEncode.SelectedIndex = 0;
             tools = new Tools(true);
-            
+
             encodeOptions.setTools(tools);
             encodeOptions.setProcessWatcher(processWatcher);
-            
+
             if (MiniOnline.checkInternet())
             {
-                Updater tempUpdater = new Updater(tools,true);
+                Updater tempUpdater = new Updater(tools, true);
                 tempUpdater.Dispose();
                 MiniOnline.GetNews(newsList);
             }
@@ -90,7 +90,7 @@ namespace MiniCoder.GUI
         void inputList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            LogBook.addLogLine("Drag & Drop", 0);
+            LogBook.addLogLine("Drag & Drop", "", "DragDrop",false);
             foreach (string str in files)
             {
                 ListViewItem inputListItem = new ListViewItem();
@@ -102,7 +102,7 @@ namespace MiniCoder.GUI
                 inputListItem.SubItems.Add(statusSub);
                 statusSub.Text = "Ready";
                 inputList.Items.Add(inputListItem);
-                LogBook.addLogLine("Drag & Drop: " + str,1);
+                LogBook.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
             }
         }
 
@@ -125,45 +125,68 @@ namespace MiniCoder.GUI
         #endregion
 
         #region "Log"
-        TreeNode curLogTreeNode;
-        private delegate void SetNode(string message, int level, bool error);
-        public void addLogLine(string message, int level, bool error)
+      
+        private delegate void SetNode(string message, string searchTag, string messageTag, bool error);
+        public void addLogLine(string message, string searchTag, string messageTag, bool error)
         {
-            if (this.logView.InvokeRequired)
+            try
             {
-                this.logView.Invoke(new SetNode(addLogLine), message, level, error);
-            }
-            else
-            {
-                String[] log = { DateTime.Now.ToString("t"), message };
-
-                if (level == 0)
+                if (this.logView.InvokeRequired)
                 {
-                    curLogTreeNode = new TreeNode();
-                    if (error)
-                     curLogTreeNode.ImageIndex = 2;
-                   
-                    else
-                    curLogTreeNode.ImageIndex = 0;
-                    curLogTreeNode.Text = DateTime.Now.ToString("t") + ": " + message;
-                    logView.Nodes.Add(curLogTreeNode);
-                }
-                else if (level == 2)
-                {
-                    curLogTreeNode.Nodes[curLogTreeNode.Nodes.Count - 1].Nodes.Add(message);
-                }
-                else if (level == 3)
-                {
-                    curLogTreeNode.Nodes[curLogTreeNode.Nodes.Count - 1].Nodes[curLogTreeNode.Nodes[curLogTreeNode.Nodes.Count - 1].Nodes.Count - 1].Nodes.Add(message);
+                    this.logView.Invoke(new SetNode(addLogLine), message, searchTag, messageTag, error);
                 }
                 else
                 {
+                    String log =DateTime.Now.ToString("t");
 
-                    curLogTreeNode.Nodes.Add(message);
+
+
+                    if (String.IsNullOrEmpty(searchTag))
+                    {
+                        TreeNode tempNode = new TreeNode(message);
+                        if (!String.IsNullOrEmpty(messageTag))
+                            tempNode.Tag = messageTag;
+                       // tempNode.ImageIndex = 1;
+                        tempNode.Text = log + ": " + message;
+                        logView.Nodes.Add(tempNode);
+                    }
+                    else
+                    {
+                        TreeNode retrieved = LogBook.findNode(logView, searchTag);
+                        if (retrieved != null)
+                        {
+                            if (!retrieved.Text.Contains(message))
+                            {
+                                TreeNode tempNode = new TreeNode(message);
+                                if (!String.IsNullOrEmpty(messageTag))
+                                    tempNode.Tag = messageTag;
+                                retrieved.Nodes.Add(tempNode);
+                            }
+                        }
+                        else
+                        {
+                            if (!String.IsNullOrEmpty(messageTag) && !String.IsNullOrEmpty(searchTag))
+                            {
+                                TreeNode tempNode = new TreeNode(message);
+                                if (!String.IsNullOrEmpty(messageTag))
+                                    tempNode.Tag = messageTag;
+                                // tempNode.ImageIndex = 1;
+                                tempNode.Text = log + ": " + message;
+                                logView.Nodes.Add(tempNode);
+                            }
+                        }
+                    }
                 }
+            }
+            catch (Exception exce)
+            {
+
             }
 
         }
+
+
+
         private delegate void SetLabel(string message);
         public void setInfoLabel(string message)
         {
@@ -183,7 +206,7 @@ namespace MiniCoder.GUI
                 }
                 catch
                 {
-                    notifyMiniCoder.Text = message.Substring(0,45) + "...";
+                    notifyMiniCoder.Text = message.Substring(0, 45) + "...";
                 }
             }
         }
@@ -196,7 +219,7 @@ namespace MiniCoder.GUI
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            
+
             encodeBatchTask = new Thread(new ThreadStart(encodeBatch));
             //proc.abandon = false;
             encodeBatchTask.Start();
@@ -220,13 +243,13 @@ namespace MiniCoder.GUI
 
                 }
                 setFileStatus("Encoding");
-               
+
                 getSettings();
 
                 getVfrStatus();
-                if(vfr)
+                if (vfr)
                     encodeSet.Add("vfr", "");
-               
+
                 tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet, processWatcher);
                 if (tempEncode.getExtention() == ".avs")
                 {
@@ -246,7 +269,7 @@ namespace MiniCoder.GUI
                         else
                         {
                             setFileStatus("Error");
-                            LogBook.addLogLine(infoLabel.Text, 2,"");
+                            // LogBook.addLogLine("infoLabel.Text, 2,"");
                             LogBook.sendmail(logView);
                         }
                         break;
@@ -257,7 +280,7 @@ namespace MiniCoder.GUI
                     if (tempEncode.startTheoraEncode())
                     {
                         FileList.RemoveAt(0);
-                        
+
                         setFileStatus("Done");
                         LogBook.setInfoLabel("Encoding completed");
                         curEncode++;
@@ -271,7 +294,7 @@ namespace MiniCoder.GUI
                         else
                         {
                             setFileStatus("Error");
-                            LogBook.addLogLine(infoLabel.Text, 2,"");
+                            // LogBook.addLogLine("infoLabel.Text, 2,"");
                             LogBook.sendmail(logView);
                         }
                         break;
@@ -297,16 +320,16 @@ namespace MiniCoder.GUI
                         else
                         {
                             setFileStatus("Error");
-                            LogBook.addLogLine(infoLabel.Text, 2, "");
+                            // LogBook.addLogLine("infoLabel.Text, 2, "");
                             LogBook.sendmail(logView);
                         }
                         break;
                     }
                 }
-                
+
 
             }
-          enableEncoding();
+            enableEncoding();
         }
         private void afterEncode()
         {
@@ -399,7 +422,7 @@ namespace MiniCoder.GUI
         {
             try
             {
-                
+
                 tempEncode.getProcessWatcher().abandon();
                 tempEncode.getProcessWatcher().getProcess().abandonProcess();
                 //LogBook.sendmail(logView);
@@ -431,9 +454,9 @@ namespace MiniCoder.GUI
 
             if (this.inputList.InvokeRequired)
             {
-           
+
                 // This is a worker thread so delegate the task.
-               this.inputList.Invoke(new isFfileVfr(this.getVfrStatus));
+                this.inputList.Invoke(new isFfileVfr(this.getVfrStatus));
                 ;
             }
             else
@@ -445,7 +468,7 @@ namespace MiniCoder.GUI
             }
             return false;
 
-            
+
         }
 
         private void notifyMiniCoder_MouseDoubleClick(object sender, MouseEventArgs e)

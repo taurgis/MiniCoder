@@ -44,6 +44,9 @@ namespace MiniCoder.Encoding.AviSynth
             streamWriter.Write(avs);
             streamWriter.Close();
 
+            LogBook.addLogLine(avs, fileDetails["name"][0] + "AvsCreation", "", false);
+          
+
             return checkAvs();
         }
 
@@ -59,7 +62,7 @@ namespace MiniCoder.Encoding.AviSynth
             }
             catch (AviSynthException er)
             {
-                LogBook.addLogLine(er.Message,1);
+                // LogBook.addLogLine("er.Message,1);
                 return false;
             }
                 

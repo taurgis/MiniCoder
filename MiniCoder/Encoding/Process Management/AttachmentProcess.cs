@@ -63,7 +63,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,2);
+               // // LogBook.addLogLine(""\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,2);
                 taskProcess();
                 return exitCode;
             }
@@ -219,7 +219,7 @@ namespace MiniCoder.Encoding.Process_Management
         {
             while ((logs = stderr.ReadLine()) != null)
             {
-                LogBook.addLogLine(logs, 3);
+                // LogBook.addLogLine("logs, 3);
                 outputLog += logs + "\r\n";
                 Thread.Sleep(0);
             }
@@ -232,7 +232,7 @@ namespace MiniCoder.Encoding.Process_Management
                 while ((logs = stdout.ReadLine()) != null)
                 {
                     outputLog += logs + "\r\n";
-                    LogBook.addLogLine(logs, 3);
+                    // LogBook.addLogLine("logs, 3);
                     Thread.Sleep(0);
                 }
             }

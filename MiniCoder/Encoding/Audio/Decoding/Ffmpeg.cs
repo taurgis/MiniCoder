@@ -20,12 +20,13 @@ namespace MiniCoder.Encoding.Sound.Decoding
 
         public Boolean decode(Tool ffmpeg, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
         {
-            MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")");
+            MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
             processWatcher.setProcess(proc);
             proc.initProcess();
-            LogBook.addLogLine("Decoding Audio",1);
+           // // LogBook.addLogLine(""Decoding Audio",1);
             LogBook.setInfoLabel("Decoding Audio");
-
+            LogBook.addLogLine("Decoding Unknown - Using FFMpeg", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
+          
             String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
             if (!ffmpeg.isInstalled())
@@ -40,7 +41,8 @@ namespace MiniCoder.Encoding.Sound.Decoding
             if (exitCode != 0)
                 return false;
             audio.demuxPath = decodedAudio;
-
+            LogBook.addLogLine("Decoding Complete", fileDetails["name"][0] + "AudioDecoding", "", false);
+          
             return true;
         }
     }

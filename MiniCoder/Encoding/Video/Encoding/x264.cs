@@ -17,7 +17,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             string pass = "0";
             MiniProcess proc;
 
-
+            LogBook.addLogLine("Encoding to X264", fileDetails["name"][0] + "VideoEncoding", "", false);
             string pass1Arg = "", pass2Arg = "", pass3Arg = null;
 
 
@@ -38,7 +38,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                 encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
 
-                LogBook.addLogLine("Video Bitrate: " + encOpts["videobr"], 1);
+              // // // LogBook.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
             }
 
 
@@ -98,7 +98,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     break;
             }
             pass = "1";
-            proc = new X264Process("Encoding video", pass);
+            proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess1");
             proc.initProcess();
             processWatcher.setProcess(proc);
             proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -114,11 +114,11 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             int exitCode;
 
             tempStart = DateTime.Now;
-
+            LogBook.addLogLine("Encoding Pass 1", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess1", false);
             exitCode = proc.startProcess();
-            LogBook.addLogLine("Start time:" + tempStart.ToShortTimeString(), 1);
-            LogBook.addLogLine("End Time:" + DateTime.Now.ToShortTimeString(), 1);
-            LogBook.addLogLine("Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+           // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+           // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+           // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
             if (proc.getAbandonStatus())
                 return false;
 
@@ -130,7 +130,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 tempStart = DateTime.Now;
                 pass = "2";
 
-                proc = new X264Process("Encoding video", pass);
+                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess2");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -138,11 +138,12 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 proc.stdOutDisabled(false);
 
                 proc.setArguments(pass3Arg + " NUL \"" + encOpts["avsfile"] + "\"");
-
+                LogBook.addLogLine("Encoding Pass 3", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess2", false);
+           
                 exitCode = proc.startProcess();
-                LogBook.addLogLine("Start time:" + tempStart.ToShortTimeString(), 1);
-                LogBook.addLogLine("End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                LogBook.addLogLine("Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+               // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+               // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+               // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
                 if (proc.getAbandonStatus())
                     return true;
 
@@ -154,7 +155,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             else
                 pass = "2";
 
-            proc = new X264Process("Encoding video", pass);
+            proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess3");
             proc.initProcess();
             processWatcher.setProcess(proc);
             proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -164,21 +165,28 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             if (pass2Arg != "")
             {
                 proc.setArguments(pass2Arg + " \"" + fileTracks["video"][0].encodePath + "\" \"" + encOpts["avsfile"] + "\"");
-            }
 
+                LogBook.addLogLine("Encoding Pass 2", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess3", false);
+           
             tempStart = DateTime.Now;
             exitCode = proc.startProcess();
-            LogBook.addLogLine("Start time:" + tempStart.ToShortTimeString(), 1);
-            LogBook.addLogLine("End Time:" + DateTime.Now.ToShortTimeString(), 1);
-            LogBook.addLogLine("Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+            }
+           // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+           // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+           // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
 
             if (proc.getAbandonStatus())
-                return true;
+                return false;
 
             if (exitCode != 0)
                 return false;
             else
+            {
+                LogBook.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
+           
                 return true;
+
+            }
         }
     }
 }

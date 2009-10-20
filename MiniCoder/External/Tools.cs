@@ -41,7 +41,7 @@ namespace MiniCoder.External
                     Boolean complete = false;
                     XmlTextReader xmlReader = new XmlTextReader(Application.StartupPath + "\\applications.xml");
 
-                    LogBook.addLogLine("Custom Paths", 0);
+                   // // LogBook.addLogLine(""Custom Paths", 0);
 
                    xmlReader.Read();
                 
@@ -108,8 +108,8 @@ namespace MiniCoder.External
 
                                     if (!tools[name].isInstalled())
                                     {
-                                        LogBook.addLogLine("Found custom path for " + name + ".", 1);
-                                        LogBook.addLogLine("Custom path invalid! Resetting to default.", 2);
+                                       // // LogBook.addLogLine(""Found custom path for " + name + ".", 1);
+                                       // // LogBook.addLogLine(""Custom path invalid! Resetting to default.", 2);
                                         tools.Remove(name);
                                     }
                                 }

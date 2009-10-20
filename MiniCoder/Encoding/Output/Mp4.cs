@@ -13,13 +13,13 @@ namespace MiniCoder.Encoding.Output
         String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean mux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
-            MiniProcess proc = new DefaultProcess("Muxing to MP4");
+            MiniProcess proc = new DefaultProcess("Muxing to MP4", fileDetails["name"][0] + "FileMuxingProcess");
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
-
+            LogBook.addLogLine("Muxing to MP4", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
 
             proc.initProcess();
-            LogBook.addLogLine("Muxing", 1);
+           // // LogBook.addLogLine(""Muxing", 1);
             string args;
 
             try
@@ -85,6 +85,7 @@ namespace MiniCoder.Encoding.Output
             }
             else
             {
+                LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
                 return true;
             }
 

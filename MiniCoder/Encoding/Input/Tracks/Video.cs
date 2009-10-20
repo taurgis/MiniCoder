@@ -25,6 +25,8 @@ namespace MiniCoder.Encoding.Input.Tracks
 
         public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
         {
+            LogBook.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
+          
             VideoEncoder videoEncoder = null;
             switch (EncOpts["videocodec"])
             {

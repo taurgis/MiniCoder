@@ -41,8 +41,11 @@ namespace MiniCoder.Encoding.Input
         }
         private Boolean demuxChapters(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            MiniProcess proc = new DefaultProcess("Fetching chapters");
-            LogBook.addLogLine("Started fetching chapters.", 1);
+
+            LogBook.addLogLine("Demuxing Chapters - Using ChapterXtractor", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+
+            MiniProcess proc = new DefaultProcess("Fetching chapters", fileDetails["name"][0] + "DeMuxingProcess");
+           // // LogBook.addLogLine(""Started fetching chapters.", 1);
             LogBook.setInfoLabel("Started fetching chapters.");
             proc.initProcess();
 
@@ -55,17 +58,19 @@ namespace MiniCoder.Encoding.Input
 
             if (exitCode != 0)
             {
-                LogBook.addLogLine("Error demuxing chapters. None present?",1);
+                LogBook.addLogLine("Error demuxing chapters, none present?", fileDetails["name"][0] + "DeMuxing", "", false);
+
             }
             return true;
         }
         private Boolean demuxSubs(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
+            LogBook.addLogLine("Demuxing subs - Using Vobsub", fileDetails["name"][0] + "DeMuxing", "", false);
 
             //sub extraction
-            MiniProcess proc = new DefaultProcess("Fetching subs");
+            MiniProcess proc = new DefaultProcess("Fetching subs", fileDetails["name"][0] + "DeMuxingProcess");
 
-            LogBook.addLogLine("Started fetching subs.",1);
+           // // LogBook.addLogLine(""Started fetching subs.",1);
             LogBook.setInfoLabel("Started fetching subs.");
 
             proc.initProcess();
@@ -101,17 +106,18 @@ namespace MiniCoder.Encoding.Input
            else
                LogBook.setInfoLabel("Demuxing Complete");
 
-            if (exitCode != 0)
-                LogBook.addLogLine("Errors demuxing subs. None present?",1, "");
-            else
-                return true;
+           if (exitCode != 0)
+               return false;
+           // // LogBook.addLogLine(""Errors demuxing subs. None present?",1, "");
+           else
+               return true;
 
             return false;
         }
 
         private Boolean demuxFile(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-              MiniProcess proc = new DefaultProcess("Indexing VOB");
+              MiniProcess proc = new DefaultProcess("Indexing VOB",fileDetails["name"][0] + "DeMuxingProcess");
             processWatcher.setProcess(proc);
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
@@ -122,9 +128,10 @@ namespace MiniCoder.Encoding.Input
                     DGIndex.download();
                 string tempArg;
 
+                LogBook.addLogLine("Demuxing OGM - Using DGIndex", fileDetails["name"][0] + "DeMuxing", "", false);
 
 
-                LogBook.addLogLine("Started indexing VOB files", 1);
+               // // LogBook.addLogLine(""Started indexing VOB files", 1);
                 LogBook.setInfoLabel("Started indexing VOB files.");
                 proc.initProcess();
 

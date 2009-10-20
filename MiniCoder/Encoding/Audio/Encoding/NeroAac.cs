@@ -19,14 +19,15 @@ namespace MiniCoder.Encoding.Sound.Encoding
 
         public bool encode(Tool besweet, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts, ProcessWatcher processWatcher)
         {
-            MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], "Encoding Audio Track (ID = " + (i) + ")");
+            MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], "Encoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
             processWatcher.setProcess(proc);
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
-           
-            
 
-            LogBook.addLogLine("Encoding Audio",1);
+
+
+            LogBook.addLogLine("Encoding audio to Nero AAC", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+
             proc.initProcess();
 
 
@@ -65,7 +66,8 @@ namespace MiniCoder.Encoding.Sound.Encoding
             }
             else
             {
-                LogBook.addLogLine("Encoded Audio",1);
+                LogBook.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
+
                 return true;
             }
         }

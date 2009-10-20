@@ -25,10 +25,11 @@ namespace MiniCoder.Encoding.Process_Management
         string frontMessage;
         
         int exitCode;
-
-        public DefaultProcess(string frontMessage)
+        string loglocation = "";
+        public DefaultProcess(string frontMessage, string loglocation)
         {
             this.frontMessage = frontMessage;
+            this.loglocation = loglocation;
         }
 
         public void setPriority(int i)
@@ -66,7 +67,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
+               LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -227,9 +228,9 @@ namespace MiniCoder.Encoding.Process_Management
                     if (!stderrLast.Equals(read))
                     {
                         stderrLast = read;
-                        //LogBook.addLogLine(read, 2);
+                         LogBook.addLogLine(read, loglocation,"",false);
                         LogBook.setInfoLabel(frontMessage +": " + read);
-                        LogBook.addLogLine(read, 2);
+                        // LogBook.addLogLine("read, 2);
                     }
                 }
                 Thread.Sleep(0);
@@ -248,7 +249,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.addLogLine(read2, 2);
+                            LogBook.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

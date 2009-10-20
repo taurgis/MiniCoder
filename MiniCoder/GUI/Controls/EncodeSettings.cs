@@ -211,7 +211,10 @@ namespace MiniCOder.GUI.Controls
         {
             try
             {
+                LogBook.addLogLine("Template Management", "TemplateManagement", "TemplateManagement", false);
+               
                 mainTemplate.loadTemplate(templateCombo.SelectedItem.ToString());
+                LogBook.addLogLine(DateTime.Now.ToString("t") + ": Loaded template " + templateCombo.SelectedItem + " ...", "TemplateManagement", "", false);
                 videoBR.Text = mainTemplate.vidBitRate;
                 fileSize.Text = mainTemplate.fileSize;
                 vidQualCombo.SelectedIndex = int.Parse(mainTemplate.vidQuality);

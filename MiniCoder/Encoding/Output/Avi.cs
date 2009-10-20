@@ -13,13 +13,15 @@ namespace MiniCoder.Encoding.Output
         String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean mux(Tool ffmpeg, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
-            MiniProcess proc = new DefaultProcess("Muxing to AVI");
+            LogBook.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
+
+            MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
             proc.stdErrDisabled(true);
             proc.stdOutDisabled(false);
 
 
             proc.initProcess();
-            LogBook.addLogLine("Muxing", 1);
+           // // LogBook.addLogLine(""Muxing", 1);
             LogBook.setInfoLabel("Muxing to avi...");
             string args;
 
@@ -79,7 +81,7 @@ namespace MiniCoder.Encoding.Output
             {
                 LogBook.setInfoLabel("Muxing Complete");
                 return true;
-
+                LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
             }
 
 
