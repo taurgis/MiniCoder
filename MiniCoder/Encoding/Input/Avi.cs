@@ -38,9 +38,9 @@ namespace MiniCoder.Encoding.Input
             proc.stdOutDisabled(false);
             try
             {
-            
+
                 if (!vdubmod.isInstalled())
-                   vdubmod.download();
+                    vdubmod.download();
 
                 LogBook.setInfoLabel("Demuxing AVI Tracks");
                 LogBook.addLogLine("Demuxing AVI Tracks", 1);
@@ -56,15 +56,15 @@ namespace MiniCoder.Encoding.Input
 
                 for (int i = 0; i < tracks["audio"].Length; i++)
                 {
-                  tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.getExtention(tracks["audio"][i].codec);
-                  temp += ("VirtualDub.stream[" + i.ToString() + "].Demux(\"" + tracks["audio"][i].demuxPath.Replace("\\", "\\\\") + "\");");
+                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.getExtention(tracks["audio"][i].codec);
+                    temp += ("VirtualDub.stream[" + i.ToString() + "].Demux(\"" + tracks["audio"][i].demuxPath.Replace("\\", "\\\\") + "\");");
                 }
-                LogBook.addLogLine("=============== VCF ===============",3);
-                LogBook.addLogLine(temp,3);
+                LogBook.addLogLine("=============== VCF ===============", 3);
+                LogBook.addLogLine(temp, 3);
                 vcf.WriteLine(temp);
                 vcf.Close();
-                LogBook.addLogLine("=============== END ===============",3);
-                LogBook.addLogLine("Started demuxing AVI file",1);
+                LogBook.addLogLine("=============== END ===============", 3);
+                LogBook.addLogLine("Started demuxing AVI file", 1);
                 proc.setFilename(Path.Combine(vdubmod.getInstallPath(), "VirtualDubMod.exe"));
                 proc.setArguments("/s\"" + tempPath + fileDetails["name"][0] + "_demux.vcf\" /x");
 
@@ -78,15 +78,21 @@ namespace MiniCoder.Encoding.Input
                 }
                 else
                     LogBook.setInfoLabel("Demuxing Complete");
-
-                if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.getExtention(tracks["audio"][0].codec)))
-                   return true;
-                else
+                try
+                {
+                    if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.getExtention(tracks["audio"][0].codec)))
+                        return true;
+                    else
+                        return false;
+                }
+                catch
+                {
                     return false;
+                }
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.addLogLine("Can't find codec " + e.Message,2);
+                LogBook.addLogLine("Can't find codec " + e.Message, 2);
                 MessageBox.Show("Can't find codec " + fileDetails["aud_codec"][0], "");
                 return false;
             }

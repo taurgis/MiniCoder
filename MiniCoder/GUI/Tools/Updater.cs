@@ -231,7 +231,12 @@ namespace MiniCoder.GUI.External
 
                     Tool tempPackage = (Tool)tools.getTools()["Core"];
                     updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
-                    tempPackage.download();
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
            
                     //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
                     MessageBox.Show("Minicoder has to restart to update its core files.");
