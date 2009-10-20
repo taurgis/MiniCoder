@@ -129,8 +129,13 @@ namespace MiniCoder.GUI.External
                 if (audioList.Items[i].Checked)
                 {
                     Tool tempPackage = (Tool)toolInfo[audioList.Items[i].SubItems[1].Text];
-                    updateLog.Text += "Downloading " + audioList.Items[i].SubItems[1].Text + " ...\r\n";
-                    tempPackage.download();
+                    updateLog.Text = "Downloading " + audioList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
                     tempPackage.localVersion = tempPackage.onlineVersion;
                     audioList.Items[i].SubItems[4].Text = "Up to date";
                     audioList.Items[i].Checked = false;
@@ -144,8 +149,13 @@ namespace MiniCoder.GUI.External
                 if (videoList.Items[i].Checked)
                 {
                     Tool tempPackage = (Tool)toolInfo[videoList.Items[i].SubItems[1].Text];
-                    updateLog.Text += "Downloading " + videoList.Items[i].SubItems[1].Text + " ...\r\n";
-                    tempPackage.download();
+                    updateLog.Text = "Downloading " + videoList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
                     tempPackage.localVersion = tempPackage.onlineVersion;
                     videoList.Items[i].SubItems[4].Text = "Up to date";
                     videoList.Items[i].Checked = false;
@@ -159,8 +169,13 @@ namespace MiniCoder.GUI.External
                 if (pluginsList.Items[i].Checked)
                 {
                     Tool tempPackage = (Tool)toolInfo[pluginsList.Items[i].SubItems[1].Text];
-                    updateLog.Text += "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n";
-                    tempPackage.download();
+                    updateLog.Text = "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
                     tempPackage.localVersion = tempPackage.onlineVersion;
                     pluginsList.Items[i].SubItems[4].Text = "Up to date";
                     pluginsList.Items[i].Checked = false;
@@ -174,8 +189,13 @@ namespace MiniCoder.GUI.External
                 if (muxingList.Items[i].Checked)
                 {
                     Tool tempPackage = (Tool)toolInfo[muxingList.Items[i].SubItems[1].Text];
-                    updateLog.Text += "Downloading " + muxingList.Items[i].SubItems[1].Text + " ...\r\n";
-                    tempPackage.download();
+                    updateLog.Text = "Downloading " + muxingList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
                     tempPackage.localVersion = tempPackage.onlineVersion;
                     muxingList.Items[i].SubItems[4].Text = "Up to date";
                     muxingList.Items[i].Checked = false;
@@ -189,8 +209,13 @@ namespace MiniCoder.GUI.External
                 if (otherList.Items[i].Checked)
                 {
                     Tool tempPackage = (Tool)toolInfo[otherList.Items[i].SubItems[1].Text];
-                    updateLog.Text += "Downloading " + otherList.Items[i].SubItems[1].Text + " ...\r\n";
-                    tempPackage.download();
+                    updateLog.Text = "Downloading " + otherList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
                     tempPackage.localVersion = tempPackage.onlineVersion;
                     otherList.Items[i].SubItems[4].Text = "Up to date";
                     otherList.Items[i].Checked = false;
@@ -205,10 +230,9 @@ namespace MiniCoder.GUI.External
                 {
 
                     Tool tempPackage = (Tool)tools.getTools()["Core"];
-                    updateLog.Text += "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n";
+                    updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                     tempPackage.download();
-                    tempPackage.localVersion = tempPackage.onlineVersion;
-                    tools.SavePackages();
+           
                     //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
                     MessageBox.Show("Minicoder has to restart to update its core files.");
                     Application.Exit();

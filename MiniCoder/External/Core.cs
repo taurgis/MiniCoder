@@ -5,6 +5,7 @@ using MiniCoder.GUI;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using System.Reflection;
 
 namespace MiniCoder.External
 {
@@ -26,6 +27,8 @@ namespace MiniCoder.External
             this.downloadPath = downloadurl;
             this.appType = appType;
             this.category = category;
+            if (toolName == "Core")
+                this.localVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
           
         }
         public string getAppType()
@@ -78,7 +81,7 @@ namespace MiniCoder.External
 
             return Application.StartupPath + "\\";
         }
-        public void download()
+        public Boolean download()
         {
             try
             {
@@ -90,11 +93,12 @@ namespace MiniCoder.External
                 frmDownload.startDownload();
 
                 frmDownload.ShowDialog();
+                return frmDownload.isCompleted();
 
             }
             catch
             {
-
+                return false;
             }
 
         }
