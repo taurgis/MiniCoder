@@ -25,12 +25,13 @@ namespace MiniCoder.Encoding
             this.encodeSet = encodeSet;
             this.fileName = fileName;
             fileDetails = getFileDetails(fileName);
-            LogBook.addLogLine("Encoding " + fileDetails["name"][0], 0);
-            LogBook.addLogLine("Fetching File Info", 1);
+            
+            LogBook.addLogLine("Encoding " + fileDetails["name"][0], "", fileDetails["name"][0] + "Encode",false);
+            LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo",false);
             LogBook.setInfoLabel("Fetching File Info");
 
             for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
-                LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), 2);
+                LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo","",false);
             this.tools = tools;
             this.processWatcher = processWatcher;
 
@@ -87,6 +88,8 @@ namespace MiniCoder.Encoding
 
         public bool muxFile()
         {
+            LogBook.addLogLine("Muxing File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileMuxing", false);
+          
             Container container = null;
             switch (encodeSet["container"])
             {
@@ -114,6 +117,8 @@ namespace MiniCoder.Encoding
         #region "AviSynth"
         private bool createAvs()
         {
+            LogBook.addLogLine("Creating AVS File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AvsCreation", false);
+          
             AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet, tools);
             return avsCreator.getAvsFile(fileTracks);
 
@@ -140,6 +145,7 @@ namespace MiniCoder.Encoding
 
         private bool dgavcIndex()
         {
+            LogBook.addLogLine("DGAVCIndex Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DGAVCStep", false);
             switch (fileTracks["video"][0].codec)
             {
                 case "x264":
@@ -162,6 +168,7 @@ namespace MiniCoder.Encoding
         }
         private bool analyseVfr()
         {
+            LogBook.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
             Vfr vfr = new Vfr();
             return vfr.analyse(tools["mkv2vfr"], encodeSet, fileDetails, processWatcher);
         }
@@ -171,7 +178,7 @@ namespace MiniCoder.Encoding
         #region Demuxing
         private bool demuxFile()
         {
-
+            LogBook.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing",false);
             switch (fileDetails["ext"][0].ToUpper())
             {
                 case ".AVI":

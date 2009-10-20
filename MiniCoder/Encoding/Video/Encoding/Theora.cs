@@ -14,7 +14,8 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean encode(Tool theora, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
-            
+            LogBook.addLogLine("Encoding to Theora", fileDetails["name"][0] + "VideoEncoding", "", false);
+          
             MiniProcess proc;
 
            
@@ -28,7 +29,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                 encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
 
-                LogBook.addLogLine("Video Bitrate: " + encOpts["videobr"], 1);
+              // // // LogBook.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
             }
 
             if (!theora.isInstalled())
@@ -82,12 +83,12 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             tempStart = DateTime.Now;
 
             exitCode = proc.startProcess();
-            LogBook.addLogLine("Start time:" + tempStart.ToShortTimeString(), 1);
-            LogBook.addLogLine("End Time:" + DateTime.Now.ToShortTimeString(), 1);
-            LogBook.addLogLine("Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
-    
+            //// LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+            //// LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+            //// LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
 
-         
+
+            LogBook.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
             if (proc.getAbandonStatus())
                 return true;
 

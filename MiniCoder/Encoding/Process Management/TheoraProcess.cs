@@ -66,7 +66,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
+                //// LogBook.addLogLine(""\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
                 taskProcess();
                 return exitCode;
             }
@@ -208,7 +208,7 @@ namespace MiniCoder.Encoding.Process_Management
                     if (!stderrLast.Equals(read))
                     {
                         stderrLast = read;
-                        //LogBook.addLogLine(read, 2);
+                        //// LogBook.addLogLine("read, 2);
                         LogBook.setInfoLabel(frontMessage +": " + read);
                     }
                 }
@@ -228,7 +228,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.addLogLine(read2, 2);
+                            // // LogBook.addLogLine("read2, 2);
                            
                         }
                     }

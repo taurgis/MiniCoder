@@ -33,7 +33,7 @@ namespace MiniCoder.Templates.Simple
         {
             XmlTextReader xmlReader = new XmlTextReader(Application.StartupPath + "\\Templates\\Simple\\" + templateName + ".tpl");
 
-                   // LogBook.addLogLine("Loading template " + templateName, 0);
+                   //// // LogBook.addLogLine(""Loading template " + templateName, 0);
 
                    xmlReader.Read();
 

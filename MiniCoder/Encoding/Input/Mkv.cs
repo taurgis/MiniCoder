@@ -49,7 +49,9 @@ namespace MiniCoder.Encoding.Input
         {
             try
             {
-                MiniProcess proc = new DefaultProcess("Demuxing MKV");
+                LogBook.addLogLine("Demuxing MKV - Using Mkvtoolnix", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+
+                MiniProcess proc = new DefaultProcess("Demuxing MKV", fileDetails["name"][0] + "DeMuxingProcess");
                 processWatcher.setProcess(proc);
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
@@ -57,7 +59,7 @@ namespace MiniCoder.Encoding.Input
 
                 LogBook.setInfoLabel("Demuxing MKV Tracks");
                 proc.initProcess();
-                LogBook.addLogLine("Started demuxing MKV file", 1);
+              
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
                 string tempArg = tempArg = "tracks \"" + fileDetails["fileName"][0] + "\" ";
 
@@ -117,7 +119,7 @@ namespace MiniCoder.Encoding.Input
                 }
 
 
-                LogBook.addLogLine("Can't find codec :-(" + e.Message + ", " + errormessage, 1, "");
+                LogBook.addLogLine("Can't find codec :-(" + e.Message + ", " + errormessage, fileDetails["name"][0] + "DeMuxing","",true);
                 MessageBox.Show("Can't find codec");
                 return false;
             }
@@ -125,8 +127,13 @@ namespace MiniCoder.Encoding.Input
 
         private Boolean demuxAttachments(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
+
             if (fileDetails["skipattachments"][0] == "True")
                 return true;
+
+            LogBook.addLogLine("Fetching MKV Attachments - Using MkvInfo", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "AttachmentFetching", false);
+
+
             MiniProcess proc = new AttachmentProcess();
             processWatcher.setProcess(proc);
             LogBook.setInfoLabel("Demuxing Attachments");
@@ -134,7 +141,7 @@ namespace MiniCoder.Encoding.Input
 
             proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvinfo.exe"));
             proc.setArguments("\"" + fileDetails["fileName"][0] + "\"");
-            LogBook.addLogLine("Fetching Matroska Info",1);
+          
             proc.startProcess();
             string outputLog = proc.getAdditionalOutput();
 
@@ -158,16 +165,16 @@ namespace MiniCoder.Encoding.Input
                 temp = outputLog.Substring(start, end - start);
                 int height = int.Parse(temp);
 
-               
 
-                LogBook.addLogLine("Number of attachments: " + (split.Length -1).ToString(), 1);
+
+                LogBook.addLogLine("Number of attachments: " + (split.Length - 1).ToString(), fileDetails["name"][0] + "AttachmentFetching","",false);
                 if ((split.Length - 1) == 0)
                     return true;
 
                 for (int i = 1; i < split.Length; i++)
                     attachments[i - 1] = new Attachment(tempPath + split[i].Substring(0, split[i].IndexOf("\r\n")), split[i].Substring(0, split[i].IndexOf("\r\n")));
-               
-                proc = new DefaultProcess("Demuxing Attachments");
+
+                proc = new DefaultProcess("Demuxing Attachments", fileDetails["name"][0] + "DeMuxingProcess");
                 proc.initProcess();
 
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
@@ -191,7 +198,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch
             {
-                LogBook.addLogLine("Error demuxing!",1);
+               LogBook.addLogLine("Error demuxing attachments!",fileDetails["name"][0] + "AttachmentFetching","",true);
                // log.addLine("Remuxing the MKV file might solve this problem.");
                 return false;
             }
@@ -199,22 +206,25 @@ namespace MiniCoder.Encoding.Input
 
         private Boolean demuxChapters(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
+            LogBook.addLogLine("Fetching MKV Chapters - Using MkvExtract", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "ChapterFetching", false);
+
+
             XMLValidator xmlValidator = new XMLValidator(tempPath + "chapters.xml");
                     int chapterFetchRetries = 0;
                     while (!xmlValidator.Validate() && chapterFetchRetries++ < 5)
                     {
                         if (!xmlValidator.Validate() && File.Exists(tempPath + "chapters.xml"))
                         {
-                            LogBook.addLogLine("Error in XML",1);
+                            LogBook.addLogLine("Error in XML", fileDetails["name"][0] + "ChapterFetching","",true);
                         }
 
                         
                       MiniProcess  proc = new AttachmentProcess();
                       processWatcher.setProcess(proc);
                         proc.initProcess();
-                        
-                        LogBook.addLogLine("Fetching Chapters",1);
-                        LogBook.addLogLine("Attempt " + chapterFetchRetries + " to fetch chapters.", 2);
+
+
+                        LogBook.addLogLine("Attempt " + chapterFetchRetries + " to fetch chapters.", fileDetails["name"][0] + "ChapterFetching","",false);
                         proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
                         string tempArg = "chapters \"" + fileDetails["fileName"][0] + "\"";
                        

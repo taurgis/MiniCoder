@@ -40,6 +40,9 @@
             this.colExistingVersion = new System.Windows.Forms.ColumnHeader();
             this.colLatestVersion = new System.Windows.Forms.ColumnHeader();
             this.colStatus = new System.Windows.Forms.ColumnHeader();
+            this.appMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ignoreUpdatesMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopIgnoringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginTab = new System.Windows.Forms.TabPage();
             this.pluginsList = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
@@ -78,17 +81,14 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.customPath = new System.Windows.Forms.Button();
-            this.appMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ignoreUpdatesMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopIgnoringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applicationTabs.SuspendLayout();
             this.coreTab.SuspendLayout();
+            this.appMenu.SuspendLayout();
             this.pluginTab.SuspendLayout();
             this.audioTab.SuspendLayout();
             this.videoTab.SuspendLayout();
             this.muxTab.SuspendLayout();
             this.otherTab.SuspendLayout();
-            this.appMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // downloadProgress
@@ -177,6 +177,28 @@
             // 
             this.colStatus.Text = "Status";
             this.colStatus.Width = 135;
+            // 
+            // appMenu
+            // 
+            this.appMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ignoreUpdatesMenuStrip,
+            this.stopIgnoringToolStripMenuItem});
+            this.appMenu.Name = "appMenu";
+            this.appMenu.Size = new System.Drawing.Size(161, 48);
+            // 
+            // ignoreUpdatesMenuStrip
+            // 
+            this.ignoreUpdatesMenuStrip.Name = "ignoreUpdatesMenuStrip";
+            this.ignoreUpdatesMenuStrip.Size = new System.Drawing.Size(160, 22);
+            this.ignoreUpdatesMenuStrip.Text = "Ignore Updates";
+            this.ignoreUpdatesMenuStrip.Click += new System.EventHandler(this.ignoreUpdatesMenuStrip_Click);
+            // 
+            // stopIgnoringToolStripMenuItem
+            // 
+            this.stopIgnoringToolStripMenuItem.Name = "stopIgnoringToolStripMenuItem";
+            this.stopIgnoringToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.stopIgnoringToolStripMenuItem.Text = "Stop Ignoring";
+            this.stopIgnoringToolStripMenuItem.Click += new System.EventHandler(this.stopIgnoringToolStripMenuItem_Click);
             // 
             // pluginTab
             // 
@@ -489,29 +511,6 @@
             this.customPath.UseVisualStyleBackColor = true;
             this.customPath.Click += new System.EventHandler(this.customPath_Click);
             // 
-            // appMenu
-            // 
-            this.appMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ignoreUpdatesMenuStrip,
-            this.stopIgnoringToolStripMenuItem});
-            this.appMenu.Name = "appMenu";
-            this.appMenu.Size = new System.Drawing.Size(161, 70);
-            
-            // 
-            // ignoreUpdatesMenuStrip
-            // 
-            this.ignoreUpdatesMenuStrip.Name = "ignoreUpdatesMenuStrip";
-            this.ignoreUpdatesMenuStrip.Size = new System.Drawing.Size(160, 22);
-            this.ignoreUpdatesMenuStrip.Text = "Ignore Updates";
-            this.ignoreUpdatesMenuStrip.Click += new System.EventHandler(this.ignoreUpdatesMenuStrip_Click);
-            // 
-            // stopIgnoringToolStripMenuItem
-            // 
-            this.stopIgnoringToolStripMenuItem.Name = "stopIgnoringToolStripMenuItem";
-            this.stopIgnoringToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.stopIgnoringToolStripMenuItem.Text = "Stop Ignoring";
-            this.stopIgnoringToolStripMenuItem.Click += new System.EventHandler(this.stopIgnoringToolStripMenuItem_Click);
-            // 
             // Updater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,15 +528,15 @@
             this.MinimizeBox = false;
             this.Name = "Updater";
             this.Text = "MiniCoder Updater";
-            //this.Load += new System.EventHandler(this.Updater_Load);
+            this.Load += new System.EventHandler(this.Updater_Load);
             this.applicationTabs.ResumeLayout(false);
             this.coreTab.ResumeLayout(false);
+            this.appMenu.ResumeLayout(false);
             this.pluginTab.ResumeLayout(false);
             this.audioTab.ResumeLayout(false);
             this.videoTab.ResumeLayout(false);
             this.muxTab.ResumeLayout(false);
             this.otherTab.ResumeLayout(false);
-            this.appMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

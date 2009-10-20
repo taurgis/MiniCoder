@@ -31,7 +31,10 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-           MiniProcess proc = new DefaultProcess("Demuxing OGM");
+            LogBook.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+
+
+            MiniProcess proc = new DefaultProcess("Demuxing OGM", fileDetails["name"][0] + "DeMuxingProcess");
            processWatcher.setProcess(proc);
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
@@ -41,7 +44,7 @@ namespace MiniCoder.Encoding.Input
                 if (!ogmtools.isInstalled())
                     ogmtools.download();
 
-                LogBook.addLogLine("Started demuxing OGM tracks",1);
+            
                 LogBook.setInfoLabel("Demuxing OGM Tracks");
                 proc.initProcess();
 
@@ -63,7 +66,7 @@ namespace MiniCoder.Encoding.Input
                     tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.getExtention(tracks["subs"][i].codec);
                     tempArg += " " + tracks["subs"][i].id + ":\"" + tracks["subs"][i].demuxPath + "\"";
                 }
-                LogBook.addLogLine(tempArg,1);
+                //// LogBook.addLogLine("tempArg,1);
                 proc.setArguments(tempArg);
                 //MessageBox.Show(mainProcess.StartInfo.Arguments);
 
@@ -86,7 +89,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.addLogLine("Can't find codec " + e.Message, 1, "");
+                LogBook.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing","",true);
                 MessageBox.Show("Can't find codec");
                 return false;
             }

@@ -26,11 +26,12 @@ namespace MiniCoder.Encoding.Process_Management
         private string frontMessage;
         string pass;
         int exitCode;
-
-        public X264Process(string frontMessage, string pass)
+        private string loglocation = "";
+        public X264Process(string frontMessage, string pass, string loglocation)
         {
             this.pass = pass;
             this.frontMessage = frontMessage;
+            this.loglocation = loglocation;
         }
 
         public string getAdditionalOutput()
@@ -66,7 +67,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
+                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -236,7 +237,7 @@ namespace MiniCoder.Encoding.Process_Management
                         }
                         else
                         {
-                            LogBook.addLogLine(read, 2);
+                            LogBook.addLogLine(read, loglocation,"",false);
                         }
                     }
                 }
@@ -268,7 +269,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.addLogLine(read2, 2);
+                            LogBook.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

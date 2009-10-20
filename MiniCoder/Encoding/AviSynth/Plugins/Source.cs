@@ -24,7 +24,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                 case "DIVX":
                 case "DX50":
                 case "DX60":
-                    switch (fileDetails["ext"][0])
+                    switch (fileDetails["ext"][0].ToLower())
                     {
                         case ".mkv":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
@@ -49,7 +49,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                 case "V_MPEG4/ISO/AVC":
                 case "Intel H.264":
                 case "x264":
-                    switch (fileDetails["ext"][0])
+                    switch (fileDetails["ext"][0].ToLower())
                     {
                         case ".mkv":
                         case ".ogm":
@@ -65,7 +65,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                     }
                     break;
                 case "20":
-                    switch (fileDetails["ext"][0])
+                    switch (fileDetails["ext"][0].ToLower())
                     {
                         case ".mkv":
                             sourceline = "AVISource(\"" + video.demuxPath + "\",audio=false)";
@@ -85,7 +85,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                     }
                     break;
                 case "":
-                    switch (fileDetails["ext"][0])
+                    switch (fileDetails["ext"][0].ToLower())
                     {
 
                         default:

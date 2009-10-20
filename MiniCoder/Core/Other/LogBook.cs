@@ -11,16 +11,51 @@ namespace System
     public static class LogBook
     {
         static MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
-        public static void addLogLine(string message, int level)
+        public static void addLogLine(string message, string searchTag, string messageTag, bool error)
         {
             if(!string.IsNullOrEmpty(message))
-                mainForm.addLogLine(message, level,false);
+                mainForm.addLogLine(message, searchTag, messageTag, false);
         }
 
-        public static void addLogLine(string message, int level,string dummy)
+        public static TreeNode findNode(TreeView treeView, string tag)
         {
-            if (!string.IsNullOrEmpty(message))
-                mainForm.addLogLine(message, level, true);
+            foreach (TreeNode node in treeView.Nodes)
+            {
+                TreeNode nodi = iterateNode(node, tag);
+                if (nodi != null)
+                    return nodi;
+
+            }
+            return null;
+        }
+
+        private static TreeNode iterateNode(TreeNode treeNode, string tag)
+        {
+           
+
+            if (treeNode.Nodes.Count > 0)
+            {
+                if (treeNode.Tag.ToString() == tag)
+                    return treeNode;
+
+                foreach (TreeNode node in treeNode.Nodes)
+                {
+                    TreeNode nodi = iterateNode(node, tag);
+                    if (nodi != null)
+                        return nodi;
+                }
+                return null;
+
+            }
+            else
+            {
+                if(treeNode.Tag != null)
+                if (treeNode.Tag.ToString() == tag)
+                    return treeNode;
+
+                return null;
+            }
+
         }
 
         public static void setInfoLabel(string message)

@@ -16,15 +16,15 @@ namespace MiniCoder.Encoding.VideoEnc
         {
             if (fileDetails["ext"][0] == ".mkv" && encOpts.ContainsKey("vfr"))
             {
-                // log.addLine("User says that the file is VFR (Variable Frame Rate - Using mkv2vfr");
-                MiniProcess proc = new DefaultProcess("Analysing for VFR");
+                LogBook.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
+                MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
                 processWatcher.setProcess(proc);
                 if (!mkv2vfr.isInstalled())
                     mkv2vfr.download();
 
                 LogBook.setInfoLabel("Parsing VFR");
                 proc.initProcess();
-                LogBook.addLogLine("Making VFR file",1);
+                
                 proc.setFilename(Path.Combine(mkv2vfr.getInstallPath(), "mkv2vfr.exe"));
                 proc.setArguments("\"" + fileDetails["fileName"][0] + "\" \"" + tempPath + fileDetails["name"] + "-Video Track.avi\" \"" + tempPath + "timecode.txt\"");
 
@@ -47,7 +47,7 @@ namespace MiniCoder.Encoding.VideoEnc
                     return false;
 
 
-                LogBook.addLogLine("Reading VFR file", 1);
+               // // LogBook.addLogLine(""Reading VFR file", 1);
 
 
                encOpts["vfr"] = tempPath + "timecode.txt";

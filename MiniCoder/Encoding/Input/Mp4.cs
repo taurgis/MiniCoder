@@ -31,8 +31,10 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
+            LogBook.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+
             int exitCode = 0;
-           MiniProcess proc = new DefaultProcess("Demuxing MP4");
+            MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
            processWatcher.setProcess(proc);
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
@@ -42,7 +44,7 @@ namespace MiniCoder.Encoding.Input
                 if (!mp4box.isInstalled())
                     mp4box.download();
 
-                LogBook.addLogLine("Started demuxing MP4 tracks",1);
+           
                 LogBook.setInfoLabel("Demuxing Video Track");
                 proc.initProcess();
 
@@ -95,8 +97,8 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.addLogLine("Can't find codec " + e.Message, 1, "");
-                MessageBox.Show("Can't find codec");
+                LogBook.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing","",true);
+               // MessageBox.Show("Can't find codec");
                 return false;
             }
         }

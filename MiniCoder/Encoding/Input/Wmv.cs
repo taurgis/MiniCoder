@@ -31,7 +31,8 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-           
+            LogBook.addLogLine("Demuxing WMV - Setting up variables", fileDetails["name"][0] + "DeMuxing", "", false);
+
 
                 tracks["video"][0].demuxPath = fileDetails["fileName"][0];
                 tracks["audio"][0].demuxPath = fileDetails["fileName"][0];
