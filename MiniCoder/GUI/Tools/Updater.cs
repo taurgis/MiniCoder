@@ -228,21 +228,39 @@ namespace MiniCoder.GUI.External
             {
                 if (coreList.Items[i].Checked)
                 {
-
-                    Tool tempPackage = (Tool)tools.getTools()["Core"];
-                    updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
-                    if (!tempPackage.download())
+                    if (coreList.Items[i].SubItems[1].Text == "Core")
                     {
-                        updateButton.Enabled = true;
-                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
-                        return;
-                    }
-           
-                    //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
-                    MessageBox.Show("Minicoder has to restart to update its core files.");
-                    Application.Exit();
-                    Process.Start("CoreUpdater.exe");
+                        Tool tempPackage = (Tool)tools.getTools()["Core"];
+                        updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                        if (!tempPackage.download())
+                        {
+                            updateButton.Enabled = true;
+                            updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                            return;
+                        }
 
+                        //        Package tempPackage = (Package)applicationInfo[coreList.Items[i].SubItems[2].ToString()];
+                        MessageBox.Show("Minicoder has to restart to update its core files.");
+                        Application.Exit();
+                        Process.Start("CoreUpdater.exe");
+                    }
+                    else
+                    {
+                        Tool tempPackage = (Tool)toolInfo[coreList.Items[i].SubItems[1].Text];
+                        updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                        if (!tempPackage.download())
+                        {
+                            updateButton.Enabled = true;
+                            updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                            return;
+                        }
+                        tempPackage.localVersion = tempPackage.onlineVersion;
+                        coreList.Items[i].SubItems[4].Text = "Up to date";
+                        coreList.Items[i].Checked = false;
+                        downloadProgress.Value++;
+                        updateLog.Text += "Download & Install Complete .. \r\n";
+                        tools.SavePackages();
+                    }
                 }
             }
             updateButton.Enabled = true;

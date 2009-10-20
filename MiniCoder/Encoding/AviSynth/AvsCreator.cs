@@ -37,7 +37,7 @@ namespace MiniCoder.Encoding.AviSynth
             if (EncOpts.ContainsKey("hardsub"))
                 avs += "TextSub(\"" + EncOpts["hardsub"] + "\")";
             if (EncOpts.ContainsKey("hardsubmp4"))
-                if(EncOpts["hardsubmp4"] != "0" && EncOpts["container"] == "2")
+                if(EncOpts["hardsubmp4"] != "0" && EncOpts["container"] == "1" && fileTracks["subs"].Length > 0)
                 avs += "\r\nTextSub(\"" + fileTracks["subs"][int.Parse(EncOpts["hardsubmp4"])-1].demuxPath + "\")";
             EncOpts.Add("avsfile", (Application.StartupPath + "\\temp\\" + fileDetails["name"][0] + ".avs"));
             StreamWriter streamWriter = new StreamWriter(EncOpts["avsfile"]);

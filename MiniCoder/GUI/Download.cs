@@ -68,50 +68,59 @@ namespace MiniCoder.GUI
         }
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if (!dlFinished)
-                return;
-            if (typedl == "exe")
-            {
+            
+                if (typedl == "exe")
+                {
 
-                Process proc = new Process();
-                
-                proc.StartInfo.FileName = "dl.exe";
+                    Process proc = new Process();
 
-                proc.Start();
-                proc.WaitForExit();
-            }
-            else if (typedl == "dll")
-            {
-                string appfolder = downloadpath;
+                    proc.StartInfo.FileName = "dl.exe";
 
-                FastZip fz = new FastZip();
+                    proc.Start();
+                    proc.WaitForExit();
+                }
+                else if (typedl == "dll")
+                {
+                    string appfolder = downloadpath;
 
-                if (System.IO.Directory.Exists(appfolder))
-                      fz.ExtractZip("dl.zip", appfolder, "");
-            }
-            else if (typedl == "core")
-            {
-                
+                    FastZip fz = new FastZip();
 
-                FastZip fz = new FastZip();
+                    if (System.IO.Directory.Exists(appfolder))
+                        fz.ExtractZip("dl.zip", appfolder, "");
+                }
+                else if (typedl == "core")
+                {
+                    try
+                    {
+                        if (downloadurl != "http://www.gamerzzheaven.be/core.zip")
+                        {
+                            FastZip fz = new FastZip();
 
-                if (!System.IO.Directory.Exists(Application.StartupPath))
-                    fz.ExtractZip("dl.zip", Application.StartupPath, "");
-            }
-            else
-            {
-                string appfolder = Application.StartupPath + "\\Tools\\";
+                            if (System.IO.Directory.Exists(Application.StartupPath))
+                                fz.ExtractZip("dl.zip", Application.StartupPath, "");
+                        }
+                        }
+                    catch
+                    {
+                        dlFinished = true;
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    string appfolder = Application.StartupPath + "\\Tools\\";
 
-                FastZip fz = new FastZip();
+                    FastZip fz = new FastZip();
 
-                if (!System.IO.Directory.Exists(appfolder))
-                    System.IO.Directory.CreateDirectory(appfolder);
+                    if (!System.IO.Directory.Exists(appfolder))
+                        System.IO.Directory.CreateDirectory(appfolder);
 
-                fz.ExtractZip("dl.zip", appfolder, "");
-            }
-           // MessageBox.Show("Install Completed");
-            dlFinished = true;
-            this.Close();
+                    fz.ExtractZip("dl.zip", appfolder, "");
+                }
+                // MessageBox.Show("Install Completed");
+                dlFinished = true;
+                this.Close();
+           
         }
 
         public Boolean isCompleted()
