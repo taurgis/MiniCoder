@@ -160,5 +160,15 @@ namespace MiniCoder.GUI.External
         {
             customPath("ffmpeg");
         }
+
+        private void theoraSelect_Click(object sender, EventArgs e)
+        {
+            customPath("theora");
+        }
+
+        private void lameSelect_Click(object sender, EventArgs e)
+        {
+            customPath("lame");
+        }
     }
 }

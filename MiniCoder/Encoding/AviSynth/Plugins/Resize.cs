@@ -24,9 +24,9 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                 case "3":
                     return "LanczosResize(" + EncOpts["width"] + "," + EncOpts["height"] + ")\r\n";
                 case "4":
-                    return "Lanczos4Resize(" + EncOpts["width"] + "," + EncOpts["height"] + "\r\n)";
+                    return "Lanczos4Resize(" + EncOpts["width"] + "," + EncOpts["height"] + ")\r\n";
                 case "5":
-                    return "Spline36Resize(" + EncOpts["width"] + "," + EncOpts["height"] + "\r\n)";
+                    return "Spline36Resize(" + EncOpts["width"] + "," + EncOpts["height"] + ")\r\n";
                 default:
                     return "";
             }

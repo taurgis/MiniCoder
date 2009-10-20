@@ -67,7 +67,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
             for (int i = 0; i < fileTracks["subs"].Length; i++)
             {
-                FileInfo fi = new FileInfo(fileTracks["audio"][i].demuxPath);
+                FileInfo fi = new FileInfo(fileTracks["subs"][i].demuxPath);
                 subsize += fi.Length / 1024 * 8;
             }
 

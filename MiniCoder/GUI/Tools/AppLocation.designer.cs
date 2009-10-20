@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppLocation));
             this.otherTab = new System.Windows.Forms.TabPage();
-            this.avs2yuvSelect = new System.Windows.Forms.Button();
-            this.avs2yuvPath = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.muxTab = new System.Windows.Forms.TabPage();
             this.VirtualDubModSelect = new System.Windows.Forms.Button();
             this.virtualDubModPath = new System.Windows.Forms.TextBox();
@@ -87,6 +84,12 @@
             this.applicationTabs = new System.Windows.Forms.TabControl();
             this.saveApps = new System.Windows.Forms.Button();
             this.cancelApps = new System.Windows.Forms.Button();
+            this.theoraSelect = new System.Windows.Forms.Button();
+            this.theoraPath = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lameSelect = new System.Windows.Forms.Button();
+            this.lamePath = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.otherTab.SuspendLayout();
             this.muxTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -96,41 +99,15 @@
             // 
             // otherTab
             // 
-            this.otherTab.Controls.Add(this.avs2yuvSelect);
-            this.otherTab.Controls.Add(this.avs2yuvPath);
-            this.otherTab.Controls.Add(this.label16);
+            this.otherTab.Controls.Add(this.ffmpegSelect);
+            this.otherTab.Controls.Add(this.label17);
+            this.otherTab.Controls.Add(this.ffmpegPath);
             this.otherTab.Location = new System.Drawing.Point(4, 22);
             this.otherTab.Name = "otherTab";
             this.otherTab.Size = new System.Drawing.Size(473, 226);
             this.otherTab.TabIndex = 5;
             this.otherTab.Text = "Other";
             this.otherTab.UseVisualStyleBackColor = true;
-            // 
-            // avs2yuvSelect
-            // 
-            this.avs2yuvSelect.Location = new System.Drawing.Point(428, 19);
-            this.avs2yuvSelect.Name = "avs2yuvSelect";
-            this.avs2yuvSelect.Size = new System.Drawing.Size(26, 23);
-            this.avs2yuvSelect.TabIndex = 17;
-            this.avs2yuvSelect.Text = "...";
-            this.avs2yuvSelect.UseVisualStyleBackColor = true;
-            this.avs2yuvSelect.Click += new System.EventHandler(this.avs2yuvSelect_Click);
-            // 
-            // avs2yuvPath
-            // 
-            this.avs2yuvPath.Location = new System.Drawing.Point(85, 21);
-            this.avs2yuvPath.Name = "avs2yuvPath";
-            this.avs2yuvPath.Size = new System.Drawing.Size(337, 20);
-            this.avs2yuvPath.TabIndex = 16;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(5, 24);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "avs2yuv";
             // 
             // muxTab
             // 
@@ -346,6 +323,9 @@
             // 
             // videoTab
             // 
+            this.videoTab.Controls.Add(this.theoraSelect);
+            this.videoTab.Controls.Add(this.theoraPath);
+            this.videoTab.Controls.Add(this.label16);
             this.videoTab.Controls.Add(this.xvid_encrawSelect);
             this.videoTab.Controls.Add(this.xvid_encrawPath);
             this.videoTab.Controls.Add(this.label7);
@@ -413,9 +393,9 @@
             // 
             // audioTab
             // 
-            this.audioTab.Controls.Add(this.ffmpegSelect);
-            this.audioTab.Controls.Add(this.ffmpegPath);
-            this.audioTab.Controls.Add(this.label17);
+            this.audioTab.Controls.Add(this.lameSelect);
+            this.audioTab.Controls.Add(this.lamePath);
+            this.audioTab.Controls.Add(this.label18);
             this.audioTab.Controls.Add(this.besweetSelect);
             this.audioTab.Controls.Add(this.besweetPath);
             this.audioTab.Controls.Add(this.label6);
@@ -443,7 +423,7 @@
             // 
             // ffmpegSelect
             // 
-            this.ffmpegSelect.Location = new System.Drawing.Point(429, 173);
+            this.ffmpegSelect.Location = new System.Drawing.Point(428, 9);
             this.ffmpegSelect.Name = "ffmpegSelect";
             this.ffmpegSelect.Size = new System.Drawing.Size(26, 23);
             this.ffmpegSelect.TabIndex = 20;
@@ -453,7 +433,7 @@
             // 
             // ffmpegPath
             // 
-            this.ffmpegPath.Location = new System.Drawing.Point(86, 175);
+            this.ffmpegPath.Location = new System.Drawing.Point(85, 11);
             this.ffmpegPath.Name = "ffmpegPath";
             this.ffmpegPath.Size = new System.Drawing.Size(337, 20);
             this.ffmpegPath.TabIndex = 19;
@@ -461,7 +441,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 178);
+            this.label17.Location = new System.Drawing.Point(5, 14);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(39, 13);
             this.label17.TabIndex = 18;
@@ -655,6 +635,58 @@
             this.cancelApps.UseVisualStyleBackColor = true;
             this.cancelApps.Click += new System.EventHandler(this.cancelApps_Click);
             // 
+            // theoraSelect
+            // 
+            this.theoraSelect.Location = new System.Drawing.Point(428, 73);
+            this.theoraSelect.Name = "theoraSelect";
+            this.theoraSelect.Size = new System.Drawing.Size(26, 23);
+            this.theoraSelect.TabIndex = 20;
+            this.theoraSelect.Text = "...";
+            this.theoraSelect.UseVisualStyleBackColor = true;
+            this.theoraSelect.Click += new System.EventHandler(this.theoraSelect_Click);
+            // 
+            // theoraPath
+            // 
+            this.theoraPath.Location = new System.Drawing.Point(85, 75);
+            this.theoraPath.Name = "theoraPath";
+            this.theoraPath.Size = new System.Drawing.Size(337, 20);
+            this.theoraPath.TabIndex = 19;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(5, 78);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 13);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "Theora";
+            // 
+            // lameSelect
+            // 
+            this.lameSelect.Location = new System.Drawing.Point(429, 173);
+            this.lameSelect.Name = "lameSelect";
+            this.lameSelect.Size = new System.Drawing.Size(26, 23);
+            this.lameSelect.TabIndex = 20;
+            this.lameSelect.Text = "...";
+            this.lameSelect.UseVisualStyleBackColor = true;
+            this.lameSelect.Click += new System.EventHandler(this.lameSelect_Click);
+            // 
+            // lamePath
+            // 
+            this.lamePath.Location = new System.Drawing.Point(86, 175);
+            this.lamePath.Name = "lamePath";
+            this.lamePath.Size = new System.Drawing.Size(337, 20);
+            this.lamePath.TabIndex = 19;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 178);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(58, 13);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Lame MP3";
+            // 
             // AppLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,9 +738,6 @@
         private System.Windows.Forms.TextBox madplayPath;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl applicationTabs;
-        private System.Windows.Forms.Button avs2yuvSelect;
-        private System.Windows.Forms.TextBox avs2yuvPath;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button VirtualDubModSelect;
         private System.Windows.Forms.TextBox virtualDubModPath;
         private System.Windows.Forms.Label label10;
@@ -741,5 +770,11 @@
         private System.Windows.Forms.Button ffmpegSelect;
         private System.Windows.Forms.TextBox ffmpegPath;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button theoraSelect;
+        private System.Windows.Forms.TextBox theoraPath;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button lameSelect;
+        private System.Windows.Forms.TextBox lamePath;
+        private System.Windows.Forms.Label label18;
     }
 }
