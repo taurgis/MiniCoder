@@ -115,7 +115,7 @@ namespace MiniCoder.Encoding
         private bool createAvs()
         {
             AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet, tools);
-            return avsCreator.getAvsFile();
+            return avsCreator.getAvsFile(fileTracks);
 
         }
         #endregion
