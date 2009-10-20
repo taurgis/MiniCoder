@@ -24,7 +24,7 @@ namespace MiniCoder.Encoding.AviSynth
             this.tools = tools;
         }
 
-        public Boolean getAvsFile()
+        public Boolean getAvsFile(SortedList<String, Track[]> fileTracks)
         {
             string avs = "";
             
@@ -35,7 +35,9 @@ namespace MiniCoder.Encoding.AviSynth
             avs += getDenoiseLine();
             avs += getSharpenLine();
             if (EncOpts.ContainsKey("hardsub"))
-                avs += EncOpts["hardsub"];
+                avs += "TextSub(\"" + EncOpts["hardsub"] + "\")";
+            if (EncOpts.ContainsKey("hardsubmp4"))
+                avs += "\r\nTextSub(\"" + fileTracks["subs"][int.Parse(EncOpts["hardsubmp4"])-1].demuxPath + "\")";
             EncOpts.Add("avsfile", (Application.StartupPath + "\\temp\\" + fileDetails["name"][0] + ".avs"));
             StreamWriter streamWriter = new StreamWriter(EncOpts["avsfile"]);
             streamWriter.Write(avs);
