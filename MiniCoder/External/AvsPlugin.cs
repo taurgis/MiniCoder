@@ -65,7 +65,7 @@ namespace MiniCoder.External
             return aviSynth.getInstallPath();
         }
 
-        public void download()
+        public Boolean download()
         {
             try
             {
@@ -78,10 +78,11 @@ namespace MiniCoder.External
 
                 frmDownload.ShowDialog();
 
+                return frmDownload.isCompleted();
             }
             catch
             {
-
+                return false;
             }
 
         }

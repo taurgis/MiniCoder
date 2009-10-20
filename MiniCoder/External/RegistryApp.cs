@@ -143,7 +143,7 @@ namespace MiniCoder.External
 
         }
 
-        public void download()
+        public Boolean download()
         {
             Download frmDownload;
             if (appType == "zip")
@@ -155,6 +155,8 @@ namespace MiniCoder.External
             frmDownload.startDownload();
 
             frmDownload.ShowDialog();
+
+            return frmDownload.isCompleted();
         }
     }
 }

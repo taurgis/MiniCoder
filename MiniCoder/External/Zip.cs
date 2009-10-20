@@ -104,7 +104,7 @@ namespace MiniCoder.External
              return appBasePath + toolName + "\\";
          }
 
-         public void download()
+         public Boolean download()
          {
              try
              {
@@ -115,11 +115,13 @@ namespace MiniCoder.External
                  frmDownload.startDownload();
 
                  frmDownload.ShowDialog();
+
+                 return frmDownload.isCompleted();
                 
              }
              catch
              {
-
+                 return false;
              }
 
          }

@@ -17,7 +17,7 @@ namespace MiniCoder.External
         string onlineVersion { get; set; }
         string registrySubpath { get; set; }
         string registrySubKey { get; set; }
-        void download();
+        Boolean download();
         void getOnlineVersion(XmlDocument doc);
     }
 }

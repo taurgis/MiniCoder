@@ -68,6 +68,8 @@ namespace MiniCoder.GUI
         }
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
+            if (!dlFinished)
+                return;
             if (typedl == "exe")
             {
 
@@ -112,6 +114,11 @@ namespace MiniCoder.GUI
             this.Close();
         }
 
+        public Boolean isCompleted()
+        {
+            return dlFinished;
+        }
+
         void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
            
@@ -121,6 +128,7 @@ namespace MiniCoder.GUI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             client.CancelAsync();
+            dlFinished = false;
             this.Close();
         }
     }
