@@ -28,7 +28,7 @@ namespace MiniCoder.Encoding
             LogBook.addLogLine("Encoding " + fileDetails["name"][0], 0);
             LogBook.addLogLine("Fetching File Info", 1);
             LogBook.setInfoLabel("Fetching File Info");
-            
+
             for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
                 LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), 2);
             this.tools = tools;
@@ -40,7 +40,7 @@ namespace MiniCoder.Encoding
         {
             if (demuxFile())
                 if (encodeVideo())
-                     return true;
+                    return true;
             return false;
         }
 
@@ -54,16 +54,16 @@ namespace MiniCoder.Encoding
                 encodeSet["width"] = fileDetails["width"][0];
                 encodeSet["height"] = fileDetails["height"][0];
                 fileDetails = getFileDetails(fileDetails["fileName"][0]);
-               encodeSet.Add("avsfile", avsfile);
-              
-                if(demuxFile())
-                if (analyseVfr())
-                    if (dgavcIndex())
-                        if (encodeAudio())
-                          //  if (createAvs())
+                encodeSet.Add("avsfile", avsfile);
+
+                if (demuxFile())
+                    if (analyseVfr())
+                        if (dgavcIndex())
+                            if (encodeAudio())
+                                //  if (createAvs())
                                 if (encodeVideo())
                                     return muxFile();
-            
+
             }
             return false;
         }
@@ -171,26 +171,22 @@ namespace MiniCoder.Encoding
         #region Demuxing
         private bool demuxFile()
         {
-           
-            switch (fileDetails["ext"][0])
+
+            switch (fileDetails["ext"][0].ToUpper())
             {
-                case ".avi":
+                case ".AVI":
                     return demuxAvi();
-
-                case ".mp4":
+                case ".MP4":
                     return demuxMp4();
-
-                case ".ogm":
+                case ".OGM":
                     return demuxOgm();
-
-                case ".mkv":
+                case ".MKV":
                     return demuxMkv();
-                case ".wmv":
+                case ".WMV":
                     return demuxWmv();
-                case ".vob":
                 case ".VOB":
                     return demuxVob();
-                case ".avs":
+                case ".AVS":
                     return demuxAvs();
 
             }
@@ -259,24 +255,24 @@ namespace MiniCoder.Encoding
 
             Track[] videoTracks = new Track[1];
             Track[] audioTracks;
-            if(encodeSet["skipaudio"] != "True")
-               audioTracks = new Track[temp.audioCount(fileName)];
+            if (encodeSet["skipaudio"] != "True")
+                audioTracks = new Track[temp.audioCount(fileName)];
             else
                 audioTracks = new Track[0];
 
-             Track[] subTracks ;
-             if (encodeSet["skipsubs"] != "True")
-                 subTracks = new Track[temp.subCount(fileName)];
-             else
-                 subTracks = new Track[0];
+            Track[] subTracks;
+            if (encodeSet["skipsubs"] != "True")
+                subTracks = new Track[temp.subCount(fileName)];
+            else
+                subTracks = new Track[0];
 
             videoTracks[0] = new Video(temp.vidCodec(fileName), temp.vidID(fileName)[0]);
 
             for (int i = 0; i < audioTracks.Length; i++)
-                {
-                    audioTracks[i] = new Audio(temp.audTitle(fileName)[i], temp.audLanguage(fileName)[i], temp.audCodec(fileName)[i], temp.audID(fileName)[i]);
-                }
-          
+            {
+                audioTracks[i] = new Audio(temp.audTitle(fileName)[i], temp.audLanguage(fileName)[i], temp.audCodec(fileName)[i], temp.audID(fileName)[i]);
+            }
+
             for (int i = 0; i < subTracks.Length; i++)
             {
                 subTracks[i] = new Sub(temp.subCaption(fileName)[i], temp.subLang(fileName)[i], temp.subCodec(fileName)[i], temp.subID(fileName)[i]);
@@ -315,9 +311,9 @@ namespace MiniCoder.Encoding
             tempDetail.Add("framecount", temp.frameCount(fileName).ToString().Split(Convert.ToChar(" ")));
 
             if (encodeSet["skipchapters"] == "True")
-            tempDetail.Add("chapters", "".Split(Char.Parse(" ")));
+                tempDetail.Add("chapters", "".Split(Char.Parse(" ")));
             else
-            tempDetail.Add("chapters", temp.chapters(fileName).Split(Convert.ToChar(" ")));
+                tempDetail.Add("chapters", temp.chapters(fileName).Split(Convert.ToChar(" ")));
             tempDetail.Add("vfrCode", null);
             tempDetail.Add("vfrName", null);
 

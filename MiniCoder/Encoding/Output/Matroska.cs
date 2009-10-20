@@ -84,7 +84,7 @@ namespace MiniCoder.Encoding.Output
 
                     for (int i = 0; i < fileTracks["subs"].Length; i++)
                     {
-                        args += "--language 0:" + Language.getExtention(fileTracks["subs"][i].language) + " --track-name 0:\"" + fileTracks["subs"][i].title + "\" -s 0 -A -D \"" + fileTracks["audio"][i].demuxPath + "\" ";
+                        args += "--language 0:" + Language.getExtention(fileTracks["subs"][i].language) + " --track-name 0:\"" + fileTracks["subs"][i].title + "\" -s 0 -A -D \"" + fileTracks["subs"][i].demuxPath + "\" ";
                     }
 
                     if (fileTracks.ContainsKey("attachments"))
