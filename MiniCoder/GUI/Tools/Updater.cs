@@ -35,7 +35,7 @@ namespace MiniCoder.GUI.External
                 String updateText="";
                 if (tempTool.localVersion != tempTool.onlineVersion)
                 {
-                    if (!String.IsNullOrEmpty(tempTool.onlineVersion) && !tempTool.localVersion.Equals("Custom"))
+                    if (!String.IsNullOrEmpty(tempTool.onlineVersion) && !tempTool.localVersion.Equals("Custom") &&!tempTool.localVersion.Equals("Ignore"))
                     {
                         if (!key.Equals("avs"))
                             updateText = "Update Required";
@@ -291,50 +291,11 @@ namespace MiniCoder.GUI.External
             ToolStripMenuItem tempContext = (ToolStripMenuItem)sender;
             ContextMenuStrip tempMenu = (ContextMenuStrip)tempContext.Owner;
             ListView tempListbox = (ListView)tempMenu.SourceControl;
-            for (int i = 0; i < tempListbox.SelectedItems.Count; i++)
-            {
-                String tempName = tempListbox.SelectedItems[i].SubItems[1].Text;
-                Tool tempPackage = (Tool)tools.getTools()[tempName];
-                
-                if (!Directory.Exists(tempPackage.getInstallPath()) || !File.Exists(tempPackage.getInstallPath() + "\\version.txt"))
-                {
-                    if (tempPackage.getCategory() != "plugin")
-                    {
-                        Directory.CreateDirectory(tempPackage.getInstallPath());
 
-                        StreamWriter streamWrite = new StreamWriter(tempPackage.getInstallPath() + "\\version.txt");
-                        streamWrite.WriteLine("Ignore");
-                        streamWrite.Close();
-                    }
+            Tool tempPackage = (Tool)toolInfo[tempListbox.SelectedItems[0].SubItems[1].Text];
+            tempPackage.localVersion = "Ignore";
 
-                }
-                else
-                {
-                    try
-                    {
-                        StreamWriter streamWriter;
-                        if (tempPackage.getCategory() == "plugin")
-                        {
-                            File.Copy(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt", tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt");
-                             streamWriter = new StreamWriter(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt", false);
-                            streamWriter.WriteLine("Ignore");
-                            streamWriter.Close();
-                        }
-                        else
-                        {
-                            File.Copy(tempPackage.getInstallPath() + "\\version.txt", tempPackage.getInstallPath() + "\\version_old.txt");
-                             streamWriter = new StreamWriter(tempPackage.getInstallPath() + "\\version.txt", false);
-                            streamWriter.WriteLine("Ignore");
-                            streamWriter.Close();
-                        }
-                    }
-                    catch (IOException)
-                    {
-                    }
-
-                   
-                }
-            }
+            tools.SavePackages();
         }
 
 
@@ -344,39 +305,10 @@ namespace MiniCoder.GUI.External
             ToolStripMenuItem tempContext = (ToolStripMenuItem)sender;
             ContextMenuStrip tempMenu = (ContextMenuStrip)tempContext.Owner;
             ListView tempListbox = (ListView)tempMenu.SourceControl;
-            for (int i = 0; i < tempListbox.SelectedItems.Count; i++)
-            {
-                String tempName = tempListbox.SelectedItems[i].SubItems[1].Text;
-                Tool tempPackage = (Tool)tools.getTools()[tempName];
+            Tool tempPackage = (Tool)toolInfo[tempListbox.SelectedItems[0].SubItems[1].Text];
+            tempPackage.localVersion = "Unignored";
 
-                if (tempPackage.getCategory() == "plugin")
-                {
-                    try
-                    {
-                        
-                        File.Delete(tempPackage.getInstallPath() + "\\version_" + tempName + ".txt");
-                        File.Copy(tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt", tempPackage.getInstallPath() + "\\version_" + tempName + ".txt");
-                        File.Delete(tempPackage.getInstallPath() + "\\version_" + tempName + "_old.txt");
-                    }
-                    catch (IOException)
-                    {
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        File.Delete(tempPackage.getInstallPath() + "\\version.txt");
-                        File.Copy(tempPackage.getInstallPath() + "\\version_old.txt", tempPackage.getInstallPath() + "\\version.txt");
-                        File.Delete(tempPackage.getInstallPath() + "\\version_old.txt");
-                    }
-                    catch (IOException)
-                    {
-                    }
-                }
-
-
-            }
+            tools.SavePackages();
         }
 
         private void Updater_Load(object sender, EventArgs e)
