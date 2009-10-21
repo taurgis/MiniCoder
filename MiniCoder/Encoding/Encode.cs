@@ -25,8 +25,16 @@ namespace MiniCoder.Encoding
             this.encodeSet = encodeSet;
             this.fileName = fileName;
             fileDetails = getFileDetails(fileName);
+
+            LogBook.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
+            LogBook.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
+           
+            foreach (string key in encodeSet.Keys)
+            {
+                LogBook.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
+
+            }
             
-            LogBook.addLogLine("Encoding " + fileDetails["name"][0], "", fileDetails["name"][0] + "Encode",false);
             LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo",false);
             LogBook.setInfoLabel("Fetching File Info");
 
