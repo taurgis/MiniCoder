@@ -30,7 +30,7 @@ namespace MiniCOder.GUI.Controls
             videoCombo.SelectedIndex = 0;
             containerCombo.SelectedIndex = 0;
             vidQualCombo.SelectedIndex = 0;
-          
+            
             }
 
         public SortedList<string, string> getSettings()
@@ -67,18 +67,23 @@ namespace MiniCOder.GUI.Controls
                 options.Add("hardsub", subText.Text);
             //still need to enable options
             
-            options.Add("advert", "");
+           
            
 
             return options;
 
         }
 
+        public int getSelectedIndex()
+        {
+            return templateCombo.SelectedIndex;
+        }
+
         private void EncodeSettings_Load(object sender, EventArgs e)
         {
             loadSettings();
         }
-        private void loadSettings()
+        public void loadSettings()
         {
             try
             {

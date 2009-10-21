@@ -11,10 +11,17 @@ namespace System
     public static class LogBook
     {
         static MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
-        public static void addLogLine(string message, string searchTag, string messageTag, bool error)
+        public static void addLogLine(string message, string searchTag, string messageTag, bool error) 
         {
-            if(!string.IsNullOrEmpty(message))
-                mainForm.addLogLine(message, searchTag, messageTag, false);
+            try
+            {
+                if (!string.IsNullOrEmpty(message))
+                    mainForm.addLogLine(message, searchTag, messageTag, false);
+            }
+            catch
+            {
+
+            }
         }
 
         public static TreeNode findNode(TreeView treeView, string tag)

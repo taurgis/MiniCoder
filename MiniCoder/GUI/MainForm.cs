@@ -219,7 +219,8 @@ namespace MiniCoder.GUI
 
         private void startButton_Click(object sender, EventArgs e)
         {
-
+            if (encodeSettings.getSelectedIndex() == -1)
+                encodeSettings.loadSettings();
             encodeBatchTask = new Thread(new ThreadStart(encodeBatch));
             //proc.abandon = false;
             encodeBatchTask.Start();

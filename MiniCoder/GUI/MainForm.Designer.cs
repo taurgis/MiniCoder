@@ -90,6 +90,7 @@ namespace MiniCoder.GUI
             this.mainTabPage.SelectedIndex = 0;
             this.mainTabPage.Size = new System.Drawing.Size(410, 385);
             this.mainTabPage.TabIndex = 1;
+           
             // 
             // inputTab
             // 
