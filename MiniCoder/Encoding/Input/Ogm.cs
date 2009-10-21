@@ -53,7 +53,7 @@ namespace MiniCoder.Encoding.Input
 
                 proc.setFilename(Path.Combine(ogmtools.getInstallPath(), "OGMDemuxer.exe"));
                 string tempArg = "tracks \"" + fileDetails["fileName"][0] + "\" -p " + tracks["video"][0].id + ":\"" + tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec) + "\"";
-
+                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec);
 
                 for (int i = 0; i < tracks["audio"].Length; i++)
                 {
