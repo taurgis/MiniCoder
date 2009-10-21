@@ -56,10 +56,16 @@ namespace MiniCoder.Encoding.Input
             proc.setArguments(tempArg);
             int exitCode = proc.startProcess();
 
-            FileInfo tempChapFile = new FileInfo(tempPath + "chapters.txt");
-            if (tempChapFile.Length == 0)
-                File.Delete(tempPath + "chapters.txt");
+            try
+            {
+                FileInfo tempChapFile = new FileInfo(tempPath + "chapters.txt");
+                if (tempChapFile.Length == 0)
+                    File.Delete(tempPath + "chapters.txt");
+            }
+            catch
+            {
 
+            }
             if (exitCode != 0)
             {
                 LogBook.addLogLine("Error demuxing chapters, none present?", fileDetails["name"][0] + "DeMuxing", "", false);
