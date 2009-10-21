@@ -155,6 +155,19 @@ namespace MiniCoder.GUI
                         TreeNode retrieved = LogBook.findNode(logView, searchTag);
                         if (retrieved != null)
                         {
+                            if (!String.IsNullOrEmpty(messageTag) && !String.IsNullOrEmpty(searchTag))
+                            {
+                                if (messageTag != searchTag)
+                                {
+                                    TreeNode retrieved2 = LogBook.findNode(logView, messageTag);
+                                    if (retrieved2 != null)
+                                    {
+                                        return;
+                                    }
+                                }
+                              
+                                //test
+                            }
                             if (!retrieved.Text.Contains(message))
                             {
                                 TreeNode tempNode = new TreeNode(message);
