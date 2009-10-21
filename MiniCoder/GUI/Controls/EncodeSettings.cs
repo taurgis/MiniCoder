@@ -307,7 +307,7 @@ namespace MiniCOder.GUI.Controls
                 case 1:
                     try
                     {
-                        hardsubmp4 = InputBox.Show("Please select wich sub you wish to add to the MP4 file. 1,2,3... 1 = First sub file, 2 = Second sub file,... 0 means that you will add subfiles softsubbed.", "Hardsub", "0");
+                        hardsubmp4 = InputBox.Show("Please select wich sub you wish to add to the MP4/AVI file. 1,2,3... 1 = First sub file, 2 = Second sub file,... 0 means that you will add subfiles softsubbed.", "Hardsub", "0");
                     }
                     catch
                     {
@@ -318,6 +318,16 @@ namespace MiniCOder.GUI.Controls
                     break;
                 case 2:
                     {
+                        try
+                        {
+                            hardsubmp4 = InputBox.Show("Please select wich sub you wish to add to the MP4/AVI file. 1,2,3... 1 = First sub file, 2 = Second sub file,... 0 means that you will add subfiles softsubbed.", "Hardsub", "0");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Please enter a number");
+                            containerCombo_SelectedIndexChanged(sender, e);
+
+                        }
                         audioCombo.Items.Remove("Nero AAC");
                         audioCombo.Items.Remove("Vorbis");
                         audioCombo.SelectedIndex = 0;
