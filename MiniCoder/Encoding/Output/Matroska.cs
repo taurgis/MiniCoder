@@ -112,7 +112,7 @@ namespace MiniCoder.Encoding.Output
                     int exitCode = proc.startProcess();
                     if (exitCode != 0)
                     {
-                        MessageBox.Show("Error during muxing, the output file could still be present though.");
+                       // MessageBox.Show("Error during muxing, the output file could still be present though.");
                         return false;
                     }
                     else
