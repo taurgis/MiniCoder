@@ -53,7 +53,7 @@ namespace MiniCoder.Encoding.AviSynth
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error writing log file. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
+                LogBook.addLogLine("Error writing AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

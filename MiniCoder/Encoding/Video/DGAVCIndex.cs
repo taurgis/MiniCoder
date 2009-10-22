@@ -57,7 +57,7 @@ namespace MiniCoder.Encoding.VideoEnc
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error indexing AVC. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
+                LogBook.addLogLine("Error indexing AVC. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

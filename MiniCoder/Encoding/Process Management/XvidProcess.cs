@@ -193,7 +193,7 @@ namespace MiniCoder.Encoding.Process_Management
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
+                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
             }
             finally
             {

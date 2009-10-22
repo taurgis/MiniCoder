@@ -69,7 +69,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding audio to FFmpegAc-3. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
+                LogBook.addLogLine("Error encoding audio to FFmpegAc-3. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
