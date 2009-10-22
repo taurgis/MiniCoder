@@ -189,7 +189,11 @@ namespace MiniCoder.Encoding.Process_Management
                     exitCode = mainProcess.ExitCode;
                 
                 Thread.Sleep(2000);
-               
+
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
             }
             finally
             {

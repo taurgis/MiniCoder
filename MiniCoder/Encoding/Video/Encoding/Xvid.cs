@@ -115,7 +115,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding video to Xvid. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error encoding video to Xvid. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

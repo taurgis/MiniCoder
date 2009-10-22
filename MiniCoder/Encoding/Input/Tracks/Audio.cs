@@ -83,7 +83,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error selecting audio decoding tool. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error selecting audio decoding tool. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -115,7 +115,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error selecting audio encoding tool. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error selecting audio encoding tool. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

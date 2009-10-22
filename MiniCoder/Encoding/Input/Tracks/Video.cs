@@ -46,7 +46,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error selecting video encoding tool. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error selecting video encoding tool. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

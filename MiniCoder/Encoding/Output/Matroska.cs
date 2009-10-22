@@ -130,7 +130,7 @@ namespace MiniCoder.Encoding.Output
 
             catch (Exception error)
             {
-                LogBook.addLogLine("Error muxing to Matroska. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error muxing to Matroska. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }
