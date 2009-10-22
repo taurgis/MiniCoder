@@ -89,7 +89,7 @@ namespace MiniCoder.Encoding.Output
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error muxing to avi. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
+                LogBook.addLogLine("Error muxing to avi. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
