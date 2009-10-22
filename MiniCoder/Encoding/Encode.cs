@@ -42,6 +42,17 @@ namespace MiniCoder.Encoding
 
                 for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
                     LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo", "", false);
+
+                //LogBook.addLogLine("Fetching Created File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfoFetch", false);
+               
+
+                //foreach (string key in fileDetails.Keys)
+                //{
+                //    for(int i = 0; i < fileDetails[key].Length;i++)
+                //        LogBook.addLogLine(key + " : " + fileDetails[key][i], fileDetails["name"][0] + "FileInfoFetch", "", false);
+
+                //}
+                
                 this.tools = tools;
                 this.processWatcher = processWatcher;
             }

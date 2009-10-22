@@ -61,13 +61,21 @@ namespace MiniCoder.Encoding.Output
 
                 if (File.Exists(tempPath + "chapters.txt"))
                     arg1 += "--chapters \"" + tempPath + "chapters.txt\" ";
+                try
+                {
 
-                if (int.Parse(fileDetails["fps"][0]) > 400)
-                    args = "-o \"" + encOpts["outfile"] + "\" --default-duration 0:" + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + "fps --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
-                else
-                    args = "-o \"" + encOpts["outfile"] + "\" --default-duration 0:" + fileDetails["fps"][0] + "fps --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
+                    if (float.Parse(fileDetails["fps"][0]) > 400)
+                        args = "-o \"" + encOpts["outfile"] + "\" --default-duration 0:" + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + "fps --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
+                    else
+                        args = "-o \"" + encOpts["outfile"] + "\" --default-duration 0:" + fileDetails["fps"][0] + "fps --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
 
-
+                }
+                catch
+                {
+                    LogBook.addLogLine("Error parsing fps", "Errors", "", false);
+                 //   args = "-o \"" + encOpts["outfile"] + "\"  --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
+                    return false;
+                }
 
 
                 for (int i = 0; i < fileTracks["audio"].Length; i++)
