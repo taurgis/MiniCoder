@@ -168,23 +168,27 @@ namespace MiniCoder.Encoding.Process_Management
 
                 }
 
-              
-                    stderr = mainProcess.StandardError;
-                    stdout = mainProcess.StandardOutput;
 
-                    stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                    stdOutThread = new Thread(new ThreadStart(stdoutProcess));
+                stderr = mainProcess.StandardError;
+                stdout = mainProcess.StandardOutput;
 
-                    stdErrThread.Start();
-                    stdOutThread.Start();
-               
+                stdErrThread = new Thread(new ThreadStart(stderrProcess));
+                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
 
-               
-                    mainProcess.WaitForExit();
-                    exitCode = mainProcess.ExitCode;
-                
+                stdErrThread.Start();
+                stdOutThread.Start();
+
+
+
+                mainProcess.WaitForExit();
+                exitCode = mainProcess.ExitCode;
+
                 Thread.Sleep(2000);
-               
+
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ")", "Errors","",true);
             }
             finally
             {

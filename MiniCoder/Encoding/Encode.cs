@@ -47,7 +47,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error starting encode. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error starting encode. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                // return false;
             }
 
@@ -63,7 +63,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error starting Theora encode. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error starting Theora encode. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -95,7 +95,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding AVS file. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error encoding AVS file. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -115,7 +115,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error starting default encode. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error starting default encode. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

@@ -49,7 +49,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error decoding audio with FFmpeg. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error decoding audio with FFmpeg. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

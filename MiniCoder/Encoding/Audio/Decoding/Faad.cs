@@ -49,7 +49,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error decoding audio with Faad. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error decoding audio with Faad. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

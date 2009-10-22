@@ -75,7 +75,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding audio to Nero AAC. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error encoding audio to Nero AAC. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

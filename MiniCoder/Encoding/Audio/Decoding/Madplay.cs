@@ -51,7 +51,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error decoding audio with MadPlay. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error decoding audio with MadPlay. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }

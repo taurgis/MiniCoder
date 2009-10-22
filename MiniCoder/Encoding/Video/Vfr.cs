@@ -69,7 +69,7 @@ namespace MiniCoder.Encoding.VideoEnc
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error analysing VFR. (" + error + ")", "Errors", "", true);
+                LogBook.addLogLine("Error analysing VFR. (" + error.Source + ", " + error.Message + ")", "Errors", "", true);
                 return false;
             }
         }
