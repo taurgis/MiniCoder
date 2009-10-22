@@ -157,6 +157,7 @@ namespace MiniCoder.External
             defaultPackages.Add("UnDot", new AvsPlugin("UnDot", "http://www.gamerzzheaven.be/UnDot.zip", "plugin", defaultPackages["avs"], "First Time"));
             defaultPackages.Add("FluxSmooth", new AvsPlugin("FluxSmooth", "http://www.gamerzzheaven.be/FluxSmooth.zip", "plugin", defaultPackages["avs"], "First Time"));
             defaultPackages.Add("HQDN3D", new AvsPlugin("HQDN3D", "http://www.gamerzzheaven.be/HQDN3D.zip", "plugin", defaultPackages["avs"], "First Time"));
+            defaultPackages.Add("ColorMatrix", new AvsPlugin("ColorMatrix", "http://www.gamerzzheaven.be/ColorMatrix.zip", "plugin", defaultPackages["avs"], "First Time"));
             defaultPackages.Add("DGDecode", new AvsPlugin("DGDecode", "http://www.gamerzzheaven.be/DGDecode.zip", "plugin", defaultPackages["avs"], "First Time"));
             defaultPackages.Add("UnFilter", new AvsPlugin("UnFilter", "http://www.gamerzzheaven.be/UnFilter.zip", "plugin", defaultPackages["avs"], "First Time"));
             defaultPackages.Add("Toon-v1.0-lite", new AvsPlugin("Toon-v1.0-lite", "http://www.gamerzzheaven.be/Toon-v1.0-lite.zip", "plugin", defaultPackages["avs"], "First Time"));
