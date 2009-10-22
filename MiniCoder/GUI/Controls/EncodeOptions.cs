@@ -42,7 +42,7 @@ namespace MiniCOder.GUI.Controls
             settings.Add("skipattachments", ignoreAttachments.Checked.ToString());
             settings.Add("skipchapters", ignoreChapters.Checked.ToString());
             if (outPutLocation.Text != "")
-                settings.Add("customoutput", outPutLocation.Text);
+                settings.Add("customoutput", outPutLocation.Text + "\\");
             return settings;
         }
         public void setProcessWatcher(ProcessWatcher processWatcher)
