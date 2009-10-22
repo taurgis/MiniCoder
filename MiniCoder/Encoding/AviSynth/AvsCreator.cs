@@ -70,7 +70,9 @@ namespace MiniCoder.Encoding.AviSynth
             }
             catch (AviSynthException er)
             {
+                LogBook.addLogLine("Error checking AVS file: " + er.Message, "Errors", "", true);
                 // LogBook.addLogLine("er.Message,1);
+                MessageBox.Show("Error in AVS File: " + er.Message);
                 return false;
             }
                 
