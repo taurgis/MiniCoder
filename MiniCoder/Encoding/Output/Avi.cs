@@ -13,78 +13,85 @@ namespace MiniCoder.Encoding.Output
         String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean mux(Tool ffmpeg, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
-            LogBook.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
-
-            MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
-            proc.stdErrDisabled(true);
-            proc.stdOutDisabled(false);
-
-
-            proc.initProcess();
-           // // LogBook.addLogLine(""Muxing", 1);
-            LogBook.setInfoLabel("Muxing to avi...");
-            string args;
-
             try
             {
-                float dar = int.Parse(encOpts["width"]) / int.Parse(encOpts["height"]);
-                float par = int.Parse(fileDetails["width"][0]) / int.Parse(fileDetails["height"][0]);
+                LogBook.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
 
-                if (dar != par & encOpts["sizeopt"] != "0")
+                MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
+                proc.stdErrDisabled(true);
+                proc.stdOutDisabled(false);
+
+
+                proc.initProcess();
+                // // LogBook.addLogLine(""Muxing", 1);
+                LogBook.setInfoLabel("Muxing to avi...");
+                string args;
+
+                try
                 {
+                    float dar = int.Parse(encOpts["width"]) / int.Parse(encOpts["height"]);
+                    float par = int.Parse(fileDetails["width"][0]) / int.Parse(fileDetails["height"][0]);
 
-                    encOpts["width"] = (int.Parse(encOpts["width"]) * dar).ToString();
+                    if (dar != par & encOpts["sizeopt"] != "0")
+                    {
+
+                        encOpts["width"] = (int.Parse(encOpts["width"]) * dar).ToString();
+                    }
                 }
+                catch
+                {
+                    encOpts["width"] = fileDetails["width"][0];
+                    encOpts["height"] = fileDetails["height"][0];
+
+                }
+
+                encOpts.Add("outfile", encOpts["outDIR"] + fileDetails["name"][0] + "_output.avi");
+
+                if (!ffmpeg.isInstalled())
+                    ffmpeg.download();
+
+                proc.setFilename(Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe"));
+
+                if (int.Parse(fileDetails["fps"][0]) > 400)
+                    args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
+                else
+                    args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0] + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
+
+
+                for (int i = 0; i < fileTracks["audio"].Length; i++)
+                {
+                    args += "-i \"" + fileTracks["audio"][i].encodePath + "\" -acodec copy ";
+                }
+
+
+
+
+                args += "\"" + encOpts["outfile"] + "\"";
+
+
+
+
+                proc.setArguments(args);
+                if (proc.getAbandonStatus())
+                    return false;
+
+                if (proc.startProcess() != 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    LogBook.setInfoLabel("Muxing Complete");
+                    return true;
+                    LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
+                }
+
             }
-            catch
+            catch (Exception error)
             {
-                encOpts["width"] = fileDetails["width"][0];
-                encOpts["height"] = fileDetails["height"][0];
-
-            }
-
-            encOpts.Add("outfile", encOpts["outDIR"] + fileDetails["name"][0] + "_output.avi");
-
-            if (!ffmpeg.isInstalled())
-                ffmpeg.download();
-
-            proc.setFilename(Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe"));
-
-            if (int.Parse(fileDetails["fps"][0]) > 400)
-                args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
-            else
-                args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0] + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
-            
-
-            for (int i = 0; i < fileTracks["audio"].Length; i++)
-            {
-                args += "-i \"" + fileTracks["audio"][i].encodePath + "\" -acodec copy ";
-            }
-
-
-
-
-            args += "\"" + encOpts["outfile"] + "\"";
-
-
-
-
-            proc.setArguments(args);
-            if (proc.getAbandonStatus())
+                LogBook.addLogLine("Error muxing to avi. (" + error + ")", "Errors", "", true);
                 return false;
-
-            if (proc.startProcess() != 0)
-            {
-                return false;
             }
-            else
-            {
-                LogBook.setInfoLabel("Muxing Complete");
-                return true;
-                LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
-            }
-
-
         }
     }
 }

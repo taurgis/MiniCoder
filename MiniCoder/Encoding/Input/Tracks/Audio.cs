@@ -37,74 +37,89 @@ namespace MiniCoder.Encoding.Input.Tracks
 
         private Boolean decodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
         {
-            MiniDecoder decoder;
-            Tool tempTool;
-            LogBook.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
-           
-            switch (Codec.getExtention(this.codec))
+            try
             {
-                case "flac":
-                    decoder = new Flac();
-                    tempTool = tools["flac"];
-                    break;
+                MiniDecoder decoder;
+                Tool tempTool;
+                LogBook.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
 
-                case "ac3":
-                case "dts":
-                    decoder = new Valdec();
-                    tempTool = tools["valdec"];
-                    break;
+                switch (Codec.getExtention(this.codec))
+                {
+                    case "flac":
+                        decoder = new Flac();
+                        tempTool = tools["flac"];
+                        break;
 
-                case "ogg":
-                    decoder = new Oggdec();
-                    tempTool = tools["oggdec"];
-                    break;
+                    case "ac3":
+                    case "dts":
+                        decoder = new Valdec();
+                        tempTool = tools["valdec"];
+                        break;
 
-                case "aac":
-                case "mp4":
-                    decoder = new Faad();
-                    tempTool = tools["faad"];
-                    break;
+                    case "ogg":
+                        decoder = new Oggdec();
+                        tempTool = tools["oggdec"];
+                        break;
 
-                case "mp2":
-                case "mp3":
-                    decoder = new Madplay();
-                    tempTool = tools["madplay"];
-                    break;
+                    case "aac":
+                    case "mp4":
+                        decoder = new Faad();
+                        tempTool = tools["faad"];
+                        break;
 
-                default:
-                    decoder = new Ffmpeg();
-                    tempTool = tools["ffmpeg"];
-                    break;
+                    case "mp2":
+                    case "mp3":
+                        decoder = new Madplay();
+                        tempTool = tools["madplay"];
+                        break;
+
+                    default:
+                        decoder = new Ffmpeg();
+                        tempTool = tools["ffmpeg"];
+                        break;
+                }
+                // fileDetails.Add("decodedaudio", new String[3]);
+                return decoder.decode(tempTool, fileDetails, id, this, processWatcher);
             }
-            // fileDetails.Add("decodedaudio", new String[3]);
-            return decoder.decode(tempTool, fileDetails, id, this, processWatcher);
-
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error selecting audio decoding tool. (" + error + ")", "Errors", "", true);
+                return false;
+            }
         }
 
         private Boolean encodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
         {
-
-            LogBook.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
-           
-            MiniEncoder encoder = null;
-            switch (EncOpts["audcodec"])
+            try
             {
-                case "0":
-                    encoder = new NeroAac();
-                    break;
-                case "1":
-                    encoder = new Vorbis();
-                    break;
-                case "2":
-                    encoder = new FFmpegAc3();
-                    return encoder.encode(tools["ffmpeg"], fileDetails, id, this, EncOpts, processWatcher);
-                case "3":
-                    encoder = new Lame();
-                    return encoder.encode(tools["lame"], fileDetails, id, this, EncOpts, processWatcher);
-            }
-            return encoder.encode(tools["besweet"], fileDetails, id, this, EncOpts, processWatcher);
-        }
 
+                LogBook.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
+
+                MiniEncoder encoder = null;
+                switch (EncOpts["audcodec"])
+                {
+                    case "0":
+                        encoder = new NeroAac();
+                        break;
+                    case "1":
+                        encoder = new Vorbis();
+                        break;
+                    case "2":
+                        encoder = new FFmpegAc3();
+                        return encoder.encode(tools["ffmpeg"], fileDetails, id, this, EncOpts, processWatcher);
+                    case "3":
+                        encoder = new Lame();
+                        return encoder.encode(tools["lame"], fileDetails, id, this, EncOpts, processWatcher);
+                }
+                return encoder.encode(tools["besweet"], fileDetails, id, this, EncOpts, processWatcher);
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error selecting audio encoding tool. (" + error + ")", "Errors", "", true);
+                return false;
+            }
+        }
+           
 
 
     }

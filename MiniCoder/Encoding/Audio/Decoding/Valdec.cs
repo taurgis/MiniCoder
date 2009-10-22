@@ -20,33 +20,41 @@ namespace MiniCoder.Encoding.Sound.Decoding
 
         public Boolean decode(Tool valdec, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
         {
-            MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-            processWatcher.setProcess(proc);
-            proc.initProcess();
-            LogBook.addLogLine("Decoding AC3 - Using valdec", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
-          
-            LogBook.setInfoLabel("Decoding Audio");
+            try
+            {
+                MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
+                processWatcher.setProcess(proc);
+                proc.initProcess();
+                LogBook.addLogLine("Decoding AC3 - Using valdec", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-            String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
+                LogBook.setInfoLabel("Decoding Audio");
 
-            if (!valdec.isInstalled())
-                valdec.download();
-            proc.setFilename(Path.Combine(valdec.getInstallPath(), "valdec.exe"));
-            proc.setArguments("\"" + audio.demuxPath + "\" -w \"" + decodedAudio + "\" -spk:2");
+                String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
-            int exitCode = proc.startProcess();
+                if (!valdec.isInstalled())
+                    valdec.download();
+                proc.setFilename(Path.Combine(valdec.getInstallPath(), "valdec.exe"));
+                proc.setArguments("\"" + audio.demuxPath + "\" -w \"" + decodedAudio + "\" -spk:2");
+
+                int exitCode = proc.startProcess();
 
 
-            if (proc.getAbandonStatus())
+                if (proc.getAbandonStatus())
+                    return false;
+
+                if (exitCode != 0)
+                    return false;
+                audio.demuxPath = decodedAudio;
+
+                LogBook.addLogLine("Decoding Completed", fileDetails["name"][0] + "AudioDecoding", "", false);
+
+                return true;
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error decoding audio with Valdec. (" + error + ")", "Errors", "", true);
                 return false;
-
-            if (exitCode != 0)
-                return false;
-            audio.demuxPath = decodedAudio;
-
-            LogBook.addLogLine("Decoding Completed", fileDetails["name"][0] + "AudioDecoding", "", false);
-          
-            return true;
+            }
         }
     }
 }

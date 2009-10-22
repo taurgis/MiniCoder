@@ -25,22 +25,30 @@ namespace MiniCoder.Encoding.Input.Tracks
 
         public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
         {
-            LogBook.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
-          
-            VideoEncoder videoEncoder = null;
-            switch (EncOpts["videocodec"])
+            try
             {
-                case "0":
-                    videoEncoder = new x264();
-                    return videoEncoder.encode(tools["x264"], fileDetails, EncOpts, processWatcher, tracks);
-                case "1":
-                    videoEncoder = new Xvid();
-                    return videoEncoder.encode(tools["xvid_encraw"], fileDetails, EncOpts, processWatcher, tracks); ;
-                case "2":
-                    videoEncoder = new Theora();
-                    return videoEncoder.encode(tools["theora"], fileDetails, EncOpts, processWatcher, tracks); ;
+                LogBook.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
+
+                VideoEncoder videoEncoder = null;
+                switch (EncOpts["videocodec"])
+                {
+                    case "0":
+                        videoEncoder = new x264();
+                        return videoEncoder.encode(tools["x264"], fileDetails, EncOpts, processWatcher, tracks);
+                    case "1":
+                        videoEncoder = new Xvid();
+                        return videoEncoder.encode(tools["xvid_encraw"], fileDetails, EncOpts, processWatcher, tracks); ;
+                    case "2":
+                        videoEncoder = new Theora();
+                        return videoEncoder.encode(tools["theora"], fileDetails, EncOpts, processWatcher, tracks); ;
+                }
+                return false;
             }
-            return false;
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error selecting video encoding tool. (" + error + ")", "Errors", "", true);
+                return false;
+            }
         }
 
 

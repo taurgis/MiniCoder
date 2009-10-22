@@ -19,51 +19,59 @@ namespace MiniCoder.Encoding.Sound.Encoding
 
         public bool encode(Tool besweet, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts, ProcessWatcher processWatcher)
         {
-            MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], "Encoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
+            try
+            {
+                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], "Encoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
                 processWatcher.setProcess(proc);
-            proc.stdErrDisabled(false);
-            proc.stdOutDisabled(false);
+                proc.stdErrDisabled(false);
+                proc.stdOutDisabled(false);
 
 
 
-            LogBook.addLogLine("Encoding audio to vorbis", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.addLogLine("Encoding audio to vorbis", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
-            proc.initProcess();
-           
+                proc.initProcess();
 
-          
-            
 
-            proc.setFilename(Path.Combine(besweet.getInstallPath(), "BeSweet.exe"));
 
-         
+
+
+                proc.setFilename(Path.Combine(besweet.getInstallPath(), "BeSweet.exe"));
+
+
                 if (!besweet.isInstalled())
                     besweet.download();
 
 
                 audio.encodePath = tempPath + Path.GetFileNameWithoutExtension(audio.demuxPath) + "_output.ogg";
                 proc.setArguments("-core( -input \"" + audio.demuxPath + "\" -output \"" + audio.encodePath + "\" ) -azid( -s stereo -c normal -L -3db ) -ota( -hybridgain ) -ogg( -b " + EncOpts["audbr"] + " )");
-                      
 
-                    
+
+
 
                 if (proc.getAbandonStatus())
                     return false;
 
-               int exitCode = proc.startProcess();
+                int exitCode = proc.startProcess();
 
 
 
-           
-            if (exitCode != 0 && exitCode != -1073741819)
-            {
-                return false;
+
+                if (exitCode != 0 && exitCode != -1073741819)
+                {
+                    return false;
+                }
+                else
+                {
+                    LogBook.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
+
+                    return true;
+                }
             }
-            else
+            catch (Exception error)
             {
-                LogBook.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
-
-                return true;
+                LogBook.addLogLine("Error encoding audio to Vorbis. (" + error + ")", "Errors", "", true);
+                return false;
             }
         }
     }

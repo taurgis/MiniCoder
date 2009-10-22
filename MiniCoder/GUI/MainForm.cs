@@ -45,6 +45,8 @@ namespace MiniCoder.GUI
             LogBook.addLogLine(MiniSystem.getOSName(),"SysInfo","",false);
             LogBook.addLogLine(MiniSystem.getDotNetFramework(),"SysInfo","",false);
             LogBook.addLogLine(MiniSystem.getProcessorInfo(),"SysInfo","",false);
+            LogBook.addLogLine("Errors", "", "Errors", false);
+
             cbAfterEncode.SelectedIndex = 0;
             tools = new Tools(true);
 

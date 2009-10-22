@@ -22,71 +22,102 @@ namespace MiniCoder.Encoding
         ProcessWatcher processWatcher;
         public Encode(String fileName, SortedList<String, Tool> tools, SortedList<String, String> encodeSet, ProcessWatcher processWatcher)
         {
-            this.encodeSet = encodeSet;
-            this.fileName = fileName;
-            fileDetails = getFileDetails(fileName);
-
-            LogBook.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
-            LogBook.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
-           
-            foreach (string key in encodeSet.Keys)
+            try
             {
-                LogBook.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
+                this.encodeSet = encodeSet;
+                this.fileName = fileName;
+                fileDetails = getFileDetails(fileName);
 
+                LogBook.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
+                LogBook.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
+
+                foreach (string key in encodeSet.Keys)
+                {
+                    LogBook.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
+
+                }
+
+                LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
+                LogBook.setInfoLabel("Fetching File Info");
+
+                for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
+                    LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo", "", false);
+                this.tools = tools;
+                this.processWatcher = processWatcher;
             }
-            
-            LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo",false);
-            LogBook.setInfoLabel("Fetching File Info");
-
-            for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
-                LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo","",false);
-            this.tools = tools;
-            this.processWatcher = processWatcher;
-
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error starting encode. (" + error + ")", "Errors", "", true);
+               // return false;
+            }
 
         }
         public Boolean startTheoraEncode()
         {
-            if (demuxFile())
-                if (encodeVideo())
-                    return true;
-            return false;
+            try
+            {
+                if (demuxFile())
+                    if (encodeVideo())
+                        return true;
+                return false;
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error starting Theora encode. (" + error + ")", "Errors", "", true);
+                return false;
+            }
         }
 
         public Boolean startAvsEncode()
         {
-            if (demuxFile())
+            try
             {
-                string avsfile = fileDetails["avsfile"][0];
-                fileTracks.Clear();
-                encodeSet.Remove("outDIR");
-                encodeSet["width"] = fileDetails["width"][0];
-                encodeSet["height"] = fileDetails["height"][0];
-                fileDetails = getFileDetails(fileDetails["fileName"][0]);
-                encodeSet.Add("avsfile", avsfile);
-
                 if (demuxFile())
-                    if (analyseVfr())
-                        if (dgavcIndex())
-                            if (encodeAudio())
-                                //  if (createAvs())
-                                if (encodeVideo())
-                                    return muxFile();
+                {
+                    string avsfile = fileDetails["avsfile"][0];
+                    fileTracks.Clear();
+                    encodeSet.Remove("outDIR");
+                    encodeSet["width"] = fileDetails["width"][0];
+                    encodeSet["height"] = fileDetails["height"][0];
+                    fileDetails = getFileDetails(fileDetails["fileName"][0]);
+                    encodeSet.Add("avsfile", avsfile);
 
+                    if (demuxFile())
+                        if (analyseVfr())
+                            if (dgavcIndex())
+                                if (encodeAudio())
+                                    //  if (createAvs())
+                                    if (encodeVideo())
+                                        return muxFile();
+
+                }
+                return false;
             }
-            return false;
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error encoding AVS file. (" + error + ")", "Errors", "", true);
+                return false;
+            }
         }
 
         public Boolean startDefaultEncode()
         {
-            if (demuxFile())
-                if (analyseVfr())
-                    if (dgavcIndex())
-                        if (encodeAudio())
-                            if (createAvs())
-                                if (encodeVideo())
-                                    return muxFile();
-            return false;
+            try
+            {
+                if (demuxFile())
+                    if (analyseVfr())
+                        if (dgavcIndex())
+                            if (encodeAudio())
+                                if (createAvs())
+                                    if (encodeVideo())
+                                        return muxFile();
+                return false;
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error starting default encode. (" + error + ")", "Errors", "", true);
+                return false;
+            }
         }
 
         public ProcessWatcher getProcessWatcher()

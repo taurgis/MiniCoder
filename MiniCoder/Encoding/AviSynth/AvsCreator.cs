@@ -26,28 +26,36 @@ namespace MiniCoder.Encoding.AviSynth
 
         public Boolean getAvsFile(SortedList<String, Track[]> fileTracks)
         {
-            string avs = "";
-            
-            avs += getSourceLine() + "\r\n";
-            avs += EncOpts["custom"];
-            avs += getFieldLine();
-            avs += getResizeLine();
-            avs += getDenoiseLine();
-            avs += getSharpenLine();
-            if (EncOpts.ContainsKey("hardsub"))
-                avs += "TextSub(\"" + EncOpts["hardsub"] + "\")";
-            if (EncOpts.ContainsKey("hardsubmp4"))
-                if(EncOpts["hardsubmp4"] != "0" && (EncOpts["container"] == "1" || EncOpts["container"] == "2") && fileTracks["subs"].Length > 0)
-                avs += "\r\nTextSub(\"" + fileTracks["subs"][int.Parse(EncOpts["hardsubmp4"])-1].demuxPath + "\")";
-            EncOpts.Add("avsfile", (Application.StartupPath + "\\temp\\" + fileDetails["name"][0] + ".avs"));
-            StreamWriter streamWriter = new StreamWriter(EncOpts["avsfile"]);
-            streamWriter.Write(avs);
-            streamWriter.Close();
+            try
+            {
+                string avs = "";
 
-            LogBook.addLogLine(avs, fileDetails["name"][0] + "AvsCreation", "", false);
-          
+                avs += getSourceLine() + "\r\n";
+                avs += EncOpts["custom"];
+                avs += getFieldLine();
+                avs += getResizeLine();
+                avs += getDenoiseLine();
+                avs += getSharpenLine();
+                if (EncOpts.ContainsKey("hardsub"))
+                    avs += "TextSub(\"" + EncOpts["hardsub"] + "\")";
+                if (EncOpts.ContainsKey("hardsubmp4"))
+                    if (EncOpts["hardsubmp4"] != "0" && (EncOpts["container"] == "1" || EncOpts["container"] == "2") && fileTracks["subs"].Length > 0)
+                        avs += "\r\nTextSub(\"" + fileTracks["subs"][int.Parse(EncOpts["hardsubmp4"]) - 1].demuxPath + "\")";
+                EncOpts.Add("avsfile", (Application.StartupPath + "\\temp\\" + fileDetails["name"][0] + ".avs"));
+                StreamWriter streamWriter = new StreamWriter(EncOpts["avsfile"]);
+                streamWriter.Write(avs);
+                streamWriter.Close();
 
-            return checkAvs();
+                LogBook.addLogLine(avs, fileDetails["name"][0] + "AvsCreation", "", false);
+
+
+                return checkAvs();
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error writing log file. (" + error + ")", "Errors", "", true);
+                return false;
+            }
         }
 
         private Boolean checkAvs()
