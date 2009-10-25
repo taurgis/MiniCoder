@@ -57,7 +57,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                             sourceline = "AVCSource(\"" + video.demuxPath + "\")";
                             break;
                         case ".avi":
-                            sourceline = "AVCSource(\"" + video.demuxPath + "\")";
+                            sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:
                             sourceline = "DirectshowSource(\"" + video.demuxPath + "\")\r\nConvertToYV12()";
