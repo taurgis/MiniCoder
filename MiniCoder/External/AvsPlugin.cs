@@ -59,6 +59,8 @@ namespace MiniCoder.External
 
         public string getInstallPath()
         {
+            if (!aviSynth.isInstalled())
+                return "";
             if (!String.IsNullOrEmpty(customPath))
                 return customPath + "\\";
 
