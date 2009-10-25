@@ -18,6 +18,8 @@ namespace MiniCoder.Encoding.VideoEnc
 
         public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
         {
+            if (fileDetails["ext"][0].ToLower().Equals(".avi"))
+                return true;
             try
             {
                 MiniProcess proc = new DefaultProcess("Indexing AVC", fileDetails["name"][0] + "DGAVCStepProcess");
