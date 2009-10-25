@@ -21,18 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2F6D597C492846D2C5FE98964C77A02A"
-        "OwnerKey" = "8:_E606A863056C49D0A391B18295C7B10D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2F6D597C492846D2C5FE98964C77A02A"
-        "OwnerKey" = "8:_999D4CBE7BE0410AA7E047BFC5F92B7E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_318EBDAC454641149011DD3EC185C557"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -75,6 +63,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FA23CDC53E14B94C8768E39EBBD3F591"
+        "OwnerKey" = "8:_E606A863056C49D0A391B18295C7B10D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA23CDC53E14B94C8768E39EBBD3F591"
+        "OwnerKey" = "8:_999D4CBE7BE0410AA7E047BFC5F92B7E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E606A863056C49D0A391B18295C7B10D"
         "MsmSig" = "8:_UNDEFINED"
@@ -88,7 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2F6D597C492846D2C5FE98964C77A02A"
+        "OwnerKey" = "8:_FA23CDC53E14B94C8768E39EBBD3F591"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -153,6 +153,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -175,7 +188,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:3.5.21022"
+                "Version" = "8:2.0.50727"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -201,37 +214,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2F6D597C492846D2C5FE98964C77A02A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2F6D597C492846D2C5FE98964C77A02A"
-                    {
-                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_318EBDAC454641149011DD3EC185C557"
@@ -363,6 +345,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FA23CDC53E14B94C8768E39EBBD3F591"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_FA23CDC53E14B94C8768E39EBBD3F591"
+                    {
+                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -1064,7 +1077,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E606A863056C49D0A391B18295C7B10D"
             {
-            "SourcePath" = "8:..\\MiniCOder\\obj\\Debug\\MiniCoder.exe"
+            "SourcePath" = "8:..\\MiniCoder\\obj\\Debug\\MiniCoder.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
