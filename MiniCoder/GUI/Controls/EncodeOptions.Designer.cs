@@ -43,21 +43,22 @@
             this.outPutLocation = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
+            this.showVideo = new System.Windows.Forms.CheckBox();
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
-            
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.showVideo);
             this.groupBox8.Controls.Add(this.ignoreAttachments);
             this.groupBox8.Controls.Add(this.ignoreSubs);
             this.groupBox8.Controls.Add(this.ignoreChapters);
             this.groupBox8.Controls.Add(this.audioSkip);
             this.groupBox8.Location = new System.Drawing.Point(3, 152);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(378, 84);
+            this.groupBox8.Size = new System.Drawing.Size(378, 100);
             this.groupBox8.TabIndex = 18;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Encoding";
@@ -211,6 +212,16 @@
             this.titleAdvert.Text = "Disable video title advert";
             this.titleAdvert.UseVisualStyleBackColor = true;
             // 
+            // showVideo
+            // 
+            this.showVideo.AutoSize = true;
+            this.showVideo.Location = new System.Drawing.Point(9, 77);
+            this.showVideo.Name = "showVideo";
+            this.showVideo.Size = new System.Drawing.Size(124, 17);
+            this.showVideo.TabIndex = 4;
+            this.showVideo.Text = "Show Video Preview";
+            this.showVideo.UseVisualStyleBackColor = true;
+            // 
             // EncodeOptions
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -247,6 +258,7 @@
         private System.Windows.Forms.TextBox outPutLocation;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox titleAdvert;
+        private System.Windows.Forms.CheckBox showVideo;
 
     }
 }
