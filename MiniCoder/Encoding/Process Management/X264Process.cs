@@ -245,7 +245,7 @@ namespace MiniCoder.Encoding.Process_Management
                         }
                     }
                 }
-                Thread.Sleep(0);
+                Thread.Sleep(500);
             }
         }
         private static int CharOccurs(string stringToSearch, char charToFind)
