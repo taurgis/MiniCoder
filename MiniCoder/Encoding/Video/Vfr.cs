@@ -12,7 +12,7 @@ namespace MiniCoder.Encoding.VideoEnc
     class Vfr
     {
         String tempPath = Application.StartupPath + "\\temp\\";
-        public Boolean analyse(Tool mkv2vfr, SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
+        public Boolean analyse(Tool vfr, SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
         {
             try
             {
@@ -21,13 +21,13 @@ namespace MiniCoder.Encoding.VideoEnc
                     LogBook.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
                     processWatcher.setProcess(proc);
-                    if (!mkv2vfr.isInstalled())
-                        mkv2vfr.download();
+                    if (!vfr.isInstalled())
+                        vfr.download();
 
                     LogBook.setInfoLabel("Parsing VFR");
                     proc.initProcess();
 
-                    proc.setFilename(Path.Combine(mkv2vfr.getInstallPath(), "mkv2vfr.exe"));
+                    proc.setFilename(Path.Combine(vfr.getInstallPath(), "mkv2vfr.exe"));
                     proc.setArguments("\"" + fileDetails["fileName"][0] + "\" \"" + tempPath + fileDetails["name"] + "-Video Track.avi\" \"" + tempPath + "timecode.txt\"");
 
                     //MessageBox.Show(mainProcess.StartInfo.Arguments);
