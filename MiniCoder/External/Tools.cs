@@ -106,7 +106,7 @@ namespace MiniCoder.External
                                             break;
                                     }
 
-                                    if (!tools[name].isInstalled())
+                                    if (!tools[name].isInstalled() && name != "BAAA")
                                     {
                                        // // LogBook.addLogLine(""Found custom path for " + name + ".", 1);
                                        // // LogBook.addLogLine(""Custom path invalid! Resetting to default.", 2);
@@ -170,6 +170,9 @@ namespace MiniCoder.External
             defaultPackages.Add("theora", new Zip("theora", "zip", "http://www.gamerzzheaven.be/theora.zip", "video", "", "First Time"));
             defaultPackages.Add("lame", new Zip("lame", "zip", "http://www.gamerzzheaven.be/lame.zip", "audio", "", "First Time"));
             defaultPackages.Add("DtsEdit", new Zip("DtsEdit", "zip", "http://www.gamerzzheaven.be/DtsEdit.zip", "video", "", "First Time"));
+            defaultPackages.Add("BAAA", new AvsPlugin("BAAA", "http://www.gamerzzheaven.be/AAA.zip", "plugin", defaultPackages["avs"], "First Time"));
+            
+            
             foreach (string key in defaultPackages.Keys)
             {
                 if (!tools.ContainsKey(key))

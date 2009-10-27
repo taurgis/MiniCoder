@@ -22,6 +22,11 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                     if (!filter.isInstalled())
                         filter.download();
                     return "FieldDeinterlace()\r\n";
+                case "2":
+                    filter = tools["AAA"];
+                    if (!filter.isInstalled())
+                        filter.download();
+                    return "AAA()\r\n";
                 default:
                     return "";
             }

@@ -20,19 +20,28 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
         public int getVideoBitrate()
         {
-            long Kbits = int.Parse(encOpts["filesize"]) * 1024 * 8;
-            int overhead = getOverhead();
-            long audioSize = 0;
+            try
+            {
+                long Kbits = int.Parse(encOpts["filesize"]) * 1024 * 8;
+                int overhead = getOverhead();
+                long audioSize = 0;
 
-            for (int i = 0; i < fileTracks["audio"].Length; i++)
-                audioSize += int.Parse(encOpts["audbr"]) * int.Parse(fileDetails["audLength"][0]);
+                for (int i = 0; i < fileTracks["audio"].Length; i++)
+                    audioSize += int.Parse(encOpts["audbr"]) * int.Parse(fileDetails["audLength"][0]);
 
-            long subsize = getSubSize();
+                long subsize = getSubSize();
 
-            long remainBits = (long)(Kbits - overhead - audioSize - subsize);
-            int vidBR = (int)(remainBits / int.Parse(fileDetails["audLength"][0]) + 5);
+                long remainBits = (long)(Kbits - overhead - audioSize - subsize);
 
-            return vidBR;
+                int vidBR = (int)(remainBits / int.Parse(fileDetails["audLength"][0]) + 5);
+
+                return vidBR;
+            }
+            catch (DivideByZeroException exeption)
+            {
+                LogBook.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
+                return int.Parse(encOpts["videobr"]);
+            }
         }
 
         public int getOverhead()
@@ -63,15 +72,22 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
         public long getSubSize()
         {
-            long subsize = 0;
-
-            for (int i = 0; i < fileTracks["subs"].Length; i++)
+            try
             {
-                FileInfo fi = new FileInfo(fileTracks["subs"][i].demuxPath);
-                subsize += fi.Length / 1024 * 8;
-            }
+                long subsize = 0;
 
-            return subsize;
+                for (int i = 0; i < fileTracks["subs"].Length; i++)
+                {
+                    FileInfo fi = new FileInfo(fileTracks["subs"][i].demuxPath);
+                    subsize += fi.Length / 1024 * 8;
+                }
+
+                return subsize;
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

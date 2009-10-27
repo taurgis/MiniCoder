@@ -20,18 +20,23 @@ namespace MiniCoder.Encoding.Process_Management
         public bool errflag = true;
         public int processPriority = 0;
         public string currProcess = "";
-        
+        Thread previewer;
         private bool disablestderr = false;
         private bool disablestdout = false;
         private string frontMessage;
         string pass;
         int exitCode;
+        SortedList<String, String[]> fileDetails;
+        SortedList<String, String> encOpts;
+
         private string loglocation = "";
-        public X264Process(string frontMessage, string pass, string loglocation)
+        public X264Process(string frontMessage, string pass, string loglocation, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts)
         {
             this.pass = pass;
             this.frontMessage = frontMessage;
             this.loglocation = loglocation;
+            this.fileDetails = fileDetails;
+            this.encOpts = encOpts;
         }
 
         public string getAdditionalOutput()
@@ -208,6 +213,11 @@ namespace MiniCoder.Encoding.Process_Management
                     stdErrThread.Interrupt();
                     stdErrThread.Abort();
                 }
+                if (null != previewer)
+                {
+                    previewer.Interrupt();
+                    previewer.Abort();
+                }
             }
         }
 
@@ -223,9 +233,19 @@ namespace MiniCoder.Encoding.Process_Management
 
         String read;
         string stderrLast ="";
+        DirectShow.Preview preview;
+        private void showWindow()
+        {
+             preview = new DirectShow.Preview();
+            preview.openFile(fileDetails["fileName"][0]);
+            preview.ShowDialog();
+           
+        }
+
         private void stderrProcess()
         {
-            
+            previewer = new Thread(new ThreadStart(showWindow));
+            previewer.Start();
             while ((read = stderr.ReadLine()) != null)
             {
                 if (!disablestderr)
@@ -237,15 +257,20 @@ namespace MiniCoder.Encoding.Process_Management
                         {
                             string[] split = Regex.Split(read, ",");
                             LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + split[0] + " - " + split[3]);
-
+                            if (null != previewer)
+                            {
+                                string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
+                                preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
+                                // preview.setPosition(
+                            }
                         }
                         else
                         {
-                            LogBook.addLogLine(read, loglocation,"",false);
+                            LogBook.addLogLine(read, loglocation, "", false);
                         }
                     }
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(0);
             }
         }
         private static int CharOccurs(string stringToSearch, char charToFind)
