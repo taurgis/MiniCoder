@@ -13,8 +13,8 @@ namespace MiniCoder_Advanced
         public Form1()
         {
             InitializeComponent();
-            MiniCoder.GUI.MainForm main = new MiniCoder.GUI.MainForm();
-            main.Show();
+           // MiniCoder.GUI.MainForm main = new MiniCoder.GUI.MainForm();
+           // main.Show();
            
         }
     }
