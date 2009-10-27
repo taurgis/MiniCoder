@@ -65,6 +65,7 @@ namespace MiniCoder.Encoding.VideoEnc
 
 
                 }
+                //dtsedit -t input.mp4 timecodes.txt
                 return true;
             }
             catch (Exception error)
