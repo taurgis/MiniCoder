@@ -353,7 +353,8 @@
             this.fieldCombo.FormattingEnabled = true;
             this.fieldCombo.Items.AddRange(new object[] {
             "None",
-            "FieldDeInterlace"});
+            "FieldDeInterlace",
+            "AAA"});
             this.fieldCombo.Location = new System.Drawing.Point(75, 26);
             this.fieldCombo.Name = "fieldCombo";
             this.fieldCombo.Size = new System.Drawing.Size(94, 21);

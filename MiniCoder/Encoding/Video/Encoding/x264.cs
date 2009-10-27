@@ -100,7 +100,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                         break;
                 }
                 pass = "1";
-                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess1");
+                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -132,7 +132,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     tempStart = DateTime.Now;
                     pass = "2";
 
-                    proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess2");
+                    proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
                     proc.initProcess();
                     processWatcher.setProcess(proc);
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -157,7 +157,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 else
                     pass = "2";
 
-                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess3");
+                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
