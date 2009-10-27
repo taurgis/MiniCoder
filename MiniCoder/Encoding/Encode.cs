@@ -220,7 +220,7 @@ namespace MiniCoder.Encoding
         {
             LogBook.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
             Vfr vfr = new Vfr();
-            return vfr.analyse(tools["mkv2vfr"], encodeSet, fileDetails, processWatcher);
+            return vfr.analyse(tools["mkv2vfr"], tools["DtsEdit"], encodeSet, fileDetails, processWatcher);
         }
 
         #endregion

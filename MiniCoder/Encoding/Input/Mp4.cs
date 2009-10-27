@@ -77,6 +77,8 @@ namespace MiniCoder.Encoding.Input
                 if (exitCode != 0)
                     return false;
 
+                if (tracks["audio"].Length == 0)
+                    return true;
 
                 LogBook.setInfoLabel("Demuxing Audio Track");
                 tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.getExtention(tracks["audio"][0].codec);
