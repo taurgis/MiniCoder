@@ -237,6 +237,16 @@ namespace MiniCoder.Encoding.Process_Management
         private void showWindow()
         {
              preview = new DirectShow.Preview();
+             if (encOpts["resize"] != "0")
+             {
+                 preview.Width = int.Parse(encOpts["width"]);
+                 preview.Height = int.Parse(encOpts["height"]) + 49;
+             }
+             else
+             {
+                 preview.Width = int.Parse(fileDetails["width"][0]);
+                 preview.Height = int.Parse(fileDetails["height"][0]) + 49;
+             }
             preview.openFile(fileDetails["fileName"][0]);
             preview.ShowDialog();
            
@@ -244,32 +254,35 @@ namespace MiniCoder.Encoding.Process_Management
 
         private void stderrProcess()
         {
-            previewer = new Thread(new ThreadStart(showWindow));
-            previewer.Start();
-            while ((read = stderr.ReadLine()) != null)
+            if ((Boolean.Parse(encOpts["showvideo"])))
             {
-                if (!disablestderr)
+                previewer = new Thread(new ThreadStart(showWindow));
+                previewer.Start();
+            }
+                while ((read = stderr.ReadLine()) != null)
                 {
-                    if (!stderrLast.Equals(read))
+                    if (!disablestderr)
                     {
-                        stderrLast = read;
-                        if (read.Contains("frames") & CharOccurs(read, ',') == 3)
+                        if (!stderrLast.Equals(read))
                         {
-                            string[] split = Regex.Split(read, ",");
-                            LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + split[0] + " - " + split[3]);
-                            if (null != previewer)
+                            stderrLast = read;
+                            if (read.Contains("frames") & CharOccurs(read, ',') == 3)
                             {
-                                string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
-                                preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
-                                // preview.setPosition(
+                                string[] split = Regex.Split(read, ",");
+                                LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + split[0] + " - " + split[3]);
+                                if (null != previewer)
+                                {
+                                    string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
+                                    preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
+                                    // preview.setPosition(
+                                }
+                            }
+                            else
+                            {
+                                LogBook.addLogLine(read, loglocation, "", false);
                             }
                         }
-                        else
-                        {
-                            LogBook.addLogLine(read, loglocation, "", false);
-                        }
                     }
-                }
                 Thread.Sleep(0);
             }
         }

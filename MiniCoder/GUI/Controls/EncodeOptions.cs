@@ -40,6 +40,7 @@ namespace MiniCOder.GUI.Controls
             settings.Add("skipaudio", audioSkip.Checked.ToString());
             settings.Add("skipsubs", ignoreSubs.Checked.ToString());
             settings.Add("skipattachments", ignoreAttachments.Checked.ToString());
+            settings.Add("showvideo", showVideo.Checked.ToString());
             settings.Add("skipchapters", ignoreChapters.Checked.ToString());
             if (outPutLocation.Text != "")
                 settings.Add("customoutput", outPutLocation.Text + "\\");

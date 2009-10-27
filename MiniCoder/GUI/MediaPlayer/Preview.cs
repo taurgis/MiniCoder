@@ -158,6 +158,7 @@ namespace DirectShow
             this.ClientSize = new System.Drawing.Size(442, 443);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Preview";
             this.Text = "DirectShow";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
