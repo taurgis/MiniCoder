@@ -231,19 +231,19 @@ namespace MiniCoder.Encoding
             LogBook.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing",false);
             switch (fileDetails["ext"][0].ToUpper())
             {
-                case ".AVI":
+                case "AVI":
                     return demuxAvi();
-                case ".MP4":
+                case "MP4":
                     return demuxMp4();
-                case ".OGM":
+                case "OGM":
                     return demuxOgm();
-                case ".MKV":
+                case "MKV":
                     return demuxMkv();
-                case ".WMV":
+                case "WMV":
                     return demuxWmv();
-                case ".VOB":
+                case "VOB":
                     return demuxVob();
-                case ".AVS":
+                case "AVS":
                     return demuxAvs();
 
             }
@@ -302,37 +302,37 @@ namespace MiniCoder.Encoding
         public SortedList<String, String[]> getFileDetails(string fileName)
         {
             //infoLabel.Text = "Gathering Media Info";
-            IfMediaDetails temp;
+            
             SortedList<String, String[]> tempDetail = new SortedList<string, string[]>();
+            MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(fileName);
 
-            if (IntPtr.Size == 8)
-                temp = new MediaDetails64();
-            else
-                temp = new MediaDetails32();
+      
 
             Track[] videoTracks = new Track[1];
             Track[] audioTracks;
             if (encodeSet["skipaudio"] != "True")
-                audioTracks = new Track[temp.audioCount(fileName)];
+                audioTracks = new Track[mediaInfo.AudioCount];
             else
                 audioTracks = new Track[0];
 
             Track[] subTracks;
             if (encodeSet["skipsubs"] != "True")
-                subTracks = new Track[temp.subCount(fileName)];
+                subTracks = new Track[mediaInfo.TextCount];
             else
                 subTracks = new Track[0];
 
-            videoTracks[0] = new Video(temp.vidCodec(fileName), temp.vidID(fileName)[0]);
+            videoTracks[0] = new Video(mediaInfo.Video[0].CodecID.ToString(), int.Parse(mediaInfo.Video[0].ID));
 
             for (int i = 0; i < audioTracks.Length; i++)
             {
-                audioTracks[i] = new Audio(temp.audTitle(fileName)[i], temp.audLanguage(fileName)[i], temp.audCodec(fileName)[i], temp.audID(fileName)[i]);
+              //  audioTracks[i] = new Audio(temp.audTitle(fileName)[i], temp.audLanguage(fileName)[i], temp.audCodec(fileName)[i], temp.audID(fileName)[i]);
+                audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].Language,mediaInfo.Audio[i].CodecID.ToString(), int.Parse(mediaInfo.Audio[i].ID));
             }
 
             for (int i = 0; i < subTracks.Length; i++)
             {
-                subTracks[i] = new Sub(temp.subCaption(fileName)[i], temp.subLang(fileName)[i], temp.subCodec(fileName)[i], temp.subID(fileName)[i]);
+               // subTracks[i] = new Sub(temp.subCaption(fileName)[i], temp.subLang(fileName)[i], temp.subCodec(fileName)[i], temp.subID(fileName)[i]);
+                subTracks[i] = new Sub(mediaInfo.Text[i].Title, mediaInfo.Text[i].Language, mediaInfo.Text[i].Codec, int.Parse(mediaInfo.Text[i].ID));
             }
 
             if (encodeSet.ContainsKey("skipattachments"))
@@ -341,37 +341,43 @@ namespace MiniCoder.Encoding
             fileTracks.Add("video", videoTracks);
             fileTracks.Add("audio", audioTracks);
             fileTracks.Add("subs", subTracks);
-            tempDetail.Add("decodedaudio", new String[temp.audioCount(fileName)]);
-            tempDetail.Add("fileName", temp.fileName(fileName).Split(Convert.ToChar("\n")));
-            tempDetail.Add("fileSize", temp.fileSize(fileName).Split(Convert.ToChar(" ")));
+            tempDetail.Add("decodedaudio", new String[mediaInfo.AudioCount]);
+            tempDetail.Add("fileName", mediaInfo.General[0].CompleteName.Split(Convert.ToChar("\n")));
+            tempDetail.Add("fileSize", mediaInfo.General[0].FileSize.Split(Convert.ToChar(" ")));
 
-            tempDetail.Add("name", temp.name(fileName).Split(Convert.ToChar("\n")));
-            tempDetail.Add("ext", temp.fileExt(fileName).Split(Convert.ToChar(" ")));
+            tempDetail.Add("name", mediaInfo.General[0].FileName.Split(Convert.ToChar("\n")));
+            tempDetail.Add("ext", mediaInfo.General[0].FileExtension.Split(Convert.ToChar(" ")));
             if (encodeSet.ContainsKey("customoutput"))
                 encodeSet.Add("outDIR", encodeSet["customoutput"]);
             else
-                encodeSet.Add("outDIR", (Path.GetDirectoryName(temp.fileName(fileName)) + "\\"));
+                encodeSet.Add("outDIR", (Path.GetDirectoryName(mediaInfo.General[0].CompleteName + "\\")));
             tempDetail.Add("crfValue", crfValue.ToString().Split(Convert.ToChar(" ")));
 
 
 
-            tempDetail.Add("audLength", (temp.audLength(fileName) / 1000).ToString().Split(Convert.ToChar(" ")));
+            
 
-            tempDetail.Add("completeinfo", temp.completeInfo(fileName).Split(Convert.ToChar("\n")));
-            if (temp.fileExt(fileName).ToUpper() == ".VOB")
-                tempDetail.Add("audBitrate", temp.audBitrate(fileName).ToString().Split(Convert.ToChar(" ")));
+            tempDetail.Add("completeinfo", mediaInfo.InfoComplete.Split(Convert.ToChar("\n")));
+            if (audioTracks.Length > 0)
+            {
+                tempDetail.Add("audLength", (int.Parse(mediaInfo.Audio[0].Duration) / 1000).ToString().Split(Convert.ToChar(" ")));
+                if (mediaInfo.General[0].FileExtension.ToUpper() == ".VOB")
+                    tempDetail.Add("audBitrate", mediaInfo.Audio[0].BitRate.ToString().Split(Convert.ToChar(" ")));
+            }
+            tempDetail.Add("width", mediaInfo.Video[0].Width.Split(Convert.ToChar(" ")));
+            tempDetail.Add("height",mediaInfo.Video[0].Height.Split(Convert.ToChar(" ")));
+            tempDetail.Add("fps", mediaInfo.Video[0].FrameRate.Split(Convert.ToChar(" ")));
 
-            tempDetail.Add("width", temp.width(fileName).ToString().Split(Convert.ToChar(" ")));
-            tempDetail.Add("height", temp.height(fileName).ToString().Split(Convert.ToChar(" ")));
-            tempDetail.Add("fps", temp.fps(fileName).ToString().Split(Convert.ToChar(" ")));
-
-            tempDetail.Add("framecount", temp.frameCount(fileName).ToString().Split(Convert.ToChar(" ")));
+            tempDetail.Add("framecount", mediaInfo.Video[0].FrameCount.Split(Convert.ToChar(" ")));
 
             if (encodeSet["skipchapters"] == "True")
-                tempDetail.Add("chapters", "".Split(Char.Parse(" ")));
+               tempDetail.Add("chapters", "".Split(Char.Parse(" ")));
             else
-                tempDetail.Add("chapters", temp.chapters(fileName).Split(Convert.ToChar(" ")));
-            tempDetail.Add("vfrCode", null);
+            {
+                
+                    tempDetail.Add("chapters", "dontskip".Split(Char.Parse(" ")));
+            }
+                tempDetail.Add("vfrCode", null);
             tempDetail.Add("vfrName", null);
 
 

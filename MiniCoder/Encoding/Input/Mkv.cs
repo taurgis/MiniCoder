@@ -243,6 +243,9 @@ namespace MiniCoder.Encoding.Input
                         strChapters.Write(chapters);
                         strChapters.Close();
                     }
+
+                    if (chapterFetchRetries >= 5)
+                        File.Delete(tempPath + "chapters.xml");
                     return true;
         }
     }
