@@ -23,7 +23,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +37,7 @@
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="Interop.QuartzTypeLib, Version=1.0.0.0, Culture=neutral" />
+    <Reference Include="MediaInfoWrapper, Version=0.7.19.0, Culture=neutral, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -84,9 +86,6 @@
     <Compile Include="Encoding\Input\Tracks\Sub.cs" />
     <Compile Include="Encoding\Input\Tracks\Track.cs" />
     <Compile Include="Encoding\Input\Tracks\Video.cs" />
-    <Compile Include="Encoding\MediaInfo\IfMediaDetails.cs" />
-    <Compile Include="Encoding\MediaInfo\MediaDetails.cs" />
-    <Compile Include="Encoding\MediaInfo\MediaInfoDLL.cs" />
     <Compile Include="Encoding\Output\Container.cs" />
     <Compile Include="Encoding\Output\Avi.cs" />
     <Compile Include="Encoding\Output\Mp4.cs" />

@@ -26,16 +26,16 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                 case "DX60":
                     switch (fileDetails["ext"][0].ToLower())
                     {
-                        case ".mkv":
+                        case "mkv":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
-                        case ".ogm":
+                        case "ogm":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
-                        case ".avi":
+                        case "avi":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
-                        case ".mp4":
+                        case "mp4":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:
@@ -51,12 +51,12 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                 case "x264":
                     switch (fileDetails["ext"][0].ToLower())
                     {
-                        case ".mkv":
-                        case ".ogm":
-                        case ".mp4":
+                        case "mkv":
+                        case "ogm":
+                        case "mp4":
                             sourceline = "AVCSource(\"" + video.demuxPath + "\")";
                             break;
-                        case ".avi":
+                        case "avi":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:
@@ -67,16 +67,16 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                 case "20":
                     switch (fileDetails["ext"][0].ToLower())
                     {
-                        case ".mkv":
+                        case "mkv":
                             sourceline = "AVISource(\"" + video.demuxPath + "\",audio=false)";
                             break;
-                        case ".ogm":
+                        case "ogm":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
-                        case ".avi":
+                        case "avi":
                             sourceline = "AVISource(\"" + video.demuxPath + "\",audio=false)";
                             break;
-                        case ".mp4":
+                        case "mp4":
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:

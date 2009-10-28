@@ -55,12 +55,8 @@ namespace MiniCoder.Encoding.VideoEnc
                     encOpts["vfr"] = tempPath + "timecode.txt";
                     //  details.vfrName = appSettings.tempDIR + details.name + "-Video Track.avi";
 
-                    IfMediaDetails tempmedia;
-                    if (IntPtr.Size == 8)
-                        tempmedia = new MediaDetails64();
-                    else
-                        tempmedia = new MediaDetails32();
-                    fileDetails["fps"][0] = tempmedia.fps(encOpts["vfr"]).ToString();
+                    MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(encOpts["vfr"]);
+                    fileDetails["fps"][0] = mediaInfo.Video[0].FrameRate.ToString();
 
 
 
