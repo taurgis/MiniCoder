@@ -217,9 +217,9 @@
             this.showVideo.AutoSize = true;
             this.showVideo.Location = new System.Drawing.Point(9, 79);
             this.showVideo.Name = "showVideo";
-            this.showVideo.Size = new System.Drawing.Size(124, 17);
+            this.showVideo.Size = new System.Drawing.Size(206, 17);
             this.showVideo.TabIndex = 4;
-            this.showVideo.Text = "Show Video Preview";
+            this.showVideo.Text = "Show Video Preview (Debug purpose)";
             this.showVideo.UseVisualStyleBackColor = true;
             // 
             // EncodeOptions
