@@ -248,10 +248,13 @@ namespace MiniCoder.Encoding.Process_Management
                  preview.Height = int.Parse(fileDetails["height"][0]) + 49;
              }
             preview.openFile(fileDetails["fileName"][0]);
+            windowIsOpen = true;
             preview.ShowDialog();
+            windowIsOpen = false;
+            preview.Dispose();
            
         }
-
+        Boolean windowIsOpen = false;
         private void stderrProcess()
         {
             if ((Boolean.Parse(encOpts["showvideo"])) && mainProcess.StartInfo.Arguments.Contains(".264"))
@@ -270,7 +273,7 @@ namespace MiniCoder.Encoding.Process_Management
                             {
                                 string[] split = Regex.Split(read, ",");
                                 LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + split[0] + " - " + split[3]);
-                                if (null != previewer)
+                                if (null != previewer && windowIsOpen)
                                 {
                                     string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
                                     preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
