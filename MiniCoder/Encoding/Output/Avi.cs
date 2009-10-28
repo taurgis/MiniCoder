@@ -52,9 +52,7 @@ namespace MiniCoder.Encoding.Output
 
                 proc.setFilename(Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe"));
 
-                if (float.Parse(fileDetails["fps"][0]) > 400)
-                    args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
-                else
+              
                     args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0] + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
 
 

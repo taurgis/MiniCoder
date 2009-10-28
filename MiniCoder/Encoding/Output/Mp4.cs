@@ -50,9 +50,7 @@ namespace MiniCoder.Encoding.Output
                 proc.setFilename(Path.Combine(mp4box.getInstallPath(), "mp4box.exe"));
 
 
-                if (float.Parse(fileDetails["fps"][0]) > 400)
-                    args = "-fps " + fileDetails["fps"][0].Replace(".0", "").Substring(0, 2) + "." + fileDetails["fps"][0].Replace(".0", "").Substring(2, fileDetails["fps"][0].Replace(".0", "").Length - 2) + " -add \"" + fileTracks["video"][0].encodePath + "#video:name=Video\" ";
-                else
+          
                     args = "-fps " + fileDetails["fps"][0] + " -add \"" + fileTracks["video"][0].encodePath + "#video:name=Video\" ";
 
 

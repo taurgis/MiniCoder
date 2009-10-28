@@ -27,6 +27,7 @@ namespace System
                 extension.Add("SSA", "ssa");
                 extension.Add("ASS", "ass");
                 extension.Add("H264", "264");
+                extension.Add("55", "mp3");
                 extension.Add("h264", "264");
                 extension.Add("A_AAC/MPEG4/LC/SBR", "aac");
                 extension.Add("MPEG Audio", "mp3");
