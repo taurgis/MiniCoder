@@ -215,7 +215,7 @@
             // showVideo
             // 
             this.showVideo.AutoSize = true;
-            this.showVideo.Location = new System.Drawing.Point(9, 77);
+            this.showVideo.Location = new System.Drawing.Point(9, 79);
             this.showVideo.Name = "showVideo";
             this.showVideo.Size = new System.Drawing.Size(124, 17);
             this.showVideo.TabIndex = 4;
