@@ -254,7 +254,7 @@ namespace MiniCoder.Encoding.Process_Management
 
         private void stderrProcess()
         {
-            if ((Boolean.Parse(encOpts["showvideo"])))
+            if ((Boolean.Parse(encOpts["showvideo"])) && mainProcess.StartInfo.Arguments.Contains(".264"))
             {
                 previewer = new Thread(new ThreadStart(showWindow));
                 previewer.Start();
