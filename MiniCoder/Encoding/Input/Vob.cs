@@ -122,7 +122,7 @@ namespace MiniCoder.Encoding.Input
            else
                return true;
 
-            return false;
+            
         }
 
         private Boolean demuxFile(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
