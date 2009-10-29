@@ -267,6 +267,13 @@ namespace MiniCoder.GUI
                     encodeSet.Add("vfr", "");
 
                 tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet, processWatcher);
+                if (!tempEncode.fetchEncodeInfo())
+                {
+                    setFileStatus("Error");
+                    // LogBook.addLogLine("infoLabel.Text, 2,"");
+                    LogBook.sendmail(logView);
+                    break;
+                }
                 if (tempEncode.getExtention() == ".avs")
                 {
                     if (tempEncode.startAvsEncode())
