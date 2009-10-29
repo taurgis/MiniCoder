@@ -45,19 +45,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_999D4CBE7BE0410AA7E047BFC5F92B7E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D8C99D62E64C49CE8A7D9C09A8DB3409"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DFB29F332C7C4F8B93E314E957B17CE4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,20 +69,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FA23CDC53E14B94C8768E39EBBD3F591"
-        "OwnerKey" = "8:_999D4CBE7BE0410AA7E047BFC5F92B7E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E606A863056C49D0A391B18295C7B10D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_999D4CBE7BE0410AA7E047BFC5F92B7E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -342,63 +318,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_999D4CBE7BE0410AA7E047BFC5F92B7E"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CoreUpdater, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_999D4CBE7BE0410AA7E047BFC5F92B7E"
-                    {
-                    "Name" = "8:CoreUpdater.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\MiniCOder\\bin\\Debug\\CoreUpdater.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D8C99D62E64C49CE8A7D9C09A8DB3409"
             {
             "SourcePath" = "8:..\\install.jpg"
             "TargetName" = "8:install.jpg"
             "Tag" = "8:"
             "Folder" = "8:_17EF7712FF6F439BA432EC827461EAEB"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DFB29F332C7C4F8B93E314E957B17CE4"
-            {
-            "SourcePath" = "8:..\\MiniCoder\\bin\\Debug\\MediaInfo.dll"
-            "TargetName" = "8:MediaInfo.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -610,7 +535,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MiniCoder"
         "ProductCode" = "8:{E0D03337-9354-4F59-8A3D-520F3D088AEE}"
-        "PackageCode" = "8:{D00291E9-15B8-4681-9CB6-C2108382E618}"
+        "PackageCode" = "8:{A5C82CC3-11D5-4C46-A7FB-98E1D33B6FBB}"
         "UpgradeCode" = "8:{CAB6FB95-3490-4F80-B6EB-A76C79AD2C82}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -785,7 +710,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Value" = "8:_D8C99D62E64C49CE8A7D9C09A8DB3409"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -911,7 +836,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Value" = "8:_D8C99D62E64C49CE8A7D9C09A8DB3409"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -1063,7 +988,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Value" = "8:_D8C99D62E64C49CE8A7D9C09A8DB3409"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -1086,7 +1011,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Value" = "8:_D8C99D62E64C49CE8A7D9C09A8DB3409"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -1135,7 +1060,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Value" = "8:_D8C99D62E64C49CE8A7D9C09A8DB3409"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "InstallAllUsersVisible"

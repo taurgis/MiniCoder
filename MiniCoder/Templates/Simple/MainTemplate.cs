@@ -138,6 +138,7 @@ namespace MiniCoder.Templates.Simple
             xmlWriter.WriteElementString("denoiseFilter", denoiseFilter);
             xmlWriter.WriteElementString("sharpenFilter", sharpenFilter);
             xmlWriter.WriteElementString("subtitle", subtitle);
+            xmlWriter.WriteElementString("customAvs", customAvs);
             xmlWriter.WriteEndElement();
 
 

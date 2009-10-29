@@ -26,23 +26,7 @@ namespace MiniCoder.Encoding
             {
                 this.encodeSet = encodeSet;
                 this.fileName = fileName;
-                fileDetails = getFileDetails(fileName);
-
-                LogBook.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
-                LogBook.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
-
-                foreach (string key in encodeSet.Keys)
-                {
-                    LogBook.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
-
-                }
-
-                LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
-                LogBook.setInfoLabel("Fetching File Info");
-
-                for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
-                    LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo", "", false);
-
+               
                 //LogBook.addLogLine("Fetching Created File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfoFetch", false);
                
 
@@ -62,6 +46,36 @@ namespace MiniCoder.Encoding
                // return false;
             }
 
+        }
+
+        public Boolean fetchEncodeInfo()
+        {
+            try
+            {
+                fileDetails = getFileDetails(fileName);
+
+                LogBook.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
+                LogBook.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
+
+                foreach (string key in encodeSet.Keys)
+                {
+                    LogBook.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
+
+                }
+
+                LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
+                LogBook.setInfoLabel("Fetching File Info");
+
+                for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
+                    LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo", "", false);
+
+                return true;
+            }
+            catch (Exception error)
+            {
+                LogBook.addLogLine("Error getting file info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                return false;
+            }
         }
         public Boolean startTheoraEncode()
         {
