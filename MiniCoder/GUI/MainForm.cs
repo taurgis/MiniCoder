@@ -193,7 +193,7 @@ namespace MiniCoder.GUI
                     }
                 }
             }
-            catch (Exception exce)
+            catch
             {
 
             }

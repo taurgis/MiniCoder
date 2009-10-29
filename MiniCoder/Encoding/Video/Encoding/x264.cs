@@ -69,7 +69,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
                     case "3":
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
-                        pass3Arg = "--pass 3 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
+                        //pass3Arg = "--pass 3 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 --no-mbtree " + extra + " --output";
                         break;
 

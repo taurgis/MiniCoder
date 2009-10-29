@@ -80,8 +80,9 @@ namespace MiniCoder.Encoding.Output
                 else
                 {
                     LogBook.setInfoLabel("Muxing Complete");
-                    return true;
+                  
                     LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
+                    return true;
                 }
 
             }

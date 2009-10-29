@@ -135,7 +135,7 @@ namespace System.OS
             OSVERSIONINFOEX osVersionInfo = new OSVERSIONINFOEX();
             osVersionInfo.dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFOEX));
             string osName = "UNKNOWN";
-            bool x64Detection = false;
+           
 
             if (!GetVersionEx(ref osVersionInfo))
             {
@@ -193,7 +193,7 @@ namespace System.OS
                                                     if ((osVersionInfo.wSuiteMask & VER_SUITE_PERSONAL) == VER_SUITE_PERSONAL)
                                                         osName = "Windows XP Home Edition";
                                                     else osName = "Windows XP Professional";
-                                                    x64Detection = true;
+                                                    
                                                     break;
                                                 }
                                             case 2: // winserver 2003
@@ -205,14 +205,14 @@ namespace System.OS
                                                     else if ((osVersionInfo.wSuiteMask & VER_SUITE_BLADE) == VER_SUITE_BLADE)
                                                         osName = "Windows Server 2003 Web Edition";
                                                     else osName = "Windows Server 2003 Standard Edition";
-                                                    x64Detection = true;
+                                                  
                                                     break;
                                                 }
                                         } break;
                                     }
                                 case 6:
                                     {
-                                        x64Detection = true;
+                                        
                                         switch (osInfo.Version.Minor)
                                         {
                                             case 0:

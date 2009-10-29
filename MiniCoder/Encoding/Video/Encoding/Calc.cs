@@ -37,7 +37,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
                 return vidBR;
             }
-            catch (DivideByZeroException exeption)
+            catch
             {
                 LogBook.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
                 return int.Parse(encOpts["videobr"]);
