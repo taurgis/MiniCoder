@@ -247,6 +247,8 @@
     <Content Include="bin\Debug\bigIcon.ico" />
     <Content Include="bin\Debug\MediaInfo_32.dll" />
     <Content Include="bin\Debug\MediaInfo_64.dll" />
+    <None Include="Resources\TextFile1.txt" />
+    <None Include="Resources\Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

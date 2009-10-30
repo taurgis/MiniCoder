@@ -51,6 +51,7 @@ namespace MiniCoder.Encoding.Output
                 string arg1 = "";
 
                 if (encOpts.ContainsKey("vfr"))
+                    if(!String.IsNullOrEmpty(encOpts["vfr"]))
                     arg1 += "--timecodes 0:\"" + encOpts["vfr"] + "\" ";
 
                 if (encOpts["advertdisabled"] == "False")
