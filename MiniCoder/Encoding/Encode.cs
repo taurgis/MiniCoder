@@ -369,10 +369,16 @@ namespace MiniCoder.Encoding
 
 
 
-            
 
-            tempDetail.Add("completeinfo", mediaInfo.InfoComplete.Split(Convert.ToChar("\n")));
-            if (audioTracks.Length > 0)
+            try
+            {
+                tempDetail.Add("completeinfo", mediaInfo.InfoComplete.Split(Convert.ToChar("\n")));
+            }
+            catch
+            {
+                tempDetail.Add("completeinfo", "".Split(Convert.ToChar("\n")));
+            }
+                if (audioTracks.Length > 0)
             {
                 tempDetail.Add("audLength", (int.Parse(mediaInfo.Audio[0].Duration) / 1000).ToString().Split(Convert.ToChar(" ")));
                 if (mediaInfo.General[0].FileExtension.ToUpper() == ".VOB")

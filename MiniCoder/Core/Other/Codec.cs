@@ -47,6 +47,7 @@ namespace System
                 extension.Add("A_AAC", "aac");
                 extension.Add("A_AC3", "ac3");
                 extension.Add("AC-3", "ac3");
+               
                 extension.Add("", "d2v");
                 extension.Add("A_DTS", "dts");
                 extension.Add("A_FLAC", "flac");
@@ -66,6 +67,7 @@ namespace System
                 extension.Add("V_MS/VFW/FOURCC", "avi");
                 extension.Add("Intel H.264", "264");
                 extension.Add("V_REAL", "rmvb");
+                extension.Add("2000", "ac3");
                 extension.Add("V_THEORA", "ogg");
                 extension.Add("DIV3", "avi");
                 extension.Add("DX50", "avi");
