@@ -248,6 +248,7 @@ namespace MiniCoder.GUI.External
                         MessageBox.Show("Minicoder has to restart to update its core files.");
                         Application.Exit();
                         Process.Start("CoreUpdater.exe");
+                        return;
                     }
                     else
                     {

@@ -39,9 +39,11 @@ namespace System
                 extension.Add("avc1", "264");
                 extension.Add("AAC", "aac");
                 extension.Add("Subrip", "srt");
+                extension.Add("40", "aac");
                 extension.Add("VobSub", "idx");
                 extension.Add("Chapters", "Chapters");
                 extension.Add("Attachement", "att");
+                extension.Add("A_AAC/MPEG4/LC/SBR/PS", "aac");
                 extension.Add("A_AAC", "aac");
                 extension.Add("A_AC3", "ac3");
                 extension.Add("AC-3", "ac3");

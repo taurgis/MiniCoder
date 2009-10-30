@@ -364,7 +364,7 @@ namespace MiniCoder.Encoding
             if (encodeSet.ContainsKey("customoutput"))
                 encodeSet.Add("outDIR", encodeSet["customoutput"]);
             else
-                encodeSet.Add("outDIR", (Path.GetDirectoryName(mediaInfo.General[0].CompleteName + "\\")));
+                encodeSet.Add("outDIR", (Path.GetDirectoryName(mediaInfo.General[0].CompleteName) + "\\"));
             tempDetail.Add("crfValue", crfValue.ToString().Split(Convert.ToChar(" ")));
 
 
