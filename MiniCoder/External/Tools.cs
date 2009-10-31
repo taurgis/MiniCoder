@@ -99,18 +99,22 @@ namespace MiniCoder.External
                                             tools.Add(name, new Zip(name, appType, downloadPath, category, customPath, localVersion));
                                             break;
                                         case "plugin":
+                                            if(tools.ContainsKey("avs"))
                                             tools.Add(name, new AvsPlugin(name, downloadPath, category, tools["avs"], localVersion));
                                             break;
                                         case "Core":
                                             tools.Add(name, new Core(name, appType, downloadPath, category, customPath, localVersion));
                                             break;
                                     }
-
-                                    if (!tools[name].isInstalled() && name != "BAAA")
+                                    if (tools[name].getAppType().Equals("plugin") && tools.ContainsKey("avs"))
                                     {
-                                       // // LogBook.addLogLine(""Found custom path for " + name + ".", 1);
-                                       // // LogBook.addLogLine(""Custom path invalid! Resetting to default.", 2);
-                                        tools.Remove(name);
+                                        if (!tools[name].isInstalled() && name != "BAAA")
+                                        {
+
+                                            // // LogBook.addLogLine(""Found custom path for " + name + ".", 1);
+                                            // // LogBook.addLogLine(""Custom path invalid! Resetting to default.", 2);
+                                            tools.Remove(name);
+                                        }
                                     }
                                 }
                                     complete = false;
