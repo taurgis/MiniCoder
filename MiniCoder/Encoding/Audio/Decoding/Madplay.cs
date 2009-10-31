@@ -24,9 +24,10 @@ namespace MiniCoder.Encoding.Sound.Decoding
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 proc.stdErrDisabled(true);
-                proc.stdOutDisabled(false);
+                proc.stdOutDisabled(true);
                 processWatcher.setProcess(proc);
                 proc.initProcess();
+
                 LogBook.addLogLine("Decoding MPEG - Using madplay", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
                 LogBook.setInfoLabel("Decoding Audio");
