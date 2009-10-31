@@ -38,7 +38,7 @@ namespace MiniCoder.GUI
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
             if (typedl == "exe")
                 client.DownloadFileAsync(url, "dl.exe");
-            if (typedl == "core")
+            else if (typedl == "core")
                 client.DownloadFileAsync(url, "dl.zip");
             else if (typedl == "dll")
                 client.DownloadFileAsync(url, "dl.zip");

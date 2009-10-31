@@ -166,26 +166,7 @@ namespace MiniCoder.GUI.External
                 }
             }
 
-            for (int i = 0; i < pluginsList.Items.Count; i++)
-            {
-                if (pluginsList.Items[i].Checked)
-                {
-                    Tool tempPackage = (Tool)toolInfo[pluginsList.Items[i].SubItems[1].Text];
-                    updateLog.Text = "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
-                    if (!tempPackage.download())
-                    {
-                        updateButton.Enabled = true;
-                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
-                        return;
-                    }
-                    tempPackage.localVersion = tempPackage.onlineVersion;
-                    pluginsList.Items[i].SubItems[4].Text = "Up to date";
-                    pluginsList.Items[i].Checked = false;
-                    downloadProgress.Value++;
-                    updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
-                }
-            }
+          
 
             for (int i = 0; i < muxingList.Items.Count; i++)
             {
@@ -226,6 +207,27 @@ namespace MiniCoder.GUI.External
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
                     LogBook.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                }
+            }
+
+            for (int i = 0; i < pluginsList.Items.Count; i++)
+            {
+                if (pluginsList.Items[i].Checked)
+                {
+                    Tool tempPackage = (Tool)toolInfo[pluginsList.Items[i].SubItems[1].Text];
+                    updateLog.Text = "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
+                    if (!tempPackage.download())
+                    {
+                        updateButton.Enabled = true;
+                        updateLog.Text = "Downloading cancelled\r\n" + updateLog.Text;
+                        return;
+                    }
+                    tempPackage.localVersion = tempPackage.onlineVersion;
+                    pluginsList.Items[i].SubItems[4].Text = "Up to date";
+                    pluginsList.Items[i].Checked = false;
+                    downloadProgress.Value++;
+                    updateLog.Text += "Download & Install Complete .. \r\n";
+                    LogBook.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
             tools.SavePackages();
