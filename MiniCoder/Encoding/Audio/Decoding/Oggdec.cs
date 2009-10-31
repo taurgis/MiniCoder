@@ -25,6 +25,8 @@ namespace MiniCoder.Encoding.Sound.Decoding
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
                 proc.initProcess();
+                proc.stdErrDisabled(true);
+                proc.stdOutDisabled(true);
                 LogBook.addLogLine("Decoding OGG - Using oggdec", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
                 LogBook.setInfoLabel("Decoding Audio");

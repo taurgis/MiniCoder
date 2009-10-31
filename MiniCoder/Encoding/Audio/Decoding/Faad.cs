@@ -24,6 +24,8 @@ namespace MiniCoder.Encoding.Sound.Decoding
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
+                proc.stdErrDisabled(true);
+                proc.stdOutDisabled(true);
                 proc.initProcess();
                 LogBook.addLogLine("Decoding AAC - Using faad", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
