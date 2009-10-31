@@ -33,34 +33,43 @@ namespace MiniCoder.GUI
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(Application.StartupPath + "\\settings.xml"))
+            try
             {
-                MainSettings main = new MainSettings();
-                main.loadSettings();
-                encodeOptions.loadSettings(main);
+                if (File.Exists(Application.StartupPath + "\\settings.xml"))
+                {
+                    MainSettings main = new MainSettings();
+                    main.loadSettings();
+                    encodeOptions.loadSettings(main);
+                }
+
+
+                LogBook.addLogLine("System Info", "", "SysInfo", false);
+                LogBook.addLogLine(MiniSystem.getOSName(), "SysInfo", "", false);
+                LogBook.addLogLine(MiniSystem.getDotNetFramework(), "SysInfo", "", false);
+                LogBook.addLogLine(MiniSystem.getProcessorInfo(), "SysInfo", "", false);
+                LogBook.addLogLine(MiniSystem.getElevation(), "SysInfo", "", false);
+                LogBook.addLogLine("Errors", "", "Errors", false);
+
+                cbAfterEncode.SelectedIndex = 0;
+                tools = new Tools(true);
+
+                encodeOptions.setTools(tools);
+                encodeOptions.setProcessWatcher(processWatcher);
+
+                if (MiniOnline.checkInternet())
+                {
+                    Updater tempUpdater = new Updater(tools, true);
+                    tempUpdater.Dispose();
+                    MiniOnline.GetNews(newsList);
+                }
+                if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
+                    Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
             }
-
-
-            LogBook.addLogLine("System Info","","SysInfo",false);
-            LogBook.addLogLine(MiniSystem.getOSName(),"SysInfo","",false);
-            LogBook.addLogLine(MiniSystem.getDotNetFramework(),"SysInfo","",false);
-            LogBook.addLogLine(MiniSystem.getProcessorInfo(),"SysInfo","",false);
-            LogBook.addLogLine("Errors", "", "Errors", false);
-
-            cbAfterEncode.SelectedIndex = 0;
-            tools = new Tools(true);
-
-            encodeOptions.setTools(tools);
-            encodeOptions.setProcessWatcher(processWatcher);
-
-            if (MiniOnline.checkInternet())
+            catch (Exception error)
             {
-                Updater tempUpdater = new Updater(tools, true);
-                tempUpdater.Dispose();
-                MiniOnline.GetNews(newsList);
+                LogBook.addLogLine("Error Starting up. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+               
             }
-            if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
-                Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
         }
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
