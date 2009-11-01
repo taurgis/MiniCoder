@@ -120,7 +120,7 @@ namespace MiniCoder.GUI
         private void selectFile()
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv;*.avs";
+            openFile.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv;*.avs;*.rm;*.rmvb";
             openFile.Multiselect = true;
             openFile.ShowDialog();
             foreach (String file in openFile.FileNames)
@@ -345,17 +345,25 @@ namespace MiniCoder.GUI
                     }
                     else
                     {
-                        if (processWatcher.getProcess().getAbandonStatus())
+                        try
                         {
-                            setFileStatus("Aborted");
+                            if (processWatcher.getProcess().getAbandonStatus())
+                            {
+                                setFileStatus("Aborted");
+                            }
+                            else
+                            {
+                                setFileStatus("Error");
+                                // LogBook.addLogLine("infoLabel.Text, 2, "");
+                                LogBook.sendmail(logView);
+                            }
+                            break;
                         }
-                        else
+                        catch
                         {
-                            setFileStatus("Error");
-                            // LogBook.addLogLine("infoLabel.Text, 2, "");
-                            LogBook.sendmail(logView);
+
+                            break;
                         }
-                        break;
                     }
                 }
 
@@ -442,7 +450,7 @@ namespace MiniCoder.GUI
         {
             try
             {
-                Clipboard.SetText(logView.SelectedNode.Text, TextDataFormat.Text);
+               Clipboard.SetText(logView.SelectedNode.Text, TextDataFormat.Text);
             }
             catch
             {
@@ -568,6 +576,13 @@ namespace MiniCoder.GUI
             {
 
             }
+        }
+
+   
+
+        private void sendErrorReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogBook.sendmail(logView);
         }
     }
 }

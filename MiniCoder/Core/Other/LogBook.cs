@@ -98,6 +98,8 @@ namespace System
            
         }
 
+      
+
         public static void sendmail(TreeView list)
         {
             if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
