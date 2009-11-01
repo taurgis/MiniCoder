@@ -16,7 +16,7 @@ namespace MiniCoder.Encoding.VideoEnc
         {
             try
             {
-                if (fileDetails["ext"][0].ToLower() == ".mkv" && encOpts.ContainsKey("vfr"))
+                if (fileDetails["ext"][0].ToLower() == "mkv" && encOpts.ContainsKey("vfr"))
                 {
                     LogBook.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
@@ -55,13 +55,13 @@ namespace MiniCoder.Encoding.VideoEnc
                     encOpts["vfr"] = tempPath + "timecode.txt";
                     //  details.vfrName = appSettings.tempDIR + details.name + "-Video Track.avi";
 
-                    MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(encOpts["vfr"]);
+                    MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(tempPath + fileDetails["name"] + "-Video Track.avi");
                     fileDetails["fps"][0] = mediaInfo.Video[0].FrameRate.ToString();
 
 
 
                 }
-                else if (fileDetails["ext"][0].ToLower() == ".mp4" && encOpts.ContainsKey("vfr"))
+                else if (fileDetails["ext"][0].ToLower() == "mp4" && encOpts.ContainsKey("vfr"))
                 {
                     //dtsedit -t input.mp4 timecodes.txt
                     LogBook.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
