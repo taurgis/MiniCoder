@@ -259,6 +259,8 @@ namespace MiniCoder.Encoding
                     return demuxVob();
                 case "AVS":
                     return demuxAvs();
+                default:
+                    return demuxWmv();
 
             }
             return false;

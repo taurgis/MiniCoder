@@ -26,6 +26,7 @@ namespace System
                 extension.Add("S_TEXT/SSA", "ssa");
                 extension.Add("SSA", "ssa");
                 extension.Add("ASS", "ass");
+                extension.Add("cook", "rmvb");
                 extension.Add("H264", "264");
                 extension.Add("55", "mp3");
                 extension.Add("h264", "264");

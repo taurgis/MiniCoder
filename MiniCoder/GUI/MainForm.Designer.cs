@@ -66,6 +66,8 @@ namespace MiniCoder.GUI
             this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.notifyMiniCoder = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendErrorReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabPage.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,7 +92,6 @@ namespace MiniCoder.GUI
             this.mainTabPage.SelectedIndex = 0;
             this.mainTabPage.Size = new System.Drawing.Size(410, 385);
             this.mainTabPage.TabIndex = 1;
-           
             // 
             // inputTab
             // 
@@ -319,14 +320,16 @@ namespace MiniCoder.GUI
             // logMenu
             // 
             this.logMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToolStripMenuItem});
+            this.copyToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.sendErrorReportToolStripMenuItem});
             this.logMenu.Name = "logMenu";
-            this.logMenu.Size = new System.Drawing.Size(111, 26);
+            this.logMenu.Size = new System.Drawing.Size(170, 76);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -398,6 +401,18 @@ namespace MiniCoder.GUI
             this.notifyMiniCoder.Text = "MiniCoder";
             this.notifyMiniCoder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMiniCoder_MouseDoubleClick);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 6);
+            // 
+            // sendErrorReportToolStripMenuItem
+            // 
+            this.sendErrorReportToolStripMenuItem.Name = "sendErrorReportToolStripMenuItem";
+            this.sendErrorReportToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.sendErrorReportToolStripMenuItem.Text = "Send error report";
+            this.sendErrorReportToolStripMenuItem.Click += new System.EventHandler(this.sendErrorReportToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,6 +483,8 @@ namespace MiniCoder.GUI
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyMiniCoder;
         private System.Windows.Forms.ImageList iconList;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sendErrorReportToolStripMenuItem;
     }
 }
 
