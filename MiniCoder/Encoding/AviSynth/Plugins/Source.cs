@@ -39,7 +39,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\")\r\nConvertToYV12()";
+                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
                             break;
                     }
                     break;
@@ -60,7 +60,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\")\r\nConvertToYV12()";
+                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
                             break;
                     }
                     break;
@@ -80,22 +80,27 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                             sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
                             break;
                         default:
-                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\")\r\nConvertToYV12()";
+                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
                             break;
                     }
                     break;
                 case "":
                     switch (fileDetails["ext"][0].ToLower())
                     {
-
-                        default:
+                        case "flv":
+                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
+                            break;
+                        case "vob":
                             sourceline = "DGDecode_mpeg2source(\"" + video.demuxPath + "\", info=3)\r\nColorMatrix(hints=true, threads=0)";
+                            break;
+                        default:
+                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
                             break;
                     }
                     break;
 
                 default:
-                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\")\r\nConvertToYV12()";
+                    sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
                          
                     break;
 

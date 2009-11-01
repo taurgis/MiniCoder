@@ -120,7 +120,7 @@ namespace MiniCoder.GUI
         private void selectFile()
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv;*.avs;*.rm;*.rmvb";
+            openFile.Filter = "Media Files|*.avi;*.mkv;*.ogm;*.mp4;*_1.vob;*.wmv;*.avs;*.rm;*.rmvb;*.flv";
             openFile.Multiselect = true;
             openFile.ShowDialog();
             foreach (String file in openFile.FileNames)
