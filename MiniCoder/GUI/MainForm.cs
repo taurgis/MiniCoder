@@ -302,9 +302,16 @@ namespace MiniCoder.GUI
                         {
                             setFileStatus("Error");
                             // LogBook.addLogLine("infoLabel.Text, 2,"");
+                            if (!Boolean.Parse(encodeSet["aftererror"]))
                             LogBook.sendmail(logView);
                         }
-                        break;
+                        if (!Boolean.Parse(encodeSet["aftererror"]))
+                            break;
+                        else
+                        {
+                            curEncode++;
+                            FileList.RemoveAt(0);
+                        }
                     }
                 }
                 else if (encodeSet["videocodec"] == "2")
@@ -327,9 +334,16 @@ namespace MiniCoder.GUI
                         {
                             setFileStatus("Error");
                             // LogBook.addLogLine("infoLabel.Text, 2,"");
-                            LogBook.sendmail(logView);
+                            if (!Boolean.Parse(encodeSet["aftererror"]))
+                                LogBook.sendmail(logView);
                         }
-                        break;
+                        if (!Boolean.Parse(encodeSet["aftererror"]))
+                            break;
+                        else
+                        {
+                            curEncode++;
+                            FileList.RemoveAt(0);
+                        }
                     }
 
                 }
@@ -354,10 +368,16 @@ namespace MiniCoder.GUI
                             else
                             {
                                 setFileStatus("Error");
-                                // LogBook.addLogLine("infoLabel.Text, 2, "");
-                                LogBook.sendmail(logView);
+                                if (!Boolean.Parse(encodeSet["aftererror"]))
+                                      LogBook.sendmail(logView);
                             }
-                            break;
+                            if (!Boolean.Parse(encodeSet["aftererror"]))
+                                break;
+                            else
+                            {
+                                curEncode++;
+                                FileList.RemoveAt(0);
+                            }
                         }
                         catch
                         {

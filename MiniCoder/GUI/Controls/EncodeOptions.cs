@@ -42,6 +42,7 @@ namespace MiniCOder.GUI.Controls
             settings.Add("skipattachments", ignoreAttachments.Checked.ToString());
             settings.Add("showvideo", showVideo.Checked.ToString());
             settings.Add("skipchapters", ignoreChapters.Checked.ToString());
+            settings.Add("aftererror", continueAfterError.Checked.ToString());
             if (outPutLocation.Text != "")
                 settings.Add("customoutput", outPutLocation.Text + "\\");
             return settings;
