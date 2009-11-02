@@ -14,6 +14,7 @@ namespace MiniCoder.Core.Settings
         public bool ignoreSubs { get; set; }
         public bool ignoreAttachments { get; set; }
         public bool ignoreChapters { get; set; }
+        public bool continueAfterError { get; set; }
 
         public void saveSettings()
         {
@@ -31,7 +32,7 @@ namespace MiniCoder.Core.Settings
             writeElement(xmlWriter, "ignoreSubs", ignoreSubs.ToString());
             writeElement(xmlWriter, "ignoreAttachments", ignoreAttachments.ToString());
             writeElement(xmlWriter, "ignoreChapters", ignoreChapters.ToString());
-
+            writeElement(xmlWriter, "continueAfterError", continueAfterError.ToString());
 
             xmlWriter.WriteEndElement();
             xmlWriter.Close();
@@ -74,7 +75,8 @@ namespace MiniCoder.Core.Settings
              xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreChapters" + "\"]");
             ignoreChapters = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
 
-            
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "continueAfterError" + "\"]");
+            continueAfterError = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
 
         }
     }

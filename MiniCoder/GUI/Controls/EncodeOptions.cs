@@ -67,6 +67,7 @@ namespace MiniCOder.GUI.Controls
             ignoreAttachments.Checked = settings.ignoreAttachments;
             ignoreChapters.Checked = settings.ignoreChapters;
             ignoreSubs.Checked = settings.ignoreSubs;
+            continueAfterError.Checked = settings.continueAfterError;
         }
 
         private void EncodeOptions_Load(object sender, EventArgs e)
@@ -102,7 +103,7 @@ namespace MiniCOder.GUI.Controls
             main.ignoreSubs = ignoreSubs.Checked;
             main.outputPath = outPutLocation.Text;
             main.processPriority = processPriority.SelectedIndex.ToString();
-
+            main.continueAfterError = continueAfterError.Checked;
             main.saveSettings();
         }
     }
