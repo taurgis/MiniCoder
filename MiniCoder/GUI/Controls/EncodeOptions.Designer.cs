@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.showVideo = new System.Windows.Forms.CheckBox();
             this.ignoreAttachments = new System.Windows.Forms.CheckBox();
             this.ignoreSubs = new System.Windows.Forms.CheckBox();
             this.ignoreChapters = new System.Windows.Forms.CheckBox();
@@ -43,7 +44,7 @@
             this.outPutLocation = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
-            this.showVideo = new System.Windows.Forms.CheckBox();
+            this.continueAfterError = new System.Windows.Forms.CheckBox();
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -51,6 +52,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.continueAfterError);
             this.groupBox8.Controls.Add(this.showVideo);
             this.groupBox8.Controls.Add(this.ignoreAttachments);
             this.groupBox8.Controls.Add(this.ignoreSubs);
@@ -58,10 +60,20 @@
             this.groupBox8.Controls.Add(this.audioSkip);
             this.groupBox8.Location = new System.Drawing.Point(3, 152);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(378, 100);
+            this.groupBox8.Size = new System.Drawing.Size(378, 118);
             this.groupBox8.TabIndex = 18;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Encoding";
+            // 
+            // showVideo
+            // 
+            this.showVideo.AutoSize = true;
+            this.showVideo.Location = new System.Drawing.Point(9, 79);
+            this.showVideo.Name = "showVideo";
+            this.showVideo.Size = new System.Drawing.Size(206, 17);
+            this.showVideo.TabIndex = 4;
+            this.showVideo.Text = "Show Video Preview (Debug purpose)";
+            this.showVideo.UseVisualStyleBackColor = true;
             // 
             // ignoreAttachments
             // 
@@ -212,15 +224,15 @@
             this.titleAdvert.Text = "Disable video title advert";
             this.titleAdvert.UseVisualStyleBackColor = true;
             // 
-            // showVideo
+            // continueAfterError
             // 
-            this.showVideo.AutoSize = true;
-            this.showVideo.Location = new System.Drawing.Point(9, 79);
-            this.showVideo.Name = "showVideo";
-            this.showVideo.Size = new System.Drawing.Size(206, 17);
-            this.showVideo.TabIndex = 4;
-            this.showVideo.Text = "Show Video Preview (Debug purpose)";
-            this.showVideo.UseVisualStyleBackColor = true;
+            this.continueAfterError.AutoSize = true;
+            this.continueAfterError.Location = new System.Drawing.Point(9, 101);
+            this.continueAfterError.Name = "continueAfterError";
+            this.continueAfterError.Size = new System.Drawing.Size(167, 17);
+            this.continueAfterError.TabIndex = 5;
+            this.continueAfterError.Text = "Continue to next file after error";
+            this.continueAfterError.UseVisualStyleBackColor = true;
             // 
             // EncodeOptions
             // 
@@ -259,6 +271,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox titleAdvert;
         private System.Windows.Forms.CheckBox showVideo;
+        private System.Windows.Forms.CheckBox continueAfterError;
 
     }
 }
