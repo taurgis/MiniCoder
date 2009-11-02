@@ -58,6 +58,8 @@ namespace MiniCoder.GUI
             this.logView = new System.Windows.Forms.TreeView();
             this.logMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sendErrorReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iconList = new System.Windows.Forms.ImageList(this.components);
             this.aboutTab = new System.Windows.Forms.TabPage();
             this.newsList = new System.Windows.Forms.ListView();
@@ -66,8 +68,6 @@ namespace MiniCoder.GUI
             this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.notifyMiniCoder = new System.Windows.Forms.NotifyIcon(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.sendErrorReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabPage.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -324,7 +324,7 @@ namespace MiniCoder.GUI
             this.toolStripMenuItem1,
             this.sendErrorReportToolStripMenuItem});
             this.logMenu.Name = "logMenu";
-            this.logMenu.Size = new System.Drawing.Size(170, 76);
+            this.logMenu.Size = new System.Drawing.Size(170, 54);
             // 
             // copyToolStripMenuItem
             // 
@@ -332,6 +332,18 @@ namespace MiniCoder.GUI
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(166, 6);
+            // 
+            // sendErrorReportToolStripMenuItem
+            // 
+            this.sendErrorReportToolStripMenuItem.Name = "sendErrorReportToolStripMenuItem";
+            this.sendErrorReportToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.sendErrorReportToolStripMenuItem.Text = "Send error report";
+            this.sendErrorReportToolStripMenuItem.Click += new System.EventHandler(this.sendErrorReportToolStripMenuItem_Click);
             // 
             // iconList
             // 
@@ -400,18 +412,6 @@ namespace MiniCoder.GUI
             this.notifyMiniCoder.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyMiniCoder.Icon")));
             this.notifyMiniCoder.Text = "MiniCoder";
             this.notifyMiniCoder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMiniCoder_MouseDoubleClick);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 6);
-            // 
-            // sendErrorReportToolStripMenuItem
-            // 
-            this.sendErrorReportToolStripMenuItem.Name = "sendErrorReportToolStripMenuItem";
-            this.sendErrorReportToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.sendErrorReportToolStripMenuItem.Text = "Send error report";
-            this.sendErrorReportToolStripMenuItem.Click += new System.EventHandler(this.sendErrorReportToolStripMenuItem_Click);
             // 
             // MainForm
             // 
