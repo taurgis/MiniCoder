@@ -97,6 +97,15 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Audio.
+        /// </summary>
+        internal static string audioTabTitle {
+            get {
+                return ResourceManager.GetString("audioTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Format:.
         /// </summary>
         internal static string containerFormat {
@@ -111,6 +120,15 @@ namespace MiniCoder.Core.Languages {
         internal static string containerOptionsTitle {
             get {
                 return ResourceManager.GetString("containerOptionsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core.
+        /// </summary>
+        internal static string coreTabTitle {
+            get {
+                return ResourceManager.GetString("coreTabTitle", resourceCulture);
             }
         }
         
@@ -165,6 +183,15 @@ namespace MiniCoder.Core.Languages {
         internal static string customFilterTitle {
             get {
                 return ResourceManager.GetString("customFilterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Paths.
+        /// </summary>
+        internal static string customPathsTitle {
+            get {
+                return ResourceManager.GetString("customPathsTitle", resourceCulture);
             }
         }
         
@@ -331,6 +358,15 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Muxing/Demuxing.
+        /// </summary>
+        internal static string muxingTabTitle {
+            get {
+                return ResourceManager.GetString("muxingTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News.
         /// </summary>
         internal static string newsTabTitle {
@@ -345,6 +381,15 @@ namespace MiniCoder.Core.Languages {
         internal static string optionsTabTitle {
             get {
                 return ResourceManager.GetString("optionsTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        internal static string otherTabTitle {
+            get {
+                return ResourceManager.GetString("otherTabTitle", resourceCulture);
             }
         }
         
@@ -372,6 +417,15 @@ namespace MiniCoder.Core.Languages {
         internal static string outputSettingsTitle {
             get {
                 return ResourceManager.GetString("outputSettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugins.
+        /// </summary>
+        internal static string pluginsTabTitle {
+            get {
+                return ResourceManager.GetString("pluginsTabTitle", resourceCulture);
             }
         }
         
@@ -690,6 +744,96 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string updateCancelButton {
+            get {
+                return ResourceManager.GetString("updateCancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string updateColumn1 {
+            get {
+                return ResourceManager.GetString("updateColumn1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string updateColumn2 {
+            get {
+                return ResourceManager.GetString("updateColumn2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Existing Version.
+        /// </summary>
+        internal static string updateColumn3 {
+            get {
+                return ResourceManager.GetString("updateColumn3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest Version.
+        /// </summary>
+        internal static string updateColumn4 {
+            get {
+                return ResourceManager.GetString("updateColumn4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string updateColumn5 {
+            get {
+                return ResourceManager.GetString("updateColumn5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Paths.
+        /// </summary>
+        internal static string updateCustomPath {
+            get {
+                return ResourceManager.GetString("updateCustomPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates available. Do you wish to download them now?.
+        /// </summary>
+        internal static string updateMessage {
+            get {
+                return ResourceManager.GetString("updateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MiniCoder Updater.
+        /// </summary>
+        internal static string updaterTitle {
+            get {
+                return ResourceManager.GetString("updaterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string updateUpdateButton {
+            get {
+                return ResourceManager.GetString("updateUpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bit Rate:.
         /// </summary>
         internal static string videoBitRate {
@@ -740,6 +884,15 @@ namespace MiniCoder.Core.Languages {
         internal static string videoQualityOptions {
             get {
                 return ResourceManager.GetString("videoQualityOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video.
+        /// </summary>
+        internal static string videoTabTitle {
+            get {
+                return ResourceManager.GetString("videoTabTitle", resourceCulture);
             }
         }
         

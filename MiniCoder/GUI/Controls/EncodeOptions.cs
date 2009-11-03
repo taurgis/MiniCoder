@@ -20,6 +20,7 @@ namespace MiniCOder.GUI.Controls
         Tools tools;
         ProcessWatcher processWatcher = new ProcessWatcher();
         MainForm mainForm;
+        SysLanguage language;
         public EncodeOptions()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace MiniCOder.GUI.Controls
 
         public void setLanguage(SysLanguage language)
         {
+            this.language = language;
             outputSettings.Text = language.outputSettingsTitle;
             titleAdvert.Text = language.outputDisableVideoAdvert;
             outputDir.Text = language.outputDirectory;
@@ -51,7 +53,7 @@ namespace MiniCOder.GUI.Controls
 
         private void btnApps_Click(object sender, EventArgs e)
         {
-            Updater updater = new Updater(tools, false);
+            Updater updater = new Updater(tools, false, language);
             updater.Show();
         }
 

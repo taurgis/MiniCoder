@@ -11,6 +11,7 @@ using System.IO;
 using System.Collections;
 using System.Diagnostics;
 using MiniCoder.External;
+using MiniCoder.Core.Languages;
 namespace MiniCoder.GUI.External
 {
     public partial class Updater : Form
@@ -21,10 +22,60 @@ namespace MiniCoder.GUI.External
         Boolean warnUser = false;
         Tools tools;
        
-        public Updater(Tools tools, Boolean hide)
+        public Updater(Tools tools, Boolean hide, SysLanguage language)
         {
             
+
             InitializeComponent();
+            if (language != null)
+            {
+                this.Text = language.updaterTitle;
+                coreTab.Text = language.coreTabTitle;
+                pluginTab.Text = language.pluginsTabTitle;
+                audioTab.Text = language.audioTabTitle;
+                videoTab.Text = language.videoTabTitle;
+                muxTab.Text = language.muxingTabTitle;
+                otherTab.Text = language.otherTabTitle;
+
+                coreList.Columns[0].Text = language.updateColumn1;
+                pluginsList.Columns[0].Text = language.updateColumn1;
+                audioList.Columns[0].Text = language.updateColumn1;
+                videoList.Columns[0].Text = language.updateColumn1;
+                muxingList.Columns[0].Text = language.updateColumn1;
+                otherList.Columns[0].Text = language.updateColumn1;
+
+                coreList.Columns[1].Text = language.updateColumn2;
+                pluginsList.Columns[1].Text = language.updateColumn2;
+                audioList.Columns[1].Text = language.updateColumn2;
+                videoList.Columns[1].Text = language.updateColumn2;
+                muxingList.Columns[1].Text = language.updateColumn2;
+                otherList.Columns[1].Text = language.updateColumn2;
+
+                coreList.Columns[2].Text = language.updateColumn3;
+                pluginsList.Columns[2].Text = language.updateColumn3;
+                audioList.Columns[2].Text = language.updateColumn3;
+                videoList.Columns[2].Text = language.updateColumn3;
+                muxingList.Columns[2].Text = language.updateColumn3;
+                otherList.Columns[2].Text = language.updateColumn3;
+
+                coreList.Columns[3].Text = language.updateColumn4;
+                pluginsList.Columns[3].Text = language.updateColumn4;
+                audioList.Columns[3].Text = language.updateColumn4;
+                videoList.Columns[3].Text = language.updateColumn4;
+                muxingList.Columns[3].Text = language.updateColumn4;
+                otherList.Columns[3].Text = language.updateColumn4;
+                
+                coreList.Columns[4].Text = language.updateColumn5;
+                pluginsList.Columns[4].Text = language.updateColumn5;
+                audioList.Columns[4].Text = language.updateColumn5;
+                videoList.Columns[4].Text = language.updateColumn5;
+                muxingList.Columns[4].Text = language.updateColumn5;
+                otherList.Columns[4].Text = language.updateColumn5;
+
+                customPath.Text = language.updateCustomPath;
+                updateButton.Text = language.updateUpdateButton;
+                cancelButton.Text = language.updateCancelButton;
+            }
             this.tools = tools;
             toolInfo = tools.getTools();
            LogBook.addLogLine("Update Manager","UpdateChecking","UpdateChecking",false);
@@ -63,9 +114,9 @@ namespace MiniCoder.GUI.External
                     LogBook.addLogLine("Updates available for " + key + ".","UpdateChecking","", false);
                     if (hide)
                     {
-                        if (MessageBox.Show("Updates available. Do you wish to download them now?", "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(language.updateMessage, "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            Updater upd = new Updater(tools, false);
+                            Updater upd = new Updater(tools, false, language);
                             this.Close();
                             upd.ShowDialog();
                             return;
