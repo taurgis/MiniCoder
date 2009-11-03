@@ -124,6 +124,51 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string customFilterCancel {
+            get {
+                return ResourceManager.GetString("customFilterCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you want to disable a default filter disable it in the Settings Page..
+        /// </summary>
+        internal static string customFilterNote {
+            get {
+                return ResourceManager.GetString("customFilterNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string customFilterOK {
+            get {
+                return ResourceManager.GetString("customFilterOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Your Custom Avisynth Filters.
+        /// </summary>
+        internal static string customFilterText {
+            get {
+                return ResourceManager.GetString("customFilterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Filters.
+        /// </summary>
+        internal static string customFilterTitle {
+            get {
+                return ResourceManager.GetString("customFilterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start.
         /// </summary>
         internal static string encodeStartButton {
@@ -480,6 +525,167 @@ namespace MiniCoder.Core.Languages {
         internal static string settingsTabTitle {
             get {
                 return ResourceManager.GetString("settingsTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Variable Audio Bitrate determines the quality of the audio output.
+        ///The higher the bitrate the better the quality.
+        ///
+        ///Recommended: Minimum 32 Kbps.
+        /// </summary>
+        internal static string tooltipAudioBr {
+            get {
+                return ResourceManager.GetString("tooltipAudioBr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both audio codecs provide high quality at low bitrates.
+        ///
+        ///Recommended: Nero AAC.
+        /// </summary>
+        internal static string tooltipAudioCodec {
+            get {
+                return ResourceManager.GetString("tooltipAudioCodec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matroska: 
+        ///The Matroska Multimedia Container is an open standard free container format, a file 
+        ///format that can hold an unlimited number of video, audio, picture or subtitle tracks
+        /// inside a single file.
+        ///
+        ///MP4:
+        ///It is a multimedia container format standard specified as a part of MPEG-4. It is most 
+        ///commonly used to store digital audio and digital video streams, especially those defined
+        /// by MPEG..
+        /// </summary>
+        internal static string tooltipContainer {
+            get {
+                return ResourceManager.GetString("tooltipContainer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video denoising is the process of removing noise 
+        ///from a video signal..
+        /// </summary>
+        internal static string tooltipDenoise {
+            get {
+                return ResourceManager.GetString("tooltipDenoise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FieldDeinterlace: 
+        ///This filter provides functionality similar to the postprocessing function 
+        ///of Telecide. You can use it for pure interlaced streams.
+        /// </summary>
+        internal static string tooltipField {
+            get {
+                return ResourceManager.GetString("tooltipField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target File Size means that the program will try to get the
+        ///output filesize as close as it can to the determined size.
+        ///
+        ///Things that could make the output bigger than set:
+        ///- Attachments (Some fonts take over 5mb)
+        ///- VFR (Variable FrameRate)
+        ///
+        ///Recommended
+        ///- Minimum 50 mb for 20 min anime
+        ///- Minimum 120 mb for TV-Show
+        ///- Minmum 300mb for a Movie.
+        /// </summary>
+        internal static string tooltipFileSize {
+            get {
+                return ResourceManager.GetString("tooltipFileSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quality determines the video quality of the outputted file.
+        ///
+        ///Settings:
+        ///- Medium (Fast encoding time)
+        ///- High (Normal encoding time)
+        ///- Verry High (Long encoding time)
+        ///- PSP (Fast, can be played on PSP)
+        ///- IPOD (Fast, can be played on Ipod)
+        ///- PS3/XBOX (Fast, can be played on Ipod).
+        /// </summary>
+        internal static string tooltipQuality {
+            get {
+                return ResourceManager.GetString("tooltipQuality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With a resizing filter you can easily resize a video to a 
+        ///preferred aspect ratio. Using these filters you can either
+        ///soften the image or sharpen it.
+        ///
+        ///Recommended: 
+        ///- Soft for low bitrates
+        ///- Sharp for high bitrates.
+        /// </summary>
+        internal static string tooltipResize {
+            get {
+                return ResourceManager.GetString("tooltipResize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Subtitle file to use.
+        /// </summary>
+        internal static string tooltipSub {
+            get {
+                return ResourceManager.GetString("tooltipSub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average (Variable) Bit Rate is used to determine the best quality at the lowest possible quantizizer 
+        ///while maintaining the average bit rate. The higher the bitrate, the better the output quality. 
+        ///
+        ///In this mode the target video filesize can be predicted. 
+        ///A basic calculation is 50 bitrate equals 10mb every 20 mins.
+        ///
+        ///Recommended: 
+        ///- Minimum 250 for anime
+        ///- Minimum 300 for TV-Shows/movies.
+        /// </summary>
+        internal static string tooltipVideoBr {
+            get {
+                return ResourceManager.GetString("tooltipVideoBr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X264: It is a free software library for encoding video streams 
+        ///into the H.264/MPEG-4 AVC format.
+        ///
+        ///Xvid (formerly &quot;XviD&quot;) is a video codec library following the MPEG-4 standard,
+        /// specifically MPEG-4 Part 2 Advanced Simple Profile (ASP). It uses ASP 
+        ///features..
+        /// </summary>
+        internal static string tooltipVideoCodec {
+            get {
+                return ResourceManager.GetString("tooltipVideoCodec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The width and heigth of the re-encoded video..
+        /// </summary>
+        internal static string tooltipWidthHeight {
+            get {
+                return ResourceManager.GetString("tooltipWidthHeight", resourceCulture);
             }
         }
         

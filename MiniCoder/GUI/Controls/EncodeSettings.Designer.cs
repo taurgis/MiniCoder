@@ -307,7 +307,7 @@
             // 
             this.widthheightLabel.AutoSize = true;
             this.widthheightLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.widthheightLabel.Location = new System.Drawing.Point(13, 91);
+            this.widthheightLabel.Location = new System.Drawing.Point(6, 91);
             this.widthheightLabel.Name = "widthheightLabel";
             this.widthheightLabel.Size = new System.Drawing.Size(77, 15);
             this.widthheightLabel.TabIndex = 11;
@@ -318,7 +318,7 @@
             // 
             this.resize.AutoSize = true;
             this.resize.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resize.Location = new System.Drawing.Point(14, 60);
+            this.resize.Location = new System.Drawing.Point(6, 60);
             this.resize.Name = "resize";
             this.resize.Size = new System.Drawing.Size(45, 15);
             this.resize.TabIndex = 10;
@@ -348,7 +348,7 @@
             // 
             this.field.AutoSize = true;
             this.field.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field.Location = new System.Drawing.Point(14, 30);
+            this.field.Location = new System.Drawing.Point(6, 30);
             this.field.Name = "field";
             this.field.Size = new System.Drawing.Size(34, 15);
             this.field.TabIndex = 8;
@@ -512,7 +512,7 @@
             // 
             this.videoCodec.AutoSize = true;
             this.videoCodec.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.videoCodec.Location = new System.Drawing.Point(20, 109);
+            this.videoCodec.Location = new System.Drawing.Point(9, 109);
             this.videoCodec.Name = "videoCodec";
             this.videoCodec.Size = new System.Drawing.Size(43, 15);
             this.videoCodec.TabIndex = 7;
@@ -562,7 +562,7 @@
             // 
             this.videoQuality.AutoSize = true;
             this.videoQuality.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.videoQuality.Location = new System.Drawing.Point(19, 79);
+            this.videoQuality.Location = new System.Drawing.Point(8, 79);
             this.videoQuality.Name = "videoQuality";
             this.videoQuality.Size = new System.Drawing.Size(44, 15);
             this.videoQuality.TabIndex = 4;

@@ -30,24 +30,24 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.noteLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.fieldFilterText = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.customLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.noteLabel);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnOK);
             this.groupBox1.Controls.Add(this.fieldFilterText);
-            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.customLabel);
             this.groupBox1.Location = new System.Drawing.Point(2, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(634, 401);
@@ -65,16 +65,16 @@
             this.label8.Text = "Avs Code";
             this.label8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // label1
+            // noteLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 336);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 15);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "If you want to disable a default filter disable it in the Settings Page.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.noteLabel.AutoSize = true;
+            this.noteLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noteLabel.Location = new System.Drawing.Point(88, 336);
+            this.noteLabel.Name = "noteLabel";
+            this.noteLabel.Size = new System.Drawing.Size(366, 15);
+            this.noteLabel.TabIndex = 12;
+            this.noteLabel.Text = "If you want to disable a default filter disable it in the Settings Page.";
+            this.noteLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // label2
             // 
@@ -117,18 +117,17 @@
             this.fieldFilterText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.fieldFilterText.Size = new System.Drawing.Size(613, 273);
             this.fieldFilterText.TabIndex = 5;
-          
             // 
-            // label7
+            // customLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(195, 15);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Enter Your Custom Avisynth Filters";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.customLabel.AutoSize = true;
+            this.customLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customLabel.Location = new System.Drawing.Point(10, 16);
+            this.customLabel.Name = "customLabel";
+            this.customLabel.Size = new System.Drawing.Size(195, 15);
+            this.customLabel.TabIndex = 4;
+            this.customLabel.Text = "Enter Your Custom Avisynth Filters";
+            this.customLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // CustomFilter
             // 
@@ -138,6 +137,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CustomFilter";
             this.Text = "Custom Filter";
+            this.Load += new System.EventHandler(this.CustomFilter_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -148,10 +148,10 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox fieldFilterText;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label customLabel;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label noteLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
     }
