@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.continueAfterError = new System.Windows.Forms.CheckBox();
             this.showVideo = new System.Windows.Forms.CheckBox();
             this.ignoreAttachments = new System.Windows.Forms.CheckBox();
             this.ignoreSubs = new System.Windows.Forms.CheckBox();
@@ -44,7 +45,7 @@
             this.outPutLocation = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
-            this.continueAfterError = new System.Windows.Forms.CheckBox();
+            this.languagesSelect = new System.Windows.Forms.ComboBox();
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -64,6 +65,16 @@
             this.groupBox8.TabIndex = 18;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Encoding";
+            // 
+            // continueAfterError
+            // 
+            this.continueAfterError.AutoSize = true;
+            this.continueAfterError.Location = new System.Drawing.Point(9, 101);
+            this.continueAfterError.Name = "continueAfterError";
+            this.continueAfterError.Size = new System.Drawing.Size(167, 17);
+            this.continueAfterError.TabIndex = 5;
+            this.continueAfterError.Text = "Continue to next file after error";
+            this.continueAfterError.UseVisualStyleBackColor = true;
             // 
             // showVideo
             // 
@@ -176,6 +187,7 @@
             this.groupBox9.TabIndex = 15;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Output Settings";
+            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // clearOutput
             // 
@@ -224,19 +236,25 @@
             this.titleAdvert.Text = "Disable video title advert";
             this.titleAdvert.UseVisualStyleBackColor = true;
             // 
-            // continueAfterError
+            // languagesSelect
             // 
-            this.continueAfterError.AutoSize = true;
-            this.continueAfterError.Location = new System.Drawing.Point(9, 101);
-            this.continueAfterError.Name = "continueAfterError";
-            this.continueAfterError.Size = new System.Drawing.Size(167, 17);
-            this.continueAfterError.TabIndex = 5;
-            this.continueAfterError.Text = "Continue to next file after error";
-            this.continueAfterError.UseVisualStyleBackColor = true;
+            this.languagesSelect.DisplayMember = "Low";
+            this.languagesSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.languagesSelect.DropDownWidth = 100;
+            this.languagesSelect.FormattingEnabled = true;
+            this.languagesSelect.Items.AddRange(new object[] {
+            "English",
+            "Nederlands"});
+            this.languagesSelect.Location = new System.Drawing.Point(259, 280);
+            this.languagesSelect.Name = "languagesSelect";
+            this.languagesSelect.Size = new System.Drawing.Size(100, 21);
+            this.languagesSelect.TabIndex = 15;
+            this.languagesSelect.SelectedIndexChanged += new System.EventHandler(this.languagesSelect_SelectedIndexChanged);
             // 
             // EncodeOptions
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.languagesSelect);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.btnApps);
             this.Controls.Add(this.groupBox10);
@@ -272,6 +290,7 @@
         private System.Windows.Forms.CheckBox titleAdvert;
         private System.Windows.Forms.CheckBox showVideo;
         private System.Windows.Forms.CheckBox continueAfterError;
+        private System.Windows.Forms.ComboBox languagesSelect;
 
     }
 }

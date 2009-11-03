@@ -9,6 +9,8 @@ using MiniCoder.GUI.AviSynth;
 using System.Input;
 using MiniCoder.Templates.Simple;
 using System.IO;
+using MiniCoder.Core.Languages;
+
 namespace MiniCOder.GUI.Controls
 {
     public partial class EncodeSettings : UserControl
@@ -20,7 +22,7 @@ namespace MiniCOder.GUI.Controls
         public EncodeSettings()
         {
             InitializeComponent();
-         
+
             audioCombo.SelectedIndex = 0;
             fieldCombo.SelectedIndex = 0;
             resizeCombo.SelectedIndex = 0;
@@ -30,8 +32,50 @@ namespace MiniCOder.GUI.Controls
             videoCombo.SelectedIndex = 0;
             containerCombo.SelectedIndex = 0;
             vidQualCombo.SelectedIndex = 0;
-            
-            }
+
+        }
+
+        public void setLanguage(SysLanguage language)
+        {
+            videoOptions.Text = language.videoOptionsTitle;
+            bitRateRadio.Text = language.videoBitRate;
+            fileSizeRadio.Text = language.videoFileSize;
+            videoQuality.Text = language.videoQuality;
+
+            int curVidQual = vidQualCombo.SelectedIndex;
+            vidQualCombo.Items.Clear();
+            vidQualCombo.Items.AddRange(language.videoQualityOptions);
+            vidQualCombo.SelectedIndex = curVidQual;
+            videoCodec.Text = language.videoCodec;
+            audioOptions.Text = language.audioOptionsTitle;
+            audioBitrate.Text = language.audioBitrate;
+            audCodec.Text = language.audioCodec;
+            containerOptions.Text = language.containerOptionsTitle;
+            format.Text = language.containerFormat;
+            filterOptions.Text = language.filterOptionsTitle;
+            preProcessing.Text = language.preprocessingOptionsTitle;
+            field.Text = language.preField;
+            resize.Text = language.preResize;
+            int curResize = resizeCombo.SelectedIndex;
+            resizeCombo.Items.Clear();
+            resizeCombo.Items.AddRange(language.preResizeOptions);
+            resizeCombo.SelectedIndex = curResize;
+            widthheightLabel.Text = language.preWidthHeight;
+            postprocessing.Text = language.postprocessingOptionsTitle;
+            denoiserLabel.Text = language.postDenoiser;
+            int curDenoise = noiseCombo.SelectedIndex;
+            noiseCombo.Items.Clear();
+            noiseCombo.Items.AddRange(language.postDenoiserOptions);
+            noiseCombo.SelectedIndex = curDenoise;
+            sharpenLabel.Text = language.postSharpen;
+            int curSharpen = sharpCombo.SelectedIndex;
+            sharpCombo.Items.Clear();
+            sharpCombo.Items.AddRange(language.postSharpenOptions);
+            sharpCombo.SelectedIndex = curSharpen;
+            subtitle.Text = language.postSubtitle;
+            customButton.Text = language.customButton;
+            saveOptButton.Text = language.saveButton;
+        }
 
         public SortedList<string, string> getSettings()
         {

@@ -14,6 +14,7 @@ using System.Collections;
 using MiniCoder.Encoding.Process_Management;
 using MiniCoder.Core.Settings;
 using System.Diagnostics;
+using MiniCoder.Core.Languages;
 namespace MiniCoder.GUI
 {
     public partial class MainForm : Form
@@ -24,6 +25,7 @@ namespace MiniCoder.GUI
         SortedList<String, String> encodeSet = new SortedList<string, string>();
         ProcessWatcher processWatcher = new ProcessWatcher();
         Boolean vfr;
+        SysLanguage language;
         private int curEncode = 0;
         public MainForm()
         {
@@ -35,14 +37,16 @@ namespace MiniCoder.GUI
         {
             try
             {
+                encodeOptions.setMain(this);
                 if (File.Exists(Application.StartupPath + "\\settings.xml"))
                 {
                     MainSettings main = new MainSettings();
                     main.loadSettings();
                     encodeOptions.loadSettings(main);
+                    
                 }
 
-
+                
                 LogBook.addLogLine("System Info", "", "SysInfo", false);
                 LogBook.addLogLine(MiniSystem.getOSName(), "SysInfo", "", false);
                 LogBook.addLogLine(MiniSystem.getDotNetFramework(), "SysInfo", "", false);
@@ -71,6 +75,28 @@ namespace MiniCoder.GUI
                
             }
         }
+
+        public void loadLanguage(int i)
+        {
+            language = new SysLanguage(i);
+            this.Text = language.programTitle;
+            this.logTab.Text = language.logTabTitle;
+            this.inputTab.Text = language.inputTabTitle;
+            this.settingsTab.Text = language.settingsTabTitle;
+            this.optionsTab.Text = language.optionsTabTitle;
+            this.newsTab.Text = language.newsTabTitle;
+            inputList.Columns[0].Text = language.inputColumn1Title;
+            inputList.Columns[1].Text = language.inputColumn2StatusTitle;
+            startButton.Text = language.encodeStartButton;
+            stopButton.Text = language.encodeStopButton;
+            whenDone.Text = language.whenDone;
+            infoLabel.Text = language.infoLabel;
+            cbAfterEncode.Items.Clear();
+            cbAfterEncode.Items.AddRange(language.whenDoneOptions);
+            cbAfterEncode.SelectedIndex = 0;
+            encodeSettings.setLanguage(language);
+        }
+
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             encodeOptions.saveMe();
@@ -401,15 +427,15 @@ namespace MiniCoder.GUI
             }
 
 
-            switch (cbAfterEncode.Text)
+            switch (cbAfterEncode.SelectedIndex)
             {
-                case "Hibernate":
+                case 1:
                     Application.SetSuspendState(PowerState.Hibernate, true, true);
                     break;
-                case "Standby":
+                case 2:
                     Application.SetSuspendState(PowerState.Suspend, true, true);
                     break;
-                case "Shutdown":
+                case 3:
                     System.Diagnostics.Process.Start("shutdown -f -s -t 0");
                     break;
 

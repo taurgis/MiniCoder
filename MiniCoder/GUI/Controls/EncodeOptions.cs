@@ -18,11 +18,13 @@ namespace MiniCOder.GUI.Controls
         
         Tools tools;
         ProcessWatcher processWatcher = new ProcessWatcher();
+        MainForm mainForm;
         public EncodeOptions()
         {
             InitializeComponent();
             processPriority.SelectedIndex = 0;
-          
+           
+   
         }
 
         private void btnApps_Click(object sender, EventArgs e)
@@ -31,7 +33,10 @@ namespace MiniCOder.GUI.Controls
             updater.Show();
         }
 
-
+        public void setMain(MainForm mainForm)
+        {
+            this.mainForm = mainForm;
+        }
         public SortedList<String, String> getSettings()
         {
             SortedList<String, String> settings = new SortedList<string,string>();
@@ -68,16 +73,19 @@ namespace MiniCOder.GUI.Controls
             ignoreChapters.Checked = settings.ignoreChapters;
             ignoreSubs.Checked = settings.ignoreSubs;
             continueAfterError.Checked = settings.continueAfterError;
+            languagesSelect.SelectedIndex = 0;
         }
 
         private void EncodeOptions_Load(object sender, EventArgs e)
         {
            // processPriority.SelectedIndex = 0;
+
         }
 
         private void processPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
             processWatcher.setPriority(processPriority.SelectedIndex);
+            
         }
 
         private void outputSelect_Click(object sender, EventArgs e)
@@ -105,6 +113,16 @@ namespace MiniCOder.GUI.Controls
             main.processPriority = processPriority.SelectedIndex.ToString();
             main.continueAfterError = continueAfterError.Checked;
             main.saveSettings();
+        }
+
+        private void languagesSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mainForm.loadLanguage(languagesSelect.SelectedIndex);
+        }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

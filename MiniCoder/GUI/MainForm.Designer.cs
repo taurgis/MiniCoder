@@ -34,7 +34,7 @@ namespace MiniCoder.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainTabPage = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
+            this.whenDone = new System.Windows.Forms.Label();
             this.cbAfterEncode = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.addFile = new System.Windows.Forms.Button();
@@ -51,9 +51,7 @@ namespace MiniCoder.GUI
             this.clearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
             this.settingsTab = new System.Windows.Forms.TabPage();
-            this.encodeSettings = new MiniCOder.GUI.Controls.EncodeSettings();
             this.optionsTab = new System.Windows.Forms.TabPage();
-            this.encodeOptions = new MiniCOder.GUI.Controls.EncodeOptions();
             this.logTab = new System.Windows.Forms.TabPage();
             this.logView = new System.Windows.Forms.TreeView();
             this.logMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -61,13 +59,15 @@ namespace MiniCoder.GUI
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.sendErrorReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iconList = new System.Windows.Forms.ImageList(this.components);
-            this.aboutTab = new System.Windows.Forms.TabPage();
+            this.newsTab = new System.Windows.Forms.TabPage();
             this.newsList = new System.Windows.Forms.ListView();
             this.dateHeader = new System.Windows.Forms.ColumnHeader();
             this.newsHeader = new System.Windows.Forms.ColumnHeader();
             this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.notifyMiniCoder = new System.Windows.Forms.NotifyIcon(this.components);
+            this.encodeSettings = new MiniCOder.GUI.Controls.EncodeSettings();
+            this.encodeOptions = new MiniCOder.GUI.Controls.EncodeOptions();
             this.mainTabPage.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -76,7 +76,7 @@ namespace MiniCoder.GUI
             this.optionsTab.SuspendLayout();
             this.logTab.SuspendLayout();
             this.logMenu.SuspendLayout();
-            this.aboutTab.SuspendLayout();
+            this.newsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabPage
@@ -85,7 +85,7 @@ namespace MiniCoder.GUI
             this.mainTabPage.Controls.Add(this.settingsTab);
             this.mainTabPage.Controls.Add(this.optionsTab);
             this.mainTabPage.Controls.Add(this.logTab);
-            this.mainTabPage.Controls.Add(this.aboutTab);
+            this.mainTabPage.Controls.Add(this.newsTab);
             this.mainTabPage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTabPage.Location = new System.Drawing.Point(2, 10);
             this.mainTabPage.Name = "mainTabPage";
@@ -95,7 +95,7 @@ namespace MiniCoder.GUI
             // 
             // inputTab
             // 
-            this.inputTab.Controls.Add(this.label7);
+            this.inputTab.Controls.Add(this.whenDone);
             this.inputTab.Controls.Add(this.cbAfterEncode);
             this.inputTab.Controls.Add(this.btnDelete);
             this.inputTab.Controls.Add(this.addFile);
@@ -110,13 +110,14 @@ namespace MiniCoder.GUI
             this.inputTab.Text = "Input";
             this.inputTab.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // whenDone
             // 
-            this.label7.Location = new System.Drawing.Point(186, 330);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 21);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "When done";
+            this.whenDone.Location = new System.Drawing.Point(75, 330);
+            this.whenDone.Name = "whenDone";
+            this.whenDone.Size = new System.Drawing.Size(185, 21);
+            this.whenDone.TabIndex = 10;
+            this.whenDone.Text = "When done";
+            this.whenDone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cbAfterEncode
             // 
@@ -266,16 +267,6 @@ namespace MiniCoder.GUI
             this.settingsTab.Text = "Settings";
             this.settingsTab.UseVisualStyleBackColor = true;
             // 
-            // encodeSettings
-            // 
-            this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.encodeSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.encodeSettings.Location = new System.Drawing.Point(3, 3);
-            this.encodeSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.encodeSettings.Name = "encodeSettings";
-            this.encodeSettings.Size = new System.Drawing.Size(396, 350);
-            this.encodeSettings.TabIndex = 0;
-            // 
             // optionsTab
             // 
             this.optionsTab.Controls.Add(this.encodeOptions);
@@ -285,13 +276,6 @@ namespace MiniCoder.GUI
             this.optionsTab.TabIndex = 5;
             this.optionsTab.Text = "Options";
             this.optionsTab.UseVisualStyleBackColor = true;
-            // 
-            // encodeOptions
-            // 
-            this.encodeOptions.Location = new System.Drawing.Point(0, 0);
-            this.encodeOptions.Name = "encodeOptions";
-            this.encodeOptions.Size = new System.Drawing.Size(385, 309);
-            this.encodeOptions.TabIndex = 0;
             // 
             // logTab
             // 
@@ -353,15 +337,15 @@ namespace MiniCoder.GUI
             this.iconList.Images.SetKeyName(1, "default.png");
             this.iconList.Images.SetKeyName(2, "error.png");
             // 
-            // aboutTab
+            // newsTab
             // 
-            this.aboutTab.Controls.Add(this.newsList);
-            this.aboutTab.Location = new System.Drawing.Point(4, 25);
-            this.aboutTab.Name = "aboutTab";
-            this.aboutTab.Size = new System.Drawing.Size(402, 356);
-            this.aboutTab.TabIndex = 4;
-            this.aboutTab.Text = "News";
-            this.aboutTab.UseVisualStyleBackColor = true;
+            this.newsTab.Controls.Add(this.newsList);
+            this.newsTab.Location = new System.Drawing.Point(4, 25);
+            this.newsTab.Name = "newsTab";
+            this.newsTab.Size = new System.Drawing.Size(402, 356);
+            this.newsTab.TabIndex = 4;
+            this.newsTab.Text = "News";
+            this.newsTab.UseVisualStyleBackColor = true;
             // 
             // newsList
             // 
@@ -413,6 +397,23 @@ namespace MiniCoder.GUI
             this.notifyMiniCoder.Text = "MiniCoder";
             this.notifyMiniCoder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMiniCoder_MouseDoubleClick);
             // 
+            // encodeSettings
+            // 
+            this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.encodeSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.encodeSettings.Location = new System.Drawing.Point(3, 3);
+            this.encodeSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.encodeSettings.Name = "encodeSettings";
+            this.encodeSettings.Size = new System.Drawing.Size(396, 350);
+            this.encodeSettings.TabIndex = 0;
+            // 
+            // encodeOptions
+            // 
+            this.encodeOptions.Location = new System.Drawing.Point(0, 0);
+            this.encodeOptions.Name = "encodeOptions";
+            this.encodeOptions.Size = new System.Drawing.Size(385, 309);
+            this.encodeOptions.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,7 +437,7 @@ namespace MiniCoder.GUI
             this.optionsTab.ResumeLayout(false);
             this.logTab.ResumeLayout(false);
             this.logMenu.ResumeLayout(false);
-            this.aboutTab.ResumeLayout(false);
+            this.newsTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -451,7 +452,7 @@ namespace MiniCoder.GUI
 
         private System.Windows.Forms.TabControl mainTabPage;
         private System.Windows.Forms.TabPage inputTab;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label whenDone;
         private System.Windows.Forms.ComboBox cbAfterEncode;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button addFile;
@@ -464,7 +465,7 @@ namespace MiniCoder.GUI
         private System.Windows.Forms.TabPage settingsTab;
         private System.Windows.Forms.TabPage optionsTab;
         private System.Windows.Forms.TabPage logTab;
-        private System.Windows.Forms.TabPage aboutTab;
+        private System.Windows.Forms.TabPage newsTab;
         private System.Windows.Forms.ListView newsList;
         private System.Windows.Forms.ColumnHeader dateHeader;
         private System.Windows.Forms.ColumnHeader newsHeader;

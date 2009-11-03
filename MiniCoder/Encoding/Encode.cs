@@ -263,7 +263,7 @@ namespace MiniCoder.Encoding
                     return demuxWmv();
 
             }
-            return false;
+          //  return false;
         }
 
         private Boolean demuxAvs()
