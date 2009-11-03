@@ -267,6 +267,12 @@
   <data name="saveButton" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="audioTabTitle" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="coreTabTitle" xml:space="preserve">
+    <value>Core</value>
+  </data>
   <data name="customFilterCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -282,6 +288,9 @@
   <data name="customFilterTitle" xml:space="preserve">
     <value>Custom Filters</value>
   </data>
+  <data name="customPathsTitle" xml:space="preserve">
+    <value>Custom Paths</value>
+  </data>
   <data name="encodingNextError" xml:space="preserve">
     <value>Continue to next file after error</value>
   </data>
@@ -290,6 +299,15 @@
   </data>
   <data name="inputColumn2StatusTitle" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="muxingTabTitle" xml:space="preserve">
+    <value>Muxing/Demuxing</value>
+  </data>
+  <data name="otherTabTitle" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="pluginsTabTitle" xml:space="preserve">
+    <value>Plugins</value>
   </data>
   <data name="tooltipAudioBr" xml:space="preserve">
     <value>Variable Audio Bitrate determines the quality of the audio output.
@@ -380,8 +398,41 @@ features.</value>
   <data name="tooltipWidthHeight" xml:space="preserve">
     <value>The width and heigth of the re-encoded video.</value>
   </data>
+  <data name="updateCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="updateColumn1" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="updateColumn2" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="updateColumn3" xml:space="preserve">
+    <value>Existing Version</value>
+  </data>
+  <data name="updateColumn4" xml:space="preserve">
+    <value>Latest Version</value>
+  </data>
+  <data name="updateColumn5" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="updateCustomPath" xml:space="preserve">
+    <value>Custom Paths</value>
+  </data>
+  <data name="updateMessage" xml:space="preserve">
+    <value>Updates available. Do you wish to download them now?</value>
+  </data>
+  <data name="updaterTitle" xml:space="preserve">
+    <value>MiniCoder Updater</value>
+  </data>
+  <data name="updateUpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
   <data name="videoCodec" xml:space="preserve">
     <value>Codec:</value>
+  </data>
+  <data name="videoTabTitle" xml:space="preserve">
+    <value>Video</value>
   </data>
   <data name="whenDone" xml:space="preserve">
     <value>When done</value>

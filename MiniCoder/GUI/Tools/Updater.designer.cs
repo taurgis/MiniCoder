@@ -503,9 +503,10 @@
             // 
             // customPath
             // 
+            this.customPath.AutoSize = true;
             this.customPath.Location = new System.Drawing.Point(12, 299);
             this.customPath.Name = "customPath";
-            this.customPath.Size = new System.Drawing.Size(75, 23);
+            this.customPath.Size = new System.Drawing.Size(87, 23);
             this.customPath.TabIndex = 5;
             this.customPath.Text = "Custom Path";
             this.customPath.UseVisualStyleBackColor = true;

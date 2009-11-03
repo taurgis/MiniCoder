@@ -78,6 +78,23 @@ namespace MiniCoder.Core.Languages
         public string customFilterNote { get; set; }
         public string customFilterOK { get; set; }
         public string customFilterCancel { get; set; }
+        public string updaterTitle { get; set; }
+        public string coreTabTitle { get; set; }
+        public string pluginsTabTitle { get; set; }
+        public string audioTabTitle { get; set; }
+        public string videoTabTitle { get; set; }
+        public string muxingTabTitle { get; set; }
+        public string otherTabTitle { get; set; }
+        public string updateColumn1 { get; set; }
+        public string updateColumn2 { get; set; }
+        public string updateColumn3 { get; set; }
+        public string updateColumn4 { get; set; }
+        public string updateColumn5 { get; set; }
+        public string updateMessage { get; set; }
+        public string updateCustomPath { get; set; }
+        public string updateUpdateButton { get; set; }
+        public string updateCancelButton { get; set; }
+        public string customPathsTitle { get; set; }
 
         public SysLanguage(int i)
         {
@@ -160,6 +177,23 @@ namespace MiniCoder.Core.Languages
             customFilterNote = rm.GetString("customFilterNote", culture);
             customFilterOK = rm.GetString("customFilterOK", culture);
             customFilterCancel = rm.GetString("customFilterCancel", culture);
+            updaterTitle = rm.GetString("updaterTitle", culture);
+            coreTabTitle = rm.GetString("coreTabTitle", culture);
+            pluginsTabTitle = rm.GetString("pluginsTabTitle", culture);
+            audioTabTitle = rm.GetString("audioTabTitle", culture);
+            videoTabTitle = rm.GetString("videoTabTitle", culture);
+            muxingTabTitle = rm.GetString("muxingTabTitle", culture);
+            otherTabTitle = rm.GetString("otherTabTitle", culture);
+            updateColumn1 = rm.GetString("updateColumn1", culture);
+            updateColumn2 = rm.GetString("updateColumn2", culture);
+            updateColumn3 = rm.GetString("updateColumn3", culture);
+            updateColumn4 = rm.GetString("updateColumn4", culture);
+            updateColumn5 = rm.GetString("updateColumn5", culture);
+            updateMessage = rm.GetString("updateMessage", culture);
+            updateCustomPath = rm.GetString("updateCustomPath", culture);
+            updateUpdateButton = rm.GetString("updateUpdateButton", culture);
+            updateCancelButton = rm.GetString("updateCancelButton", culture);
+            customPathsTitle = rm.GetString("customPathsTitle", culture);
         }
     }
 }

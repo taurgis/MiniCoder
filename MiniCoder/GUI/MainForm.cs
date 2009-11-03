@@ -62,7 +62,7 @@ namespace MiniCoder.GUI
 
                 if (MiniOnline.checkInternet())
                 {
-                    Updater tempUpdater = new Updater(tools, true);
+                    Updater tempUpdater = new Updater(tools, true,language);
                     tempUpdater.Dispose();
                     MiniOnline.GetNews(newsList);
                 }

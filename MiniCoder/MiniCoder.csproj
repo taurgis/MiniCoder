@@ -81,6 +81,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>language.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Languages\language.nl-NL1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>language.nl-NL.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\Languages\SysLanguage.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
@@ -200,8 +205,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Core\Languages\language.nl-NL.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>language.nl-NL.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>language.nl-NL1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Languages\language.resx">
       <Generator>ResXFileCodeGenerator</Generator>

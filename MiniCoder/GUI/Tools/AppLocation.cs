@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using MiniCoder.External;
+using MiniCoder.Core.Languages;
 namespace MiniCoder.GUI.External
 {
     public partial class AppLocation : Form
@@ -15,10 +16,17 @@ namespace MiniCoder.GUI.External
         SortedList<String, Tool> packages;
 
         FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-        public AppLocation(SortedList<String, Tool> packages)
+        public AppLocation(SortedList<String, Tool> packages,SysLanguage language)
         {
             InitializeComponent();
             this.packages = packages;
+            audioTab.Text = language.audioTabTitle;
+            videoTab.Text = language.videoTabTitle;
+            muxTab.Text = language.muxingTabTitle;
+            otherTab.Text = language.otherTabTitle;
+            saveApps.Text = language.saveButton;
+            cancelApps.Text = language.updateCancelButton;
+            this.Text = language.customPathsTitle;
         }
 
         private void madplaySelect_Click(object sender, EventArgs e)
