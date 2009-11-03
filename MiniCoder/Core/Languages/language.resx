@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="audioBitrate" xml:space="preserve">
-    <value>Bit Rate</value>
+    <value>Bit Rate:</value>
   </data>
   <data name="audioCodec" xml:space="preserve">
-    <value>Codec</value>
+    <value>Codec:</value>
   </data>
   <data name="audioOptionsTitle" xml:space="preserve">
     <value>Audio Options</value>
   </data>
   <data name="containerFormat" xml:space="preserve">
-    <value>Format</value>
+    <value>Format:</value>
   </data>
   <data name="containerOptionsTitle" xml:space="preserve">
     <value>Container</value>
@@ -166,13 +166,13 @@
     <value>Options</value>
   </data>
   <data name="preField" xml:space="preserve">
-    <value>Field</value>
+    <value>Field:</value>
   </data>
   <data name="preprocessingOptionsTitle" xml:space="preserve">
     <value>Pre-Processing</value>
   </data>
   <data name="preResize" xml:space="preserve">
-    <value>Resize</value>
+    <value>Resize:</value>
   </data>
   <data name="programTitle" xml:space="preserve">
     <value>MiniCoder Encoding GUI</value>
@@ -181,10 +181,10 @@
     <value>Settings</value>
   </data>
   <data name="videoBitRate" xml:space="preserve">
-    <value>Bit Rate</value>
+    <value>Bit Rate:</value>
   </data>
   <data name="videoFileSize" xml:space="preserve">
-    <value>File Size</value>
+    <value>File Size:</value>
   </data>
   <data name="videoOptionsTitle" xml:space="preserve">
     <value>Video Options</value>
@@ -226,7 +226,7 @@
     <value>Encoding</value>
   </data>
   <data name="outputDirectory" xml:space="preserve">
-    <value>Output Dir.</value>
+    <value>Output Dir.:</value>
   </data>
   <data name="outputDisableVideoAdvert" xml:space="preserve">
     <value>Disable video title advert</value>
@@ -235,7 +235,7 @@
     <value>Output Settings</value>
   </data>
   <data name="postDenoiser" xml:space="preserve">
-    <value>Denoiser</value>
+    <value>Denoiser:</value>
   </data>
   <data name="postDenoiserOptions" xml:space="preserve">
     <value>None;Light;Medium;Heavy;Insane</value>
@@ -244,7 +244,7 @@
     <value>Post-Processing</value>
   </data>
   <data name="postSharpen" xml:space="preserve">
-    <value>Sharpen</value>
+    <value>Sharpen:</value>
   </data>
   <data name="postSharpenOptions" xml:space="preserve">
     <value>None;Light;Medium;Heavy;Insane</value>
@@ -253,7 +253,7 @@
     <value>Subtitle</value>
   </data>
   <data name="preWidthHeight" xml:space="preserve">
-    <value>Width/Height</value>
+    <value>Width/Height:</value>
   </data>
   <data name="processPriority" xml:space="preserve">
     <value>Priority:</value>
@@ -267,6 +267,9 @@
   <data name="saveButton" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="encodingNextError" xml:space="preserve">
+    <value>Continue to next file after error</value>
+  </data>
   <data name="infoLabel" xml:space="preserve">
     <value>GUI Ready</value>
   </data>
@@ -274,7 +277,7 @@
     <value>Status</value>
   </data>
   <data name="videoCodec" xml:space="preserve">
-    <value>Codec</value>
+    <value>Codec:</value>
   </data>
   <data name="whenDone" xml:space="preserve">
     <value>When done</value>

@@ -48,6 +48,19 @@ namespace MiniCoder.Core.Languages
         public string postSubtitle { get; set; }
         public string customButton { get; set; }
         public string saveButton { get; set; }
+        public string outputSettingsTitle { get; set; }
+        public string outputDisableVideoAdvert { get; set; }
+        public string outputDirectory { get; set; }
+        public string processSettingsTitle { get; set; }
+        public string processPriority { get; set; }
+        public string[] processPriorityOptions { get; set; }
+        public string encodingTitle { get; set; }
+        public string encodingIgnoreAttachments { get; set; }
+        public string encodingIgnoreAudio { get; set; }
+        public string encodingIgnoreChapters { get; set; }
+        public string encodingIgnoreSubs { get; set; }
+        public string encodingShowVideoPreview { get; set; }
+        public string encodingNextError { get; set; }
 
         public SysLanguage(int i)
         {
@@ -100,6 +113,19 @@ namespace MiniCoder.Core.Languages
             postSubtitle = rm.GetString("postSubtitle", culture);
             customButton = rm.GetString("customButton", culture);
             saveButton = rm.GetString("saveButton", culture);
+            outputSettingsTitle = rm.GetString("outputSettingsTitle", culture);
+            outputDisableVideoAdvert = rm.GetString("outputDisableVideoAdvert", culture);
+            outputDirectory = rm.GetString("outputDirectory", culture);
+            processSettingsTitle = rm.GetString("processSettingsTitle", culture);
+            processPriority = rm.GetString("processPriority", culture);
+            processPriorityOptions = rm.GetString("processPriorityOptions", culture).Split(Char.Parse(";"));
+            encodingTitle = rm.GetString("encodingTitle", culture);
+            encodingIgnoreAttachments = rm.GetString("encodingIgnoreAttachments", culture);
+            encodingIgnoreAudio = rm.GetString("encodingIgnoreAudio", culture);
+            encodingIgnoreChapters = rm.GetString("encodingIgnoreChapters", culture);
+            encodingIgnoreSubs = rm.GetString("encodingIgnoreSubs", culture);
+            encodingShowVideoPreview = rm.GetString("encodingShowVideoPreview", culture);
+            encodingNextError = rm.GetString("encodingNextError", culture);
         }
     }
 }

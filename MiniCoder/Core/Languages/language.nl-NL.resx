@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="audioBitrate" xml:space="preserve">
-    <value>Bitsnelheid</value>
+    <value>Bitsnelheid:</value>
   </data>
   <data name="audioCodec" xml:space="preserve">
-    <value>Codec</value>
+    <value>Codec:</value>
   </data>
   <data name="audioOptionsTitle" xml:space="preserve">
     <value>Audio Opties</value>
   </data>
   <data name="containerFormat" xml:space="preserve">
-    <value>Formaat</value>
+    <value>Formaat:</value>
   </data>
   <data name="containerOptionsTitle" xml:space="preserve">
     <value>Container</value>
@@ -166,13 +166,13 @@
     <value>Opties</value>
   </data>
   <data name="preField" xml:space="preserve">
-    <value>Veld</value>
+    <value>Veld:</value>
   </data>
   <data name="preprocessingOptionsTitle" xml:space="preserve">
     <value>Voorverwerking</value>
   </data>
   <data name="preResize" xml:space="preserve">
-    <value>Grootte</value>
+    <value>Grootte:</value>
   </data>
   <data name="programTitle" xml:space="preserve">
     <value>MiniCoder Coderings GUI</value>
@@ -181,16 +181,16 @@
     <value>Instellingen</value>
   </data>
   <data name="videoBitRate" xml:space="preserve">
-    <value>Bitsnelheid</value>
+    <value>Bitsnelheid:</value>
   </data>
   <data name="videoFileSize" xml:space="preserve">
-    <value>Bestandsgr.</value>
+    <value>Bestandsgr.:</value>
   </data>
   <data name="videoOptionsTitle" xml:space="preserve">
     <value>Video Opties</value>
   </data>
   <data name="videoQuality" xml:space="preserve">
-    <value>Kwaliteit</value>
+    <value>Kwaliteit:</value>
   </data>
   <data name="videoQualityOptions" xml:space="preserve">
     <value>Medium;Hoog;Heel Hoog;Heel Hoog (+50mb anime);Heel Hoog (-50mb anime);Heel Hoog (TV-Series/Films);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
@@ -208,64 +208,67 @@
     <value>Persoonlijk</value>
   </data>
   <data name="encodingIgnoreAttachments" xml:space="preserve">
-    <value>Ignore Attachments</value>
+    <value>Negeer Bijlagen</value>
   </data>
   <data name="encodingIgnoreAudio" xml:space="preserve">
-    <value>Ignore Audio</value>
+    <value>Negeer Audio</value>
   </data>
   <data name="encodingIgnoreChapters" xml:space="preserve">
-    <value>Ignore Chapters</value>
+    <value>Negeer Hoofdstukken</value>
   </data>
   <data name="encodingIgnoreSubs" xml:space="preserve">
-    <value>Ignore Subs</value>
+    <value>Negeer ondertitels</value>
   </data>
   <data name="encodingShowVideoPreview" xml:space="preserve">
-    <value>Show video preview (Debug Only)</value>
+    <value>Toon video preview (Enkel voor debuggen)</value>
   </data>
   <data name="encodingTitle" xml:space="preserve">
-    <value>Encoding</value>
+    <value>Codering</value>
   </data>
   <data name="outputDirectory" xml:space="preserve">
-    <value>Output Dir.</value>
+    <value>Uitvoer:</value>
   </data>
   <data name="outputDisableVideoAdvert" xml:space="preserve">
-    <value>Disable video title advert</value>
+    <value>Schakel video titel reclame uit</value>
   </data>
   <data name="outputSettingsTitle" xml:space="preserve">
-    <value>Output Settings</value>
+    <value>Uitvoer Instellingen</value>
   </data>
   <data name="postDenoiser" xml:space="preserve">
-    <value>Ruisverw.</value>
+    <value>Ruisverw.:</value>
   </data>
   <data name="postDenoiserOptions" xml:space="preserve">
     <value>Geen;Licht;Medium;Zwaar;Gestoord</value>
   </data>
   <data name="postprocessingOptionsTitle" xml:space="preserve">
-    <value>Naverwerking</value>
+    <value>Naverwerking:</value>
   </data>
   <data name="postSharpen" xml:space="preserve">
-    <value>Verscherp</value>
+    <value>Verscherp:</value>
   </data>
   <data name="postSharpenOptions" xml:space="preserve">
     <value>Geen;Licht;Medium;Zwaar;Gestoord</value>
   </data>
   <data name="postSubtitle" xml:space="preserve">
-    <value>Ondertitel</value>
+    <value>Ondertitel:</value>
   </data>
   <data name="preWidthHeight" xml:space="preserve">
     <value>Breedte/Hoogte</value>
   </data>
   <data name="processPriority" xml:space="preserve">
-    <value>Priority:</value>
+    <value>Prioriteit:</value>
   </data>
   <data name="processPriorityOptions" xml:space="preserve">
-    <value>Low;Below Normal;Normal;Above Normal;High;Realtime</value>
+    <value>Laag;Onder Normaal;Normaal;Boven Normaal;Hoog;Realtime</value>
   </data>
   <data name="processSettingsTitle" xml:space="preserve">
-    <value>Process Settings</value>
+    <value>Proces Instellingen</value>
   </data>
   <data name="saveButton" xml:space="preserve">
     <value>Opslaan</value>
+  </data>
+  <data name="encodingNextError" xml:space="preserve">
+    <value>Ga naar volgend bestand bij errors</value>
   </data>
   <data name="infoLabel" xml:space="preserve">
     <value>GUI klaar</value>
@@ -274,7 +277,7 @@
     <value>Status</value>
   </data>
   <data name="videoCodec" xml:space="preserve">
-    <value>Codec</value>
+    <value>Codec:</value>
   </data>
   <data name="whenDone" xml:space="preserve">
     <value>Wanneer klaar</value>
