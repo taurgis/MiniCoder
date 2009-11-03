@@ -71,6 +71,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Encoding\XmlValidator.cs" />
+    <Compile Include="Core\Languages\language.nl-NL.Designer.cs">
+      <DependentUpon>language.nl-NL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Core\Languages\language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Languages\SysLanguage.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
     <Compile Include="Core\Settings\MainSettings.cs" />
@@ -187,6 +198,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Core\Languages\language.nl-NL.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>language.nl-NL.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Languages\language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>language.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AviSynth\CustomFilter.resx">
       <DependentUpon>CustomFilter.cs</DependentUpon>
       <SubType>Designer</SubType>
