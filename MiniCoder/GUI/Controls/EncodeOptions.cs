@@ -9,6 +9,7 @@ using MiniCoder.GUI.External;
 using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using MiniCoder.GUI;
+using MiniCoder.Core.Languages;
 using MiniCoder.Core.Settings;
 
 namespace MiniCOder.GUI.Controls
@@ -26,6 +27,27 @@ namespace MiniCOder.GUI.Controls
            
    
         }
+
+        public void setLanguage(SysLanguage language)
+        {
+            outputSettings.Text = language.outputSettingsTitle;
+            titleAdvert.Text = language.outputDisableVideoAdvert;
+            outputDir.Text = language.outputDirectory;
+            processSettings.Text = language.processSettingsTitle;
+            processPriorityLabel.Text = language.processPriority;
+            int curPriority = processPriority.SelectedIndex;
+            processPriority.Items.Clear();
+            processPriority.Items.AddRange(language.processPriorityOptions);
+            processPriority.SelectedIndex = curPriority;
+            encodingGroup.Text = language.encodingTitle;
+            ignoreAttachments.Text = language.encodingIgnoreAttachments;
+            audioSkip.Text = language.encodingIgnoreAudio;
+            ignoreChapters.Text = language.encodingIgnoreChapters;
+            ignoreSubs.Text = language.encodingIgnoreSubs;
+            showVideo.Text = language.encodingShowVideoPreview;
+            continueAfterError.Text = language.encodingNextError;
+        }
+
 
         private void btnApps_Click(object sender, EventArgs e)
         {
@@ -73,7 +95,7 @@ namespace MiniCOder.GUI.Controls
             ignoreChapters.Checked = settings.ignoreChapters;
             ignoreSubs.Checked = settings.ignoreSubs;
             continueAfterError.Checked = settings.continueAfterError;
-            languagesSelect.SelectedIndex = 0;
+            languagesSelect.SelectedIndex = settings.language;
         }
 
         private void EncodeOptions_Load(object sender, EventArgs e)
@@ -112,6 +134,7 @@ namespace MiniCOder.GUI.Controls
             main.outputPath = outPutLocation.Text;
             main.processPriority = processPriority.SelectedIndex.ToString();
             main.continueAfterError = continueAfterError.Checked;
+            main.language = languagesSelect.SelectedIndex;
             main.saveSettings();
         }
 

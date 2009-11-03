@@ -70,7 +70,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit Rate.
+        ///   Looks up a localized string similar to Bit Rate:.
         /// </summary>
         internal static string audioBitrate {
             get {
@@ -79,7 +79,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Codec.
+        ///   Looks up a localized string similar to Codec:.
         /// </summary>
         internal static string audioCodec {
             get {
@@ -97,7 +97,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format.
+        ///   Looks up a localized string similar to Format:.
         /// </summary>
         internal static string containerFormat {
             get {
@@ -174,6 +174,15 @@ namespace MiniCoder.Core.Languages {
         internal static string encodingIgnoreSubs {
             get {
                 return ResourceManager.GetString("encodingIgnoreSubs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue to next file after error.
+        /// </summary>
+        internal static string encodingNextError {
+            get {
+                return ResourceManager.GetString("encodingNextError", resourceCulture);
             }
         }
         
@@ -295,7 +304,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output Dir..
+        ///   Looks up a localized string similar to Output Dir.:.
         /// </summary>
         internal static string outputDirectory {
             get {
@@ -322,7 +331,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Denoiser.
+        ///   Looks up a localized string similar to Denoiser:.
         /// </summary>
         internal static string postDenoiser {
             get {
@@ -349,7 +358,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sharpen.
+        ///   Looks up a localized string similar to Sharpen:.
         /// </summary>
         internal static string postSharpen {
             get {
@@ -376,7 +385,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field.
+        ///   Looks up a localized string similar to Field:.
         /// </summary>
         internal static string preField {
             get {
@@ -394,7 +403,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resize.
+        ///   Looks up a localized string similar to Resize:.
         /// </summary>
         internal static string preResize {
             get {
@@ -412,7 +421,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Width/Height.
+        ///   Looks up a localized string similar to Width/Height:.
         /// </summary>
         internal static string preWidthHeight {
             get {
@@ -475,7 +484,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit Rate.
+        ///   Looks up a localized string similar to Bit Rate:.
         /// </summary>
         internal static string videoBitRate {
             get {
@@ -484,7 +493,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Codec.
+        ///   Looks up a localized string similar to Codec:.
         /// </summary>
         internal static string videoCodec {
             get {
@@ -493,7 +502,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File Size.
+        ///   Looks up a localized string similar to File Size:.
         /// </summary>
         internal static string videoFileSize {
             get {

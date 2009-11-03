@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.encodingGroup = new System.Windows.Forms.GroupBox();
             this.continueAfterError = new System.Windows.Forms.CheckBox();
             this.showVideo = new System.Windows.Forms.CheckBox();
             this.ignoreAttachments = new System.Windows.Forms.CheckBox();
@@ -36,35 +36,35 @@
             this.ignoreChapters = new System.Windows.Forms.CheckBox();
             this.audioSkip = new System.Windows.Forms.CheckBox();
             this.btnApps = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.processSettings = new System.Windows.Forms.GroupBox();
+            this.processPriorityLabel = new System.Windows.Forms.Label();
             this.processPriority = new System.Windows.Forms.ComboBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.outputSettings = new System.Windows.Forms.GroupBox();
             this.clearOutput = new System.Windows.Forms.Button();
             this.outputSelect = new System.Windows.Forms.Button();
             this.outPutLocation = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.outputDir = new System.Windows.Forms.Label();
             this.titleAdvert = new System.Windows.Forms.CheckBox();
             this.languagesSelect = new System.Windows.Forms.ComboBox();
-            this.groupBox8.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.encodingGroup.SuspendLayout();
+            this.processSettings.SuspendLayout();
+            this.outputSettings.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox8
+            // encodingGroup
             // 
-            this.groupBox8.Controls.Add(this.continueAfterError);
-            this.groupBox8.Controls.Add(this.showVideo);
-            this.groupBox8.Controls.Add(this.ignoreAttachments);
-            this.groupBox8.Controls.Add(this.ignoreSubs);
-            this.groupBox8.Controls.Add(this.ignoreChapters);
-            this.groupBox8.Controls.Add(this.audioSkip);
-            this.groupBox8.Location = new System.Drawing.Point(3, 152);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(378, 118);
-            this.groupBox8.TabIndex = 18;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Encoding";
+            this.encodingGroup.Controls.Add(this.continueAfterError);
+            this.encodingGroup.Controls.Add(this.showVideo);
+            this.encodingGroup.Controls.Add(this.ignoreAttachments);
+            this.encodingGroup.Controls.Add(this.ignoreSubs);
+            this.encodingGroup.Controls.Add(this.ignoreChapters);
+            this.encodingGroup.Controls.Add(this.audioSkip);
+            this.encodingGroup.Location = new System.Drawing.Point(3, 152);
+            this.encodingGroup.Name = "encodingGroup";
+            this.encodingGroup.Size = new System.Drawing.Size(378, 122);
+            this.encodingGroup.TabIndex = 18;
+            this.encodingGroup.TabStop = false;
+            this.encodingGroup.Text = "Encoding";
             // 
             // continueAfterError
             // 
@@ -136,24 +136,24 @@
             this.btnApps.UseVisualStyleBackColor = true;
             this.btnApps.Click += new System.EventHandler(this.btnApps_Click);
             // 
-            // groupBox10
+            // processSettings
             // 
-            this.groupBox10.Controls.Add(this.label15);
-            this.groupBox10.Controls.Add(this.processPriority);
-            this.groupBox10.Location = new System.Drawing.Point(3, 83);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(378, 63);
-            this.groupBox10.TabIndex = 17;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Process Settings";
+            this.processSettings.Controls.Add(this.processPriorityLabel);
+            this.processSettings.Controls.Add(this.processPriority);
+            this.processSettings.Location = new System.Drawing.Point(3, 83);
+            this.processSettings.Name = "processSettings";
+            this.processSettings.Size = new System.Drawing.Size(378, 63);
+            this.processSettings.TabIndex = 17;
+            this.processSettings.TabStop = false;
+            this.processSettings.Text = "Process Settings";
             // 
-            // label15
+            // processPriorityLabel
             // 
-            this.label15.Location = new System.Drawing.Point(6, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 21);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "Priority:";
+            this.processPriorityLabel.Location = new System.Drawing.Point(6, 28);
+            this.processPriorityLabel.Name = "processPriorityLabel";
+            this.processPriorityLabel.Size = new System.Drawing.Size(57, 21);
+            this.processPriorityLabel.TabIndex = 14;
+            this.processPriorityLabel.Text = "Priority:";
             // 
             // processPriority
             // 
@@ -174,20 +174,20 @@
             this.processPriority.TabIndex = 13;
             this.processPriority.SelectedIndexChanged += new System.EventHandler(this.processPriority_SelectedIndexChanged);
             // 
-            // groupBox9
+            // outputSettings
             // 
-            this.groupBox9.Controls.Add(this.clearOutput);
-            this.groupBox9.Controls.Add(this.outputSelect);
-            this.groupBox9.Controls.Add(this.outPutLocation);
-            this.groupBox9.Controls.Add(this.label16);
-            this.groupBox9.Controls.Add(this.titleAdvert);
-            this.groupBox9.Location = new System.Drawing.Point(3, 3);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(378, 74);
-            this.groupBox9.TabIndex = 15;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Output Settings";
-            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
+            this.outputSettings.Controls.Add(this.clearOutput);
+            this.outputSettings.Controls.Add(this.outputSelect);
+            this.outputSettings.Controls.Add(this.outPutLocation);
+            this.outputSettings.Controls.Add(this.outputDir);
+            this.outputSettings.Controls.Add(this.titleAdvert);
+            this.outputSettings.Location = new System.Drawing.Point(3, 3);
+            this.outputSettings.Name = "outputSettings";
+            this.outputSettings.Size = new System.Drawing.Size(378, 74);
+            this.outputSettings.TabIndex = 15;
+            this.outputSettings.TabStop = false;
+            this.outputSettings.Text = "Output Settings";
+            this.outputSettings.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // clearOutput
             // 
@@ -217,14 +217,14 @@
             this.outPutLocation.Size = new System.Drawing.Size(219, 20);
             this.outPutLocation.TabIndex = 4;
             // 
-            // label16
+            // outputDir
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 49);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(58, 13);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Output Dir:";
+            this.outputDir.AutoSize = true;
+            this.outputDir.Location = new System.Drawing.Point(3, 49);
+            this.outputDir.Name = "outputDir";
+            this.outputDir.Size = new System.Drawing.Size(58, 13);
+            this.outputDir.TabIndex = 3;
+            this.outputDir.Text = "Output Dir:";
             // 
             // titleAdvert
             // 
@@ -255,38 +255,38 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.languagesSelect);
-            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.encodingGroup);
             this.Controls.Add(this.btnApps);
-            this.Controls.Add(this.groupBox10);
-            this.Controls.Add(this.groupBox9);
+            this.Controls.Add(this.processSettings);
+            this.Controls.Add(this.outputSettings);
             this.Name = "EncodeOptions";
             this.Size = new System.Drawing.Size(385, 309);
             this.Load += new System.EventHandler(this.EncodeOptions_Load);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.encodingGroup.ResumeLayout(false);
+            this.encodingGroup.PerformLayout();
+            this.processSettings.ResumeLayout(false);
+            this.outputSettings.ResumeLayout(false);
+            this.outputSettings.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox encodingGroup;
         private System.Windows.Forms.CheckBox ignoreAttachments;
         private System.Windows.Forms.CheckBox ignoreSubs;
         private System.Windows.Forms.CheckBox ignoreChapters;
         private System.Windows.Forms.CheckBox audioSkip;
         private System.Windows.Forms.Button btnApps;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox processSettings;
+        private System.Windows.Forms.Label processPriorityLabel;
         private System.Windows.Forms.ComboBox processPriority;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox outputSettings;
         private System.Windows.Forms.Button clearOutput;
         private System.Windows.Forms.Button outputSelect;
         private System.Windows.Forms.TextBox outPutLocation;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label outputDir;
         private System.Windows.Forms.CheckBox titleAdvert;
         private System.Windows.Forms.CheckBox showVideo;
         private System.Windows.Forms.CheckBox continueAfterError;

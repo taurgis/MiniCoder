@@ -95,6 +95,7 @@ namespace MiniCoder.GUI
             cbAfterEncode.Items.AddRange(language.whenDoneOptions);
             cbAfterEncode.SelectedIndex = 0;
             encodeSettings.setLanguage(language);
+            encodeOptions.setLanguage(language);
         }
 
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
