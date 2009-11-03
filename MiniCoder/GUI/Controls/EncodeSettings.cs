@@ -15,6 +15,7 @@ namespace MiniCOder.GUI.Controls
 {
     public partial class EncodeSettings : UserControl
     {
+        SysLanguage language;
         string hardsubmp4 = "";
         int crfValue = 0;
         string customFilter = "";
@@ -37,6 +38,7 @@ namespace MiniCOder.GUI.Controls
 
         public void setLanguage(SysLanguage language)
         {
+            this.language = language;
             videoOptions.Text = language.videoOptionsTitle;
             bitRateRadio.Text = language.videoBitRate;
             fileSizeRadio.Text = language.videoFileSize;
@@ -75,6 +77,18 @@ namespace MiniCOder.GUI.Controls
             subtitle.Text = language.postSubtitle;
             customButton.Text = language.customButton;
             saveOptButton.Text = language.saveButton;
+            settingsTooltip.SetToolTip(videoBR, language.tooltipVideoBr);
+            settingsTooltip.SetToolTip(fileSize, language.tooltipFileSize);
+            settingsTooltip.SetToolTip(vidQualCombo, language.tooltipQuality);
+            settingsTooltip.SetToolTip(videoCombo, language.tooltipVideoCodec);
+            settingsTooltip.SetToolTip(audioBR, language.tooltipAudioBr);
+            settingsTooltip.SetToolTip(audioCombo, language.tooltipAudioCodec);
+            settingsTooltip.SetToolTip(containerCombo, language.tooltipContainer);
+            settingsTooltip.SetToolTip(fieldCombo, language.tooltipField);
+            settingsTooltip.SetToolTip(resizeCombo, language.tooltipResize);
+            settingsTooltip.SetToolTip(widthHeight, language.tooltipWidthHeight);
+            settingsTooltip.SetToolTip(noiseCombo, language.tooltipDenoise);
+            settingsTooltip.SetToolTip(openSubBtn, language.tooltipSub);
         }
 
         public SortedList<string, string> getSettings()
@@ -155,7 +169,7 @@ namespace MiniCOder.GUI.Controls
         }
         private void customButton_Click(object sender, EventArgs e)
         {
-            CustomFilter custom = new CustomFilter(customFilter);
+            CustomFilter custom = new CustomFilter(customFilter, language);
             custom.ShowDialog();
             customFilter = custom.customFiltOpts;
         }

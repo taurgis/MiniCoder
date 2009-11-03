@@ -267,6 +267,21 @@
   <data name="saveButton" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="customFilterCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="customFilterNote" xml:space="preserve">
+    <value>If you want to disable a default filter disable it in the Settings Page.</value>
+  </data>
+  <data name="customFilterOK" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="customFilterText" xml:space="preserve">
+    <value>Enter Your Custom Avisynth Filters</value>
+  </data>
+  <data name="customFilterTitle" xml:space="preserve">
+    <value>Custom Filters</value>
+  </data>
   <data name="encodingNextError" xml:space="preserve">
     <value>Continue to next file after error</value>
   </data>
@@ -275,6 +290,95 @@
   </data>
   <data name="inputColumn2StatusTitle" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="tooltipAudioBr" xml:space="preserve">
+    <value>Variable Audio Bitrate determines the quality of the audio output.
+The higher the bitrate the better the quality.
+
+Recommended: Minimum 32 Kbps</value>
+  </data>
+  <data name="tooltipAudioCodec" xml:space="preserve">
+    <value>Both audio codecs provide high quality at low bitrates.
+
+Recommended: Nero AAC</value>
+  </data>
+  <data name="tooltipContainer" xml:space="preserve">
+    <value>Matroska: 
+The Matroska Multimedia Container is an open standard free container format, a file 
+format that can hold an unlimited number of video, audio, picture or subtitle tracks
+ inside a single file.
+
+MP4:
+It is a multimedia container format standard specified as a part of MPEG-4. It is most 
+commonly used to store digital audio and digital video streams, especially those defined
+ by MPEG.</value>
+  </data>
+  <data name="tooltipDenoise" xml:space="preserve">
+    <value>Video denoising is the process of removing noise 
+from a video signal.</value>
+  </data>
+  <data name="tooltipField" xml:space="preserve">
+    <value>FieldDeinterlace: 
+This filter provides functionality similar to the postprocessing function 
+of Telecide. You can use it for pure interlaced streams</value>
+  </data>
+  <data name="tooltipFileSize" xml:space="preserve">
+    <value>Target File Size means that the program will try to get the
+output filesize as close as it can to the determined size.
+
+Things that could make the output bigger than set:
+- Attachments (Some fonts take over 5mb)
+- VFR (Variable FrameRate)
+
+Recommended
+- Minimum 50 mb for 20 min anime
+- Minimum 120 mb for TV-Show
+- Minmum 300mb for a Movie</value>
+  </data>
+  <data name="tooltipQuality" xml:space="preserve">
+    <value>Quality determines the video quality of the outputted file.
+
+Settings:
+- Medium (Fast encoding time)
+- High (Normal encoding time)
+- Verry High (Long encoding time)
+- PSP (Fast, can be played on PSP)
+- IPOD (Fast, can be played on Ipod)
+- PS3/XBOX (Fast, can be played on Ipod)</value>
+  </data>
+  <data name="tooltipResize" xml:space="preserve">
+    <value>With a resizing filter you can easily resize a video to a 
+preferred aspect ratio. Using these filters you can either
+soften the image or sharpen it.
+
+Recommended: 
+- Soft for low bitrates
+- Sharp for high bitrates</value>
+  </data>
+  <data name="tooltipSub" xml:space="preserve">
+    <value>Select Subtitle file to use</value>
+  </data>
+  <data name="tooltipVideoBr" xml:space="preserve">
+    <value>Average (Variable) Bit Rate is used to determine the best quality at the lowest possible quantizizer 
+while maintaining the average bit rate. The higher the bitrate, the better the output quality. 
+
+In this mode the target video filesize can be predicted. 
+A basic calculation is 50 bitrate equals 10mb every 20 mins.
+
+Recommended: 
+- Minimum 250 for anime
+- Minimum 300 for TV-Shows/movies</value>
+  </data>
+  <data name="tooltipVideoCodec" xml:space="preserve">
+    <value>X264: It is a free software library for encoding video streams 
+into the H.264/MPEG-4 AVC format.
+
+Xvid (formerly "XviD") is a video codec library following the MPEG-4 standard,
+ specifically MPEG-4 Part 2 Advanced Simple Profile (ASP). It uses ASP 
+features.</value>
+  </data>
+  <data name="tooltipWidthHeight" xml:space="preserve">
+    <value>The width and heigth of the re-encoded video.</value>
   </data>
   <data name="videoCodec" xml:space="preserve">
     <value>Codec:</value>

@@ -61,6 +61,23 @@ namespace MiniCoder.Core.Languages
         public string encodingIgnoreSubs { get; set; }
         public string encodingShowVideoPreview { get; set; }
         public string encodingNextError { get; set; }
+        public string tooltipVideoBr { get; set; }
+        public string tooltipFileSize { get; set; }
+        public string tooltipQuality { get; set; }
+        public string tooltipVideoCodec { get; set; }
+        public string tooltipAudioBr { get; set; }
+        public string tooltipAudioCodec { get; set; }
+        public string tooltipContainer { get; set; }
+        public string tooltipField { get; set; }
+        public string tooltipResize { get; set; }
+        public string tooltipWidthHeight { get; set; }
+        public string tooltipDenoise { get; set; }
+        public string tooltipSub { get; set; }
+        public string customFilterTitle { get; set; }
+        public string customFilterText { get; set; }
+        public string customFilterNote { get; set; }
+        public string customFilterOK { get; set; }
+        public string customFilterCancel { get; set; }
 
         public SysLanguage(int i)
         {
@@ -126,6 +143,23 @@ namespace MiniCoder.Core.Languages
             encodingIgnoreSubs = rm.GetString("encodingIgnoreSubs", culture);
             encodingShowVideoPreview = rm.GetString("encodingShowVideoPreview", culture);
             encodingNextError = rm.GetString("encodingNextError", culture);
+            tooltipVideoBr = rm.GetString("tooltipVideoBr", culture);
+            tooltipFileSize = rm.GetString("tooltipFileSize", culture);
+            tooltipQuality = rm.GetString("tooltipQuality", culture);
+            tooltipVideoCodec = rm.GetString("tooltipVideoCodec", culture);
+            tooltipAudioBr = rm.GetString("tooltipAudioBr", culture);
+            tooltipAudioCodec = rm.GetString("tooltipAudioCodec", culture);
+            tooltipContainer = rm.GetString("tooltipContainer", culture);
+            tooltipField = rm.GetString("tooltipField", culture);
+            tooltipResize = rm.GetString("tooltipResize", culture);
+            tooltipWidthHeight = rm.GetString("tooltipWidthHeight", culture);
+            tooltipDenoise = rm.GetString("tooltipDenoise", culture);
+            tooltipSub = rm.GetString("tooltipSub", culture);
+            customFilterTitle = rm.GetString("customFilterTitle", culture);
+            customFilterText = rm.GetString("customFilterText", culture);
+            customFilterNote = rm.GetString("customFilterNote", culture);
+            customFilterOK = rm.GetString("customFilterOK", culture);
+            customFilterCancel = rm.GetString("customFilterCancel", culture);
         }
     }
 }
