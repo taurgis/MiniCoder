@@ -6,6 +6,7 @@ using MiniCoder.Encoding.Process_Management;
 using MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.Input
 {
@@ -32,7 +33,7 @@ namespace MiniCoder.Encoding.Input
         public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
             LogBook.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-
+            SysLanguage language = MiniSystem.getLanguage();
 
             MiniProcess proc = new DefaultProcess("Demuxing OGM", fileDetails["name"][0] + "DeMuxingProcess");
            processWatcher.setProcess(proc);
@@ -45,7 +46,7 @@ namespace MiniCoder.Encoding.Input
                     ogmtools.download();
 
             
-                LogBook.setInfoLabel("Demuxing OGM Tracks");
+                LogBook.setInfoLabel(language.demuxingMessage + " OGM");
                 proc.initProcess();
 
 
@@ -74,11 +75,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel("Demuxing Aborted");
+                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
                     return false;
                 }
                 else
-                    LogBook.setInfoLabel("Demuxing Complete");
+                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
                 
 
                 if (File.Exists(tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec)))

@@ -95,6 +95,33 @@ namespace MiniCoder.Core.Languages
         public string updateUpdateButton { get; set; }
         public string updateCancelButton { get; set; }
         public string customPathsTitle { get; set; }
+        public string applicationsButton { get; set; }
+        public string audioDecodingMessage { get; set; }
+        public string audioEncodingMessage { get; set; }
+        public string demuxingMessage { get; set; }
+        public string demuxingAbortedMessage { get; set; }
+        public string demuxingCompleteMessage { get; set; }
+        public string demuxingmp4Video { get; set; }
+        public string demuxingmp4Audio { get; set; }
+        public string demuxingvobChapters { get; set; }
+        public string demuxingvobSubs { get; set; }
+        public string demuxingVob { get; set; }
+        public string muxingMessage { get; set; }
+        public string audioEncodingTrack { get; set; }
+        public string encodingVideoTheora { get; set; }
+        public string encodingVideoPass { get; set; }
+        public string indexingAvc { get; set; }
+        public string indexingAvcAbort { get; set; }
+        public string indexingAvcCompleted { get; set; }
+        public string vfrParsing { get; set; }
+        public string vfrParsingAborted { get; set; }
+        public string vfrParsingCompleted { get; set; }
+        public string fileInfoFetch { get; set; }
+        public string demuxingMkv { get; set; }
+        public string demuxingMkvAttachments { get; set; }
+        public string demuxingMkvChapters { get; set; }
+        public string errorWarningMessage { get; set; }
+        public string errorWarningTitle { get; set; }
 
         public SysLanguage(int i)
         {
@@ -194,6 +221,33 @@ namespace MiniCoder.Core.Languages
             updateUpdateButton = rm.GetString("updateUpdateButton", culture);
             updateCancelButton = rm.GetString("updateCancelButton", culture);
             customPathsTitle = rm.GetString("customPathsTitle", culture);
+            applicationsButton = rm.GetString("applicationsButton", culture);
+            audioDecodingMessage = rm.GetString("audioDecodingMessage", culture);
+            audioEncodingMessage = rm.GetString("audioEncodingMessage", culture);
+            demuxingMessage = rm.GetString("demuxingMessage", culture);
+            demuxingAbortedMessage = rm.GetString("demuxingAbortedMessage", culture);
+            demuxingCompleteMessage = rm.GetString("demuxingCompleteMessage", culture);
+            demuxingmp4Video = rm.GetString("demuxingmp4Video", culture);
+            demuxingmp4Audio = rm.GetString("demuxingmp4Audio", culture);
+            demuxingvobChapters = rm.GetString("demuxingvobChapters", culture);
+            demuxingvobSubs = rm.GetString("demuxingvobSubs", culture);
+            demuxingVob = rm.GetString("demuxingVob", culture);
+            muxingMessage = rm.GetString("muxingMessage", culture);
+            audioEncodingTrack = rm.GetString("audioEncodingTrack", culture);
+            encodingVideoTheora = rm.GetString("encodingVideoTheora", culture);
+            encodingVideoPass = rm.GetString("encodingVideoPass", culture);
+            indexingAvc = rm.GetString("indexingAvc", culture);
+            indexingAvcAbort = rm.GetString("indexingAvcAbort", culture);
+            indexingAvcCompleted = rm.GetString("indexingAvcCompleted", culture);
+            vfrParsing = rm.GetString("vfrParsing", culture);
+            vfrParsingAborted = rm.GetString("vfrParsingAborted", culture);
+            vfrParsingCompleted = rm.GetString("vfrParsingCompleted", culture);
+            fileInfoFetch = rm.GetString("fileInfoFetch", culture);
+            demuxingMkv = rm.GetString("demuxingMkv", culture);
+            demuxingMkvAttachments = rm.GetString("demuxingMkvAttachments", culture);
+            demuxingMkvChapters = rm.GetString("demuxingMkvChapters", culture);
+            errorWarningMessage = rm.GetString("errorWarningMessage", culture);
+            errorWarningTitle = rm.GetString("errorWarningTitle", culture);
         }
     }
 }

@@ -24,15 +24,7 @@ namespace MiniCOder.GUI.Controls
         {
             InitializeComponent();
 
-            audioCombo.SelectedIndex = 0;
-            fieldCombo.SelectedIndex = 0;
-            resizeCombo.SelectedIndex = 0;
-            noiseCombo.SelectedIndex = 0;
-            sharpCombo.SelectedIndex = 0;
-            widthHeight.SelectedIndex = 0;
-            videoCombo.SelectedIndex = 0;
-            containerCombo.SelectedIndex = 0;
-            vidQualCombo.SelectedIndex = 0;
+           
 
         }
 
@@ -139,6 +131,15 @@ namespace MiniCOder.GUI.Controls
 
         private void EncodeSettings_Load(object sender, EventArgs e)
         {
+            audioCombo.SelectedIndex = 0;
+            fieldCombo.SelectedIndex = 0;
+            resizeCombo.SelectedIndex = 0;
+            noiseCombo.SelectedIndex = 0;
+            sharpCombo.SelectedIndex = 0;
+            widthHeight.SelectedIndex = 0;
+            videoCombo.SelectedIndex = 0;
+            containerCombo.SelectedIndex = 0;
+            vidQualCombo.SelectedIndex = 0;
             loadSettings();
         }
         public void loadSettings()
@@ -193,17 +194,9 @@ namespace MiniCOder.GUI.Controls
             {
                 vidQualCombo.Items.Clear();
 
-
-                vidQualCombo.Items.Add("Medium");
-                vidQualCombo.Items.Add("High");
-                vidQualCombo.Items.Add("Very High");
-                vidQualCombo.Items.Add("Very High (+50mb Anime)");
-                vidQualCombo.Items.Add("Very High (-50mb Anime)");
-                vidQualCombo.Items.Add("Very High (TV-Shows/Movies)");
-                vidQualCombo.Items.Add("CRF (Anime)");
-                vidQualCombo.Items.Add("Ipod");
-                vidQualCombo.Items.Add("PSP");
-                vidQualCombo.Items.Add("PS3");
+               
+                vidQualCombo.Items.AddRange(language.videoQualityOptions);
+              
                 vidQualCombo.SelectedIndex = 0;
             }
             else
@@ -218,13 +211,19 @@ namespace MiniCOder.GUI.Controls
                     containerCombo.Enabled = false;
 
                 }
-                vidQualCombo.Items.Remove("Very High (+50mb Anime)");
-                vidQualCombo.Items.Remove("Very High (-50mb Anime)");
-                vidQualCombo.Items.Remove("Very High (TV-Shows/Movies)");
-                vidQualCombo.Items.Remove("CRF (Anime)");
-                vidQualCombo.Items.Remove("Ipod");
-                vidQualCombo.Items.Remove("PSP");
-                vidQualCombo.Items.Remove("PS3");
+                try
+                {
+                    vidQualCombo.Items.RemoveAt(3);
+                    vidQualCombo.Items.RemoveAt(3);
+                    vidQualCombo.Items.RemoveAt(3);
+                    vidQualCombo.Items.RemoveAt(3);
+                    vidQualCombo.Items.RemoveAt(3);
+                    vidQualCombo.Items.RemoveAt(3);
+                    vidQualCombo.Items.RemoveAt(3);
+                }
+                catch
+                {
+                }
                 vidQualCombo.SelectedIndex = 0;
 
             }

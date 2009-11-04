@@ -6,7 +6,7 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using System.Windows.Forms;
 using System.IO;
-
+using MiniCoder.Core.Languages;
 namespace MiniCoder.Encoding.VideoEnc.Encoding
 {
     class Xvid : VideoEncoder
@@ -16,6 +16,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
+                SysLanguage language = MiniSystem.getLanguage();
                 string pass = "0";
                 MiniProcess proc;
 
@@ -60,7 +61,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 }
 
                 pass = "1";
-                proc = new XvidProcess("Encoding video", pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
+                proc = new XvidProcess(language.encodingVideoPass, pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
@@ -86,7 +87,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
                 pass = "2";
 
-                proc = new XvidProcess("Encoding video", pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
+                proc = new XvidProcess(language.encodingVideoPass, pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));

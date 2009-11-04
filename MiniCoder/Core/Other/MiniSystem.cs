@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.OS;
 using System.Security.Principal;
-
+using MiniCoder.Core.Languages;
+using MiniCoder.GUI;
+using System.Windows.Forms;
 namespace System
 {
     public static class MiniSystem
@@ -14,6 +16,19 @@ namespace System
                 return true;
             else
                 return false;
+        }
+
+        public static SysLanguage getLanguage()
+        {
+            try
+            {
+                MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
+                return mainForm.getLanguage();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static string getOSName()

@@ -6,6 +6,7 @@ using MiniCoder.Encoding.Process_Management;
 using MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.Input
 {
@@ -34,6 +35,7 @@ namespace MiniCoder.Encoding.Input
 
             LogBook.addLogLine("Demuxing AVI - Using Vdubmod", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
             MiniProcess proc = new DefaultProcess("Demuxing Avi", fileDetails["name"][0] + "DeMuxingProcess");
+            SysLanguage language = MiniSystem.getLanguage();
             processWatcher.setProcess(proc);
 
             proc.stdErrDisabled(false);
@@ -44,7 +46,7 @@ namespace MiniCoder.Encoding.Input
                 if (!vdubmod.isInstalled())
                     vdubmod.download();
 
-                LogBook.setInfoLabel("Demuxing AVI Tracks");
+                LogBook.setInfoLabel(language.demuxingMessage + " AVI Tracks");
 
                 proc.initProcess();
 
@@ -74,11 +76,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel("Demuxing Aborted");
+                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
                     return false;
                 }
                 else
-                    LogBook.setInfoLabel("Demuxing Complete");
+                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
                 try
                 {
                     if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.getExtention(tracks["audio"][0].codec)))

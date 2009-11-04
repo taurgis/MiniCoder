@@ -6,7 +6,7 @@ using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
-
+using MiniCoder.Core.Languages;
 namespace MiniCoder.Encoding.Sound.Decoding
 {
     class Ffmpeg : MiniDecoder
@@ -22,13 +22,15 @@ namespace MiniCoder.Encoding.Sound.Decoding
         {
             try
             {
+                SysLanguage language = MiniSystem.getLanguage();
+               
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
                 // // LogBook.addLogLine(""Decoding Audio",1);
-                LogBook.setInfoLabel("Decoding Audio");
+                LogBook.setInfoLabel(language.audioDecodingMessage);
                 LogBook.addLogLine("Decoding Unknown - Using FFMpeg", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";

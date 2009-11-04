@@ -76,6 +76,11 @@ namespace MiniCoder.GUI
             }
         }
 
+        public SysLanguage getLanguage()
+        {
+            return language;
+        }
+
         public void loadLanguage(int i)
         {
             language = new SysLanguage(i);

@@ -6,6 +6,7 @@ using MiniCoder.Encoding.Process_Management;
 using MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.Input
 {
@@ -32,7 +33,8 @@ namespace MiniCoder.Encoding.Input
         public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
             LogBook.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-
+            SysLanguage language = MiniSystem.getLanguage();
+              
             int exitCode = 0;
             MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
            processWatcher.setProcess(proc);
@@ -45,7 +47,7 @@ namespace MiniCoder.Encoding.Input
                     mp4box.download();
 
            
-                LogBook.setInfoLabel("Demuxing Video Track");
+                LogBook.setInfoLabel(language.demuxingmp4Video);
                 proc.initProcess();
 
               
@@ -80,16 +82,16 @@ namespace MiniCoder.Encoding.Input
                 if (tracks["audio"].Length == 0)
                     return true;
 
-                LogBook.setInfoLabel("Demuxing Audio Track");
+                LogBook.setInfoLabel(language.demuxingmp4Audio);
                 tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.getExtention(tracks["audio"][0].codec);
                 tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 2 -out \"" + tracks["audio"][0].demuxPath + "\"";
                 proc.setArguments(tempArg);
                 exitCode = proc.startProcess();
 
                 if (proc.getAbandonStatus())
-                    LogBook.setInfoLabel("Demuxing Aborted");
+                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
                 else
-                    LogBook.setInfoLabel("Demuxing Complete");
+                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
 
                 if (exitCode != 0)
                     return false;

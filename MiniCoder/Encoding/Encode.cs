@@ -10,10 +10,12 @@ using MiniCoder.Encoding.VideoEnc;
 using MiniCoder.Encoding.AviSynth;
 using MiniCoder.Encoding.VideoEnc.Encoding;
 using MiniCoder.Encoding.Output;
+using MiniCoder.Core.Languages;
 namespace MiniCoder.Encoding
 {
     class Encode
     {
+        SysLanguage language = MiniSystem.getLanguage();
         String fileName = "";
         SortedList<String, Tool> tools;
         SortedList<String, String[]> fileDetails;
@@ -64,7 +66,7 @@ namespace MiniCoder.Encoding
                 }
 
                 LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
-                LogBook.setInfoLabel("Fetching File Info");
+                LogBook.setInfoLabel(language.fileInfoFetch);
 
                 for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
                     LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo", "", false);

@@ -6,7 +6,7 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Input.Tracks;
 using System.IO;
 using System.Windows.Forms;
-
+using MiniCoder.Core.Languages;
 namespace MiniCoder.Encoding.VideoEnc
 {
     class DGAVCIndex
@@ -18,15 +18,16 @@ namespace MiniCoder.Encoding.VideoEnc
 
         public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
         {
+            SysLanguage language = MiniSystem.getLanguage();
             if (fileDetails["ext"][0].ToLower().Equals(".avi"))
                 return true;
             try
             {
-                MiniProcess proc = new DefaultProcess("Indexing AVC", fileDetails["name"][0] + "DGAVCStepProcess");
+                MiniProcess proc = new DefaultProcess(language.indexingAvc, fileDetails["name"][0] + "DGAVCStepProcess");
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-                LogBook.setInfoLabel("Indexing AVC");
+                LogBook.setInfoLabel(language.indexingAvc);
                 LogBook.addLogLine("Started Indexing AVC", fileDetails["name"][0] + "DGAVCStep", fileDetails["name"][0] + "DGAVCStepProcess", false);
                 proc.initProcess();
 
@@ -44,12 +45,12 @@ namespace MiniCoder.Encoding.VideoEnc
                 // // LogBook.addLogLine(""Finished Indexing AVC",1);
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel("Indexing Aborted");
+                    LogBook.setInfoLabel(language.indexingAvcAbort);
                     return false;
                 }
                 else
                 {
-                    LogBook.setInfoLabel("Finished Indexing AVC");
+                    LogBook.setInfoLabel(language.indexingAvcCompleted);
                     LogBook.addLogLine("Finished Indexing AVC", fileDetails["name"][0] + "DGAVCStep", "", false);
                 }
                 if (File.Exists(dgaFile))

@@ -6,7 +6,7 @@ using MiniCoder.Encoding.Input.Tracks;
 using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
-
+using MiniCoder.Core.Languages;
 namespace MiniCoder.Encoding.Sound.Encoding
 {
     class Vorbis : MiniEncoder
@@ -21,14 +21,16 @@ namespace MiniCoder.Encoding.Sound.Encoding
         {
             try
             {
-                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], "Encoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
+                SysLanguage language = MiniSystem.getLanguage();
+                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], language.audioEncodingTrack + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
+                
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
 
 
 
-                LogBook.addLogLine("Encoding audio to vorbis", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.addLogLine(language.audioEncodingMessage + " vorbis", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
                 proc.initProcess();
 

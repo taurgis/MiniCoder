@@ -6,7 +6,7 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Input.Tracks;
 using System.IO;
 using System.Windows.Forms;
-
+using MiniCoder.Core.Languages;
 namespace MiniCoder.Encoding.VideoEnc
 {
     class Vfr
@@ -16,6 +16,7 @@ namespace MiniCoder.Encoding.VideoEnc
         {
             try
             {
+                   SysLanguage language = MiniSystem.getLanguage();
                 if (fileDetails["ext"][0].ToLower() == "mkv" && encOpts.ContainsKey("vfr"))
                 {
                     LogBook.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
@@ -24,7 +25,7 @@ namespace MiniCoder.Encoding.VideoEnc
                     if (!vfr.isInstalled())
                         vfr.download();
 
-                    LogBook.setInfoLabel("Parsing VFR");
+                    LogBook.setInfoLabel(language.vfrParsing);
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfr.getInstallPath(), "mkv2vfr.exe"));
@@ -37,12 +38,12 @@ namespace MiniCoder.Encoding.VideoEnc
 
                     if (proc.getAbandonStatus())
                     {
-                        LogBook.setInfoLabel("Parsing Aborted");
+                        LogBook.setInfoLabel(language.vfrParsingAborted);
                         return false;
                     }
                     else
                     {
-                        LogBook.setInfoLabel("Parsing Completed");
+                        LogBook.setInfoLabel(language.vfrParsingCompleted);
 
                     }
                     if (!File.Exists(tempPath + "timecode.txt"))
@@ -70,7 +71,7 @@ namespace MiniCoder.Encoding.VideoEnc
                     if (!vfrMP4.isInstalled())
                         vfrMP4.download();
 
-                    LogBook.setInfoLabel("Parsing VFR");
+                    LogBook.setInfoLabel(language.vfrParsing);
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfrMP4.getInstallPath(), "DtsEdit.exe"));
@@ -87,12 +88,12 @@ namespace MiniCoder.Encoding.VideoEnc
 
                     if (proc.getAbandonStatus())
                     {
-                        LogBook.setInfoLabel("Parsing Aborted");
+                        LogBook.setInfoLabel(language.vfrParsingAborted);
                         return false;
                     }
                     else
                     {
-                        LogBook.setInfoLabel("Parsing Completed");
+                        LogBook.setInfoLabel(language.vfrParsingCompleted);
 
                     }
                     if (!File.Exists(tempPath + "timecode.txt"))

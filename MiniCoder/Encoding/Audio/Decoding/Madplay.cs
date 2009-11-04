@@ -6,6 +6,7 @@ using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.Sound.Decoding
 {
@@ -23,6 +24,8 @@ namespace MiniCoder.Encoding.Sound.Decoding
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
+                SysLanguage language = MiniSystem.getLanguage();
+               
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
                 processWatcher.setProcess(proc);
@@ -30,7 +33,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
 
                 LogBook.addLogLine("Decoding MPEG - Using madplay", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                LogBook.setInfoLabel("Decoding Audio");
+                LogBook.setInfoLabel(language.audioDecodingMessage);
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 

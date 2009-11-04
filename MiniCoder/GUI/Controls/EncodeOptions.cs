@@ -48,6 +48,7 @@ namespace MiniCOder.GUI.Controls
             ignoreSubs.Text = language.encodingIgnoreSubs;
             showVideo.Text = language.encodingShowVideoPreview;
             continueAfterError.Text = language.encodingNextError;
+            btnApps.Text = language.applicationsButton;
         }
 
 

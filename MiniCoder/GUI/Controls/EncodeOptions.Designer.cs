@@ -128,7 +128,7 @@
             // 
             // btnApps
             // 
-            this.btnApps.Location = new System.Drawing.Point(3, 276);
+            this.btnApps.Location = new System.Drawing.Point(3, 280);
             this.btnApps.Name = "btnApps";
             this.btnApps.Size = new System.Drawing.Size(101, 26);
             this.btnApps.TabIndex = 16;
@@ -245,7 +245,7 @@
             this.languagesSelect.Items.AddRange(new object[] {
             "English",
             "Nederlands"});
-            this.languagesSelect.Location = new System.Drawing.Point(259, 280);
+            this.languagesSelect.Location = new System.Drawing.Point(260, 280);
             this.languagesSelect.Name = "languagesSelect";
             this.languagesSelect.Size = new System.Drawing.Size(100, 21);
             this.languagesSelect.TabIndex = 15;

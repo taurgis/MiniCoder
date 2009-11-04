@@ -6,6 +6,8 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
+
 namespace MiniCoder.Encoding.Output
 {
     class Matroska : Container
@@ -15,6 +17,7 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
+                SysLanguage language = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to MKV", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
@@ -22,6 +25,7 @@ namespace MiniCoder.Encoding.Output
 
                 proc.initProcess();
                 //// // LogBook.addLogLine(""Muxing",1);
+                LogBook.setInfoLabel(language.muxingMessage + " MKV");
                 string args;
 
                 try

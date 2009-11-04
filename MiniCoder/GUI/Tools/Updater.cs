@@ -21,6 +21,7 @@ namespace MiniCoder.GUI.External
         SortedList<String, Tool> toolInfo;
         Boolean warnUser = false;
         Tools tools;
+        SysLanguage language;
        
         public Updater(Tools tools, Boolean hide, SysLanguage language)
         {
@@ -29,6 +30,7 @@ namespace MiniCoder.GUI.External
             InitializeComponent();
             if (language != null)
             {
+                this.language = language;
                 this.Text = language.updaterTitle;
                 coreTab.Text = language.coreTabTitle;
                 pluginTab.Text = language.pluginsTabTitle;
@@ -334,7 +336,7 @@ namespace MiniCoder.GUI.External
 
         private void customPath_Click(object sender, EventArgs e)
         {
-            AppLocation appLoc = new AppLocation(tools.getTools());
+            AppLocation appLoc = new AppLocation(tools.getTools(), language);
             appLoc.ShowDialog();
             if (appLoc.doSave())
                 tools.SavePackages();
