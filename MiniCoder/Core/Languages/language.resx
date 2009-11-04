@@ -190,7 +190,7 @@
     <value>Video Options</value>
   </data>
   <data name="videoQuality" xml:space="preserve">
-    <value>Quality</value>
+    <value>Quality:</value>
   </data>
   <data name="videoQualityOptions" xml:space="preserve">
     <value>Medium;High;Very High;Very High (+50mb anime);Very High (-50mb anime);Very High (TV-Shows/Movies);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
@@ -250,7 +250,7 @@
     <value>None;Light;Medium;Heavy;Insane</value>
   </data>
   <data name="postSubtitle" xml:space="preserve">
-    <value>Subtitle</value>
+    <value>Subtitle:</value>
   </data>
   <data name="preWidthHeight" xml:space="preserve">
     <value>Width/Height:</value>

@@ -682,7 +682,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subtitle.
+        ///   Looks up a localized string similar to Subtitle:.
         /// </summary>
         internal static string postSubtitle {
             get {
@@ -1104,7 +1104,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quality.
+        ///   Looks up a localized string similar to Quality:.
         /// </summary>
         internal static string videoQuality {
             get {
