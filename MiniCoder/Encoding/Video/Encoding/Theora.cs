@@ -6,6 +6,7 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using System.Windows.Forms;
 using System.IO;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.VideoEnc.Encoding
 {
@@ -16,6 +17,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
+                SysLanguage language = MiniSystem.getLanguage();
                 LogBook.addLogLine("Encoding to Theora", fileDetails["name"][0] + "VideoEncoding", "", false);
 
                 MiniProcess proc;
@@ -40,7 +42,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 fileTracks["video"][0].encodePath = encOpts["outDIR"] + fileDetails["name"][0] + "_output.ogg";
 
 
-                LogBook.setInfoLabel("Encoding Theora video");
+                LogBook.setInfoLabel(language.encodingVideoTheora);
                 if (!theora.isInstalled())
                     theora.download();
 
@@ -71,7 +73,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
 
 
-                proc = new TheoraProcess("Encoding video");
+                proc = new TheoraProcess(language.encodingVideoTheora);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(theora.getInstallPath(), "theora.exe"));

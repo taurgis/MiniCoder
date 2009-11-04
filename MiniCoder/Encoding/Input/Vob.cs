@@ -6,6 +6,7 @@ using MiniCoder.Encoding.Process_Management;
 using MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.Input
 {
@@ -39,14 +40,15 @@ namespace MiniCoder.Encoding.Input
             return false;
               
         }
+        SysLanguage language = MiniSystem.getLanguage();
         private Boolean demuxChapters(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
 
             LogBook.addLogLine("Demuxing Chapters - Using ChapterXtractor", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-
+            
             MiniProcess proc = new DefaultProcess("Fetching chapters", fileDetails["name"][0] + "DeMuxingProcess");
            // // LogBook.addLogLine(""Started fetching chapters.", 1);
-            LogBook.setInfoLabel("Started fetching chapters.");
+            LogBook.setInfoLabel(language.demuxingvobChapters);
             proc.initProcess();
 
 
@@ -81,7 +83,7 @@ namespace MiniCoder.Encoding.Input
             MiniProcess proc = new DefaultProcess("Fetching subs", fileDetails["name"][0] + "DeMuxingProcess");
 
            // // LogBook.addLogLine(""Started fetching subs.",1);
-            LogBook.setInfoLabel("Started fetching subs.");
+            LogBook.setInfoLabel(language.demuxingvobSubs);
 
             proc.initProcess();
 
@@ -110,11 +112,11 @@ namespace MiniCoder.Encoding.Input
 
            if (proc.getAbandonStatus())
            {
-               LogBook.setInfoLabel("Demuxing Aborted");
+               LogBook.setInfoLabel(language.demuxingAbortedMessage);
                return false;
            }
            else
-               LogBook.setInfoLabel("Demuxing Complete");
+               LogBook.setInfoLabel(language.demuxingCompleteMessage);
 
            if (exitCode != 0)
                return false;
@@ -142,7 +144,7 @@ namespace MiniCoder.Encoding.Input
 
 
                // // LogBook.addLogLine(""Started indexing VOB files", 1);
-                LogBook.setInfoLabel("Started indexing VOB files.");
+                LogBook.setInfoLabel(language.demuxingVob);
                 proc.initProcess();
 
 
@@ -173,11 +175,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel("Demuxing Aborted");
+                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
                     return false;
                 }
                 else
-                    LogBook.setInfoLabel("Demuxing Complete");
+                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
                 
 
                 if (exitCode != 0)

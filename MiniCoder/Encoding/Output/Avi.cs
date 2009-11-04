@@ -6,6 +6,8 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
+
 namespace MiniCoder.Encoding.Output
 {
     class AviOut : Container
@@ -16,7 +18,7 @@ namespace MiniCoder.Encoding.Output
             try
             {
                 LogBook.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
-
+                SysLanguage language = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
@@ -24,7 +26,7 @@ namespace MiniCoder.Encoding.Output
 
                 proc.initProcess();
                 // // LogBook.addLogLine(""Muxing", 1);
-                LogBook.setInfoLabel("Muxing to avi...");
+                LogBook.setInfoLabel(language.muxingMessage + " avi...");
                 string args;
 
                 try

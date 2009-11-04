@@ -202,7 +202,7 @@
     <value>Niet;Zacht;Neutraal;Scherp;Heel Scherp (Lanczos64);Heel Scherp (Spline36)</value>
   </data>
   <data name="applicationsButton" xml:space="preserve">
-    <value>Applications</value>
+    <value>Applicaties</value>
   </data>
   <data name="customButton" xml:space="preserve">
     <value>Persoonlijk</value>
@@ -274,22 +274,22 @@
     <value>Kern</value>
   </data>
   <data name="customFilterCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annuleer</value>
   </data>
   <data name="customFilterNote" xml:space="preserve">
-    <value>If you want to disable a default filter disable it in the Settings Page.</value>
+    <value>Als je de default filters wilt uitschakelen, gebruik dan de Instellingen tab.</value>
   </data>
   <data name="customFilterOK" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="customFilterText" xml:space="preserve">
-    <value>Enter Your Custom Avisynth Filters</value>
+    <value>Voer hier je persoonlijke AviSynth filters in.</value>
   </data>
   <data name="customFilterTitle" xml:space="preserve">
-    <value>Custom Filters</value>
+    <value>Persoonlijke FIlters</value>
   </data>
   <data name="customPathsTitle" xml:space="preserve">
-    <value>Custom Paths</value>
+    <value>Persoonlijke Locaties</value>
   </data>
   <data name="encodingNextError" xml:space="preserve">
     <value>Ga naar volgend bestand bij errors</value>
@@ -304,7 +304,7 @@
     <value>Muxing/Demuxing</value>
   </data>
   <data name="otherTabTitle" xml:space="preserve">
-    <value>Other</value>
+    <value>Andere</value>
   </data>
   <data name="pluginsTabTitle" xml:space="preserve">
     <value>Plugins</value>
@@ -374,7 +374,7 @@ Recommended:
 - Sharp for high bitrates</value>
   </data>
   <data name="tooltipSub" xml:space="preserve">
-    <value>Select Subtitle file to use</value>
+    <value>Selecteer een ondertitel die je wil toevoegen aan de video (Hardsub)</value>
   </data>
   <data name="tooltipVideoBr" xml:space="preserve">
     <value>Average (Variabele) Bit Rate is used to determine the best quality at the lowest possible quantizizer 
@@ -398,26 +398,26 @@ features.</value>
   <data name="tooltipWidthHeight" xml:space="preserve">
     <value>The width and heigth of the re-encoded video.</value>
   </data>
-  <data name="updateCancelButton1" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="updateCancelButton" xml:space="preserve">
+    <value>Annuleer</value>
   </data>
-  <data name="updateColumn11" xml:space="preserve">
-    <value>Update</value>
+  <data name="updateColumn1" xml:space="preserve">
+    <value>Bijwerken</value>
   </data>
-  <data name="updateColumn21" xml:space="preserve">
-    <value>Name</value>
+  <data name="updateColumn2" xml:space="preserve">
+    <value>Naam</value>
   </data>
-  <data name="updateColumn31" xml:space="preserve">
-    <value>Existing Version</value>
+  <data name="updateColumn3" xml:space="preserve">
+    <value>Bestaande Versie</value>
   </data>
-  <data name="updateColumn41" xml:space="preserve">
-    <value>Latest Version</value>
+  <data name="updateColumn4" xml:space="preserve">
+    <value>Laatste Versie</value>
   </data>
-  <data name="updateColumn51" xml:space="preserve">
+  <data name="updateColumn5" xml:space="preserve">
     <value>Status</value>
   </data>
-  <data name="updateCustomPath1" xml:space="preserve">
-    <value>Custom Paths</value>
+  <data name="updateCustomPath" xml:space="preserve">
+    <value>Persoonlijke Locaties</value>
   </data>
   <data name="updateMessage" xml:space="preserve">
     <value>Er zijn vernieuwingen gevonden.Wilt u deze nu downloaden?</value>
@@ -425,8 +425,8 @@ features.</value>
   <data name="updaterTitle" xml:space="preserve">
     <value>MiniCoder Updater</value>
   </data>
-  <data name="updateUpdateButton1" xml:space="preserve">
-    <value>Update</value>
+  <data name="updateUpdateButton" xml:space="preserve">
+    <value>Bijwerken</value>
   </data>
   <data name="videoCodec" xml:space="preserve">
     <value>Codec:</value>
@@ -436,5 +436,77 @@ features.</value>
   </data>
   <data name="whenDone" xml:space="preserve">
     <value>Wanneer klaar</value>
+  </data>
+  <data name="audioDecodingMessage" xml:space="preserve">
+    <value>Audio Decoderen</value>
+  </data>
+  <data name="audioEncodingMessage" xml:space="preserve">
+    <value>Encoderen audio naar</value>
+  </data>
+  <data name="audioEncodingTrack" xml:space="preserve">
+    <value>Encoderen audio</value>
+  </data>
+  <data name="demuxingAbortedMessage" xml:space="preserve">
+    <value>Uiteenhalen geannuleerd</value>
+  </data>
+  <data name="demuxingCompleteMessage" xml:space="preserve">
+    <value>Uiteenhalen compleet</value>
+  </data>
+  <data name="demuxingMessage" xml:space="preserve">
+    <value>Uiteenhalen</value>
+  </data>
+  <data name="demuxingMkv" xml:space="preserve">
+    <value>Uiteenhalen MKV bestand</value>
+  </data>
+  <data name="demuxingMkvAttachments" xml:space="preserve">
+    <value>Ophalen MKV Bijlagen</value>
+  </data>
+  <data name="demuxingMkvChapters" xml:space="preserve">
+    <value>Ophalen MKV Hoofdstukken</value>
+  </data>
+  <data name="demuxingmp4Audio" xml:space="preserve">
+    <value>Uiteenhalen MP4 Audio</value>
+  </data>
+  <data name="demuxingmp4Video" xml:space="preserve">
+    <value>Uiteenhalen MP4 video</value>
+  </data>
+  <data name="demuxingVob" xml:space="preserve">
+    <value>Indexeren van VOB bestand</value>
+  </data>
+  <data name="demuxingvobChapters" xml:space="preserve">
+    <value>Hoofdstukken aan het ophalen</value>
+  </data>
+  <data name="demuxingvobSubs" xml:space="preserve">
+    <value>Ondertitellingen aan het ophalen</value>
+  </data>
+  <data name="encodingVideoPass" xml:space="preserve">
+    <value>Video Converteren</value>
+  </data>
+  <data name="encodingVideoTheora" xml:space="preserve">
+    <value>Bezig met converteren naar Theora</value>
+  </data>
+  <data name="fileInfoFetch" xml:space="preserve">
+    <value>Bestandsinformatie ophalen</value>
+  </data>
+  <data name="indexingAvc" xml:space="preserve">
+    <value>Indexering AVC</value>
+  </data>
+  <data name="indexingAvcAbort" xml:space="preserve">
+    <value>Indexering geannuleerd</value>
+  </data>
+  <data name="indexingAvcCompleted" xml:space="preserve">
+    <value>Indexering compleet</value>
+  </data>
+  <data name="muxingMessage" xml:space="preserve">
+    <value>Exporteren naar</value>
+  </data>
+  <data name="vfrParsing" xml:space="preserve">
+    <value>VFR Analyseren</value>
+  </data>
+  <data name="vfrParsingAborted" xml:space="preserve">
+    <value>Analyse geannuleerd</value>
+  </data>
+  <data name="vfrParsingCompleted" xml:space="preserve">
+    <value>Analyse compleet</value>
   </data>
 </root>

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Diagnostics;
+using MiniCoder.Core.Languages;
 namespace System
 {
     public static class LogBook
@@ -102,7 +103,8 @@ namespace System
 
         public static void sendmail(TreeView list)
         {
-            if (MessageBox.Show("Seems an error happend! Do you want to send an errorreport?", "Error!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            SysLanguage language = MiniSystem.getLanguage();
+            if (MessageBox.Show(language.errorWarningMessage , language.errorWarningTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
                
 

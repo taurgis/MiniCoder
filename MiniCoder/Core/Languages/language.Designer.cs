@@ -88,6 +88,33 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Decoding Audio.
+        /// </summary>
+        internal static string audioDecodingMessage {
+            get {
+                return ResourceManager.GetString("audioDecodingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encoding audio to.
+        /// </summary>
+        internal static string audioEncodingMessage {
+            get {
+                return ResourceManager.GetString("audioEncodingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encoding Audio Track.
+        /// </summary>
+        internal static string audioEncodingTrack {
+            get {
+                return ResourceManager.GetString("audioEncodingTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Audio Options.
         /// </summary>
         internal static string audioOptionsTitle {
@@ -196,6 +223,105 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demuxing Aborted.
+        /// </summary>
+        internal static string demuxingAbortedMessage {
+            get {
+                return ResourceManager.GetString("demuxingAbortedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing Completed.
+        /// </summary>
+        internal static string demuxingCompleteMessage {
+            get {
+                return ResourceManager.GetString("demuxingCompleteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing.
+        /// </summary>
+        internal static string demuxingMessage {
+            get {
+                return ResourceManager.GetString("demuxingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing MKV Tracks.
+        /// </summary>
+        internal static string demuxingMkv {
+            get {
+                return ResourceManager.GetString("demuxingMkv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing Attachments.
+        /// </summary>
+        internal static string demuxingMkvAttachments {
+            get {
+                return ResourceManager.GetString("demuxingMkvAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing Chapters.
+        /// </summary>
+        internal static string demuxingMkvChapters {
+            get {
+                return ResourceManager.GetString("demuxingMkvChapters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing MP4 Audio Track.
+        /// </summary>
+        internal static string demuxingmp4Audio {
+            get {
+                return ResourceManager.GetString("demuxingmp4Audio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demuxing MP4 Video Track.
+        /// </summary>
+        internal static string demuxingmp4Video {
+            get {
+                return ResourceManager.GetString("demuxingmp4Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started indexing VOB files.
+        /// </summary>
+        internal static string demuxingVob {
+            get {
+                return ResourceManager.GetString("demuxingVob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started fetching chapters..
+        /// </summary>
+        internal static string demuxingvobChapters {
+            get {
+                return ResourceManager.GetString("demuxingvobChapters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started fetching subs..
+        /// </summary>
+        internal static string demuxingvobSubs {
+            get {
+                return ResourceManager.GetString("demuxingvobSubs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start.
         /// </summary>
         internal static string encodeStartButton {
@@ -277,11 +403,83 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encoding video.
+        /// </summary>
+        internal static string encodingVideoPass {
+            get {
+                return ResourceManager.GetString("encodingVideoPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encoding Theora video.
+        /// </summary>
+        internal static string encodingVideoTheora {
+            get {
+                return ResourceManager.GetString("encodingVideoTheora", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seems an error happend! Do you want to send an errorreport?.
+        /// </summary>
+        internal static string errorWarningMessage {
+            get {
+                return ResourceManager.GetString("errorWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error!.
+        /// </summary>
+        internal static string errorWarningTitle {
+            get {
+                return ResourceManager.GetString("errorWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fetching File Info.
+        /// </summary>
+        internal static string fileInfoFetch {
+            get {
+                return ResourceManager.GetString("fileInfoFetch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter Options.
         /// </summary>
         internal static string filterOptionsTitle {
             get {
                 return ResourceManager.GetString("filterOptionsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indexing AVC.
+        /// </summary>
+        internal static string indexingAvc {
+            get {
+                return ResourceManager.GetString("indexingAvc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indexing Aborted.
+        /// </summary>
+        internal static string indexingAvcAbort {
+            get {
+                return ResourceManager.GetString("indexingAvcAbort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indexing AVC Completed.
+        /// </summary>
+        internal static string indexingAvcCompleted {
+            get {
+                return ResourceManager.GetString("indexingAvcCompleted", resourceCulture);
             }
         }
         
@@ -354,6 +552,15 @@ namespace MiniCoder.Core.Languages {
         internal static string logTabTitle {
             get {
                 return ResourceManager.GetString("logTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muxing to.
+        /// </summary>
+        internal static string muxingMessage {
+            get {
+                return ResourceManager.GetString("muxingMessage", resourceCulture);
             }
         }
         
@@ -830,6 +1037,33 @@ namespace MiniCoder.Core.Languages {
         internal static string updateUpdateButton {
             get {
                 return ResourceManager.GetString("updateUpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parsing VFR.
+        /// </summary>
+        internal static string vfrParsing {
+            get {
+                return ResourceManager.GetString("vfrParsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aborted Parsing VFR.
+        /// </summary>
+        internal static string vfrParsingAborted {
+            get {
+                return ResourceManager.GetString("vfrParsingAborted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Parsing VFR.
+        /// </summary>
+        internal static string vfrParsingCompleted {
+            get {
+                return ResourceManager.GetString("vfrParsingCompleted", resourceCulture);
             }
         }
         

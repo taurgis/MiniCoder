@@ -437,4 +437,82 @@ features.</value>
   <data name="whenDone" xml:space="preserve">
     <value>When done</value>
   </data>
+  <data name="audioDecodingMessage" xml:space="preserve">
+    <value>Decoding Audio</value>
+  </data>
+  <data name="audioEncodingMessage" xml:space="preserve">
+    <value>Encoding audio to</value>
+  </data>
+  <data name="audioEncodingTrack" xml:space="preserve">
+    <value>Encoding Audio Track</value>
+  </data>
+  <data name="demuxingAbortedMessage" xml:space="preserve">
+    <value>Demuxing Aborted</value>
+  </data>
+  <data name="demuxingCompleteMessage" xml:space="preserve">
+    <value>Demuxing Completed</value>
+  </data>
+  <data name="demuxingMessage" xml:space="preserve">
+    <value>Demuxing</value>
+  </data>
+  <data name="demuxingMkv" xml:space="preserve">
+    <value>Demuxing MKV Tracks</value>
+  </data>
+  <data name="demuxingMkvAttachments" xml:space="preserve">
+    <value>Demuxing Attachments</value>
+  </data>
+  <data name="demuxingMkvChapters" xml:space="preserve">
+    <value>Demuxing Chapters</value>
+  </data>
+  <data name="demuxingmp4Audio" xml:space="preserve">
+    <value>Demuxing MP4 Audio Track</value>
+  </data>
+  <data name="demuxingmp4Video" xml:space="preserve">
+    <value>Demuxing MP4 Video Track</value>
+  </data>
+  <data name="demuxingVob" xml:space="preserve">
+    <value>Started indexing VOB files</value>
+  </data>
+  <data name="demuxingvobChapters" xml:space="preserve">
+    <value>Started fetching chapters.</value>
+  </data>
+  <data name="demuxingvobSubs" xml:space="preserve">
+    <value>Started fetching subs.</value>
+  </data>
+  <data name="encodingVideoPass" xml:space="preserve">
+    <value>Encoding video</value>
+  </data>
+  <data name="encodingVideoTheora" xml:space="preserve">
+    <value>Encoding Theora video</value>
+  </data>
+  <data name="errorWarningMessage" xml:space="preserve">
+    <value>Seems an error happend! Do you want to send an errorreport?</value>
+  </data>
+  <data name="errorWarningTitle" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="fileInfoFetch" xml:space="preserve">
+    <value>Fetching File Info</value>
+  </data>
+  <data name="indexingAvc" xml:space="preserve">
+    <value>Indexing AVC</value>
+  </data>
+  <data name="indexingAvcAbort" xml:space="preserve">
+    <value>Indexing Aborted</value>
+  </data>
+  <data name="indexingAvcCompleted" xml:space="preserve">
+    <value>Indexing AVC Completed</value>
+  </data>
+  <data name="muxingMessage" xml:space="preserve">
+    <value>Muxing to</value>
+  </data>
+  <data name="vfrParsing" xml:space="preserve">
+    <value>Parsing VFR</value>
+  </data>
+  <data name="vfrParsingAborted" xml:space="preserve">
+    <value>Aborted Parsing VFR</value>
+  </data>
+  <data name="vfrParsingCompleted" xml:space="preserve">
+    <value>Completed Parsing VFR</value>
+  </data>
 </root>

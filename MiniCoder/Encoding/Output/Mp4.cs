@@ -6,6 +6,8 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
+using MiniCoder.Core.Languages;
+
 namespace MiniCoder.Encoding.Output
 {
     class Mp4Out : Container
@@ -15,12 +17,14 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
+                SysLanguage language = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to MP4", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
                 LogBook.addLogLine("Muxing to MP4", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
 
                 proc.initProcess();
+                LogBook.setInfoLabel(language.muxingMessage + " MP4");
                 // // LogBook.addLogLine(""Muxing", 1);
                 string args;
 

@@ -8,12 +8,14 @@ using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using MiniCoder.Core.Encoding;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.Input
 {
     class Mkv : InputFile
     {
         String tempPath = Application.StartupPath + "\\temp\\";
+        SysLanguage language = MiniSystem.getLanguage();
      //   SortedList<String, String[]> fileDetails = new SortedList<string, string[]>();
 
         public Mkv()
@@ -50,14 +52,14 @@ namespace MiniCoder.Encoding.Input
             try
             {
                 LogBook.addLogLine("Demuxing MKV - Using Mkvtoolnix", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-
-                MiniProcess proc = new DefaultProcess("Demuxing MKV", fileDetails["name"][0] + "DeMuxingProcess");
+                
+                MiniProcess proc = new DefaultProcess(language.demuxingMessage + " MKV", fileDetails["name"][0] + "DeMuxingProcess");
                 processWatcher.setProcess(proc);
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
 
 
-                LogBook.setInfoLabel("Demuxing MKV Tracks");
+                LogBook.setInfoLabel(language.demuxingMkv);
                 proc.initProcess();
               
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
@@ -94,11 +96,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel("Demuxing Aborted");
+                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
                     return false;
                 }
                 else
-                    LogBook.setInfoLabel("Demuxing Complete");
+                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
 
                 return true;
             }
@@ -136,7 +138,7 @@ namespace MiniCoder.Encoding.Input
 
             MiniProcess proc = new AttachmentProcess();
             processWatcher.setProcess(proc);
-            LogBook.setInfoLabel("Demuxing Attachments");
+            LogBook.setInfoLabel(language.demuxingMkvAttachments);
             proc.initProcess();
 
             proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvinfo.exe"));
@@ -208,7 +210,7 @@ namespace MiniCoder.Encoding.Input
         {
             LogBook.addLogLine("Fetching MKV Chapters - Using MkvExtract", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "ChapterFetching", false);
 
-
+            LogBook.setInfoLabel(language.demuxingMkvChapters);
             XMLValidator xmlValidator = new XMLValidator(tempPath + "chapters.xml");
                     int chapterFetchRetries = 0;
                     while (!xmlValidator.Validate() && chapterFetchRetries++ < 5)

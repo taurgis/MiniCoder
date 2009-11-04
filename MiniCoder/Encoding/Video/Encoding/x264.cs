@@ -6,6 +6,7 @@ using MiniCoder.External;
 using MiniCoder.Encoding.Process_Management;
 using System.Windows.Forms;
 using System.IO;
+using MiniCoder.Core.Languages;
 
 namespace MiniCoder.Encoding.VideoEnc.Encoding
 {
@@ -16,6 +17,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
+                SysLanguage language = MiniSystem.getLanguage();
                 string pass = "0";
                 MiniProcess proc;
 
@@ -68,6 +70,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                         break;
 
                     case "3":
+                        LogBook.addLogLine("MT Main Template", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
                         //pass3Arg = "--pass 3 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 --no-mbtree " + extra + " --output";
@@ -100,7 +103,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                         break;
                 }
                 pass = "1";
-                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
+                proc = new X264Process(language.encodingVideoPass, pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -132,7 +135,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     tempStart = DateTime.Now;
                     pass = "2";
 
-                    proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
+                    proc = new X264Process(language.encodingVideoPass, pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
                     proc.initProcess();
                     processWatcher.setProcess(proc);
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -157,7 +160,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 else
                     pass = "2";
 
-                proc = new X264Process("Encoding video", pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
+                proc = new X264Process(language.encodingVideoPass, pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
