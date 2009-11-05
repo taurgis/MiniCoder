@@ -284,7 +284,7 @@ namespace MiniCoder.GUI.External
                 }
             }
             tools.SavePackages();
-            for (int i = 0; i < coreList.Items.Count; i++)
+            for (int i = coreList.Items.Count - 1; i >= 0; i--)
             {
                 if (coreList.Items[i].Checked)
                 {

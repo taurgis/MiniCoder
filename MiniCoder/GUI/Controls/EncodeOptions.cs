@@ -87,6 +87,11 @@ namespace MiniCOder.GUI.Controls
             this.tools = tools;
         }
 
+        public void setLanguageDefault()
+        {
+            languagesSelect.SelectedIndex = 0;
+        }
+
         public void loadSettings(MainSettings settings)
         {
 
@@ -104,7 +109,7 @@ namespace MiniCOder.GUI.Controls
         private void EncodeOptions_Load(object sender, EventArgs e)
         {
            // processPriority.SelectedIndex = 0;
-
+        
         }
 
         private void processPriority_SelectedIndexChanged(object sender, EventArgs e)

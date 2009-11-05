@@ -340,6 +340,15 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encoding Completed.
+        /// </summary>
+        internal static string encodingComplete {
+            get {
+                return ResourceManager.GetString("encodingComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore Attachments.
         /// </summary>
         internal static string encodingIgnoreAttachments {
@@ -502,6 +511,24 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aborted.
+        /// </summary>
+        internal static string inputColumn2StatusAborted {
+            get {
+                return ResourceManager.GetString("inputColumn2StatusAborted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string inputColumn2StatusDone {
+            get {
+                return ResourceManager.GetString("inputColumn2StatusDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Encoding.
         /// </summary>
         internal static string inputColumn2StatusEncoding {
@@ -547,11 +574,56 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        internal static string logMenuCopy {
+            get {
+                return ResourceManager.GetString("logMenuCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send error report.
+        /// </summary>
+        internal static string logMenuSend {
+            get {
+                return ResourceManager.GetString("logMenuSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log.
         /// </summary>
         internal static string logTabTitle {
             get {
                 return ResourceManager.GetString("logTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string menuAdd {
+            get {
+                return ResourceManager.GetString("menuAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        internal static string menuClear {
+            get {
+                return ResourceManager.GetString("menuClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string menuRemove {
+            get {
+                return ResourceManager.GetString("menuRemove", resourceCulture);
             }
         }
         

@@ -515,4 +515,28 @@ features.</value>
   <data name="vfrParsingCompleted" xml:space="preserve">
     <value>Completed Parsing VFR</value>
   </data>
+  <data name="encodingComplete" xml:space="preserve">
+    <value>Encoding Completed</value>
+  </data>
+  <data name="inputColumn2StatusAborted" xml:space="preserve">
+    <value>Aborted</value>
+  </data>
+  <data name="inputColumn2StatusDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="logMenuCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="logMenuSend" xml:space="preserve">
+    <value>Send error report</value>
+  </data>
+  <data name="menuAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="menuClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="menuRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
 </root>

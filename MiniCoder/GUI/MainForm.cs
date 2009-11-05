@@ -43,7 +43,12 @@ namespace MiniCoder.GUI
                     MainSettings main = new MainSettings();
                     main.loadSettings();
                     encodeOptions.loadSettings(main);
-                    
+
+                }
+                else
+                {
+
+                    encodeOptions.setLanguageDefault();
                 }
 
                 
@@ -99,8 +104,14 @@ namespace MiniCoder.GUI
             cbAfterEncode.Items.Clear();
             cbAfterEncode.Items.AddRange(language.whenDoneOptions);
             cbAfterEncode.SelectedIndex = 0;
+            clearMenuItem.Text = language.menuClear;
+            addMenu.Text = language.menuAdd;
+            removeMenuItem.Text = language.menuRemove;
+            copyToolStripMenuItem.Text = language.logMenuCopy;
+            sendErrorReportToolStripMenuItem.Text = language.logMenuSend;
             encodeSettings.setLanguage(language);
             encodeOptions.setLanguage(language);
+           
         }
 
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
@@ -143,7 +154,7 @@ namespace MiniCoder.GUI
                 inputListItem.ToolTipText = "Check if file has a variable framerate";
                 inputListItem.Text = fName;
                 inputListItem.SubItems.Add(statusSub);
-                statusSub.Text = "Ready";
+                statusSub.Text = language.inputColumn2StatusReady;
                 inputList.Items.Add(inputListItem);
                 LogBook.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
             }
@@ -158,7 +169,7 @@ namespace MiniCoder.GUI
             foreach (String file in openFile.FileNames)
             {
                 FileInfo fileInfo = new FileInfo(file);
-                String[] fileListDetails = { fileInfo.Name, "Ready", file };
+                String[] fileListDetails = { fileInfo.Name, language.inputColumn2StatusReady, file };
                 ListViewItem tempFile = new ListViewItem(fileListDetails);
                 inputList.Items.Add(tempFile);
                 FileList.Add(file);
@@ -299,7 +310,7 @@ namespace MiniCoder.GUI
                 {
 
                 }
-                setFileStatus("Encoding");
+                setFileStatus(language.inputColumn2StatusEncoding);
 
                 getSettings();
 
@@ -310,7 +321,7 @@ namespace MiniCoder.GUI
                 tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet, processWatcher);
                 if (!tempEncode.fetchEncodeInfo())
                 {
-                    setFileStatus("Error");
+                    setFileStatus(language.inputColumn2StatusError);
                     // LogBook.addLogLine("infoLabel.Text, 2,"");
                     LogBook.sendmail(logView);
                     break;
@@ -320,19 +331,19 @@ namespace MiniCoder.GUI
                     if (tempEncode.startAvsEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus("Done");
-                        LogBook.setInfoLabel("Encoding completed");
+                        setFileStatus(language.inputColumn2StatusDone);
+                        LogBook.setInfoLabel(language.encodingComplete);
                         curEncode++;
                     }
                     else
                     {
                         if (processWatcher.getProcess().getAbandonStatus())
                         {
-                            setFileStatus("Aborted");
+                            setFileStatus(language.inputColumn2StatusAborted);
                         }
                         else
                         {
-                            setFileStatus("Error");
+                            setFileStatus(language.inputColumn2StatusError);
                             // LogBook.addLogLine("infoLabel.Text, 2,"");
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                             LogBook.sendmail(logView);
@@ -352,19 +363,19 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
 
-                        setFileStatus("Done");
-                        LogBook.setInfoLabel("Encoding completed");
+                        setFileStatus(language.inputColumn2StatusDone);
+                        LogBook.setInfoLabel(language.encodingComplete);
                         curEncode++;
                     }
                     else
                     {
                         if (processWatcher.getProcess().getAbandonStatus())
                         {
-                            setFileStatus("Aborted");
+                            setFileStatus(language.inputColumn2StatusAborted);
                         }
                         else
                         {
-                            setFileStatus("Error");
+                            setFileStatus(language.inputColumn2StatusError);
                             // LogBook.addLogLine("infoLabel.Text, 2,"");
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                                 LogBook.sendmail(logView);
@@ -385,8 +396,8 @@ namespace MiniCoder.GUI
                     if (tempEncode.startDefaultEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus("Done");
-                        LogBook.setInfoLabel("Encoding completed");
+                        setFileStatus(language.inputColumn2StatusDone);
+                        LogBook.setInfoLabel(language.encodingComplete);
                         curEncode++;
                     }
                     else
@@ -395,11 +406,11 @@ namespace MiniCoder.GUI
                         {
                             if (processWatcher.getProcess().getAbandonStatus())
                             {
-                                setFileStatus("Aborted");
+                                setFileStatus(language.inputColumn2StatusAborted);
                             }
                             else
                             {
-                                setFileStatus("Error");
+                                setFileStatus(language.inputColumn2StatusError);
                                 if (!Boolean.Parse(encodeSet["aftererror"]))
                                       LogBook.sendmail(logView);
                             }
@@ -427,7 +438,7 @@ namespace MiniCoder.GUI
         {
             foreach (ListViewItem eachItem in inputList.Items)
             {
-                if (eachItem.SubItems[1].Text != "Done")
+                if (eachItem.SubItems[1].Text != language.inputColumn2StatusDone)
                     return;
 
             }

@@ -15,7 +15,7 @@ namespace MiniCOder.GUI.Controls
 {
     public partial class EncodeSettings : UserControl
     {
-        SysLanguage language;
+        SysLanguage language = new SysLanguage(0);
         string hardsubmp4 = "";
         int crfValue = 0;
         string customFilter = "";
