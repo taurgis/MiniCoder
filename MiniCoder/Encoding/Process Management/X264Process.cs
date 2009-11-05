@@ -272,7 +272,7 @@ namespace MiniCoder.Encoding.Process_Management
                             if (read.Contains("frames") & CharOccurs(read, ',') == 3)
                             {
                                 string[] split = Regex.Split(read, ",");
-                                LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + split[0] + " - " + split[3]);
+                                LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + Regex.Split(split[0], "]")[0].Replace("[","") + " - " + split[3]);
                                 if (null != previewer && windowIsOpen)
                                 {
                                     string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
