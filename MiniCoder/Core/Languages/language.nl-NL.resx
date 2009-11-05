@@ -196,7 +196,7 @@
     <value>Medium;Hoog;Heel Hoog;Heel Hoog (+50mb anime);Heel Hoog (-50mb anime);Heel Hoog (TV-Series/Films);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
   </data>
   <data name="whenDoneOptions" xml:space="preserve">
-    <value>Niets;Slaapstand;Standby;Afsluiten</value>
+    <value>Doe Niets;Slaapstand;Standby;Afsluiten</value>
   </data>
   <data name="preResizeOptions" xml:space="preserve">
     <value>Niet;Zacht;Neutraal;Scherp;Heel Scherp (Lanczos64);Heel Scherp (Spline36)</value>
@@ -286,7 +286,7 @@
     <value>Voer hier je persoonlijke AviSynth filters in.</value>
   </data>
   <data name="customFilterTitle" xml:space="preserve">
-    <value>Persoonlijke FIlters</value>
+    <value>Persoonlijke Filters</value>
   </data>
   <data name="customPathsTitle" xml:space="preserve">
     <value>Persoonlijke Locaties</value>
@@ -435,28 +435,28 @@ features.</value>
     <value>Video</value>
   </data>
   <data name="whenDone" xml:space="preserve">
-    <value>Wanneer klaar</value>
+    <value>Wanneer klaar:</value>
   </data>
   <data name="audioDecodingMessage" xml:space="preserve">
-    <value>Audio Decoderen</value>
+    <value>Bezig met het decoderen van de audio</value>
   </data>
   <data name="audioEncodingMessage" xml:space="preserve">
-    <value>Encoderen audio naar</value>
+    <value>Bezig met het encoderen van de audio naar</value>
   </data>
   <data name="audioEncodingTrack" xml:space="preserve">
-    <value>Encoderen audio</value>
+    <value>Audio Encoderen:</value>
   </data>
   <data name="demuxingAbortedMessage" xml:space="preserve">
-    <value>Uiteenhalen geannuleerd</value>
+    <value>Demultiplexen geannuleerd</value>
   </data>
   <data name="demuxingCompleteMessage" xml:space="preserve">
-    <value>Uiteenhalen compleet</value>
+    <value>Demultiplexen compleet</value>
   </data>
   <data name="demuxingMessage" xml:space="preserve">
-    <value>Uiteenhalen</value>
+    <value>Bezig met het demultiplexen van de</value>
   </data>
   <data name="demuxingMkv" xml:space="preserve">
-    <value>Uiteenhalen MKV bestand</value>
+    <value>Bezig met het demultiplexen van het  MKV bestand</value>
   </data>
   <data name="demuxingMkvAttachments" xml:space="preserve">
     <value>Ophalen MKV Bijlagen</value>
@@ -465,13 +465,13 @@ features.</value>
     <value>Ophalen MKV Hoofdstukken</value>
   </data>
   <data name="demuxingmp4Audio" xml:space="preserve">
-    <value>Uiteenhalen MP4 Audio</value>
+    <value>Bezig met het demultiplexen van de MP4 Audio</value>
   </data>
   <data name="demuxingmp4Video" xml:space="preserve">
-    <value>Uiteenhalen MP4 video</value>
+    <value>Bezig met het demultiplexen van de MP4 video</value>
   </data>
   <data name="demuxingVob" xml:space="preserve">
-    <value>Indexeren van VOB bestand</value>
+    <value>Bezig met het indexeren van het VOB bestand</value>
   </data>
   <data name="demuxingvobChapters" xml:space="preserve">
     <value>Hoofdstukken aan het ophalen</value>
@@ -480,16 +480,16 @@ features.</value>
     <value>Ondertitellingen aan het ophalen</value>
   </data>
   <data name="encodingVideoPass" xml:space="preserve">
-    <value>Video Converteren</value>
+    <value>Converteren Video</value>
   </data>
   <data name="encodingVideoTheora" xml:space="preserve">
     <value>Bezig met converteren naar Theora</value>
   </data>
   <data name="fileInfoFetch" xml:space="preserve">
-    <value>Bestandsinformatie ophalen</value>
+    <value>Bestandsinformatie aan het ophalen</value>
   </data>
   <data name="indexingAvc" xml:space="preserve">
-    <value>Indexering AVC</value>
+    <value>Bezig met de indexering van AVC</value>
   </data>
   <data name="indexingAvcAbort" xml:space="preserve">
     <value>Indexering geannuleerd</value>

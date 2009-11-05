@@ -29,7 +29,7 @@ namespace MiniCoder.Encoding.VideoEnc
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfr.getInstallPath(), "mkv2vfr.exe"));
-                    proc.setArguments("\"" + fileDetails["fileName"][0] + "\" \"" + tempPath + fileDetails["name"] + "-Video Track.avi\" \"" + tempPath + "timecode.txt\"");
+                    proc.setArguments("\"" + fileDetails["fileName"][0] + "\" \"" + tempPath + fileDetails["name"][0] + "-Video Track.avi\" \"" + tempPath + "timecode.txt\"");
 
                     //MessageBox.Show(mainProcess.StartInfo.Arguments);
 
@@ -55,10 +55,7 @@ namespace MiniCoder.Encoding.VideoEnc
 
                     encOpts["vfr"] = tempPath + "timecode.txt";
                     //  details.vfrName = appSettings.tempDIR + details.name + "-Video Track.avi";
-
-                    MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(tempPath + fileDetails["name"] + "-Video Track.avi");
-                    fileDetails["fps"][0] = mediaInfo.Video[0].FrameRate.ToString();
-
+                    
 
 
                 }

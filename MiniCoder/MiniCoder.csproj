@@ -206,10 +206,12 @@
     <EmbeddedResource Include="Core\Languages\language.nl-NL.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>language.nl-NL1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Languages\language.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>language.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AviSynth\CustomFilter.resx">
       <DependentUpon>CustomFilter.cs</DependentUpon>
