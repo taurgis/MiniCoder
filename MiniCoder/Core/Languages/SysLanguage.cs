@@ -122,6 +122,17 @@ namespace MiniCoder.Core.Languages
         public string demuxingMkvChapters { get; set; }
         public string errorWarningMessage { get; set; }
         public string errorWarningTitle { get; set; }
+        public string encodingComplete { get; set; }
+        public string inputColumn2StatusAborted { get; set; }
+        public string inputColumn2StatusEncoding { get; set; }
+        public string inputColumn2StatusError { get; set; }
+        public string inputColumn2StatusReady { get; set; }
+        public string inputColumn2StatusDone { get; set; }
+        public string menuAdd { get; set; }
+        public string menuRemove { get; set; }
+        public string menuClear { get; set; }
+        public string logMenuCopy { get; set; }
+        public string logMenuSend { get; set; }
 
         public SysLanguage(int i)
         {
@@ -248,6 +259,17 @@ namespace MiniCoder.Core.Languages
             demuxingMkvChapters = rm.GetString("demuxingMkvChapters", culture);
             errorWarningMessage = rm.GetString("errorWarningMessage", culture);
             errorWarningTitle = rm.GetString("errorWarningTitle", culture);
+            encodingComplete = rm.GetString("encodingComplete", culture);
+            inputColumn2StatusAborted = rm.GetString("inputColumn2StatusAborted", culture);
+            inputColumn2StatusEncoding = rm.GetString("inputColumn2StatusEncoding", culture);
+            inputColumn2StatusError = rm.GetString("inputColumn2StatusError", culture);
+            inputColumn2StatusReady = rm.GetString("inputColumn2StatusReady", culture);
+            inputColumn2StatusDone = rm.GetString("inputColumn2StatusDone", culture);
+            menuAdd = rm.GetString("menuAdd", culture);
+            menuRemove = rm.GetString("menuRemove", culture);
+            menuClear = rm.GetString("menuClear", culture);
+            logMenuCopy = rm.GetString("logMenuCopy", culture);
+            logMenuSend = rm.GetString("logMenuSend", culture);
         }
     }
 }
