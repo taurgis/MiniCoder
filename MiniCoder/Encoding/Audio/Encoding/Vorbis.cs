@@ -30,7 +30,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
 
 
 
-                LogBook.addLogLine(language.audioEncodingMessage + " vorbis", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.addLogLine("Encoding to vorbis", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
                 proc.initProcess();
 

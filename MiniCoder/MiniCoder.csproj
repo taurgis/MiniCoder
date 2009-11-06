@@ -71,21 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Encoding\XmlValidator.cs" />
-    <Compile Include="Core\Languages\language.nl-NL.Designer.cs">
-      <DependentUpon>language.nl-NL.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Core\Languages\language.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>language.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Languages\language.nl-NL1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>language.nl-NL.resx</DependentUpon>
-    </Compile>
     <Compile Include="Core\Languages\SysLanguage.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
@@ -203,16 +188,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Core\Languages\language.nl-NL.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>language.nl-NL1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Languages\language.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>language.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AviSynth\CustomFilter.resx">
       <DependentUpon>CustomFilter.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -292,6 +267,9 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\languages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
