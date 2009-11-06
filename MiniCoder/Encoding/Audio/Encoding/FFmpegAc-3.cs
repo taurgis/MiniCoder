@@ -29,7 +29,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
 
-                LogBook.addLogLine(language.audioEncodingMessage + " FFMpeg AC-3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.addLogLine("Encoding to FFMpeg AC-3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
                 // // LogBook.addLogLine(""Encoding Audio",1);
                 proc.initProcess();

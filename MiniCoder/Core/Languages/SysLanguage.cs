@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Resources;
 using System.Globalization;
-
+using System.Windows.Forms;
 namespace MiniCoder.Core.Languages
 {
    public class SysLanguage
@@ -145,8 +145,11 @@ namespace MiniCoder.Core.Languages
                     culture = CultureInfo.CreateSpecificCulture("nl-NL");
                     break;
             }
+        
+         
+            rm = ResourceManager.CreateFileBasedResourceManager("language", Application.StartupPath + "/languages", null);
+        
 
-            rm = new ResourceManager("MiniCoder.Core.Languages.language", typeof(SysLanguage).Assembly);
             programTitle = rm.GetString("programTitle", culture);
             inputTabTitle = rm.GetString("inputTabTitle", culture);
             settingsTabTitle = rm.GetString("settingsTabTitle", culture);

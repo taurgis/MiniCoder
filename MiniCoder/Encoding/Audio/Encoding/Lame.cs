@@ -28,7 +28,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
-                LogBook.addLogLine(language.audioEncodingMessage + " Lame MP3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.addLogLine("Encoding to Lame MP3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
 
 

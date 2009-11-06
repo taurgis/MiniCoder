@@ -176,7 +176,7 @@ namespace MiniCoder.Encoding.Input
                 for (int i = 1; i < split.Length; i++)
                     attachments[i - 1] = new Attachment(tempPath + split[i].Substring(0, split[i].IndexOf("\r\n")), split[i].Substring(0, split[i].IndexOf("\r\n")));
 
-                proc = new DefaultProcess("Demuxing Attachments", fileDetails["name"][0] + "DeMuxingProcess");
+                proc = new DefaultProcess("Demuxing Attachments", fileDetails["name"][0] + "AttachmentFetching");
                 proc.initProcess();
 
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));

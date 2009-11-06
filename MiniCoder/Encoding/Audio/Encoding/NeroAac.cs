@@ -32,7 +32,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
 
 
 
-                LogBook.addLogLine(language.audioEncodingMessage + " Nero AAC", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.addLogLine("Encoding to Nero AAC", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
                 proc.initProcess();
 
