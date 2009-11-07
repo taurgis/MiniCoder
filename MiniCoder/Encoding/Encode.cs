@@ -352,11 +352,11 @@ namespace MiniCoder.Encoding
                 //  audioTracks[i] = new Audio(temp.audTitle(fileName)[i], temp.audLanguage(fileName)[i], temp.audCodec(fileName)[i], temp.audID(fileName)[i]);
                 try
                 {
-                    audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].Language, mediaInfo.Audio[i].CodecID.ToString(), int.Parse(mediaInfo.Audio[i].ID));
+                    audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].LanguageString, mediaInfo.Audio[i].CodecID.ToString(), int.Parse(mediaInfo.Audio[i].ID));
                 }
                 catch (Exception error)
                 {
-                    audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].Language, mediaInfo.Audio[i].CodecID.ToString(), audioTracks.Length + i);
+                    audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].LanguageString, mediaInfo.Audio[i].CodecID.ToString(), audioTracks.Length + i);
                     LogBook.addLogLine("Error getting audio track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 }
             }
@@ -364,7 +364,7 @@ namespace MiniCoder.Encoding
             for (int i = 0; i < subTracks.Length; i++)
             {
                 // subTracks[i] = new Sub(temp.subCaption(fileName)[i], temp.subLang(fileName)[i], temp.subCodec(fileName)[i], temp.subID(fileName)[i]);
-                subTracks[i] = new Sub(mediaInfo.Text[i].Title, mediaInfo.Text[i].Language, mediaInfo.Text[i].Codec, int.Parse(mediaInfo.Text[i].ID));
+                subTracks[i] = new Sub(mediaInfo.Text[i].Title, mediaInfo.Text[i].LanguageString, mediaInfo.Text[i].Codec, int.Parse(mediaInfo.Text[i].ID));
             }
 
             if (encodeSet.ContainsKey("skipattachments"))

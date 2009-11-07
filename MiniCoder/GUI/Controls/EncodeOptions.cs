@@ -11,7 +11,7 @@ using MiniCoder.Encoding.Process_Management;
 using MiniCoder.GUI;
 using MiniCoder.Core.Languages;
 using MiniCoder.Core.Settings;
-
+using System.Diagnostics;
 namespace MiniCOder.GUI.Controls
 {
     public partial class EncodeOptions : UserControl
@@ -115,7 +115,39 @@ namespace MiniCOder.GUI.Controls
         private void processPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
             processWatcher.setPriority(processPriority.SelectedIndex);
+            setPriority(processPriority.SelectedIndex);
             
+        }
+        private void setPriority(int i)
+        {
+            Process tempProcess = Process.GetCurrentProcess();
+            switch (i)
+            {
+                case 0:
+                    tempProcess.PriorityClass = ProcessPriorityClass.Idle;
+                    break;
+                case 1:
+                    tempProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
+                    break;
+                case 2:
+                    tempProcess.PriorityClass = ProcessPriorityClass.Normal;
+                    break;
+                case 3:
+                    tempProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
+                    break;
+                case 4:
+                    tempProcess.PriorityClass = ProcessPriorityClass.High;
+                    break;
+                case 5:
+                    tempProcess.PriorityClass = ProcessPriorityClass.RealTime;
+                    break;
+                default:
+                    tempProcess.PriorityClass = ProcessPriorityClass.Idle;
+                    break;
+
+
+            }
+
         }
 
         private void outputSelect_Click(object sender, EventArgs e)

@@ -44,6 +44,8 @@ namespace MiniCoder.Encoding.Process_Management
             {
                 this.priority = i;
                 proc.setPriority(i);
+
+
             }
             catch
             {
