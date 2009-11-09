@@ -20,7 +20,7 @@ namespace MiniCoder.Core.Settings
         public void saveSettings()
         {
             XmlTextWriter xmlWriter = new XmlTextWriter(Application.StartupPath + "\\settings.xml", null);
-          
+
             xmlWriter.Formatting = Formatting.Indented;
 
             xmlWriter.WriteStartDocument();
@@ -38,7 +38,7 @@ namespace MiniCoder.Core.Settings
 
             xmlWriter.WriteEndElement();
             xmlWriter.Close();
-           
+
         }
 
         private void writeElement(XmlTextWriter writer, string element, string value)
@@ -57,32 +57,70 @@ namespace MiniCoder.Core.Settings
             string xmlFile = Application.StartupPath + "\\settings.xml";
             doc.Load(xmlFile);
             XmlNodeList xmlnode = doc.SelectNodes("//Setting[@name=\"" + "outputPath" + "\"]");
-            outputPath = xmlnode[0].ChildNodes[0].InnerText;
+
+            if (xmlnode.Count != 0)
+                outputPath = xmlnode[0].ChildNodes[0].InnerText;
+            else
+                outputPath = "";
 
             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "disableVideoAdvert" + "\"]");
-            disableVideoAdvert = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+            if (xmlnode.Count != 0)
+                disableVideoAdvert = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                disableVideoAdvert = false;
 
             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "processPriority" + "\"]");
-            processPriority = xmlnode[0].ChildNodes[0].InnerText;
 
-             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreAudio" + "\"]");
-            ignoreAudio = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            if (xmlnode.Count != 0)
+                processPriority = xmlnode[0].ChildNodes[0].InnerText;
+            else
+                processPriority = "0";
 
-             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreSubs" + "\"]");
-            ignoreSubs = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreAudio" + "\"]");
 
-             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreAttachments" + "\"]");
-            ignoreAttachments = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            if (xmlnode.Count != 0)
+                ignoreAudio = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                ignoreAudio = false;
 
-             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreChapters" + "\"]");
-            ignoreChapters = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreSubs" + "\"]");
+
+            if (xmlnode.Count != 0)
+                ignoreSubs = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                ignoreSubs = false;
+
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreAttachments" + "\"]");
+
+            if (xmlnode.Count != 0)
+                ignoreAttachments = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                ignoreAttachments = false;
+
+            xmlnode = doc.SelectNodes("//Setting[@name=\"" + "ignoreChapters" + "\"]");
+
+            if (xmlnode.Count != 0)
+                ignoreChapters = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                ignoreChapters = false;
 
             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "continueAfterError" + "\"]");
-            continueAfterError = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+            if (xmlnode.Count != 0)
+                continueAfterError = Boolean.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                continueAfterError = false;
 
             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "language" + "\"]");
-            language = int.Parse(xmlnode[0].ChildNodes[0].InnerText);
+
+            if (xmlnode.Count != 0)
+                language = int.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            else
+                language = 0;
 
         }
+
+
     }
 }
