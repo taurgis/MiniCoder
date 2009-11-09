@@ -39,7 +39,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_59BA51C6180D452DADDD996A5C02A655"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_77143001D2D140DBBC783085BC39A935"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_895B2CD347D24945954338F878DB1A6C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B399BFB617C648E6AFAFF9A52FF2410E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -69,8 +87,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FA23CDC53E14B94C8768E39EBBD3F591"
+        "OwnerKey" = "8:_59BA51C6180D452DADDD996A5C02A655"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E606A863056C49D0A391B18295C7B10D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_59BA51C6180D452DADDD996A5C02A655"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -271,7 +301,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MediaInfoWrapper, Version=0.7.19.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:MediaInfoWrapper, Version=0.7.23.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_541D604C78E9C476028495DB9BE040CA"
@@ -298,12 +328,83 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_59BA51C6180D452DADDD996A5C02A655"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CoreUpdater, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_59BA51C6180D452DADDD996A5C02A655"
+                    {
+                    "Name" = "8:CoreUpdater.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\MiniCoder\\bin\\Debug\\CoreUpdater.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77143001D2D140DBBC783085BC39A935"
             {
             "SourcePath" = "8:..\\MiniCoder\\bin\\Debug\\AvisynthWrapper.dll"
             "TargetName" = "8:AvisynthWrapper.dll"
             "Tag" = "8:"
             "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_895B2CD347D24945954338F878DB1A6C"
+            {
+            "SourcePath" = "8:..\\MiniCoder\\bin\\Debug\\languages\\language.nl-NL.resources"
+            "TargetName" = "8:language.nl-NL.resources"
+            "Tag" = "8:"
+            "Folder" = "8:_29045E093F1C41D88797650AB21C7515"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B399BFB617C648E6AFAFF9A52FF2410E"
+            {
+            "SourcePath" = "8:..\\MiniCoder\\bin\\Debug\\languages\\language.resources"
+            "TargetName" = "8:language.resources"
+            "Tag" = "8:"
+            "Folder" = "8:_29045E093F1C41D88797650AB21C7515"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -439,6 +540,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_29045E093F1C41D88797650AB21C7515"
+                    {
+                    "Name" = "8:languages"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_8D4D425ADA6246E88A6DF93B0D169C85"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_3466B22468534947BDF8CB1EB65266D8"
                     {
                     "Name" = "8:Temp"
@@ -534,14 +646,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MiniCoder"
-        "ProductCode" = "8:{E0D03337-9354-4F59-8A3D-520F3D088AEE}"
-        "PackageCode" = "8:{A5C82CC3-11D5-4C46-A7FB-98E1D33B6FBB}"
+        "ProductCode" = "8:{CA8056BC-05E8-41FB-82C2-4750568CD379}"
+        "PackageCode" = "8:{CF3986F0-5BE4-4817-9674-2FB9A954238E}"
         "UpgradeCode" = "8:{CAB6FB95-3490-4F80-B6EB-A76C79AD2C82}"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:TRUE"
-        "DetectNewerInstalledVersion" = "11:TRUE"
+        "RemovePreviousVersions" = "11:FALSE"
+        "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3.0"
+        "ProductVersion" = "8:1.3.3"
         "Manufacturer" = "8:MiniTheatre"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1088,7 +1200,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E606A863056C49D0A391B18295C7B10D"
             {
-            "SourcePath" = "8:..\\MiniCoder\\obj\\Debug\\MiniCoder.exe"
+            "SourcePath" = "8:..\\MiniCoder\\obj\\x86\\Debug\\MiniCoder.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3593841DB4934EFF9033E807D94CFB3C"

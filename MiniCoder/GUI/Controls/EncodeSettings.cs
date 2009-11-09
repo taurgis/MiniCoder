@@ -114,7 +114,8 @@ namespace MiniCOder.GUI.Controls
             options.Add("container", containerCombo.SelectedIndex.ToString());
             options.Add("videocodec", videoCombo.SelectedIndex.ToString());
             if (subText.Text != "Select Subtitle file to use")
-                options.Add("hardsub", subText.Text);
+                if (File.Exists(subText.Text)) 
+                    options.Add("hardsub", subText.Text);
             //still need to enable options
             
            

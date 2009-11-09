@@ -56,44 +56,44 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 {
                     case "0":
                         LogBook.addLogLine("Medium", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 3.1 --bframes 1 --weightb --direct temporal --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
-                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 3.1 --bframes 1 --weightb --direct temporal --deblock 1:1 --partitions p8x8,b8x8,i4x4 --vbv-bufsize 14000 --vbv-maxrate 17500 " + extra + " --output";
+                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 1 --weightb --direct temporal --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
+                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 1 --weightb --direct temporal --deblock 1:1 --partitions p8x8,b8x8,i4x4 --vbv-bufsize 14000 --vbv-maxrate 17500 " + extra + " --output";
                         break;
 
                     case "1":
                         LogBook.addLogLine("High", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 4.1 --bframes 2 --b-pyramid normal --weightb --direct auto --deblock 1:1 --subme 1 --partitions none  --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
-                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 4.1 --ref 3 --mixed-refs --bframes 2 --b-pyramid normal --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all  --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
+                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 2 --b-pyramid normal --weightb --direct auto --deblock 1:1 --subme 1 --partitions none  --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
+                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 3 --mixed-refs --bframes 2 --b-pyramid normal --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all  --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
                         break;
 
                     case "2":
                         LogBook.addLogLine("Very High", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --bframes 3 --b-pyramid normal --b-adapt 1 --weightb --direct auto --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
-                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --ref 5 --mixed-refs --bframes 3 --b-pyramid normal --b-adapt 1 --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
+                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 3 --b-pyramid normal --b-adapt 1 --weightb --direct auto --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
+                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 5 --mixed-refs --bframes 3 --b-pyramid normal --b-adapt 1 --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
                         break;
 
                     case "3":
                         LogBook.addLogLine("Very High (+50 mb anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
+                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
                         //pass3Arg = "--pass 3 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 --no-mbtree " + extra + " --subme 2 --partitions none --me dia --output";
-                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 --no-mbtree " + extra + " --output";
+                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 --no-mbtree " + extra + " --output";
                         break;
 
                     case "4":
                         LogBook.addLogLine("Very High (-50 mb anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
-                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
+                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
+                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
                         break;
 
                     case "5":
                         LogBook.addLogLine("Very High (TV-Shows)", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
-                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
+                        pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
+                        pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 --no-mbtree " + extra + " --output";
                         break;
 
                     case "6":
                         LogBook.addLogLine("CRF (Anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --crf " + encOpts["crfvalue"] + " --level 5.1 --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-pyramid normal --b-adapt 1 --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb " + extra + " --output";
+                        pass1Arg = "--pass 1 --crf " + encOpts["crfvalue"] + " --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-pyramid normal --b-adapt 1 --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb " + extra + " --output";
                         break;
                     case "7":
                         LogBook.addLogLine("Ipod", fileDetails["name"][0] + "VideoEncoding", "", false);
