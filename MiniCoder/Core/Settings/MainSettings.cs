@@ -73,7 +73,12 @@ namespace MiniCoder.Core.Settings
             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "processPriority" + "\"]");
 
             if (xmlnode.Count != 0)
-                processPriority = xmlnode[0].ChildNodes[0].InnerText;
+            {
+                if (xmlnode[0].ChildNodes[0].InnerText != "-1")
+                    processPriority = xmlnode[0].ChildNodes[0].InnerText;
+                else
+                    processPriority = "0";
+            }
             else
                 processPriority = "0";
 
@@ -115,7 +120,12 @@ namespace MiniCoder.Core.Settings
             xmlnode = doc.SelectNodes("//Setting[@name=\"" + "language" + "\"]");
 
             if (xmlnode.Count != 0)
-                language = int.Parse(xmlnode[0].ChildNodes[0].InnerText);
+            {
+                if (xmlnode[0].ChildNodes[0].InnerText != "-1")
+                    language = int.Parse(xmlnode[0].ChildNodes[0].InnerText);
+                else
+                    language = 0;
+            }
             else
                 language = 0;
 

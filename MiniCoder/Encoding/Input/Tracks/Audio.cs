@@ -18,7 +18,7 @@ namespace MiniCoder.Encoding.Input.Tracks
         public int id { get; set; }
         SortedList<String, String> EncOpts;
 
-        public Audio(String title, String Language, String codec, int id)
+        public Audio(String title, String language, String codec, int id)
         {
             this.title = title;
             this.language = language;

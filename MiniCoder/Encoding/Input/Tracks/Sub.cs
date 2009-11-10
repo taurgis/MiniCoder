@@ -15,7 +15,7 @@ namespace MiniCoder.Encoding.Input.Tracks
         public String encodePath { get; set; }
         public String length { get; set; }
         public int id { get; set; }
-        public Sub(String title, String Language, String codec, int id)
+        public Sub(String title, String language, String codec, int id)
         {
             this.title = title;
             this.language = language;
