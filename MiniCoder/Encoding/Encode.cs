@@ -390,7 +390,7 @@ namespace MiniCoder.Encoding
 
             try
             {
-                tempDetail.Add("completeinfo", mediaInfo.InfoComplete.Split(Convert.ToChar("\n")));
+                tempDetail.Add("completeinfo", mediaInfo.InfoStandard.Split(Convert.ToChar("\n")));
             }
             catch
             {
