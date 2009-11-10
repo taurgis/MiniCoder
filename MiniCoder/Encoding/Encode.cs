@@ -68,9 +68,23 @@ namespace MiniCoder.Encoding
                 LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
                 LogBook.setInfoLabel(language.fileInfoFetch);
 
-                for (int i = 0; i < fileDetails["completeinfo"].Length; i++)
-                    LogBook.addLogLine(fileDetails["completeinfo"][i].Replace("\r", ""), fileDetails["name"][0] + "FileInfo", "", false);
-
+                
+                try
+                {
+                    for (int i = 0; i < fileTracks["audio"].Length; i++)
+                        LogBook.addLogLine(Language.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                    for (int i = 0; i < fileTracks["subs"].Length; i++)
+                        LogBook.addLogLine(Language.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                }
+                catch (Exception error)
+                {
+                    LogBook.addLogLine("Error getting language info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    for (int i = 0; i < fileTracks["audio"].Length; i++)
+                        LogBook.addLogLine("Audio: " + fileTracks["audio"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    for (int i = 0; i < fileTracks["subs"].Length; i++)
+                        LogBook.addLogLine("Audio: " + fileTracks["subs"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+            
+                }
                 return true;
             }
             catch (Exception error)
@@ -388,14 +402,7 @@ namespace MiniCoder.Encoding
 
 
 
-            try
-            {
-                tempDetail.Add("completeinfo", mediaInfo.InfoStandard.Split(Convert.ToChar("\n")));
-            }
-            catch
-            {
-                tempDetail.Add("completeinfo", "".Split(Convert.ToChar("\n")));
-            }
+          
             if (audioTracks.Length > 0)
             {
                 tempDetail.Add("audLength", (int.Parse(mediaInfo.Audio[0].Duration) / 1000).ToString().Split(Convert.ToChar(" ")));
