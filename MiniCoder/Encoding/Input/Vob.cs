@@ -140,7 +140,7 @@ namespace MiniCoder.Encoding.Input
                     DGIndex.download();
                 string tempArg;
 
-                LogBook.addLogLine("Demuxing OGM - Using DGIndex", fileDetails["name"][0] + "DeMuxing", "", false);
+                LogBook.addLogLine("Demuxing VOB - Using DGIndex", fileDetails["name"][0] + "DeMuxing", "", false);
 
 
                // // LogBook.addLogLine(""Started indexing VOB files", 1);
@@ -187,7 +187,7 @@ namespace MiniCoder.Encoding.Input
 
                 return true;
             }
-            catch
+            catch (Exception error)
             {
             }
 

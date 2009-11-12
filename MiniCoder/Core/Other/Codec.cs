@@ -51,10 +51,12 @@ namespace System
                 extension.Add("A_AAC", "aac");
                 extension.Add("A_AC3", "ac3");
                 extension.Add("AC-3", "ac3");
-               
+                extension.Add("MPEG Video", "d2v");
                 extension.Add("", "d2v");
+                extension.Add("MPEG-4 Visual", "avi");
                 extension.Add("A_DTS", "dts");
                 extension.Add("A_FLAC", "flac");
+               
                 extension.Add("A_MPEG/L1", "mpa");
                 extension.Add("A_MPEG/L2", "mp2");
                 extension.Add("A_MPEG/L3", "mp3");
