@@ -15,7 +15,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
         public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
         {
             string sourceline = "";
-           
+
 
             switch (video.codec)
             {
@@ -84,15 +84,13 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                             break;
                     }
                     break;
-                case "":
+                case "MPEG Video":
                     switch (fileDetails["ext"][0].ToLower())
                     {
-                        case "flv":
-                            sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
-                            break;
                         case "vob":
                             sourceline = "DGDecode_mpeg2source(\"" + video.demuxPath + "\", info=3)\r\nColorMatrix(hints=true, threads=0)";
                             break;
+
                         default:
                             sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
                             break;
@@ -101,7 +99,7 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
 
                 default:
                     sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
-                         
+
                     break;
 
 
