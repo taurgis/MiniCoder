@@ -54,10 +54,8 @@ namespace MiniCoder.Encoding.AviSynth.Plugins
                         case "mkv":
                         case "ogm":
                         case "mp4":
-                            sourceline = "AVCSource(\"" + video.demuxPath + "\")";
-                            break;
                         case "avi":
-                            sourceline = "AVISource(\"" + video.demuxPath + "\", audio=false)";
+                            sourceline = "AVCSource(\"" + video.demuxPath + "\")";
                             break;
                         default:
                             sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
