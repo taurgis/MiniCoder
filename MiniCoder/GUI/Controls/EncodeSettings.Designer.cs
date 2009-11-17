@@ -274,11 +274,11 @@
             // preProcessing
             // 
             this.preProcessing.Controls.Add(this.widthHeight);
+            this.preProcessing.Controls.Add(this.resizeCombo);
+            this.preProcessing.Controls.Add(this.fieldCombo);
             this.preProcessing.Controls.Add(this.widthheightLabel);
             this.preProcessing.Controls.Add(this.resize);
-            this.preProcessing.Controls.Add(this.resizeCombo);
             this.preProcessing.Controls.Add(this.field);
-            this.preProcessing.Controls.Add(this.fieldCombo);
             this.preProcessing.Location = new System.Drawing.Point(3, 22);
             this.preProcessing.Name = "preProcessing";
             this.preProcessing.Size = new System.Drawing.Size(187, 125);
@@ -447,16 +447,16 @@
             // 
             // videoOptions
             // 
+            this.videoOptions.Controls.Add(this.videoBR);
+            this.videoOptions.Controls.Add(this.fileSize);
             this.videoOptions.Controls.Add(this.fileSizeRadio);
             this.videoOptions.Controls.Add(this.bitRateRadio);
             this.videoOptions.Controls.Add(this.label17);
-            this.videoOptions.Controls.Add(this.fileSize);
             this.videoOptions.Controls.Add(this.videoCodec);
             this.videoOptions.Controls.Add(this.videoCombo);
             this.videoOptions.Controls.Add(this.vidQualCombo);
             this.videoOptions.Controls.Add(this.videoQuality);
             this.videoOptions.Controls.Add(this.label6);
-            this.videoOptions.Controls.Add(this.videoBR);
             this.videoOptions.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.videoOptions.Location = new System.Drawing.Point(0, 6);
             this.videoOptions.Name = "videoOptions";

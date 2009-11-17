@@ -159,7 +159,7 @@
             // 
             this.processPriority.DisplayMember = "Low";
             this.processPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.processPriority.DropDownWidth = 100;
+            this.processPriority.DropDownWidth = 150;
             this.processPriority.FormattingEnabled = true;
             this.processPriority.Items.AddRange(new object[] {
             "Low",
@@ -170,7 +170,7 @@
             "Realtime"});
             this.processPriority.Location = new System.Drawing.Point(73, 25);
             this.processPriority.Name = "processPriority";
-            this.processPriority.Size = new System.Drawing.Size(100, 21);
+            this.processPriority.Size = new System.Drawing.Size(150, 21);
             this.processPriority.TabIndex = 13;
             this.processPriority.SelectedIndexChanged += new System.EventHandler(this.processPriority_SelectedIndexChanged);
             // 
@@ -244,7 +244,8 @@
             this.languagesSelect.FormattingEnabled = true;
             this.languagesSelect.Items.AddRange(new object[] {
             "English",
-            "Nederlands"});
+            "Nederlands",
+            "Türkçe"});
             this.languagesSelect.Location = new System.Drawing.Point(260, 280);
             this.languagesSelect.Name = "languagesSelect";
             this.languagesSelect.Size = new System.Drawing.Size(100, 21);
