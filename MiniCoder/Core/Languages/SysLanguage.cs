@@ -144,6 +144,9 @@ namespace MiniCoder.Core.Languages
                 case 1:
                     culture = CultureInfo.CreateSpecificCulture("nl-NL");
                     break;
+                case 2:
+                    culture = CultureInfo.CreateSpecificCulture("tr-TR");
+                    break;
                 default:
                     culture = CultureInfo.CreateSpecificCulture("");
                     break;

@@ -143,6 +143,18 @@ Recommended:
 
 </value>
   </data>
+  <data name="videoBR.ToolTip" xml:space="preserve">
+    <value>Average (Variable) Bit Rate is used to determine the best quality at the lowest possible quantizizer 
+while maintaining the average bit rate. The higher the bitrate, the better the output quality. 
+
+In this mode the target video filesize can be predicted. 
+A basic calculation is 50 bitrate equals 10mb every 20 mins.
+
+Recommended: 
+- Minimum 250 for anime
+- Minimum 300 for TV-Shows/movies
+</value>
+  </data>
   <data name="fileSize.ToolTip" xml:space="preserve">
     <value>Target File Size means that the program will try to get the
 output filesize as close as it can to the determined size.
@@ -176,18 +188,6 @@ Settings:
 - PSP (Fast, can be played on PSP)
 - IPOD (Fast, can be played on Ipod)
 - PS3/XBOX (Fast, can be played on Ipod)
-</value>
-  </data>
-  <data name="videoBR.ToolTip" xml:space="preserve">
-    <value>Average (Variable) Bit Rate is used to determine the best quality at the lowest possible quantizizer 
-while maintaining the average bit rate. The higher the bitrate, the better the output quality. 
-
-In this mode the target video filesize can be predicted. 
-A basic calculation is 50 bitrate equals 10mb every 20 mins.
-
-Recommended: 
-- Minimum 250 for anime
-- Minimum 300 for TV-Shows/movies
 </value>
   </data>
   <metadata name="openSub.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
