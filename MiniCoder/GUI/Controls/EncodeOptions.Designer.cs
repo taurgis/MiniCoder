@@ -245,6 +245,7 @@
             this.languagesSelect.Items.AddRange(new object[] {
             "English",
             "Nederlands",
+            "Português (Brasil)",
             "Türkçe"});
             this.languagesSelect.Location = new System.Drawing.Point(260, 280);
             this.languagesSelect.Name = "languagesSelect";
