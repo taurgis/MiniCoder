@@ -48,11 +48,11 @@
             this.noiseCombo = new System.Windows.Forms.ComboBox();
             this.preProcessing = new System.Windows.Forms.GroupBox();
             this.widthHeight = new System.Windows.Forms.ComboBox();
+            this.resizeCombo = new System.Windows.Forms.ComboBox();
+            this.fieldCombo = new System.Windows.Forms.ComboBox();
             this.widthheightLabel = new System.Windows.Forms.Label();
             this.resize = new System.Windows.Forms.Label();
-            this.resizeCombo = new System.Windows.Forms.ComboBox();
             this.field = new System.Windows.Forms.Label();
-            this.fieldCombo = new System.Windows.Forms.ComboBox();
             this.audioOptions = new System.Windows.Forms.GroupBox();
             this.audioCombo = new System.Windows.Forms.ComboBox();
             this.audCodec = new System.Windows.Forms.Label();
@@ -60,16 +60,16 @@
             this.audioBR = new System.Windows.Forms.TextBox();
             this.audioBitrate = new System.Windows.Forms.Label();
             this.videoOptions = new System.Windows.Forms.GroupBox();
+            this.videoBR = new System.Windows.Forms.TextBox();
+            this.fileSize = new System.Windows.Forms.TextBox();
             this.fileSizeRadio = new System.Windows.Forms.RadioButton();
             this.bitRateRadio = new System.Windows.Forms.RadioButton();
             this.label17 = new System.Windows.Forms.Label();
-            this.fileSize = new System.Windows.Forms.TextBox();
             this.videoCodec = new System.Windows.Forms.Label();
             this.videoCombo = new System.Windows.Forms.ComboBox();
             this.vidQualCombo = new System.Windows.Forms.ComboBox();
             this.videoQuality = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.videoBR = new System.Windows.Forms.TextBox();
             this.openSub = new System.Windows.Forms.OpenFileDialog();
             this.settingsTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.containerOptions.SuspendLayout();
@@ -303,6 +303,41 @@
             this.widthHeight.TabIndex = 12;
             this.settingsTooltip.SetToolTip(this.widthHeight, "The width and heigth of the re-encoded video.\r\n");
             // 
+            // resizeCombo
+            // 
+            this.resizeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resizeCombo.DropDownWidth = 150;
+            this.resizeCombo.FormattingEnabled = true;
+            this.resizeCombo.Items.AddRange(new object[] {
+            "None",
+            "Soft",
+            "Neutral",
+            "Sharp",
+            "Very Sharp (Lanczos4)",
+            "Very Sharp (Spline36)"});
+            this.resizeCombo.Location = new System.Drawing.Point(86, 56);
+            this.resizeCombo.Name = "resizeCombo";
+            this.resizeCombo.Size = new System.Drawing.Size(94, 21);
+            this.resizeCombo.TabIndex = 9;
+            this.settingsTooltip.SetToolTip(this.resizeCombo, resources.GetString("resizeCombo.ToolTip"));
+            this.resizeCombo.SelectedIndexChanged += new System.EventHandler(this.resizeCombo_SelectedIndexChanged);
+            // 
+            // fieldCombo
+            // 
+            this.fieldCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fieldCombo.DropDownWidth = 100;
+            this.fieldCombo.FormattingEnabled = true;
+            this.fieldCombo.Items.AddRange(new object[] {
+            "None",
+            "FieldDeInterlace",
+            "AAA"});
+            this.fieldCombo.Location = new System.Drawing.Point(86, 26);
+            this.fieldCombo.Name = "fieldCombo";
+            this.fieldCombo.Size = new System.Drawing.Size(94, 21);
+            this.fieldCombo.TabIndex = 8;
+            this.settingsTooltip.SetToolTip(this.fieldCombo, "FieldDeinterlace: \r\nThis filter provides functionality similar to the postprocess" +
+                    "ing function \r\nof Telecide. You can use it for pure interlaced streams \r\n");
+            // 
             // widthheightLabel
             // 
             this.widthheightLabel.AutoSize = true;
@@ -325,25 +360,6 @@
             this.resize.Text = "Resize";
             this.resize.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // resizeCombo
-            // 
-            this.resizeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.resizeCombo.DropDownWidth = 150;
-            this.resizeCombo.FormattingEnabled = true;
-            this.resizeCombo.Items.AddRange(new object[] {
-            "None",
-            "Soft",
-            "Neutral",
-            "Sharp",
-            "Very Sharp (Lanczos4)",
-            "Very Sharp (Spline36)"});
-            this.resizeCombo.Location = new System.Drawing.Point(86, 56);
-            this.resizeCombo.Name = "resizeCombo";
-            this.resizeCombo.Size = new System.Drawing.Size(94, 21);
-            this.resizeCombo.TabIndex = 9;
-            this.settingsTooltip.SetToolTip(this.resizeCombo, resources.GetString("resizeCombo.ToolTip"));
-            this.resizeCombo.SelectedIndexChanged += new System.EventHandler(this.resizeCombo_SelectedIndexChanged);
-            // 
             // field
             // 
             this.field.AutoSize = true;
@@ -354,22 +370,6 @@
             this.field.TabIndex = 8;
             this.field.Text = "Field";
             this.field.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // fieldCombo
-            // 
-            this.fieldCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.fieldCombo.DropDownWidth = 100;
-            this.fieldCombo.FormattingEnabled = true;
-            this.fieldCombo.Items.AddRange(new object[] {
-            "None",
-            "FieldDeInterlace",
-            "AAA"});
-            this.fieldCombo.Location = new System.Drawing.Point(86, 26);
-            this.fieldCombo.Name = "fieldCombo";
-            this.fieldCombo.Size = new System.Drawing.Size(94, 21);
-            this.fieldCombo.TabIndex = 8;
-            this.settingsTooltip.SetToolTip(this.fieldCombo, "FieldDeinterlace: \r\nThis filter provides functionality similar to the postprocess" +
-                    "ing function \r\nof Telecide. You can use it for pure interlaced streams \r\n");
             // 
             // audioOptions
             // 
@@ -463,7 +463,28 @@
             this.videoOptions.Size = new System.Drawing.Size(193, 141);
             this.videoOptions.TabIndex = 7;
             this.videoOptions.TabStop = false;
-            this.videoOptions.Text = "Video Options";
+            this.videoOptions.Text = "Opções de Vídeo";
+            // 
+            // videoBR
+            // 
+            this.videoBR.Location = new System.Drawing.Point(100, 21);
+            this.videoBR.MaxLength = 4;
+            this.videoBR.Name = "videoBR";
+            this.videoBR.Size = new System.Drawing.Size(52, 22);
+            this.videoBR.TabIndex = 3;
+            this.videoBR.Text = "300";
+            this.settingsTooltip.SetToolTip(this.videoBR, resources.GetString("videoBR.ToolTip"));
+            // 
+            // fileSize
+            // 
+            this.fileSize.Enabled = false;
+            this.fileSize.Location = new System.Drawing.Point(100, 47);
+            this.fileSize.MaxLength = 4;
+            this.fileSize.Name = "fileSize";
+            this.fileSize.Size = new System.Drawing.Size(52, 22);
+            this.fileSize.TabIndex = 8;
+            this.fileSize.Text = "60";
+            this.settingsTooltip.SetToolTip(this.fileSize, resources.GetString("fileSize.ToolTip"));
             // 
             // fileSizeRadio
             // 
@@ -496,17 +517,6 @@
             this.label17.Size = new System.Drawing.Size(28, 16);
             this.label17.TabIndex = 10;
             this.label17.Text = "MB";
-            // 
-            // fileSize
-            // 
-            this.fileSize.Enabled = false;
-            this.fileSize.Location = new System.Drawing.Point(100, 47);
-            this.fileSize.MaxLength = 4;
-            this.fileSize.Name = "fileSize";
-            this.fileSize.Size = new System.Drawing.Size(52, 22);
-            this.fileSize.TabIndex = 8;
-            this.fileSize.Text = "60";
-            this.settingsTooltip.SetToolTip(this.fileSize, resources.GetString("fileSize.ToolTip"));
             // 
             // videoCodec
             // 
@@ -577,16 +587,6 @@
             this.label6.Size = new System.Drawing.Size(36, 16);
             this.label6.TabIndex = 3;
             this.label6.Text = "kbps";
-            // 
-            // videoBR
-            // 
-            this.videoBR.Location = new System.Drawing.Point(100, 21);
-            this.videoBR.MaxLength = 4;
-            this.videoBR.Name = "videoBR";
-            this.videoBR.Size = new System.Drawing.Size(52, 22);
-            this.videoBR.TabIndex = 3;
-            this.videoBR.Text = "300";
-            this.settingsTooltip.SetToolTip(this.videoBR, resources.GetString("videoBR.ToolTip"));
             // 
             // openSub
             // 

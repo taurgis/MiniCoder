@@ -93,7 +93,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
                     case "6":
                         LogBook.addLogLine("CRF (Anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
-                        pass1Arg = "--pass 1 --crf " + encOpts["crfvalue"] + " --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-pyramid normal --b-adapt 1 --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb " + extra + " --output";
+                        pass1Arg = "--crf " + encOpts["crfvalue"] + " --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-pyramid normal --b-adapt 1 --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb " + extra + " --output";
                         break;
                     case "7":
                         LogBook.addLogLine("Ipod", fileDetails["name"][0] + "VideoEncoding", "", false);

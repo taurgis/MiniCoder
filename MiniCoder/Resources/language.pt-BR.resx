@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="applicationsButton" xml:space="preserve">
+    <value>Aplicativos</value>
+  </data>
+  <data name="audioBitrate" xml:space="preserve">
+    <value>Bit Rate:</value>
+  </data>
+  <data name="audioCodec" xml:space="preserve">
+    <value>Codec:</value>
+  </data>
+  <data name="audioDecodingMessage" xml:space="preserve">
+    <value>Decoding Audio</value>
+  </data>
+  <data name="audioEncodingMessage" xml:space="preserve">
+    <value>Encoding audio to</value>
+  </data>
+  <data name="audioEncodingTrack" xml:space="preserve">
+    <value>Encoding Audio Track</value>
+  </data>
+  <data name="audioOptionsTitle" xml:space="preserve">
+    <value>Op��es de Audio</value>
+  </data>
+  <data name="audioTabTitle" xml:space="preserve">
+    <value>�udio</value>
+  </data>
+  <data name="containerFormat" xml:space="preserve">
+    <value>Formato:</value>
+  </data>
+  <data name="containerOptionsTitle" xml:space="preserve">
+    <value>Container</value>
+  </data>
+  <data name="coreTabTitle" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="customButton" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="customFilterCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="customFilterNote" xml:space="preserve">
+    <value>Se voc� quiser desativar um filtro padr�o, utilize a p�gina de Configura��es</value>
+  </data>
+  <data name="customFilterOK" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="customFilterText" xml:space="preserve">
+    <value>Coloque aqui o seu Avisynth Filters</value>
+  </data>
+  <data name="customFilterTitle" xml:space="preserve">
+    <value>Custom Filters</value>
+  </data>
+  <data name="customPathsTitle" xml:space="preserve">
+    <value>Custom Paths</value>
+  </data>
+  <data name="demuxingAbortedMessage" xml:space="preserve">
+    <value>Demuxing abortado</value>
+  </data>
+  <data name="demuxingCompleteMessage" xml:space="preserve">
+    <value>Demuxing completo</value>
+  </data>
+  <data name="demuxingMessage" xml:space="preserve">
+    <value>Demuxing</value>
+  </data>
+  <data name="demuxingMkv" xml:space="preserve">
+    <value>Demuxing as faixas MKV</value>
+  </data>
+  <data name="demuxingMkvAttachments" xml:space="preserve">
+    <value>Demuxing anexos</value>
+  </data>
+  <data name="demuxingMkvChapters" xml:space="preserve">
+    <value>Demuxing formas</value>
+  </data>
+  <data name="demuxingmp4Audio" xml:space="preserve">
+    <value>Demuxing faixa de �udio MP4</value>
+  </data>
+  <data name="demuxingmp4Video" xml:space="preserve">
+    <value>Demuxing faixa de v�deo MP4</value>
+  </data>
+  <data name="demuxingVob" xml:space="preserve">
+    <value>Iniciado indexa��o dos arquivos VOB</value>
+  </data>
+  <data name="demuxingvobChapters" xml:space="preserve">
+    <value>Started fetching chapters.</value>
+  </data>
+  <data name="demuxingvobSubs" xml:space="preserve">
+    <value>Started fetching subs.</value>
+  </data>
+  <data name="encodeStartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="encodeStopButton" xml:space="preserve">
+    <value>Parar</value>
+  </data>
+  <data name="encodingComplete" xml:space="preserve">
+    <value>Encoding completo</value>
+  </data>
+  <data name="encodingIgnoreAttachments" xml:space="preserve">
+    <value>Ignorar Attachments</value>
+  </data>
+  <data name="encodingIgnoreAudio" xml:space="preserve">
+    <value>Ignorar �udio</value>
+  </data>
+  <data name="encodingIgnoreChapters" xml:space="preserve">
+    <value>Ignorar Chapters</value>
+  </data>
+  <data name="encodingIgnoreSubs" xml:space="preserve">
+    <value>Ignorar legendas</value>
+  </data>
+  <data name="encodingNextError" xml:space="preserve">
+    <value>Continuar para o proximo arquivo ap�s o erro</value>
+  </data>
+  <data name="encodingShowVideoPreview" xml:space="preserve">
+    <value>Ver o v�deo (Debug Only)</value>
+  </data>
+  <data name="encodingTitle" xml:space="preserve">
+    <value>Encoding</value>
+  </data>
+  <data name="encodingVideoPass" xml:space="preserve">
+    <value>Encoding v�deo</value>
+  </data>
+  <data name="encodingVideoTheora" xml:space="preserve">
+    <value>Encoding Theora video</value>
+  </data>
+  <data name="errorWarningMessage" xml:space="preserve">
+    <value>Parece que um erro aconteceu! Voc� quer enviar um relat�rio de erro?</value>
+  </data>
+  <data name="errorWarningTitle" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="fileInfoFetch" xml:space="preserve">
+    <value>Fetching File Info</value>
+  </data>
+  <data name="filterOptionsTitle" xml:space="preserve">
+    <value>Op��es de filtro</value>
+  </data>
+  <data name="indexingAvc" xml:space="preserve">
+    <value>Indexing AVC</value>
+  </data>
+  <data name="indexingAvcAbort" xml:space="preserve">
+    <value>Indexing abortada</value>
+  </data>
+  <data name="indexingAvcCompleted" xml:space="preserve">
+    <value>Indexing AVC completa</value>
+  </data>
+  <data name="infoLabel" xml:space="preserve">
+    <value>GUI Ready</value>
+  </data>
+  <data name="inputColumn1Title" xml:space="preserve">
+    <value>Adicionar (Marcar se o aquivo for VFR)</value>
+  </data>
+  <data name="inputColumn2StatusAborted" xml:space="preserve">
+    <value>Abortado</value>
+  </data>
+  <data name="inputColumn2StatusDone" xml:space="preserve">
+    <value>Completo</value>
+  </data>
+  <data name="inputColumn2StatusEncoding" xml:space="preserve">
+    <value>Encoding</value>
+  </data>
+  <data name="inputColumn2StatusError" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="inputColumn2StatusReady" xml:space="preserve">
+    <value>Pronto</value>
+  </data>
+  <data name="inputColumn2StatusTitle" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="inputTabTitle" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="logMenuCopy" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="logMenuSend" xml:space="preserve">
+    <value>Enviar um relat�rio de erro</value>
+  </data>
+  <data name="logTabTitle" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="menuAdd" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="menuClear" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="menuRemove" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="muxingMessage" xml:space="preserve">
+    <value>Muxing to</value>
+  </data>
+  <data name="muxingTabTitle" xml:space="preserve">
+    <value>Muxing/Demuxing</value>
+  </data>
+  <data name="newsTabTitle" xml:space="preserve">
+    <value>Not�cias</value>
+  </data>
+  <data name="optionsTabTitle" xml:space="preserve">
+    <value>Op��es</value>
+  </data>
+  <data name="otherTabTitle" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="outputDirectory" xml:space="preserve">
+    <value>Diret�rio de saida.:</value>
+  </data>
+  <data name="outputDisableVideoAdvert" xml:space="preserve">
+    <value>Desativar aviso sobre o titulo do video</value>
+  </data>
+  <data name="outputSettingsTitle" xml:space="preserve">
+    <value>Configura��es de saida</value>
+  </data>
+  <data name="pluginsTabTitle" xml:space="preserve">
+    <value>Aplicativos</value>
+  </data>
+  <data name="postDenoiser" xml:space="preserve">
+    <value>Denoiser:</value>
+  </data>
+  <data name="postDenoiserOptions" xml:space="preserve">
+    <value>Nenhum;Baixo;Medio;Pesado;Muito alto</value>
+  </data>
+  <data name="postprocessingOptionsTitle" xml:space="preserve">
+    <value>Post-Processing</value>
+  </data>
+  <data name="postSharpen" xml:space="preserve">
+    <value>Formato:</value>
+  </data>
+  <data name="postSharpenOptions" xml:space="preserve">
+    <value>Nenhum;Baixo;Medio;Pesado;Muito alto</value>
+  </data>
+  <data name="postSubtitle" xml:space="preserve">
+    <value>Legenda:</value>
+  </data>
+  <data name="preField" xml:space="preserve">
+    <value>Field:</value>
+  </data>
+  <data name="preprocessingOptionsTitle" xml:space="preserve">
+    <value>Pre-Processing</value>
+  </data>
+  <data name="preResize" xml:space="preserve">
+    <value>Redimencionar:</value>
+  </data>
+  <data name="preResizeOptions" xml:space="preserve">
+    <value>Nenhum;Leve;Natural;Forma;For�ar forma (Lanczos64);For�ar forma (Spline36)</value>
+  </data>
+  <data name="preWidthHeight" xml:space="preserve">
+    <value>Largura/Altura:</value>
+  </data>
+  <data name="processPriority" xml:space="preserve">
+    <value>Prioridade:</value>
+  </data>
+  <data name="processPriorityOptions" xml:space="preserve">
+    <value>Baixa;Abaixo do normal;Normal;Acima do Normal;Alta;Tempo Real</value>
+  </data>
+  <data name="processSettingsTitle" xml:space="preserve">
+    <value>Propriedades do processo</value>
+  </data>
+  <data name="programTitle" xml:space="preserve">
+    <value>MiniCoder Encoding GUI</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="settingsTabTitle" xml:space="preserve">
+    <value>configura��es</value>
+  </data>
+  <data name="tooltipAudioBr" xml:space="preserve">
+    <value>Variable Audio Bitrate determina a qualidade de saida do �udio.
+Quanto maior a Bitrate maior a qualidade.</value>
+  </data>
+  <data name="tooltipContainer" xml:space="preserve">
+    <value>No tooltip yet</value>
+  </data>
+  <data name="tooltipDenoise" xml:space="preserve">
+    <value>Video denoising � o processo que remove as "imperfei��es" 
+do v�deo</value>
+  </data>
+  <data name="tooltipField" xml:space="preserve">
+    <value>No tooltip yet</value>
+  </data>
+  <data name="tooltipFileSize" xml:space="preserve">
+    <value>Target File Size significa que o programa tentara deixar o arquivo 
+ de saida o mais proximo possivel do tamanho determinado.</value>
+  </data>
+  <data name="tooltipQuality" xml:space="preserve">
+    <value>Qualidade determina a qualidade que o arquivo de saida ter�.</value>
+  </data>
+  <data name="tooltipResize" xml:space="preserve">
+    <value>Com um filtro de tamanho voc� pode facilmente mudar o tamanho do v�deo
+ para um aspecto perfeito. Usando um filtro voc� pode tanto
+suavizar a imagem quanto redimension�-la.</value>
+  </data>
+  <data name="tooltipSub" xml:space="preserve">
+    <value>Selecione uma legenda</value>
+  </data>
+  <data name="tooltipVideoBr" xml:space="preserve">
+    <value>M�dia (Variavel) � utilizada para determinar a melhor configura��o de bit rate, para uma boa qualidade no menor tamanho 
+ mantendo a mesma taixa de Bit. Quanto maior o Bitrate melhor a qualidade. </value>
+  </data>
+  <data name="tooltipVideoCodec" xml:space="preserve">
+    <value>No tooltip yet</value>
+  </data>
+  <data name="tooltipWidthHeight" xml:space="preserve">
+    <value>A largura e a altura do v�deo re-codificado.</value>
+  </data>
+  <data name="updateCancelButton" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="updateColumn1" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="updateColumn2" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="updateColumn3" xml:space="preserve">
+    <value>Vers�es utilizadas</value>
+  </data>
+  <data name="updateColumn4" xml:space="preserve">
+    <value>�ltimas vers�es</value>
+  </data>
+  <data name="updateColumn5" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="updateCustomPath" xml:space="preserve">
+    <value>Outros Paths</value>
+  </data>
+  <data name="updateMessage" xml:space="preserve">
+    <value>Updates disponiveis. Voc� quer baixar eles agora?</value>
+  </data>
+  <data name="updaterTitle" xml:space="preserve">
+    <value>MiniCoder Updater</value>
+  </data>
+  <data name="updateUpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="vfrParsing" xml:space="preserve">
+    <value>Parsing VFR</value>
+  </data>
+  <data name="vfrParsingAborted" xml:space="preserve">
+    <value>Abortar Parsing VFR</value>
+  </data>
+  <data name="vfrParsingCompleted" xml:space="preserve">
+    <value>Parsing VFR completo</value>
+  </data>
+  <data name="videoBitRate" xml:space="preserve">
+    <value>Bit Rate:</value>
+  </data>
+  <data name="videoCodec" xml:space="preserve">
+    <value>Codec:</value>
+  </data>
+  <data name="videoFileSize" xml:space="preserve">
+    <value>Tamanho do arquivo:</value>
+  </data>
+  <data name="videoOptionsTitle" xml:space="preserve">
+    <value>Op��es de V�deo</value>
+  </data>
+  <data name="videoQuality" xml:space="preserve">
+    <value>Qualidade:</value>
+  </data>
+  <data name="videoQualityOptions" xml:space="preserve">
+    <value>M�dia;Alta;muito Alta;Muito Alta (+50mb anime);Muito alta (-50mb anime);Muito alta (TV-Shows/Filmes);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
+  </data>
+  <data name="videoTabTitle" xml:space="preserve">
+    <value>V�deo</value>
+  </data>
+  <data name="whenDone" xml:space="preserve">
+    <value>Quando acabar</value>
+  </data>
+  <data name="whenDoneOptions" xml:space="preserve">
+    <value>N�o fazer nada;Hibernate;Modo de espera;Desligar</value>
+  </data>
+</root>

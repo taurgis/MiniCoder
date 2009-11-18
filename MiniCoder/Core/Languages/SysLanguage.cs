@@ -4,6 +4,7 @@ using System.Text;
 using System.Resources;
 using System.Globalization;
 using System.Windows.Forms;
+using System.IO;
 namespace MiniCoder.Core.Languages
 {
    public class SysLanguage
@@ -136,6 +137,7 @@ namespace MiniCoder.Core.Languages
 
         public SysLanguage(int i)
         {
+   
             switch (i)
             {
                 case 0:
@@ -145,6 +147,9 @@ namespace MiniCoder.Core.Languages
                     culture = CultureInfo.CreateSpecificCulture("nl-NL");
                     break;
                 case 2:
+                    culture = CultureInfo.CreateSpecificCulture("pt-BR");
+                    break;
+                case 3:
                     culture = CultureInfo.CreateSpecificCulture("tr-TR");
                     break;
                 default:
@@ -170,6 +175,9 @@ namespace MiniCoder.Core.Languages
             infoLabel = rm.GetString("infoLabel", culture);
             whenDoneOptions = rm.GetString("whenDoneOptions",culture).Split(Char.Parse(";"));
             videoOptionsTitle = rm.GetString("videoOptionsTitle", culture);
+           
+            
+            //videoOptionsTitle = new StreamReader(tempStream).ReadToEnd();
             videoBitRate = rm.GetString("videoBitRate", culture);
             videoFileSize = rm.GetString("videoFileSize", culture);
             videoQuality = rm.GetString("videoQuality", culture);
