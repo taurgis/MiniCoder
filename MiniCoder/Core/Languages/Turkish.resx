@@ -118,238 +118,238 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="applicationsButton" xml:space="preserve">
-    <value>Aplicativos</value>
+    <value>Uygulamalar</value>
   </data>
   <data name="audioBitrate" xml:space="preserve">
-    <value>Bit Rate:</value>
+    <value>Bit Oranı:</value>
   </data>
   <data name="audioCodec" xml:space="preserve">
-    <value>Codec:</value>
+    <value>Kodek:</value>
   </data>
   <data name="audioDecodingMessage" xml:space="preserve">
-    <value>Decoding Audio</value>
+    <value>Ses Dekode ediliyor</value>
   </data>
   <data name="audioEncodingMessage" xml:space="preserve">
-    <value>Encoding audio to</value>
+    <value>Ses Enkode ediliyor:</value>
   </data>
   <data name="audioEncodingTrack" xml:space="preserve">
-    <value>Encoding Audio Track</value>
+    <value>Ses Parçası Enkode ediliyor</value>
   </data>
   <data name="audioOptionsTitle" xml:space="preserve">
-    <value>Opções de Audio</value>
+    <value>Ses Ayarları</value>
   </data>
   <data name="audioTabTitle" xml:space="preserve">
-    <value>Áudio</value>
+    <value>Ses</value>
   </data>
   <data name="containerFormat" xml:space="preserve">
-    <value>Formato:</value>
+    <value>Format:</value>
   </data>
   <data name="containerOptionsTitle" xml:space="preserve">
-    <value>Container</value>
+    <value>Konteyner</value>
   </data>
   <data name="coreTabTitle" xml:space="preserve">
-    <value>Core</value>
+    <value>Çekirdek</value>
   </data>
   <data name="customButton" xml:space="preserve">
-    <value>Custom</value>
+    <value>Özel</value>
   </data>
   <data name="customFilterCancel" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>İptal</value>
   </data>
   <data name="customFilterNote" xml:space="preserve">
-    <value>Se você quiser desativar um filtro padrão, utilize a página de Configurações</value>
+    <value>Eğer varsayılan filtreyi iptal etmek istiyorsanız Ayarlar sayfasından iptal edin.</value>
   </data>
   <data name="customFilterOK" xml:space="preserve">
-    <value>Ok</value>
+    <value>Tamam</value>
   </data>
   <data name="customFilterText" xml:space="preserve">
-    <value>Coloque aqui o seu Avisynth Filters</value>
+    <value>Kendi Özel Avisynth Filtrelerinizi Girin</value>
   </data>
   <data name="customFilterTitle" xml:space="preserve">
-    <value>Custom Filters</value>
+    <value>Özel Filtreler</value>
   </data>
   <data name="customPathsTitle" xml:space="preserve">
-    <value>Custom Paths</value>
+    <value>Özel Yollar</value>
   </data>
   <data name="demuxingAbortedMessage" xml:space="preserve">
-    <value>Demuxing abortado</value>
+    <value>Demux İptal edildi</value>
   </data>
   <data name="demuxingCompleteMessage" xml:space="preserve">
-    <value>Demuxing completo</value>
+    <value>Demux Tamamlandı</value>
   </data>
   <data name="demuxingMessage" xml:space="preserve">
-    <value>Demuxing</value>
+    <value>Demux Ediliyor</value>
   </data>
   <data name="demuxingMkv" xml:space="preserve">
-    <value>Demuxing as faixas MKV</value>
+    <value>MKV Parçaları Demux Ediliyor</value>
   </data>
   <data name="demuxingMkvAttachments" xml:space="preserve">
-    <value>Demuxing anexos</value>
+    <value>Ekler Demux Ediliyor</value>
   </data>
   <data name="demuxingMkvChapters" xml:space="preserve">
-    <value>Demuxing formas</value>
+    <value>Bölümler Demux Ediliyor</value>
   </data>
   <data name="demuxingmp4Audio" xml:space="preserve">
-    <value>Demuxing faixa de áudio MP4</value>
+    <value>MP4 Ses Parçası Demux Ediliyor</value>
   </data>
   <data name="demuxingmp4Video" xml:space="preserve">
-    <value>Demuxing faixa de vídeo MP4</value>
+    <value>MP4 Görüntü Parçası Demux Ediliyor</value>
   </data>
   <data name="demuxingVob" xml:space="preserve">
-    <value>Iniciado indexação dos arquivos VOB</value>
+    <value>VOB dosyalarının dizinlenmesine başlandı</value>
   </data>
   <data name="demuxingvobChapters" xml:space="preserve">
-    <value>Started fetching chapters.</value>
+    <value>Bölümlerin getirilmesine başlandı.</value>
   </data>
   <data name="demuxingvobSubs" xml:space="preserve">
-    <value>Started fetching subs.</value>
+    <value>Altyazıların getirilmesine başlandı.</value>
   </data>
   <data name="encodeStartButton" xml:space="preserve">
-    <value>Start</value>
+    <value>Başla</value>
   </data>
   <data name="encodeStopButton" xml:space="preserve">
-    <value>Parar</value>
+    <value>Dur</value>
   </data>
   <data name="encodingComplete" xml:space="preserve">
-    <value>Encoding completo</value>
+    <value>Enkode etme Tamamlandı</value>
   </data>
   <data name="encodingIgnoreAttachments" xml:space="preserve">
-    <value>Ignorar Attachments</value>
+    <value>Ekleri Yoksay</value>
   </data>
   <data name="encodingIgnoreAudio" xml:space="preserve">
-    <value>Ignorar Áudio</value>
+    <value>Sesi Yoksay</value>
   </data>
   <data name="encodingIgnoreChapters" xml:space="preserve">
-    <value>Ignorar Chapters</value>
+    <value>Bölümleri Yoksay</value>
   </data>
   <data name="encodingIgnoreSubs" xml:space="preserve">
-    <value>Ignorar legendas</value>
+    <value>Altyazıları Yoksay</value>
   </data>
   <data name="encodingNextError" xml:space="preserve">
-    <value>Continuar para o proximo arquivo após o erro</value>
+    <value>Hatadan sonra bir sonraki dosyaya devam et</value>
   </data>
   <data name="encodingShowVideoPreview" xml:space="preserve">
-    <value>Ver o vídeo (Debug Only)</value>
+    <value>Görüntü önizlemesi göster (Sadece Hata Ayıklama)</value>
   </data>
   <data name="encodingTitle" xml:space="preserve">
-    <value>Encoding</value>
+    <value>Enkode Etme</value>
   </data>
   <data name="encodingVideoPass" xml:space="preserve">
-    <value>Encoding vídeo</value>
+    <value>Görüntü Enkode Etme</value>
   </data>
   <data name="encodingVideoTheora" xml:space="preserve">
-    <value>Encoding Theora video</value>
+    <value>Theora vidyo Enkode Etme</value>
   </data>
   <data name="errorWarningMessage" xml:space="preserve">
-    <value>Parece que um erro aconteceu! Você quer enviar um relatório de erro?</value>
+    <value>Bir hata oluştu sanki! Hata raporu göndermek istiyor musunuz?</value>
   </data>
   <data name="errorWarningTitle" xml:space="preserve">
-    <value>Error!</value>
+    <value>Hata!</value>
   </data>
   <data name="fileInfoFetch" xml:space="preserve">
-    <value>Fetching File Info</value>
+    <value>Dosya Bilgisi Getiriliyor</value>
   </data>
   <data name="filterOptionsTitle" xml:space="preserve">
-    <value>Opções de filtro</value>
+    <value>Filtre Ayarları</value>
   </data>
   <data name="indexingAvc" xml:space="preserve">
-    <value>Indexing AVC</value>
+    <value>AVC dizinleniyor</value>
   </data>
   <data name="indexingAvcAbort" xml:space="preserve">
-    <value>Indexing abortada</value>
+    <value>Dizinleme İptal Edildi</value>
   </data>
   <data name="indexingAvcCompleted" xml:space="preserve">
-    <value>Indexing AVC completa</value>
+    <value>AVC Dizinleme Tamamlandı</value>
   </data>
   <data name="infoLabel" xml:space="preserve">
-    <value>GUI Ready</value>
+    <value>GUI Hazır</value>
   </data>
   <data name="inputColumn1Title" xml:space="preserve">
-    <value>Adicionar (Marcar se o aquivo for VFR)</value>
+    <value>Giriş (Dosya VFR ise işaretleyin)</value>
   </data>
   <data name="inputColumn2StatusAborted" xml:space="preserve">
-    <value>Abortado</value>
+    <value>İptal Edildi</value>
   </data>
   <data name="inputColumn2StatusDone" xml:space="preserve">
-    <value>Completo</value>
+    <value>Tamamlandı</value>
   </data>
   <data name="inputColumn2StatusEncoding" xml:space="preserve">
-    <value>Encoding</value>
+    <value>Enkode edilyor</value>
   </data>
   <data name="inputColumn2StatusError" xml:space="preserve">
-    <value>Erro</value>
+    <value>Hata</value>
   </data>
   <data name="inputColumn2StatusReady" xml:space="preserve">
-    <value>Pronto</value>
+    <value>Hazır</value>
   </data>
   <data name="inputColumn2StatusTitle" xml:space="preserve">
-    <value>Status</value>
+    <value>Durum</value>
   </data>
   <data name="inputTabTitle" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Giriş</value>
   </data>
   <data name="logMenuCopy" xml:space="preserve">
-    <value>Copiar</value>
+    <value>Kopyala</value>
   </data>
   <data name="logMenuSend" xml:space="preserve">
-    <value>Enviar um relatório de erro</value>
+    <value>Hata raporu gönder</value>
   </data>
   <data name="logTabTitle" xml:space="preserve">
-    <value>Log</value>
+    <value>Günlük</value>
   </data>
   <data name="menuAdd" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Ekle</value>
   </data>
   <data name="menuClear" xml:space="preserve">
-    <value>Limpar</value>
+    <value>Temizle</value>
   </data>
   <data name="menuRemove" xml:space="preserve">
-    <value>Remover</value>
+    <value>Kaldır</value>
   </data>
   <data name="muxingMessage" xml:space="preserve">
-    <value>Muxing to</value>
+    <value>Muxing:</value>
   </data>
   <data name="muxingTabTitle" xml:space="preserve">
     <value>Muxing/Demuxing</value>
   </data>
   <data name="newsTabTitle" xml:space="preserve">
-    <value>Notícias</value>
+    <value>Haberler</value>
   </data>
   <data name="optionsTabTitle" xml:space="preserve">
-    <value>Opções</value>
+    <value>Ayarlar</value>
   </data>
   <data name="otherTabTitle" xml:space="preserve">
-    <value>Outros</value>
+    <value>Diğer</value>
   </data>
   <data name="outputDirectory" xml:space="preserve">
-    <value>De saida:</value>
+    <value>Çıktı Dizini:</value>
   </data>
   <data name="outputDisableVideoAdvert" xml:space="preserve">
-    <value>Desativar aviso sobre o titulo do video</value>
+    <value>Vidyo başlık ilanını kapat</value>
   </data>
   <data name="outputSettingsTitle" xml:space="preserve">
-    <value>Configurações de saida</value>
+    <value>Çıktı Ayarları</value>
   </data>
   <data name="pluginsTabTitle" xml:space="preserve">
-    <value>Aplicativos</value>
+    <value>Eklentiler</value>
   </data>
   <data name="postDenoiser" xml:space="preserve">
     <value>Denoiser:</value>
   </data>
   <data name="postDenoiserOptions" xml:space="preserve">
-    <value>Nenhum;Baixo;Medio;Pesado;Muito alto</value>
+    <value>Yok;Hafif;Orta;Ağır;Çılgın</value>
   </data>
   <data name="postprocessingOptionsTitle" xml:space="preserve">
     <value>Post-Processing</value>
   </data>
   <data name="postSharpen" xml:space="preserve">
-    <value>Formato:</value>
+    <value>Keskinlik:</value>
   </data>
   <data name="postSharpenOptions" xml:space="preserve">
-    <value>Nenhum;Baixo;Medio;Pesado;Muito alto</value>
+    <value>Yok;Hafif;Orta;Ağır;Çılgın</value>
   </data>
   <data name="postSubtitle" xml:space="preserve">
-    <value>Legenda:</value>
+    <value>Altyazı:</value>
   </data>
   <data name="preField" xml:space="preserve">
     <value>Field:</value>
@@ -358,129 +358,129 @@
     <value>Pre-Processing</value>
   </data>
   <data name="preResize" xml:space="preserve">
-    <value>Redimencion:</value>
+    <value>Boyutlandır:</value>
   </data>
   <data name="preResizeOptions" xml:space="preserve">
-    <value>Nenhum;Leve;Natural;Forma;Forçar forma (Lanczos64);Forçar forma (Spline36)</value>
+    <value>Yok;Yumuşak;Bağımsız;Keskin;Çok Keskin (Lanczos64);Çok Keskin (Spline36)</value>
   </data>
   <data name="preWidthHeight" xml:space="preserve">
-    <value>Largura/Altura:</value>
+    <value>En/Boy:</value>
   </data>
   <data name="processPriority" xml:space="preserve">
-    <value>Prioridade:</value>
+    <value>Öncelik:</value>
   </data>
   <data name="processPriorityOptions" xml:space="preserve">
-    <value>Baixa;Abaixo do normal;Normal;Acima do Normal;Alta;Tempo Real</value>
+    <value>Düşük;Normalin Altında;Normal;Normalin Üstünde;Yüksek;Eş-zamanlı</value>
   </data>
   <data name="processSettingsTitle" xml:space="preserve">
-    <value>Propriedades do processo</value>
+    <value>İşleme Ayarları</value>
   </data>
   <data name="programTitle" xml:space="preserve">
-    <value>MiniCoder Encoding GUI</value>
+    <value>MiniCoder Enkoding GUI</value>
   </data>
   <data name="saveButton" xml:space="preserve">
-    <value>Salvar</value>
+    <value>Kaydet</value>
   </data>
   <data name="settingsTabTitle" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Ayarlar</value>
   </data>
   <data name="tooltipAudioBr" xml:space="preserve">
-    <value>Variable Audio Bitrate determina a qualidade de saida do áudio.\r\nQuanto maior a Bitrate maior a qualidade.</value>
+    <value>Değişken Ses Bitoranı ses çıkışının kalitesini belirler.\r\nDaha yüksek bitoranı daha yüksek kalite.</value>
   </data>
   <data name="tooltipContainer" xml:space="preserve">
-    <value>No tooltip yet</value>
+    <value>Araç ipucu yok</value>
   </data>
   <data name="tooltipDenoise" xml:space="preserve">
-    <value>Video denoising é o processo que remove as "imperfeições" \r\ndo vídeo</value>
+    <value>Vidyo denoising vidyo sinyalinden gürültüyü \r\nkaldırma işlemidir</value>
   </data>
   <data name="tooltipField" xml:space="preserve">
-    <value>No tooltip yet</value>
+    <value>Araç ipucu yok</value>
   </data>
   <data name="tooltipFileSize" xml:space="preserve">
-    <value>Target File Size significa que o programa tentara deixar o arquivo \r\n de saida o mais proximo possivel do tamanho determinado.</value>
+    <value>Hedef Dosya Boyutu programın çıktı dosyasının boyutunu belirtilen değere \r\n en yakın yapabileceği değere ayarlamasını sağlar</value>
   </data>
   <data name="tooltipQuality" xml:space="preserve">
-    <value>Qualidade determina a qualidade que o arquivo de saida terá.</value>
+    <value>Kalite çıktı dosyasının vidyo kalitesini belirler.</value>
   </data>
   <data name="tooltipResize" xml:space="preserve">
-    <value>Com um filtro de tamanho você pode facilmente mudar o tamanho do vídeo\r\n para um aspecto perfeito. Usando um filtro você pode tanto\r\nsuavizar a imagem quanto redimensioná-la.</value>
+    <value>Yeniden boyutlandırma filtresiyle vidyoyou kolayca yeniden boyutlandırabilirsiniz \r\n tercih ettiğiniz en-boy oranına. Bu filtreleri kullanarak\r\ngörüntüyü yumuşatabilir veya keskinleştirebilirsiniz.</value>
   </data>
   <data name="tooltipSub" xml:space="preserve">
-    <value>Selecione uma legenda</value>
+    <value>Kullanılacak altyazı dosyasını seçin</value>
   </data>
   <data name="tooltipVideoBr" xml:space="preserve">
-    <value>Média (Variavel) é utilizada para determinar a melhor configuração de bit rate, para uma boa qualidade no menor tamanho \r\n mantendo a mesma taixa de Bit. Quanto maior o Bitrate melhor a qualidade. </value>
+    <value>Averaj (Değişken) Bit Oranı mümkün olan en düşük quantizizerde en iyi kaliteyi belirtmeye yarar \r\n averaj bit oranını sürdürürken. Daha yüksek bitoranı daha yüksek kalite.</value>
   </data>
   <data name="tooltipVideoCodec" xml:space="preserve">
-    <value>No tooltip yet</value>
+    <value>Araç ipucu yok</value>
   </data>
   <data name="tooltipWidthHeight" xml:space="preserve">
-    <value>A largura e a altura do vídeo re-codificado.</value>
+    <value>Tekrar enkode edilmiş vidyonun eni ve boyu.</value>
   </data>
   <data name="updateCancelButton" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>İptal</value>
   </data>
   <data name="updateColumn1" xml:space="preserve">
-    <value>Update</value>
+    <value>Güncelle</value>
   </data>
   <data name="updateColumn2" xml:space="preserve">
-    <value>Nome</value>
+    <value>İsim</value>
   </data>
   <data name="updateColumn3" xml:space="preserve">
-    <value>Versóes utilizadas</value>
+    <value>Mevcut Versiyon</value>
   </data>
   <data name="updateColumn4" xml:space="preserve">
-    <value>Últimas versões</value>
+    <value>Son Versiyon</value>
   </data>
   <data name="updateColumn5" xml:space="preserve">
-    <value>Status</value>
+    <value>Durum</value>
   </data>
   <data name="updateCustomPath" xml:space="preserve">
-    <value>Outros Paths</value>
+    <value>Özel Yollar</value>
   </data>
   <data name="updateMessage" xml:space="preserve">
-    <value>Updates disponiveis. Você quer baixar eles agora?</value>
+    <value>Güncelleme mevcut. Şimdi indirmek ister misiniz?</value>
   </data>
   <data name="updaterTitle" xml:space="preserve">
-    <value>MiniCoder Updater</value>
+    <value>MiniCoder Güncelleyici</value>
   </data>
   <data name="updateUpdateButton" xml:space="preserve">
-    <value>Update</value>
+    <value>Güncelle</value>
   </data>
   <data name="vfrParsing" xml:space="preserve">
-    <value>Parsing VFR</value>
+    <value>VFR Ayıklama</value>
   </data>
   <data name="vfrParsingAborted" xml:space="preserve">
-    <value>Abortar Parsing VFR</value>
+    <value>VFR Ayıklama iptal edildi</value>
   </data>
   <data name="vfrParsingCompleted" xml:space="preserve">
-    <value>Parsing VFR completo</value>
+    <value>VFR Ayıklama tamamlandı</value>
   </data>
   <data name="videoBitRate" xml:space="preserve">
-    <value>Bit Rate:</value>
+    <value>Bit Oranı:</value>
   </data>
   <data name="videoCodec" xml:space="preserve">
-    <value>Codec:</value>
+    <value>Kodek:</value>
   </data>
   <data name="videoFileSize" xml:space="preserve">
-    <value>Tamanho:</value>
+    <value>Dosya Boy.:</value>
   </data>
   <data name="videoOptionsTitle" xml:space="preserve">
-    <value>Opções de Vídeo</value>
+    <value>Vidyo Ayarları</value>
   </data>
   <data name="videoQuality" xml:space="preserve">
-    <value>Qualidade:</value>
+    <value>Kalte:</value>
   </data>
   <data name="videoQualityOptions" xml:space="preserve">
-    <value>Média;Alta;muito Alta;Muito Alta (+50mb anime);Muito alta (-50mb anime);Muito alta (TV-Shows/Filmes);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
+    <value>Orta;Yüksek;Çok Yüksek;Çok Yüksek (+50mb anime);Çok Yüksek (-50mb anime);Çok Yüksek (TV-Şovları/Filmler);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
   </data>
   <data name="videoTabTitle" xml:space="preserve">
-    <value>Vídeo</value>
+    <value>Vidyo</value>
   </data>
   <data name="whenDone" xml:space="preserve">
-    <value>Quando acabar</value>
+    <value>Bittiğinde</value>
   </data>
   <data name="whenDoneOptions" xml:space="preserve">
-    <value>Não fazer nada;Hibernate;Modo de espera;Desligar</value>
+    <value>Bişiy Yapma;Hazırda Beklet;Bekleme Konumu;Bilgisayarı Kapat</value>
   </data>
 </root>
