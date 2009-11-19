@@ -22,14 +22,14 @@ namespace MiniCoder.Core.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Portugese_Brasil {
+    internal class Dutch {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Portugese_Brasil() {
+        internal Dutch() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MiniCoder.Core.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MiniCoder.Core.Languages.Portugese-Brasil", typeof(Portugese_Brasil).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MiniCoder.Core.Languages.Dutch", typeof(Dutch).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aplicativos.
+        ///   Looks up a localized string similar to Applicaties.
         /// </summary>
         internal static string applicationsButton {
             get {
@@ -70,7 +70,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit Rate:.
+        ///   Looks up a localized string similar to Bitsnelheid:.
         /// </summary>
         internal static string audioBitrate {
             get {
@@ -88,7 +88,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Decoding Audio.
+        ///   Looks up a localized string similar to Bezig met het decoderen van de audio.
         /// </summary>
         internal static string audioDecodingMessage {
             get {
@@ -97,7 +97,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding audio to.
+        ///   Looks up a localized string similar to Bezig met het encoderen van de audio naar.
         /// </summary>
         internal static string audioEncodingMessage {
             get {
@@ -106,7 +106,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding Audio Track.
+        ///   Looks up a localized string similar to Audio encoderen:.
         /// </summary>
         internal static string audioEncodingTrack {
             get {
@@ -115,7 +115,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções de Audio.
+        ///   Looks up a localized string similar to Audio Opties.
         /// </summary>
         internal static string audioOptionsTitle {
             get {
@@ -124,7 +124,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Áudio.
+        ///   Looks up a localized string similar to Audio.
         /// </summary>
         internal static string audioTabTitle {
             get {
@@ -133,7 +133,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formato:.
+        ///   Looks up a localized string similar to Formaat:.
         /// </summary>
         internal static string containerFormat {
             get {
@@ -151,7 +151,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Core.
+        ///   Looks up a localized string similar to Kern.
         /// </summary>
         internal static string coreTabTitle {
             get {
@@ -160,7 +160,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom.
+        ///   Looks up a localized string similar to Persoonlijk.
         /// </summary>
         internal static string customButton {
             get {
@@ -169,7 +169,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancelar.
+        ///   Looks up a localized string similar to Annuleer.
         /// </summary>
         internal static string customFilterCancel {
             get {
@@ -178,7 +178,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se você quiser desativar um filtro padrão, utilize a página de Configurações.
+        ///   Looks up a localized string similar to Als je de default filters wilt uitschakelen, gebruik dan de Instellingen tab..
         /// </summary>
         internal static string customFilterNote {
             get {
@@ -196,7 +196,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coloque aqui o seu Avisynth Filters.
+        ///   Looks up a localized string similar to Voer hier je persoonlijke AviSynth filters in..
         /// </summary>
         internal static string customFilterText {
             get {
@@ -205,7 +205,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Filters.
+        ///   Looks up a localized string similar to Persoonlijke Filters.
         /// </summary>
         internal static string customFilterTitle {
             get {
@@ -214,7 +214,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Paths.
+        ///   Looks up a localized string similar to Persoonlijke Locaties.
         /// </summary>
         internal static string customPathsTitle {
             get {
@@ -223,7 +223,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing abortado.
+        ///   Looks up a localized string similar to Demuxen geannuleerd.
         /// </summary>
         internal static string demuxingAbortedMessage {
             get {
@@ -232,7 +232,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing completo.
+        ///   Looks up a localized string similar to Demuxen compleet.
         /// </summary>
         internal static string demuxingCompleteMessage {
             get {
@@ -241,7 +241,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing.
+        ///   Looks up a localized string similar to Bezig met het demuxen van de.
         /// </summary>
         internal static string demuxingMessage {
             get {
@@ -250,7 +250,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing as faixas MKV.
+        ///   Looks up a localized string similar to Bezig met het demuxen van het  MKV bestand.
         /// </summary>
         internal static string demuxingMkv {
             get {
@@ -259,7 +259,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing anexos.
+        ///   Looks up a localized string similar to Ophalen MKV Bijlagen.
         /// </summary>
         internal static string demuxingMkvAttachments {
             get {
@@ -268,7 +268,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing formas.
+        ///   Looks up a localized string similar to Ophalen MKV Hoofdstukken.
         /// </summary>
         internal static string demuxingMkvChapters {
             get {
@@ -277,7 +277,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing faixa de áudio MP4.
+        ///   Looks up a localized string similar to Bezig met het demuxen van de MP4 Audio.
         /// </summary>
         internal static string demuxingmp4Audio {
             get {
@@ -286,7 +286,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing faixa de vídeo MP4.
+        ///   Looks up a localized string similar to Bezig met het demuxen van de MP4 video.
         /// </summary>
         internal static string demuxingmp4Video {
             get {
@@ -295,7 +295,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Iniciado indexação dos arquivos VOB.
+        ///   Looks up a localized string similar to Bezig met het indexeren van het VOB bestand.
         /// </summary>
         internal static string demuxingVob {
             get {
@@ -304,7 +304,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Started fetching chapters..
+        ///   Looks up a localized string similar to Hoofdstukken aan het ophalen.
         /// </summary>
         internal static string demuxingvobChapters {
             get {
@@ -313,7 +313,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Started fetching subs..
+        ///   Looks up a localized string similar to Ondertitelingen aan het ophalen.
         /// </summary>
         internal static string demuxingvobSubs {
             get {
@@ -331,7 +331,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parar.
+        ///   Looks up a localized string similar to Stop.
         /// </summary>
         internal static string encodeStopButton {
             get {
@@ -340,7 +340,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding completo.
+        ///   Looks up a localized string similar to Klaar met converteren.
         /// </summary>
         internal static string encodingComplete {
             get {
@@ -349,7 +349,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar Attachments.
+        ///   Looks up a localized string similar to Negeer Bijlagen.
         /// </summary>
         internal static string encodingIgnoreAttachments {
             get {
@@ -358,7 +358,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar Áudio.
+        ///   Looks up a localized string similar to Negeer Audio.
         /// </summary>
         internal static string encodingIgnoreAudio {
             get {
@@ -367,7 +367,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar Chapters.
+        ///   Looks up a localized string similar to Negeer Hoofdstukken.
         /// </summary>
         internal static string encodingIgnoreChapters {
             get {
@@ -376,7 +376,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar legendas.
+        ///   Looks up a localized string similar to Negeer ondertitels.
         /// </summary>
         internal static string encodingIgnoreSubs {
             get {
@@ -385,7 +385,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continuar para o proximo arquivo após o erro.
+        ///   Looks up a localized string similar to Ga naar het volgend bestand bij errors.
         /// </summary>
         internal static string encodingNextError {
             get {
@@ -394,7 +394,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ver o vídeo (Debug Only).
+        ///   Looks up a localized string similar to Toon video preview (Enkel voor debuggen).
         /// </summary>
         internal static string encodingShowVideoPreview {
             get {
@@ -403,7 +403,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding.
+        ///   Looks up a localized string similar to Codering.
         /// </summary>
         internal static string encodingTitle {
             get {
@@ -412,7 +412,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding vídeo.
+        ///   Looks up a localized string similar to Video Converteren.
         /// </summary>
         internal static string encodingVideoPass {
             get {
@@ -421,7 +421,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding Theora video.
+        ///   Looks up a localized string similar to Bezig met converteren naar Theora.
         /// </summary>
         internal static string encodingVideoTheora {
             get {
@@ -430,7 +430,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parece que um erro aconteceu! Você quer enviar um relatório de erro?.
+        ///   Looks up a localized string similar to Er heeft zich een error plaatsgevonden. Wilt U een rapport verzenden?.
         /// </summary>
         internal static string errorWarningMessage {
             get {
@@ -448,7 +448,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fetching File Info.
+        ///   Looks up a localized string similar to Bestandsinformatie aan het ophalen.
         /// </summary>
         internal static string fileInfoFetch {
             get {
@@ -457,7 +457,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções de filtro.
+        ///   Looks up a localized string similar to Filter Opties.
         /// </summary>
         internal static string filterOptionsTitle {
             get {
@@ -466,7 +466,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexing AVC.
+        ///   Looks up a localized string similar to Bezig met de indexering van AVC.
         /// </summary>
         internal static string indexingAvc {
             get {
@@ -475,7 +475,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexing abortada.
+        ///   Looks up a localized string similar to Indexering geannuleerd.
         /// </summary>
         internal static string indexingAvcAbort {
             get {
@@ -484,7 +484,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexing AVC completa.
+        ///   Looks up a localized string similar to Indexering compleet.
         /// </summary>
         internal static string indexingAvcCompleted {
             get {
@@ -493,7 +493,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GUI Ready.
+        ///   Looks up a localized string similar to GUI klaar.
         /// </summary>
         internal static string infoLabel {
             get {
@@ -502,7 +502,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar (Marcar se o aquivo for VFR).
+        ///   Looks up a localized string similar to Bestand (Markeer als het bestand VFR is).
         /// </summary>
         internal static string inputColumn1Title {
             get {
@@ -511,7 +511,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abortado.
+        ///   Looks up a localized string similar to Geannuleerd.
         /// </summary>
         internal static string inputColumn2StatusAborted {
             get {
@@ -520,7 +520,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Completo.
+        ///   Looks up a localized string similar to Geconverteerd.
         /// </summary>
         internal static string inputColumn2StatusDone {
             get {
@@ -529,7 +529,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding.
+        ///   Looks up a localized string similar to Bezig.
         /// </summary>
         internal static string inputColumn2StatusEncoding {
             get {
@@ -538,7 +538,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erro.
+        ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string inputColumn2StatusError {
             get {
@@ -547,7 +547,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pronto.
+        ///   Looks up a localized string similar to Klaar.
         /// </summary>
         internal static string inputColumn2StatusReady {
             get {
@@ -565,7 +565,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar.
+        ///   Looks up a localized string similar to Invoer.
         /// </summary>
         internal static string inputTabTitle {
             get {
@@ -574,7 +574,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copiar.
+        ///   Looks up a localized string similar to Kopiëren.
         /// </summary>
         internal static string logMenuCopy {
             get {
@@ -583,7 +583,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enviar um relatório de erro.
+        ///   Looks up a localized string similar to Verstuur error rapport.
         /// </summary>
         internal static string logMenuSend {
             get {
@@ -592,7 +592,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log.
+        ///   Looks up a localized string similar to Logboek.
         /// </summary>
         internal static string logTabTitle {
             get {
@@ -601,7 +601,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar.
+        ///   Looks up a localized string similar to Toevoegen.
         /// </summary>
         internal static string menuAdd {
             get {
@@ -610,7 +610,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Limpar.
+        ///   Looks up a localized string similar to Alles verwijderen.
         /// </summary>
         internal static string menuClear {
             get {
@@ -619,7 +619,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remover.
+        ///   Looks up a localized string similar to Verwijder.
         /// </summary>
         internal static string menuRemove {
             get {
@@ -628,7 +628,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Muxing to.
+        ///   Looks up a localized string similar to Exporteren naar.
         /// </summary>
         internal static string muxingMessage {
             get {
@@ -637,7 +637,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Muxing/Demuxing.
+        ///   Looks up a localized string similar to Muxen/Demuxen.
         /// </summary>
         internal static string muxingTabTitle {
             get {
@@ -646,7 +646,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Notícias.
+        ///   Looks up a localized string similar to Nieuws.
         /// </summary>
         internal static string newsTabTitle {
             get {
@@ -655,7 +655,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções.
+        ///   Looks up a localized string similar to Opties.
         /// </summary>
         internal static string optionsTabTitle {
             get {
@@ -664,7 +664,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Outros.
+        ///   Looks up a localized string similar to Andere.
         /// </summary>
         internal static string otherTabTitle {
             get {
@@ -673,7 +673,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to De saida:.
+        ///   Looks up a localized string similar to Uitvoer:.
         /// </summary>
         internal static string outputDirectory {
             get {
@@ -682,7 +682,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desativar aviso sobre o titulo do video.
+        ///   Looks up a localized string similar to Schakel video titel reclame uit.
         /// </summary>
         internal static string outputDisableVideoAdvert {
             get {
@@ -691,7 +691,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configurações de saida.
+        ///   Looks up a localized string similar to Uitvoer Instellingen.
         /// </summary>
         internal static string outputSettingsTitle {
             get {
@@ -700,7 +700,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aplicativos.
+        ///   Looks up a localized string similar to Plugins.
         /// </summary>
         internal static string pluginsTabTitle {
             get {
@@ -709,7 +709,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Denoiser:.
+        ///   Looks up a localized string similar to Ruisverw.:.
         /// </summary>
         internal static string postDenoiser {
             get {
@@ -718,7 +718,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum;Baixo;Medio;Pesado;Muito alto.
+        ///   Looks up a localized string similar to Geen;Licht;Medium;Zwaar;Gestoord.
         /// </summary>
         internal static string postDenoiserOptions {
             get {
@@ -727,7 +727,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post-Processing.
+        ///   Looks up a localized string similar to Naverwerking:.
         /// </summary>
         internal static string postprocessingOptionsTitle {
             get {
@@ -736,7 +736,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formato:.
+        ///   Looks up a localized string similar to Verscherp:.
         /// </summary>
         internal static string postSharpen {
             get {
@@ -745,7 +745,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum;Baixo;Medio;Pesado;Muito alto.
+        ///   Looks up a localized string similar to Geen;Licht;Medium;Zwaar;Gestoord.
         /// </summary>
         internal static string postSharpenOptions {
             get {
@@ -754,7 +754,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Legenda:.
+        ///   Looks up a localized string similar to Ondertitel:.
         /// </summary>
         internal static string postSubtitle {
             get {
@@ -763,7 +763,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field:.
+        ///   Looks up a localized string similar to Veld:.
         /// </summary>
         internal static string preField {
             get {
@@ -772,7 +772,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pre-Processing.
+        ///   Looks up a localized string similar to Voorverwerking.
         /// </summary>
         internal static string preprocessingOptionsTitle {
             get {
@@ -781,7 +781,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Redimencion:.
+        ///   Looks up a localized string similar to Herschalen:.
         /// </summary>
         internal static string preResize {
             get {
@@ -790,7 +790,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum;Leve;Natural;Forma;Forçar forma (Lanczos64);Forçar forma (Spline36).
+        ///   Looks up a localized string similar to Niet;Zacht;Neutraal;Scherp;Heel Scherp (Lanczos64);Heel Scherp (Spline36).
         /// </summary>
         internal static string preResizeOptions {
             get {
@@ -799,7 +799,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Largura/Altura:.
+        ///   Looks up a localized string similar to Breedte/Hoogte.
         /// </summary>
         internal static string preWidthHeight {
             get {
@@ -808,7 +808,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prioridade:.
+        ///   Looks up a localized string similar to Prioriteit:.
         /// </summary>
         internal static string processPriority {
             get {
@@ -817,7 +817,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Baixa;Abaixo do normal;Normal;Acima do Normal;Alta;Tempo Real.
+        ///   Looks up a localized string similar to Laag;Onder Normaal;Normaal;Boven Normaal;Hoog;Realtime.
         /// </summary>
         internal static string processPriorityOptions {
             get {
@@ -826,7 +826,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Propriedades do processo.
+        ///   Looks up a localized string similar to Procesinstellingen.
         /// </summary>
         internal static string processSettingsTitle {
             get {
@@ -835,7 +835,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MiniCoder Encoding GUI.
+        ///   Looks up a localized string similar to MiniCoder.
         /// </summary>
         internal static string programTitle {
             get {
@@ -844,7 +844,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salvar.
+        ///   Looks up a localized string similar to Opslaan.
         /// </summary>
         internal static string saveButton {
             get {
@@ -853,7 +853,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configurações.
+        ///   Looks up a localized string similar to Instellingen.
         /// </summary>
         internal static string settingsTabTitle {
             get {
@@ -862,7 +862,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variable Audio Bitrate determina a qualidade de saida do áudio.\r\nQuanto maior a Bitrate maior a qualidade..
+        ///   Looks up a localized string similar to Variable Audio Bitrate determines the quality of the audio output.\r\nThe higher the bitrate the better the quality.\r\nRecommended: Minimum 32 Kbps.
         /// </summary>
         internal static string tooltipAudioBr {
             get {
@@ -871,7 +871,16 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tooltip yet.
+        ///   Looks up a localized string similar to Both audio codecs provide high quality at low bitrates.\r\nRecommended: Nero AAC&quot;.
+        /// </summary>
+        internal static string tooltipAudioCodec {
+            get {
+                return ResourceManager.GetString("tooltipAudioCodec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matroska: \r\nThe Matroska Multimedia Container is an open standard free container format, a file\r\nformat that can hold an unlimited number of video, audio, picture or subtitle tracks\r\n inside a single file.\r\nMP4:\r\nIt is a multimedia container format standard specified as a part of MPEG-4. It is most\r\ncommonly used to store digital audio and digital video streams, especially those defined\r\n by MPEG..
         /// </summary>
         internal static string tooltipContainer {
             get {
@@ -880,7 +889,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video denoising é o processo que remove as &quot;imperfeições&quot; \r\ndo vídeo.
+        ///   Looks up a localized string similar to Video denoising is the process of removing noise\r\nfrom a video signal..
         /// </summary>
         internal static string tooltipDenoise {
             get {
@@ -889,7 +898,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tooltip yet.
+        ///   Looks up a localized string similar to FieldDeinterlace: \r\nThis filter provides functionality similar to the postprocessing function \r\nof Telecide. You can use it for pure interlaced streams.
         /// </summary>
         internal static string tooltipField {
             get {
@@ -898,7 +907,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Target File Size significa que o programa tentara deixar o arquivo \r\n de saida o mais proximo possivel do tamanho determinado..
+        ///   Looks up a localized string similar to Target File Size means that the program will try to get the\r\noutput filesize as close as it can to the determined size.\r\nThings that could make the output bigger than set:\r\n- Attachments (Some fonts take over 5mb)\r\n- VFR (Variable FrameRate)\r\nRecommended\r\n- Minimum 50 mb for 20 min anime\r\n- Minimum 120 mb for TV-Show\r\n- Minmum 300mb for a Movie.
         /// </summary>
         internal static string tooltipFileSize {
             get {
@@ -907,7 +916,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qualidade determina a qualidade que o arquivo de saida terá..
+        ///   Looks up a localized string similar to The higher the quality, the slower the encoding time.
         /// </summary>
         internal static string tooltipQuality {
             get {
@@ -916,7 +925,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Com um filtro de tamanho você pode facilmente mudar o tamanho do vídeo\r\n para um aspecto perfeito. Usando um filtro você pode tanto\r\nsuavizar a imagem quanto redimensioná-la..
+        ///   Looks up a localized string similar to With a resizing filter you can easily resize a video to a \r\n preferred aspect ratio. Using these filters you can either \r\nsoften the image or sharpen it..
         /// </summary>
         internal static string tooltipResize {
             get {
@@ -925,7 +934,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selecione uma legenda.
+        ///   Looks up a localized string similar to Selecteer een ondertitel die je wil toevoegen aan de video (Hardsub).
         /// </summary>
         internal static string tooltipSub {
             get {
@@ -934,7 +943,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Média (Variavel) é utilizada para determinar a melhor configuração de bit rate, para uma boa qualidade no menor tamanho \r\n mantendo a mesma taixa de Bit. Quanto maior o Bitrate melhor a qualidade. .
+        ///   Looks up a localized string similar to Average (Variabele) Bit Rate is used to determine the best quality at the lowest possible quantizizer \r\nwhile maintaining the average bit rate. The higher the bitrate, the better the output quality. .
         /// </summary>
         internal static string tooltipVideoBr {
             get {
@@ -943,7 +952,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tooltip yet.
+        ///   Looks up a localized string similar to X264: It is a free software library for encoding video streams \r\ninto the H.264/MPEG-4 AVC format.\r\n\r\nXvid (formerly &quot;XviD&quot;) is a video codec library following the MPEG-4 standard,\r\n specifically MPEG-4 Part 2 Advanced Simple Profile (ASP). It uses ASP \r\n features..
         /// </summary>
         internal static string tooltipVideoCodec {
             get {
@@ -952,7 +961,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A largura e a altura do vídeo re-codificado..
+        ///   Looks up a localized string similar to The width and heigth of the re-encoded video..
         /// </summary>
         internal static string tooltipWidthHeight {
             get {
@@ -961,7 +970,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancelar.
+        ///   Looks up a localized string similar to Annuleer.
         /// </summary>
         internal static string updateCancelButton {
             get {
@@ -970,7 +979,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update.
+        ///   Looks up a localized string similar to Bijwerken.
         /// </summary>
         internal static string updateColumn1 {
             get {
@@ -979,7 +988,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nome.
+        ///   Looks up a localized string similar to Naam.
         /// </summary>
         internal static string updateColumn2 {
             get {
@@ -988,7 +997,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Versóes utilizadas.
+        ///   Looks up a localized string similar to Bestaande Versie.
         /// </summary>
         internal static string updateColumn3 {
             get {
@@ -997,7 +1006,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Últimas versões.
+        ///   Looks up a localized string similar to Laatste Versie.
         /// </summary>
         internal static string updateColumn4 {
             get {
@@ -1015,7 +1024,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Outros Paths.
+        ///   Looks up a localized string similar to Persoonlijke Locaties.
         /// </summary>
         internal static string updateCustomPath {
             get {
@@ -1024,7 +1033,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updates disponiveis. Você quer baixar eles agora?.
+        ///   Looks up a localized string similar to Er zijn updates gevonden.Wilt u deze nu downloaden?.
         /// </summary>
         internal static string updateMessage {
             get {
@@ -1042,7 +1051,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update.
+        ///   Looks up a localized string similar to Bijwerken.
         /// </summary>
         internal static string updateUpdateButton {
             get {
@@ -1051,7 +1060,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parsing VFR.
+        ///   Looks up a localized string similar to VFR Analyseren.
         /// </summary>
         internal static string vfrParsing {
             get {
@@ -1060,7 +1069,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abortar Parsing VFR.
+        ///   Looks up a localized string similar to Analyse geannuleerd.
         /// </summary>
         internal static string vfrParsingAborted {
             get {
@@ -1069,7 +1078,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parsing VFR completo.
+        ///   Looks up a localized string similar to Analyse compleet.
         /// </summary>
         internal static string vfrParsingCompleted {
             get {
@@ -1078,7 +1087,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit Rate:.
+        ///   Looks up a localized string similar to Bitsnelheid:.
         /// </summary>
         internal static string videoBitRate {
             get {
@@ -1096,7 +1105,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tamanho:.
+        ///   Looks up a localized string similar to Grootte:.
         /// </summary>
         internal static string videoFileSize {
             get {
@@ -1105,7 +1114,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções de Vídeo.
+        ///   Looks up a localized string similar to Video Opties.
         /// </summary>
         internal static string videoOptionsTitle {
             get {
@@ -1114,7 +1123,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qualidade:.
+        ///   Looks up a localized string similar to Kwaliteit:.
         /// </summary>
         internal static string videoQuality {
             get {
@@ -1123,7 +1132,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Média;Alta;muito Alta;Muito Alta (+50mb anime);Muito alta (-50mb anime);Muito alta (TV-Shows/Filmes);CRF (Anime);Ipod;PSP;PS3/XBOX.
+        ///   Looks up a localized string similar to Medium;Hoog;Heel Hoog;Heel Hoog (+50mb anime);Heel Hoog (-50mb anime);Heel Hoog (TV-Series/Films);CRF (Anime);Ipod;PSP;PS3/XBOX.
         /// </summary>
         internal static string videoQualityOptions {
             get {
@@ -1132,7 +1141,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vídeo.
+        ///   Looks up a localized string similar to Video.
         /// </summary>
         internal static string videoTabTitle {
             get {
@@ -1141,7 +1150,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quando acabar.
+        ///   Looks up a localized string similar to Wanneer klaar:.
         /// </summary>
         internal static string whenDone {
             get {
@@ -1150,7 +1159,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não fazer nada;Hibernate;Modo de espera;Desligar.
+        ///   Looks up a localized string similar to Doe Niets;Slaapstand;Standby;Afsluiten.
         /// </summary>
         internal static string whenDoneOptions {
             get {

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="applicationsButton" xml:space="preserve">
-    <value>Aplicativos</value>
+    <value>Applications</value>
   </data>
   <data name="audioBitrate" xml:space="preserve">
     <value>Bit Rate:</value>
@@ -136,13 +136,13 @@
     <value>Encoding Audio Track</value>
   </data>
   <data name="audioOptionsTitle" xml:space="preserve">
-    <value>Opções de Audio</value>
+    <value>Audio Options</value>
   </data>
   <data name="audioTabTitle" xml:space="preserve">
-    <value>Áudio</value>
+    <value>Audio</value>
   </data>
   <data name="containerFormat" xml:space="preserve">
-    <value>Formato:</value>
+    <value>Format:</value>
   </data>
   <data name="containerOptionsTitle" xml:space="preserve">
     <value>Container</value>
@@ -154,16 +154,16 @@
     <value>Custom</value>
   </data>
   <data name="customFilterCancel" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Cancel</value>
   </data>
   <data name="customFilterNote" xml:space="preserve">
-    <value>Se você quiser desativar um filtro padrão, utilize a página de Configurações</value>
+    <value>If you want to disable a default filter disable it in the Settings Page.</value>
   </data>
   <data name="customFilterOK" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="customFilterText" xml:space="preserve">
-    <value>Coloque aqui o seu Avisynth Filters</value>
+    <value>Enter Your Custom Avisynth Filters</value>
   </data>
   <data name="customFilterTitle" xml:space="preserve">
     <value>Custom Filters</value>
@@ -172,31 +172,31 @@
     <value>Custom Paths</value>
   </data>
   <data name="demuxingAbortedMessage" xml:space="preserve">
-    <value>Demuxing abortado</value>
+    <value>Demuxing Aborted</value>
   </data>
   <data name="demuxingCompleteMessage" xml:space="preserve">
-    <value>Demuxing completo</value>
+    <value>Demuxing Completed</value>
   </data>
   <data name="demuxingMessage" xml:space="preserve">
     <value>Demuxing</value>
   </data>
   <data name="demuxingMkv" xml:space="preserve">
-    <value>Demuxing as faixas MKV</value>
+    <value>Demuxing MKV Tracks</value>
   </data>
   <data name="demuxingMkvAttachments" xml:space="preserve">
-    <value>Demuxing anexos</value>
+    <value>Demuxing Attachments</value>
   </data>
   <data name="demuxingMkvChapters" xml:space="preserve">
-    <value>Demuxing formas</value>
+    <value>Demuxing Chapters</value>
   </data>
   <data name="demuxingmp4Audio" xml:space="preserve">
-    <value>Demuxing faixa de áudio MP4</value>
+    <value>Demuxing MP4 Audio Track</value>
   </data>
   <data name="demuxingmp4Video" xml:space="preserve">
-    <value>Demuxing faixa de vídeo MP4</value>
+    <value>Demuxing MP4 Video Track</value>
   </data>
   <data name="demuxingVob" xml:space="preserve">
-    <value>Iniciado indexação dos arquivos VOB</value>
+    <value>Started indexing VOB files</value>
   </data>
   <data name="demuxingvobChapters" xml:space="preserve">
     <value>Started fetching chapters.</value>
@@ -208,40 +208,40 @@
     <value>Start</value>
   </data>
   <data name="encodeStopButton" xml:space="preserve">
-    <value>Parar</value>
+    <value>Stop</value>
   </data>
   <data name="encodingComplete" xml:space="preserve">
-    <value>Encoding completo</value>
+    <value>Encoding Completed</value>
   </data>
   <data name="encodingIgnoreAttachments" xml:space="preserve">
-    <value>Ignorar Attachments</value>
+    <value>Ignore Attachments</value>
   </data>
   <data name="encodingIgnoreAudio" xml:space="preserve">
-    <value>Ignorar Áudio</value>
+    <value>Ignore Audio</value>
   </data>
   <data name="encodingIgnoreChapters" xml:space="preserve">
-    <value>Ignorar Chapters</value>
+    <value>Ignore Chapters</value>
   </data>
   <data name="encodingIgnoreSubs" xml:space="preserve">
-    <value>Ignorar legendas</value>
+    <value>Ignore Subs</value>
   </data>
   <data name="encodingNextError" xml:space="preserve">
-    <value>Continuar para o proximo arquivo após o erro</value>
+    <value>Continue to next file after error</value>
   </data>
   <data name="encodingShowVideoPreview" xml:space="preserve">
-    <value>Ver o vídeo (Debug Only)</value>
+    <value>Show video preview (Debug Only)</value>
   </data>
   <data name="encodingTitle" xml:space="preserve">
     <value>Encoding</value>
   </data>
   <data name="encodingVideoPass" xml:space="preserve">
-    <value>Encoding vídeo</value>
+    <value>Encoding video</value>
   </data>
   <data name="encodingVideoTheora" xml:space="preserve">
     <value>Encoding Theora video</value>
   </data>
   <data name="errorWarningMessage" xml:space="preserve">
-    <value>Parece que um erro aconteceu! Você quer enviar um relatório de erro?</value>
+    <value>Seems an error happend! Do you want to send an errorreport?</value>
   </data>
   <data name="errorWarningTitle" xml:space="preserve">
     <value>Error!</value>
@@ -250,61 +250,61 @@
     <value>Fetching File Info</value>
   </data>
   <data name="filterOptionsTitle" xml:space="preserve">
-    <value>Opções de filtro</value>
+    <value>Filter Options</value>
   </data>
   <data name="indexingAvc" xml:space="preserve">
     <value>Indexing AVC</value>
   </data>
   <data name="indexingAvcAbort" xml:space="preserve">
-    <value>Indexing abortada</value>
+    <value>Indexing Aborted</value>
   </data>
   <data name="indexingAvcCompleted" xml:space="preserve">
-    <value>Indexing AVC completa</value>
+    <value>Indexing AVC Completed</value>
   </data>
   <data name="infoLabel" xml:space="preserve">
     <value>GUI Ready</value>
   </data>
   <data name="inputColumn1Title" xml:space="preserve">
-    <value>Adicionar (Marcar se o aquivo for VFR)</value>
+    <value>Input (Mark if file is VFR)</value>
   </data>
   <data name="inputColumn2StatusAborted" xml:space="preserve">
-    <value>Abortado</value>
+    <value>Aborted</value>
   </data>
   <data name="inputColumn2StatusDone" xml:space="preserve">
-    <value>Completo</value>
+    <value>Done</value>
   </data>
   <data name="inputColumn2StatusEncoding" xml:space="preserve">
     <value>Encoding</value>
   </data>
   <data name="inputColumn2StatusError" xml:space="preserve">
-    <value>Erro</value>
+    <value>Error</value>
   </data>
   <data name="inputColumn2StatusReady" xml:space="preserve">
-    <value>Pronto</value>
+    <value>Ready</value>
   </data>
   <data name="inputColumn2StatusTitle" xml:space="preserve">
     <value>Status</value>
   </data>
   <data name="inputTabTitle" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Input</value>
   </data>
   <data name="logMenuCopy" xml:space="preserve">
-    <value>Copiar</value>
+    <value>Copy</value>
   </data>
   <data name="logMenuSend" xml:space="preserve">
-    <value>Enviar um relatório de erro</value>
+    <value>Send error report</value>
   </data>
   <data name="logTabTitle" xml:space="preserve">
     <value>Log</value>
   </data>
   <data name="menuAdd" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Add</value>
   </data>
   <data name="menuClear" xml:space="preserve">
-    <value>Limpar</value>
+    <value>Clear</value>
   </data>
   <data name="menuRemove" xml:space="preserve">
-    <value>Remover</value>
+    <value>Remove</value>
   </data>
   <data name="muxingMessage" xml:space="preserve">
     <value>Muxing to</value>
@@ -313,43 +313,43 @@
     <value>Muxing/Demuxing</value>
   </data>
   <data name="newsTabTitle" xml:space="preserve">
-    <value>Notícias</value>
+    <value>News</value>
   </data>
   <data name="optionsTabTitle" xml:space="preserve">
-    <value>Opções</value>
+    <value>Options</value>
   </data>
   <data name="otherTabTitle" xml:space="preserve">
-    <value>Outros</value>
+    <value>Other</value>
   </data>
   <data name="outputDirectory" xml:space="preserve">
-    <value>De saida:</value>
+    <value>Output Dir.:</value>
   </data>
   <data name="outputDisableVideoAdvert" xml:space="preserve">
-    <value>Desativar aviso sobre o titulo do video</value>
+    <value>Disable video title advert</value>
   </data>
   <data name="outputSettingsTitle" xml:space="preserve">
-    <value>Configurações de saida</value>
+    <value>Output Settings</value>
   </data>
   <data name="pluginsTabTitle" xml:space="preserve">
-    <value>Aplicativos</value>
+    <value>Plugins</value>
   </data>
   <data name="postDenoiser" xml:space="preserve">
     <value>Denoiser:</value>
   </data>
   <data name="postDenoiserOptions" xml:space="preserve">
-    <value>Nenhum;Baixo;Medio;Pesado;Muito alto</value>
+    <value>None;Light;Medium;Heavy;Insane</value>
   </data>
   <data name="postprocessingOptionsTitle" xml:space="preserve">
     <value>Post-Processing</value>
   </data>
   <data name="postSharpen" xml:space="preserve">
-    <value>Formato:</value>
+    <value>Sharpen:</value>
   </data>
   <data name="postSharpenOptions" xml:space="preserve">
-    <value>Nenhum;Baixo;Medio;Pesado;Muito alto</value>
+    <value>None;Light;Medium;Heavy;Insane</value>
   </data>
   <data name="postSubtitle" xml:space="preserve">
-    <value>Legenda:</value>
+    <value>Subtitle:</value>
   </data>
   <data name="preField" xml:space="preserve">
     <value>Field:</value>
@@ -358,88 +358,88 @@
     <value>Pre-Processing</value>
   </data>
   <data name="preResize" xml:space="preserve">
-    <value>Redimencion:</value>
+    <value>Resize:</value>
   </data>
   <data name="preResizeOptions" xml:space="preserve">
-    <value>Nenhum;Leve;Natural;Forma;Forçar forma (Lanczos64);Forçar forma (Spline36)</value>
+    <value>None;Soft;Neutral;Sharp;Very Sharp (Lanczos64);Very Sharp (Spline36)</value>
   </data>
   <data name="preWidthHeight" xml:space="preserve">
-    <value>Largura/Altura:</value>
+    <value>Width/Height:</value>
   </data>
   <data name="processPriority" xml:space="preserve">
-    <value>Prioridade:</value>
+    <value>Priority:</value>
   </data>
   <data name="processPriorityOptions" xml:space="preserve">
-    <value>Baixa;Abaixo do normal;Normal;Acima do Normal;Alta;Tempo Real</value>
+    <value>Low;Below Normal;Normal;Above Normal;High;Realtime</value>
   </data>
   <data name="processSettingsTitle" xml:space="preserve">
-    <value>Propriedades do processo</value>
+    <value>Process Settings</value>
   </data>
   <data name="programTitle" xml:space="preserve">
     <value>MiniCoder Encoding GUI</value>
   </data>
   <data name="saveButton" xml:space="preserve">
-    <value>Salvar</value>
+    <value>Save</value>
   </data>
   <data name="settingsTabTitle" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Settings</value>
   </data>
   <data name="tooltipAudioBr" xml:space="preserve">
-    <value>Variable Audio Bitrate determina a qualidade de saida do áudio.\r\nQuanto maior a Bitrate maior a qualidade.</value>
+    <value>Variable Audio Bitrate determines the quality of the audio output.\r\nThe higher the bitrate the better the quality.</value>
   </data>
   <data name="tooltipContainer" xml:space="preserve">
     <value>No tooltip yet</value>
   </data>
   <data name="tooltipDenoise" xml:space="preserve">
-    <value>Video denoising é o processo que remove as "imperfeições" \r\ndo vídeo</value>
+    <value>Video denoising is the process of removing noise \r\nfrom a video signal</value>
   </data>
   <data name="tooltipField" xml:space="preserve">
     <value>No tooltip yet</value>
   </data>
   <data name="tooltipFileSize" xml:space="preserve">
-    <value>Target File Size significa que o programa tentara deixar o arquivo \r\n de saida o mais proximo possivel do tamanho determinado.</value>
+    <value>Target File Size means that the program will try to get the \r\n output filesize as close as it can to the determined size.</value>
   </data>
   <data name="tooltipQuality" xml:space="preserve">
-    <value>Qualidade determina a qualidade que o arquivo de saida terá.</value>
+    <value>Quality determines the video quality of the outputted file.</value>
   </data>
   <data name="tooltipResize" xml:space="preserve">
-    <value>Com um filtro de tamanho você pode facilmente mudar o tamanho do vídeo\r\n para um aspecto perfeito. Usando um filtro você pode tanto\r\nsuavizar a imagem quanto redimensioná-la.</value>
+    <value>With a resizing filter you can easily resize a video to a \r\n preferred aspect ratio. Using these filters you can either\r\nsoften the image or sharpen it.</value>
   </data>
   <data name="tooltipSub" xml:space="preserve">
-    <value>Selecione uma legenda</value>
+    <value>Select Subtitle file to use</value>
   </data>
   <data name="tooltipVideoBr" xml:space="preserve">
-    <value>Média (Variavel) é utilizada para determinar a melhor configuração de bit rate, para uma boa qualidade no menor tamanho \r\n mantendo a mesma taixa de Bit. Quanto maior o Bitrate melhor a qualidade. </value>
+    <value>Average (Variable) Bit Rate is used to determine the best quality at the lowest possible quantizizer \r\n while maintaining the average bit rate. The higher the bitrate, the better the output quality. </value>
   </data>
   <data name="tooltipVideoCodec" xml:space="preserve">
     <value>No tooltip yet</value>
   </data>
   <data name="tooltipWidthHeight" xml:space="preserve">
-    <value>A largura e a altura do vídeo re-codificado.</value>
+    <value>The width and heigth of the re-encoded video.</value>
   </data>
   <data name="updateCancelButton" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Cancel</value>
   </data>
   <data name="updateColumn1" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="updateColumn2" xml:space="preserve">
-    <value>Nome</value>
+    <value>Name</value>
   </data>
   <data name="updateColumn3" xml:space="preserve">
-    <value>Versóes utilizadas</value>
+    <value>Existing Version</value>
   </data>
   <data name="updateColumn4" xml:space="preserve">
-    <value>Últimas versões</value>
+    <value>Latest Version</value>
   </data>
   <data name="updateColumn5" xml:space="preserve">
     <value>Status</value>
   </data>
   <data name="updateCustomPath" xml:space="preserve">
-    <value>Outros Paths</value>
+    <value>Custom Paths</value>
   </data>
   <data name="updateMessage" xml:space="preserve">
-    <value>Updates disponiveis. Você quer baixar eles agora?</value>
+    <value>Updates available. Do you wish to download them now?</value>
   </data>
   <data name="updaterTitle" xml:space="preserve">
     <value>MiniCoder Updater</value>
@@ -451,10 +451,10 @@
     <value>Parsing VFR</value>
   </data>
   <data name="vfrParsingAborted" xml:space="preserve">
-    <value>Abortar Parsing VFR</value>
+    <value>Aborted Parsing VFR</value>
   </data>
   <data name="vfrParsingCompleted" xml:space="preserve">
-    <value>Parsing VFR completo</value>
+    <value>Completed Parsing VFR</value>
   </data>
   <data name="videoBitRate" xml:space="preserve">
     <value>Bit Rate:</value>
@@ -463,24 +463,24 @@
     <value>Codec:</value>
   </data>
   <data name="videoFileSize" xml:space="preserve">
-    <value>Tamanho:</value>
+    <value>File Size:</value>
   </data>
   <data name="videoOptionsTitle" xml:space="preserve">
-    <value>Opções de Vídeo</value>
+    <value>Video Options</value>
   </data>
   <data name="videoQuality" xml:space="preserve">
-    <value>Qualidade:</value>
+    <value>Quality:</value>
   </data>
   <data name="videoQualityOptions" xml:space="preserve">
-    <value>Média;Alta;muito Alta;Muito Alta (+50mb anime);Muito alta (-50mb anime);Muito alta (TV-Shows/Filmes);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
+    <value>Medium;High;Very High;Very High (+50mb anime);Very High (-50mb anime);Very High (TV-Shows/Movies);CRF (Anime);Ipod;PSP;PS3/XBOX</value>
   </data>
   <data name="videoTabTitle" xml:space="preserve">
-    <value>Vídeo</value>
+    <value>Video</value>
   </data>
   <data name="whenDone" xml:space="preserve">
-    <value>Quando acabar</value>
+    <value>When done</value>
   </data>
   <data name="whenDoneOptions" xml:space="preserve">
-    <value>Não fazer nada;Hibernate;Modo de espera;Desligar</value>
+    <value>Do Nothing;Hibernate;Standby;Shutdown</value>
   </data>
 </root>

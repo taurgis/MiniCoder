@@ -71,6 +71,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Encoding\XmlValidator.cs" />
+    <Compile Include="Core\Languages\English.Designer.cs">
+      <DependentUpon>English.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Core\Languages\Dutch.Designer.cs">
+      <DependentUpon>Dutch.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Core\Languages\Turkish.Designer.cs">
+      <DependentUpon>Turkish.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Core\Languages\Portugese-Brasil.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,6 +213,21 @@
       <LastGenOutput>Portugese-Brasil.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Core\Languages\Turkish.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Turkish.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Core\Languages\Dutch.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Dutch.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Core\Languages\English.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>English.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="GUI\AviSynth\CustomFilter.resx">
       <DependentUpon>CustomFilter.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -258,8 +288,6 @@
   <ItemGroup>
     <Content Include="bigIcon.ico" />
     <Content Include="bin\Debug\bigIcon.ico" />
-    <Content Include="bin\Debug\MediaInfo_32.dll" />
-    <Content Include="bin\Debug\MediaInfo_64.dll" />
     <None Include="app.manifest" />
     <None Include="Resources\TextFile1.txt" />
     <None Include="Resources\Icon1.ico" />

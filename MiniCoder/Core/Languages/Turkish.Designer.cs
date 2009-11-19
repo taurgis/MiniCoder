@@ -22,14 +22,14 @@ namespace MiniCoder.Core.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Portugese_Brasil {
+    internal class Turkish {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Portugese_Brasil() {
+        internal Turkish() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MiniCoder.Core.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MiniCoder.Core.Languages.Portugese-Brasil", typeof(Portugese_Brasil).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MiniCoder.Core.Languages.Turkish", typeof(Turkish).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aplicativos.
+        ///   Looks up a localized string similar to Uygulamalar.
         /// </summary>
         internal static string applicationsButton {
             get {
@@ -70,7 +70,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit Rate:.
+        ///   Looks up a localized string similar to Bit Oranı:.
         /// </summary>
         internal static string audioBitrate {
             get {
@@ -79,7 +79,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Codec:.
+        ///   Looks up a localized string similar to Kodek:.
         /// </summary>
         internal static string audioCodec {
             get {
@@ -88,7 +88,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Decoding Audio.
+        ///   Looks up a localized string similar to Ses Dekode ediliyor.
         /// </summary>
         internal static string audioDecodingMessage {
             get {
@@ -97,7 +97,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding audio to.
+        ///   Looks up a localized string similar to Ses Enkode ediliyor:.
         /// </summary>
         internal static string audioEncodingMessage {
             get {
@@ -106,7 +106,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding Audio Track.
+        ///   Looks up a localized string similar to Ses Parçası Enkode ediliyor.
         /// </summary>
         internal static string audioEncodingTrack {
             get {
@@ -115,7 +115,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções de Audio.
+        ///   Looks up a localized string similar to Ses Ayarları.
         /// </summary>
         internal static string audioOptionsTitle {
             get {
@@ -124,7 +124,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Áudio.
+        ///   Looks up a localized string similar to Ses.
         /// </summary>
         internal static string audioTabTitle {
             get {
@@ -133,7 +133,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formato:.
+        ///   Looks up a localized string similar to Format:.
         /// </summary>
         internal static string containerFormat {
             get {
@@ -142,7 +142,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Container.
+        ///   Looks up a localized string similar to Konteyner.
         /// </summary>
         internal static string containerOptionsTitle {
             get {
@@ -151,7 +151,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Core.
+        ///   Looks up a localized string similar to Çekirdek.
         /// </summary>
         internal static string coreTabTitle {
             get {
@@ -160,7 +160,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom.
+        ///   Looks up a localized string similar to Özel.
         /// </summary>
         internal static string customButton {
             get {
@@ -169,7 +169,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancelar.
+        ///   Looks up a localized string similar to İptal.
         /// </summary>
         internal static string customFilterCancel {
             get {
@@ -178,7 +178,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se você quiser desativar um filtro padrão, utilize a página de Configurações.
+        ///   Looks up a localized string similar to Eğer varsayılan filtreyi iptal etmek istiyorsanız Ayarlar sayfasından iptal edin..
         /// </summary>
         internal static string customFilterNote {
             get {
@@ -187,7 +187,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to Tamam.
         /// </summary>
         internal static string customFilterOK {
             get {
@@ -196,7 +196,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coloque aqui o seu Avisynth Filters.
+        ///   Looks up a localized string similar to Kendi Özel Avisynth Filtrelerinizi Girin.
         /// </summary>
         internal static string customFilterText {
             get {
@@ -205,7 +205,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Filters.
+        ///   Looks up a localized string similar to Özel Filtreler.
         /// </summary>
         internal static string customFilterTitle {
             get {
@@ -214,7 +214,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Paths.
+        ///   Looks up a localized string similar to Özel Yollar.
         /// </summary>
         internal static string customPathsTitle {
             get {
@@ -223,7 +223,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing abortado.
+        ///   Looks up a localized string similar to Demux İptal edildi.
         /// </summary>
         internal static string demuxingAbortedMessage {
             get {
@@ -232,7 +232,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing completo.
+        ///   Looks up a localized string similar to Demux Tamamlandı.
         /// </summary>
         internal static string demuxingCompleteMessage {
             get {
@@ -241,7 +241,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing.
+        ///   Looks up a localized string similar to Demux Ediliyor.
         /// </summary>
         internal static string demuxingMessage {
             get {
@@ -250,7 +250,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing as faixas MKV.
+        ///   Looks up a localized string similar to MKV Parçaları Demux Ediliyor.
         /// </summary>
         internal static string demuxingMkv {
             get {
@@ -259,7 +259,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing anexos.
+        ///   Looks up a localized string similar to Ekler Demux Ediliyor.
         /// </summary>
         internal static string demuxingMkvAttachments {
             get {
@@ -268,7 +268,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing formas.
+        ///   Looks up a localized string similar to Bölümler Demux Ediliyor.
         /// </summary>
         internal static string demuxingMkvChapters {
             get {
@@ -277,7 +277,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing faixa de áudio MP4.
+        ///   Looks up a localized string similar to MP4 Ses Parçası Demux Ediliyor.
         /// </summary>
         internal static string demuxingmp4Audio {
             get {
@@ -286,7 +286,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demuxing faixa de vídeo MP4.
+        ///   Looks up a localized string similar to MP4 Görüntü Parçası Demux Ediliyor.
         /// </summary>
         internal static string demuxingmp4Video {
             get {
@@ -295,7 +295,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Iniciado indexação dos arquivos VOB.
+        ///   Looks up a localized string similar to VOB dosyalarının dizinlenmesine başlandı.
         /// </summary>
         internal static string demuxingVob {
             get {
@@ -304,7 +304,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Started fetching chapters..
+        ///   Looks up a localized string similar to Bölümlerin getirilmesine başlandı..
         /// </summary>
         internal static string demuxingvobChapters {
             get {
@@ -313,7 +313,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Started fetching subs..
+        ///   Looks up a localized string similar to Altyazıların getirilmesine başlandı..
         /// </summary>
         internal static string demuxingvobSubs {
             get {
@@ -322,7 +322,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start.
+        ///   Looks up a localized string similar to Başla.
         /// </summary>
         internal static string encodeStartButton {
             get {
@@ -331,7 +331,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parar.
+        ///   Looks up a localized string similar to Dur.
         /// </summary>
         internal static string encodeStopButton {
             get {
@@ -340,7 +340,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding completo.
+        ///   Looks up a localized string similar to Enkode etme Tamamlandı.
         /// </summary>
         internal static string encodingComplete {
             get {
@@ -349,7 +349,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar Attachments.
+        ///   Looks up a localized string similar to Ekleri Yoksay.
         /// </summary>
         internal static string encodingIgnoreAttachments {
             get {
@@ -358,7 +358,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar Áudio.
+        ///   Looks up a localized string similar to Sesi Yoksay.
         /// </summary>
         internal static string encodingIgnoreAudio {
             get {
@@ -367,7 +367,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar Chapters.
+        ///   Looks up a localized string similar to Bölümleri Yoksay.
         /// </summary>
         internal static string encodingIgnoreChapters {
             get {
@@ -376,7 +376,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorar legendas.
+        ///   Looks up a localized string similar to Altyazıları Yoksay.
         /// </summary>
         internal static string encodingIgnoreSubs {
             get {
@@ -385,7 +385,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continuar para o proximo arquivo após o erro.
+        ///   Looks up a localized string similar to Hatadan sonra bir sonraki dosyaya devam et.
         /// </summary>
         internal static string encodingNextError {
             get {
@@ -394,7 +394,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ver o vídeo (Debug Only).
+        ///   Looks up a localized string similar to Görüntü önizlemesi göster (Sadece Hata Ayıklama).
         /// </summary>
         internal static string encodingShowVideoPreview {
             get {
@@ -403,7 +403,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding.
+        ///   Looks up a localized string similar to Enkode Etme.
         /// </summary>
         internal static string encodingTitle {
             get {
@@ -412,7 +412,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding vídeo.
+        ///   Looks up a localized string similar to Görüntü Enkode Etme.
         /// </summary>
         internal static string encodingVideoPass {
             get {
@@ -421,7 +421,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding Theora video.
+        ///   Looks up a localized string similar to Theora vidyo Enkode Etme.
         /// </summary>
         internal static string encodingVideoTheora {
             get {
@@ -430,7 +430,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parece que um erro aconteceu! Você quer enviar um relatório de erro?.
+        ///   Looks up a localized string similar to Bir hata oluştu sanki! Hata raporu göndermek istiyor musunuz?.
         /// </summary>
         internal static string errorWarningMessage {
             get {
@@ -439,7 +439,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error!.
+        ///   Looks up a localized string similar to Hata!.
         /// </summary>
         internal static string errorWarningTitle {
             get {
@@ -448,7 +448,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fetching File Info.
+        ///   Looks up a localized string similar to Dosya Bilgisi Getiriliyor.
         /// </summary>
         internal static string fileInfoFetch {
             get {
@@ -457,7 +457,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções de filtro.
+        ///   Looks up a localized string similar to Filtre Ayarları.
         /// </summary>
         internal static string filterOptionsTitle {
             get {
@@ -466,7 +466,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexing AVC.
+        ///   Looks up a localized string similar to AVC dizinleniyor.
         /// </summary>
         internal static string indexingAvc {
             get {
@@ -475,7 +475,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexing abortada.
+        ///   Looks up a localized string similar to Dizinleme İptal Edildi.
         /// </summary>
         internal static string indexingAvcAbort {
             get {
@@ -484,7 +484,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexing AVC completa.
+        ///   Looks up a localized string similar to AVC Dizinleme Tamamlandı.
         /// </summary>
         internal static string indexingAvcCompleted {
             get {
@@ -493,7 +493,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GUI Ready.
+        ///   Looks up a localized string similar to GUI Hazır.
         /// </summary>
         internal static string infoLabel {
             get {
@@ -502,7 +502,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar (Marcar se o aquivo for VFR).
+        ///   Looks up a localized string similar to Giriş (Dosya VFR ise işaretleyin).
         /// </summary>
         internal static string inputColumn1Title {
             get {
@@ -511,7 +511,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abortado.
+        ///   Looks up a localized string similar to İptal Edildi.
         /// </summary>
         internal static string inputColumn2StatusAborted {
             get {
@@ -520,7 +520,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Completo.
+        ///   Looks up a localized string similar to Tamamlandı.
         /// </summary>
         internal static string inputColumn2StatusDone {
             get {
@@ -529,7 +529,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encoding.
+        ///   Looks up a localized string similar to Enkode edilyor.
         /// </summary>
         internal static string inputColumn2StatusEncoding {
             get {
@@ -538,7 +538,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erro.
+        ///   Looks up a localized string similar to Hata.
         /// </summary>
         internal static string inputColumn2StatusError {
             get {
@@ -547,7 +547,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pronto.
+        ///   Looks up a localized string similar to Hazır.
         /// </summary>
         internal static string inputColumn2StatusReady {
             get {
@@ -556,7 +556,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status.
+        ///   Looks up a localized string similar to Durum.
         /// </summary>
         internal static string inputColumn2StatusTitle {
             get {
@@ -565,7 +565,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar.
+        ///   Looks up a localized string similar to Giriş.
         /// </summary>
         internal static string inputTabTitle {
             get {
@@ -574,7 +574,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copiar.
+        ///   Looks up a localized string similar to Kopyala.
         /// </summary>
         internal static string logMenuCopy {
             get {
@@ -583,7 +583,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enviar um relatório de erro.
+        ///   Looks up a localized string similar to Hata raporu gönder.
         /// </summary>
         internal static string logMenuSend {
             get {
@@ -592,7 +592,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log.
+        ///   Looks up a localized string similar to Günlük.
         /// </summary>
         internal static string logTabTitle {
             get {
@@ -601,7 +601,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar.
+        ///   Looks up a localized string similar to Ekle.
         /// </summary>
         internal static string menuAdd {
             get {
@@ -610,7 +610,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Limpar.
+        ///   Looks up a localized string similar to Temizle.
         /// </summary>
         internal static string menuClear {
             get {
@@ -619,7 +619,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remover.
+        ///   Looks up a localized string similar to Kaldır.
         /// </summary>
         internal static string menuRemove {
             get {
@@ -628,7 +628,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Muxing to.
+        ///   Looks up a localized string similar to Muxing:.
         /// </summary>
         internal static string muxingMessage {
             get {
@@ -646,7 +646,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Notícias.
+        ///   Looks up a localized string similar to Haberler.
         /// </summary>
         internal static string newsTabTitle {
             get {
@@ -655,7 +655,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções.
+        ///   Looks up a localized string similar to Ayarlar.
         /// </summary>
         internal static string optionsTabTitle {
             get {
@@ -664,7 +664,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Outros.
+        ///   Looks up a localized string similar to Diğer.
         /// </summary>
         internal static string otherTabTitle {
             get {
@@ -673,7 +673,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to De saida:.
+        ///   Looks up a localized string similar to Çıktı Dizini:.
         /// </summary>
         internal static string outputDirectory {
             get {
@@ -682,7 +682,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desativar aviso sobre o titulo do video.
+        ///   Looks up a localized string similar to Vidyo başlık ilanını kapat.
         /// </summary>
         internal static string outputDisableVideoAdvert {
             get {
@@ -691,7 +691,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configurações de saida.
+        ///   Looks up a localized string similar to Çıktı Ayarları.
         /// </summary>
         internal static string outputSettingsTitle {
             get {
@@ -700,7 +700,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aplicativos.
+        ///   Looks up a localized string similar to Eklentiler.
         /// </summary>
         internal static string pluginsTabTitle {
             get {
@@ -718,7 +718,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum;Baixo;Medio;Pesado;Muito alto.
+        ///   Looks up a localized string similar to Yok;Hafif;Orta;Ağır;Çılgın.
         /// </summary>
         internal static string postDenoiserOptions {
             get {
@@ -736,7 +736,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formato:.
+        ///   Looks up a localized string similar to Keskinlik:.
         /// </summary>
         internal static string postSharpen {
             get {
@@ -745,7 +745,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum;Baixo;Medio;Pesado;Muito alto.
+        ///   Looks up a localized string similar to Yok;Hafif;Orta;Ağır;Çılgın.
         /// </summary>
         internal static string postSharpenOptions {
             get {
@@ -754,7 +754,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Legenda:.
+        ///   Looks up a localized string similar to Altyazı:.
         /// </summary>
         internal static string postSubtitle {
             get {
@@ -781,7 +781,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Redimencion:.
+        ///   Looks up a localized string similar to Boyutlandır:.
         /// </summary>
         internal static string preResize {
             get {
@@ -790,7 +790,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum;Leve;Natural;Forma;Forçar forma (Lanczos64);Forçar forma (Spline36).
+        ///   Looks up a localized string similar to Yok;Yumuşak;Bağımsız;Keskin;Çok Keskin (Lanczos64);Çok Keskin (Spline36).
         /// </summary>
         internal static string preResizeOptions {
             get {
@@ -799,7 +799,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Largura/Altura:.
+        ///   Looks up a localized string similar to En/Boy:.
         /// </summary>
         internal static string preWidthHeight {
             get {
@@ -808,7 +808,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prioridade:.
+        ///   Looks up a localized string similar to Öncelik:.
         /// </summary>
         internal static string processPriority {
             get {
@@ -817,7 +817,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Baixa;Abaixo do normal;Normal;Acima do Normal;Alta;Tempo Real.
+        ///   Looks up a localized string similar to Düşük;Normalin Altında;Normal;Normalin Üstünde;Yüksek;Eş-zamanlı.
         /// </summary>
         internal static string processPriorityOptions {
             get {
@@ -826,7 +826,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Propriedades do processo.
+        ///   Looks up a localized string similar to İşleme Ayarları.
         /// </summary>
         internal static string processSettingsTitle {
             get {
@@ -835,7 +835,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MiniCoder Encoding GUI.
+        ///   Looks up a localized string similar to MiniCoder Enkoding GUI.
         /// </summary>
         internal static string programTitle {
             get {
@@ -844,7 +844,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salvar.
+        ///   Looks up a localized string similar to Kaydet.
         /// </summary>
         internal static string saveButton {
             get {
@@ -853,7 +853,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configurações.
+        ///   Looks up a localized string similar to Ayarlar.
         /// </summary>
         internal static string settingsTabTitle {
             get {
@@ -862,7 +862,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variable Audio Bitrate determina a qualidade de saida do áudio.\r\nQuanto maior a Bitrate maior a qualidade..
+        ///   Looks up a localized string similar to Değişken Ses Bitoranı ses çıkışının kalitesini belirler.\r\nDaha yüksek bitoranı daha yüksek kalite..
         /// </summary>
         internal static string tooltipAudioBr {
             get {
@@ -871,7 +871,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tooltip yet.
+        ///   Looks up a localized string similar to Araç ipucu yok.
         /// </summary>
         internal static string tooltipContainer {
             get {
@@ -880,7 +880,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video denoising é o processo que remove as &quot;imperfeições&quot; \r\ndo vídeo.
+        ///   Looks up a localized string similar to Vidyo denoising vidyo sinyalinden gürültüyü \r\nkaldırma işlemidir.
         /// </summary>
         internal static string tooltipDenoise {
             get {
@@ -889,7 +889,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tooltip yet.
+        ///   Looks up a localized string similar to Araç ipucu yok.
         /// </summary>
         internal static string tooltipField {
             get {
@@ -898,7 +898,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Target File Size significa que o programa tentara deixar o arquivo \r\n de saida o mais proximo possivel do tamanho determinado..
+        ///   Looks up a localized string similar to Hedef Dosya Boyutu programın çıktı dosyasının boyutunu belirtilen değere \r\n en yakın yapabileceği değere ayarlamasını sağlar.
         /// </summary>
         internal static string tooltipFileSize {
             get {
@@ -907,7 +907,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qualidade determina a qualidade que o arquivo de saida terá..
+        ///   Looks up a localized string similar to Kalite çıktı dosyasının vidyo kalitesini belirler..
         /// </summary>
         internal static string tooltipQuality {
             get {
@@ -916,7 +916,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Com um filtro de tamanho você pode facilmente mudar o tamanho do vídeo\r\n para um aspecto perfeito. Usando um filtro você pode tanto\r\nsuavizar a imagem quanto redimensioná-la..
+        ///   Looks up a localized string similar to Yeniden boyutlandırma filtresiyle vidyoyou kolayca yeniden boyutlandırabilirsiniz \r\n tercih ettiğiniz en-boy oranına. Bu filtreleri kullanarak\r\ngörüntüyü yumuşatabilir veya keskinleştirebilirsiniz..
         /// </summary>
         internal static string tooltipResize {
             get {
@@ -925,7 +925,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selecione uma legenda.
+        ///   Looks up a localized string similar to Kullanılacak altyazı dosyasını seçin.
         /// </summary>
         internal static string tooltipSub {
             get {
@@ -934,7 +934,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Média (Variavel) é utilizada para determinar a melhor configuração de bit rate, para uma boa qualidade no menor tamanho \r\n mantendo a mesma taixa de Bit. Quanto maior o Bitrate melhor a qualidade. .
+        ///   Looks up a localized string similar to Averaj (Değişken) Bit Oranı mümkün olan en düşük quantizizerde en iyi kaliteyi belirtmeye yarar \r\n averaj bit oranını sürdürürken. Daha yüksek bitoranı daha yüksek kalite..
         /// </summary>
         internal static string tooltipVideoBr {
             get {
@@ -943,7 +943,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tooltip yet.
+        ///   Looks up a localized string similar to Araç ipucu yok.
         /// </summary>
         internal static string tooltipVideoCodec {
             get {
@@ -952,7 +952,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A largura e a altura do vídeo re-codificado..
+        ///   Looks up a localized string similar to Tekrar enkode edilmiş vidyonun eni ve boyu..
         /// </summary>
         internal static string tooltipWidthHeight {
             get {
@@ -961,7 +961,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancelar.
+        ///   Looks up a localized string similar to İptal.
         /// </summary>
         internal static string updateCancelButton {
             get {
@@ -970,7 +970,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update.
+        ///   Looks up a localized string similar to Güncelle.
         /// </summary>
         internal static string updateColumn1 {
             get {
@@ -979,7 +979,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nome.
+        ///   Looks up a localized string similar to İsim.
         /// </summary>
         internal static string updateColumn2 {
             get {
@@ -988,7 +988,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Versóes utilizadas.
+        ///   Looks up a localized string similar to Mevcut Versiyon.
         /// </summary>
         internal static string updateColumn3 {
             get {
@@ -997,7 +997,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Últimas versões.
+        ///   Looks up a localized string similar to Son Versiyon.
         /// </summary>
         internal static string updateColumn4 {
             get {
@@ -1006,7 +1006,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status.
+        ///   Looks up a localized string similar to Durum.
         /// </summary>
         internal static string updateColumn5 {
             get {
@@ -1015,7 +1015,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Outros Paths.
+        ///   Looks up a localized string similar to Özel Yollar.
         /// </summary>
         internal static string updateCustomPath {
             get {
@@ -1024,7 +1024,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updates disponiveis. Você quer baixar eles agora?.
+        ///   Looks up a localized string similar to Güncelleme mevcut. Şimdi indirmek ister misiniz?.
         /// </summary>
         internal static string updateMessage {
             get {
@@ -1033,7 +1033,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MiniCoder Updater.
+        ///   Looks up a localized string similar to MiniCoder Güncelleyici.
         /// </summary>
         internal static string updaterTitle {
             get {
@@ -1042,7 +1042,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update.
+        ///   Looks up a localized string similar to Güncelle.
         /// </summary>
         internal static string updateUpdateButton {
             get {
@@ -1051,7 +1051,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parsing VFR.
+        ///   Looks up a localized string similar to VFR Ayıklama.
         /// </summary>
         internal static string vfrParsing {
             get {
@@ -1060,7 +1060,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abortar Parsing VFR.
+        ///   Looks up a localized string similar to VFR Ayıklama iptal edildi.
         /// </summary>
         internal static string vfrParsingAborted {
             get {
@@ -1069,7 +1069,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parsing VFR completo.
+        ///   Looks up a localized string similar to VFR Ayıklama tamamlandı.
         /// </summary>
         internal static string vfrParsingCompleted {
             get {
@@ -1078,7 +1078,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bit Rate:.
+        ///   Looks up a localized string similar to Bit Oranı:.
         /// </summary>
         internal static string videoBitRate {
             get {
@@ -1087,7 +1087,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Codec:.
+        ///   Looks up a localized string similar to Kodek:.
         /// </summary>
         internal static string videoCodec {
             get {
@@ -1096,7 +1096,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tamanho:.
+        ///   Looks up a localized string similar to Dosya Boy.:.
         /// </summary>
         internal static string videoFileSize {
             get {
@@ -1105,7 +1105,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opções de Vídeo.
+        ///   Looks up a localized string similar to Vidyo Ayarları.
         /// </summary>
         internal static string videoOptionsTitle {
             get {
@@ -1114,7 +1114,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qualidade:.
+        ///   Looks up a localized string similar to Kalte:.
         /// </summary>
         internal static string videoQuality {
             get {
@@ -1123,7 +1123,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Média;Alta;muito Alta;Muito Alta (+50mb anime);Muito alta (-50mb anime);Muito alta (TV-Shows/Filmes);CRF (Anime);Ipod;PSP;PS3/XBOX.
+        ///   Looks up a localized string similar to Orta;Yüksek;Çok Yüksek;Çok Yüksek (+50mb anime);Çok Yüksek (-50mb anime);Çok Yüksek (TV-Şovları/Filmler);CRF (Anime);Ipod;PSP;PS3/XBOX.
         /// </summary>
         internal static string videoQualityOptions {
             get {
@@ -1132,7 +1132,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vídeo.
+        ///   Looks up a localized string similar to Vidyo.
         /// </summary>
         internal static string videoTabTitle {
             get {
@@ -1141,7 +1141,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quando acabar.
+        ///   Looks up a localized string similar to Bittiğinde.
         /// </summary>
         internal static string whenDone {
             get {
@@ -1150,7 +1150,7 @@ namespace MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não fazer nada;Hibernate;Modo de espera;Desligar.
+        ///   Looks up a localized string similar to Bişiy Yapma;Hazırda Beklet;Bekleme Konumu;Bilgisayarı Kapat.
         /// </summary>
         internal static string whenDoneOptions {
             get {
