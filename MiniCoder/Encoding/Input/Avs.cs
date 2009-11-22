@@ -35,8 +35,8 @@ namespace MiniCoder.Encoding.Input
             LogBook.addLogLine("Analysing AVS file", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "AVSAnalyse", false);
             AviSynthScriptEnvironment environment = new AviSynthScriptEnvironment();
             AviSynthClip clip = environment.OpenScriptFile(fileDetails["fileName"][0]);
-            fileDetails["width"][0] = clip.VideoWidth.ToString();
-            fileDetails["height"][0] = clip.VideoHeight.ToString();
+            fileDetails.Add("width", clip.VideoWidth.ToString().Split(Convert.ToChar("~")));
+            fileDetails.Add("height", clip.VideoHeight.ToString().Split(Convert.ToChar(" ")));
             fileDetails.Add("avsfile", fileDetails["fileName"][0].Split(Char.Parse("\n")));
             fileDetails["fileName"][0] = getAvsSource(fileDetails["fileName"][0]);
             LogBook.addLogLine("Retrieved source: " + fileDetails["fileName"][0], fileDetails["name"][0] + "AVSAnalyse", "", false);

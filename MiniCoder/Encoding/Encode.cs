@@ -333,14 +333,14 @@ namespace MiniCoder.Encoding
         private int crfValue = 0;
         public SortedList<String, String[]> getFileDetails(string fileName)
         {
-           
+
 
             SortedList<String, String[]> tempDetail = new SortedList<string, string[]>();
             MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(fileName);
 
 
 
-            Track[] videoTracks = new Track[1];
+            Track[] videoTracks = new Track[mediaInfo.Video.Count];
             Track[] audioTracks;
             if (encodeSet["skipaudio"] != "True")
                 audioTracks = new Track[mediaInfo.AudioCount];
@@ -361,12 +361,18 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                videoTracks[0] = new Video(mediaInfo.Video[0].CodecID.ToString(), 0);
-                LogBook.addLogLine("Error getting video track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                try
+                {
+                    videoTracks[0] = new Video(mediaInfo.Video[0].CodecID.ToString(), 0);
+                    LogBook.addLogLine("Error getting video track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                }
+                catch
+                {
+                }
             }
             for (int i = 0; i < audioTracks.Length; i++)
             {
-                 try
+                try
                 {
                     if (!String.IsNullOrEmpty(mediaInfo.Audio[i].CodecID.ToString()))
                         audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].LanguageString, mediaInfo.Audio[i].CodecID.ToString(), int.Parse(mediaInfo.Audio[i].ID));
@@ -383,7 +389,7 @@ namespace MiniCoder.Encoding
 
             for (int i = 0; i < subTracks.Length; i++)
             {
-                if (!String.IsNullOrEmpty(mediaInfo.Text[i].Codec.ToString())) 
+                if (!String.IsNullOrEmpty(mediaInfo.Text[i].Codec.ToString()))
                     subTracks[i] = new Sub(mediaInfo.Text[i].Title, mediaInfo.Text[i].LanguageString, mediaInfo.Text[i].Codec, int.Parse(mediaInfo.Text[i].ID));
                 else
                     subTracks[i] = new Sub(mediaInfo.Text[i].Title, mediaInfo.Text[i].LanguageString, mediaInfo.Text[i].CodecString, int.Parse(mediaInfo.Text[i].ID));
@@ -417,12 +423,14 @@ namespace MiniCoder.Encoding
                 if (mediaInfo.General[0].FileExtension.ToUpper() == ".VOB")
                     tempDetail.Add("audBitrate", mediaInfo.Audio[0].BitRate.ToString().Split(Convert.ToChar(" ")));
             }
-            tempDetail.Add("width", mediaInfo.Video[0].Width.Split(Convert.ToChar(" ")));
-            tempDetail.Add("height", mediaInfo.Video[0].Height.Split(Convert.ToChar(" ")));
-            tempDetail.Add("fps", mediaInfo.Video[0].FrameRate.Split(Convert.ToChar(" ")));
+            if (videoTracks.Length > 0)
+            {
+                tempDetail.Add("width", mediaInfo.Video[0].Width.Split(Convert.ToChar(" ")));
+                tempDetail.Add("height", mediaInfo.Video[0].Height.Split(Convert.ToChar(" ")));
+                tempDetail.Add("fps", mediaInfo.Video[0].FrameRate.Split(Convert.ToChar(" ")));
 
-            tempDetail.Add("framecount", mediaInfo.Video[0].FrameCount.Split(Convert.ToChar(" ")));
-
+                tempDetail.Add("framecount", mediaInfo.Video[0].FrameCount.Split(Convert.ToChar(" ")));
+            }
             if (encodeSet["skipchapters"] == "True")
                 tempDetail.Add("chapters", "".Split(Char.Parse(" ")));
             else
