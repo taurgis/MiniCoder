@@ -326,7 +326,7 @@ namespace MiniCoder.GUI
                     LogBook.sendmail(logView);
                     break;
                 }
-                if (tempEncode.getExtention() == ".avs")
+                if (tempEncode.getExtention() == "avs")
                 {
                     if (tempEncode.startAvsEncode())
                     {
