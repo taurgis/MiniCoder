@@ -167,7 +167,7 @@ namespace MiniCoder.Core.Languages
             optionsTabTitle = rm.GetString("optionsTabTitle", culture);
             logTabTitle = rm.GetString("logTabTitle", culture);
             newsTabTitle = rm.GetString("newsTabTitle", culture);
-            inputColumn1Title = rm.GetString("inputColumn1Title", culture);
+            inputColumn1Title = "    " + rm.GetString("inputColumn1Title", culture);
             inputColumn2StatusTitle = rm.GetString("inputColumn2StatusTitle", culture);
             encodeStartButton = rm.GetString("encodeStartButton", culture);
             encodeStopButton = rm.GetString("encodeStopButton", culture);

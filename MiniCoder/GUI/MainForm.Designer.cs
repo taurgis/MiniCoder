@@ -66,6 +66,7 @@ namespace MiniCoder.GUI
             this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.notifyMiniCoder = new System.Windows.Forms.NotifyIcon(this.components);
+            this.allVfrCheck = new System.Windows.Forms.CheckBox();
             this.encodeSettings = new MiniCOder.GUI.Controls.EncodeSettings();
             this.encodeOptions = new MiniCOder.GUI.Controls.EncodeOptions();
             this.mainTabPage.SuspendLayout();
@@ -167,6 +168,7 @@ namespace MiniCoder.GUI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.allVfrCheck);
             this.groupBox1.Controls.Add(this.inputList);
             this.groupBox1.Location = new System.Drawing.Point(6, 9);
             this.groupBox1.Name = "groupBox1";
@@ -397,6 +399,16 @@ namespace MiniCoder.GUI
             this.notifyMiniCoder.Text = "MiniCoder";
             this.notifyMiniCoder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMiniCoder_MouseDoubleClick);
             // 
+            // allVfrCheck
+            // 
+            this.allVfrCheck.AutoSize = true;
+            this.allVfrCheck.Location = new System.Drawing.Point(10, 17);
+            this.allVfrCheck.Name = "allVfrCheck";
+            this.allVfrCheck.Size = new System.Drawing.Size(15, 14);
+            this.allVfrCheck.TabIndex = 3;
+            this.allVfrCheck.UseVisualStyleBackColor = true;
+            this.allVfrCheck.CheckedChanged += new System.EventHandler(this.allVfrCheck_CheckedChanged);
+            // 
             // encodeSettings
             // 
             this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -432,6 +444,7 @@ namespace MiniCoder.GUI
             this.mainTabPage.ResumeLayout(false);
             this.inputTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.inputMenu.ResumeLayout(false);
             this.settingsTab.ResumeLayout(false);
             this.optionsTab.ResumeLayout(false);
@@ -486,6 +499,7 @@ namespace MiniCoder.GUI
         private System.Windows.Forms.ImageList iconList;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sendErrorReportToolStripMenuItem;
+        private System.Windows.Forms.CheckBox allVfrCheck;
     }
 }
 
