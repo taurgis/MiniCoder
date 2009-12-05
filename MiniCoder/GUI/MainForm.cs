@@ -647,5 +647,11 @@ namespace MiniCoder.GUI
         {
             LogBook.sendmail(logView);
         }
+
+        private void allVfrCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in inputList.Items)
+                item.Checked = allVfrCheck.Checked;
+        }
     }
 }
