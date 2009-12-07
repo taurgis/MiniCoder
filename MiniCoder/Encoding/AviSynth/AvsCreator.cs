@@ -65,6 +65,7 @@ namespace MiniCoder.Encoding.AviSynth
                 AviSynthScriptEnvironment environment = new AviSynthScriptEnvironment();
 
                 AviSynthClip temp = environment.OpenScriptFile(EncOpts["avsfile"]);
+                temp = null;
                 return true;
                
             }

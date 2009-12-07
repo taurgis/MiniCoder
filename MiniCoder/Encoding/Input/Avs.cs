@@ -40,7 +40,9 @@ namespace MiniCoder.Encoding.Input
             fileDetails.Add("avsfile", fileDetails["fileName"][0].Split(Char.Parse("\n")));
             fileDetails["fileName"][0] = getAvsSource(fileDetails["fileName"][0]);
             LogBook.addLogLine("Retrieved source: " + fileDetails["fileName"][0], fileDetails["name"][0] + "AVSAnalyse", "", false);
-            
+            clip = null;
+            environment = null;
+          
             return true;
         }
 

@@ -121,7 +121,7 @@ namespace MiniCoder.Encoding.Input
                 }
 
 
-                LogBook.addLogLine("Can't find codec :-(" + e.Message + ", " + errormessage, fileDetails["name"][0] + "DeMuxing","",true);
+                LogBook.addLogLine("Can't find codec :-( \r\n" + e.Message + "\r\n" + errormessage, fileDetails["name"][0] + "DeMuxing", "", true);
                 MessageBox.Show("Can't find codec");
                 return false;
             }
