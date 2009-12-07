@@ -45,6 +45,7 @@ namespace System
                 extension.Add("Subrip", "srt");
                 extension.Add("40", "aac");
                 extension.Add("67", "aac");
+                extension.Add("sgn", "ogg");
                 extension.Add("VobSub", "idx");
                 extension.Add("Chapters", "Chapters");
                 extension.Add("Attachement", "att");
