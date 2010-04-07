@@ -102,18 +102,18 @@ namespace MiniCoder.Encoding.Output
                     if (encOpts["audcodec"] == "0")
                     {
                         args += "--aac-is-sbr 1:1 ";
-                        args += "--language 1:" + Language.getExtention(fileTracks["audio"][i].language) + " --track-name 1:\"" + fileTracks["audio"][i].title + "\" -a 1 -D -S \"" + fileTracks["audio"][i].encodePath + "\" ";
+                        args += "--language 1:" + Language.Instance.getExtention(fileTracks["audio"][i].language) + " --track-name 1:\"" + fileTracks["audio"][i].title + "\" -a 1 -D -S \"" + fileTracks["audio"][i].encodePath + "\" ";
 
                     }
                     else
-                        args += "--language 0:" + Language.getExtention(fileTracks["audio"][i].language) + " --track-name 0:\"" + fileTracks["audio"][i].title + "\" -a 0 -D -S \"" + fileTracks["audio"][i].encodePath + "\" ";
+                        args += "--language 0:" + Language.Instance.getExtention(fileTracks["audio"][i].language) + " --track-name 0:\"" + fileTracks["audio"][i].title + "\" -a 0 -D -S \"" + fileTracks["audio"][i].encodePath + "\" ";
                 }
 
 
 
                 for (int i = 0; i < fileTracks["subs"].Length; i++)
                 {
-                    args += "--language 0:" + Language.getExtention(fileTracks["subs"][i].language) + " --track-name 0:\"" + fileTracks["subs"][i].title + "\" -s 0 -A -D \"" + fileTracks["subs"][i].demuxPath + "\" ";
+                    args += "--language 0:" + Language.Instance.getExtention(fileTracks["subs"][i].language) + " --track-name 0:\"" + fileTracks["subs"][i].title + "\" -s 0 -A -D \"" + fileTracks["subs"][i].demuxPath + "\" ";
                 }
 
                 if (fileTracks.ContainsKey("attachments"))

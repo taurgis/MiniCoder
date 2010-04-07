@@ -81,14 +81,14 @@ namespace MiniCoder.Encoding.Input
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
                 string tempArg = tempArg = "tracks \"" + fileDetails["fileName"][0] + "\" ";
 
-                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track" + "." + Codec.getExtention(tracks["video"][0].codec);
+                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track" + "." + Codec.Instance.getExtention(tracks["video"][0].codec);
 
                 tempArg += tracks["video"][0].id + ":\"" + tracks["video"][0].demuxPath + "\" ";
 
 
                 for (int i = 0; i < tracks["audio"].Length; i++)
                 {
-                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.getExtention(tracks["audio"][i].codec);
+                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["audio"][i].codec);
                     tempArg += tracks["audio"][i].id + ":\"" + tracks["audio"][i].demuxPath + "\" ";
                 }
 
@@ -96,7 +96,7 @@ namespace MiniCoder.Encoding.Input
 
                 for (int i = 0; i < tracks["subs"].Length; i++)
                 {
-                    tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.getExtention(tracks["subs"][i].codec);
+                    tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["subs"][i].codec);
                     tempArg += tracks["subs"][i].id + ":\"" + tracks["subs"][i].demuxPath + "\" ";
                 }
 

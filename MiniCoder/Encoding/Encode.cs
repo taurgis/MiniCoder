@@ -88,9 +88,9 @@ namespace MiniCoder.Encoding
                 try
                 {
                     for (int i = 0; i < fileTracks["audio"].Length; i++)
-                        LogBook.addLogLine(Language.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                        LogBook.addLogLine(Language.Instance.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
                     for (int i = 0; i < fileTracks["subs"].Length; i++)
-                        LogBook.addLogLine(Language.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                        LogBook.addLogLine(Language.Instance.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
                 }
                 catch (Exception error)
                 {

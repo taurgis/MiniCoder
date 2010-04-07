@@ -169,7 +169,7 @@ namespace MiniCoder.Encoding.Input
 
                 proc.setFilename(Path.Combine(DGIndex.getInstallPath(), "DGIndex.exe"));
 
-                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "." + Codec.getExtention(tracks["video"][0].codec);
+                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "." + Codec.Instance.getExtention(tracks["video"][0].codec);
 
 
          

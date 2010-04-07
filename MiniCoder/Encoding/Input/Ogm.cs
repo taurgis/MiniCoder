@@ -69,18 +69,18 @@ namespace MiniCoder.Encoding.Input
               
 
                 proc.setFilename(Path.Combine(ogmtools.getInstallPath(), "OGMDemuxer.exe"));
-                string tempArg = "tracks \"" + fileDetails["fileName"][0] + "\" -p " + tracks["video"][0].id + ":\"" + tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec) + "\"";
-                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec);
+                string tempArg = "tracks \"" + fileDetails["fileName"][0] + "\" -p " + tracks["video"][0].id + ":\"" + tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec) + "\"";
+                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec);
 
                 for (int i = 0; i < tracks["audio"].Length; i++)
                 {
-                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.getExtention(tracks["audio"][i].codec);
+                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["audio"][i].codec);
                     tempArg += " " + tracks["audio"][i].id + ":\"" + tracks["audio"][i].demuxPath + "\"";
                 }
 
                 for (int i = 0; i < tracks["subs"].Length; i++)
                 {
-                    tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.getExtention(tracks["subs"][i].codec);
+                    tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["subs"][i].codec);
                     tempArg += " " + tracks["subs"][i].id + ":\"" + tracks["subs"][i].demuxPath + "\"";
                 }
                 //// LogBook.addLogLine("tempArg,1);
@@ -96,9 +96,9 @@ namespace MiniCoder.Encoding.Input
                 }
                 else
                     LogBook.setInfoLabel(language.demuxingCompleteMessage);
-                
 
-                if (File.Exists(tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec)))
+
+                if (File.Exists(tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec)))
                     return true;
                 else
                     return false;

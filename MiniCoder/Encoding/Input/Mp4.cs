@@ -84,8 +84,8 @@ namespace MiniCoder.Encoding.Input
                         tempArg = "\"" + fileDetails["fileName"][0] + "\" -avi 1 -out \"" + tempPath + fileDetails["name"][0] + "-Video Track\"";
                         break;
                     default:
-                        tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec);
-                        tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 1 -out \"" + tempPath + fileDetails["name"][0] + "-Video Track." + Codec.getExtention(tracks["video"][0].codec) + "\"";
+                        tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec);
+                        tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 1 -out \"" + tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec) + "\"";
                         break;
                 }
                 proc.setArguments(tempArg);
@@ -99,7 +99,7 @@ namespace MiniCoder.Encoding.Input
                     return true;
 
                 LogBook.setInfoLabel(language.demuxingmp4Audio);
-                tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.getExtention(tracks["audio"][0].codec);
+                tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.Instance.getExtention(tracks["audio"][0].codec);
                 tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 2 -out \"" + tracks["audio"][0].demuxPath + "\"";
                 proc.setArguments(tempArg);
                 exitCode = proc.startProcess();
