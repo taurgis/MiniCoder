@@ -59,7 +59,7 @@ namespace MiniCoder.Encoding.Input.Tracks
                 Tool tempTool;
                 LogBook.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
 
-                switch (Codec.getExtention(this.codec))
+                switch (Codec.Instance.getExtention(this.codec))
                 {
                     case "flac":
                         decoder = new Flac();

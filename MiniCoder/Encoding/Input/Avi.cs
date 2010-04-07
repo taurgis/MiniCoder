@@ -76,7 +76,7 @@ namespace MiniCoder.Encoding.Input
 
                 for (int i = 0; i < tracks["audio"].Length; i++)
                 {
-                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.getExtention(tracks["audio"][i].codec);
+                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["audio"][i].codec);
                     temp += ("VirtualDub.stream[" + i.ToString() + "].Demux(\"" + tracks["audio"][i].demuxPath.Replace("\\", "\\\\") + "\");");
                 }
 
@@ -99,7 +99,7 @@ namespace MiniCoder.Encoding.Input
                     LogBook.setInfoLabel(language.demuxingCompleteMessage);
                 try
                 {
-                    if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.getExtention(tracks["audio"][0].codec)))
+                    if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.Instance.getExtention(tracks["audio"][0].codec)))
                         return true;
                     else
                         return false;

@@ -76,7 +76,7 @@ namespace MiniCoder.Encoding.Output
 
                 for (int i = 0; i < fileTracks["audio"].Length; i++)
                 {
-                    args += "-add \"" + fileTracks["audio"][i].encodePath + ":lang=" + Language.getExtention(fileTracks["audio"][i].language) + "\" ";
+                    args += "-add \"" + fileTracks["audio"][i].encodePath + ":lang=" + Language.Instance.getExtention(fileTracks["audio"][i].language) + "\" ";
                 }
 
 
@@ -86,7 +86,7 @@ namespace MiniCoder.Encoding.Output
                 {
                     for (int i = 0; i < fileTracks["subs"].Length; i++)
                     {
-                        args += "-add \"" + fileTracks["subs"][i].demuxPath + ":lang=" + Language.getExtention(fileTracks["subs"][i].language) + "\" ";
+                        args += "-add \"" + fileTracks["subs"][i].demuxPath + ":lang=" + Language.Instance.getExtention(fileTracks["subs"][i].language) + "\" ";
 
                     }
                 }
