@@ -57,8 +57,6 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 {
                     Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                     encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
-
-                    // // // LogBook.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
                 }
 
 

@@ -56,8 +56,8 @@ namespace MiniCoder.GUI
                 encodeOptions.setMain(this);
                 if (File.Exists(Application.StartupPath + "\\settings.xml"))
                 {
-                    MainSettings main = new MainSettings();
-                    main.loadSettings();
+                    MainSettings main = SettingsController.loadSettings();
+                   
                     encodeOptions.loadSettings(main);
 
                 }

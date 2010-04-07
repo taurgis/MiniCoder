@@ -108,8 +108,8 @@ namespace MiniCOder.GUI.Controls
         {
             SortedList<string, string> options = new SortedList<string, string>();
             options.Add("audbr", audioBR.Text);
-            if(containerCombo.SelectedIndex != 2)
-            options.Add("audcodec", audioCombo.SelectedIndex.ToString());
+            if (containerCombo.SelectedIndex != 2)
+                options.Add("audcodec", audioCombo.SelectedIndex.ToString());
             else
                 options.Add("audcodec", (audioCombo.SelectedIndex + 2).ToString());
             options.Add("field", fieldCombo.SelectedIndex.ToString());
@@ -119,7 +119,7 @@ namespace MiniCOder.GUI.Controls
                 options.Add("width", widthHeight.Text.Split(Char.Parse(":"))[0]);
                 options.Add("height", widthHeight.Text.Split(Char.Parse(":"))[1]);
             }
-                options.Add("denoise", noiseCombo.SelectedIndex.ToString());
+            options.Add("denoise", noiseCombo.SelectedIndex.ToString());
             options.Add("sharpen", sharpCombo.SelectedIndex.ToString());
             options.Add("custom", customFilter + "\r\n");
             if (fileSizeRadio.Checked)
@@ -135,12 +135,12 @@ namespace MiniCOder.GUI.Controls
             options.Add("container", containerCombo.SelectedIndex.ToString());
             options.Add("videocodec", videoCombo.SelectedIndex.ToString());
             if (subText.Text != "Select Subtitle file to use")
-                if (File.Exists(subText.Text)) 
+                if (File.Exists(subText.Text))
                     options.Add("hardsub", subText.Text);
             //still need to enable options
-            
-           
-           
+
+
+
 
             return options;
 
@@ -216,9 +216,9 @@ namespace MiniCOder.GUI.Controls
             {
                 vidQualCombo.Items.Clear();
 
-               
+
                 vidQualCombo.Items.AddRange(language.videoQualityOptions);
-              
+
                 vidQualCombo.SelectedIndex = 0;
             }
             else
@@ -296,8 +296,8 @@ namespace MiniCOder.GUI.Controls
             try
             {
                 LogBook.addLogLine("Template Management", "TemplateManagement", "TemplateManagement", false);
-               
-                mainTemplate.loadTemplate(templateCombo.SelectedItem.ToString());
+
+                mainTemplate = SimpleTemplateController.loadTemplate(templateCombo.SelectedItem.ToString());
                 LogBook.addLogLine(DateTime.Now.ToString("t") + ": Loaded template " + templateCombo.SelectedItem + " ...", "TemplateManagement", "", false);
                 videoBR.Text = mainTemplate.vidBitRate;
                 fileSize.Text = mainTemplate.fileSize;
@@ -329,43 +329,46 @@ namespace MiniCOder.GUI.Controls
         {
             try
             {
-                mainTemplate = new MainTemplate {
-                vidBitRate = videoBR.Text,
-                fileSize = fileSize.Text,
-                vidQuality = vidQualCombo.SelectedIndex.ToString(),
-                vidCodec = videoCombo.SelectedIndex.ToString(),
-                fieldFilter = fieldCombo.SelectedIndex.ToString(),
-                resizeFilter = resizeCombo.SelectedIndex.ToString(),
-                widthHeight = widthHeight.Text,
-                audBitrate = audioBR.Text,
-                audCodec = audioCombo.SelectedIndex.ToString(),
-                containerFormat = containerCombo.SelectedIndex.ToString(),
-                denoiseFilter = noiseCombo.SelectedIndex.ToString(),
-                sharpenFilter = sharpCombo.SelectedIndex.ToString(),
-                subtitle = subText.Text,
-                customAvs = customFilter,
+                mainTemplate = new MainTemplate
+                {
+                    vidBitRate = videoBR.Text,
+                    fileSize = fileSize.Text,
+                    vidQuality = vidQualCombo.SelectedIndex.ToString(),
+                    vidCodec = videoCombo.SelectedIndex.ToString(),
+                    fieldFilter = fieldCombo.SelectedIndex.ToString(),
+                    resizeFilter = resizeCombo.SelectedIndex.ToString(),
+                    widthHeight = widthHeight.Text,
+                    audBitrate = audioBR.Text,
+                    audCodec = audioCombo.SelectedIndex.ToString(),
+                    containerFormat = containerCombo.SelectedIndex.ToString(),
+                    denoiseFilter = noiseCombo.SelectedIndex.ToString(),
+                    sharpenFilter = sharpCombo.SelectedIndex.ToString(),
+                    subtitle = subText.Text,
+                    customAvs = customFilter,
                 };
                 if (bitRateRadio.Checked)
                     mainTemplate.selectedVideo = "0";
                 else
                     mainTemplate.selectedVideo = "1";
-                
+
                 try
                 {
-                    string templateName = InputBox.Show("Enter template name", "Template Name", templateCombo.Items[templateCombo.SelectedIndex].ToString());
-                    if(!String.IsNullOrEmpty(templateName))
-                    mainTemplate.saveTemplate(templateName);
+                    mainTemplate.templateName = InputBox.Show("Enter template name", "Template Name", templateCombo.Items[templateCombo.SelectedIndex].ToString());
+                    if (!String.IsNullOrEmpty(mainTemplate.templateName))
+                    {
+                        SimpleTemplateController.saveTemplate(mainTemplate);
+                    }
                 }
                 catch
                 {
-                    string templateName = InputBox.Show("Enter template name", "Template Name", "default");
-                   if(!String.IsNullOrEmpty(templateName))
-                       mainTemplate.saveTemplate(templateName);
+                    mainTemplate.templateName = InputBox.Show("Enter template name", "Template Name", "default");
+                    if (!String.IsNullOrEmpty(mainTemplate.templateName))
+                        SimpleTemplateController.saveTemplate(mainTemplate);
                 }
 
                 loadSettings();
             }
-            catch 
+            catch
             {
 
             }
@@ -375,12 +378,12 @@ namespace MiniCOder.GUI.Controls
         {
             int index = audioCombo.SelectedIndex;
             audioCombo.Items.Clear();
-          
-                audioCombo.Items.Add("Nero AAC");
-                audioCombo.Items.Add("Vorbis");
-                audioCombo.Items.Add("FFmpeg AC-3");
-                audioCombo.Items.Add("Lame MP3");
-                audioCombo.SelectedIndex = index;
+
+            audioCombo.Items.Add("Nero AAC");
+            audioCombo.Items.Add("Vorbis");
+            audioCombo.Items.Add("FFmpeg AC-3");
+            audioCombo.Items.Add("Lame MP3");
+            audioCombo.SelectedIndex = index;
             switch (containerCombo.SelectedIndex)
             {
                 case 1:

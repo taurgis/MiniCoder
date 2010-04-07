@@ -95,6 +95,7 @@
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
     <Compile Include="Core\Settings\MainSettings.cs" />
+    <Compile Include="Core\Settings\SettingsController.cs" />
     <Compile Include="Encoding\Audio\Decoding\Ffmpeg.cs" />
     <Compile Include="Encoding\Audio\Decoding\Madplay.cs" />
     <Compile Include="Encoding\Audio\Decoding\Faad.cs" />
@@ -284,12 +285,12 @@
     </Compile>
     <Compile Include="External\Tools.cs" />
     <Compile Include="Templates\Simple\MainTemplate.cs" />
+    <Compile Include="Templates\Simple\SimpleTemplateController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bigIcon.ico" />
     <Content Include="bin\Debug\bigIcon.ico" />
     <None Include="app.manifest" />
-    <None Include="Resources\TextFile1.txt" />
     <None Include="Resources\Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
