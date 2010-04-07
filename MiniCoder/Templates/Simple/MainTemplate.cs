@@ -18,151 +18,49 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Xml.Serialization;
 using System.Windows.Forms;
 namespace MiniCoder.Templates.Simple
 {
-    class MainTemplate
+    [XmlRoot("MiniCoder-Template")]
+   public class MainTemplate
     {
+        [XmlElement("templateName")]
         public string templateName { get; set; }
 
+        [XmlElement("selectedVideo")]
         public string selectedVideo { get; set; }
+        [XmlElement("vidBitRate")]
         public string vidBitRate { get; set; }
+        [XmlElement("fileSize")]
         public string fileSize { get; set; }
+        [XmlElement("vidQuality")]
         public string vidQuality { get; set; }
+        [XmlElement("vidCodec")]
         public string vidCodec { get; set; }
 
+        [XmlElement("fieldFilter")]
         public string fieldFilter { get; set; }
+        [XmlElement("resizeFilter")]
         public string resizeFilter { get; set; }
+        [XmlElement("widthHeight")]
         public string widthHeight { get; set; }
 
+        [XmlElement("audBitrate")]
         public string audBitrate { get; set; }
+        [XmlElement("audCodec")]
         public string audCodec { get; set; }
+        [XmlElement("containerFormat")]
         public string containerFormat { get; set; }
 
+        [XmlElement("denoiseFilter")]
         public string denoiseFilter { get; set; }
+        [XmlElement("sharpenFilter")]
         public string sharpenFilter { get; set; }
+        [XmlElement("subtitle")]
         public string subtitle { get; set; }
 
+        [XmlElement("customAvs")]
         public string customAvs { get; set; }
-
-        public void loadTemplate(string templateName)
-        {
-            XmlTextReader xmlReader = new XmlTextReader(Application.StartupPath + "\\Templates\\Simple\\" + templateName + ".tpl");
-
-                   //// // LogBook.addLogLine(""Loading template " + templateName, 0);
-
-                   xmlReader.Read();
-
-                   while (xmlReader.Read())
-                   {
-                       if (xmlReader.NodeType == XmlNodeType.Element)
-                       {
-                           switch (xmlReader.Name)
-                           {
-                               case "templateName":
-                                   xmlReader.Read();
-                                   templateName = xmlReader.Value;
-                                   break;
-                               case "selectedVideo":
-                                   xmlReader.Read();
-                                   selectedVideo = xmlReader.Value;
-                                   break;
-                               case "vidBitRate":
-                                   xmlReader.Read();
-                                   vidBitRate = xmlReader.Value;
-                                   break;
-                               case "fileSize":
-                                   xmlReader.Read();
-                                   fileSize = xmlReader.Value;
-                                   break;
-                               case "vidQuality":
-                                   xmlReader.Read();
-                                   vidQuality = xmlReader.Value;
-                                   break;
-                               case "vidCodec":
-                                   xmlReader.Read();
-                                   vidCodec = xmlReader.Value;
-                                   break;
-                               case "fieldFilter":
-                                   xmlReader.Read();
-                                   fieldFilter = xmlReader.Value;
-                                   break;
-                               case "resizeFilter":
-                                   xmlReader.Read();
-                                   resizeFilter = xmlReader.Value;
-                                   break;
-                               case "widthHeight":
-                                   xmlReader.Read();
-                                   widthHeight = xmlReader.Value;
-                                   break;
-                               case "audBitrate":
-                                   xmlReader.Read();
-                                   audBitrate = xmlReader.Value;
-                                   break;
-                               case "audCodec":
-                                   xmlReader.Read();
-                                   audCodec = xmlReader.Value;
-                                   break;
-                               case "containerFormat":
-                                   xmlReader.Read();
-                                   containerFormat = xmlReader.Value;
-                                   break;
-                               case "denoiseFilter":
-                                   xmlReader.Read();
-                                   denoiseFilter = xmlReader.Value;
-                                   break;
-                               case "sharpenFilter":
-                                   xmlReader.Read();
-                                   sharpenFilter = xmlReader.Value;
-                                   break;
-                               case "subtitle":
-                                   xmlReader.Read();
-                                   subtitle = xmlReader.Value;
-                                   break;
-                               case "customAvs":
-                                   xmlReader.Read();
-                                   customAvs = xmlReader.Value;
-                                   break;
-                           }
-                       }
-                   }
-                   xmlReader.Close();
-        }
-
-        public void saveTemplate(string templateName)
-        {
-            XmlTextWriter xmlWriter = new XmlTextWriter(Application.StartupPath + "\\Templates\\Simple\\" + templateName + ".tpl" , null);
-            xmlWriter.Formatting = Formatting.Indented;
-
-            xmlWriter.WriteStartDocument();
-          
-
-
-            xmlWriter.WriteStartElement("Template");
-            xmlWriter.WriteElementString("templateName", templateName);
-            xmlWriter.WriteElementString("selectedVideo", selectedVideo);
-            xmlWriter.WriteElementString("vidBitRate", vidBitRate);
-            xmlWriter.WriteElementString("fileSize", fileSize);
-            xmlWriter.WriteElementString("vidQuality", vidQuality);
-            xmlWriter.WriteElementString("vidCodec", vidCodec);
-            xmlWriter.WriteElementString("fieldFilter", fieldFilter);
-            xmlWriter.WriteElementString("resizeFilter", resizeFilter);
-            xmlWriter.WriteElementString("widthHeight", widthHeight);
-            xmlWriter.WriteElementString("audBitrate", audBitrate);
-            xmlWriter.WriteElementString("audCodec", audCodec);
-            xmlWriter.WriteElementString("containerFormat", containerFormat);
-            xmlWriter.WriteElementString("denoiseFilter", denoiseFilter);
-            xmlWriter.WriteElementString("sharpenFilter", sharpenFilter);
-            xmlWriter.WriteElementString("subtitle", subtitle);
-            xmlWriter.WriteElementString("customAvs", customAvs);
-            xmlWriter.WriteEndElement();
-
-
-
-       
-            //  xmlWriter.WriteFullEndElement();
-            xmlWriter.Close();
-
-        }
     }
 }

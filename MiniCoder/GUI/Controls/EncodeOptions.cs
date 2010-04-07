@@ -191,7 +191,7 @@ namespace MiniCOder.GUI.Controls
             main.processPriority = processPriority.SelectedIndex.ToString();
             main.continueAfterError = continueAfterError.Checked;
             main.language = languagesSelect.SelectedIndex;
-            main.saveSettings();
+            SettingsController.saveSettings(main);
         }
 
         private void languagesSelect_SelectedIndexChanged(object sender, EventArgs e)
