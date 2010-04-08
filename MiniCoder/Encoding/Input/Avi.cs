@@ -49,9 +49,9 @@ namespace MiniCoder.Encoding.Input
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
 
-            LogBook.addLogLine("Demuxing AVI - Using Vdubmod", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+            LogBook.Instance.addLogLine("Demuxing AVI - Using Vdubmod", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
             MiniProcess proc = new DefaultProcess("Demuxing Avi", fileDetails["name"][0] + "DeMuxingProcess");
-            SysLanguage language = MiniSystem.getLanguage();
+            int language = MiniSystem.getLanguage();
             processWatcher.setProcess(proc);
 
             proc.stdErrDisabled(false);
@@ -62,11 +62,11 @@ namespace MiniCoder.Encoding.Input
                 if (!vdubmod.isInstalled())
                     vdubmod.download();
 
-                LogBook.setInfoLabel(language.demuxingMessage + " AVI Tracks");
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingMessage", language) + " AVI Tracks");
 
                 proc.initProcess();
 
-                LogBook.addLogLine("Writing VirtualDub Script", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "VdubScript", false);
+                LogBook.Instance.addLogLine("Writing VirtualDub Script", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "VdubScript", false);
 
                 StreamWriter vcf = File.CreateText(tempPath + fileDetails["name"][0] + "_demux.vcf"); ;
                 string temp = "VirtualDub.Open(\"" + fileDetails["fileName"][0].Replace("\\", "\\\\") + "\",\"\",0);\r\n";
@@ -80,7 +80,7 @@ namespace MiniCoder.Encoding.Input
                     temp += ("VirtualDub.stream[" + i.ToString() + "].Demux(\"" + tracks["audio"][i].demuxPath.Replace("\\", "\\\\") + "\");");
                 }
 
-                LogBook.addLogLine(temp, fileDetails["name"][0] + "VdubScript", "", false);
+                LogBook.Instance.addLogLine(temp, fileDetails["name"][0] + "VdubScript", "", false);
                 vcf.WriteLine(temp);
                 vcf.Close();
 
@@ -92,11 +92,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
+                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingAbortedMessage", language));
                     return false;
                 }
                 else
-                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
+                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingCompleteMessage", language));
                 try
                 {
                     if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.Instance.getExtention(tracks["audio"][0].codec)))
@@ -111,7 +111,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing - " + tracks["audio"][0].codec + tracks["video"][0].codec, "", true);
+                LogBook.Instance.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing - " + tracks["audio"][0].codec + tracks["video"][0].codec, "", true);
               
                 MessageBox.Show("Can't find codec " + fileDetails["aud_codec"][0], "");
                 return false;

@@ -83,7 +83,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-               LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,loglocation,"",false);
+               LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -260,7 +260,7 @@ namespace MiniCoder.Encoding.Process_Management
                             int min = int.Parse(split[1]);
                             int sec = int.Parse(split[2].Substring(0, 2));
                            
-                            LogBook.setInfoLabel(frontMessage + ": " + "Encoded " + hr +":" + min + ":" + sec +" / " + tempTime.Hours + ":" + tempTime.Minutes + ":" + tempTime.Seconds);
+                            LogBook.Instance.setInfoLabel(frontMessage + ": " + "Encoded " + hr +":" + min + ":" + sec +" / " + tempTime.Hours + ":" + tempTime.Minutes + ":" + tempTime.Seconds);
                         }
                     }
                 }
@@ -292,7 +292,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.addLogLine(read2, loglocation,"",false);
+                            LogBook.Instance.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

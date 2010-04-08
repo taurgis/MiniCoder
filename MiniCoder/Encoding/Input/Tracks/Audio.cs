@@ -57,7 +57,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             {
                 MiniDecoder decoder;
                 Tool tempTool;
-                LogBook.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
+                LogBook.Instance.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
 
                 switch (Codec.Instance.getExtention(this.codec))
                 {
@@ -99,7 +99,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error selecting audio decoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error selecting audio decoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -109,7 +109,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             try
             {
 
-                LogBook.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
+                LogBook.Instance.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
 
                 MiniEncoder encoder = null;
                 switch (EncOpts["audcodec"])
@@ -131,7 +131,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error selecting audio encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error selecting audio encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

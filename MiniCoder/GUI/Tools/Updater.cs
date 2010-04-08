@@ -32,79 +32,77 @@ namespace MiniCoder.GUI.External
 {
     public partial class Updater : Form
     {
-      
+
         Hashtable applicationVersions = new Hashtable();
         SortedList<String, Tool> toolInfo;
         Boolean warnUser = false;
         Tools tools;
-        SysLanguage language;
-       
-        public Updater(Tools tools, Boolean hide, SysLanguage language)
+        int languageCode;
+
+        public Updater(Tools tools, Boolean hide, int languageCode)
         {
-            
+            this.languageCode = languageCode;
 
             InitializeComponent();
-            if (language != null)
-            {
-                this.language = language;
-                this.Text = language.updaterTitle;
-                coreTab.Text = language.coreTabTitle;
-                pluginTab.Text = language.pluginsTabTitle;
-                audioTab.Text = language.audioTabTitle;
-                videoTab.Text = language.videoTabTitle;
-                muxTab.Text = language.muxingTabTitle;
-                otherTab.Text = language.otherTabTitle;
 
-                coreList.Columns[0].Text = language.updateColumn1;
-                pluginsList.Columns[0].Text = language.updateColumn1;
-                audioList.Columns[0].Text = language.updateColumn1;
-                videoList.Columns[0].Text = language.updateColumn1;
-                muxingList.Columns[0].Text = language.updateColumn1;
-                otherList.Columns[0].Text = language.updateColumn1;
+            this.Text = LanguageController.getLanguageString("updaterTitle", languageCode);
+            coreTab.Text = LanguageController.getLanguageString("coreTabTitle", languageCode);
+            pluginTab.Text = LanguageController.getLanguageString("pluginsTabTitle", languageCode);
+            audioTab.Text = LanguageController.getLanguageString("audioTabTitle", languageCode);
+            videoTab.Text = LanguageController.getLanguageString("videoTabTitle", languageCode);
+            muxTab.Text = LanguageController.getLanguageString("muxingTabTitle", languageCode);
+            otherTab.Text = LanguageController.getLanguageString("otherTabTitle", languageCode);
 
-                coreList.Columns[1].Text = language.updateColumn2;
-                pluginsList.Columns[1].Text = language.updateColumn2;
-                audioList.Columns[1].Text = language.updateColumn2;
-                videoList.Columns[1].Text = language.updateColumn2;
-                muxingList.Columns[1].Text = language.updateColumn2;
-                otherList.Columns[1].Text = language.updateColumn2;
+            coreList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
+            pluginsList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
+            audioList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
+            videoList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
+            muxingList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
+            otherList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
 
-                coreList.Columns[2].Text = language.updateColumn3;
-                pluginsList.Columns[2].Text = language.updateColumn3;
-                audioList.Columns[2].Text = language.updateColumn3;
-                videoList.Columns[2].Text = language.updateColumn3;
-                muxingList.Columns[2].Text = language.updateColumn3;
-                otherList.Columns[2].Text = language.updateColumn3;
+            coreList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
+            pluginsList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
+            audioList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
+            videoList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
+            muxingList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
+            otherList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
 
-                coreList.Columns[3].Text = language.updateColumn4;
-                pluginsList.Columns[3].Text = language.updateColumn4;
-                audioList.Columns[3].Text = language.updateColumn4;
-                videoList.Columns[3].Text = language.updateColumn4;
-                muxingList.Columns[3].Text = language.updateColumn4;
-                otherList.Columns[3].Text = language.updateColumn4;
-                
-                coreList.Columns[4].Text = language.updateColumn5;
-                pluginsList.Columns[4].Text = language.updateColumn5;
-                audioList.Columns[4].Text = language.updateColumn5;
-                videoList.Columns[4].Text = language.updateColumn5;
-                muxingList.Columns[4].Text = language.updateColumn5;
-                otherList.Columns[4].Text = language.updateColumn5;
+            coreList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
+            pluginsList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
+            audioList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
+            videoList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
+            muxingList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
+            otherList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
 
-                customPath.Text = language.updateCustomPath;
-                updateButton.Text = language.updateUpdateButton;
-                cancelButton.Text = language.updateCancelButton;
-            }
+            coreList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+            pluginsList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+            audioList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+            videoList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+            muxingList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+            otherList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+
+            coreList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+            pluginsList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+            audioList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+            videoList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+            muxingList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+            otherList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+
+            customPath.Text = LanguageController.getLanguageString("updateCustomPath", languageCode);
+            updateButton.Text = LanguageController.getLanguageString("updateUpdateButton", languageCode);
+            cancelButton.Text = LanguageController.getLanguageString("updateCancelButton", languageCode);
+
             this.tools = tools;
             toolInfo = tools.getTools();
-           LogBook.addLogLine("Update Manager","UpdateChecking","UpdateChecking",false);
+            LogBook.Instance.addLogLine("Update Manager", "UpdateChecking", "UpdateChecking", false);
             foreach (string key in toolInfo.Keys)
             {
                 Tool tempTool = toolInfo[key];
-                
-                String updateText="";
+
+                String updateText = "";
                 if (tempTool.localVersion != tempTool.onlineVersion)
                 {
-                    if (!String.IsNullOrEmpty(tempTool.onlineVersion) && !tempTool.localVersion.Equals("Custom") &&!tempTool.localVersion.Equals("Ignore"))
+                    if (!String.IsNullOrEmpty(tempTool.onlineVersion) && !tempTool.localVersion.Equals("Custom") && !tempTool.localVersion.Equals("Ignore"))
                     {
                         if (!key.Equals("avs"))
                             updateText = "Update Required";
@@ -124,17 +122,17 @@ namespace MiniCoder.GUI.External
                 {
                     updateText = "Up to Date";
                 }
-                string[] tempInfo = { "", key, tempTool.localVersion, tempTool.onlineVersion, updateText};
+                string[] tempInfo = { "", key, tempTool.localVersion, tempTool.onlineVersion, updateText };
                 ListViewItem tempListItem = new ListViewItem(tempInfo);
 
                 if (updateText.Equals("Update Required"))
                 {
-                    LogBook.addLogLine("Updates available for " + key + ".","UpdateChecking","", false);
+                    LogBook.Instance.addLogLine("Updates available for " + key + ".", "UpdateChecking", "", false);
                     if (hide)
                     {
-                        if (MessageBox.Show(language.updateMessage, "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(LanguageController.getLanguageString("updateMessage", languageCode), "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            Updater upd = new Updater(tools, false, language);
+                            Updater upd = new Updater(tools, false, languageCode);
                             this.Close();
                             upd.ShowDialog();
                             return;
@@ -170,20 +168,20 @@ namespace MiniCoder.GUI.External
                         break;
                 }
 
-           
+
 
 
             }
         }
-        
+
 
         public Boolean needUpdate()
         {
             return warnUser;
         }
 
-       
-             
+
+
 
         private void updateButton_Click(object sender, EventArgs e)
         {
@@ -210,7 +208,7 @@ namespace MiniCoder.GUI.External
                     audioList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.addLogLine("Downloaded & Updated " + audioList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    LogBook.Instance.addLogLine("Downloaded & Updated " + audioList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -231,11 +229,11 @@ namespace MiniCoder.GUI.External
                     videoList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.addLogLine("Downloaded & Updated " + videoList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    LogBook.Instance.addLogLine("Downloaded & Updated " + videoList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
-          
+
 
             for (int i = 0; i < muxingList.Items.Count; i++)
             {
@@ -254,7 +252,7 @@ namespace MiniCoder.GUI.External
                     muxingList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.addLogLine("Downloaded & Updated " + muxingList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    LogBook.Instance.addLogLine("Downloaded & Updated " + muxingList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -275,7 +273,7 @@ namespace MiniCoder.GUI.External
                     otherList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    LogBook.Instance.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -296,7 +294,7 @@ namespace MiniCoder.GUI.External
                     pluginsList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    LogBook.Instance.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
             tools.SavePackages();
@@ -336,7 +334,7 @@ namespace MiniCoder.GUI.External
                         coreList.Items[i].Checked = false;
                         downloadProgress.Value++;
                         updateLog.Text += "Download & Install Complete .. \r\n";
-                        LogBook.addLogLine("Downloaded & Updated " + coreList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                        LogBook.Instance.addLogLine("Downloaded & Updated " + coreList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                         tools.SavePackages();
                     }
                 }
@@ -352,7 +350,7 @@ namespace MiniCoder.GUI.External
 
         private void customPath_Click(object sender, EventArgs e)
         {
-            AppLocation appLoc = new AppLocation(tools.getTools(), language);
+            AppLocation appLoc = new AppLocation(tools.getTools(), languageCode);
             appLoc.ShowDialog();
             if (appLoc.doSave())
                 tools.SavePackages();

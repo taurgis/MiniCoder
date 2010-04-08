@@ -83,8 +83,8 @@ namespace MiniCoder.Encoding.Process_Management
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-                
-               LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,loglocation,"",false);
+
+                LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, loglocation, "", false);
                 taskProcess();
                 return exitCode;
             }
@@ -209,7 +209,7 @@ namespace MiniCoder.Encoding.Process_Management
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
             }
             finally
             {
@@ -250,8 +250,8 @@ namespace MiniCoder.Encoding.Process_Management
                     if (!stderrLast.Equals(read))
                     {
                         stderrLast = read;
-                    
-                             LogBook.addLogLine(read, loglocation,"", false);
+
+                        LogBook.Instance.addLogLine(read, loglocation, "", false);
                      
                     }
                 }
@@ -289,10 +289,10 @@ namespace MiniCoder.Encoding.Process_Management
                                 float percent = (float)currframe / (float)totalframes;
                                 if (percent < 0)
                                     percent = 1.0F;
-                                LogBook.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
+                                LogBook.Instance.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
                             }
                             if (read2.Contains("fps"))
-                                 LogBook.addLogLine(read2, loglocation,"",false);
+                                LogBook.Instance.addLogLine(read2, loglocation, "", false);
                            
                         }
                     }

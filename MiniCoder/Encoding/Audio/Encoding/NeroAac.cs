@@ -39,8 +39,8 @@ namespace MiniCoder.Encoding.Sound.Encoding
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
-                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], language.audioEncodingTrack + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
+                int languageCode = MiniSystem.getLanguage();
+                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], LanguageController.getLanguageString("audioEncodingTrack", languageCode) + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
                
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);
@@ -48,7 +48,7 @@ namespace MiniCoder.Encoding.Sound.Encoding
 
 
 
-                LogBook.addLogLine("Encoding to Nero AAC", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBook.Instance.addLogLine("Encoding to Nero AAC", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
                 proc.initProcess();
 
@@ -88,14 +88,14 @@ namespace MiniCoder.Encoding.Sound.Encoding
                 }
                 else
                 {
-                    LogBook.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
+                    LogBook.Instance.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
 
                     return true;
                 }
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding audio to Nero AAC. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error encoding audio to Nero AAC. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

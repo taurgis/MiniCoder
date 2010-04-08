@@ -31,16 +31,16 @@ namespace MiniCoder.GUI.AviSynth
         public string customFiltOpts { get; set; }
 
 
-        public CustomFilter(string customFiltOpts, SysLanguage language)
+        public CustomFilter(string customFiltOpts, int languageCode)
         {
             InitializeComponent();
             this.customFiltOpts = customFiltOpts;
             fieldFilterText.Text = customFiltOpts;
-            this.Text = language.customFilterTitle;
-            customLabel.Text = language.customFilterText;
-            noteLabel.Text = language.customFilterNote;
-            btnOK.Text = language.customFilterOK;
-            btnCancel.Text = language.customFilterCancel;
+            this.Text = LanguageController.getLanguageString("customFilterTitle", languageCode);
+            customLabel.Text = LanguageController.getLanguageString("customFilterText", languageCode);
+            noteLabel.Text = LanguageController.getLanguageString("customFilterNote", languageCode);
+            btnOK.Text = LanguageController.getLanguageString("customFilterOK",languageCode);
+            btnCancel.Text = LanguageController.getLanguageString("customFilterCancel", languageCode);
         }
 
       

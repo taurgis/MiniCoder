@@ -31,77 +31,70 @@ namespace MiniCOder.GUI.Controls
 {
     public partial class EncodeSettings : UserControl
     {
-        SysLanguage language;
+        private int languageCode;
         string hardsubmp4 = "";
         int crfValue = 0;
         string customFilter = "";
         MainTemplate mainTemplate;
+
         public EncodeSettings()
         {
             InitializeComponent();
-            try
-            {
-                language = new SysLanguage(0);
-            }
-            catch
-            {
-            }
-
         }
 
-        public void setLanguage(SysLanguage language)
+        public void setLanguage(int languageCode)
         {
-            this.language = language;
-            videoOptions.Text = language.videoOptionsTitle;
-            bitRateRadio.Text = language.videoBitRate;
-            fileSizeRadio.Text = language.videoFileSize;
-            videoQuality.Text = language.videoQuality;
+            this.languageCode = languageCode;
+            videoOptions.Text = LanguageController.getLanguageString("videoOptionsTitle", languageCode);
+            bitRateRadio.Text = LanguageController.getLanguageString("videoBitRate", languageCode);
+            fileSizeRadio.Text = LanguageController.getLanguageString("videoFileSize", languageCode);
+            videoQuality.Text = LanguageController.getLanguageString("videoQuality", languageCode);
 
             int curVidQual = vidQualCombo.SelectedIndex;
             vidQualCombo.Items.Clear();
-            vidQualCombo.Items.AddRange(language.videoQualityOptions);
+            vidQualCombo.Items.AddRange(LanguageController.getLanguageString("videoQualityOptions", languageCode).Split(';'));
             vidQualCombo.SelectedIndex = curVidQual;
-            videoCodec.Text = language.videoCodec;
-            audioOptions.Text = language.audioOptionsTitle;
-            audioBitrate.Text = language.audioBitrate;
-            audCodec.Text = language.audioCodec;
-            containerOptions.Text = language.containerOptionsTitle;
-            format.Text = language.containerFormat;
-            filterOptions.Text = language.filterOptionsTitle;
-            preProcessing.Text = language.preprocessingOptionsTitle;
-            field.Text = language.preField;
-            resize.Text = language.preResize;
+            videoCodec.Text = LanguageController.getLanguageString("videoCodec", languageCode);
+            audioOptions.Text = LanguageController.getLanguageString("audioOptionsTitle", languageCode);
+            audioBitrate.Text = LanguageController.getLanguageString("audioBitrate", languageCode);
+            audCodec.Text = LanguageController.getLanguageString("audioCodec", languageCode);
+            containerOptions.Text = LanguageController.getLanguageString("containerOptionsTitle", languageCode);
+            format.Text = LanguageController.getLanguageString("containerFormat", languageCode);
+            filterOptions.Text = LanguageController.getLanguageString("filterOptionsTitle", languageCode);
+            preProcessing.Text = LanguageController.getLanguageString("preprocessingOptionsTitle", languageCode);
+            field.Text = LanguageController.getLanguageString("preField", languageCode);
+            resize.Text = LanguageController.getLanguageString("preResize", languageCode);
             int curResize = resizeCombo.SelectedIndex;
             resizeCombo.Items.Clear();
-            resizeCombo.Items.AddRange(language.preResizeOptions);
+            resizeCombo.Items.AddRange(LanguageController.getLanguageString("preResizeOptions", languageCode).Split(';'));
             resizeCombo.SelectedIndex = curResize;
-            widthheightLabel.Text = language.preWidthHeight;
-            postprocessing.Text = language.postprocessingOptionsTitle;
-            denoiserLabel.Text = language.postDenoiser;
+            widthheightLabel.Text = LanguageController.getLanguageString("preWidthHeight", languageCode);
+            postprocessing.Text = LanguageController.getLanguageString("postprocessingOptionsTitle", languageCode);
+            denoiserLabel.Text = LanguageController.getLanguageString("postDenoiser", languageCode);
             int curDenoise = noiseCombo.SelectedIndex;
             noiseCombo.Items.Clear();
-            noiseCombo.Items.AddRange(language.postDenoiserOptions);
+            noiseCombo.Items.AddRange(LanguageController.getLanguageString("postDenoiserOptions", languageCode).Split(';'));
             noiseCombo.SelectedIndex = curDenoise;
-            sharpenLabel.Text = language.postSharpen;
+            sharpenLabel.Text = LanguageController.getLanguageString("postSharpen", languageCode);
             int curSharpen = sharpCombo.SelectedIndex;
             sharpCombo.Items.Clear();
-            sharpCombo.Items.AddRange(language.postSharpenOptions);
+            sharpCombo.Items.AddRange(LanguageController.getLanguageString("postSharpenOptions", languageCode).Split(';'));
             sharpCombo.SelectedIndex = curSharpen;
-            subtitle.Text = language.postSubtitle;
-            customButton.Text = language.customButton;
-            saveOptButton.Text = language.saveButton;
-            settingsTooltip.SetToolTip(videoBR, language.tooltipVideoBr);
-            settingsTooltip.SetToolTip(fileSize, language.tooltipFileSize);
-            settingsTooltip.SetToolTip(vidQualCombo, language.tooltipQuality);
-            settingsTooltip.SetToolTip(videoCombo, language.tooltipVideoCodec);
-            settingsTooltip.SetToolTip(audioBR, language.tooltipAudioBr);
-            settingsTooltip.SetToolTip(audioCombo, language.tooltipAudioCodec);
-            settingsTooltip.SetToolTip(containerCombo, language.tooltipContainer);
-            settingsTooltip.SetToolTip(fieldCombo, language.tooltipField);
-            settingsTooltip.SetToolTip(resizeCombo, language.tooltipResize);
-            settingsTooltip.SetToolTip(widthHeight, language.tooltipWidthHeight);
-            settingsTooltip.SetToolTip(noiseCombo, language.tooltipDenoise);
-            settingsTooltip.SetToolTip(openSubBtn, language.tooltipSub);
+            subtitle.Text = LanguageController.getLanguageString("postSubtitle", languageCode);
+            customButton.Text = LanguageController.getLanguageString("customButton", languageCode);
+            saveOptButton.Text = LanguageController.getLanguageString("saveButton", languageCode);
+            settingsTooltip.SetToolTip(videoBR, LanguageController.getLanguageString("tooltipVideoBr", languageCode));
+            settingsTooltip.SetToolTip(fileSize, LanguageController.getLanguageString("tooltipFileSize", languageCode));
+            settingsTooltip.SetToolTip(vidQualCombo, LanguageController.getLanguageString("tooltipQuality", languageCode));
+            settingsTooltip.SetToolTip(videoCombo, LanguageController.getLanguageString("tooltipVideoCodec", languageCode));
+            settingsTooltip.SetToolTip(audioBR, LanguageController.getLanguageString("tooltipAudioBr", languageCode));
+            settingsTooltip.SetToolTip(audioCombo, LanguageController.getLanguageString("tooltipAudioCodec", languageCode));
+            settingsTooltip.SetToolTip(containerCombo, LanguageController.getLanguageString("tooltipContainer", languageCode));
+            settingsTooltip.SetToolTip(fieldCombo, LanguageController.getLanguageString("tooltipField", languageCode));
+            settingsTooltip.SetToolTip(resizeCombo, LanguageController.getLanguageString("tooltipResize", languageCode));
+            settingsTooltip.SetToolTip(widthHeight, LanguageController.getLanguageString("tooltipWidthHeight", languageCode));
+            settingsTooltip.SetToolTip(noiseCombo, LanguageController.getLanguageString("tooltipDenoise", languageCode));
+            settingsTooltip.SetToolTip(openSubBtn, LanguageController.getLanguageString("tooltipSub", languageCode));
         }
 
         public SortedList<string, string> getSettings()
@@ -192,7 +185,7 @@ namespace MiniCOder.GUI.Controls
         }
         private void customButton_Click(object sender, EventArgs e)
         {
-            CustomFilter custom = new CustomFilter(customFilter, language);
+            CustomFilter custom = new CustomFilter(customFilter, languageCode);
             custom.ShowDialog();
             customFilter = custom.customFiltOpts;
         }
@@ -216,8 +209,7 @@ namespace MiniCOder.GUI.Controls
             {
                 vidQualCombo.Items.Clear();
 
-
-                vidQualCombo.Items.AddRange(language.videoQualityOptions);
+                vidQualCombo.Items.AddRange(LanguageController.getLanguageString("videoQualityOptions", languageCode).Split(';'));
 
                 vidQualCombo.SelectedIndex = 0;
             }
@@ -295,10 +287,10 @@ namespace MiniCOder.GUI.Controls
         {
             try
             {
-                LogBook.addLogLine("Template Management", "TemplateManagement", "TemplateManagement", false);
+                LogBook.Instance.addLogLine("Template Management", "TemplateManagement", "TemplateManagement", false);
 
                 mainTemplate = SimpleTemplateController.loadTemplate(templateCombo.SelectedItem.ToString());
-                LogBook.addLogLine(DateTime.Now.ToString("t") + ": Loaded template " + templateCombo.SelectedItem + " ...", "TemplateManagement", "", false);
+                LogBook.Instance.addLogLine(DateTime.Now.ToString("t") + ": Loaded template " + templateCombo.SelectedItem + " ...", "TemplateManagement", "", false);
                 videoBR.Text = mainTemplate.vidBitRate;
                 fileSize.Text = mainTemplate.fileSize;
                 vidQualCombo.SelectedIndex = int.Parse(mainTemplate.vidQuality);

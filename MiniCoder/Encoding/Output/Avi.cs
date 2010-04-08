@@ -33,16 +33,16 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
-                LogBook.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
-                SysLanguage language = MiniSystem.getLanguage();
+                LogBook.Instance.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
+                int language = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
 
 
                 proc.initProcess();
-                // // LogBook.addLogLine(""Muxing", 1);
-                LogBook.setInfoLabel(language.muxingMessage + " avi...");
+                // // LogBook.Instance.addLogLine(""Muxing", 1);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("muxingMessage", language) + " avi...");
                 string args;
 
                 try
@@ -97,16 +97,16 @@ namespace MiniCoder.Encoding.Output
                 }
                 else
                 {
-                    LogBook.setInfoLabel("Muxing Complete");
+                    LogBook.Instance.setInfoLabel("Muxing Complete");
                   
-                    LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
+                    LogBook.Instance.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
                     return true;
                 }
 
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error muxing to avi. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error muxing to avi. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

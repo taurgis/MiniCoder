@@ -55,7 +55,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             }
             catch
             {
-                LogBook.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
                 return int.Parse(encOpts["videobr"]);
             }
         }

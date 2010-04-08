@@ -39,16 +39,16 @@ namespace MiniCoder.Encoding.Sound.Decoding
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
+                int language = MiniSystem.getLanguage();
                
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-                LogBook.addLogLine("Decoding Flac - Using flac", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
+                LogBook.Instance.addLogLine("Decoding Flac - Using flac", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                LogBook.setInfoLabel(language.audioDecodingMessage);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("audioDecodingMessage", language));
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
@@ -64,13 +64,13 @@ namespace MiniCoder.Encoding.Sound.Decoding
                 if (exitCode != 0)
                     return false;
                 audio.demuxPath = decodedAudio;
-                LogBook.addLogLine("Decoding completed", fileDetails["name"][0] + "AudioDecoding", "", false);
+                LogBook.Instance.addLogLine("Decoding completed", fileDetails["name"][0] + "AudioDecoding", "", false);
 
                 return true;
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error decoding audio with Flac. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error decoding audio with Flac. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

@@ -31,7 +31,7 @@ namespace MiniCoder.Encoding
 {
     class Encode
     {
-        SysLanguage language = MiniSystem.getLanguage();
+        int language = MiniSystem.getLanguage();
         String fileName = "";
         SortedList<String, Tool> tools;
         SortedList<String, String[]> fileDetails;
@@ -45,13 +45,13 @@ namespace MiniCoder.Encoding
                 this.encodeSet = encodeSet;
                 this.fileName = fileName;
 
-                //LogBook.addLogLine("Fetching Created File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfoFetch", false);
+                //LogBook.Instance.addLogLine("Fetching Created File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfoFetch", false);
 
 
                 //foreach (string key in fileDetails.Keys)
                 //{
                 //    for(int i = 0; i < fileDetails[key].Length;i++)
-                //        LogBook.addLogLine(key + " : " + fileDetails[key][i], fileDetails["name"][0] + "FileInfoFetch", "", false);
+                //        LogBook.Instance.addLogLine(key + " : " + fileDetails[key][i], fileDetails["name"][0] + "FileInfoFetch", "", false);
 
                 //}
 
@@ -60,7 +60,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error starting encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error starting encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 // return false;
             }
 
@@ -72,40 +72,40 @@ namespace MiniCoder.Encoding
             {
                 fileDetails = getFileDetails(fileName);
 
-                LogBook.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
-                LogBook.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
+                LogBook.Instance.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
+                LogBook.Instance.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
 
                 foreach (string key in encodeSet.Keys)
                 {
-                    LogBook.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
+                    LogBook.Instance.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
 
                 }
 
-                LogBook.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
-                LogBook.setInfoLabel(language.fileInfoFetch);
+                LogBook.Instance.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("fileInfoFetch", language));
 
 
                 try
                 {
                     for (int i = 0; i < fileTracks["audio"].Length; i++)
-                        LogBook.addLogLine(Language.Instance.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                        LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
                     for (int i = 0; i < fileTracks["subs"].Length; i++)
-                        LogBook.addLogLine(Language.Instance.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                        LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
                 }
                 catch (Exception error)
                 {
-                    LogBook.addLogLine("Error getting language info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    LogBook.Instance.addLogLine("Error getting language info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                     for (int i = 0; i < fileTracks["audio"].Length; i++)
-                        LogBook.addLogLine("Audio: " + fileTracks["audio"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                        LogBook.Instance.addLogLine("Audio: " + fileTracks["audio"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                     for (int i = 0; i < fileTracks["subs"].Length; i++)
-                        LogBook.addLogLine("Audio: " + fileTracks["subs"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                        LogBook.Instance.addLogLine("Audio: " + fileTracks["subs"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
 
                 }
                 return true;
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error getting file info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error getting file info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -120,7 +120,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error starting Theora encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error starting Theora encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -152,7 +152,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error encoding AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -172,7 +172,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error starting default encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error starting default encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -184,7 +184,7 @@ namespace MiniCoder.Encoding
 
         public bool muxFile()
         {
-            LogBook.addLogLine("Muxing File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileMuxing", false);
+            LogBook.Instance.addLogLine("Muxing File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileMuxing", false);
 
             Container container = null;
             switch (encodeSet["container"])
@@ -213,7 +213,7 @@ namespace MiniCoder.Encoding
         #region "AviSynth"
         private bool createAvs()
         {
-            LogBook.addLogLine("Creating AVS File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AvsCreation", false);
+            LogBook.Instance.addLogLine("Creating AVS File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AvsCreation", false);
 
             AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet, tools);
             return avsCreator.getAvsFile(fileTracks);
@@ -241,7 +241,7 @@ namespace MiniCoder.Encoding
 
         private bool dgavcIndex()
         {
-            LogBook.addLogLine("DGAVCIndex Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DGAVCStep", false);
+            LogBook.Instance.addLogLine("DGAVCIndex Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DGAVCStep", false);
             switch (fileTracks["video"][0].codec)
             {
                 case "x264":
@@ -264,7 +264,7 @@ namespace MiniCoder.Encoding
         }
         private bool analyseVfr()
         {
-            LogBook.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
+            LogBook.Instance.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
             Vfr vfr = new Vfr();
             return vfr.analyse(tools["mkv2vfr"], tools["DtsEdit"], encodeSet, fileDetails, processWatcher);
         }
@@ -274,7 +274,7 @@ namespace MiniCoder.Encoding
         #region Demuxing
         private bool demuxFile()
         {
-            LogBook.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing", false);
+            LogBook.Instance.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing", false);
             switch (fileDetails["ext"][0].ToUpper())
             {
                 case "AVI":
@@ -380,7 +380,7 @@ namespace MiniCoder.Encoding
                 try
                 {
                     videoTracks[0] = new Video(mediaInfo.Video[0].CodecID.ToString(), 0);
-                    LogBook.addLogLine("Error getting video track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    LogBook.Instance.addLogLine("Error getting video track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 }
                 catch
                 {
@@ -399,7 +399,7 @@ namespace MiniCoder.Encoding
                 catch (Exception error)
                 {
                     audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].LanguageString, mediaInfo.Audio[i].CodecID.ToString(), audioTracks.Length + i);
-                    LogBook.addLogLine("Error getting audio track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    LogBook.Instance.addLogLine("Error getting audio track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 }
             }
 

@@ -33,11 +33,11 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
+                int languageCode = MiniSystem.getLanguage();
                 string pass = "0";
                 MiniProcess proc;
 
-                LogBook.addLogLine("Encoding to X264", fileDetails["name"][0] + "VideoEncoding", "", false);
+                LogBook.Instance.addLogLine("Encoding to X264", fileDetails["name"][0] + "VideoEncoding", "", false);
                 string pass1Arg = "", pass2Arg = "", pass3Arg = null;
 
 
@@ -69,64 +69,64 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 switch (encOpts["vidqual"])
                 {
                     case "0":
-                        LogBook.addLogLine("Medium", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("Medium", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 1 --weightb --direct temporal --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 1 --weightb --direct temporal --deblock 1:1 --partitions p8x8,b8x8,i4x4 --vbv-bufsize 14000 --vbv-maxrate 17500 " + extra + " --output";
                         break;
 
                     case "1":
-                        LogBook.addLogLine("High", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("High", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 2 --b-pyramid normal --weightb --direct auto --deblock 1:1 --subme 1 --partitions none  --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 3 --mixed-refs --bframes 2 --b-pyramid normal --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all  --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
                         break;
 
                     case "2":
-                        LogBook.addLogLine("Very High", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("Very High", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --bframes 3 --b-pyramid normal --b-adapt 1 --weightb --direct auto --deblock 1:1 --subme 1 --partitions none --vbv-bufsize 14000 --vbv-maxrate 17500 --me dia " + extra + " --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 5 --mixed-refs --bframes 3 --b-pyramid normal --b-adapt 1 --weightb --direct auto --deblock 1:1 --subme 8 --trellis 1 --partitions all --8x8dct --vbv-bufsize 14000 --vbv-maxrate 17500 --me umh " + extra + " --output";
                         break;
 
                     case "3":
-                        LogBook.addLogLine("Very High (+50 mb anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("Very High (+50 mb anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 " + extra + " --subme 2 --partitions none --me dia --output";
                         //pass3Arg = "--pass 3 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --level 5.1 --tune animation --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --psy-rd 0.8:0 --aq-mode 0 --merange 32 --scenecut 45 " + extra + " --subme 2 --partitions none --me dia --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --tune animation --ref 8 --mixed-refs --no-fast-pskip --bframes 8 --b-adapt 2 --b-pyramid normal --weightb --direct auto --deblock 1:2 --subme 9 --trellis 2 --psy-rd 0.8:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 32 --scenecut 45 " + extra + " --output";
                         break;
 
                     case "4":
-                        LogBook.addLogLine("Very High (-50 mb anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("Very High (-50 mb anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 " + extra + " --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock 3:3 --subme 7 --chroma-qp-offset -2 --trellis 2 --psy-rd 0.6:0 --partitions all --8x8dct --aq-mode 0 --me umh --merange 16 --scenecut 40 " + extra + " --output";
                         break;
 
                     case "5":
-                        LogBook.addLogLine("Very High (TV-Shows)", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("Very High (TV-Shows)", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 " + extra + " --output";
                         pass2Arg = "--pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" --ref 8 --mixed-refs --no-fast-pskip --bframes 16 --b-adapt 1 --b-pyramid normal --direct auto --deblock -2:-1 --subme 6 --trellis 1 --psy-rd 1.0:0 --partitions all --8x8dct --weightb --chroma-qp-offset -2 --aq-mode 0 --me umh --merange 16 --scenecut 40 " + extra + " --output";
                         break;
 
                     case "6":
-                        LogBook.addLogLine("CRF (Anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("CRF (Anime)", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--crf " + encOpts["crfvalue"] + " --ref 5 --mixed-refs --no-fast-pskip --bframes 5 --b-pyramid normal --b-adapt 1 --direct auto --deblock 1:1 --subme 7 --chroma-qp-offset 0 --trellis 1 --psy-rd 0.0:0 --partitions all --8x8dct --me umh --qcomp 1.0 --merange 16 --scenecut 40 --weightb " + extra + " --output";
                         break;
                     case "7":
-                        LogBook.addLogLine("Ipod", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("Ipod", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--profile baseline --level 1.3 --preset fast --pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" " + extra + " --output";
                         pass2Arg = "--profile baseline --level 1.3 --preset fast --pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" " + extra + " --aud --output";
                         break;
                     case "8":
-                        LogBook.addLogLine("PSP", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("PSP", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--profile main --level 3 --preset fast --pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" " + extra + " --output";
                         pass2Arg = "--profile main --level 3 --preset fast --pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" " + extra + " --aud --output";
                         break;
                     case "9":
-                        LogBook.addLogLine("PS3", fileDetails["name"][0] + "VideoEncoding", "", false);
+                        LogBook.Instance.addLogLine("PS3", fileDetails["name"][0] + "VideoEncoding", "", false);
                         pass1Arg = "--profile high --level 4.1 --preset fast --pass 1 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" " + extra + " --output";
                         pass2Arg = "--profile high --level 4.1 --preset fast --pass 2 --bitrate " + encOpts["videobr"] + " --stats \"" + fileDetails["statsfile"][0] + "\" " + extra + " --aud --output";
                         break;
                 }
                 pass = "1";
-                proc = new X264Process(language.encodingVideoPass, pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
+                proc = new X264Process(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -142,11 +142,11 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 int exitCode;
 
                 tempStart = DateTime.Now;
-                LogBook.addLogLine("Encoding Pass 1", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess1", false);
+                LogBook.Instance.addLogLine("Encoding Pass 1", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess1", false);
                 exitCode = proc.startProcess();
-                // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                // // LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
                 if (proc.getAbandonStatus())
                     return false;
 
@@ -158,7 +158,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     tempStart = DateTime.Now;
                     pass = "2";
 
-                    proc = new X264Process(language.encodingVideoPass, pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
+                    proc = new X264Process(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
                     proc.initProcess();
                     processWatcher.setProcess(proc);
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -166,12 +166,12 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     proc.stdOutDisabled(false);
 
                     proc.setArguments(pass3Arg + " NUL \"" + encOpts["avsfile"] + "\"");
-                    LogBook.addLogLine("Encoding Pass 3", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess2", false);
+                    LogBook.Instance.addLogLine("Encoding Pass 3", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess2", false);
 
                     exitCode = proc.startProcess();
-                    // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                    // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                    // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                    // // LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+                    // // LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+                    // // LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
                     if (proc.getAbandonStatus())
                         return true;
 
@@ -183,7 +183,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 else
                     pass = "2";
 
-                proc = new X264Process(language.encodingVideoPass, pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
+                proc = new X264Process(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -194,14 +194,14 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 {
                     proc.setArguments(pass2Arg + " \"" + fileTracks["video"][0].encodePath + "\" \"" + encOpts["avsfile"] + "\"");
 
-                    LogBook.addLogLine("Encoding Pass 2", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess3", false);
+                    LogBook.Instance.addLogLine("Encoding Pass 2", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess3", false);
 
                     tempStart = DateTime.Now;
                     exitCode = proc.startProcess();
                 }
-                // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                // // LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
 
                 if (proc.getAbandonStatus())
                     return false;
@@ -210,7 +210,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     return false;
                 else
                 {
-                    LogBook.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
+                    LogBook.Instance.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
 
                     return true;
 
@@ -218,7 +218,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding video to X264. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error encoding video to X264. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

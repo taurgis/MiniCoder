@@ -48,8 +48,8 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-            SysLanguage language = MiniSystem.getLanguage();
+            LogBook.Instance.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+            int languageCode = MiniSystem.getLanguage();
               
             int exitCode = 0;
             MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
@@ -63,7 +63,7 @@ namespace MiniCoder.Encoding.Input
                     mp4box.download();
 
            
-                LogBook.setInfoLabel(language.demuxingmp4Video);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingmp4Video", languageCode));
                 proc.initProcess();
 
               
@@ -98,16 +98,16 @@ namespace MiniCoder.Encoding.Input
                 if (tracks["audio"].Length == 0)
                     return true;
 
-                LogBook.setInfoLabel(language.demuxingmp4Audio);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingmp4Audio", languageCode));
                 tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.Instance.getExtention(tracks["audio"][0].codec);
                 tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 2 -out \"" + tracks["audio"][0].demuxPath + "\"";
                 proc.setArguments(tempArg);
                 exitCode = proc.startProcess();
 
                 if (proc.getAbandonStatus())
-                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
+                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingAbortedMessage", languageCode));
                 else
-                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
+                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingCompleteMessage", languageCode));
 
                 if (exitCode != 0)
                     return false;
@@ -117,7 +117,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing - " + tracks["audio"][0].codec + tracks["video"][0].codec ,"",true);
+                LogBook.Instance.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing - " + tracks["audio"][0].codec + tracks["video"][0].codec ,"",true);
                // MessageBox.Show("Can't find codec");
                 return false;
             }
