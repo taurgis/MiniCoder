@@ -36,7 +36,7 @@ namespace MiniCOder.GUI.Controls
         Tools tools;
         ProcessWatcher processWatcher = new ProcessWatcher();
         MainForm mainForm;
-        int languageCode;
+ 
         public EncodeOptions()
         {
             InitializeComponent();
@@ -45,32 +45,32 @@ namespace MiniCOder.GUI.Controls
    
         }
 
-        public void setLanguage(int languageCode)
+        public void setLanguage()
         {
-            this.languageCode = languageCode;
-            outputSettings.Text = LanguageController.getLanguageString("outputSettingsTitle", languageCode);
-            titleAdvert.Text = LanguageController.getLanguageString("outputDisableVideoAdvert", languageCode);
-            outputDir.Text = LanguageController.getLanguageString("outputDirectory", languageCode);
-            processSettings.Text = LanguageController.getLanguageString("processSettingsTitle", languageCode);
-            processPriorityLabel.Text = LanguageController.getLanguageString("processPriority", languageCode);
+    
+            outputSettings.Text = LanguageController.Instance.getLanguageString("outputSettingsTitle");
+            titleAdvert.Text = LanguageController.Instance.getLanguageString("outputDisableVideoAdvert");
+            outputDir.Text = LanguageController.Instance.getLanguageString("outputDirectory");
+            processSettings.Text = LanguageController.Instance.getLanguageString("processSettingsTitle");
+            processPriorityLabel.Text = LanguageController.Instance.getLanguageString("processPriority");
             int curPriority = processPriority.SelectedIndex;
             processPriority.Items.Clear();
-            processPriority.Items.AddRange(LanguageController.getLanguageString("processPriorityOptions", languageCode).Split(';'));
+            processPriority.Items.AddRange(LanguageController.Instance.getLanguageString("processPriorityOptions").Split(';'));
             processPriority.SelectedIndex = curPriority;
-            encodingGroup.Text = LanguageController.getLanguageString("encodingTitle", languageCode);
-            ignoreAttachments.Text = LanguageController.getLanguageString("encodingIgnoreAttachments", languageCode);
-            audioSkip.Text = LanguageController.getLanguageString("encodingIgnoreAudio", languageCode);
-            ignoreChapters.Text = LanguageController.getLanguageString("encodingIgnoreChapters", languageCode);
-            ignoreSubs.Text = LanguageController.getLanguageString("encodingIgnoreSubs", languageCode);
-            showVideo.Text = LanguageController.getLanguageString("encodingShowVideoPreview", languageCode);
-            continueAfterError.Text = LanguageController.getLanguageString("encodingNextError", languageCode);
-            btnApps.Text = LanguageController.getLanguageString("applicationsButton", languageCode);
+            encodingGroup.Text = LanguageController.Instance.getLanguageString("encodingTitle");
+            ignoreAttachments.Text = LanguageController.Instance.getLanguageString("encodingIgnoreAttachments");
+            audioSkip.Text = LanguageController.Instance.getLanguageString("encodingIgnoreAudio");
+            ignoreChapters.Text = LanguageController.Instance.getLanguageString("encodingIgnoreChapters");
+            ignoreSubs.Text = LanguageController.Instance.getLanguageString("encodingIgnoreSubs");
+            showVideo.Text = LanguageController.Instance.getLanguageString("encodingShowVideoPreview");
+            continueAfterError.Text = LanguageController.Instance.getLanguageString("encodingNextError");
+            btnApps.Text = LanguageController.Instance.getLanguageString("applicationsButton");
         }
 
 
         private void btnApps_Click(object sender, EventArgs e)
         {
-            Updater updater = new Updater(tools, false, languageCode);
+            Updater updater = new Updater(tools, false);
             updater.Show();
         }
 
@@ -196,7 +196,8 @@ namespace MiniCOder.GUI.Controls
 
         private void languagesSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mainForm.loadLanguage(languagesSelect.SelectedIndex);
+            LanguageController.Instance.setLanguage(languagesSelect.SelectedIndex);
+            mainForm.loadLanguage();
         }
 
         private void groupBox9_Enter(object sender, EventArgs e)

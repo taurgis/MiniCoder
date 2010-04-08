@@ -31,7 +31,6 @@ namespace MiniCoder.Encoding
 {
     class Encode
     {
-        int language = MiniSystem.getLanguage();
         String fileName = "";
         SortedList<String, Tool> tools;
         SortedList<String, String[]> fileDetails;
@@ -82,7 +81,7 @@ namespace MiniCoder.Encoding
                 }
 
                 LogBook.Instance.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("fileInfoFetch", language));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("fileInfoFetch"));
 
 
                 try

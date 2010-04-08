@@ -37,60 +37,59 @@ namespace MiniCoder.GUI.External
         SortedList<String, Tool> toolInfo;
         Boolean warnUser = false;
         Tools tools;
-        int languageCode;
+ 
 
-        public Updater(Tools tools, Boolean hide, int languageCode)
+        public Updater(Tools tools, Boolean hide)
         {
-            this.languageCode = languageCode;
-
+         
             InitializeComponent();
 
-            this.Text = LanguageController.getLanguageString("updaterTitle", languageCode);
-            coreTab.Text = LanguageController.getLanguageString("coreTabTitle", languageCode);
-            pluginTab.Text = LanguageController.getLanguageString("pluginsTabTitle", languageCode);
-            audioTab.Text = LanguageController.getLanguageString("audioTabTitle", languageCode);
-            videoTab.Text = LanguageController.getLanguageString("videoTabTitle", languageCode);
-            muxTab.Text = LanguageController.getLanguageString("muxingTabTitle", languageCode);
-            otherTab.Text = LanguageController.getLanguageString("otherTabTitle", languageCode);
+            this.Text = LanguageController.Instance.getLanguageString("updaterTitle");
+            coreTab.Text = LanguageController.Instance.getLanguageString("coreTabTitle");
+            pluginTab.Text = LanguageController.Instance.getLanguageString("pluginsTabTitle");
+            audioTab.Text = LanguageController.Instance.getLanguageString("audioTabTitle");
+            videoTab.Text = LanguageController.Instance.getLanguageString("videoTabTitle");
+            muxTab.Text = LanguageController.Instance.getLanguageString("muxingTabTitle");
+            otherTab.Text = LanguageController.Instance.getLanguageString("otherTabTitle");
 
-            coreList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
-            pluginsList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
-            audioList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
-            videoList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
-            muxingList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
-            otherList.Columns[0].Text = LanguageController.getLanguageString("updateColumn1", languageCode);
+            coreList.Columns[0].Text = LanguageController.Instance.getLanguageString("updateColumn1");
+            pluginsList.Columns[0].Text = LanguageController.Instance.getLanguageString("updateColumn1");
+            audioList.Columns[0].Text = LanguageController.Instance.getLanguageString("updateColumn1");
+            videoList.Columns[0].Text = LanguageController.Instance.getLanguageString("updateColumn1");
+            muxingList.Columns[0].Text = LanguageController.Instance.getLanguageString("updateColumn1");
+            otherList.Columns[0].Text = LanguageController.Instance.getLanguageString("updateColumn1");
 
-            coreList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
-            pluginsList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
-            audioList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
-            videoList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
-            muxingList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
-            otherList.Columns[1].Text = LanguageController.getLanguageString("updateColumn2", languageCode);
+            coreList.Columns[1].Text = LanguageController.Instance.getLanguageString("updateColumn2");
+            pluginsList.Columns[1].Text = LanguageController.Instance.getLanguageString("updateColumn2");
+            audioList.Columns[1].Text = LanguageController.Instance.getLanguageString("updateColumn2");
+            videoList.Columns[1].Text = LanguageController.Instance.getLanguageString("updateColumn2");
+            muxingList.Columns[1].Text = LanguageController.Instance.getLanguageString("updateColumn2");
+            otherList.Columns[1].Text = LanguageController.Instance.getLanguageString("updateColumn2");
 
-            coreList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
-            pluginsList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
-            audioList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
-            videoList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
-            muxingList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
-            otherList.Columns[2].Text = LanguageController.getLanguageString("updateColumn3", languageCode);
+            coreList.Columns[2].Text = LanguageController.Instance.getLanguageString("updateColumn3");
+            pluginsList.Columns[2].Text = LanguageController.Instance.getLanguageString("updateColumn3");
+            audioList.Columns[2].Text = LanguageController.Instance.getLanguageString("updateColumn3");
+            videoList.Columns[2].Text = LanguageController.Instance.getLanguageString("updateColumn3");
+            muxingList.Columns[2].Text = LanguageController.Instance.getLanguageString("updateColumn3");
+            otherList.Columns[2].Text = LanguageController.Instance.getLanguageString("updateColumn3");
 
-            coreList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
-            pluginsList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
-            audioList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
-            videoList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
-            muxingList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
-            otherList.Columns[3].Text = LanguageController.getLanguageString("updateColumn4", languageCode);
+            coreList.Columns[3].Text = LanguageController.Instance.getLanguageString("updateColumn4");
+            pluginsList.Columns[3].Text = LanguageController.Instance.getLanguageString("updateColumn4");
+            audioList.Columns[3].Text = LanguageController.Instance.getLanguageString("updateColumn4");
+            videoList.Columns[3].Text = LanguageController.Instance.getLanguageString("updateColumn4");
+            muxingList.Columns[3].Text = LanguageController.Instance.getLanguageString("updateColumn4");
+            otherList.Columns[3].Text = LanguageController.Instance.getLanguageString("updateColumn4");
 
-            coreList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
-            pluginsList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
-            audioList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
-            videoList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
-            muxingList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
-            otherList.Columns[4].Text = LanguageController.getLanguageString("updateColumn5", languageCode);
+            coreList.Columns[4].Text = LanguageController.Instance.getLanguageString("updateColumn5");
+            pluginsList.Columns[4].Text = LanguageController.Instance.getLanguageString("updateColumn5");
+            audioList.Columns[4].Text = LanguageController.Instance.getLanguageString("updateColumn5");
+            videoList.Columns[4].Text = LanguageController.Instance.getLanguageString("updateColumn5");
+            muxingList.Columns[4].Text = LanguageController.Instance.getLanguageString("updateColumn5");
+            otherList.Columns[4].Text = LanguageController.Instance.getLanguageString("updateColumn5");
 
-            customPath.Text = LanguageController.getLanguageString("updateCustomPath", languageCode);
-            updateButton.Text = LanguageController.getLanguageString("updateUpdateButton", languageCode);
-            cancelButton.Text = LanguageController.getLanguageString("updateCancelButton", languageCode);
+            customPath.Text = LanguageController.Instance.getLanguageString("updateCustomPath");
+            updateButton.Text = LanguageController.Instance.getLanguageString("updateUpdateButton");
+            cancelButton.Text = LanguageController.Instance.getLanguageString("updateCancelButton");
 
             this.tools = tools;
             toolInfo = tools.getTools();
@@ -130,9 +129,9 @@ namespace MiniCoder.GUI.External
                     LogBook.Instance.addLogLine("Updates available for " + key + ".", "UpdateChecking", "", false);
                     if (hide)
                     {
-                        if (MessageBox.Show(LanguageController.getLanguageString("updateMessage", languageCode), "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(LanguageController.Instance.getLanguageString("updateMessage"), "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            Updater upd = new Updater(tools, false, languageCode);
+                            Updater upd = new Updater(tools, false);
                             this.Close();
                             upd.ShowDialog();
                             return;
@@ -350,7 +349,7 @@ namespace MiniCoder.GUI.External
 
         private void customPath_Click(object sender, EventArgs e)
         {
-            AppLocation appLoc = new AppLocation(tools.getTools(), languageCode);
+            AppLocation appLoc = new AppLocation(tools.getTools());
             appLoc.ShowDialog();
             if (appLoc.doSave())
                 tools.SavePackages();

@@ -39,8 +39,8 @@ namespace MiniCoder.Encoding.Sound.Encoding
         {
             try
             {
-                int languageCode = MiniSystem.getLanguage();
-                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], LanguageController.getLanguageString("audioEncodingTrack", languageCode) + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
+
+                MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
                
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);

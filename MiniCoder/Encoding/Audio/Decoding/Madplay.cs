@@ -40,8 +40,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-                int languageCode = MiniSystem.getLanguage();
-               
+          
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
                 processWatcher.setProcess(proc);
@@ -49,7 +48,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
 
                 LogBook.Instance.addLogLine("Decoding MPEG - Using madplay", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("audioDecodingMessage", languageCode));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 

@@ -33,7 +33,7 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
-                int languageCode = MiniSystem.getLanguage();
+   
                 MiniProcess proc = new DefaultProcess("Muxing to MKV", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
@@ -41,7 +41,7 @@ namespace MiniCoder.Encoding.Output
 
                 proc.initProcess();
                 //// // LogBook.Instance.addLogLine(""Muxing",1);
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("muxingMessage", languageCode) + " MKV");
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " MKV");
                 string args;
 
                 try

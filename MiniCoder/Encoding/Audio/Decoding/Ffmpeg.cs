@@ -38,15 +38,15 @@ namespace MiniCoder.Encoding.Sound.Decoding
         {
             try
             {
-                int languageCode = MiniSystem.getLanguage();
+
                
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-                // // LogBook.Instance.addLogLine(""Decoding Audio",1);
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("audioDecodingMessage", languageCode));
+ 
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
                 LogBook.Instance.addLogLine("Decoding Unknown - Using FFMpeg", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";

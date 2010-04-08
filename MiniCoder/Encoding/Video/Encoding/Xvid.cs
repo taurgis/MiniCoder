@@ -32,7 +32,6 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
-                int languageCode = MiniSystem.getLanguage();
                 string pass = "0";
                 MiniProcess proc;
 
@@ -77,7 +76,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 }
 
                 pass = "1";
-                proc = new XvidProcess(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
+                proc = new XvidProcess(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
@@ -103,7 +102,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
                 pass = "2";
 
-                proc = new XvidProcess(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
+                proc = new XvidProcess(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));

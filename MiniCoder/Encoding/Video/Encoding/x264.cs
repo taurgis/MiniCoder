@@ -33,7 +33,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
-                int languageCode = MiniSystem.getLanguage();
+ 
                 string pass = "0";
                 MiniProcess proc;
 
@@ -126,7 +126,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                         break;
                 }
                 pass = "1";
-                proc = new X264Process(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
+                proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -158,7 +158,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     tempStart = DateTime.Now;
                     pass = "2";
 
-                    proc = new X264Process(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
+                    proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
                     proc.initProcess();
                     processWatcher.setProcess(proc);
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
@@ -183,7 +183,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 else
                     pass = "2";
 
-                proc = new X264Process(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
+                proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));

@@ -49,7 +49,7 @@ namespace MiniCoder.Encoding.Input
         public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
             LogBook.Instance.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-            int languageCode = MiniSystem.getLanguage();
+   
 
             MiniProcess proc = new DefaultProcess("Demuxing OGM", fileDetails["name"][0] + "DeMuxingProcess");
            processWatcher.setProcess(proc);
@@ -62,7 +62,7 @@ namespace MiniCoder.Encoding.Input
                     ogmtools.download();
 
             
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingMessage", languageCode) + " OGM");
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMessage") + " OGM");
                 proc.initProcess();
 
 
@@ -91,11 +91,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingAbortedMessage", languageCode));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                     return false;
                 }
                 else
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingCompleteMessage", languageCode));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
 
                 if (File.Exists(tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec)))
