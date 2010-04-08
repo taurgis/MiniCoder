@@ -38,16 +38,16 @@ namespace MiniCoder.Encoding.Sound.Decoding
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
+                int languageCode = MiniSystem.getLanguage();
                
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-                // // LogBook.addLogLine(""Decoding Audio",1);
-                LogBook.setInfoLabel(language.audioDecodingMessage);
-                LogBook.addLogLine("Decoding Unknown - Using FFMpeg", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
+                // // LogBook.Instance.addLogLine(""Decoding Audio",1);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("audioDecodingMessage", languageCode));
+                LogBook.Instance.addLogLine("Decoding Unknown - Using FFMpeg", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
@@ -63,13 +63,13 @@ namespace MiniCoder.Encoding.Sound.Decoding
                 if (exitCode != 0)
                     return false;
                 audio.demuxPath = decodedAudio;
-                LogBook.addLogLine("Decoding Complete", fileDetails["name"][0] + "AudioDecoding", "", false);
+                LogBook.Instance.addLogLine("Decoding Complete", fileDetails["name"][0] + "AudioDecoding", "", false);
 
                 return true;
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error decoding audio with FFmpeg. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error decoding audio with FFmpeg. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

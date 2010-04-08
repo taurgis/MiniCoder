@@ -81,6 +81,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Core\Languages\LanguageController.cs" />
     <Compile Include="Core\Languages\Turkish.Designer.cs">
       <DependentUpon>Turkish.resx</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -82,7 +82,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                //// LogBook.addLogLine(""\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
+                //// LogBook.Instance.addLogLine(""\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,1);
                 taskProcess();
                 return exitCode;
             }
@@ -198,7 +198,7 @@ namespace MiniCoder.Encoding.Process_Management
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
             }
             finally
             {
@@ -228,8 +228,8 @@ namespace MiniCoder.Encoding.Process_Management
                     if (!stderrLast.Equals(read))
                     {
                         stderrLast = read;
-                        //// LogBook.addLogLine("read, 2);
-                        LogBook.setInfoLabel(frontMessage +": " + read);
+                        //// LogBook.Instance.addLogLine("read, 2);
+                        LogBook.Instance.setInfoLabel(frontMessage +": " + read);
                     }
                 }
                 Thread.Sleep(0);
@@ -248,7 +248,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            // // LogBook.addLogLine("read2, 2);
+                            // // LogBook.Instance.addLogLine("read2, 2);
                            
                         }
                     }

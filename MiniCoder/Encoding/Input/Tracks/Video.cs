@@ -43,7 +43,7 @@ namespace MiniCoder.Encoding.Input.Tracks
         {
             try
             {
-                LogBook.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
+                LogBook.Instance.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
 
                 VideoEncoder videoEncoder = null;
                 switch (EncOpts["videocodec"])
@@ -62,7 +62,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error selecting video encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error selecting video encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

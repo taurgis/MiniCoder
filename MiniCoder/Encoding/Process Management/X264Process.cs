@@ -88,7 +88,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-                LogBook.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
+                LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -213,7 +213,7 @@ namespace MiniCoder.Encoding.Process_Management
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
             }
             finally
             {
@@ -288,7 +288,7 @@ namespace MiniCoder.Encoding.Process_Management
                             if (read.Contains("frames") & CharOccurs(read, ',') == 3)
                             {
                                 string[] split = Regex.Split(read, ",");
-                                LogBook.setInfoLabel(frontMessage + " - Pass " + pass + ": " + Regex.Split(split[0], "]")[0].Replace("[","") + " - " + split[3]);
+                                LogBook.Instance.setInfoLabel(frontMessage + " - Pass " + pass + ": " + Regex.Split(split[0], "]")[0].Replace("[","") + " - " + split[3]);
                                 if (null != previewer && windowIsOpen)
                                 {
                                     string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
@@ -298,7 +298,7 @@ namespace MiniCoder.Encoding.Process_Management
                             }
                             else
                             {
-                                LogBook.addLogLine(read, loglocation, "", false);
+                                LogBook.Instance.addLogLine(read, loglocation, "", false);
                             }
                         }
                     }
@@ -330,7 +330,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.addLogLine(read2, loglocation,"",false);
+                            LogBook.Instance.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

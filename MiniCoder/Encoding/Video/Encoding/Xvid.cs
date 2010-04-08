@@ -32,11 +32,11 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
+                int languageCode = MiniSystem.getLanguage();
                 string pass = "0";
                 MiniProcess proc;
 
-                LogBook.addLogLine("Encoding to Xvid", fileDetails["name"][0] + "VideoEncoding", "", false);
+                LogBook.Instance.addLogLine("Encoding to Xvid", fileDetails["name"][0] + "VideoEncoding", "", false);
 
                 string pass1Arg = "", pass2Arg = "";
 
@@ -49,7 +49,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                     encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
 
-                    // // LogBook.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
+                    // // LogBook.Instance.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
                 }
 
                 if (!xvid_encraw.isInstalled())
@@ -77,7 +77,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 }
 
                 pass = "1";
-                proc = new XvidProcess(language.encodingVideoPass, pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
+                proc = new XvidProcess(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
@@ -89,12 +89,12 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 int exitCode;
 
                 tempStart = DateTime.Now;
-                LogBook.addLogLine("Encoding Pass 1", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess1", false);
+                LogBook.Instance.addLogLine("Encoding Pass 1", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess1", false);
 
                 exitCode = proc.startProcess();
-                // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                // // LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
                 if (proc.getAbandonStatus())
                     return false;
 
@@ -103,7 +103,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
                 pass = "2";
 
-                proc = new XvidProcess(language.encodingVideoPass, pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
+                proc = new XvidProcess(LanguageController.getLanguageString("encodingVideoPass", languageCode), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
@@ -114,13 +114,13 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 {
                     proc.setArguments("-i \"" + encOpts["avsfile"] + "\" " + pass2Arg + " \"" + fileTracks["video"][0].encodePath + "\"");
                 }
-                LogBook.addLogLine("Encoding Pass 2", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess2", false);
+                LogBook.Instance.addLogLine("Encoding Pass 2", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess2", false);
 
                 tempStart = DateTime.Now;
                 exitCode = proc.startProcess();
-                // // LogBook.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                // // LogBook.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                // // LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+                // // LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
 
                 if (proc.getAbandonStatus())
                     return true;
@@ -132,7 +132,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error encoding video to Xvid. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error encoding video to Xvid. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

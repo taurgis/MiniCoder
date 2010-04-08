@@ -41,7 +41,7 @@ namespace MiniCoder.GUI
         SortedList<String, String> encodeSet = new SortedList<string, string>();
         ProcessWatcher processWatcher = new ProcessWatcher();
         Boolean vfr;
-        SysLanguage language;
+        int languageCode;
         private int curEncode = 0;
         public MainForm()
         {
@@ -68,12 +68,12 @@ namespace MiniCoder.GUI
                 }
 
                 
-                LogBook.addLogLine("System Info", "", "SysInfo", false);
-                LogBook.addLogLine(MiniSystem.getOSName(), "SysInfo", "", false);
-                LogBook.addLogLine(MiniSystem.getDotNetFramework(), "SysInfo", "", false);
-                LogBook.addLogLine(MiniSystem.getProcessorInfo(), "SysInfo", "", false);
-                LogBook.addLogLine(MiniSystem.getElevation(), "SysInfo", "", false);
-                LogBook.addLogLine("Errors", "", "Errors", false);
+                LogBook.Instance.addLogLine("System Info", "", "SysInfo", false);
+                LogBook.Instance.addLogLine(MiniSystem.getOSName(), "SysInfo", "", false);
+                LogBook.Instance.addLogLine(MiniSystem.getDotNetFramework(), "SysInfo", "", false);
+                LogBook.Instance.addLogLine(MiniSystem.getProcessorInfo(), "SysInfo", "", false);
+                LogBook.Instance.addLogLine(MiniSystem.getElevation(), "SysInfo", "", false);
+                LogBook.Instance.addLogLine("Errors", "", "Errors", false);
 
                 cbAfterEncode.SelectedIndex = 0;
                 tools = new Tools(true);
@@ -83,7 +83,7 @@ namespace MiniCoder.GUI
 
                 if (MiniOnline.checkInternet())
                 {
-                    Updater tempUpdater = new Updater(tools, true,language);
+                    Updater tempUpdater = new Updater(tools, true,languageCode);
                     tempUpdater.Dispose();
                     MiniOnline.GetNews(newsList);
                 }
@@ -92,41 +92,41 @@ namespace MiniCoder.GUI
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error Starting up. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error Starting up. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                
             }
         }
 
-        public SysLanguage getLanguage()
+        public int getLanguage()
         {
-            return language;
+            return languageCode;
         }
 
-        public void loadLanguage(int i)
+        public void loadLanguage(int languageCode)
         {
-            language = new SysLanguage(i);
-            this.Text = language.programTitle;
-            this.logTab.Text = language.logTabTitle;
-            this.inputTab.Text = language.inputTabTitle;
-            this.settingsTab.Text = language.settingsTabTitle;
-            this.optionsTab.Text = language.optionsTabTitle;
-            this.newsTab.Text = language.newsTabTitle;
-            inputList.Columns[0].Text = language.inputColumn1Title;
-            inputList.Columns[1].Text = language.inputColumn2StatusTitle;
-            startButton.Text = language.encodeStartButton;
-            stopButton.Text = language.encodeStopButton;
-            whenDone.Text = language.whenDone;
-            infoLabel.Text = language.infoLabel;
+            this.languageCode = languageCode;
+            this.Text = LanguageController.getLanguageString("programTitle", languageCode);
+            this.logTab.Text = LanguageController.getLanguageString("logTabTitle", languageCode);
+            this.inputTab.Text = LanguageController.getLanguageString("inputTabTitle", languageCode);
+            this.settingsTab.Text = LanguageController.getLanguageString("settingsTabTitle", languageCode);
+            this.optionsTab.Text = LanguageController.getLanguageString("optionsTabTitle", languageCode);
+            this.newsTab.Text = LanguageController.getLanguageString("newsTabTitle", languageCode);
+            inputList.Columns[0].Text = LanguageController.getLanguageString("inputColumn1Title", languageCode);
+            inputList.Columns[1].Text = LanguageController.getLanguageString("inputColumn2StatusTitle", languageCode);
+            startButton.Text = LanguageController.getLanguageString("encodeStartButton", languageCode);
+            stopButton.Text = LanguageController.getLanguageString("encodeStopButton", languageCode);
+            whenDone.Text = LanguageController.getLanguageString("whenDone", languageCode);
+            infoLabel.Text = LanguageController.getLanguageString("infoLabel", languageCode);
             cbAfterEncode.Items.Clear();
-            cbAfterEncode.Items.AddRange(language.whenDoneOptions);
+            cbAfterEncode.Items.AddRange(LanguageController.getLanguageString("whenDoneOptions", languageCode).Split(';'));
             cbAfterEncode.SelectedIndex = 0;
-            clearMenuItem.Text = language.menuClear;
-            addMenu.Text = language.menuAdd;
-            removeMenuItem.Text = language.menuRemove;
-            copyToolStripMenuItem.Text = language.logMenuCopy;
-            sendErrorReportToolStripMenuItem.Text = language.logMenuSend;
-            encodeSettings.setLanguage(language);
-            encodeOptions.setLanguage(language);
+            clearMenuItem.Text = LanguageController.getLanguageString("menuClear", languageCode);
+            addMenu.Text = LanguageController.getLanguageString("menuAdd", languageCode);
+            removeMenuItem.Text = LanguageController.getLanguageString("menuRemove", languageCode);
+            copyToolStripMenuItem.Text = LanguageController.getLanguageString("logMenuCopy", languageCode);
+            sendErrorReportToolStripMenuItem.Text = LanguageController.getLanguageString("logMenuSend", languageCode);
+            encodeSettings.setLanguage(languageCode);
+            encodeOptions.setLanguage(languageCode);
            
         }
 
@@ -160,7 +160,7 @@ namespace MiniCoder.GUI
         void inputList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            LogBook.addLogLine("Drag & Drop", "", "DragDrop",false);
+            LogBook.Instance.addLogLine("Drag & Drop", "", "DragDrop",false);
             foreach (string str in files)
             {
                 ListViewItem inputListItem = new ListViewItem();
@@ -170,9 +170,9 @@ namespace MiniCoder.GUI
                 inputListItem.ToolTipText = "Check if file has a variable framerate";
                 inputListItem.Text = fName;
                 inputListItem.SubItems.Add(statusSub);
-                statusSub.Text = language.inputColumn2StatusReady;
+                statusSub.Text = LanguageController.getLanguageString("inputColumn2StatusReady", languageCode);
                 inputList.Items.Add(inputListItem);
-                LogBook.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
+                LogBook.Instance.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
             }
         }
 
@@ -185,7 +185,7 @@ namespace MiniCoder.GUI
             foreach (String file in openFile.FileNames)
             {
                 FileInfo fileInfo = new FileInfo(file);
-                String[] fileListDetails = { fileInfo.Name, language.inputColumn2StatusReady, file };
+                String[] fileListDetails = { fileInfo.Name, LanguageController.getLanguageString("inputColumn2StatusReady", languageCode), file };
                 ListViewItem tempFile = new ListViewItem(fileListDetails);
                 inputList.Items.Add(tempFile);
                 FileList.Add(file);
@@ -222,14 +222,14 @@ namespace MiniCoder.GUI
                     }
                     else
                     {
-                        TreeNode retrieved = LogBook.findNode(logView, searchTag);
+                        TreeNode retrieved = LogBook.Instance.findNode(logView, searchTag);
                         if (retrieved != null)
                         {
                             if (!String.IsNullOrEmpty(messageTag) && !String.IsNullOrEmpty(searchTag))
                             {
                                 if (messageTag != searchTag)
                                 {
-                                    TreeNode retrieved2 = LogBook.findNode(logView, messageTag);
+                                    TreeNode retrieved2 = LogBook.Instance.findNode(logView, messageTag);
                                     if (retrieved2 != null)
                                     {
                                         return;
@@ -326,7 +326,7 @@ namespace MiniCoder.GUI
                 {
 
                 }
-                setFileStatus(language.inputColumn2StatusEncoding);
+                setFileStatus(LanguageController.getLanguageString("inputColumn2StatusEncoding", languageCode));
 
                 getSettings();
 
@@ -337,9 +337,9 @@ namespace MiniCoder.GUI
                 tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet, processWatcher);
                 if (!tempEncode.fetchEncodeInfo())
                 {
-                    setFileStatus(language.inputColumn2StatusError);
-                    // LogBook.addLogLine("infoLabel.Text, 2,"");
-                    LogBook.sendmail(logView);
+                    setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                    // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
+                    LogBook.Instance.sendmail(logView);
                     break;
                 }
                 if (tempEncode.getExtention() == "avs")
@@ -347,22 +347,22 @@ namespace MiniCoder.GUI
                     if (tempEncode.startAvsEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus(language.inputColumn2StatusDone);
-                        LogBook.setInfoLabel(language.encodingComplete);
+                        setFileStatus(LanguageController.getLanguageString("inputColumn2StatusDone", languageCode));
+                        LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingComplete", languageCode));
                         curEncode++;
                     }
                     else
                     {
                         if (processWatcher.getProcess().getAbandonStatus())
                         {
-                            setFileStatus(language.inputColumn2StatusAborted);
+                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusAborted", languageCode));
                         }
                         else
                         {
-                            setFileStatus(language.inputColumn2StatusError);
-                            // LogBook.addLogLine("infoLabel.Text, 2,"");
+                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                            // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
                             if (!Boolean.Parse(encodeSet["aftererror"]))
-                            LogBook.sendmail(logView);
+                              LogBook.Instance.sendmail(logView);
                         }
                         if (!Boolean.Parse(encodeSet["aftererror"]))
                             break;
@@ -379,22 +379,22 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
 
-                        setFileStatus(language.inputColumn2StatusDone);
-                        LogBook.setInfoLabel(language.encodingComplete);
+                        setFileStatus(LanguageController.getLanguageString("inputColumn2StatusDone", languageCode));
+                        LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingComplete", languageCode));
                         curEncode++;
                     }
                     else
                     {
                         if (processWatcher.getProcess().getAbandonStatus())
                         {
-                            setFileStatus(language.inputColumn2StatusAborted);
+                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusAborted", languageCode));
                         }
                         else
                         {
-                            setFileStatus(language.inputColumn2StatusError);
-                            // LogBook.addLogLine("infoLabel.Text, 2,"");
+                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                            // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
                             if (!Boolean.Parse(encodeSet["aftererror"]))
-                                LogBook.sendmail(logView);
+                                LogBook.Instance.sendmail(logView);
                         }
                         if (!Boolean.Parse(encodeSet["aftererror"]))
                             break;
@@ -412,8 +412,8 @@ namespace MiniCoder.GUI
                     if (tempEncode.startDefaultEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus(language.inputColumn2StatusDone);
-                        LogBook.setInfoLabel(language.encodingComplete);
+                        setFileStatus(LanguageController.getLanguageString("inputColumn2StatusDone", languageCode));
+                        LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingComplete", languageCode));
                         curEncode++;
                     }
                     else
@@ -422,13 +422,13 @@ namespace MiniCoder.GUI
                         {
                             if (processWatcher.getProcess().getAbandonStatus())
                             {
-                                setFileStatus(language.inputColumn2StatusAborted);
+                                setFileStatus(LanguageController.getLanguageString("inputColumn2StatusAborted", languageCode));
                             }
                             else
                             {
-                                setFileStatus(language.inputColumn2StatusError);
+                                setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
                                 if (!Boolean.Parse(encodeSet["aftererror"]))
-                                      LogBook.sendmail(logView);
+                                    LogBook.Instance.sendmail(logView);
                             }
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                                 break;
@@ -454,7 +454,7 @@ namespace MiniCoder.GUI
         {
             foreach (ListViewItem eachItem in inputList.Items)
             {
-                if (eachItem.SubItems[1].Text != language.inputColumn2StatusDone)
+                if (eachItem.SubItems[1].Text != LanguageController.getLanguageString("inputColumn2StatusDone", languageCode))
                     return;
 
             }
@@ -490,7 +490,7 @@ namespace MiniCoder.GUI
                 startButton.Enabled = true;
                 stopButton.Enabled = false;
                 afterEncode();
-                //LogBook.setInfoLabel("Aborted encoding");
+                //LogBook.Instance.setInfoLabel("Aborted encoding");
             }
 
         }
@@ -661,7 +661,7 @@ namespace MiniCoder.GUI
 
         private void sendErrorReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogBook.sendmail(logView);
+            LogBook.Instance.sendmail(logView);
         }
 
         private void allVfrCheck_CheckedChanged(object sender, EventArgs e)

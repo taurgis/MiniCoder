@@ -62,14 +62,14 @@ namespace MiniCoder.Encoding.AviSynth
                 streamWriter.Write(avs);
                 streamWriter.Close();
 
-                LogBook.addLogLine(avs, fileDetails["name"][0] + "AvsCreation", "", false);
+                LogBook.Instance.addLogLine(avs, fileDetails["name"][0] + "AvsCreation", "", false);
 
 
                 return checkAvs();
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error writing AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error writing AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }
@@ -87,8 +87,8 @@ namespace MiniCoder.Encoding.AviSynth
             }
             catch (AviSynthException er)
             {
-                LogBook.addLogLine("Error checking AVS file: " + er.Message, "Errors", "", true);
-                // LogBook.addLogLine("er.Message,1);
+                LogBook.Instance.addLogLine("Error checking AVS file: " + er.Message, "Errors", "", true);
+                // LogBook.Instance.addLogLine("er.Message,1);
                 MessageBox.Show("Error in AVS File: " + er.Message);
                 return false;
             }

@@ -33,15 +33,15 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
+                int languageCode = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to MP4", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-                LogBook.addLogLine("Muxing to MP4", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
+                LogBook.Instance.addLogLine("Muxing to MP4", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
 
                 proc.initProcess();
-                LogBook.setInfoLabel(language.muxingMessage + " MP4");
-                // // LogBook.addLogLine(""Muxing", 1);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("muxingMessage", languageCode) + " MP4");
+                // // LogBook.Instance.addLogLine(""Muxing", 1);
                 string args;
 
                 try
@@ -105,7 +105,7 @@ namespace MiniCoder.Encoding.Output
                 }
                 else
                 {
-                    LogBook.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
+                    LogBook.Instance.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
                     return true;
                 }
 
@@ -113,7 +113,7 @@ namespace MiniCoder.Encoding.Output
             }
             catch (Exception error)
             {
-                LogBook.addLogLine("Error muxing to MP4. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error muxing to MP4. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

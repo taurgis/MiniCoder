@@ -34,7 +34,7 @@ namespace System
                 return false;
         }
 
-        public static SysLanguage getLanguage()
+        public static int getLanguage()
         {
             try
             {
@@ -43,7 +43,7 @@ namespace System
             }
             catch
             {
-                return null;
+                return 0;
             }
         }
 

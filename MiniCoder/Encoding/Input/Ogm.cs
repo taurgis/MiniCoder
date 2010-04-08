@@ -48,8 +48,8 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-            SysLanguage language = MiniSystem.getLanguage();
+            LogBook.Instance.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+            int languageCode = MiniSystem.getLanguage();
 
             MiniProcess proc = new DefaultProcess("Demuxing OGM", fileDetails["name"][0] + "DeMuxingProcess");
            processWatcher.setProcess(proc);
@@ -62,7 +62,7 @@ namespace MiniCoder.Encoding.Input
                     ogmtools.download();
 
             
-                LogBook.setInfoLabel(language.demuxingMessage + " OGM");
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingMessage", languageCode) + " OGM");
                 proc.initProcess();
 
 
@@ -83,7 +83,7 @@ namespace MiniCoder.Encoding.Input
                     tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["subs"][i].codec);
                     tempArg += " " + tracks["subs"][i].id + ":\"" + tracks["subs"][i].demuxPath + "\"";
                 }
-                //// LogBook.addLogLine("tempArg,1);
+                //// LogBook.Instance.addLogLine("tempArg,1);
                 proc.setArguments(tempArg);
                 //MessageBox.Show(mainProcess.StartInfo.Arguments);
 
@@ -91,11 +91,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.setInfoLabel(language.demuxingAbortedMessage);
+                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingAbortedMessage", languageCode));
                     return false;
                 }
                 else
-                    LogBook.setInfoLabel(language.demuxingCompleteMessage);
+                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingCompleteMessage", languageCode));
 
 
                 if (File.Exists(tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec)))
@@ -106,7 +106,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing","",true);
+                LogBook.Instance.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing","",true);
                 MessageBox.Show("Can't find codec");
                 return false;
             }

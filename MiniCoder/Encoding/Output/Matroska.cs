@@ -33,15 +33,15 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
-                SysLanguage language = MiniSystem.getLanguage();
+                int languageCode = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to MKV", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-                LogBook.addLogLine("Muxing to MKV", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
+                LogBook.Instance.addLogLine("Muxing to MKV", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
 
                 proc.initProcess();
-                //// // LogBook.addLogLine(""Muxing",1);
-                LogBook.setInfoLabel(language.muxingMessage + " MKV");
+                //// // LogBook.Instance.addLogLine(""Muxing",1);
+                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("muxingMessage", languageCode) + " MKV");
                 string args;
 
                 try
@@ -91,7 +91,7 @@ namespace MiniCoder.Encoding.Output
                 }
                 catch
                 {
-                    LogBook.addLogLine("Error parsing fps", "Errors", "", false);
+                    LogBook.Instance.addLogLine("Error parsing fps", "Errors", "", false);
                  //   args = "-o \"" + encOpts["outfile"] + "\"  --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
                     return false;
                 }
@@ -146,7 +146,7 @@ namespace MiniCoder.Encoding.Output
                 }
                 else
                 {
-                    LogBook.addLogLine("Muxing Completed", fileDetails["name"][0] + "FileMuxing", "", false);
+                    LogBook.Instance.addLogLine("Muxing Completed", fileDetails["name"][0] + "FileMuxing", "", false);
                     return true;
 
                 }
@@ -157,7 +157,7 @@ namespace MiniCoder.Encoding.Output
 
             catch (Exception error)
             {
-                LogBook.addLogLine("Error muxing to Matroska. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBook.Instance.addLogLine("Error muxing to Matroska. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
                 return false;
             }
         }

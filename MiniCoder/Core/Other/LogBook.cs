@@ -25,23 +25,36 @@ using System.Diagnostics;
 using MiniCoder.Core.Languages;
 namespace System
 {
-    public static class LogBook
+    public sealed class LogBook
     {
-        static MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
-        public static void addLogLine(string message, string searchTag, string messageTag, bool error)
+        private static MainForm mainForm;
+        private static LogBook instance = null;
+        public LogBook()
         {
-            try
-            {
-                if (!string.IsNullOrEmpty(message))
-                    mainForm.addLogLine(message, searchTag, messageTag, false);
-            }
-            catch
-            {
+            mainForm = (MainForm)Application.OpenForms["MainForm"];
+        }
 
+        public static LogBook Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LogBook();
+                }
+                return instance;
             }
         }
 
-        public static TreeNode findNode(TreeView treeView, string tag)
+
+        public void addLogLine(string message, string searchTag, string messageTag, bool error)
+        {
+            if (!string.IsNullOrEmpty(message))
+                mainForm.addLogLine(message, searchTag, messageTag, false);
+
+        }
+
+        public TreeNode findNode(TreeView treeView, string tag)
         {
             foreach (TreeNode node in treeView.Nodes)
             {
@@ -52,10 +65,8 @@ namespace System
             return null;
         }
 
-        private static TreeNode iterateNode(TreeNode treeNode, string tag)
+        private TreeNode iterateNode(TreeNode treeNode, string tag)
         {
-
-
             if (treeNode.Nodes.Count > 0)
             {
                 if (treeNode.Tag.ToString() == tag)
@@ -81,12 +92,12 @@ namespace System
 
         }
 
-        public static void setInfoLabel(string message)
+        public void setInfoLabel(string message)
         {
             mainForm.setInfoLabel(message);
         }
 
-        private static string AnalyseTree(TreeView list, StreamWriter writer)
+        private string AnalyseTree(TreeView list, StreamWriter writer)
         {
             string nodeText = "";
             foreach (TreeNode treeNode in list.Nodes)
@@ -97,7 +108,7 @@ namespace System
             return nodeText;
         }
 
-        private static string AnalyseNodes(TreeNode node, StreamWriter writer)
+        private string AnalyseNodes(TreeNode node, StreamWriter writer)
         {
             if (node.Nodes.Count > 0)
             {
@@ -111,10 +122,10 @@ namespace System
 
 
 
-        public static void sendmail(TreeView list)
+        public void sendmail(TreeView list)
         {
-            SysLanguage language = MiniSystem.getLanguage();
-            if (MessageBox.Show(language.errorWarningMessage, language.errorWarningTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            int languageCode = MiniSystem.getLanguage();
+            if (MessageBox.Show(LanguageController.getLanguageString("errorWarningMessage", languageCode), LanguageController.getLanguageString("errorWarningTitle", languageCode), MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
                 StreamWriter streamWriter = new StreamWriter(Application.StartupPath + "\\temp\\" + "\\log.txt");
                 AnalyseTree(list, streamWriter);

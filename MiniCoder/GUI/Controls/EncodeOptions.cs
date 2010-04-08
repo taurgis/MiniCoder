@@ -36,7 +36,7 @@ namespace MiniCOder.GUI.Controls
         Tools tools;
         ProcessWatcher processWatcher = new ProcessWatcher();
         MainForm mainForm;
-        SysLanguage language;
+        int languageCode;
         public EncodeOptions()
         {
             InitializeComponent();
@@ -45,32 +45,32 @@ namespace MiniCOder.GUI.Controls
    
         }
 
-        public void setLanguage(SysLanguage language)
+        public void setLanguage(int languageCode)
         {
-            this.language = language;
-            outputSettings.Text = language.outputSettingsTitle;
-            titleAdvert.Text = language.outputDisableVideoAdvert;
-            outputDir.Text = language.outputDirectory;
-            processSettings.Text = language.processSettingsTitle;
-            processPriorityLabel.Text = language.processPriority;
+            this.languageCode = languageCode;
+            outputSettings.Text = LanguageController.getLanguageString("outputSettingsTitle", languageCode);
+            titleAdvert.Text = LanguageController.getLanguageString("outputDisableVideoAdvert", languageCode);
+            outputDir.Text = LanguageController.getLanguageString("outputDirectory", languageCode);
+            processSettings.Text = LanguageController.getLanguageString("processSettingsTitle", languageCode);
+            processPriorityLabel.Text = LanguageController.getLanguageString("processPriority", languageCode);
             int curPriority = processPriority.SelectedIndex;
             processPriority.Items.Clear();
-            processPriority.Items.AddRange(language.processPriorityOptions);
+            processPriority.Items.AddRange(LanguageController.getLanguageString("processPriorityOptions", languageCode).Split(';'));
             processPriority.SelectedIndex = curPriority;
-            encodingGroup.Text = language.encodingTitle;
-            ignoreAttachments.Text = language.encodingIgnoreAttachments;
-            audioSkip.Text = language.encodingIgnoreAudio;
-            ignoreChapters.Text = language.encodingIgnoreChapters;
-            ignoreSubs.Text = language.encodingIgnoreSubs;
-            showVideo.Text = language.encodingShowVideoPreview;
-            continueAfterError.Text = language.encodingNextError;
-            btnApps.Text = language.applicationsButton;
+            encodingGroup.Text = LanguageController.getLanguageString("encodingTitle", languageCode);
+            ignoreAttachments.Text = LanguageController.getLanguageString("encodingIgnoreAttachments", languageCode);
+            audioSkip.Text = LanguageController.getLanguageString("encodingIgnoreAudio", languageCode);
+            ignoreChapters.Text = LanguageController.getLanguageString("encodingIgnoreChapters", languageCode);
+            ignoreSubs.Text = LanguageController.getLanguageString("encodingIgnoreSubs", languageCode);
+            showVideo.Text = LanguageController.getLanguageString("encodingShowVideoPreview", languageCode);
+            continueAfterError.Text = LanguageController.getLanguageString("encodingNextError", languageCode);
+            btnApps.Text = LanguageController.getLanguageString("applicationsButton", languageCode);
         }
 
 
         private void btnApps_Click(object sender, EventArgs e)
         {
-            Updater updater = new Updater(tools, false, language);
+            Updater updater = new Updater(tools, false, languageCode);
             updater.Show();
         }
 

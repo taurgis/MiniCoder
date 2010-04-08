@@ -18,68 +18,67 @@ using System;
 using System.Collections;
 using System.Xml;
 using System.Xml.Schema;
-
+using System.IO;
 namespace MiniCoder.Core.Encoding
 {
+    /* XMLValidator is currently only used to validate chapter files 
+     * contained in MP4 or MKV files.
+     * 
+     * Recent update: 
+     * Removed depricated functions.
+     */
+
     public class XMLValidator
     {
         private string fileName;
-        static private ArrayList errors = new ArrayList();
-        static private bool bValid;
-
         public XMLValidator(string fileName)
         {
             this.fileName = fileName;
-            bValid = true;
         }
 
-        public ArrayList GetErrors()
+        public Boolean Validate()
         {
-            return errors;
-        }
-
-        public bool Validate()
-        {
-            XmlValidatingReader reader = null;
+            XmlTextReader txtreader = null;
             try
             {
-                errors.Clear();
-                bValid = true;
-                XmlTextReader txtreader = new XmlTextReader(fileName);
-                reader = new XmlValidatingReader(txtreader);
+                txtreader = new XmlTextReader(fileName);
 
+                XmlDocument doc = new XmlDocument();
+                doc.Load(txtreader);
+                ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
 
-
-                // Set the validation event handler
-
-                reader.ValidationEventHandler +=
-                       new ValidationEventHandler(ValidationCallBack);
-
-                // Read XML data
-
-                while (reader.Read()) { }
-
+                doc.Validate(eventHandler);
             }
-            catch (Exception e)
+            catch (IOException e)
             {
-                bValid = false;
-                errors.Add(e.Message);
+                LogBook.Instance.addLogLine("Error accessing chapter files. Probably doesn't exist. \n" + e, "Errors", "", true);
+
+                return false;
+            }
+            catch (XmlException e)
+            {
+                LogBook.Instance.addLogLine("Error inside chapters XML file, trying again.\n" + e, "Errors", "", true);
+
+                return false;
             }
             finally
             {
-                //Close the reader.
-
-                reader.Close();
+                txtreader.Close();
             }
 
-            return bValid;
+            return true;
         }
 
-        private void ValidationCallBack(object sender, ValidationEventArgs args)
+        static void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            bValid = false;
-            errors.Add(args.Message);
-        }
+            switch (e.Severity)
+            {
+                case XmlSeverityType.Error:
+                    break;
+                default:
 
+                    break;
+            }
+        }
     }
 }
