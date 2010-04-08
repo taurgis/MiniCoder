@@ -92,7 +92,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Portugese-Brasil.resx</DependentUpon>
     </Compile>
-    <Compile Include="Core\Languages\SysLanguage.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
     <Compile Include="Core\Settings\MainSettings.cs" />

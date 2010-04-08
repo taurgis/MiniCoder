@@ -39,7 +39,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
         {
             try
             {
-                int language = MiniSystem.getLanguage();
+
                
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
@@ -48,7 +48,7 @@ namespace MiniCoder.Encoding.Sound.Decoding
                 proc.stdOutDisabled(true);
                 LogBook.Instance.addLogLine("Decoding Flac - Using flac", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("audioDecodingMessage", language));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 

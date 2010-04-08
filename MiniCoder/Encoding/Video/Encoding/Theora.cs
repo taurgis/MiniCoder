@@ -33,7 +33,6 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
-                int language = MiniSystem.getLanguage();
                 LogBook.Instance.addLogLine("Encoding to Theora", fileDetails["name"][0] + "VideoEncoding", "", false);
 
                 MiniProcess proc;
@@ -58,7 +57,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 fileTracks["video"][0].encodePath = encOpts["outDIR"] + fileDetails["name"][0] + "_output.ogg";
 
 
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingVideoTheora", language));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
                 if (!theora.isInstalled())
                     theora.download();
 
@@ -89,7 +88,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
 
 
 
-                proc = new TheoraProcess(LanguageController.getLanguageString("encodingVideoTheora", language));
+                proc = new TheoraProcess(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
                 proc.initProcess();
                 processWatcher.setProcess(proc);
                 proc.setFilename(Path.Combine(theora.getInstallPath(), "theora.exe"));

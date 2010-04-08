@@ -34,19 +34,6 @@ namespace System
                 return false;
         }
 
-        public static int getLanguage()
-        {
-            try
-            {
-                MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
-                return mainForm.getLanguage();
-            }
-            catch
-            {
-                return 0;
-            }
-        }
-
         public static string getOSName()
         {
             try

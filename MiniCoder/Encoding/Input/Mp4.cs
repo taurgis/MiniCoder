@@ -49,7 +49,7 @@ namespace MiniCoder.Encoding.Input
         public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
             LogBook.Instance.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
-            int languageCode = MiniSystem.getLanguage();
+
               
             int exitCode = 0;
             MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
@@ -63,7 +63,7 @@ namespace MiniCoder.Encoding.Input
                     mp4box.download();
 
            
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingmp4Video", languageCode));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingmp4Video"));
                 proc.initProcess();
 
               
@@ -98,16 +98,16 @@ namespace MiniCoder.Encoding.Input
                 if (tracks["audio"].Length == 0)
                     return true;
 
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingmp4Audio", languageCode));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingmp4Audio"));
                 tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.Instance.getExtention(tracks["audio"][0].codec);
                 tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 2 -out \"" + tracks["audio"][0].demuxPath + "\"";
                 proc.setArguments(tempArg);
                 exitCode = proc.startProcess();
 
                 if (proc.getAbandonStatus())
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingAbortedMessage", languageCode));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                 else
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingCompleteMessage", languageCode));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
                 if (exitCode != 0)
                     return false;

@@ -41,7 +41,6 @@ namespace MiniCoder.GUI
         SortedList<String, String> encodeSet = new SortedList<string, string>();
         ProcessWatcher processWatcher = new ProcessWatcher();
         Boolean vfr;
-        int languageCode;
         private int curEncode = 0;
         public MainForm()
         {
@@ -83,7 +82,7 @@ namespace MiniCoder.GUI
 
                 if (MiniOnline.checkInternet())
                 {
-                    Updater tempUpdater = new Updater(tools, true,languageCode);
+                    Updater tempUpdater = new Updater(tools, true);
                     tempUpdater.Dispose();
                     MiniOnline.GetNews(newsList);
                 }
@@ -97,36 +96,28 @@ namespace MiniCoder.GUI
             }
         }
 
-        public int getLanguage()
+        public void loadLanguage()
         {
-            return languageCode;
-        }
-
-        public void loadLanguage(int languageCode)
-        {
-            this.languageCode = languageCode;
-            this.Text = LanguageController.getLanguageString("programTitle", languageCode);
-            this.logTab.Text = LanguageController.getLanguageString("logTabTitle", languageCode);
-            this.inputTab.Text = LanguageController.getLanguageString("inputTabTitle", languageCode);
-            this.settingsTab.Text = LanguageController.getLanguageString("settingsTabTitle", languageCode);
-            this.optionsTab.Text = LanguageController.getLanguageString("optionsTabTitle", languageCode);
-            this.newsTab.Text = LanguageController.getLanguageString("newsTabTitle", languageCode);
-            inputList.Columns[0].Text = LanguageController.getLanguageString("inputColumn1Title", languageCode);
-            inputList.Columns[1].Text = LanguageController.getLanguageString("inputColumn2StatusTitle", languageCode);
-            startButton.Text = LanguageController.getLanguageString("encodeStartButton", languageCode);
-            stopButton.Text = LanguageController.getLanguageString("encodeStopButton", languageCode);
-            whenDone.Text = LanguageController.getLanguageString("whenDone", languageCode);
-            infoLabel.Text = LanguageController.getLanguageString("infoLabel", languageCode);
+            this.Text = LanguageController.Instance.getLanguageString("programTitle");
+            this.logTab.Text = LanguageController.Instance.getLanguageString("logTabTitle");
+            this.inputTab.Text = LanguageController.Instance.getLanguageString("inputTabTitle");
+            this.settingsTab.Text = LanguageController.Instance.getLanguageString("settingsTabTitle");
+            this.optionsTab.Text = LanguageController.Instance.getLanguageString("optionsTabTitle");
+            this.newsTab.Text = LanguageController.Instance.getLanguageString("newsTabTitle");
+            inputList.Columns[0].Text = LanguageController.Instance.getLanguageString("inputColumn1Title");
+            inputList.Columns[1].Text = LanguageController.Instance.getLanguageString("inputColumn2StatusTitle");
+            startButton.Text = LanguageController.Instance.getLanguageString("encodeStartButton");
+            stopButton.Text = LanguageController.Instance.getLanguageString("encodeStopButton");
+            whenDone.Text = LanguageController.Instance.getLanguageString("whenDone");
+            infoLabel.Text = LanguageController.Instance.getLanguageString("infoLabel");
             cbAfterEncode.Items.Clear();
-            cbAfterEncode.Items.AddRange(LanguageController.getLanguageString("whenDoneOptions", languageCode).Split(';'));
+            cbAfterEncode.Items.AddRange(LanguageController.Instance.getLanguageString("whenDoneOptions").Split(';'));
             cbAfterEncode.SelectedIndex = 0;
-            clearMenuItem.Text = LanguageController.getLanguageString("menuClear", languageCode);
-            addMenu.Text = LanguageController.getLanguageString("menuAdd", languageCode);
-            removeMenuItem.Text = LanguageController.getLanguageString("menuRemove", languageCode);
-            copyToolStripMenuItem.Text = LanguageController.getLanguageString("logMenuCopy", languageCode);
-            sendErrorReportToolStripMenuItem.Text = LanguageController.getLanguageString("logMenuSend", languageCode);
-            encodeSettings.setLanguage(languageCode);
-            encodeOptions.setLanguage(languageCode);
+            clearMenuItem.Text = LanguageController.Instance.getLanguageString("menuClear");
+            addMenu.Text = LanguageController.Instance.getLanguageString("menuAdd");
+            removeMenuItem.Text = LanguageController.Instance.getLanguageString("menuRemove");
+            copyToolStripMenuItem.Text = LanguageController.Instance.getLanguageString("logMenuCopy");
+            sendErrorReportToolStripMenuItem.Text = LanguageController.Instance.getLanguageString("logMenuSend");
            
         }
 
@@ -170,7 +161,7 @@ namespace MiniCoder.GUI
                 inputListItem.ToolTipText = "Check if file has a variable framerate";
                 inputListItem.Text = fName;
                 inputListItem.SubItems.Add(statusSub);
-                statusSub.Text = LanguageController.getLanguageString("inputColumn2StatusReady", languageCode);
+                statusSub.Text = LanguageController.Instance.getLanguageString("inputColumn2StatusReady");
                 inputList.Items.Add(inputListItem);
                 LogBook.Instance.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
             }
@@ -185,7 +176,7 @@ namespace MiniCoder.GUI
             foreach (String file in openFile.FileNames)
             {
                 FileInfo fileInfo = new FileInfo(file);
-                String[] fileListDetails = { fileInfo.Name, LanguageController.getLanguageString("inputColumn2StatusReady", languageCode), file };
+                String[] fileListDetails = { fileInfo.Name, LanguageController.Instance.getLanguageString("inputColumn2StatusReady"), file };
                 ListViewItem tempFile = new ListViewItem(fileListDetails);
                 inputList.Items.Add(tempFile);
                 FileList.Add(file);
@@ -326,7 +317,7 @@ namespace MiniCoder.GUI
                 {
 
                 }
-                setFileStatus(LanguageController.getLanguageString("inputColumn2StatusEncoding", languageCode));
+                setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusEncoding"));
 
                 getSettings();
 
@@ -337,7 +328,7 @@ namespace MiniCoder.GUI
                 tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet, processWatcher);
                 if (!tempEncode.fetchEncodeInfo())
                 {
-                    setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                    setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
                     // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
                     LogBook.Instance.sendmail(logView);
                     break;
@@ -347,19 +338,19 @@ namespace MiniCoder.GUI
                     if (tempEncode.startAvsEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus(LanguageController.getLanguageString("inputColumn2StatusDone", languageCode));
-                        LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingComplete", languageCode));
+                        setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusDone"));
+                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
                         curEncode++;
                     }
                     else
                     {
                         if (processWatcher.getProcess().getAbandonStatus())
                         {
-                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusAborted", languageCode));
+                            setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                         }
                         else
                         {
-                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                            setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
                             // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                               LogBook.Instance.sendmail(logView);
@@ -379,19 +370,19 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
 
-                        setFileStatus(LanguageController.getLanguageString("inputColumn2StatusDone", languageCode));
-                        LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingComplete", languageCode));
+                        setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusDone"));
+                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
                         curEncode++;
                     }
                     else
                     {
                         if (processWatcher.getProcess().getAbandonStatus())
                         {
-                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusAborted", languageCode));
+                            setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                         }
                         else
                         {
-                            setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                            setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
                             // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                                 LogBook.Instance.sendmail(logView);
@@ -412,8 +403,8 @@ namespace MiniCoder.GUI
                     if (tempEncode.startDefaultEncode())
                     {
                         FileList.RemoveAt(0);
-                        setFileStatus(LanguageController.getLanguageString("inputColumn2StatusDone", languageCode));
-                        LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("encodingComplete", languageCode));
+                        setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusDone"));
+                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
                         curEncode++;
                     }
                     else
@@ -422,11 +413,11 @@ namespace MiniCoder.GUI
                         {
                             if (processWatcher.getProcess().getAbandonStatus())
                             {
-                                setFileStatus(LanguageController.getLanguageString("inputColumn2StatusAborted", languageCode));
+                                setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                             }
                             else
                             {
-                                setFileStatus(LanguageController.getLanguageString("inputColumn2StatusError", languageCode));
+                                setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
                                 if (!Boolean.Parse(encodeSet["aftererror"]))
                                     LogBook.Instance.sendmail(logView);
                             }
@@ -454,7 +445,7 @@ namespace MiniCoder.GUI
         {
             foreach (ListViewItem eachItem in inputList.Items)
             {
-                if (eachItem.SubItems[1].Text != LanguageController.getLanguageString("inputColumn2StatusDone", languageCode))
+                if (eachItem.SubItems[1].Text != LanguageController.Instance.getLanguageString("inputColumn2StatusDone"))
                     return;
 
             }

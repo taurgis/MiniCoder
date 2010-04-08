@@ -34,16 +34,16 @@ namespace MiniCoder.Encoding.VideoEnc
 
         public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
         {
-            int languageCode = MiniSystem.getLanguage();
+     
             if (fileDetails["ext"][0].ToLower().Equals(".avi"))
                 return true;
             try
             {
-                MiniProcess proc = new DefaultProcess(LanguageController.getLanguageString("indexingAvc", languageCode), fileDetails["name"][0] + "DGAVCStepProcess");
+                MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("indexingAvc"), fileDetails["name"][0] + "DGAVCStepProcess");
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("indexingAvc", languageCode));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvc"));
                 LogBook.Instance.addLogLine("Started Indexing AVC", fileDetails["name"][0] + "DGAVCStep", fileDetails["name"][0] + "DGAVCStepProcess", false);
                 proc.initProcess();
 
@@ -61,12 +61,12 @@ namespace MiniCoder.Encoding.VideoEnc
                 // // LogBook.Instance.addLogLine(""Finished Indexing AVC",1);
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("indexingAvcAbort", languageCode));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcAbort"));
                     return false;
                 }
                 else
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("indexingAvcCompleted", languageCode));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcCompleted"));
                     LogBook.Instance.addLogLine("Finished Indexing AVC", fileDetails["name"][0] + "DGAVCStep", "", false);
                 }
                 if (File.Exists(dgaFile))

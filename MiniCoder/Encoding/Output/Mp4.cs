@@ -33,14 +33,13 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
-                int languageCode = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to MP4", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
                 LogBook.Instance.addLogLine("Muxing to MP4", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
 
                 proc.initProcess();
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("muxingMessage", languageCode) + " MP4");
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " MP4");
                 // // LogBook.Instance.addLogLine(""Muxing", 1);
                 string args;
 

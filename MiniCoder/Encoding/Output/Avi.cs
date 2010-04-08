@@ -34,7 +34,6 @@ namespace MiniCoder.Encoding.Output
             try
             {
                 LogBook.Instance.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
-                int language = MiniSystem.getLanguage();
                 MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
@@ -42,7 +41,7 @@ namespace MiniCoder.Encoding.Output
 
                 proc.initProcess();
                 // // LogBook.Instance.addLogLine(""Muxing", 1);
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("muxingMessage", language) + " avi...");
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " avi...");
                 string args;
 
                 try

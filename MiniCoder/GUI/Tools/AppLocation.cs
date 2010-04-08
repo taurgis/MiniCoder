@@ -32,17 +32,17 @@ namespace MiniCoder.GUI.External
         SortedList<String, Tool> packages;
 
         FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-        public AppLocation(SortedList<String, Tool> packages,int languageCode)
+        public AppLocation(SortedList<String, Tool> packages)
         {
             InitializeComponent();
             this.packages = packages;
-            audioTab.Text = LanguageController.getLanguageString("audioTabTitle",languageCode);
-            videoTab.Text = LanguageController.getLanguageString("videoTabTitle",languageCode);
-            muxTab.Text = LanguageController.getLanguageString("muxingTabTitle",languageCode);
-            otherTab.Text = LanguageController.getLanguageString("otherTabTitle",languageCode);
-            saveApps.Text = LanguageController.getLanguageString("saveButton",languageCode);
-            cancelApps.Text = LanguageController.getLanguageString("updateCancelButton",languageCode);
-            this.Text = LanguageController.getLanguageString("customPathsTitle", languageCode);
+            audioTab.Text = LanguageController.Instance.getLanguageString("audioTabTitle");
+            videoTab.Text = LanguageController.Instance.getLanguageString("videoTabTitle");
+            muxTab.Text = LanguageController.Instance.getLanguageString("muxingTabTitle");
+            otherTab.Text = LanguageController.Instance.getLanguageString("otherTabTitle");
+            saveApps.Text = LanguageController.Instance.getLanguageString("saveButton");
+            cancelApps.Text = LanguageController.Instance.getLanguageString("updateCancelButton");
+            this.Text = LanguageController.Instance.getLanguageString("customPathsTitle");
         }
 
         private void madplaySelect_Click(object sender, EventArgs e)

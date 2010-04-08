@@ -124,8 +124,8 @@ namespace System
 
         public void sendmail(TreeView list)
         {
-            int languageCode = MiniSystem.getLanguage();
-            if (MessageBox.Show(LanguageController.getLanguageString("errorWarningMessage", languageCode), LanguageController.getLanguageString("errorWarningTitle", languageCode), MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+
+            if (MessageBox.Show(LanguageController.Instance.getLanguageString("errorWarningMessage"), LanguageController.Instance.getLanguageString("errorWarningTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
                 StreamWriter streamWriter = new StreamWriter(Application.StartupPath + "\\temp\\" + "\\log.txt");
                 AnalyseTree(list, streamWriter);

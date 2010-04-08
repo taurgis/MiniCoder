@@ -40,14 +40,14 @@ namespace MiniCoder.Encoding.Sound.Decoding
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-                int languageCode = MiniSystem.getLanguage();
+    
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
                 LogBook.Instance.addLogLine("Decoding AC3 - Using valdec", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("audioDecodingMessage", languageCode));
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 

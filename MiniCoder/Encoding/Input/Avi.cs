@@ -51,7 +51,6 @@ namespace MiniCoder.Encoding.Input
 
             LogBook.Instance.addLogLine("Demuxing AVI - Using Vdubmod", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
             MiniProcess proc = new DefaultProcess("Demuxing Avi", fileDetails["name"][0] + "DeMuxingProcess");
-            int language = MiniSystem.getLanguage();
             processWatcher.setProcess(proc);
 
             proc.stdErrDisabled(false);
@@ -62,7 +61,7 @@ namespace MiniCoder.Encoding.Input
                 if (!vdubmod.isInstalled())
                     vdubmod.download();
 
-                LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingMessage", language) + " AVI Tracks");
+                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMessage") + " AVI Tracks");
 
                 proc.initProcess();
 
@@ -92,11 +91,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingAbortedMessage", language));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                     return false;
                 }
                 else
-                    LogBook.Instance.setInfoLabel(LanguageController.getLanguageString("demuxingCompleteMessage", language));
+                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
                 try
                 {
                     if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.Instance.getExtention(tracks["audio"][0].codec)))
