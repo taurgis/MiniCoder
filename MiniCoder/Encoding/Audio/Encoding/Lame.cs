@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.External;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Sound.Encoding
+namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
     class Lame : MiniEncoder
     {
@@ -43,11 +44,11 @@ namespace MiniCoder.Encoding.Sound.Encoding
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
-                LogBook.Instance.addLogLine("Encoding to Lame MP3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+               // LogBook.Instance.addLogLine("Encoding to Lame MP3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
 
 
-                //// // LogBook.Instance.addLogLine(""Encoding Audio",1);
+                //// //// LogBook.Instance.addLogLine(""Encoding Audio",1);
                 proc.initProcess();
 
 
@@ -79,14 +80,14 @@ namespace MiniCoder.Encoding.Sound.Encoding
                 }
                 else
                 {
-                    LogBook.Instance.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
+                   // LogBook.Instance.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
 
                     return true;
                 }
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error encoding audio to Lame MP3. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error encoding audio to Lame MP3. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

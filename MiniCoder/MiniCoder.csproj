@@ -93,6 +93,15 @@
       <DependentUpon>Portugese-Brasil.resx</DependentUpon>
     </Compile>
     <Compile Include="Core\Other\Codec.cs" />
+    <Compile Include="Core\Other\Logging\LogbookControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\Other\Logging\LogbookControl.Designer.cs">
+      <DependentUpon>LogbookControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Other\Logging\LogBookController.cs" />
+    <Compile Include="Core\Other\Logging\LogMessage.cs" />
+    <Compile Include="Core\Other\Logging\LogMessageCategory.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
     <Compile Include="Core\Settings\MainSettings.cs" />
     <Compile Include="Core\Settings\SettingsController.cs" />
@@ -144,7 +153,7 @@
     <Compile Include="Encoding\Process Management\MiniProcess.cs" />
     <Compile Include="Core\Other\MiniOnline.cs" />
     <Compile Include="Core\Other\Language.cs" />
-    <Compile Include="Core\Other\LogBook.cs" />
+    <Compile Include="Core\Other\Logging\LogBook.cs" />
     <Compile Include="Core\Other\MiniSystem.cs" />
     <Compile Include="Encoding\Process Management\ProcessWatcher.cs" />
     <Compile Include="Encoding\Video\DGAVCIndex.cs" />
@@ -176,6 +185,12 @@
     </Compile>
     <Compile Include="GUI\Controls\EncodeSettings.Designer.cs">
       <DependentUpon>EncodeSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\FadingList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\FadingList.Designer.cs">
+      <DependentUpon>FadingList.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Download.cs">
       <SubType>Form</SubType>
@@ -229,6 +244,10 @@
       <LastGenOutput>English.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Core\Other\Logging\LogbookControl.resx">
+      <DependentUpon>LogbookControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AviSynth\CustomFilter.resx">
       <DependentUpon>CustomFilter.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -239,6 +258,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Controls\EncodeSettings.resx">
       <DependentUpon>EncodeSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\FadingList.resx">
+      <DependentUpon>FadingList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Download.resx">
@@ -290,6 +313,11 @@
   <ItemGroup>
     <Content Include="bigIcon.ico" />
     <Content Include="bin\Debug\bigIcon.ico" />
+    <None Include="Resources\bug-icon.png" />
+    <None Include="Resources\ist2_4471156-bug-icons1.jpg" />
+    <None Include="Resources\ist2_4471156-bug-icons.jpg" />
+    <None Include="Resources\info_blauw.jpg" />
+    <None Include="Resources\1195445190322000997molumen_red_round_error_warning_icon.svg.med.png" />
     <None Include="app.manifest" />
     <None Include="Resources\Icon1.ico" />
   </ItemGroup>

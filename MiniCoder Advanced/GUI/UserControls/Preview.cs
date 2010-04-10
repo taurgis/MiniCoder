@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MiniCoder_Advanced.GUI.UserControls
+namespace MiniTech.MiniCoder_Advanced.GUI.UserControls
 {
     public partial class Preview : UserControl
     {

@@ -19,7 +19,10 @@ using System.Collections;
 using System.Xml;
 using System.Xml.Schema;
 using System.IO;
-namespace MiniCoder.Core.Encoding
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+
+namespace MiniTech.MiniCoder.Core.Encoding
 {
     /* XMLValidator is currently only used to validate chapter files 
      * contained in MP4 or MKV files.
@@ -34,6 +37,7 @@ namespace MiniCoder.Core.Encoding
         public XMLValidator(string fileName)
         {
             this.fileName = fileName;
+            LogBookController.Instance.addLogLine("Reading file: " + fileName, LogMessageCategories.Debug);
         }
 
         public Boolean Validate()
@@ -51,14 +55,13 @@ namespace MiniCoder.Core.Encoding
             }
             catch (IOException e)
             {
-                LogBook.Instance.addLogLine("Error accessing chapter files. Probably doesn't exist. \n" + e, "Errors", "", true);
-
+                LogBookController.Instance.addLogLine("Error accessing chapter files. Probably doesn't exist. \n" + e, LogMessageCategories.Error);
+               
                 return false;
             }
             catch (XmlException e)
             {
-                LogBook.Instance.addLogLine("Error inside chapters XML file, trying again.\n" + e, "Errors", "", true);
-
+                LogBookController.Instance.addLogLine("Error inside chapters XML file, trying again.\n" + e, LogMessageCategories.Error);
                 return false;
             }
             finally
@@ -71,12 +74,13 @@ namespace MiniCoder.Core.Encoding
 
         static void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
+            LogBookController.Instance.addLogLine("XML Error: " + e.Message, LogMessageCategories.Debug);
+
             switch (e.Severity)
             {
                 case XmlSeverityType.Error:
                     break;
                 default:
-
                     break;
             }
         }

@@ -1,6 +1,6 @@
-﻿using MiniCOder.GUI.Controls;
-
-namespace MiniCoder.GUI
+﻿using MiniTech.MiniCoder.GUI.Controls;
+using MiniTech.MiniCoder.Core.Other.Logging;
+namespace MiniTech.MiniCoder.GUI
 {
     partial class MainForm
     {
@@ -40,6 +40,7 @@ namespace MiniCoder.GUI
             this.addFile = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.allVfrCheck = new System.Windows.Forms.CheckBox();
             this.inputList = new System.Windows.Forms.ListView();
             this.inputHeader = new System.Windows.Forms.ColumnHeader();
             this.statusHeader = new System.Windows.Forms.ColumnHeader();
@@ -51,9 +52,10 @@ namespace MiniCoder.GUI
             this.clearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
             this.settingsTab = new System.Windows.Forms.TabPage();
+            this.encodeSettings = new MiniTech.MiniCoder.GUI.Controls.EncodeSettings();
             this.optionsTab = new System.Windows.Forms.TabPage();
+            this.encodeOptions = new MiniTech.MiniCoder.GUI.Controls.EncodeOptions();
             this.logTab = new System.Windows.Forms.TabPage();
-            this.logView = new System.Windows.Forms.TreeView();
             this.logMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -66,16 +68,12 @@ namespace MiniCoder.GUI
             this.urlHeader = new System.Windows.Forms.ColumnHeader();
             this.infoLabel = new System.Windows.Forms.Label();
             this.notifyMiniCoder = new System.Windows.Forms.NotifyIcon(this.components);
-            this.allVfrCheck = new System.Windows.Forms.CheckBox();
-            this.encodeSettings = new MiniCOder.GUI.Controls.EncodeSettings();
-            this.encodeOptions = new MiniCOder.GUI.Controls.EncodeOptions();
             this.mainTabPage.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.inputMenu.SuspendLayout();
             this.settingsTab.SuspendLayout();
             this.optionsTab.SuspendLayout();
-            this.logTab.SuspendLayout();
             this.logMenu.SuspendLayout();
             this.newsTab.SuspendLayout();
             this.SuspendLayout();
@@ -176,6 +174,16 @@ namespace MiniCoder.GUI
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
+            // allVfrCheck
+            // 
+            this.allVfrCheck.AutoSize = true;
+            this.allVfrCheck.Location = new System.Drawing.Point(10, 17);
+            this.allVfrCheck.Name = "allVfrCheck";
+            this.allVfrCheck.Size = new System.Drawing.Size(15, 14);
+            this.allVfrCheck.TabIndex = 3;
+            this.allVfrCheck.UseVisualStyleBackColor = true;
+            this.allVfrCheck.CheckedChanged += new System.EventHandler(this.allVfrCheck_CheckedChanged);
+            // 
             // inputList
             // 
             this.inputList.AllowDrop = true;
@@ -220,31 +228,31 @@ namespace MiniCoder.GUI
             this.toolStripMenuItem2,
             this.clearMenuItem});
             this.inputMenu.Name = "inputMenu";
-            this.inputMenu.Size = new System.Drawing.Size(125, 76);
+            this.inputMenu.Size = new System.Drawing.Size(118, 76);
             // 
             // addMenu
             // 
             this.addMenu.Name = "addMenu";
-            this.addMenu.Size = new System.Drawing.Size(124, 22);
+            this.addMenu.Size = new System.Drawing.Size(117, 22);
             this.addMenu.Text = "Add";
             this.addMenu.Click += new System.EventHandler(this.addMenu_Click);
             // 
             // removeMenuItem
             // 
             this.removeMenuItem.Name = "removeMenuItem";
-            this.removeMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.removeMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeMenuItem.Text = "Remove";
             this.removeMenuItem.Click += new System.EventHandler(this.removeMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(114, 6);
             // 
             // clearMenuItem
             // 
             this.clearMenuItem.Name = "clearMenuItem";
-            this.clearMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.clearMenuItem.Size = new System.Drawing.Size(117, 22);
             this.clearMenuItem.Text = "Clear";
             this.clearMenuItem.Click += new System.EventHandler(this.clearMenuItem_Click);
             // 
@@ -269,6 +277,16 @@ namespace MiniCoder.GUI
             this.settingsTab.Text = "Settings";
             this.settingsTab.UseVisualStyleBackColor = true;
             // 
+            // encodeSettings
+            // 
+            this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.encodeSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.encodeSettings.Location = new System.Drawing.Point(3, 3);
+            this.encodeSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.encodeSettings.Name = "encodeSettings";
+            this.encodeSettings.Size = new System.Drawing.Size(396, 350);
+            this.encodeSettings.TabIndex = 0;
+            // 
             // optionsTab
             // 
             this.optionsTab.Controls.Add(this.encodeOptions);
@@ -279,9 +297,15 @@ namespace MiniCoder.GUI
             this.optionsTab.Text = "Options";
             this.optionsTab.UseVisualStyleBackColor = true;
             // 
+            // encodeOptions
+            // 
+            this.encodeOptions.Location = new System.Drawing.Point(0, 0);
+            this.encodeOptions.Name = "encodeOptions";
+            this.encodeOptions.Size = new System.Drawing.Size(385, 309);
+            this.encodeOptions.TabIndex = 0;
+            // 
             // logTab
             // 
-            this.logTab.Controls.Add(this.logView);
             this.logTab.Location = new System.Drawing.Point(4, 25);
             this.logTab.Name = "logTab";
             this.logTab.Padding = new System.Windows.Forms.Padding(3);
@@ -289,19 +313,12 @@ namespace MiniCoder.GUI
             this.logTab.TabIndex = 3;
             this.logTab.Text = "Log";
             this.logTab.UseVisualStyleBackColor = true;
-            // 
-            // logView
-            // 
-            this.logView.ContextMenuStrip = this.logMenu;
-            this.logView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logView.Font = new System.Drawing.Font("Arial", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logView.ImageIndex = 1;
-            this.logView.ImageList = this.iconList;
-            this.logView.Location = new System.Drawing.Point(3, 3);
-            this.logView.Name = "logView";
-            this.logView.SelectedImageIndex = 0;
-            this.logView.Size = new System.Drawing.Size(396, 350);
-            this.logView.TabIndex = 1;
+
+            this.logControl = new LogbookControl();
+            this.logControl.Dock = System.Windows.Forms.DockStyle.Fill;
+
+            this.logTab.Controls.Add(this.logControl);
+
             // 
             // logMenu
             // 
@@ -310,24 +327,24 @@ namespace MiniCoder.GUI
             this.toolStripMenuItem1,
             this.sendErrorReportToolStripMenuItem});
             this.logMenu.Name = "logMenu";
-            this.logMenu.Size = new System.Drawing.Size(170, 54);
+            this.logMenu.Size = new System.Drawing.Size(164, 54);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+ 
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 6);
             // 
             // sendErrorReportToolStripMenuItem
             // 
             this.sendErrorReportToolStripMenuItem.Name = "sendErrorReportToolStripMenuItem";
-            this.sendErrorReportToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.sendErrorReportToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.sendErrorReportToolStripMenuItem.Text = "Send error report";
             this.sendErrorReportToolStripMenuItem.Click += new System.EventHandler(this.sendErrorReportToolStripMenuItem_Click);
             // 
@@ -399,33 +416,6 @@ namespace MiniCoder.GUI
             this.notifyMiniCoder.Text = "MiniCoder";
             this.notifyMiniCoder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMiniCoder_MouseDoubleClick);
             // 
-            // allVfrCheck
-            // 
-            this.allVfrCheck.AutoSize = true;
-            this.allVfrCheck.Location = new System.Drawing.Point(10, 17);
-            this.allVfrCheck.Name = "allVfrCheck";
-            this.allVfrCheck.Size = new System.Drawing.Size(15, 14);
-            this.allVfrCheck.TabIndex = 3;
-            this.allVfrCheck.UseVisualStyleBackColor = true;
-            this.allVfrCheck.CheckedChanged += new System.EventHandler(this.allVfrCheck_CheckedChanged);
-            // 
-            // encodeSettings
-            // 
-            this.encodeSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.encodeSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.encodeSettings.Location = new System.Drawing.Point(3, 3);
-            this.encodeSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.encodeSettings.Name = "encodeSettings";
-            this.encodeSettings.Size = new System.Drawing.Size(396, 350);
-            this.encodeSettings.TabIndex = 0;
-            // 
-            // encodeOptions
-            // 
-            this.encodeOptions.Location = new System.Drawing.Point(0, 0);
-            this.encodeOptions.Name = "encodeOptions";
-            this.encodeOptions.Size = new System.Drawing.Size(385, 309);
-            this.encodeOptions.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,7 +438,6 @@ namespace MiniCoder.GUI
             this.inputMenu.ResumeLayout(false);
             this.settingsTab.ResumeLayout(false);
             this.optionsTab.ResumeLayout(false);
-            this.logTab.ResumeLayout(false);
             this.logMenu.ResumeLayout(false);
             this.newsTab.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -491,7 +480,7 @@ namespace MiniCoder.GUI
         private System.Windows.Forms.ToolStripMenuItem clearMenuItem;
         private EncodeSettings encodeSettings;
         private EncodeOptions encodeOptions;
-        private System.Windows.Forms.TreeView logView;
+        private LogbookControl logControl;
         public System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.ContextMenuStrip logMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;

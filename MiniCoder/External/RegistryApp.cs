@@ -19,10 +19,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Win32;
 using System.IO;
-using MiniCoder.GUI;
+using MiniTech.MiniCoder.GUI;
 using System.Xml;
 
-namespace MiniCoder.External
+namespace MiniTech.MiniCoder.External
 {
     class RegistryApp : Tool
     {

@@ -22,7 +22,8 @@ using System.Collections;
 using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace MiniCoder.Encoding.Process_Management
+using MiniTech.MiniCoder.Core.Other.Logging;
+namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
     
     public class XvidProcess : MiniProcess
@@ -84,7 +85,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
 
-                LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, loglocation, "", false);
+               // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, loglocation, "", false);
                 taskProcess();
                 return exitCode;
             }
@@ -209,7 +210,7 @@ namespace MiniCoder.Encoding.Process_Management
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
             }
             finally
             {
@@ -251,7 +252,7 @@ namespace MiniCoder.Encoding.Process_Management
                     {
                         stderrLast = read;
 
-                        LogBook.Instance.addLogLine(read, loglocation, "", false);
+                       // LogBook.Instance.addLogLine(read, loglocation, "", false);
                      
                     }
                 }
@@ -289,10 +290,10 @@ namespace MiniCoder.Encoding.Process_Management
                                 float percent = (float)currframe / (float)totalframes;
                                 if (percent < 0)
                                     percent = 1.0F;
-                                LogBook.Instance.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
+                               LogBookController.Instance.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
                             }
-                            if (read2.Contains("fps"))
-                                LogBook.Instance.addLogLine(read2, loglocation, "", false);
+                            if (read2.Contains("fps")) { }
+                               // LogBook.Instance.addLogLine(read2, loglocation, "", false);
                            
                         }
                     }

@@ -18,11 +18,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     interface InputFile
     {

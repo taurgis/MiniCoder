@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace MiniCoder_Advanced
+namespace MiniTech.MiniCoder_Advanced
 {
     static class Program
     {

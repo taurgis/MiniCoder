@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace MiniCoder.Encoding.AviSynth
+namespace MiniTech.MiniCoder.Encoding.AviSynth
 {
 
     public enum AviSynthColorspace : int

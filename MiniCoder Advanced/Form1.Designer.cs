@@ -1,4 +1,4 @@
-﻿namespace MiniCoder_Advanced
+﻿namespace MiniTech.MiniCoder_Advanced
 {
     partial class Form1
     {

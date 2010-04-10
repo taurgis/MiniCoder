@@ -21,14 +21,14 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using MiniCoder.GUI.External;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.GUI;
-using MiniCoder.Core.Languages;
-using MiniCoder.Core.Settings;
+using MiniTech.MiniCoder.GUI.External;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.GUI;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Settings;
 using System.Diagnostics;
-namespace MiniCOder.GUI.Controls
+namespace MiniTech.MiniCoder.GUI.Controls
 {
     public partial class EncodeOptions : UserControl
     {

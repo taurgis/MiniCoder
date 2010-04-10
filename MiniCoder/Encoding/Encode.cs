@@ -18,16 +18,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using MiniCoder.Encoding.Input;
-using MiniCoder.External;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.Encoding.VideoEnc;
-using MiniCoder.Encoding.AviSynth;
-using MiniCoder.Encoding.VideoEnc.Encoding;
-using MiniCoder.Encoding.Output;
-using MiniCoder.Core.Languages;
-namespace MiniCoder.Encoding
+using MiniTech.MiniCoder.Encoding.Input;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Encoding.VideoEnc;
+using MiniTech.MiniCoder.Encoding.AviSynth;
+using MiniTech.MiniCoder.Encoding.VideoEnc.Encoding;
+using MiniTech.MiniCoder.Encoding.Output;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+namespace MiniTech.MiniCoder.Encoding
 {
     class Encode
     {
@@ -50,7 +52,7 @@ namespace MiniCoder.Encoding
                 //foreach (string key in fileDetails.Keys)
                 //{
                 //    for(int i = 0; i < fileDetails[key].Length;i++)
-                //        LogBook.Instance.addLogLine(key + " : " + fileDetails[key][i], fileDetails["name"][0] + "FileInfoFetch", "", false);
+                //       // LogBook.Instance.addLogLine(key + " : " + fileDetails[key][i], fileDetails["name"][0] + "FileInfoFetch", "", false);
 
                 //}
 
@@ -59,7 +61,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error starting encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error starting encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 // return false;
             }
 
@@ -71,40 +73,40 @@ namespace MiniCoder.Encoding
             {
                 fileDetails = getFileDetails(fileName);
 
-                LogBook.Instance.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
-                LogBook.Instance.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
+                // LogBook.Instance.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
+                // LogBook.Instance.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
 
                 foreach (string key in encodeSet.Keys)
                 {
-                    LogBook.Instance.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
+                    // LogBook.Instance.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
 
                 }
 
-                LogBook.Instance.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("fileInfoFetch"));
+                // LogBook.Instance.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("fileInfoFetch"));
 
 
                 try
                 {
-                    for (int i = 0; i < fileTracks["audio"].Length; i++)
-                        LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
-                    for (int i = 0; i < fileTracks["subs"].Length; i++)
-                        LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                    for (int i = 0; i < fileTracks["audio"].Length; i++) { }
+                    // LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
+                    for (int i = 0; i < fileTracks["subs"].Length; i++) { }
+                    // LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
                 }
                 catch (Exception error)
                 {
-                    LogBook.Instance.addLogLine("Error getting language info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    LogBookController.Instance.addLogLine("Error getting language info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                     for (int i = 0; i < fileTracks["audio"].Length; i++)
-                        LogBook.Instance.addLogLine("Audio: " + fileTracks["audio"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                        LogBookController.Instance.addLogLine("Audio: " + fileTracks["audio"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                     for (int i = 0; i < fileTracks["subs"].Length; i++)
-                        LogBook.Instance.addLogLine("Audio: " + fileTracks["subs"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                        LogBookController.Instance.addLogLine("Subs: " + fileTracks["subs"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
 
                 }
                 return true;
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error getting file info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error getting file info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }
@@ -119,7 +121,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error starting Theora encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error starting Theora encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }
@@ -151,7 +153,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error encoding AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error encoding AVS file. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }
@@ -171,7 +173,7 @@ namespace MiniCoder.Encoding
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error starting default encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error starting default encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }
@@ -183,7 +185,7 @@ namespace MiniCoder.Encoding
 
         public bool muxFile()
         {
-            LogBook.Instance.addLogLine("Muxing File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileMuxing", false);
+            // LogBook.Instance.addLogLine("Muxing File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileMuxing", false);
 
             Container container = null;
             switch (encodeSet["container"])
@@ -212,7 +214,7 @@ namespace MiniCoder.Encoding
         #region "AviSynth"
         private bool createAvs()
         {
-            LogBook.Instance.addLogLine("Creating AVS File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AvsCreation", false);
+            // LogBook.Instance.addLogLine("Creating AVS File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AvsCreation", false);
 
             AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet, tools);
             return avsCreator.getAvsFile(fileTracks);
@@ -240,7 +242,7 @@ namespace MiniCoder.Encoding
 
         private bool dgavcIndex()
         {
-            LogBook.Instance.addLogLine("DGAVCIndex Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DGAVCStep", false);
+            // LogBook.Instance.addLogLine("DGAVCIndex Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DGAVCStep", false);
             switch (fileTracks["video"][0].codec)
             {
                 case "x264":
@@ -263,7 +265,7 @@ namespace MiniCoder.Encoding
         }
         private bool analyseVfr()
         {
-            LogBook.Instance.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
+            // LogBook.Instance.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
             Vfr vfr = new Vfr();
             return vfr.analyse(tools["mkv2vfr"], tools["DtsEdit"], encodeSet, fileDetails, processWatcher);
         }
@@ -273,7 +275,7 @@ namespace MiniCoder.Encoding
         #region Demuxing
         private bool demuxFile()
         {
-            LogBook.Instance.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing", false);
+            // LogBook.Instance.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing", false);
             switch (fileDetails["ext"][0].ToUpper())
             {
                 case "AVI":
@@ -379,7 +381,7 @@ namespace MiniCoder.Encoding
                 try
                 {
                     videoTracks[0] = new Video(mediaInfo.Video[0].CodecID.ToString(), 0);
-                    LogBook.Instance.addLogLine("Error getting video track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    LogBookController.Instance.addLogLine("Error getting video track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 }
                 catch
                 {
@@ -398,7 +400,7 @@ namespace MiniCoder.Encoding
                 catch (Exception error)
                 {
                     audioTracks[i] = new Audio(mediaInfo.Audio[i].Title, mediaInfo.Audio[i].LanguageString, mediaInfo.Audio[i].CodecID.ToString(), audioTracks.Length + i);
-                    LogBook.Instance.addLogLine("Error getting audio track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                    LogBookController.Instance.addLogLine("Error getting audio track info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 }
             }
 

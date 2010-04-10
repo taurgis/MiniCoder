@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-namespace MiniCoder.Encoding.Process_Management
+namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
     public interface MiniProcess
     {

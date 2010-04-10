@@ -17,10 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.External;
 
-namespace MiniCoder.Encoding.AviSynth.Plugins
+namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
     class Source : Plugin
     {

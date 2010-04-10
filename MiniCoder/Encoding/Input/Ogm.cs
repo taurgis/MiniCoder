@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     class Ogm : InputFile
     {
@@ -48,7 +49,7 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.Instance.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+           // LogBook.Instance.addLogLine("Demuxing OGM - Using OgmTools", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
    
 
             MiniProcess proc = new DefaultProcess("Demuxing OGM", fileDetails["name"][0] + "DeMuxingProcess");
@@ -62,7 +63,7 @@ namespace MiniCoder.Encoding.Input
                     ogmtools.download();
 
             
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMessage") + " OGM");
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMessage") + " OGM");
                 proc.initProcess();
 
 
@@ -83,7 +84,7 @@ namespace MiniCoder.Encoding.Input
                     tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["subs"][i].codec);
                     tempArg += " " + tracks["subs"][i].id + ":\"" + tracks["subs"][i].demuxPath + "\"";
                 }
-                //// LogBook.Instance.addLogLine("tempArg,1);
+                ////// LogBook.Instance.addLogLine("tempArg,1);
                 proc.setArguments(tempArg);
                 //MessageBox.Show(mainProcess.StartInfo.Arguments);
 
@@ -91,11 +92,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
+                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                     return false;
                 }
                 else
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
+                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
 
                 if (File.Exists(tempPath + fileDetails["name"][0] + "-Video Track." + Codec.Instance.getExtention(tracks["video"][0].codec)))
@@ -106,7 +107,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.Instance.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing","",true);
+                LogBookController.Instance.addLogLine("Can't find codec " + e.Message, LogMessageCategories.Error);
                 MessageBox.Show("Can't find codec");
                 return false;
             }

@@ -17,14 +17,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.Windows.Forms;
 using System.IO;
-using MiniCoder.Core.Languages;
-
-namespace MiniCoder.Encoding.VideoEnc.Encoding
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
+namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     class Theora : VideoEncoder
     {
@@ -33,7 +33,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
         {
             try
             {
-                LogBook.Instance.addLogLine("Encoding to Theora", fileDetails["name"][0] + "VideoEncoding", "", false);
+               // LogBook.Instance.addLogLine("Encoding to Theora", fileDetails["name"][0] + "VideoEncoding", "", false);
 
                 MiniProcess proc;
 
@@ -48,7 +48,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                     Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                     encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
 
-                    // // // LogBook.Instance.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
+                    // // //// LogBook.Instance.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
                 }
 
                 if (!theora.isInstalled())
@@ -57,7 +57,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 fileTracks["video"][0].encodePath = encOpts["outDIR"] + fileDetails["name"][0] + "_output.ogg";
 
 
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
                 if (!theora.isInstalled())
                     theora.download();
 
@@ -102,12 +102,12 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
                 tempStart = DateTime.Now;
 
                 exitCode = proc.startProcess();
-                //// LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                //// LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                //// LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                ////// LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
+                ////// LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
+                ////// LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
 
 
-                LogBook.Instance.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
+               // LogBook.Instance.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
                 if (proc.getAbandonStatus())
                     return true;
 
@@ -118,7 +118,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error encoding video to Theora. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error encoding video to Theora. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

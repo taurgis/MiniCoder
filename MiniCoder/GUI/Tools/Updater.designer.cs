@@ -1,4 +1,4 @@
-﻿namespace MiniCoder.GUI.External
+﻿namespace MiniTech.MiniCoder.GUI.External
 {
     partial class Updater
     {

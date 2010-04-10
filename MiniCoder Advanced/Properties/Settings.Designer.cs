@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MiniCoder_Advanced.Properties
+namespace MiniTech.MiniCoder_Advanced.Properties
 {
 
 

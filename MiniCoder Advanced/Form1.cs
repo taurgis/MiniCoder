@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MiniCoder_Advanced
+namespace MiniTech.MiniCoder_Advanced
 {
     public partial class Form1 : Form
     {

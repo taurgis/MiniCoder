@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
-using MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Sound.Decoding
+namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     class Flac : MiniDecoder
     {
@@ -46,9 +47,9 @@ namespace MiniCoder.Encoding.Sound.Decoding
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-                LogBook.Instance.addLogLine("Decoding Flac - Using flac", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
+               // LogBook.Instance.addLogLine("Decoding Flac - Using flac", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
                 String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
@@ -64,13 +65,13 @@ namespace MiniCoder.Encoding.Sound.Decoding
                 if (exitCode != 0)
                     return false;
                 audio.demuxPath = decodedAudio;
-                LogBook.Instance.addLogLine("Decoding completed", fileDetails["name"][0] + "AudioDecoding", "", false);
+               // LogBook.Instance.addLogLine("Decoding completed", fileDetails["name"][0] + "AudioDecoding", "", false);
 
                 return true;
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error decoding audio with Flac. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error decoding audio with Flac. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

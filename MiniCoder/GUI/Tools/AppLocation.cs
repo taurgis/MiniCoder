@@ -22,9 +22,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using MiniCoder.External;
-using MiniCoder.Core.Languages;
-namespace MiniCoder.GUI.External
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Core.Languages;
+namespace MiniTech.MiniCoder.GUI.External
 {
     public partial class AppLocation : Form
     {

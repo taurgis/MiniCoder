@@ -17,14 +17,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Encoding.AviSynth;
+using MiniTech.MiniCoder.Encoding.AviSynth;
 using System.Text.RegularExpressions;
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     class Avs : InputFile
     {
@@ -48,14 +48,14 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.Instance.addLogLine("Analysing AVS file", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "AVSAnalyse", false);
+           // LogBook.Instance.addLogLine("Analysing AVS file", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "AVSAnalyse", false);
             AviSynthScriptEnvironment environment = new AviSynthScriptEnvironment();
             AviSynthClip clip = environment.OpenScriptFile(fileDetails["fileName"][0]);
             fileDetails.Add("width", clip.VideoWidth.ToString().Split(Convert.ToChar("~")));
             fileDetails.Add("height", clip.VideoHeight.ToString().Split(Convert.ToChar(" ")));
             fileDetails.Add("avsfile", fileDetails["fileName"][0].Split(Char.Parse("\n")));
             fileDetails["fileName"][0] = getAvsSource(fileDetails["fileName"][0]);
-            LogBook.Instance.addLogLine("Retrieved source: " + fileDetails["fileName"][0], fileDetails["name"][0] + "AVSAnalyse", "", false);
+           // LogBook.Instance.addLogLine("Retrieved source: " + fileDetails["fileName"][0], fileDetails["name"][0] + "AVSAnalyse", "", false);
             clip = null;
             environment = null;
           

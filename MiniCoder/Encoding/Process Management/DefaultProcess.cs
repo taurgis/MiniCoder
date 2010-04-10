@@ -22,7 +22,9 @@ using System.Collections;
 using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace MiniCoder.Encoding.Process_Management
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
     public class DefaultProcess : MiniProcess
     {
@@ -83,7 +85,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-               LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
+              // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -208,7 +210,7 @@ namespace MiniCoder.Encoding.Process_Management
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
             }
             finally
             {
@@ -248,9 +250,9 @@ namespace MiniCoder.Encoding.Process_Management
                     if (!stderrLast.Equals(read))
                     {
                         stderrLast = read;
-                         LogBook.Instance.addLogLine(read, loglocation,"",false);
-                        LogBook.Instance.setInfoLabel(frontMessage +": " + read);
-                        // LogBook.Instance.addLogLine("read, 2);
+                        // LogBook.Instance.addLogLine(read, loglocation,"",false);
+                       LogBookController.Instance.setInfoLabel(frontMessage +": " + read);
+                        //// LogBook.Instance.addLogLine("read, 2);
                     }
                 }
                 Thread.Sleep(0);
@@ -269,7 +271,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.Instance.addLogLine(read2, loglocation,"",false);
+                           // LogBook.Instance.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

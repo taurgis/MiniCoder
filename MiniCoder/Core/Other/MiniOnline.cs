@@ -17,7 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.GUI;
+using MiniTech.MiniCoder.GUI;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;

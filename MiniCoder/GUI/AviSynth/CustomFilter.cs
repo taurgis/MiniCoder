@@ -19,12 +19,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
 using System.Text;
 using System.Windows.Forms;
 
 
-namespace MiniCoder.GUI.AviSynth
+namespace MiniTech.MiniCoder.GUI.AviSynth
 {
     public partial class CustomFilter : Form
     {
