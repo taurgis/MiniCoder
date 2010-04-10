@@ -17,10 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.External;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-namespace MiniCoder.Encoding.Sound.Encoding
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
     interface MiniEncoder
     {

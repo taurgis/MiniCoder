@@ -19,9 +19,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.GUI;
+using MiniTech.MiniCoder.GUI;
 using System.Xml;
-namespace MiniCoder.External
+namespace MiniTech.MiniCoder.External
 {
     class Zip : Tool
     {

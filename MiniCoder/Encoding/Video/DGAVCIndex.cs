@@ -17,13 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
-using MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
-namespace MiniCoder.Encoding.VideoEnc
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
     class DGAVCIndex
     {
@@ -34,7 +36,7 @@ namespace MiniCoder.Encoding.VideoEnc
 
         public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
         {
-     
+
             if (fileDetails["ext"][0].ToLower().Equals(".avi"))
                 return true;
             try
@@ -43,8 +45,8 @@ namespace MiniCoder.Encoding.VideoEnc
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvc"));
-                LogBook.Instance.addLogLine("Started Indexing AVC", fileDetails["name"][0] + "DGAVCStep", fileDetails["name"][0] + "DGAVCStepProcess", false);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvc"));
+                // LogBook.Instance.addLogLine("Started Indexing AVC", fileDetails["name"][0] + "DGAVCStep", fileDetails["name"][0] + "DGAVCStepProcess", false);
                 proc.initProcess();
 
                 if (!dgavcindex.isInstalled())
@@ -58,16 +60,16 @@ namespace MiniCoder.Encoding.VideoEnc
 
                 proc.startProcess();
                 video.demuxPath = dgaFile;
-                // // LogBook.Instance.addLogLine(""Finished Indexing AVC",1);
+
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcAbort"));
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcAbort"));
                     return false;
                 }
                 else
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcCompleted"));
-                    LogBook.Instance.addLogLine("Finished Indexing AVC", fileDetails["name"][0] + "DGAVCStep", "", false);
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcCompleted"));
+                    LogBookController.Instance.addLogLine("Finished Indexing AVC", LogMessageCategories.Video);
                 }
                 if (File.Exists(dgaFile))
                     return true;
@@ -76,7 +78,7 @@ namespace MiniCoder.Encoding.VideoEnc
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error indexing AVC. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error indexing AVC. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

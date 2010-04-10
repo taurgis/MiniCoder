@@ -17,11 +17,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.External;
-using MiniCoder.Encoding.Sound.Decoding;
-using MiniCoder.Encoding.Sound.Encoding;
-using MiniCoder.Encoding.Process_Management;
-namespace MiniCoder.Encoding.Input.Tracks
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Sound.Decoding;
+using MiniTech.MiniCoder.Encoding.Sound.Encoding;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Core.Other.Logging;
+namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
     class Audio : Track
     {
@@ -57,7 +58,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             {
                 MiniDecoder decoder;
                 Tool tempTool;
-                LogBook.Instance.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
+               // LogBook.Instance.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
 
                 switch (Codec.Instance.getExtention(this.codec))
                 {
@@ -99,7 +100,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error selecting audio decoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error selecting audio decoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }
@@ -109,7 +110,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             try
             {
 
-                LogBook.Instance.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
+               // LogBook.Instance.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
 
                 MiniEncoder encoder = null;
                 switch (EncOpts["audcodec"])
@@ -131,7 +132,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error selecting audio encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error selecting audio encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

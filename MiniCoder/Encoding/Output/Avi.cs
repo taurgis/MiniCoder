@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Output
+namespace MiniTech.MiniCoder.Encoding.Output
 {
     class AviOut : Container
     {
@@ -33,15 +34,15 @@ namespace MiniCoder.Encoding.Output
         {
             try
             {
-                LogBook.Instance.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
+               // LogBook.Instance.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
                 MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
 
 
                 proc.initProcess();
-                // // LogBook.Instance.addLogLine(""Muxing", 1);
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " avi...");
+                // //// LogBook.Instance.addLogLine(""Muxing", 1);
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " avi...");
                 string args;
 
                 try
@@ -96,16 +97,16 @@ namespace MiniCoder.Encoding.Output
                 }
                 else
                 {
-                    LogBook.Instance.setInfoLabel("Muxing Complete");
+                   LogBookController.Instance.setInfoLabel("Muxing Complete");
                   
-                    LogBook.Instance.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
+                   // LogBook.Instance.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
                     return true;
                 }
 
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error muxing to avi. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error muxing to avi. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

@@ -1,4 +1,4 @@
-﻿namespace MiniCoder_Advanced.GUI.UserControls
+﻿namespace MiniTech.MiniCoder_Advanced.GUI.UserControls
 {
     partial class Preview
     {

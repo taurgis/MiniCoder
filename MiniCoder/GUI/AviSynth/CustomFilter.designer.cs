@@ -1,4 +1,4 @@
-﻿namespace MiniCoder.GUI.AviSynth
+﻿namespace MiniTech.MiniCoder.GUI.AviSynth
 {
     partial class CustomFilter
     {

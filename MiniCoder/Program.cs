@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using MiniCoder.GUI;
-namespace MiniCoder
+using MiniTech.MiniCoder.GUI;
+namespace MiniTech.MiniCoder
 {
     static class Program
     {

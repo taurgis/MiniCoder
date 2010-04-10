@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-namespace MiniCoder.External
+namespace MiniTech.MiniCoder.External
 {
     public interface Tool
     {

@@ -22,12 +22,14 @@ using System.Collections;
 using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace MiniCoder.Encoding.Process_Management
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
-    
+
     public class X264Process : MiniProcess
     {
-        
+
         private static Process mainProcess = null;
         Thread backGround;
         private static StreamReader stdout = null;
@@ -87,8 +89,8 @@ namespace MiniCoder.Encoding.Process_Management
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-                
-                LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
+
+                // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -121,21 +123,21 @@ namespace MiniCoder.Encoding.Process_Management
 
 
             }
-            
+
         }
 
         private void taskProcess()
         {
-          
+
 
             mainProcess.EnableRaisingEvents = true;
 
             mainProcess.StartInfo.UseShellExecute = false;
-            
-                mainProcess.StartInfo.CreateNoWindow = true;
-                mainProcess.StartInfo.RedirectStandardError = true;
-                mainProcess.StartInfo.RedirectStandardOutput = true;
-            
+
+            mainProcess.StartInfo.CreateNoWindow = true;
+            mainProcess.StartInfo.RedirectStandardError = true;
+            mainProcess.StartInfo.RedirectStandardOutput = true;
+
             backGround = new Thread(new ThreadStart(runprocess));
             backGround.Start();
 
@@ -168,9 +170,9 @@ namespace MiniCoder.Encoding.Process_Management
                     }
                 }
 
-               
 
-              
+
+
 
             }
 
@@ -193,27 +195,27 @@ namespace MiniCoder.Encoding.Process_Management
 
                 }
 
-              
-                    stderr = mainProcess.StandardError;
-                    stdout = mainProcess.StandardOutput;
 
-                    stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                    stdOutThread = new Thread(new ThreadStart(stdoutProcess));
+                stderr = mainProcess.StandardError;
+                stdout = mainProcess.StandardOutput;
 
-                    stdErrThread.Start();
-                    stdOutThread.Start();
-               
+                stdErrThread = new Thread(new ThreadStart(stderrProcess));
+                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
 
-               
-                    mainProcess.WaitForExit();
-                    exitCode = mainProcess.ExitCode;
-                
+                stdErrThread.Start();
+                stdOutThread.Start();
+
+
+
+                mainProcess.WaitForExit();
+                exitCode = mainProcess.ExitCode;
+
                 Thread.Sleep(2000);
 
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error in process. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
             }
             finally
             {
@@ -248,27 +250,27 @@ namespace MiniCoder.Encoding.Process_Management
         }
 
         String read;
-        string stderrLast ="";
+        string stderrLast = "";
         DirectShow.Preview preview;
         private void showWindow()
         {
-             preview = new DirectShow.Preview();
-             if (encOpts["resize"] != "0")
-             {
-                 preview.Width = int.Parse(encOpts["width"]);
-                 preview.Height = int.Parse(encOpts["height"]) + 49;
-             }
-             else
-             {
-                 preview.Width = int.Parse(fileDetails["width"][0]);
-                 preview.Height = int.Parse(fileDetails["height"][0]) + 49;
-             }
+            preview = new DirectShow.Preview();
+            if (encOpts["resize"] != "0")
+            {
+                preview.Width = int.Parse(encOpts["width"]);
+                preview.Height = int.Parse(encOpts["height"]) + 49;
+            }
+            else
+            {
+                preview.Width = int.Parse(fileDetails["width"][0]);
+                preview.Height = int.Parse(fileDetails["height"][0]) + 49;
+            }
             preview.openFile(fileDetails["fileName"][0]);
             windowIsOpen = true;
             preview.ShowDialog();
             windowIsOpen = false;
             preview.Dispose();
-           
+
         }
         Boolean windowIsOpen = false;
         private void stderrProcess()
@@ -278,30 +280,30 @@ namespace MiniCoder.Encoding.Process_Management
                 previewer = new Thread(new ThreadStart(showWindow));
                 previewer.Start();
             }
-                while ((read = stderr.ReadLine()) != null)
+            while ((read = stderr.ReadLine()) != null)
+            {
+                if (!disablestderr)
                 {
-                    if (!disablestderr)
+                    if (!stderrLast.Equals(read))
                     {
-                        if (!stderrLast.Equals(read))
+                        stderrLast = read;
+                        if (read.Contains("frames") & CharOccurs(read, ',') == 3)
                         {
-                            stderrLast = read;
-                            if (read.Contains("frames") & CharOccurs(read, ',') == 3)
+                            string[] split = Regex.Split(read, ",");
+                            LogBookController.Instance.setInfoLabel(frontMessage + " - Pass " + pass + ": " + Regex.Split(split[0], "]")[0].Replace("[", "") + " - " + split[3]);
+                            if (null != previewer && windowIsOpen)
                             {
-                                string[] split = Regex.Split(read, ",");
-                                LogBook.Instance.setInfoLabel(frontMessage + " - Pass " + pass + ": " + Regex.Split(split[0], "]")[0].Replace("[","") + " - " + split[3]);
-                                if (null != previewer && windowIsOpen)
-                                {
-                                    string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
-                                    preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
-                                    // preview.setPosition(
-                                }
-                            }
-                            else
-                            {
-                                LogBook.Instance.addLogLine(read, loglocation, "", false);
+                                string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
+                                preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
+                                // preview.setPosition(
                             }
                         }
+                        else
+                        {
+                            // LogBook.Instance.addLogLine(read, loglocation, "", false);
+                        }
                     }
+                }
                 Thread.Sleep(0);
             }
         }
@@ -320,26 +322,26 @@ namespace MiniCoder.Encoding.Process_Management
         }
 
         String read2;
-        string stdoutlast ="";
-         private void stdoutProcess()
+        string stdoutlast = "";
+        private void stdoutProcess()
         {
-                while ((read2 = stdout.ReadLine()) != null)
+            while ((read2 = stdout.ReadLine()) != null)
+            {
+                if (!disablestdout)
                 {
-                    if (!disablestdout)
+                    if (!stdoutlast.Equals(read2))
                     {
-                        if (!stdoutlast.Equals(read2))
-                        {
-                            stdoutlast = read2;
-                            LogBook.Instance.addLogLine(read2, loglocation,"",false);
-                           
-                        }
+                        stdoutlast = read2;
+                        // LogBook.Instance.addLogLine(read2, loglocation,"",false);
+
                     }
-                    Thread.Sleep(0);
                 }
+                Thread.Sleep(0);
             }
         }
-
-
-      
     }
+
+
+
+}
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MiniCoder.Core.Languages {
+namespace MiniTech.MiniCoder.Core.Languages {
     using System;
     
     

@@ -22,7 +22,9 @@ using System.Collections;
 using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace MiniCoder.Encoding.Process_Management
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
     
     public class AudioProcess : MiniProcess
@@ -83,7 +85,7 @@ namespace MiniCoder.Encoding.Process_Management
             if (mainProcess.StartInfo.Arguments != null)
             {
                 
-               LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,loglocation,"",false);
+              // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,loglocation,"",false);
                 taskProcess();
                 return exitCode;
             }
@@ -260,7 +262,7 @@ namespace MiniCoder.Encoding.Process_Management
                             int min = int.Parse(split[1]);
                             int sec = int.Parse(split[2].Substring(0, 2));
                            
-                            LogBook.Instance.setInfoLabel(frontMessage + ": " + "Encoded " + hr +":" + min + ":" + sec +" / " + tempTime.Hours + ":" + tempTime.Minutes + ":" + tempTime.Seconds);
+                           LogBookController.Instance.setInfoLabel(frontMessage + ": " + "Encoded " + hr +":" + min + ":" + sec +" / " + tempTime.Hours + ":" + tempTime.Minutes + ":" + tempTime.Seconds);
                         }
                     }
                 }
@@ -292,7 +294,7 @@ namespace MiniCoder.Encoding.Process_Management
                         if (!stdoutlast.Equals(read2))
                         {
                             stdoutlast = read2;
-                            LogBook.Instance.addLogLine(read2, loglocation,"",false);
+                           // LogBook.Instance.addLogLine(read2, loglocation,"",false);
                            
                         }
                     }

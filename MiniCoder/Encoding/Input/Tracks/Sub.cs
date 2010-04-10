@@ -17,10 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 
-namespace MiniCoder.Encoding.Input.Tracks
+namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
     class Sub : Track
     {

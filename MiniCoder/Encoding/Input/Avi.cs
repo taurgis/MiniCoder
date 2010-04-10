@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     class Avi : InputFile
     {
@@ -49,7 +50,7 @@ namespace MiniCoder.Encoding.Input
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
 
-            LogBook.Instance.addLogLine("Demuxing AVI - Using Vdubmod", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+           // LogBook.Instance.addLogLine("Demuxing AVI - Using Vdubmod", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
             MiniProcess proc = new DefaultProcess("Demuxing Avi", fileDetails["name"][0] + "DeMuxingProcess");
             processWatcher.setProcess(proc);
 
@@ -61,11 +62,11 @@ namespace MiniCoder.Encoding.Input
                 if (!vdubmod.isInstalled())
                     vdubmod.download();
 
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMessage") + " AVI Tracks");
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMessage") + " AVI Tracks");
 
                 proc.initProcess();
 
-                LogBook.Instance.addLogLine("Writing VirtualDub Script", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "VdubScript", false);
+               // LogBook.Instance.addLogLine("Writing VirtualDub Script", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "VdubScript", false);
 
                 StreamWriter vcf = File.CreateText(tempPath + fileDetails["name"][0] + "_demux.vcf"); ;
                 string temp = "VirtualDub.Open(\"" + fileDetails["fileName"][0].Replace("\\", "\\\\") + "\",\"\",0);\r\n";
@@ -79,7 +80,7 @@ namespace MiniCoder.Encoding.Input
                     temp += ("VirtualDub.stream[" + i.ToString() + "].Demux(\"" + tracks["audio"][i].demuxPath.Replace("\\", "\\\\") + "\");");
                 }
 
-                LogBook.Instance.addLogLine(temp, fileDetails["name"][0] + "VdubScript", "", false);
+               // LogBook.Instance.addLogLine(temp, fileDetails["name"][0] + "VdubScript", "", false);
                 vcf.WriteLine(temp);
                 vcf.Close();
 
@@ -91,11 +92,11 @@ namespace MiniCoder.Encoding.Input
 
                 if (proc.getAbandonStatus())
                 {
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
+                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                     return false;
                 }
                 else
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
+                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
                 try
                 {
                     if (File.Exists(tempPath + fileDetails["name"][0] + "-Audio Track-0." + Codec.Instance.getExtention(tracks["audio"][0].codec)))
@@ -110,7 +111,7 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.Instance.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing - " + tracks["audio"][0].codec + tracks["video"][0].codec, "", true);
+                LogBookController.Instance.addLogLine("Can't find codec " + e.Message, LogMessageCategories.Error);
               
                 MessageBox.Show("Can't find codec " + fileDetails["aud_codec"][0], "");
                 return false;

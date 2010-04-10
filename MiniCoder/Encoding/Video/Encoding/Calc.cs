@@ -16,11 +16,11 @@
 
 using System;
 using System.Collections.Generic;
-using MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.Text;
 using System.IO;
 
-namespace MiniCoder.Encoding.VideoEnc.Encoding
+namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class Calc
     {
@@ -55,7 +55,7 @@ namespace MiniCoder.Encoding.VideoEnc.Encoding
             }
             catch
             {
-                LogBook.Instance.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
+               // LogBook.Instance.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
                 return int.Parse(encOpts["videobr"]);
             }
         }

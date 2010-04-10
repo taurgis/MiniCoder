@@ -20,7 +20,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Windows.Forms;
-namespace MiniCoder.Templates.Simple
+namespace MiniTech.MiniCoder.Templates.Simple
 {
     [XmlRoot("MiniCoder-Template")]
    public class MainTemplate

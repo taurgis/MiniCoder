@@ -17,10 +17,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.External;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.Encoding.VideoEnc.Encoding;
-namespace MiniCoder.Encoding.Input.Tracks
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Encoding.VideoEnc.Encoding;
+using MiniTech.MiniCoder.Core.Other.Logging;
+namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
     class Video : Track
     {
@@ -43,7 +44,7 @@ namespace MiniCoder.Encoding.Input.Tracks
         {
             try
             {
-                LogBook.Instance.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
+               // LogBook.Instance.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
 
                 VideoEncoder videoEncoder = null;
                 switch (EncOpts["videocodec"])
@@ -62,7 +63,7 @@ namespace MiniCoder.Encoding.Input.Tracks
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error selecting video encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error selecting video encoding tool. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

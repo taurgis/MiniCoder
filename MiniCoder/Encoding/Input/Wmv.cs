@@ -17,13 +17,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
 
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     class Wmv : InputFile
     {
@@ -47,7 +47,7 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.Instance.addLogLine("Demuxing WMV - Setting up variables", fileDetails["name"][0] + "DeMuxing", "", false);
+           // LogBook.Instance.addLogLine("Demuxing WMV - Setting up variables", fileDetails["name"][0] + "DeMuxing", "", false);
 
 
                 tracks["video"][0].demuxPath = fileDetails["fileName"][0];

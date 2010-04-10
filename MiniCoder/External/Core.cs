@@ -17,13 +17,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.GUI;
+using MiniTech.MiniCoder.GUI;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 using System.Reflection;
 
-namespace MiniCoder.External
+namespace MiniTech.MiniCoder.External
 {
     class Core : Tool
     {

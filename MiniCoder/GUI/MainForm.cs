@@ -22,16 +22,17 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using MiniCoder.External;
-using MiniCoder.GUI.External;
-using MiniCoder.Encoding;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.GUI.External;
+using MiniTech.MiniCoder.Encoding;
 using System.Threading;
 using System.Collections;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.Core.Settings;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.Core.Settings;
 using System.Diagnostics;
-using MiniCoder.Core.Languages;
-namespace MiniCoder.GUI
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
+namespace MiniTech.MiniCoder.GUI
 {
     public partial class MainForm : Form
     {
@@ -56,7 +57,7 @@ namespace MiniCoder.GUI
                 if (File.Exists(Application.StartupPath + "\\settings.xml"))
                 {
                     MainSettings main = SettingsController.loadSettings();
-                   
+
                     encodeOptions.loadSettings(main);
 
                 }
@@ -66,13 +67,7 @@ namespace MiniCoder.GUI
                     encodeOptions.setLanguageDefault();
                 }
 
-                
-                LogBook.Instance.addLogLine("System Info", "", "SysInfo", false);
-                LogBook.Instance.addLogLine(MiniSystem.getOSName(), "SysInfo", "", false);
-                LogBook.Instance.addLogLine(MiniSystem.getDotNetFramework(), "SysInfo", "", false);
-                LogBook.Instance.addLogLine(MiniSystem.getProcessorInfo(), "SysInfo", "", false);
-                LogBook.Instance.addLogLine(MiniSystem.getElevation(), "SysInfo", "", false);
-                LogBook.Instance.addLogLine("Errors", "", "Errors", false);
+                loadSystemInfo();
 
                 cbAfterEncode.SelectedIndex = 0;
                 tools = new Tools(true);
@@ -91,9 +86,21 @@ namespace MiniCoder.GUI
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error Starting up. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
-               
+
+                LogBookController.Instance.addLogLine("Error Starting up. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
+                
             }
+        }
+
+        private void loadSystemInfo()
+        {
+            LogBookController logbook = LogBookController.Instance;
+            logbook.addLogLine("System Info:\n" + MiniSystem.getOSName(), LogMessageCategories.Info);
+            logbook.addLogLine(MiniSystem.getOSName(), LogMessageCategories.Info);
+            logbook.addLogLine(MiniSystem.getDotNetFramework(), LogMessageCategories.Info);
+            logbook.addLogLine(MiniSystem.getProcessorInfo(), LogMessageCategories.Info);
+            logbook.addLogLine(MiniSystem.getElevation(), LogMessageCategories.Info);
+
         }
 
         public void loadLanguage()
@@ -118,7 +125,7 @@ namespace MiniCoder.GUI
             removeMenuItem.Text = LanguageController.Instance.getLanguageString("menuRemove");
             copyToolStripMenuItem.Text = LanguageController.Instance.getLanguageString("logMenuCopy");
             sendErrorReportToolStripMenuItem.Text = LanguageController.Instance.getLanguageString("logMenuSend");
-           
+
         }
 
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
@@ -151,7 +158,7 @@ namespace MiniCoder.GUI
         void inputList_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            LogBook.Instance.addLogLine("Drag & Drop", "", "DragDrop",false);
+            // LogBook.Instance.addLogLine("Drag & Drop", "", "DragDrop",false);
             foreach (string str in files)
             {
                 ListViewItem inputListItem = new ListViewItem();
@@ -163,7 +170,7 @@ namespace MiniCoder.GUI
                 inputListItem.SubItems.Add(statusSub);
                 statusSub.Text = LanguageController.Instance.getLanguageString("inputColumn2StatusReady");
                 inputList.Items.Add(inputListItem);
-                LogBook.Instance.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
+                // LogBook.Instance.addLogLine("Drag & Drop: " + str, "DragDrop","", false);
             }
         }
 
@@ -186,78 +193,9 @@ namespace MiniCoder.GUI
         #endregion
 
         #region "Log"
-      
+
         private delegate void SetNode(string message, string searchTag, string messageTag, bool error);
-        public void addLogLine(string message, string searchTag, string messageTag, bool error)
-        {
-            try
-            {
-                if (this.logView.InvokeRequired)
-                {
-                    this.logView.Invoke(new SetNode(addLogLine), message, searchTag, messageTag, error);
-                }
-                else
-                {
-                    String log =DateTime.Now.ToString("t");
 
-
-
-                    if (String.IsNullOrEmpty(searchTag))
-                    {
-                        TreeNode tempNode = new TreeNode(message);
-                        if (!String.IsNullOrEmpty(messageTag))
-                            tempNode.Tag = messageTag;
-                       // tempNode.ImageIndex = 1;
-                        tempNode.Text = log + ": " + message;
-                        logView.Nodes.Add(tempNode);
-                    }
-                    else
-                    {
-                        TreeNode retrieved = LogBook.Instance.findNode(logView, searchTag);
-                        if (retrieved != null)
-                        {
-                            if (!String.IsNullOrEmpty(messageTag) && !String.IsNullOrEmpty(searchTag))
-                            {
-                                if (messageTag != searchTag)
-                                {
-                                    TreeNode retrieved2 = LogBook.Instance.findNode(logView, messageTag);
-                                    if (retrieved2 != null)
-                                    {
-                                        return;
-                                    }
-                                }
-                              
-                                //test
-                            }
-                            if (!retrieved.Text.Contains(message))
-                            {
-                                TreeNode tempNode = new TreeNode(message);
-                                if (!String.IsNullOrEmpty(messageTag))
-                                    tempNode.Tag = messageTag;
-                                retrieved.Nodes.Add(tempNode);
-                            }
-                        }
-                        else
-                        {
-                            if (!String.IsNullOrEmpty(messageTag) && !String.IsNullOrEmpty(searchTag))
-                            {
-                                TreeNode tempNode = new TreeNode(message);
-                                if (!String.IsNullOrEmpty(messageTag))
-                                    tempNode.Tag = messageTag;
-                                // tempNode.ImageIndex = 1;
-                                tempNode.Text = log + ": " + message;
-                                logView.Nodes.Add(tempNode);
-                            }
-                        }
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
 
 
 
@@ -329,8 +267,8 @@ namespace MiniCoder.GUI
                 if (!tempEncode.fetchEncodeInfo())
                 {
                     setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                    // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
-                    LogBook.Instance.sendmail(logView);
+                    //// LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
+                    // LogBook.Instance.sendmail(logView);
                     break;
                 }
                 if (tempEncode.getExtention() == "avs")
@@ -339,7 +277,7 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
                         setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusDone"));
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
+                        LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
                         curEncode++;
                     }
                     else
@@ -351,9 +289,9 @@ namespace MiniCoder.GUI
                         else
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                            // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
-                            if (!Boolean.Parse(encodeSet["aftererror"]))
-                              LogBook.Instance.sendmail(logView);
+                            //// LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
+                            if (!Boolean.Parse(encodeSet["aftererror"])) { }
+                            // LogBook.Instance.sendmail(logView);
                         }
                         if (!Boolean.Parse(encodeSet["aftererror"]))
                             break;
@@ -371,7 +309,7 @@ namespace MiniCoder.GUI
                         FileList.RemoveAt(0);
 
                         setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusDone"));
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
+                        LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
                         curEncode++;
                     }
                     else
@@ -383,9 +321,9 @@ namespace MiniCoder.GUI
                         else
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                            // LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
-                            if (!Boolean.Parse(encodeSet["aftererror"]))
-                                LogBook.Instance.sendmail(logView);
+                            //// LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
+                            if (!Boolean.Parse(encodeSet["aftererror"])) { }
+                            // LogBook.Instance.sendmail(logView);
                         }
                         if (!Boolean.Parse(encodeSet["aftererror"]))
                             break;
@@ -404,7 +342,7 @@ namespace MiniCoder.GUI
                     {
                         FileList.RemoveAt(0);
                         setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusDone"));
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
+                        LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingComplete"));
                         curEncode++;
                     }
                     else
@@ -418,8 +356,8 @@ namespace MiniCoder.GUI
                             else
                             {
                                 setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                                if (!Boolean.Parse(encodeSet["aftererror"]))
-                                    LogBook.Instance.sendmail(logView);
+                                if (!Boolean.Parse(encodeSet["aftererror"])) { }
+                                // LogBook.Instance.sendmail(logView);
                             }
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                                 break;
@@ -516,17 +454,7 @@ namespace MiniCoder.GUI
 
         #endregion
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               Clipboard.SetText(logView.SelectedNode.Text, TextDataFormat.Text);
-            }
-            catch
-            {
 
-            }
-        }
 
         private void stopButton_Click(object sender, EventArgs e)
         {
@@ -648,12 +576,18 @@ namespace MiniCoder.GUI
             }
         }
 
-   
+
 
         private void sendErrorReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogBook.Instance.sendmail(logView);
+            // LogBook.Instance.sendmail(logView);
         }
+
+        public void updateText(LogMessage message)
+        {
+            logControl.addLogMessage(message);
+        }
+
 
         private void allVfrCheck_CheckedChanged(object sender, EventArgs e)
         {

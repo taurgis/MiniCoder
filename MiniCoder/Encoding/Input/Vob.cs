@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     class Vob : InputFile
     {
@@ -61,11 +62,11 @@ namespace MiniCoder.Encoding.Input
         {
             try
             {
-                LogBook.Instance.addLogLine("Demuxing Chapters - Using ChapterXtractor", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+               // LogBook.Instance.addLogLine("Demuxing Chapters - Using ChapterXtractor", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
 
                 MiniProcess proc = new DefaultProcess("Fetching chapters", fileDetails["name"][0] + "DeMuxingProcess");
 
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingvobChapters"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingvobChapters"));
                 proc.initProcess();
 
 
@@ -80,7 +81,7 @@ namespace MiniCoder.Encoding.Input
 
                 if (exitCode != 0)
                 {
-                    LogBook.Instance.addLogLine("Error demuxing chapters, none present?", fileDetails["name"][0] + "DeMuxing", "", false);
+                   // LogBook.Instance.addLogLine("Error demuxing chapters, none present?", fileDetails["name"][0] + "DeMuxing", "", false);
                 }
                 return true;
             }
@@ -91,10 +92,10 @@ namespace MiniCoder.Encoding.Input
         }
         private Boolean demuxSubs(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.Instance.addLogLine("Demuxing subs - Using Vobsub", fileDetails["name"][0] + "DeMuxing", "", false);
+           // LogBook.Instance.addLogLine("Demuxing subs - Using Vobsub", fileDetails["name"][0] + "DeMuxing", "", false);
             MiniProcess proc = new DefaultProcess("Fetching subs", fileDetails["name"][0] + "DeMuxingProcess");
 
-            LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingvobSubs"));
+           LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingvobSubs"));
 
             proc.initProcess();
 
@@ -122,11 +123,11 @@ namespace MiniCoder.Encoding.Input
 
             if (proc.getAbandonStatus())
             {
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                 return false;
             }
             else
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
             if (exitCode != 0)
                 return false;
@@ -148,8 +149,8 @@ namespace MiniCoder.Encoding.Input
                 DGIndex.download();
             string tempArg;
 
-            LogBook.Instance.addLogLine("Demuxing VOB - Using DGIndex", fileDetails["name"][0] + "DeMuxing", "", false);
-            LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingVob"));
+           // LogBook.Instance.addLogLine("Demuxing VOB - Using DGIndex", fileDetails["name"][0] + "DeMuxing", "", false);
+           LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingVob"));
             proc.initProcess();
 
             proc.setFilename(Path.Combine(DGIndex.getInstallPath(), "DGIndex.exe"));
@@ -170,11 +171,11 @@ namespace MiniCoder.Encoding.Input
 
             if (proc.getAbandonStatus())
             {
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                 return false;
             }
             else
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
+               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
 
             if (exitCode != 0)

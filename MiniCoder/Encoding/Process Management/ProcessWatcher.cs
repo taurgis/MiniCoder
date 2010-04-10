@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MiniCoder.Encoding.Process_Management
+namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
    public class ProcessWatcher
     {

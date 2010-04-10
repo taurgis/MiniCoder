@@ -26,9 +26,9 @@ using System.Net;
 using System.IO;
 using System.Collections;
 using System.Diagnostics;
-using MiniCoder.External;
-using MiniCoder.Core.Languages;
-namespace MiniCoder.GUI.External
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Core.Languages;
+namespace MiniTech.MiniCoder.GUI.External
 {
     public partial class Updater : Form
     {
@@ -93,7 +93,7 @@ namespace MiniCoder.GUI.External
 
             this.tools = tools;
             toolInfo = tools.getTools();
-            LogBook.Instance.addLogLine("Update Manager", "UpdateChecking", "UpdateChecking", false);
+           // LogBook.Instance.addLogLine("Update Manager", "UpdateChecking", "UpdateChecking", false);
             foreach (string key in toolInfo.Keys)
             {
                 Tool tempTool = toolInfo[key];
@@ -126,7 +126,7 @@ namespace MiniCoder.GUI.External
 
                 if (updateText.Equals("Update Required"))
                 {
-                    LogBook.Instance.addLogLine("Updates available for " + key + ".", "UpdateChecking", "", false);
+                   // LogBook.Instance.addLogLine("Updates available for " + key + ".", "UpdateChecking", "", false);
                     if (hide)
                     {
                         if (MessageBox.Show(LanguageController.Instance.getLanguageString("updateMessage"), "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -207,7 +207,7 @@ namespace MiniCoder.GUI.External
                     audioList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.Instance.addLogLine("Downloaded & Updated " + audioList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                   // LogBook.Instance.addLogLine("Downloaded & Updated " + audioList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -228,7 +228,7 @@ namespace MiniCoder.GUI.External
                     videoList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.Instance.addLogLine("Downloaded & Updated " + videoList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                   // LogBook.Instance.addLogLine("Downloaded & Updated " + videoList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -251,7 +251,7 @@ namespace MiniCoder.GUI.External
                     muxingList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.Instance.addLogLine("Downloaded & Updated " + muxingList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                   // LogBook.Instance.addLogLine("Downloaded & Updated " + muxingList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -272,7 +272,7 @@ namespace MiniCoder.GUI.External
                     otherList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.Instance.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                   // LogBook.Instance.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -293,7 +293,7 @@ namespace MiniCoder.GUI.External
                     pluginsList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                    LogBook.Instance.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                   // LogBook.Instance.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
             tools.SavePackages();
@@ -333,7 +333,7 @@ namespace MiniCoder.GUI.External
                         coreList.Items[i].Checked = false;
                         downloadProgress.Value++;
                         updateLog.Text += "Download & Install Complete .. \r\n";
-                        LogBook.Instance.addLogLine("Downloaded & Updated " + coreList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                       // LogBook.Instance.addLogLine("Downloaded & Updated " + coreList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                         tools.SavePackages();
                     }
                 }

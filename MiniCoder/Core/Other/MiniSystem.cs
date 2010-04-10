@@ -19,8 +19,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.OS;
 using System.Security.Principal;
-using MiniCoder.Core.Languages;
-using MiniCoder.GUI;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.GUI;
 using System.Windows.Forms;
 namespace System
 {

@@ -25,7 +25,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
 using ICSharpCode.SharpZipLib.Zip;
-namespace MiniCoder.GUI
+namespace MiniTech.MiniCoder.GUI
 {
     public partial class Download : Form
     {

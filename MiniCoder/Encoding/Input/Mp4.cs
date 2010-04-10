@@ -17,23 +17,24 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Input.Tracks;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
-namespace MiniCoder.Encoding.Input
+namespace MiniTech.MiniCoder.Encoding.Input
 {
     class Mp4 : InputFile
     {
         String tempPath = Application.StartupPath + "\\temp\\";
-     //   SortedList<String, String[]> fileDetails = new SortedList<string, string[]>();
+        //   SortedList<String, String[]> fileDetails = new SortedList<string, string[]>();
 
         public Mp4()
         {
-           
+
         }
 
         public SortedList<String, Track[]> getTracks()
@@ -48,26 +49,26 @@ namespace MiniCoder.Encoding.Input
 
         public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            LogBook.Instance.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+            // LogBook.Instance.addLogLine("Demuxing MP4 - Using mp4box", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
 
-              
+
             int exitCode = 0;
             MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
-           processWatcher.setProcess(proc);
+            processWatcher.setProcess(proc);
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
             try
             {
-               
+
                 if (!mp4box.isInstalled())
                     mp4box.download();
 
-           
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingmp4Video"));
+
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingmp4Video"));
                 proc.initProcess();
 
-              
-             
+
+
 
                 proc.setFilename(Path.Combine(mp4box.getInstallPath(), "MP4Box.exe"));
                 string tempArg;
@@ -98,16 +99,16 @@ namespace MiniCoder.Encoding.Input
                 if (tracks["audio"].Length == 0)
                     return true;
 
-                LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingmp4Audio"));
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingmp4Audio"));
                 tracks["audio"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + "1" + "." + Codec.Instance.getExtention(tracks["audio"][0].codec);
                 tempArg = "\"" + fileDetails["fileName"][0] + "\" -raw 2 -out \"" + tracks["audio"][0].demuxPath + "\"";
                 proc.setArguments(tempArg);
                 exitCode = proc.startProcess();
 
                 if (proc.getAbandonStatus())
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
                 else
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
                 if (exitCode != 0)
                     return false;
@@ -117,8 +118,8 @@ namespace MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBook.Instance.addLogLine("Can't find codec " + e.Message, fileDetails["name"][0] + "DeMuxing - " + tracks["audio"][0].codec + tracks["video"][0].codec ,"",true);
-               // MessageBox.Show("Can't find codec");
+                LogBookController.Instance.addLogLine("Can't find codec " + e.Message, LogMessageCategories.Error);
+                // MessageBox.Show("Can't find codec");
                 return false;
             }
         }

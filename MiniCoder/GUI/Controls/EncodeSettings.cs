@@ -21,13 +21,13 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using MiniCoder.GUI.AviSynth;
+using MiniTech.MiniCoder.GUI.AviSynth;
 using System.Input;
-using MiniCoder.Templates.Simple;
+using MiniTech.MiniCoder.Templates.Simple;
 using System.IO;
-using MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Languages;
 
-namespace MiniCOder.GUI.Controls
+namespace MiniTech.MiniCoder.GUI.Controls
 {
     public partial class EncodeSettings : UserControl
     {
@@ -285,10 +285,10 @@ namespace MiniCOder.GUI.Controls
         {
             try
             {
-                LogBook.Instance.addLogLine("Template Management", "TemplateManagement", "TemplateManagement", false);
+               // LogBook.Instance.addLogLine("Template Management", "TemplateManagement", "TemplateManagement", false);
 
                 mainTemplate = SimpleTemplateController.loadTemplate(templateCombo.SelectedItem.ToString());
-                LogBook.Instance.addLogLine(DateTime.Now.ToString("t") + ": Loaded template " + templateCombo.SelectedItem + " ...", "TemplateManagement", "", false);
+               // LogBook.Instance.addLogLine(DateTime.Now.ToString("t") + ": Loaded template " + templateCombo.SelectedItem + " ...", "TemplateManagement", "", false);
                 videoBR.Text = mainTemplate.vidBitRate;
                 fileSize.Text = mainTemplate.fileSize;
                 vidQualCombo.SelectedIndex = int.Parse(mainTemplate.vidQuality);

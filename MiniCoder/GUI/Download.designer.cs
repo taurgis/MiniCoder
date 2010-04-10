@@ -1,4 +1,4 @@
-﻿namespace MiniCoder.GUI
+﻿namespace MiniTech.MiniCoder.GUI
 {
     partial class Download
     {

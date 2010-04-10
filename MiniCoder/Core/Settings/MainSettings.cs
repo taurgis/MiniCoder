@@ -21,7 +21,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-namespace MiniCoder.Core.Settings
+namespace MiniTech.MiniCoder.Core.Settings
 {
     [XmlRoot("settings")]
     public class MainSettings

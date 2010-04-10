@@ -17,13 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.Encoding.Process_Management;
-using MiniCoder.External;
-using MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.IO;
 using System.Windows.Forms;
-using MiniCoder.Core.Languages;
-namespace MiniCoder.Encoding.VideoEnc
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Other.Logging;
+
+namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
     class Vfr
     {
@@ -35,13 +37,13 @@ namespace MiniCoder.Encoding.VideoEnc
          
                 if (fileDetails["ext"][0].ToLower() == "mkv" && encOpts.ContainsKey("vfr"))
                 {
-                    LogBook.Instance.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
+                   // LogBook.Instance.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
                     processWatcher.setProcess(proc);
                     if (!vfr.isInstalled())
                         vfr.download();
 
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
+                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfr.getInstallPath(), "mkv2vfr.exe"));
@@ -54,19 +56,19 @@ namespace MiniCoder.Encoding.VideoEnc
 
                     if (proc.getAbandonStatus())
                     {
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingAborted"));
+                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingAborted"));
                         return false;
                     }
                     else
                     {
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
+                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
 
                     }
                     if (!File.Exists(tempPath + "timecode.txt"))
                         return false;
 
 
-                    // // LogBook.Instance.addLogLine(""Reading VFR file", 1);
+                    // //// LogBook.Instance.addLogLine(""Reading VFR file", 1);
 
 
                     encOpts["vfr"] = tempPath + "timecode.txt";
@@ -78,13 +80,13 @@ namespace MiniCoder.Encoding.VideoEnc
                 else if (fileDetails["ext"][0].ToLower() == "mp4" && encOpts.ContainsKey("vfr"))
                 {
                     //dtsedit -t input.mp4 timecodes.txt
-                    LogBook.Instance.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
+                   // LogBook.Instance.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
                     processWatcher.setProcess(proc);
                     if (!vfrMP4.isInstalled())
                         vfrMP4.download();
 
-                    LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
+                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfrMP4.getInstallPath(), "DtsEdit.exe"));
@@ -101,12 +103,12 @@ namespace MiniCoder.Encoding.VideoEnc
 
                     if (proc.getAbandonStatus())
                     {
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingAborted"));
+                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingAborted"));
                         return false;
                     }
                     else
                     {
-                        LogBook.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
+                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
 
                     }
                     if (!File.Exists(tempPath + "timecode.txt"))
@@ -118,7 +120,7 @@ namespace MiniCoder.Encoding.VideoEnc
             }
             catch (Exception error)
             {
-                LogBook.Instance.addLogLine("Error analysing VFR. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error analysing VFR. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
         }

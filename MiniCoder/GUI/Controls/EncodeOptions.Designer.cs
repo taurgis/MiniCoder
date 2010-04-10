@@ -1,4 +1,4 @@
-﻿namespace MiniCOder.GUI.Controls
+﻿namespace MiniTech.MiniCoder.GUI.Controls
 {
     partial class EncodeOptions
     {

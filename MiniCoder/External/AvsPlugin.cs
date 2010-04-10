@@ -17,10 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MiniCoder.GUI;
+using MiniTech.MiniCoder.GUI;
 using System.IO;
 using System.Xml;
-namespace MiniCoder.External
+namespace MiniTech.MiniCoder.External
 {
     class AvsPlugin : Tool
     {
