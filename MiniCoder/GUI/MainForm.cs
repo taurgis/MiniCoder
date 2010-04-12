@@ -86,21 +86,17 @@ namespace MiniTech.MiniCoder.GUI
             }
             catch (Exception error)
             {
-
                 LogBookController.Instance.addLogLine("Error Starting up. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
-                
             }
         }
 
         private void loadSystemInfo()
         {
             LogBookController logbook = LogBookController.Instance;
-            logbook.addLogLine("System Info:\n" + MiniSystem.getOSName(), LogMessageCategories.Info);
             logbook.addLogLine(MiniSystem.getOSName(), LogMessageCategories.Info);
             logbook.addLogLine(MiniSystem.getDotNetFramework(), LogMessageCategories.Info);
             logbook.addLogLine(MiniSystem.getProcessorInfo(), LogMessageCategories.Info);
             logbook.addLogLine(MiniSystem.getElevation(), LogMessageCategories.Info);
-
         }
 
         public void loadLanguage()

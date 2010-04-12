@@ -58,6 +58,11 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="Interop.QuartzTypeLib, Version=1.0.0.0, Culture=neutral" />
     <Reference Include="MediaInfoWrapper, Version=0.7.23.0, Culture=neutral, processorArchitecture=x86" />
@@ -102,6 +107,7 @@
     <Compile Include="Core\Other\Logging\LogBookController.cs" />
     <Compile Include="Core\Other\Logging\LogMessage.cs" />
     <Compile Include="Core\Other\Logging\LogMessageCategory.cs" />
+    <Compile Include="Core\Other\Logging\Reports\ReportController.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
     <Compile Include="Core\Settings\MainSettings.cs" />
     <Compile Include="Core\Settings\SettingsController.cs" />
@@ -313,6 +319,9 @@
   <ItemGroup>
     <Content Include="bigIcon.ico" />
     <Content Include="bin\Debug\bigIcon.ico" />
+    <Content Include="bin\Debug\reports\errortemplate.xml" />
+    <Content Include="bin\Debug\reports\tr.txt" />
+    <None Include="Properties\DataSources\MiniTech.MiniCoder.Core.Other.Logging.LogBook.datasource" />
     <None Include="Resources\bug-icon.png" />
     <None Include="Resources\ist2_4471156-bug-icons1.jpg" />
     <None Include="Resources\ist2_4471156-bug-icons.jpg" />
@@ -337,6 +346,9 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\languages\" />

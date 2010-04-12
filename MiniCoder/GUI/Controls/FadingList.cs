@@ -46,20 +46,5 @@ namespace MiniTech.MiniCoder.GUI.Controls
                 line1.Text = newLine;
             }
         }
-
-        private void line1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void line2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
