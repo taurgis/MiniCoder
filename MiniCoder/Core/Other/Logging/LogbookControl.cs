@@ -18,11 +18,8 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         public void addLogMessage(LogMessage message)
         {
-           
-
             String time = message.time.Hour + ":" + message.time.Minute;
 
-         
             switch (message.category.categoryName)
             {
                 case "System Info":
@@ -38,6 +35,11 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
                     videoInfo.addLine(time + " - " + message.message);
                     break;
             }
+        }
+
+        private void viewLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogBookController.Instance.viewLog();
         }
     }
 }

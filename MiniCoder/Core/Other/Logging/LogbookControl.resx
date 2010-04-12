@@ -121,7 +121,7 @@
   <data name="debugIcon.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIcAAACFCAYAAABxL+sBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAABYktHRACIBR1IAAAAB3RJTUUH2QMWFyoQoIL8bQAAIHtJ
+        YQUAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAABYktHRACIBR1IAAAAB3RJTUUH2QMWFyoQoIL8bQAAIHtJ
         REFUeF7t3W/IfVlVB/BJsvFfaVlpWWFqoZWWltEkBmIjGSKCZCDkC8E3ggQTvjB8I70QKSFLfGEYWQlJ
         DUhlWCoDTYhNzdBYGuNE0zQ5zZCTTfGzJh1v+3O839t69u/ce8/99/yb+8Dm3ufec8/ZZ63v/q6111p7
         n2sefvjha47tKIMxDByBcRwcSzFwBMcRHEdwHE3n5qbzyBw7Msfdd989e9vb3jZ785vfPPvoRz86u0wg
@@ -263,6 +263,9 @@
         S0yVxZE5jsxxZI6po+V43HG2cmTMCYx5FNIEIT1S2eT/ANRYcHirWGxpAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="logContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="infoImage.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
@@ -1378,7 +1381,7 @@
   <data name="videoImage.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlgAAAIrCAYAAAAz0OezAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAL3QAAC90AH1R4y3AAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAL3PAAC9zwHKnTJnAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
         aW5rc2NhcGUub3Jnm+48GgAA7qtJREFUeF7s3QeYE0UbB/BJrvd+1IOj995BaSKg2FCxoYgKCCLYsCCK
         CCIICgrSi4iCIIiIYu8de/ezV2wI0juX732T3csm2SS7m9nd2eT1ef5PzrvcZrM7l/nxzuws83g8jELH
         gNoAtYFY2wDz/eeGpEDSIBmQLEgOJA9SACmCFEspgUdMqZQq8CinKnwtpxp8rQx+H58n/568Pdx2ofQ6
@@ -2403,7 +2406,7 @@
   <data name="videoImage.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlgAAAIrCAYAAAAz0OezAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAL3QAAC90AH1R4y3AAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAL3PAAC9zwHKnTJnAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
         aW5rc2NhcGUub3Jnm+48GgAA7qtJREFUeF7s3QeYE0UbB/BJrvd+1IOj995BaSKg2FCxoYgKCCLYsCCK
         CCIICgrSi4iCIIiIYu8de/ezV2wI0juX732T3csm2SS7m9nd2eT1ef5PzrvcZrM7l/nxzuws83g8jELH
         gNoAtYFY2wDz/eeGpEDSIBmQLEgOJA9SACmCFEspgUdMqZQq8CinKnwtpxp8rQx+H58n/568Pdx2ofQ6

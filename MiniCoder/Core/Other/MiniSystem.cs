@@ -22,6 +22,7 @@ using System.Security.Principal;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.GUI;
 using System.Windows.Forms;
+using System.Management;
 namespace System
 {
     public static class MiniSystem
@@ -39,7 +40,7 @@ namespace System
             try
             {
 
-                return "OS: " + string.Format("{0}{1} ({2}.{3}.{4}.{5})", OsInfo.GetOSName(), OsInfo.GetOSServicePack(), OsInfo.OSMajorVersion, OsInfo.OSMinorVersion, OsInfo.OSRevisionVersion, OsInfo.OSBuildVersion);
+                return string.Format("{0}{1} ({2}.{3}.{4}.{5})", OsInfo.GetOSName(), OsInfo.GetOSServicePack(), OsInfo.OSMajorVersion, OsInfo.OSMinorVersion, OsInfo.OSRevisionVersion, OsInfo.OSBuildVersion);
             }
             catch
             {
@@ -50,19 +51,82 @@ namespace System
         {
             try
             {
-            return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator) ? "Administrative Rights: Yes" : "Administrative Rights: No";
+                return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator) ? "Yes" : "No";
             }
             catch
             {
                 return "Error fetching elevation.";
             }
+        }
+
+        public static string getRamSize()
+        {
+            ManagementObjectSearcher Search = new ManagementObjectSearcher("Select * From Win32_ComputerSystem");
+
+            foreach (ManagementObject Mobject in Search.Get())
+            {
+                double Ram_Bytes = (Convert.ToDouble(Mobject["TotalPhysicalMemory"]));
+                return ((int)(Ram_Bytes / 1048576)).ToString() + " Mb";
             }
+            return "";
+        }
+
+        public static string getCurrentUser()
+        {
+            return Environment.UserName;
+
+        }
+
+        public static string getMachineName()
+        {
+            return Environment.MachineName;
+        }
+
+        public static string getSystemDirectory()
+        {
+            return Environment.SystemDirectory;
+
+        }
+
+        public static string getCurrentDirectory()
+        {
+            return Environment.CurrentDirectory;
+
+        }
+
+        public static string isShuttingDown()
+        {
+            return Environment.HasShutdownStarted.ToString();
+        }
+
+        public static string getMappedMemory()
+        {
+            return (Environment.WorkingSet / 1048576).ToString() + " Mb";
+        }
+
+
+
+        public static string getDomain()
+        {
+
+            return Environment.UserDomainName;
+        }
+
+        public static string getProcessorCount()
+        {
+            return Environment.ProcessorCount.ToString();
+        }
+
+        public static string getUptime()
+        {
+            return (Environment.TickCount / 60000).ToString() + " minutes";
+        }
 
         public static string getDotNetFramework()
         {
             try
             {
-                return "Latest .Net Framework installed " + string.Format("{0}", OsInfo.DotNetVersionFormated(OsInfo.FormatDotNetVersion()));
+                return string.Format("{0}", OsInfo.DotNetVersionFormated(OsInfo.FormatDotNetVersion()));
             }
             catch
             {
@@ -73,7 +137,7 @@ namespace System
         {
             try
             {
-                return "CPU : " + string.Format("{0}", OsInfo.GetMOStuff("Win32_Processor"));
+                return string.Format("{0}", OsInfo.GetMOStuff("Win32_Processor"));
             }
             catch
             {

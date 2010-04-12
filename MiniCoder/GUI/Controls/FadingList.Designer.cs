@@ -48,8 +48,7 @@
             this.line6.TabIndex = 3;
             this.line6.Text = "Line 2";
             this.line6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.line6.Click += new System.EventHandler(this.line2_Click);
-            // 
+                        // 
             // line5
             // 
             this.line5.BackColor = System.Drawing.Color.White;
@@ -61,7 +60,7 @@
             this.line5.Size = new System.Drawing.Size(310, 12);
             this.line5.TabIndex = 4;
             this.line5.Text = "Line 1";
-            this.line5.Click += new System.EventHandler(this.line1_Click);
+            
             // 
             // line4
             // 
@@ -75,7 +74,6 @@
             this.line4.TabIndex = 5;
             this.line4.Text = "Line 3";
             this.line4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.line4.Click += new System.EventHandler(this.label1_Click);
             // 
             // line3
             // 

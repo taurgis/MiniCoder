@@ -6,6 +6,7 @@ using MiniTech.MiniCoder.GUI;
 using System.Windows.Forms;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
+using Minitech.MiniCoder.Core.Other.Logging.Reports;
 namespace MiniTech.MiniCoder.Core.Other.Logging
 {
     public sealed class LogBookController
@@ -53,18 +54,17 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             }
         }
 
-        public void createCategory(String categoryName, String parent)
-        {
-            LogMessageCategory cat = new LogMessageCategory(categoryName);
-            LogMessageCategory parentCat = (LogMessageCategory)categories[parent];
-            parentCat.addSubCategory(cat);
-            categories.Add(categoryName, cat);
-        }
-
         public void addLogLine(string message, LogMessageCategories category)
         {
             LogMessageCategory cat = (LogMessageCategory)categories[category];
             mainForm.updateText(new LogMessage(message, cat));
+        }
+
+        public void viewLog()
+        {
+   
+            ReportController.generateDocument(logbook);
+
         }
 
         public void setInfoLabel(string message)
