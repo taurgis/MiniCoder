@@ -7,7 +7,7 @@ namespace Minitech.MiniCoder.Core.Other.Logging.Reports
 {
     public class ReportController
     {
-        public static void generateDocument(LogBook logbook)
+        public static String generateDocument(LogBook logbook)
         {
             String path = Path.GetTempPath() + "tempReport.doc";
             String trTemplate = new StreamReader("reports/tr.txt").ReadToEnd();
@@ -51,8 +51,6 @@ namespace Minitech.MiniCoder.Core.Other.Logging.Reports
                     default:
                         strToReplace = "${notsupportedyet}";
                         break;
-
-
                 }
                 String completeTable = " ";
 
@@ -65,21 +63,19 @@ namespace Minitech.MiniCoder.Core.Other.Logging.Reports
                     completeTable += tempTr;
                 }
                 text = text.Replace(strToReplace, completeTable);
-
-
             }
             try
             {
-
                 StreamWriter writer = new StreamWriter(path);
                 writer.Write(text);
                 writer.Close();
-                System.Diagnostics.Process.Start(path);
             }
             catch (IOException ex)
             {
-
+                return "";
             }
+
+            return path;
         }
 
     }

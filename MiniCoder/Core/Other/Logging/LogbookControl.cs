@@ -41,5 +41,10 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
         {
             LogBookController.Instance.viewLog();
         }
+
+        private void sendReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogBookController.Instance.sendmail();
+        }
     }
 }

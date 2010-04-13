@@ -33,6 +33,9 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogbookControl));
             this.debugIcon = new System.Windows.Forms.PictureBox();
+            this.logContext = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoImage = new System.Windows.Forms.PictureBox();
             this.errorImage = new System.Windows.Forms.PictureBox();
             this.pnlSystemInfo = new System.Windows.Forms.Panel();
@@ -44,10 +47,8 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.videoImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.videoInfo = new MiniTech.MiniCoder.GUI.Controls.FadingList();
-            this.logContext = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.viewLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sendReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.debugIcon)).BeginInit();
+            this.logContext.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorImage)).BeginInit();
             this.pnlSystemInfo.SuspendLayout();
@@ -55,7 +56,6 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.debugPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoImage)).BeginInit();
             this.panel1.SuspendLayout();
-            this.logContext.SuspendLayout();
             this.SuspendLayout();
             // 
             // debugIcon
@@ -69,6 +69,28 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.debugIcon.Size = new System.Drawing.Size(80, 80);
             this.debugIcon.TabIndex = 2;
             this.debugIcon.TabStop = false;
+            // 
+            // logContext
+            // 
+            this.logContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewLogToolStripMenuItem,
+            this.sendReportToolStripMenuItem});
+            this.logContext.Name = "logContext";
+            this.logContext.Size = new System.Drawing.Size(153, 70);
+            // 
+            // viewLogToolStripMenuItem
+            // 
+            this.viewLogToolStripMenuItem.Name = "viewLogToolStripMenuItem";
+            this.viewLogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewLogToolStripMenuItem.Text = "View Log";
+            this.viewLogToolStripMenuItem.Click += new System.EventHandler(this.viewLogToolStripMenuItem_Click);
+            // 
+            // sendReportToolStripMenuItem
+            // 
+            this.sendReportToolStripMenuItem.Name = "sendReportToolStripMenuItem";
+            this.sendReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sendReportToolStripMenuItem.Text = "Send report";
+            this.sendReportToolStripMenuItem.Click += new System.EventHandler(this.sendReportToolStripMenuItem_Click);
             // 
             // infoImage
             // 
@@ -183,27 +205,6 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.videoInfo.Size = new System.Drawing.Size(308, 78);
             this.videoInfo.TabIndex = 0;
             // 
-            // logContext
-            // 
-            this.logContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewLogToolStripMenuItem,
-            this.sendReportToolStripMenuItem});
-            this.logContext.Name = "logContext";
-            this.logContext.Size = new System.Drawing.Size(153, 70);
-            // 
-            // viewLogToolStripMenuItem
-            // 
-            this.viewLogToolStripMenuItem.Name = "viewLogToolStripMenuItem";
-            this.viewLogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewLogToolStripMenuItem.Text = "View Log";
-            this.viewLogToolStripMenuItem.Click += new System.EventHandler(this.viewLogToolStripMenuItem_Click);
-            // 
-            // sendReportToolStripMenuItem
-            // 
-            this.sendReportToolStripMenuItem.Name = "sendReportToolStripMenuItem";
-            this.sendReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sendReportToolStripMenuItem.Text = "Send report";
-            // 
             // LogbookControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -220,6 +221,7 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.Name = "LogbookControl";
             this.Size = new System.Drawing.Size(401, 345);
             ((System.ComponentModel.ISupportInitialize)(this.debugIcon)).EndInit();
+            this.logContext.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.infoImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorImage)).EndInit();
             this.pnlSystemInfo.ResumeLayout(false);
@@ -227,7 +229,6 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             this.debugPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.videoImage)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.logContext.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
