@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using Minitech.MiniCoder.Core.Other.Logging.Reports;
+using MiniTech.MiniCoder.Core.Languages;
+using System.Diagnostics;
 namespace MiniTech.MiniCoder.Core.Other.Logging
 {
     public sealed class LogBookController
@@ -62,8 +64,8 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         public void viewLog()
         {
-   
-            ReportController.generateDocument(logbook);
+
+            Process.Start(ReportController.generateDocument(logbook));
 
         }
 
@@ -74,27 +76,29 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         public void sendmail()
         {
-            /*
-                        if (MessageBox.Show(LanguageController.Instance.getLanguageString("errorWarningMessage"), LanguageController.Instance.getLanguageString("errorWarningTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
-                        {
-                            StreamWriter streamWriter = new StreamWriter(Application.StartupPath + "\\temp\\" + "\\log.txt");
 
-                            streamWriter.Close();
+            if (MessageBox.Show(LanguageController.Instance.getLanguageString("errorWarningMessage"), LanguageController.Instance.getLanguageString("errorWarningTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                if (File.Exists(Application.StartupPath + "\\temp\\" + "\\log.doc"))
+                    File.Delete(Application.StartupPath + "\\temp\\" + "\\log.doc");
 
-                            createZip();
+                File.Copy(ReportController.generateDocument(logbook), Application.StartupPath + "\\temp\\" + "\\log.doc");
 
-                            MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreport on sourceforge!");
-                            Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
-                        }
-             */
+                createZip();
+
+                MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreport on sourceforge!");
+                Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
+            }
+
         }
 
         private void createZip()
         {
-            string fileFilter = @"\.avs;\.txt;\.xml;\.vcf";
-            using (FileStream stream = new FileStream("errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
+            string fileFilter = @"\.avs;\.txt;\.xml;\.vcf;\.doc";
+            using (FileStream stream = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
             {
-                new FastZip().CreateZip(stream, Application.StartupPath + "\\temp\\", true, fileFilter, null);
+                FastZip tempZip = new FastZip();
+                tempZip.CreateZip(stream, Application.StartupPath + "\\temp\\", true, fileFilter, null);
             }
         }
 
