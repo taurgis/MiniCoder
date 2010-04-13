@@ -318,7 +318,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bigIcon.ico" />
-    <Content Include="bin\Debug\bigIcon.ico" />
     <Content Include="bin\Debug\reports\errortemplate.xml" />
     <Content Include="bin\Debug\reports\tr.txt" />
     <None Include="Properties\DataSources\MiniTech.MiniCoder.Core.Other.Logging.LogBook.datasource" />
