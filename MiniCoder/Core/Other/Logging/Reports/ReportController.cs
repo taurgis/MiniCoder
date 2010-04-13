@@ -31,7 +31,9 @@ namespace Minitech.MiniCoder.Core.Other.Logging.Reports
             text = text.Replace("${curdir}", MiniSystem.getCurrentDirectory());
             text = text.Replace("${shutdown}", MiniSystem.isShuttingDown());
             text = text.Replace("${mappedmem}", MiniSystem.getMappedMemory());
-
+            text = text.Replace("${localip}", MiniSystem.getIpAddress());
+            text = text.Replace("${realip}", MiniSystem.GetExternalIp().ToString());
+            text = text.Replace("${internet}", MiniSystem.isConnected());
             foreach (LogMessageCategory cat in logbook.categories)
             {
                 String strToReplace = "";

@@ -23,6 +23,10 @@ using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.GUI;
 using System.Windows.Forms;
 using System.Management;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Text.RegularExpressions;
+
 namespace System
 {
     public static class MiniSystem
@@ -74,6 +78,50 @@ namespace System
         public static string getCurrentUser()
         {
             return Environment.UserName;
+        }
+
+        public static string getIpAddress()
+        {
+            IPHostEntry ip = Dns.GetHostEntry(Dns.GetHostName());
+            String allIps = "";
+
+            foreach (IPAddress address in ip.AddressList)
+            {
+                if (!address.IsIPv6SiteLocal && !address.IsIPv6LinkLocal && !address.IsIPv6Multicast && !(address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6))
+                    allIps += address.ToString() + "\n\r";
+            }
+
+
+            return allIps;
+        }
+
+        public static String GetExternalIp()
+        {
+            try
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                WebClient webClient = new WebClient();
+                return utf8.GetString(webClient.DownloadData(
+                "http://whatismyip.com/automation/n09230945.asp"));
+            }
+            catch
+            {
+                return "Unknown";
+            }
+        }
+
+        public static string isConnected()
+        {
+            try
+            {
+                Ping ping = new Ping();
+                PingReply pingreply = ping.Send(IPAddress.Parse("74.125.77.147"));
+                return "Yes";
+            }
+            catch
+            {
+                return "No";
+            }
 
         }
 
