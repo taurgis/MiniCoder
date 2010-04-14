@@ -25,19 +25,6 @@ namespace System
 {
     public static class MiniOnline
     {
-        public static bool checkInternet()
-        {
-            try
-            {
-                System.Net.IPHostEntry objIPHE = System.Net.Dns.GetHostEntry("www.google.com");
-                return true;
-            }
-            catch
-            {
-                return false; // host not reachable.
-            }
-        }
-
         public static void GetNews(ListView list)
         {
             String news = GetText("http://www.gamerzzheaven.be/news.txt");

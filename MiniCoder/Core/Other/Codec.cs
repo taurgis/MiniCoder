@@ -18,13 +18,39 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using MiniTech.MiniCoder.Core.Other.Logging;
+
 namespace System
 {
     public sealed class Codec
     {
         private Dictionary<string, string> extension = new Dictionary<string, string>();
         private static Codec instance = null;
+
         public Codec()
+        {
+            fillCodecs();
+        }
+
+        public static Codec Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Codec();
+                }
+                return instance;
+            }
+        }
+
+        public string getExtention(string codec)
+        {
+            LogBookController.Instance.addLogLine("Fetching extention for codec " + codec + ".", LogMessageCategories.Debug);
+            return extension[codec];
+        }
+
+        private void fillCodecs()
         {
             extension.Add("S_TEXT/ASS", "ass");
             extension.Add("S_TEXT/SSA", "ssa");
@@ -94,23 +120,5 @@ namespace System
             extension.Add("V_MPEG2", "avi");
             extension.Add("tscc", "avi");
         }
-
-        public string getExtention(string codec)
-        {
-            return extension[codec];
-        }
-
-        public static Codec Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Codec();
-                }
-                return instance;
-            }
-        }
     }
-
 }

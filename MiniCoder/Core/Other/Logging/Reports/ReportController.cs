@@ -19,7 +19,7 @@ namespace Minitech.MiniCoder.Core.Other.Logging.Reports
             text = replaceComputerInfo(text);
             text = replaceLogMessages(text, logbook);
 
-            if (saveLogFile(text,path))
+            if (saveLogFile(text, path))
                 return path;
             else
                 return "";
@@ -37,7 +37,7 @@ namespace Minitech.MiniCoder.Core.Other.Logging.Reports
             }
             catch (IOException ex)
             {
-                LogBookController.Instance.addLogLine("Error saving logfile. Is it currently open?" +"\n" + ex, LogMessageCategories.Error);
+                LogBookController.Instance.addLogLine("Error saving logfile. Is it currently open?" + "\n" + ex, LogMessageCategories.Error);
                 return false;
             }
         }

@@ -27,8 +27,24 @@ namespace System
         public Dictionary<string, string> lang = new Dictionary<string, string>();
         private static Language instance = null;
 
-
         public Language()
+        {
+            fillLanguages();
+        }
+
+        public static Language Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Language();
+                }
+                return instance;
+            }
+        }
+
+        private void fillLanguages()
         {
             lang.Add("English", "eng");
             lang.Add("Japanese", "jpn");
@@ -53,20 +69,8 @@ namespace System
         {
             if (String.IsNullOrEmpty(language))
                 return "und";
+
             return lang[language];
-
-        }
-
-        public static Language Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Language();
-                }
-                return instance;
-            }
         }
     }
 }
