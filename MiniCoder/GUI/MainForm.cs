@@ -75,7 +75,7 @@ namespace MiniTech.MiniCoder.GUI
                 encodeOptions.setTools(tools);
                 encodeOptions.setProcessWatcher(processWatcher);
 
-                if (MiniOnline.checkInternet())
+                if (MiniSystem.isConnected().Equals("Yes"))
                 {
                     Updater tempUpdater = new Updater(tools, true);
                     tempUpdater.Dispose();

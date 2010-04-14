@@ -23,26 +23,9 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             mainForm = (MainForm)Application.OpenForms["MainForm"];
             categories = new Hashtable();
             logbook = new LogBook("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
-            LogMessageCategory systemInfo = new LogMessageCategory("System Info");
-            LogMessageCategory errors = new LogMessageCategory("Errors");
-            LogMessageCategory encodes = new LogMessageCategory("Video");
-            LogMessageCategory debug = new LogMessageCategory("Debug");
 
-            categories.Add(LogMessageCategories.Info, systemInfo);
-            categories.Add(LogMessageCategories.Error, errors);
-            categories.Add(LogMessageCategories.Video, encodes);
-            categories.Add(LogMessageCategories.Debug, debug);
-
-
-            logbook.addCategory(systemInfo);
-            logbook.addCategory(errors);
-            logbook.addCategory(encodes);
-            logbook.addCategory(debug);
-
+            createCategories();
         }
-
-
-
 
         public static LogBookController Instance
         {
@@ -64,9 +47,7 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         public void viewLog()
         {
-
             Process.Start(ReportController.generateDocument(logbook));
-
         }
 
         public void setInfoLabel(string message)
@@ -76,7 +57,6 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         public void sendmail()
         {
-
             if (MessageBox.Show(LanguageController.Instance.getLanguageString("errorWarningMessage"), LanguageController.Instance.getLanguageString("errorWarningTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
                 if (File.Exists(Application.StartupPath + "\\temp\\" + "\\log.doc"))
@@ -89,7 +69,6 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
                 MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreport on sourceforge!");
                 Process.Start("http://sourceforge.net/tracker/?func=add&group_id=280183&atid=1189049");
             }
-
         }
 
         private void createZip()
@@ -102,6 +81,23 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             }
         }
 
+        private void createCategories()
+        {
+            LogMessageCategory systemInfo = new LogMessageCategory("System Info");
+            LogMessageCategory errors = new LogMessageCategory("Errors");
+            LogMessageCategory encodes = new LogMessageCategory("Video");
+            LogMessageCategory debug = new LogMessageCategory("Debug");
 
+            categories.Add(LogMessageCategories.Info, systemInfo);
+            categories.Add(LogMessageCategories.Error, errors);
+            categories.Add(LogMessageCategories.Video, encodes);
+            categories.Add(LogMessageCategories.Debug, debug);
+
+
+            logbook.addCategory(systemInfo);
+            logbook.addCategory(errors);
+            logbook.addCategory(encodes);
+            logbook.addCategory(debug);
+        }
     }
 }
