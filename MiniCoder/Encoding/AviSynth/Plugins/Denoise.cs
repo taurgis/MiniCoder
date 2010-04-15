@@ -16,19 +16,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
-    class Denoise : Plugin
+    public class Denoise : Plugin
     {
-        public Denoise()
-        {
-
-        }
-
-        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
+      public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
         {
             Tool filter;
             switch (EncOpts["denoise"])

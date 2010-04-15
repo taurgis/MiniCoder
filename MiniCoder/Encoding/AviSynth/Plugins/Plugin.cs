@@ -16,12 +16,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
-    interface Plugin
+    public interface Plugin
     {
         string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools);
     }

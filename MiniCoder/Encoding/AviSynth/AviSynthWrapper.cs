@@ -19,7 +19,6 @@
 // ****************************************************************************
 
 using System;
-using System.Collections;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
@@ -40,8 +39,6 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
 
     public class AviSynthException : ApplicationException
     {
-
-
         public AviSynthException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
