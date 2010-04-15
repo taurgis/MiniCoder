@@ -14,18 +14,12 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.OS;
-using System.Security.Principal;
-using MiniTech.MiniCoder.Core.Languages;
-using MiniTech.MiniCoder.GUI;
-using System.Windows.Forms;
 using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text.RegularExpressions;
+using System.OS;
+using System.Security.Principal;
+using System.Text;
 using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace System

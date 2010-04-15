@@ -14,13 +14,10 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.GUI;
-using System.Windows.Forms;
-using System.Net;
 using System.IO;
+using System.Net;
+using System.Windows.Forms;
+
 namespace System
 {
     public static class MiniOnline

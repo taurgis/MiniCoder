@@ -16,13 +16,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.GUI;
-using System.Windows.Forms;
-using System.IO;
-using ICSharpCode.SharpZipLib.Zip;
-using System.Diagnostics;
-using MiniTech.MiniCoder.Core.Languages;
+
 namespace MiniTech.MiniCoder.Core.Other.Logging
 {
     public sealed class LogBook

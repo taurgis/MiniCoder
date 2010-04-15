@@ -16,15 +16,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
-using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Core.Managers;
+using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
