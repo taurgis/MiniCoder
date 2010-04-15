@@ -53,9 +53,9 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 
                 int exitCode = proc.startProcess();
                 audio.demuxPath = decodedAudio;
-               
+
                 LogBookController.Instance.addLogLine("Decoding Complete", LogMessageCategories.Video);
-                
+
                 return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)

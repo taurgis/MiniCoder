@@ -24,50 +24,41 @@ using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
 
 namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
-    class Madplay : MiniDecoder
+    public class Madplay : MiniDecoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-
-        public Madplay()
-        {
-            
-        }
-
         public Boolean decode(Tool madplay, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
         {
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-          
+
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
                 processWatcher.setProcess(proc);
                 proc.initProcess();
 
-               // LogBook.Instance.addLogLine("Decoding MPEG - Using madplay", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
+                LogBookController.Instance.addLogLine("Decoding MPEG - Using madplay", LogMessageCategories.Video);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
-
-                String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
+                String decodedAudio = LocationManager.TempFolder + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
                 if (!madplay.isInstalled())
                     madplay.download();
+
                 proc.setFilename(Path.Combine(madplay.getInstallPath(), "madplay.exe"));
                 proc.setArguments("-S -o wave:\"" + decodedAudio + "\" \"" + audio.demuxPath + "\"");
 
                 int exitCode = proc.startProcess();
-                if (proc.getAbandonStatus())
-                    return false;
 
-                if (exitCode != 0)
-                    return false;
                 audio.demuxPath = decodedAudio;
-               // LogBook.Instance.addLogLine("Decoding Completed", fileDetails["name"][0] + "AudioDecoding", "", false);
 
-                return true;
+                LogBookController.Instance.addLogLine("Decoding Completed", LogMessageCategories.Video);
+
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {

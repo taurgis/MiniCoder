@@ -24,54 +24,46 @@ using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
 
 namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
-    class Flac : MiniDecoder
+    public class Flac : MiniDecoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-
-        public Flac()
-        {
-            
-        }
-
         public Boolean decode(Tool flac, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
         {
             try
             {
-
-               
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
+             
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-               // LogBook.Instance.addLogLine("Decoding Flac - Using flac", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
+                LogBookController.Instance.addLogLine("Decoding Flac - Using flac", LogMessageCategories.Video);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
-                String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
+                String decodedAudio = LocationManager.TempFolder + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
                 if (!flac.isInstalled())
                     flac.download();
+
                 proc.setFilename(Path.Combine(flac.getInstallPath(), "flac.exe"));
                 proc.setArguments("-d -o \"" + decodedAudio + "\" \"" + audio.demuxPath + "\"");
 
                 int exitCode = proc.startProcess();
-                if (proc.getAbandonStatus())
-                    return false;
 
-                if (exitCode != 0)
-                    return false;
                 audio.demuxPath = decodedAudio;
-               // LogBook.Instance.addLogLine("Decoding completed", fileDetails["name"][0] + "AudioDecoding", "", false);
 
-                return true;
+                LogBookController.Instance.addLogLine("Decoding completed", LogMessageCategories.Video);
+
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {
                 LogBookController.Instance.addLogLine("Error decoding audio with Flac. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
+
                 return false;
             }
         }
