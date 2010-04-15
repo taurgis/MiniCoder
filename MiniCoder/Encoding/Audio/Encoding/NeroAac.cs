@@ -16,40 +16,31 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.Encoding.Process_Management;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using System.Diagnostics;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
-    class NeroAac : MiniEncoder
+    public class NeroAac : MiniEncoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-        public NeroAac()
-        {
-
-        }
-
         public bool encode(Tool besweet, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts, ProcessWatcher processWatcher)
         {
             try
             {
-
                 MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
-               
+
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
 
-
-
-               // LogBook.Instance.addLogLine("Encoding to Nero AAC", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
+                LogBookController.Instance.addLogLine("Encoding to Nero AAC", LogMessageCategories.Video);
 
                 proc.initProcess();
 
@@ -61,38 +52,19 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
                     Process.Start(besweet.getInstallPath());
                 }
 
-
-
-
                 proc.setFilename(Path.Combine(besweet.getInstallPath(), "BeSweet.exe"));
-
 
                 if (!besweet.isInstalled())
                     besweet.download();
 
-
-                audio.encodePath = tempPath + Path.GetFileNameWithoutExtension(audio.demuxPath) + "_output.mp4";
+                audio.encodePath = LocationManager.TempFolder + Path.GetFileNameWithoutExtension(audio.demuxPath) + "_output.mp4";
                 proc.setArguments("-core( -input \"" + audio.demuxPath + "\" -output \"" + audio.encodePath + "\" ) -azid( -s stereo -c normal -L -3db ) -bsn( -2ch -abr " + EncOpts["audbr"] + " -codecquality_high ) -ota( -g max )");
-
-
-                if (proc.getAbandonStatus())
-                    return true;
 
                 int exitCode = proc.startProcess();
 
+                LogBookController.Instance.addLogLine("Encoding audio completed", LogMessageCategories.Video);
 
-
-
-                if (exitCode != 0)
-                {
-                    return false;
-                }
-                else
-                {
-                   // LogBook.Instance.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
-
-                    return true;
-                }
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {

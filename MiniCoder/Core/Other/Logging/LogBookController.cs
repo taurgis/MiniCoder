@@ -15,16 +15,15 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Collections;
-using System.Text;
-using MiniTech.MiniCoder.GUI;
-using System.Windows.Forms;
+using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 using ICSharpCode.SharpZipLib.Zip;
 using Minitech.MiniCoder.Core.Other.Logging.Reports;
 using MiniTech.MiniCoder.Core.Languages;
-using System.Diagnostics;
+using MiniTech.MiniCoder.GUI;
+
 namespace MiniTech.MiniCoder.Core.Other.Logging
 {
     public sealed class LogBookController

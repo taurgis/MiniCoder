@@ -16,74 +16,46 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
+using System.IO;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
+using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
-using System.IO;
-using System.Windows.Forms;
-using MiniTech.MiniCoder.Core.Languages;
-using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
-    class Lame : MiniEncoder
+   public class Lame : MiniEncoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-        public Lame()
-        {
-
-        }
-
         public bool encode(Tool lame, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts, ProcessWatcher processWatcher)
         {
             try
             {
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
-                
+
                 processWatcher.setProcess(proc);
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
-               // LogBook.Instance.addLogLine("Encoding to Lame MP3", fileDetails["name"][0] + "AudioEncoding", fileDetails["name"][0] + "AudioEncodingProcess", false);
 
+                LogBookController.Instance.addLogLine("Encoding to Lame MP3", LogMessageCategories.Video);
 
-
-                //// //// LogBook.Instance.addLogLine(""Encoding Audio",1);
                 proc.initProcess();
 
-
-
-
-
                 proc.setFilename(Path.Combine(lame.getInstallPath(), "lame.exe"));
-
 
                 if (!lame.isInstalled())
                     lame.download();
 
-
-                audio.encodePath = tempPath + Path.GetFileNameWithoutExtension(audio.demuxPath) + "_output.mp3";
-                // --abr 128 -h - "C:\Documents and Settings\Thomas\My Documents\Smallville.S05E06.WS.DVDRip.XviD-SAiNTS-001.mp3"
-                //    proc.setArguments("-i \"" + audio.demuxPath + "\" -y -acodec ac3 -ab " + EncOpts["audbr"] + "k \"" + audio.encodePath + "\"");
+                audio.encodePath = LocationManager.TempFolder + Path.GetFileNameWithoutExtension(audio.demuxPath) + "_output.mp3";
                 proc.setArguments("--abr " + EncOpts["audbr"] + " -h \"" + audio.demuxPath + "\" \"" + audio.encodePath + "\"");
-                if (proc.getAbandonStatus())
-                    return true;
 
                 int exitCode = proc.startProcess();
 
+                LogBookController.Instance.addLogLine("Encoding audio completed", LogMessageCategories.Video);
 
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
 
-
-                if (exitCode != 0)
-                {
-                    return false;
-                }
-                else
-                {
-                   // LogBook.Instance.addLogLine("Encoding audio completed", fileDetails["name"][0] + "AudioEncoding", "", false);
-
-                    return true;
-                }
             }
             catch (Exception error)
             {

@@ -16,13 +16,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
-    interface MiniEncoder
+    public interface MiniEncoder
     {
         bool encode(Tool encoder, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts, ProcessWatcher processWatcher);
     }

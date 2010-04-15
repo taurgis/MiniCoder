@@ -15,10 +15,9 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.Core.Other.Logging;
 using System.IO;
+using MiniTech.MiniCoder.Core.Other.Logging;
+
 namespace Minitech.MiniCoder.Core.Other.Logging.Reports
 {
     public class ReportController
