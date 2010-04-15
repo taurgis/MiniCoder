@@ -24,17 +24,12 @@ using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
-    class Oggdec : MiniDecoder
+    public class Oggdec : MiniDecoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-
-        public Oggdec()
-        {
-            
-        }
-
         public Boolean decode(Tool oggdec, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
         {
             try
@@ -44,34 +39,31 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-               // LogBook.Instance.addLogLine("Decoding OGG - Using oggdec", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
+                LogBookController.Instance.addLogLine("Decoding OGG - Using oggdec", LogMessageCategories.Video);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
 
-                String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
+                String decodedAudio = LocationManager.TempFolder + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
                 if (!oggdec.isInstalled())
                     oggdec.download();
+                
                 proc.setFilename(Path.Combine(oggdec.getInstallPath(), "oggdec.exe"));
                 proc.setArguments("-m -w \"" + decodedAudio + "\" \"" + audio.demuxPath + "\"");
 
                 int exitCode = proc.startProcess();
-                if (proc.getAbandonStatus())
-                    return false;
 
-                if (exitCode != 0)
-                    return false;
                 audio.demuxPath = decodedAudio;
-               // LogBook.Instance.addLogLine("Decoding completed", fileDetails["name"][0] + "AudioDecoding", "", false);
 
-                return true;
+                LogBookController.Instance.addLogLine("Decoding completed", LogMessageCategories.Video);
+                
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {
                 LogBookController.Instance.addLogLine("Error decoding audio with OggDec. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
                 return false;
             }
-
         }
     }
 }

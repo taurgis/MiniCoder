@@ -20,6 +20,7 @@ using System.Text;
 using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+
 namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     interface MiniDecoder
