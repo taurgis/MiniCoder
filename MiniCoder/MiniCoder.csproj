@@ -8,7 +8,7 @@
     <ProjectGuid>{B60D7654-3F18-4057-87BA-95B8E5A33551}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MiniCoder</RootNamespace>
+    <RootNamespace>MiniTech.MiniCoder</RootNamespace>
     <AssemblyName>MiniCoder</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -97,6 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Portugese-Brasil.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Managers\ProcessManager.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\Logging\LogbookControl.cs">
       <SubType>UserControl</SubType>
@@ -109,6 +110,7 @@
     <Compile Include="Core\Other\Logging\LogMessageCategory.cs" />
     <Compile Include="Core\Other\Logging\Reports\ReportController.cs" />
     <Compile Include="Core\Other\OsInfo.cs" />
+    <Compile Include="Core\Managers\LocationManager.cs" />
     <Compile Include="Core\Settings\MainSettings.cs" />
     <Compile Include="Core\Settings\SettingsController.cs" />
     <Compile Include="Encoding\Audio\Decoding\Ffmpeg.cs" />

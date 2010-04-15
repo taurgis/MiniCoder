@@ -28,59 +28,42 @@ namespace System
         public static void GetNews(ListView list)
         {
             String news = GetText("http://www.gamerzzheaven.be/news.txt");
-
             String[] newsItems = news.Split(Char.Parse("\n"));
+
             for (int i = 0; i < newsItems.Length; i++)
             {
                 string[] newsItem = newsItems[i].Split(Char.Parse(";"));
-                ListViewItem temp = new ListViewItem();
-                ListViewItem.ListViewSubItem newsMessage = new ListViewItem.ListViewSubItem();
-                ListViewItem.ListViewSubItem newsUrl = new ListViewItem.ListViewSubItem();
-                temp.SubItems[0].Text = newsItem[0];
-                newsMessage.Text = newsItem[1];
-                newsUrl.Text = newsItem[2];
 
-                temp.SubItems.Add(newsMessage);
-                temp.SubItems.Add(newsUrl);
-                list.Items.Add(temp);
+                list.Items.Add(createListItem(newsItem[0], newsItem[1], newsItem[2]));
             }
+        }
 
+        private static ListViewItem createListItem(String date, String message, String url)
+        {
+            ListViewItem newsItem = new ListViewItem();
+            ListViewItem.ListViewSubItem newsMessage = new ListViewItem.ListViewSubItem();
+            ListViewItem.ListViewSubItem newsUrl = new ListViewItem.ListViewSubItem();
 
+            newsItem.SubItems[0].Text = date;
+            newsMessage.Text = message;
+            newsUrl.Text = url;
+
+            newsItem.SubItems.Add(newsMessage);
+            newsItem.SubItems.Add(newsUrl);
+
+            return newsItem;
         }
 
         private static string GetText(string url)
         {
-            WebRequest req = WebRequest.Create((url));
-
-            WebResponse response = req.GetResponse();
+            WebResponse response = WebRequest.Create((url)).GetResponse();
+      
             return StringFromResponse(response);
         }
+
         private static string StringFromResponse(WebResponse response)
         {
-            String url = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            return url;
+            return new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
-
-        public static void clearIECache()
-        {
-            ClearFolder(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.InternetCache)));
-        }
-
-       private static void ClearFolder(DirectoryInfo folder)
-        {
-            foreach (FileInfo file in folder.GetFiles())
-            {
-                try
-                {
-                    file.Delete();
-                }
-                catch
-                {
-                }
-            }
-            foreach (DirectoryInfo subfolder in folder.GetDirectories())
-            { ClearFolder(subfolder); }
-        } 
     }
 }
