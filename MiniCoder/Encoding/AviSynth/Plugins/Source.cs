@@ -16,22 +16,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
-    class Source : Plugin
+    public class Source : Plugin
     {
-        public Source()
-        {
-        }
-
         public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
         {
             string sourceline = "";
-
 
             switch (video.codec)
             {
@@ -110,13 +104,9 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
                             break;
                     }
                     break;
-
                 default:
                     sourceline = "DirectshowSource(\"" + video.demuxPath + "\", audio=False)\r\nConvertToYV12()";
-
                     break;
-
-
             }
             return sourceline;
         }

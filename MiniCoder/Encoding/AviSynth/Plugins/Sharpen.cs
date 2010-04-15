@@ -16,18 +16,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
-    class Sharpen : Plugin
+    public class Sharpen : Plugin
     {
-        public Sharpen()
-        {
-
-        }
-
         public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
         {
             Tool filter;

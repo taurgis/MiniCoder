@@ -16,22 +16,21 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Windows.Forms;
+using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.AviSynth.Plugins;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
-using System.Windows.Forms;
-using System.IO;
-using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace MiniTech.MiniCoder.Encoding.AviSynth
 {
-    class AvsCreator
+    public class AvsCreator
     {
-        SortedList<String, String[]> fileDetails;
-        SortedList<String, String> EncOpts;
-        SortedList<String, Tool> tools;
-        Track video;
+        private SortedList<String, String[]> fileDetails;
+        private SortedList<String, String> EncOpts;
+        private SortedList<String, Tool> tools;
+        private Track video;
 
         public AvsCreator(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
         {
@@ -63,8 +62,7 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
                 streamWriter.Write(avs);
                 streamWriter.Close();
 
-               // LogBook.Instance.addLogLine(avs, fileDetails["name"][0] + "AvsCreation", "", false);
-
+                LogBookController.Instance.addLogLine(avs, LogMessageCategories.Video);
 
                 return checkAvs();
             }
@@ -84,16 +82,14 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
                 AviSynthClip temp = environment.OpenScriptFile(EncOpts["avsfile"]);
                 temp = null;
                 return true;
-               
+
             }
             catch (AviSynthException er)
             {
-               // LogBook.Instance.addLogLine("Error checking AVS file: " + er.Message, "Errors", "", true);
-                //// LogBook.Instance.addLogLine("er.Message,1);
+                LogBookController.Instance.addLogLine("Error checking AVS file: " + er.Message, LogMessageCategories.Error);
                 MessageBox.Show("Error in AVS File: " + er.Message);
                 return false;
             }
-                
         }
 
         private string getSourceLine()
@@ -124,6 +120,5 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
             Plugin sharpen = new Sharpen();
             return sharpen.getAvsCode(fileDetails, video, EncOpts, tools);
         }
-
     }
 }

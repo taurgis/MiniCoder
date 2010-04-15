@@ -16,21 +16,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
-    class Resize : Plugin
+    public class Resize : Plugin
     {
-        public Resize()
-        {
-
-        }
-
         public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
         {
-           
             switch (EncOpts["resize"])
             {
                 case "1":
