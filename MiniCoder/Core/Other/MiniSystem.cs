@@ -26,6 +26,7 @@ using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
+using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace System
 {
@@ -41,26 +42,12 @@ namespace System
 
         public static string getOSName()
         {
-            try
-            {
-
-                return string.Format("{0}{1} ({2}.{3}.{4}.{5})", OsInfo.GetOSName(), OsInfo.GetOSServicePack(), OsInfo.OSMajorVersion, OsInfo.OSMinorVersion, OsInfo.OSRevisionVersion, OsInfo.OSBuildVersion);
-            }
-            catch
-            {
-                return "Error get OS info.";
-            }
+            return string.Format("{0}{1} ({2}.{3}.{4}.{5})", OsInfo.GetOSName(), OsInfo.GetOSServicePack(), OsInfo.OSMajorVersion, OsInfo.OSMinorVersion, OsInfo.OSRevisionVersion, OsInfo.OSBuildVersion);
         }
+
         public static string getElevation()
         {
-            try
-            {
-                return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator) ? "Yes" : "No";
-            }
-            catch
-            {
-                return "Error fetching elevation.";
-            }
+            return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator) ? "Yes" : "No";
         }
 
         public static string getRamSize()
@@ -70,9 +57,11 @@ namespace System
             foreach (ManagementObject Mobject in Search.Get())
             {
                 double Ram_Bytes = (Convert.ToDouble(Mobject["TotalPhysicalMemory"]));
+
                 return ((int)(Ram_Bytes / 1048576)).ToString() + " Mb";
             }
-            return "";
+
+            return String.Empty;
         }
 
         public static string getCurrentUser()
@@ -91,7 +80,6 @@ namespace System
                     allIps += address.ToString() + "\n\r";
             }
 
-
             return allIps;
         }
 
@@ -101,11 +89,12 @@ namespace System
             {
                 UTF8Encoding utf8 = new UTF8Encoding();
                 WebClient webClient = new WebClient();
-                return utf8.GetString(webClient.DownloadData(
-                "http://whatismyip.com/automation/n09230945.asp"));
+
+                return utf8.GetString(webClient.DownloadData("http://whatismyip.com/automation/n09230945.asp"));
             }
-            catch
+            catch (WebException ex)
             {
+                LogBookController.Instance.addLogLine("Error connecting to whatismyip. \r\n" + ex, LogMessageCategories.Error);
                 return "Unknown";
             }
         }
@@ -118,11 +107,12 @@ namespace System
                 PingReply pingreply = ping.Send(IPAddress.Parse("74.125.77.147"));
                 return "Yes";
             }
-            catch
+            catch (PingException ex)
             {
+                LogBookController.Instance.addLogLine("Error pinging google. \r\n" + ex, LogMessageCategories.Error);
+
                 return "No";
             }
-
         }
 
         public static string getMachineName()
@@ -139,7 +129,6 @@ namespace System
         public static string getCurrentDirectory()
         {
             return Environment.CurrentDirectory;
-
         }
 
         public static string isShuttingDown()
@@ -152,11 +141,8 @@ namespace System
             return (Environment.WorkingSet / 1048576).ToString() + " Mb";
         }
 
-
-
         public static string getDomain()
         {
-
             return Environment.UserDomainName;
         }
 
@@ -172,25 +158,12 @@ namespace System
 
         public static string getDotNetFramework()
         {
-            try
-            {
-                return string.Format("{0}", OsInfo.DotNetVersionFormated(OsInfo.FormatDotNetVersion()));
-            }
-            catch
-            {
-                return "Error fetching .NET Framework.";
-            }
+            return string.Format("{0}", OsInfo.DotNetVersionFormated(OsInfo.FormatDotNetVersion()));
         }
+
         public static string getProcessorInfo()
         {
-            try
-            {
-                return string.Format("{0}", OsInfo.GetMOStuff("Win32_Processor"));
-            }
-            catch
-            {
-                return "Error fetching CPU info";
-            }
+            return string.Format("{0}", OsInfo.GetMOStuff("Win32_Processor"));
         }
     }
 }

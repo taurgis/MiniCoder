@@ -24,50 +24,39 @@ using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
 
 namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
-    class Ffmpeg : MiniDecoder
+    public class Ffmpeg : MiniDecoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-
-        public Ffmpeg()
-        {
-            
-        }
-
         public Boolean decode(Tool ffmpeg, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
         {
             try
             {
-
-               
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 processWatcher.setProcess(proc);
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
- 
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
-               // LogBook.Instance.addLogLine("Decoding Unknown - Using FFMpeg", fileDetails["name"][0] + "AudioDecoding", fileDetails["name"][0] + "AudioDecodingProcess", false);
 
-                String decodedAudio = tempPath + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("audioDecodingMessage"));
+                LogBookController.Instance.addLogLine("Decoding Unknown - Using FFMpeg", LogMessageCategories.Video);
+
+                String decodedAudio = LocationManager.TempFolder + fileDetails["name"][0] + "-Decoded Audio Track-" + i.ToString() + ".wav";
 
                 if (!ffmpeg.isInstalled())
                     ffmpeg.download();
+
                 proc.setFilename(Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe"));
                 proc.setArguments("-i \"" + fileDetails["fileName"][0] + "\" -f wav -y \"" + decodedAudio + "\"");
 
                 int exitCode = proc.startProcess();
-                if (proc.getAbandonStatus())
-                    return false;
-
-                if (exitCode != 0)
-                    return false;
                 audio.demuxPath = decodedAudio;
-               // LogBook.Instance.addLogLine("Decoding Complete", fileDetails["name"][0] + "AudioDecoding", "", false);
-
-                return true;
+               
+                LogBookController.Instance.addLogLine("Decoding Complete", LogMessageCategories.Video);
+                
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {
