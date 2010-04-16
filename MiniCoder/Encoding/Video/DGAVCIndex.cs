@@ -16,24 +16,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
+using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using System.IO;
-using System.Windows.Forms;
-using MiniTech.MiniCoder.Core.Languages;
-using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
-    class DGAVCIndex
+    public class DGAVCIndex
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-        public DGAVCIndex()
-        {
-        }
-
         public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
         {
 
@@ -46,7 +40,8 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
                 LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvc"));
-                // LogBook.Instance.addLogLine("Started Indexing AVC", fileDetails["name"][0] + "DGAVCStep", fileDetails["name"][0] + "DGAVCStepProcess", false);
+                LogBookController.Instance.addLogLine("Started Indexing AVC", LogMessageCategories.Video);
+
                 proc.initProcess();
 
                 if (!dgavcindex.isInstalled())
@@ -55,22 +50,18 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
                     dgavcdecode.download();
 
                 proc.setFilename(Path.Combine(dgavcindex.getInstallPath(), "DGAVCIndex.exe"));
-                string dgaFile = tempPath + fileDetails["name"][0] + ".dga";
+                string dgaFile = LocationManager.TempFolder + fileDetails["name"][0] + ".dga";
                 proc.setArguments("-i \"" + video.demuxPath + "\" -o \"" + dgaFile + "\" -a -h -e");
 
-                proc.startProcess();
+                int exitCode = proc.startProcess();
                 video.demuxPath = dgaFile;
 
-                if (proc.getAbandonStatus())
-                {
-                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcAbort"));
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcCompleted"));
+                LogBookController.Instance.addLogLine("Finished Indexing AVC", LogMessageCategories.Video);
+
+                if (!ProcessManager.hasProcessExitedCorrectly(proc, exitCode))
                     return false;
-                }
-                else
-                {
-                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvcCompleted"));
-                    LogBookController.Instance.addLogLine("Finished Indexing AVC", LogMessageCategories.Video);
-                }
+
                 if (File.Exists(dgaFile))
                     return true;
                 else
