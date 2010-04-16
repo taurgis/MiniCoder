@@ -27,8 +27,6 @@ namespace MiniTech.MiniCoder.Encoding.Input
     interface InputFile
     {
         SortedList<String, Track[]> getTracks();
-        Boolean demux(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher);
-        void setTempPath(String tempPath);
-       
+        Boolean demux(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher);      
     }
 }

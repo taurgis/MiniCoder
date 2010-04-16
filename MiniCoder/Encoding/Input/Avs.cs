@@ -16,49 +16,41 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using MiniTech.MiniCoder.Core.Managers;
+using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.AviSynth;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.External;
-using System.IO;
-using System.Windows.Forms;
-using MiniTech.MiniCoder.Encoding.AviSynth;
-using System.Text.RegularExpressions;
+
 namespace MiniTech.MiniCoder.Encoding.Input
 {
-    class Avs : InputFile
+    public class Avs : InputFile
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-     //   SortedList<String, String[]> fileDetails = new SortedList<string, string[]>();
-
-        public Avs()
-        {
-
-        }
-
         public SortedList<String, Track[]> getTracks()
         {
             return new SortedList<string, Track[]>();
         }
 
-        public void setTempPath(string tempPath)
-        {
-            this.tempPath = tempPath;
-        }
-
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-           // LogBook.Instance.addLogLine("Analysing AVS file", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "AVSAnalyse", false);
+            LogBookController.Instance.addLogLine("Analysing AVS file", LogMessageCategories.Video);
+
             AviSynthScriptEnvironment environment = new AviSynthScriptEnvironment();
             AviSynthClip clip = environment.OpenScriptFile(fileDetails["fileName"][0]);
             fileDetails.Add("width", clip.VideoWidth.ToString().Split(Convert.ToChar("~")));
             fileDetails.Add("height", clip.VideoHeight.ToString().Split(Convert.ToChar(" ")));
             fileDetails.Add("avsfile", fileDetails["fileName"][0].Split(Char.Parse("\n")));
             fileDetails["fileName"][0] = getAvsSource(fileDetails["fileName"][0]);
-           // LogBook.Instance.addLogLine("Retrieved source: " + fileDetails["fileName"][0], fileDetails["name"][0] + "AVSAnalyse", "", false);
+
+            LogBookController.Instance.addLogLine("Retrieved source: " + fileDetails["fileName"][0], LogMessageCategories.Video);
+
             clip = null;
             environment = null;
-          
+
             return true;
         }
 
@@ -74,13 +66,12 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
             Regex r = new Regex(re1 + re2 + re3, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             Match m = r.Match(avsFile);
+           
             if (m.Success)
             {
-
-                String fqdn1 = m.Groups[3].ToString();
-
-                return fqdn1.Replace("\"","");
+                return m.Groups[3].ToString().Replace("\"", "");
             }
+           
             return "";
         }
     }

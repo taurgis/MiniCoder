@@ -16,12 +16,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
-    class Chapter : Track
+    public class Chapter : Track
     {
         public String title {get; set;}
         public String language { get; set; }
@@ -41,8 +41,5 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
         {
             return true;
         }
-
-
-
     }
 }

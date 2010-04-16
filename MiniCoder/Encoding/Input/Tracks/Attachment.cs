@@ -16,14 +16,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
-    class Attachment : Track
+    public class Attachment : Track
     {
-        public String title {get; set;}
+        public String title { get; set; }
         public String language { get; set; }
         public String codec { get; set; }
         public String demuxPath { get; set; }
@@ -35,15 +35,11 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
         {
             this.demuxPath = demuxPath;
             this.title = title;
-         
         }
 
         public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
         {
             return true;
         }
-
-
-
     }
 }

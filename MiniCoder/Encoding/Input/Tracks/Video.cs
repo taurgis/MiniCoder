@@ -16,16 +16,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.Encoding.VideoEnc.Encoding;
-using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
     class Video : Track
     {
-        public String title {get; set;}
+        public String title { get; set; }
         public String language { get; set; }
         public String codec { get; set; }
         public String demuxPath { get; set; }
@@ -37,16 +37,15 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
         {
             this.id = id;
             this.codec = codec;
-         
         }
 
         public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
         {
             try
             {
-               // LogBook.Instance.addLogLine("Encoding Video", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VideoEncoding", false);
-
+                LogBookController.Instance.addLogLine("Encoding Video", LogMessageCategories.Video);
                 VideoEncoder videoEncoder = null;
+
                 switch (EncOpts["videocodec"])
                 {
                     case "0":
@@ -59,6 +58,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                         videoEncoder = new Theora();
                         return videoEncoder.encode(tools["theora"], fileDetails, EncOpts, processWatcher, tracks); ;
                 }
+
                 return false;
             }
             catch (Exception error)
@@ -67,8 +67,5 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                 return false;
             }
         }
-
-
-
     }
 }
