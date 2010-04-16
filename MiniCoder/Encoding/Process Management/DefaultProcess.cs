@@ -15,13 +15,9 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Collections;
-using System.Threading;
 using System.IO;
-using System.Text.RegularExpressions;
+using System.Threading;
 using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace MiniTech.MiniCoder.Encoding.Process_Management
@@ -29,21 +25,21 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
     public class DefaultProcess : MiniProcess
     {
         private static Process mainProcess = null;
-        Thread backGround;
+        private Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
-        public bool abandon = false;
-        public bool errflag = true;
-        public int processPriority = 0;
-        public string currProcess = "";
-        
+        private bool abandon = false;
+        private int processPriority = 0;
+        private String read2;
+        private string stdoutlast = "";
         private bool disablestderr = false;
         private bool disablestdout = false;
 
-        string frontMessage;
-        
-        int exitCode;
-        string loglocation = "";
+        private string frontMessage;
+
+        private int exitCode;
+        private string loglocation = "";
+
         public DefaultProcess(string frontMessage, string loglocation)
         {
             this.frontMessage = frontMessage;
@@ -84,9 +80,9 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-                
-              // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
+                LogBookController.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, LogMessageCategories.Video);
                 taskProcess();
+
                 return exitCode;
             }
             return exitCode;
@@ -115,24 +111,20 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     return ProcessPriorityClass.RealTime;
                 default:
                     return ProcessPriorityClass.Idle;
-
-
             }
-            
+
         }
 
         private void taskProcess()
         {
-          
-
             mainProcess.EnableRaisingEvents = true;
 
             mainProcess.StartInfo.UseShellExecute = false;
-            
-                mainProcess.StartInfo.CreateNoWindow = true;
-                mainProcess.StartInfo.RedirectStandardError = true;
-                mainProcess.StartInfo.RedirectStandardOutput = true;
-            
+
+            mainProcess.StartInfo.CreateNoWindow = true;
+            mainProcess.StartInfo.RedirectStandardError = true;
+            mainProcess.StartInfo.RedirectStandardOutput = true;
+
             backGround = new Thread(new ThreadStart(runprocess));
             backGround.Start();
 
@@ -164,13 +156,7 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                         }
                     }
                 }
-
-               
-
-              
-
             }
-
         }
 
         private void runprocess()
@@ -190,21 +176,19 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
 
                 }
 
-              
-                    stderr = mainProcess.StandardError;
-                    stdout = mainProcess.StandardOutput;
 
-                    stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                    stdOutThread = new Thread(new ThreadStart(stdoutProcess));
+                stderr = mainProcess.StandardError;
+                stdout = mainProcess.StandardOutput;
 
-                    stdErrThread.Start();
-                    stdOutThread.Start();
-               
+                stdErrThread = new Thread(new ThreadStart(stderrProcess));
+                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
 
-               
-                    mainProcess.WaitForExit();
-                    exitCode = mainProcess.ExitCode;
-                
+                stdErrThread.Start();
+                stdOutThread.Start();
+
+                mainProcess.WaitForExit();
+                exitCode = mainProcess.ExitCode;
+
                 Thread.Sleep(2000);
 
             }
@@ -240,7 +224,7 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         }
 
         String read;
-        string stderrLast ="";
+        string stderrLast = "";
         private void stderrProcess()
         {
             while ((read = stderr.ReadLine()) != null)
@@ -250,37 +234,32 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     if (!stderrLast.Equals(read))
                     {
                         stderrLast = read;
-                        // LogBook.Instance.addLogLine(read, loglocation,"",false);
-                       LogBookController.Instance.setInfoLabel(frontMessage +": " + read);
-                        //// LogBook.Instance.addLogLine("read, 2);
+                        LogBookController.Instance.addLogLine(read, LogMessageCategories.Video);
+                        LogBookController.Instance.setInfoLabel(frontMessage + ": " + read);
                     }
                 }
                 Thread.Sleep(0);
             }
         }
 
-
-        String read2;
-        string stdoutlast ="";
-         private void stdoutProcess()
+        private void stdoutProcess()
         {
-                while ((read2 = stdout.ReadLine()) != null)
+            while ((read2 = stdout.ReadLine()) != null)
+            {
+                if (!disablestdout)
                 {
-                    if (!disablestdout)
+                    if (!stdoutlast.Equals(read2))
                     {
-                        if (!stdoutlast.Equals(read2))
-                        {
-                            stdoutlast = read2;
-                           // LogBook.Instance.addLogLine(read2, loglocation,"",false);
-                           
-                        }
+                        stdoutlast = read2;
+                        LogBookController.Instance.addLogLine(read2, LogMessageCategories.Video);
                     }
-                    Thread.Sleep(0);
                 }
+                Thread.Sleep(0);
             }
         }
-
-
-      
     }
+
+
+
+}
 

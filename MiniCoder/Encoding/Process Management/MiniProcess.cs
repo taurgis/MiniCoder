@@ -15,15 +15,12 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Diagnostics;
 
 namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
     public interface MiniProcess
     {
-      
         void setFilename(string filename);
         void setArguments(string arguments);
         int startProcess();

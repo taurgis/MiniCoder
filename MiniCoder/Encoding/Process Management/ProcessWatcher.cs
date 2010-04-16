@@ -14,21 +14,14 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
-   public class ProcessWatcher
+    public class ProcessWatcher
     {
-        MiniProcess proc;
-        int priority = 0;
-        bool abandonStatus = false;
-        public ProcessWatcher()
-        {
-       
-        }
+        private MiniProcess proc;
+        private int priority = 0;
+        private bool abandonStatus = false;
+
         public void abandon()
         {
             abandonStatus = true;
@@ -40,7 +33,6 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         }
         public void setProcess(MiniProcess proc)
         {
-           
             this.proc = proc;
             proc.setPriority(priority);
             if (abandonStatus)
@@ -60,8 +52,6 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
             {
                 this.priority = i;
                 proc.setPriority(i);
-
-
             }
             catch
             {

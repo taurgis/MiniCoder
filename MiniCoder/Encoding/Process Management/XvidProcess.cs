@@ -23,27 +23,27 @@ using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
 using MiniTech.MiniCoder.Core.Other.Logging;
+
 namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
-    
     public class XvidProcess : MiniProcess
     {
-        int totalframes;
+        private String read;
+        private string stderrLast = "";
+        private int totalframes;
         private static Process mainProcess = null;
-        Thread backGround;
+        private Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
-        public bool abandon = false;
-        public bool errflag = true;
-        public int processPriority = 0;
-        public string currProcess = "";
-        
+        private bool abandon = false;
+        private int processPriority = 0;
         private bool disablestderr = false;
         private bool disablestdout = false;
         private string frontMessage;
-        string pass;
-        int exitCode;
+        private string pass;
+        private int exitCode;
         private string loglocation = "";
+
         public XvidProcess(string frontMessage, string pass, int totalframes, string loglocation)
         {
             this.pass = pass;
@@ -56,10 +56,12 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         {
             return "";
         }
+
         public void setPriority(int i)
         {
             processPriority = i;
         }
+
         public void abandonProcess()
         {
             abandon = true;
@@ -84,8 +86,7 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-
-               // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, loglocation, "", false);
+                LogBookController.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, LogMessageCategories.Video);
                 taskProcess();
                 return exitCode;
             }
@@ -115,24 +116,22 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     return ProcessPriorityClass.RealTime;
                 default:
                     return ProcessPriorityClass.Idle;
-
-
             }
-            
+
         }
 
         private void taskProcess()
         {
-          
+
 
             mainProcess.EnableRaisingEvents = true;
 
             mainProcess.StartInfo.UseShellExecute = false;
-            
-                mainProcess.StartInfo.CreateNoWindow = true;
-                mainProcess.StartInfo.RedirectStandardError = true;
-                mainProcess.StartInfo.RedirectStandardOutput = true;
-            
+
+            mainProcess.StartInfo.CreateNoWindow = true;
+            mainProcess.StartInfo.RedirectStandardError = true;
+            mainProcess.StartInfo.RedirectStandardOutput = true;
+
             backGround = new Thread(new ThreadStart(runprocess));
             backGround.Start();
 
@@ -164,13 +163,7 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                         }
                     }
                 }
-
-               
-
-              
-
             }
-
         }
 
         private void runprocess()
@@ -190,21 +183,21 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
 
                 }
 
-              
-                    stderr = mainProcess.StandardError;
-                    stdout = mainProcess.StandardOutput;
 
-                    stdErrThread = new Thread(new ThreadStart(stderrProcess));
-                    stdOutThread = new Thread(new ThreadStart(stdoutProcess));
+                stderr = mainProcess.StandardError;
+                stdout = mainProcess.StandardOutput;
 
-                    stdErrThread.Start();
-                    stdOutThread.Start();
-               
+                stdErrThread = new Thread(new ThreadStart(stderrProcess));
+                stdOutThread = new Thread(new ThreadStart(stdoutProcess));
 
-               
-                    mainProcess.WaitForExit();
-                    exitCode = mainProcess.ExitCode;
-                
+                stdErrThread.Start();
+                stdOutThread.Start();
+
+
+
+                mainProcess.WaitForExit();
+                exitCode = mainProcess.ExitCode;
+
                 Thread.Sleep(2000);
 
             }
@@ -239,11 +232,9 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
             disablestdout = stdout;
         }
 
-        String read;
-        string stderrLast ="";
         private void stderrProcess()
         {
-            
+
             while ((read = stderr.ReadLine()) != null)
             {
                 if (!disablestderr)
@@ -252,8 +243,7 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     {
                         stderrLast = read;
 
-                       // LogBook.Instance.addLogLine(read, loglocation, "", false);
-                     
+                        LogBookController.Instance.addLogLine(read, LogMessageCategories.Video);
                     }
                 }
                 Thread.Sleep(0);
@@ -274,35 +264,34 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         }
 
         String read2;
-        string stdoutlast ="";
-         private void stdoutProcess()
+        string stdoutlast = "";
+        private void stdoutProcess()
         {
-                while ((read2 = stdout.ReadLine()) != null)
+            while ((read2 = stdout.ReadLine()) != null)
+            {
+                if (!disablestdout)
                 {
-                    if (!disablestdout)
+                    if (!stdoutlast.Equals(read2))
                     {
-                        if (!stdoutlast.Equals(read2))
+                        stdoutlast = read2;
+                        if (read2.Contains("time="))
                         {
-                            stdoutlast = read2;
-                            if (read2.Contains("time="))
-                            {
-                                int currframe = int.Parse(read2.Trim().Substring(0, read2.Trim().IndexOf(':')));
-                                float percent = (float)currframe / (float)totalframes;
-                                if (percent < 0)
-                                    percent = 1.0F;
-                               LogBookController.Instance.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
-                            }
-                            if (read2.Contains("fps")) { }
-                               // LogBook.Instance.addLogLine(read2, loglocation, "", false);
-                           
+                            int currframe = int.Parse(read2.Trim().Substring(0, read2.Trim().IndexOf(':')));
+                            float percent = (float)currframe / (float)totalframes;
+                            if (percent < 0)
+                                percent = 1.0F;
+                            LogBookController.Instance.setInfoLabel("Encoding Video - Pass " + pass.ToString() + ": " + percent.ToString("p2"));
                         }
+                        if (read2.Contains("fps"))
+                            LogBookController.Instance.addLogLine(read2, LogMessageCategories.Video);
                     }
-                    Thread.Sleep(0);
                 }
+                Thread.Sleep(0);
             }
         }
-
-
-      
     }
+
+
+
+}
 
