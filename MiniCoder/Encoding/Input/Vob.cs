@@ -35,11 +35,6 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public void setTempPath(string tempPath)
-        {
-            this.tempPath = tempPath;
-        }
-
         public Boolean demux(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
             if (demuxFile(DGIndex, fileDetails, tracks, processWatcher))
@@ -62,15 +57,15 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 proc.initProcess();
                 proc.setFilename(Path.Combine(DGIndex.getInstallPath(), "ChapterXtractor.exe"));
 
-                string tempArg = "\"" + fileDetails["fileName"][0].Replace("_1", "_0").Replace(".VOB", ".IFO") + "\" " + "\"" + tempPath + "chapters.txt\" -p5 -t1";
+                string tempArg = "\"" + fileDetails["fileName"][0].Replace("_1", "_0").Replace(".VOB", ".IFO") + "\" " + "\"" + LocationManager.TempFolder + "chapters.txt\" -p5 -t1";
                 proc.setArguments(tempArg);
 
                 int exitCode = proc.startProcess();
 
-                FileInfo tempChapFile = new FileInfo(tempPath + "chapters.txt");
+                FileInfo tempChapFile = new FileInfo(LocationManager.TempFolder + "chapters.txt");
 
                 if (tempChapFile.Length == 0)
-                    File.Delete(tempPath + "chapters.txt");
+                    File.Delete(LocationManager.TempFolder + "chapters.txt");
 
                 return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
@@ -90,9 +85,9 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
             string tempArg = "";
 
-            StreamWriter streamWriter = new StreamWriter(tempPath + fileDetails["name"][0] + ".vobsub");
+            StreamWriter streamWriter = new StreamWriter(LocationManager.TempFolder + fileDetails["name"][0] + ".vobsub");
             streamWriter.WriteLine(fileDetails["fileName"][0].Replace("_1", "_0").Replace(".VOB", ".IFO"));
-            streamWriter.WriteLine(tempPath + fileDetails["name"][0]);
+            streamWriter.WriteLine(LocationManager.TempFolder + fileDetails["name"][0]);
             streamWriter.WriteLine("1");
             streamWriter.WriteLine("0");
             streamWriter.WriteLine("ALL");
@@ -101,7 +96,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
             proc.setFilename("C:\\WINDOWS\\system32\\rundll32.exe");
 
-            tempArg = "VOBSUB.DLL,Configure " + tempPath + fileDetails["name"][0] + ".vobsub";
+            tempArg = "VOBSUB.DLL,Configure " + LocationManager.TempFolder + fileDetails["name"][0] + ".vobsub";
 
             proc.setArguments(tempArg);
             int exitCode = proc.startProcess();
@@ -128,13 +123,13 @@ namespace MiniTech.MiniCoder.Encoding.Input
             proc.initProcess();
             proc.setFilename(Path.Combine(DGIndex.getInstallPath(), "DGIndex.exe"));
 
-            tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "." + Codec.Instance.getExtention(tracks["video"][0].codec);
-            tempArg = "-SD=< -AIF=<" + fileDetails["fileName"][0] + "< -OF=<" + tempPath + fileDetails["name"][0] + "< -exit -hide -OM=2 -TN=80";
+            tracks["video"][0].demuxPath = LocationManager.TempFolder + fileDetails["name"][0] + "." + Codec.Instance.getExtention(tracks["video"][0].codec);
+            tempArg = "-SD=< -AIF=<" + fileDetails["fileName"][0] + "< -OF=<" + LocationManager.TempFolder + fileDetails["name"][0] + "< -exit -hide -OM=2 -TN=80";
 
             proc.setArguments(tempArg);
             int exitCode = proc.startProcess();
 
-            DirectoryInfo info = new DirectoryInfo(tempPath);
+            DirectoryInfo info = new DirectoryInfo(LocationManager.TempFolder);
             int count = 0;
             
             foreach (FileInfo fInfo in info.GetFiles())
