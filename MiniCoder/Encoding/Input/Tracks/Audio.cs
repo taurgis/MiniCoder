@@ -16,15 +16,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.Encoding.Sound.Decoding;
 using MiniTech.MiniCoder.Encoding.Sound.Encoding;
-using MiniTech.MiniCoder.Encoding.Process_Management;
-using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
-    class Audio : Track
+    public class Audio : Track
     {
         public String title { get; set; }
         public String language { get; set; }
@@ -33,7 +33,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
         public String encodePath { get; set; }
         public String length { get; set; }
         public int id { get; set; }
-        SortedList<String, String> EncOpts;
+        private SortedList<String, String> EncOpts;
 
         public Audio(String title, String language, String codec, int id)
         {
@@ -58,7 +58,8 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             {
                 MiniDecoder decoder;
                 Tool tempTool;
-               // LogBook.Instance.addLogLine("Decoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioDecoding", false);
+
+                LogBookController.Instance.addLogLine("Decoding Audio", LogMessageCategories.Video);
 
                 switch (Codec.Instance.getExtention(this.codec))
                 {
@@ -95,7 +96,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                         tempTool = tools["ffmpeg"];
                         break;
                 }
-                // fileDetails.Add("decodedaudio", new String[3]);
+
                 return decoder.decode(tempTool, fileDetails, id, this, processWatcher);
             }
             catch (Exception error)
@@ -109,8 +110,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
         {
             try
             {
-
-               // LogBook.Instance.addLogLine("Encoding Audio", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AudioEncoding", false);
+                LogBookController.Instance.addLogLine("Encoding Audio", LogMessageCategories.Video);
 
                 MiniEncoder encoder = null;
                 switch (EncOpts["audcodec"])
@@ -136,8 +136,5 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                 return false;
             }
         }
-           
-
-
     }
 }

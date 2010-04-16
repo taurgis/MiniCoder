@@ -24,7 +24,7 @@ using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.AviSynth
-{
+{ 
     public class AvsCreator
     {
         private SortedList<String, String[]> fileDetails;
@@ -52,12 +52,16 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
                 avs += getResizeLine();
                 avs += getDenoiseLine();
                 avs += getSharpenLine();
+
                 if (EncOpts.ContainsKey("hardsub"))
                     avs += "TextSub(\"" + EncOpts["hardsub"] + "\")";
+
                 if (EncOpts.ContainsKey("hardsubmp4"))
                     if (EncOpts["hardsubmp4"] != "0" && (EncOpts["container"] == "1" || EncOpts["container"] == "2") && fileTracks["subs"].Length > 0)
                         avs += "\r\nTextSub(\"" + fileTracks["subs"][int.Parse(EncOpts["hardsubmp4"]) - 1].demuxPath + "\")";
+
                 EncOpts.Add("avsfile", (Application.StartupPath + "\\temp\\" + fileDetails["name"][0] + ".avs"));
+                
                 StreamWriter streamWriter = new StreamWriter(EncOpts["avsfile"]);
                 streamWriter.Write(avs);
                 streamWriter.Close();
