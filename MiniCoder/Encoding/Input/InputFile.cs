@@ -15,18 +15,18 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Collections;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Input
 {
-    interface InputFile
+    public interface InputFile
     {
         SortedList<String, Track[]> getTracks();
-        Boolean demux(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher);      
+        Boolean demux(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher);
     }
 }

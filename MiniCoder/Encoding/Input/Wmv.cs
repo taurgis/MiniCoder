@@ -16,43 +16,28 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.External;
-using System.IO;
-using System.Windows.Forms;
 
 namespace MiniTech.MiniCoder.Encoding.Input
 {
-    class Wmv : InputFile
+    public class Wmv : InputFile
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-     //   SortedList<String, String[]> fileDetails = new SortedList<string, string[]>();
-
-        public Wmv()
-        {
-
-        }
-
         public SortedList<String, Track[]> getTracks()
         {
             return new SortedList<string, Track[]>();
         }
 
-        public void setTempPath(string tempPath)
-        {
-            this.tempPath = tempPath;
-        }
-
         public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-           // LogBook.Instance.addLogLine("Demuxing WMV - Setting up variables", fileDetails["name"][0] + "DeMuxing", "", false);
+            LogBookController.Instance.addLogLine("Demuxing WMV - Setting up variables", LogMessageCategories.Video);
 
+            tracks["video"][0].demuxPath = fileDetails["fileName"][0];
+            tracks["audio"][0].demuxPath = fileDetails["fileName"][0];
 
-                tracks["video"][0].demuxPath = fileDetails["fileName"][0];
-                tracks["audio"][0].demuxPath = fileDetails["fileName"][0];
-                return true;
+            return true;
         }
     }
 }
