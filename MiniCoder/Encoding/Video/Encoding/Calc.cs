@@ -16,17 +16,18 @@
 
 using System;
 using System.Collections.Generic;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using System.Text;
 using System.IO;
+using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
 
 namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class Calc
     {
-        SortedList<String, String[]> fileDetails;
-        SortedList<String, String> encOpts;
-        SortedList<String, Track[]> fileTracks;
+        private SortedList<String, String[]> fileDetails;
+        private SortedList<String, String> encOpts;
+        private SortedList<String, Track[]> fileTracks;
+
         public Calc(SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             this.fileDetails = fileDetails;
@@ -45,17 +46,14 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 for (int i = 0; i < fileTracks["audio"].Length; i++)
                     audioSize += int.Parse(encOpts["audbr"]) * int.Parse(fileDetails["audLength"][0]);
 
-                long subsize = getSubSize();
+                long remainBits = (long)(Kbits - overhead - audioSize - getSubSize());
 
-                long remainBits = (long)(Kbits - overhead - audioSize - subsize);
-
-                int vidBR = (int)(remainBits / int.Parse(fileDetails["audLength"][0]) + 5);
-
-                return vidBR;
+                return (int)(remainBits / int.Parse(fileDetails["audLength"][0]) + 5);
             }
             catch
             {
-               // LogBook.Instance.addLogLine("Error calculating filesize. The audio length is 0", "Errors", "", true);
+                LogBookController.Instance.addLogLine("Error calculating filesize. The audio length is 0", LogMessageCategories.Error);
+               
                 return int.Parse(encOpts["videobr"]);
             }
         }
@@ -67,7 +65,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
             switch (encOpts["container"])
             {
                 case "0":
-                    overhead =(int)(int.Parse(fileDetails["framecount"][0]) * 0.013 * 8);
+                    overhead = (int)(int.Parse(fileDetails["framecount"][0]) * 0.013 * 8);
                     break;
             }
 

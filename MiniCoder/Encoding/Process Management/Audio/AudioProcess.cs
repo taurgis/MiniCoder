@@ -273,7 +273,6 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     if (!stdoutlast.Equals(read2))
                     {
                         stdoutlast = read2;
-                        //   LogBookController.Instance.addLogLine(read2, LogMessageCategories.Video);
                     }
                 }
                 Thread.Sleep(0);
