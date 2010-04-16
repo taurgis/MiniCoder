@@ -97,6 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Portugese-Brasil.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Managers\ErrorManager.cs" />
     <Compile Include="Core\Managers\ProcessManager.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\Logging\LogbookControl.cs">

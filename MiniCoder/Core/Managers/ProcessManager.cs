@@ -15,6 +15,7 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 
 namespace MiniTech.MiniCoder.Core.Managers
@@ -24,10 +25,18 @@ namespace MiniTech.MiniCoder.Core.Managers
         public static Boolean hasProcessExitedCorrectly(MiniProcess proc, int exitCode)
         {
             if (proc.getAbandonStatus())
+            {
+                LogBookController.Instance.addLogLine("Process stopped.", LogMessageCategories.Video);
+                
                 return false;
+            }
 
             if (exitCode != 0)
+            {
+                LogBookController.Instance.addLogLine("Process exited incorrectly.", LogMessageCategories.Video);
+
                 return false;
+            }
 
             return true;
         }

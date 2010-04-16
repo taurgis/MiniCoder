@@ -16,36 +16,24 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using MiniTech.MiniCoder.Core.Encoding;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
+using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.External;
-using System.IO;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using MiniTech.MiniCoder.Core.Encoding;
-using MiniTech.MiniCoder.Core.Languages;
-using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace MiniTech.MiniCoder.Encoding.Input
 {
-    class Mkv : InputFile
+    public class Mkv : InputFile
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
-
-        public Mkv()
-        {
-
-        }
-
         public SortedList<String, Track[]> getTracks()
         {
             return new SortedList<string, Track[]>();
-        }
-
-        public void setTempPath(string tempPath)
-        {
-            this.tempPath = tempPath;
         }
 
         public Boolean demux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
@@ -66,13 +54,12 @@ namespace MiniTech.MiniCoder.Encoding.Input
         {
             try
             {
-                // LogBook.Instance.addLogLine("Demuxing MKV - Using Mkvtoolnix", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "DeMuxingProcess", false);
+                LogBookController.Instance.addLogLine("Demuxing MKV - Using Mkvtoolnix", LogMessageCategories.Video);
 
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("demuxingMessage") + " MKV", fileDetails["name"][0] + "DeMuxingProcess");
                 processWatcher.setProcess(proc);
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
-
 
                 LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMkv"));
                 proc.initProcess();
@@ -80,62 +67,34 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
                 string tempArg = tempArg = "tracks \"" + fileDetails["fileName"][0] + "\" ";
 
-                tracks["video"][0].demuxPath = tempPath + fileDetails["name"][0] + "-Video Track" + "." + Codec.Instance.getExtention(tracks["video"][0].codec);
+                tracks["video"][0].demuxPath = LocationManager.TempFolder + fileDetails["name"][0] + "-Video Track" + "." + Codec.Instance.getExtention(tracks["video"][0].codec);
 
                 tempArg += tracks["video"][0].id + ":\"" + tracks["video"][0].demuxPath + "\" ";
 
 
                 for (int i = 0; i < tracks["audio"].Length; i++)
                 {
-                    tracks["audio"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["audio"][i].codec);
+                    tracks["audio"][i].demuxPath = LocationManager.TempFolder + fileDetails["name"][0] + "-Audio Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["audio"][i].codec);
                     tempArg += tracks["audio"][i].id + ":\"" + tracks["audio"][i].demuxPath + "\" ";
                 }
 
-
-
                 for (int i = 0; i < tracks["subs"].Length; i++)
                 {
-                    tracks["subs"][i].demuxPath = tempPath + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["subs"][i].codec);
+                    tracks["subs"][i].demuxPath = LocationManager.TempFolder + fileDetails["name"][0] + "-Subtitle Track-" + i.ToString() + "." + Codec.Instance.getExtention(tracks["subs"][i].codec);
                     tempArg += tracks["subs"][i].id + ":\"" + tracks["subs"][i].demuxPath + "\" ";
                 }
 
-
-
                 proc.setArguments(tempArg);
-
 
                 int exitCode = proc.startProcess();
 
-                if (exitCode != 0)
-                    return false;
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
 
-                if (proc.getAbandonStatus())
-                {
-                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingAbortedMessage"));
-                    return false;
-                }
-                else
-                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingCompleteMessage"));
-
-                return true;
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (KeyNotFoundException e)
             {
-                String errormessage = "";
-                errormessage += "VIDEO: " + tracks["video"][0].codec + ", AUDIO: ";
-                for (int i = 0; i < tracks["audio"].Length; i++)
-                {
-                    errormessage += " " + i + ": " + tracks["audio"][i].codec + ", " + tracks["audio"][i].language;
-                }
-
-                errormessage += ", SUBS: ";
-                for (int i = 0; i < tracks["subs"].Length; i++)
-                {
-                    errormessage += " " + i + ": " + tracks["subs"][i].codec + ", " + tracks["subs"][i].language;
-                }
-
-                LogBookController.Instance.addLogLine("Can't find codec: \r\n" + e.Message + "\r\n" + errormessage, LogMessageCategories.Error);
-                MessageBox.Show("Can't find codec. Please submit this error to allow the codec to be supported in the next version.");
+                LogBookController.Instance.addLogLine("Can't find codec: \r\n" + e.Message + "\r\n" + ErrorManager.fetchTrackData(tracks), LogMessageCategories.Error);
                 return false;
             }
         }
@@ -147,8 +106,6 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 return true;
 
             LogBookController.Instance.addLogLine("Fetching MKV Attachments - Using MkvInfo", LogMessageCategories.Video);
-
-
 
             MiniProcess proc = new AttachmentProcess();
             processWatcher.setProcess(proc);
@@ -188,7 +145,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
                     return true;
 
                 for (int i = 1; i < split.Length; i++)
-                    attachments[i - 1] = new Attachment(tempPath + split[i].Substring(0, split[i].IndexOf("\r\n")), split[i].Substring(0, split[i].IndexOf("\r\n")));
+                    attachments[i - 1] = new Attachment(LocationManager.TempFolder + split[i].Substring(0, split[i].IndexOf("\r\n")), split[i].Substring(0, split[i].IndexOf("\r\n")));
 
                 proc = new DefaultProcess("Demuxing Attachments", fileDetails["name"][0] + "AttachmentFetching");
                 proc.initProcess();
@@ -202,15 +159,9 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 proc.setArguments(tempArg);
                 int exitCode = proc.startProcess();
 
-                if (proc.getAbandonStatus())
-                    return false;
-
-                if (exitCode != 0)
-                    return false;
-
                 tracks.Add("attachments", attachments);
 
-                return true;
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch
             {
@@ -222,25 +173,24 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
         private Boolean demuxChapters(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
         {
-            // LogBook.Instance.addLogLine("Fetching MKV Chapters - Using MkvExtract", fileDetails["name"][0] + "DeMuxing", fileDetails["name"][0] + "ChapterFetching", false);
-
+            LogBookController.Instance.addLogLine("Fetching MKV Chapters - Using MkvExtract", LogMessageCategories.Video);
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMkvChapters"));
-            XMLValidator xmlValidator = new XMLValidator(tempPath + "chapters.xml");
+
+            XMLValidator xmlValidator = new XMLValidator(LocationManager.TempFolder + "chapters.xml");
             int chapterFetchRetries = 0;
             while (!xmlValidator.Validate() && chapterFetchRetries++ < 5)
             {
-                if (!xmlValidator.Validate() && File.Exists(tempPath + "chapters.xml"))
+                if (!xmlValidator.Validate() && File.Exists(LocationManager.TempFolder + "chapters.xml"))
                 {
-                    // LogBook.Instance.addLogLine("Error in XML", fileDetails["name"][0] + "ChapterFetching", "", true);
+                    LogBookController.Instance.addLogLine("Error in XML", LogMessageCategories.Video);
                 }
-
 
                 MiniProcess proc = new AttachmentProcess();
                 processWatcher.setProcess(proc);
                 proc.initProcess();
 
+                LogBookController.Instance.addLogLine("Attempt " + chapterFetchRetries + " to fetch chapters.", LogMessageCategories.Video);
 
-                // LogBook.Instance.addLogLine("Attempt " + chapterFetchRetries + " to fetch chapters.", fileDetails["name"][0] + "ChapterFetching", "", false);
                 proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvextract.exe"));
                 string tempArg = "chapters \"" + fileDetails["fileName"][0] + "\"";
 
@@ -252,16 +202,14 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
                 string chapters = proc.getAdditionalOutput();
 
-
-
-
-                StreamWriter strChapters = new StreamWriter((tempPath + "chapters.xml"), false);
+                StreamWriter strChapters = new StreamWriter((LocationManager.TempFolder + "chapters.xml"), false);
                 strChapters.Write(chapters);
                 strChapters.Close();
             }
 
             if (chapterFetchRetries >= 5)
-                File.Delete(tempPath + "chapters.xml");
+                File.Delete(LocationManager.TempFolder + "chapters.xml");
+
             return true;
         }
     }

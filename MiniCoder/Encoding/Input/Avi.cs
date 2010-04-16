@@ -97,9 +97,8 @@ namespace MiniTech.MiniCoder.Encoding.Input
             }
             catch (KeyNotFoundException e)
             {
-                LogBookController.Instance.addLogLine("Can't find codec " + e.Message, LogMessageCategories.Error);
-
-                MessageBox.Show("Can't find codec " + fileDetails["aud_codec"][0], "");
+                LogBookController.Instance.addLogLine("Can't find codec: \r\n" + e.Message + "\r\n" + ErrorManager.fetchTrackData(tracks), LogMessageCategories.Error);
+             
                 return false;
             }
 
