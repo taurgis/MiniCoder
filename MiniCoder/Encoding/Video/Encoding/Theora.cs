@@ -16,7 +16,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Process_Management;
@@ -24,31 +23,26 @@ using System.Windows.Forms;
 using System.IO;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
-    class Theora : VideoEncoder
+    public class Theora : VideoEncoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean encode(Tool theora, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
             try
             {
-               // LogBook.Instance.addLogLine("Encoding to Theora", fileDetails["name"][0] + "VideoEncoding", "", false);
+                LogBookController.Instance.addLogLine("Encoding to Theora", LogMessageCategories.Video);
 
                 MiniProcess proc;
 
-
                 string pass1Arg = "";
-
-                DateTime tempStart = new DateTime();
-
 
                 if (encOpts["sizeopt"] == "1")
                 {
                     Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                     encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
-
-                    // // //// LogBook.Instance.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
                 }
 
                 if (!theora.isInstalled())
@@ -56,11 +50,10 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                 fileTracks["video"][0].encodePath = encOpts["outDIR"] + fileDetails["name"][0] + "_output.ogg";
 
-
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
+                
                 if (!theora.isInstalled())
                     theora.download();
-
 
                 string resize = "";
                 if (encOpts["resize"] != "0")
@@ -70,7 +63,6 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 {
                     case "0":
                         pass1Arg = "\"" + fileDetails["fileName"][0] + "\" " + resize + " -a 10 -A " + encOpts["audbr"] + " -v 4 -V " + encOpts["videobr"] + " -o \"" + encOpts["outDIR"] + fileDetails["name"][0] + "_output.ogg" + "\"";
-
                         break;
 
                     case "1":
@@ -80,13 +72,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                     case "2":
                         pass1Arg = "\"" + fileDetails["fileName"][0] + "\" " + resize + " -a 10 -A " + encOpts["audbr"] + " -v 10 -V " + encOpts["videobr"] + " -o \"" + encOpts["outDIR"] + fileDetails["name"][0] + "_output.ogg" + "\"";
                         break;
-
                 }
-
-
-
-
-
 
                 proc = new TheoraProcess(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
                 proc.initProcess();
@@ -96,25 +82,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 proc.stdOutDisabled(false);
                 proc.setArguments(pass1Arg);
 
-
-                int exitCode;
-
-                tempStart = DateTime.Now;
-
-                exitCode = proc.startProcess();
-                ////// LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                ////// LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                ////// LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
-
-
-               // LogBook.Instance.addLogLine("Encoding completed", fileDetails["name"][0] + "VideoEncoding", "", false);
-                if (proc.getAbandonStatus())
-                    return true;
-
-                if (exitCode != 0)
-                    return false;
-                else
-                    return true;
+                return ProcessManager.hasProcessExitedCorrectly(proc, proc.startProcess());
             }
             catch (Exception error)
             {

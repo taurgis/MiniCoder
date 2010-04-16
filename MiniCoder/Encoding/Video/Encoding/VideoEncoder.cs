@@ -16,14 +16,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
-    interface VideoEncoder
+    public interface VideoEncoder
     {
         Boolean encode(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks);
     }

@@ -5,7 +5,7 @@
                   <w:tc>
                     <w:tcPr>
                       <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
-                      <w:tcW w:w="1088" w:type="dxa"/>
+                      <w:tcW w:w="889" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="00B70194" w:rsidRPr="00205FE7" w:rsidRDefault="00205FE7">
                       <w:pPr>
@@ -25,7 +25,7 @@
                   </w:tc>
                   <w:tc>
                     <w:tcPr>
-                      <w:tcW w:w="1331" w:type="dxa"/>
+                      <w:tcW w:w="2225" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="00B70194" w:rsidRPr="00205FE7" w:rsidRDefault="00205FE7">
                       <w:pPr>
@@ -44,7 +44,7 @@
                   </w:tc>
                   <w:tc>
                     <w:tcPr>
-                      <w:tcW w:w="6869" w:type="dxa"/>
+                      <w:tcW w:w="6066" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="00B70194" w:rsidRPr="00205FE7" w:rsidRDefault="00205FE7">
                       <w:pPr>

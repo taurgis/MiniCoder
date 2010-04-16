@@ -1707,7 +1707,7 @@
                         <wp:posOffset>2727960</wp:posOffset>
                       </wp:positionH>
                       <wp:positionV relativeFrom="paragraph">
-                        <wp:posOffset>207645</wp:posOffset>
+                        <wp:posOffset>222545</wp:posOffset>
                       </wp:positionV>
                       <wp:extent cx="3599815" cy="3238500"/>
                       <wp:effectExtent l="0" t="0" r="635" b="0"/>
@@ -2423,9 +2423,9 @@
                   <w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
                 </w:tblPr>
                 <w:tblGrid>
-                  <w:gridCol w:w="1327"/>
-                  <w:gridCol w:w="2071"/>
-                  <w:gridCol w:w="5890"/>
+                  <w:gridCol w:w="889"/>
+                  <w:gridCol w:w="2225"/>
+                  <w:gridCol w:w="6066"/>
                 </w:tblGrid>
                 <w:tr w:rsidR="007B6A79" w:rsidTr="00674547">
                   <w:trPr>
@@ -2434,7 +2434,7 @@
                   <w:tc>
                     <w:tcPr>
                       <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
-                      <w:tcW w:w="1293" w:type="dxa"/>
+                      <w:tcW w:w="889" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="007B6A79" w:rsidRPr="00205FE7" w:rsidRDefault="00E54785" w:rsidP="00674547">
                       <w:pPr>
@@ -2459,7 +2459,7 @@
                   </w:tc>
                   <w:tc>
                     <w:tcPr>
-                      <w:tcW w:w="2076" w:type="dxa"/>
+                      <w:tcW w:w="2225" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="007B6A79" w:rsidRPr="00205FE7" w:rsidRDefault="007B6A79" w:rsidP="00674547">
                       <w:pPr>
@@ -2479,7 +2479,7 @@
                   </w:tc>
                   <w:tc>
                     <w:tcPr>
-                      <w:tcW w:w="5919" w:type="dxa"/>
+                      <w:tcW w:w="6066" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="007B6A79" w:rsidRPr="00205FE7" w:rsidRDefault="007B6A79" w:rsidP="00674547">
                       <w:pPr>
@@ -2546,7 +2546,7 @@
                   <w:tc>
                     <w:tcPr>
                       <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
-                      <w:tcW w:w="1293" w:type="dxa"/>
+                      <w:tcW w:w="889" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="00611048" w:rsidRPr="00205FE7" w:rsidRDefault="00E54785" w:rsidP="00674547">
                       <w:pPr>
@@ -2571,7 +2571,7 @@
                   </w:tc>
                   <w:tc>
                     <w:tcPr>
-                      <w:tcW w:w="2076" w:type="dxa"/>
+                      <w:tcW w:w="2225" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="00611048" w:rsidRPr="00205FE7" w:rsidRDefault="00611048" w:rsidP="00674547">
                       <w:pPr>
@@ -2591,7 +2591,7 @@
                   </w:tc>
                   <w:tc>
                     <w:tcPr>
-                      <w:tcW w:w="5919" w:type="dxa"/>
+                      <w:tcW w:w="6066" w:type="dxa"/>
                     </w:tcPr>
                     <w:p w:rsidR="00611048" w:rsidRPr="00205FE7" w:rsidRDefault="00611048" w:rsidP="00674547">
                       <w:pPr>
@@ -2673,7 +2673,7 @@
               <w:tc>
                 <w:tcPr>
                   <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
-                  <w:tcW w:w="1293" w:type="dxa"/>
+                  <w:tcW w:w="889" w:type="dxa"/>
                 </w:tcPr>
                 <w:p w:rsidR="007B6A79" w:rsidRPr="00205FE7" w:rsidRDefault="00E54785" w:rsidP="00674547">
                   <w:pPr>
@@ -2698,7 +2698,7 @@
               </w:tc>
               <w:tc>
                 <w:tcPr>
-                  <w:tcW w:w="2076" w:type="dxa"/>
+                  <w:tcW w:w="2225" w:type="dxa"/>
                 </w:tcPr>
                 <w:p w:rsidR="007B6A79" w:rsidRPr="00205FE7" w:rsidRDefault="007B6A79" w:rsidP="00674547">
                   <w:pPr>
@@ -2718,7 +2718,7 @@
               </w:tc>
               <w:tc>
                 <w:tcPr>
-                  <w:tcW w:w="5919" w:type="dxa"/>
+                  <w:tcW w:w="6066" w:type="dxa"/>
                 </w:tcPr>
                 <w:p w:rsidR="007B6A79" w:rsidRPr="00205FE7" w:rsidRDefault="007B6A79" w:rsidP="00674547">
                   <w:pPr>
