@@ -17,11 +17,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Collections;
-using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace MiniTech.MiniCoder.Encoding.Process_Management
@@ -29,25 +27,22 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
 
     public class X264Process : MiniProcess
     {
-
         private static Process mainProcess = null;
-        Thread backGround;
+        private Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
-        public bool abandon = false;
-        public bool errflag = true;
-        public int processPriority = 0;
-        public string currProcess = "";
-        Thread previewer;
+        private bool abandon = false;
+        private int processPriority = 0;
+        private Thread previewer;
         private bool disablestderr = false;
         private bool disablestdout = false;
         private string frontMessage;
-        string pass;
-        int exitCode;
-        SortedList<String, String[]> fileDetails;
-        SortedList<String, String> encOpts;
-
+        private string pass;
+        private int exitCode;
+        private SortedList<String, String[]> fileDetails;
+        private SortedList<String, String> encOpts;
         private string loglocation = "";
+
         public X264Process(string frontMessage, string pass, string loglocation, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts)
         {
             this.pass = pass;
@@ -61,10 +56,12 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         {
             return "";
         }
+
         public void setPriority(int i)
         {
             processPriority = i;
         }
+
         public void abandonProcess()
         {
             abandon = true;
@@ -89,8 +86,7 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-
-                // LogBook.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments, loglocation,"",false);
+                LogBookController.Instance.addLogLine("\"" + mainProcess.StartInfo.FileName + "\" " + mainProcess.StartInfo.Arguments, LogMessageCategories.Video);
                 taskProcess();
                 return exitCode;
             }
@@ -120,20 +116,13 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     return ProcessPriorityClass.RealTime;
                 default:
                     return ProcessPriorityClass.Idle;
-
-
             }
-
         }
 
         private void taskProcess()
         {
-
-
             mainProcess.EnableRaisingEvents = true;
-
             mainProcess.StartInfo.UseShellExecute = false;
-
             mainProcess.StartInfo.CreateNoWindow = true;
             mainProcess.StartInfo.RedirectStandardError = true;
             mainProcess.StartInfo.RedirectStandardOutput = true;
@@ -169,10 +158,6 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                         }
                     }
                 }
-
-
-
-
 
             }
 
@@ -295,12 +280,11 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                             {
                                 string splitLocation = split[0].Split(Convert.ToChar("]"))[1].Split(char.Parse("/"))[0];
                                 preview.setPosition(int.Parse(splitLocation), int.Parse(fileDetails["framecount"][0]), fileDetails["fps"][0]);
-                                // preview.setPosition(
                             }
                         }
                         else
                         {
-                            // LogBook.Instance.addLogLine(read, loglocation, "", false);
+                            LogBookController.Instance.addLogLine(read, LogMessageCategories.Video);
                         }
                     }
                 }
@@ -332,16 +316,12 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                     if (!stdoutlast.Equals(read2))
                     {
                         stdoutlast = read2;
-                        // LogBook.Instance.addLogLine(read2, loglocation,"",false);
-
+                        LogBookController.Instance.addLogLine(read2, LogMessageCategories.Video);
                     }
                 }
                 Thread.Sleep(0);
             }
         }
     }
-
-
-
 }
 

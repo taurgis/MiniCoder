@@ -16,34 +16,31 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
-using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
 using MiniTech.MiniCoder.Core.Other.Logging;
-
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Output
 {
     class Matroska : Container
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean mux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
             try
             {
-   
+
                 MiniProcess proc = new DefaultProcess("Muxing to MKV", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-               // LogBook.Instance.addLogLine("Muxing to MKV", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
-
                 proc.initProcess();
-                //// //// LogBook.Instance.addLogLine(""Muxing",1);
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " MKV");
+
+                LogBookController.Instance.addLogLine("Muxing to MKV", LogMessageCategories.Video);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " MKV");
+
                 string args;
 
                 try
@@ -67,34 +64,31 @@ namespace MiniTech.MiniCoder.Encoding.Output
 
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
-                proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvmerge.exe"));
 
+                proc.setFilename(Path.Combine(mkvtoolnix.getInstallPath(), "mkvmerge.exe"));
 
                 string arg1 = "";
 
                 if (encOpts.ContainsKey("vfr"))
-                    if(!String.IsNullOrEmpty(encOpts["vfr"]))
-                    arg1 += "--timecodes 0:\"" + encOpts["vfr"] + "\" ";
+                    if (!String.IsNullOrEmpty(encOpts["vfr"]))
+                        arg1 += "--timecodes 0:\"" + encOpts["vfr"] + "\" ";
 
                 if (encOpts["advertdisabled"] == "False")
                     arg1 += "--title \"Encoded with MiniCoder\" ";
 
-                if (File.Exists(tempPath + "chapters.xml"))
-                    arg1 += "--chapters \"" + tempPath + "chapters.xml\" ";
+                if (File.Exists(LocationManager.TempFolder + "chapters.xml"))
+                    arg1 += "--chapters \"" + LocationManager.TempFolder + "chapters.xml\" ";
 
-                if (File.Exists(tempPath + "chapters.txt"))
-                    arg1 += "--chapters \"" + tempPath + "chapters.txt\" ";
+                if (File.Exists(LocationManager.TempFolder + "chapters.txt"))
+                    arg1 += "--chapters \"" + LocationManager.TempFolder + "chapters.txt\" ";
+
                 try
                 {
-
-                   
-                        args = "-o \"" + encOpts["outfile"] + "\" --default-duration 0:" + fileDetails["fps"][0] + "fps --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
-
+                    args = "-o \"" + encOpts["outfile"] + "\" --default-duration 0:" + fileDetails["fps"][0] + "fps --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
                 }
                 catch
                 {
-                   // LogBook.Instance.addLogLine("Error parsing fps", "Errors", "", false);
-                 //   args = "-o \"" + encOpts["outfile"] + "\"  --display-dimensions 0:" + encOpts["width"] + "x" + encOpts["height"] + " " + arg1 + "-d 0 -A -S \"" + fileTracks["video"][0].encodePath + "\" ";
+                    LogBookController.Instance.addLogLine("Error parsing fps", LogMessageCategories.Error);
                     return false;
                 }
 
@@ -105,13 +99,10 @@ namespace MiniTech.MiniCoder.Encoding.Output
                     {
                         args += "--aac-is-sbr 1:1 ";
                         args += "--language 1:" + Language.Instance.getExtention(fileTracks["audio"][i].language) + " --track-name 1:\"" + fileTracks["audio"][i].title + "\" -a 1 -D -S \"" + fileTracks["audio"][i].encodePath + "\" ";
-
                     }
                     else
                         args += "--language 0:" + Language.Instance.getExtention(fileTracks["audio"][i].language) + " --track-name 0:\"" + fileTracks["audio"][i].title + "\" -a 0 -D -S \"" + fileTracks["audio"][i].encodePath + "\" ";
                 }
-
-
 
                 for (int i = 0; i < fileTracks["subs"].Length; i++)
                 {
@@ -138,23 +129,12 @@ namespace MiniTech.MiniCoder.Encoding.Output
                     args += (i + step).ToString() + ":0,";
 
                 proc.setArguments(args);
-                if (proc.getAbandonStatus())
-                    return false;
+
                 int exitCode = proc.startProcess();
-                if (exitCode != 0)
-                {
-                    // MessageBox.Show("Error during muxing, the output file could still be present though.");
-                    return false;
-                }
-                else
-                {
-                   // LogBook.Instance.addLogLine("Muxing Completed", fileDetails["name"][0] + "FileMuxing", "", false);
-                    return true;
 
-                }
+                LogBookController.Instance.addLogLine("Muxing Completed", LogMessageCategories.Video);
 
-
-
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
 
             catch (Exception error)

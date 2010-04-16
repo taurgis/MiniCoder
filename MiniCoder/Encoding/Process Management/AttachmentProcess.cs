@@ -15,46 +15,37 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Collections;
-using System.Threading;
 using System.IO;
-using System.Text.RegularExpressions;
+using System.Threading;
 using MiniTech.MiniCoder.Core.Other.Logging;
 namespace MiniTech.MiniCoder.Encoding.Process_Management
 {
     public class AttachmentProcess : MiniProcess
     {
         private static Process mainProcess = null;
-        Thread backGround;
+        private Thread backGround;
         private static StreamReader stdout = null;
         private static StreamReader stderr = null;
-        public bool abandon = false;
-        public bool errflag = true;
-        public int processPriority = 0;
-        public string currProcess = "";
-        
+        private bool abandon = false;
+        private int processPriority = 0;
+
         private bool disablestderr = false;
         private bool disablestdout = false;
         private string outputLog;
-        
-        int exitCode;
 
-        public AttachmentProcess()
-        {
-           
-        }
+        private int exitCode;
 
         public Boolean getAbandonStatus()
         {
             return abandon;
         }
+
         public void setPriority(int i)
         {
             processPriority = i;
         }
+
         public void abandonProcess()
         {
             abandon = true;
@@ -79,8 +70,6 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         {
             if (mainProcess.StartInfo.Arguments != null)
             {
-                
-               // //// LogBook.Instance.addLogLine(""\"" + mainProcess.StartInfo.FileName +"\" " + mainProcess.StartInfo.Arguments,2);
                 taskProcess();
                 return exitCode;
             }
@@ -113,21 +102,19 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
 
 
             }
-            
+
         }
 
         private void taskProcess()
         {
-          
-
             mainProcess.EnableRaisingEvents = true;
 
             mainProcess.StartInfo.UseShellExecute = false;
-            
-                mainProcess.StartInfo.CreateNoWindow = true;
-                mainProcess.StartInfo.RedirectStandardError = true;
-                mainProcess.StartInfo.RedirectStandardOutput = true;
-            
+
+            mainProcess.StartInfo.CreateNoWindow = true;
+            mainProcess.StartInfo.RedirectStandardError = true;
+            mainProcess.StartInfo.RedirectStandardOutput = true;
+
             backGround = new Thread(new ThreadStart(runprocess));
             backGround.Start();
 
@@ -159,11 +146,6 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
                         }
                     }
                 }
-
-               
-
-              
-
             }
 
         }
@@ -235,31 +217,24 @@ namespace MiniTech.MiniCoder.Encoding.Process_Management
         }
 
         string logs;
-    
+
         private void stderrProcess()
         {
             while ((logs = stderr.ReadLine()) != null)
             {
-                //// LogBook.Instance.addLogLine("logs, 3);
                 outputLog += logs + "\r\n";
                 Thread.Sleep(0);
             }
         }
-        
 
-
-         private void stdoutProcess()
+        private void stdoutProcess()
         {
-                while ((logs = stdout.ReadLine()) != null)
-                {
-                    outputLog += logs + "\r\n";
-                    //// LogBook.Instance.addLogLine("logs, 3);
-                    Thread.Sleep(0);
-                }
+            while ((logs = stdout.ReadLine()) != null)
+            {
+                outputLog += logs + "\r\n";
+                Thread.Sleep(0);
             }
         }
-
-
-      
     }
+}
 

@@ -16,20 +16,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
-using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Output
 {
-    class Mp4Out : Container
+    public class Mp4Out : Container
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean mux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
             try
@@ -37,11 +35,11 @@ namespace MiniTech.MiniCoder.Encoding.Output
                 MiniProcess proc = new DefaultProcess("Muxing to MP4", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
-               // LogBook.Instance.addLogLine("Muxing to MP4", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
-
                 proc.initProcess();
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " MP4");
-                // //// LogBook.Instance.addLogLine(""Muxing", 1);
+
+                LogBookController.Instance.addLogLine("Muxing to MP4", LogMessageCategories.Video);
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " MP4");
+
                 string args;
 
                 try
@@ -69,18 +67,12 @@ namespace MiniTech.MiniCoder.Encoding.Output
 
                 proc.setFilename(Path.Combine(mp4box.getInstallPath(), "mp4box.exe"));
 
-
-          
-                    args = "-fps " + fileDetails["fps"][0] + " -add \"" + fileTracks["video"][0].encodePath + "#video:name=Video\" ";
-
+                args = "-fps " + fileDetails["fps"][0] + " -add \"" + fileTracks["video"][0].encodePath + "#video:name=Video\" ";
 
                 for (int i = 0; i < fileTracks["audio"].Length; i++)
                 {
                     args += "-add \"" + fileTracks["audio"][i].encodePath + ":lang=" + Language.Instance.getExtention(fileTracks["audio"][i].language) + "\" ";
                 }
-
-
-
 
                 if (encOpts["hardsubmp4"] == "0")
                 {
@@ -92,24 +84,15 @@ namespace MiniTech.MiniCoder.Encoding.Output
                 }
                 args += "-new \"" + encOpts["outfile"] + "\"";
 
-
-
-
                 proc.setArguments(args);
                 if (proc.getAbandonStatus())
                     return false;
 
-                if (proc.startProcess() != 0)
-                {
-                    return false;
-                }
-                else
-                {
-                   // LogBook.Instance.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
-                    return true;
-                }
+                int exitCode = proc.startProcess();
 
+                LogBookController.Instance.addLogLine("Muxing completed", LogMessageCategories.Video);
 
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {

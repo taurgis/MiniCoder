@@ -16,33 +16,30 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Process_Management;
 using System.IO;
-using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
 
 namespace MiniTech.MiniCoder.Encoding.Output
 {
-    class AviOut : Container
+    public class AviOut : Container
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean mux(Tool ffmpeg, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
             try
             {
-               // LogBook.Instance.addLogLine("Muxing to AVI", fileDetails["name"][0] + "FileMuxing", fileDetails["name"][0] + "FileMuxingProcess", false);
+                LogBookController.Instance.addLogLine("Muxing to AVI", LogMessageCategories.Video);
+
                 MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
-
-
                 proc.initProcess();
-                // //// LogBook.Instance.addLogLine(""Muxing", 1);
-               LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " avi...");
+
+                LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("muxingMessage") + " avi...");
                 string args;
 
                 try
@@ -60,7 +57,6 @@ namespace MiniTech.MiniCoder.Encoding.Output
                 {
                     encOpts["width"] = fileDetails["width"][0];
                     encOpts["height"] = fileDetails["height"][0];
-
                 }
 
                 encOpts.Add("outfile", encOpts["outDIR"] + fileDetails["name"][0] + "_output.avi");
@@ -70,39 +66,24 @@ namespace MiniTech.MiniCoder.Encoding.Output
 
                 proc.setFilename(Path.Combine(ffmpeg.getInstallPath(), "ffmpeg.exe"));
 
-              
-                    args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0] + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
-
+                args = "-i \"" + fileTracks["video"][0].encodePath + "\" -vcodec copy -r " + fileDetails["fps"][0] + " -s " + encOpts["width"] + "x" + encOpts["height"] + " ";
 
                 for (int i = 0; i < fileTracks["audio"].Length; i++)
                 {
                     args += "-i \"" + fileTracks["audio"][i].encodePath + "\" -acodec copy ";
                 }
 
-
-
-
                 args += "\"" + encOpts["outfile"] + "\"";
 
-
-
-
                 proc.setArguments(args);
-                if (proc.getAbandonStatus())
-                    return false;
 
-                if (proc.startProcess() != 0)
-                {
-                    return false;
-                }
-                else
-                {
-                   LogBookController.Instance.setInfoLabel("Muxing Complete");
-                  
-                   // LogBook.Instance.addLogLine("Muxing completed", fileDetails["name"][0] + "FileMuxing", "", false);
-                    return true;
-                }
+                int exitCode = proc.startProcess();
 
+
+                LogBookController.Instance.setInfoLabel("Muxing Complete");
+                LogBookController.Instance.addLogLine("Muxing completed", LogMessageCategories.Video);
+
+                return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)
             {

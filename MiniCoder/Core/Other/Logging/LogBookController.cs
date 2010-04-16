@@ -56,8 +56,11 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         public void addLogLine(string message, LogMessageCategories category)
         {
-            LogMessageCategory cat = (LogMessageCategory)categories[category];
-            mainForm.updateText(new LogMessage(message, cat));
+            if (!String.IsNullOrEmpty(message))
+            {
+                LogMessageCategory cat = (LogMessageCategory)categories[category];
+                mainForm.updateText(new LogMessage(message, cat));
+            }
         }
 
         public void viewLog()
