@@ -24,97 +24,75 @@ using System.IO;
 using System.Windows.Forms;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
 
 namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
-    class Vfr
+    public class Vfr
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean analyse(Tool vfr, Tool vfrMP4, SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
         {
             try
             {
-         
+
                 if (fileDetails["ext"][0].ToLower() == "mkv" && encOpts.ContainsKey("vfr"))
                 {
-                   // LogBook.Instance.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
+                    LogBookController.Instance.addLogLine("Started analysing VFR", LogMessageCategories.Video);
+
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
                     processWatcher.setProcess(proc);
+
                     if (!vfr.isInstalled())
                         vfr.download();
 
-                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfr.getInstallPath(), "mkv2vfr.exe"));
-                    proc.setArguments("\"" + fileDetails["fileName"][0] + "\" \"" + tempPath + fileDetails["name"][0] + "-Video Track.avi\" \"" + tempPath + "timecode.txt\"");
+                    proc.setArguments("\"" + fileDetails["fileName"][0] + "\" \"" + LocationManager.TempFolder + fileDetails["name"][0] + "-Video Track.avi\" \"" + LocationManager.TempFolder + "timecode.txt\"");
 
-                    //MessageBox.Show(mainProcess.StartInfo.Arguments);
+                    int exitCode = proc.startProcess();
 
-                    proc.startProcess();
-                    // infoLabel.Text = "";
 
-                    if (proc.getAbandonStatus())
-                    {
-                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingAborted"));
-                        return false;
-                    }
-                    else
-                    {
-                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
 
-                    }
-                    if (!File.Exists(tempPath + "timecode.txt"))
+                    if (!ProcessManager.hasProcessExitedCorrectly(proc, exitCode))
                         return false;
 
+                    if (!File.Exists(LocationManager.TempFolder + "timecode.txt"))
+                        return false;
 
-                    // //// LogBook.Instance.addLogLine(""Reading VFR file", 1);
-
-
-                    encOpts["vfr"] = tempPath + "timecode.txt";
-                    //  details.vfrName = appSettings.tempDIR + details.name + "-Video Track.avi";
-
-
-
+                    encOpts["vfr"] = LocationManager.TempFolder + "timecode.txt";
                 }
                 else if (fileDetails["ext"][0].ToLower() == "mp4" && encOpts.ContainsKey("vfr"))
                 {
-                    //dtsedit -t input.mp4 timecodes.txt
-                   // LogBook.Instance.addLogLine("Started analysing VFR", fileDetails["name"][0] + "VFRAnalyse", fileDetails["name"][0] + "VFRAnalyseProcess", false);
+                    LogBookController.Instance.addLogLine("Started analysing VFR", LogMessageCategories.Video);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
                     processWatcher.setProcess(proc);
+
                     if (!vfrMP4.isInstalled())
                         vfrMP4.download();
 
-                   LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsing"));
                     proc.initProcess();
 
                     proc.setFilename(Path.Combine(vfrMP4.getInstallPath(), "DtsEdit.exe"));
                     proc.setArguments("\"" + fileDetails["fileName"][0] + "\"");
 
-                    //MessageBox.Show(mainProcess.StartInfo.Arguments);
+                    int exitCode = proc.startProcess();
 
-                    proc.startProcess();
-                    // infoLabel.Text = "";
-
-                    File.Move(fileDetails["fileName"][0] + "_timecode.txt", tempPath + "timecode.txt");
+                    File.Move(fileDetails["fileName"][0] + "_timecode.txt", LocationManager.TempFolder + "timecode.txt");
 
 
+                    LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
 
-                    if (proc.getAbandonStatus())
-                    {
-                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingAborted"));
-                        return false;
-                    }
-                    else
-                    {
-                       LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("vfrParsingCompleted"));
-
-                    }
-                    if (!File.Exists(tempPath + "timecode.txt"))
+                    if (!ProcessManager.hasProcessExitedCorrectly(proc, exitCode))
                         return false;
 
-                    encOpts["vfr"] = tempPath + "timecode.txt";
+                    if (!File.Exists(LocationManager.TempFolder + "timecode.txt"))
+                        return false;
+
+                    encOpts["vfr"] = LocationManager.TempFolder + "timecode.txt";
                 }
                 return true;
             }

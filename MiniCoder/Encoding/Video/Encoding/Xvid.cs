@@ -16,19 +16,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.External;
-using MiniTech.MiniCoder.Encoding.Process_Management;
-using System.Windows.Forms;
 using System.IO;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Encoding.Input.Tracks;
+using MiniTech.MiniCoder.Encoding.Process_Management;
+using MiniTech.MiniCoder.External;
+
 namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
-    class Xvid : VideoEncoder
+    public class Xvid : VideoEncoder
     {
-        String tempPath = Application.StartupPath + "\\temp\\";
         public Boolean encode(Tool xvid_encraw, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
         {
             try
@@ -36,26 +35,22 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 string pass = "0";
                 MiniProcess proc;
 
-               // LogBook.Instance.addLogLine("Encoding to Xvid", fileDetails["name"][0] + "VideoEncoding", "", false);
+                LogBookController.Instance.addLogLine("Encoding to Xvid", LogMessageCategories.Video);
 
                 string pass1Arg = "", pass2Arg = "";
 
-                DateTime tempStart = new DateTime();
-
                 fileDetails.Add("statsfile", new string[1]);
-                fileDetails["statsfile"][0] = tempPath + fileDetails["name"][0] + ".stats";
+                fileDetails["statsfile"][0] = LocationManager.TempFolder + fileDetails["name"][0] + ".stats";
                 if (encOpts["sizeopt"] == "1")
                 {
                     Calc brCalc = new Calc(fileDetails, encOpts, fileTracks);
                     encOpts["videobr"] = brCalc.getVideoBitrate().ToString();
-
-                    // //// LogBook.Instance.addLogLine(""Video Bitrate: " + encOpts["videobr"], 1);
                 }
 
                 if (!xvid_encraw.isInstalled())
                     xvid_encraw.download();
 
-                fileTracks["video"][0].encodePath = tempPath + fileDetails["name"][0] + "_video output.avi";
+                fileTracks["video"][0].encodePath = LocationManager.TempFolder + fileDetails["name"][0] + "_video output.avi";
 
                 switch (encOpts["vidqual"])
                 {
@@ -85,20 +80,13 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 proc.stdOutDisabled(false);
                 proc.setArguments("-i \"" + encOpts["avsfile"] + "\" " + pass1Arg + " NUL");
 
-
                 int exitCode;
 
-                tempStart = DateTime.Now;
-               // LogBook.Instance.addLogLine("Encoding Pass 1", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess1", false);
+                LogBookController.Instance.addLogLine("Encoding Pass 1", LogMessageCategories.Video);
 
                 exitCode = proc.startProcess();
-                // //// LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                // //// LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                // //// LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
-                if (proc.getAbandonStatus())
-                    return false;
 
-                if (exitCode != 0)
+                if (!ProcessManager.hasProcessExitedCorrectly(proc, exitCode))
                     return false;
 
                 pass = "2";
@@ -114,21 +102,10 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 {
                     proc.setArguments("-i \"" + encOpts["avsfile"] + "\" " + pass2Arg + " \"" + fileTracks["video"][0].encodePath + "\"");
                 }
-               // LogBook.Instance.addLogLine("Encoding Pass 2", fileDetails["name"][0] + "VideoEncoding", fileDetails["name"][0] + "VideoEncodingProcess2", false);
 
-                tempStart = DateTime.Now;
-                exitCode = proc.startProcess();
-                // //// LogBook.Instance.addLogLine(""Start time:" + tempStart.ToShortTimeString(), 1);
-                // //// LogBook.Instance.addLogLine(""End Time:" + DateTime.Now.ToShortTimeString(), 1);
-                // //// LogBook.Instance.addLogLine(""Encoding Time:" + (DateTime.Now - tempStart).TotalMinutes.ToString() + " minites.", 1);
+                LogBookController.Instance.addLogLine("Encoding Pass 2", LogMessageCategories.Video);
 
-                if (proc.getAbandonStatus())
-                    return true;
-
-                if (exitCode != 0)
-                    return false;
-                else
-                    return true;
+                return ProcessManager.hasProcessExitedCorrectly(proc, proc.startProcess());
             }
             catch (Exception error)
             {
