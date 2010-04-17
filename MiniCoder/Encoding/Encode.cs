@@ -33,12 +33,13 @@ namespace MiniTech.MiniCoder.Encoding
 {
     class Encode
     {
-        String fileName = "";
-        SortedList<String, Tool> tools;
-        SortedList<String, String[]> fileDetails;
-        SortedList<String, String> encodeSet;
-        SortedList<String, Track[]> fileTracks = new SortedList<string, Track[]>();
-        ProcessWatcher processWatcher;
+        private String fileName = "";
+        private SortedList<String, Tool> tools;
+        private SortedList<String, String[]> fileDetails;
+        private SortedList<String, String> encodeSet;
+        private SortedList<String, Track[]> fileTracks = new SortedList<string, Track[]>();
+        private ProcessWatcher processWatcher;
+
         public Encode(String fileName, SortedList<String, Tool> tools, SortedList<String, String> encodeSet, ProcessWatcher processWatcher)
         {
             try
@@ -46,15 +47,7 @@ namespace MiniTech.MiniCoder.Encoding
                 this.encodeSet = encodeSet;
                 this.fileName = fileName;
 
-                //LogBook.Instance.addLogLine("Fetching Created File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfoFetch", false);
-
-
-                //foreach (string key in fileDetails.Keys)
-                //{
-                //    for(int i = 0; i < fileDetails[key].Length;i++)
-                //       // LogBook.Instance.addLogLine(key + " : " + fileDetails[key][i], fileDetails["name"][0] + "FileInfoFetch", "", false);
-
-                //}
+                LogBookController.Instance.addLogLine("Fetching Created File Info", LogMessageCategories.Video);
 
                 this.tools = tools;
                 this.processWatcher = processWatcher;
@@ -62,9 +55,7 @@ namespace MiniTech.MiniCoder.Encoding
             catch (Exception error)
             {
                 LogBookController.Instance.addLogLine("Error starting encode. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
-                // return false;
             }
-
         }
 
         public Boolean fetchEncodeInfo()
@@ -73,35 +64,14 @@ namespace MiniTech.MiniCoder.Encoding
             {
                 fileDetails = getFileDetails(fileName);
 
-                // LogBook.Instance.addLogLine("Encoding " + fileDetails["name"][0], fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "Encode", false);
-                // LogBook.Instance.addLogLine("Encode Settings", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "EncodeSettings", false);
+                LogBookController.Instance.addLogLine("Encoding " + fileDetails["name"][0], LogMessageCategories.Video);
+                
+                foreach (string key in encodeSet.Keys)            
+                    LogBookController.Instance.addLogLine(key + " : " + encodeSet[key], LogMessageCategories.Video);
 
-                foreach (string key in encodeSet.Keys)
-                {
-                    // LogBook.Instance.addLogLine(key + " : " + encodeSet[key], fileDetails["name"][0] + "EncodeSettings", "", false);
-
-                }
-
-                // LogBook.Instance.addLogLine("Fetching File Info", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileInfo", false);
+                LogBookController.Instance.addLogLine("Fetching File Info", LogMessageCategories.Video);
                 LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("fileInfoFetch"));
 
-
-                try
-                {
-                    for (int i = 0; i < fileTracks["audio"].Length; i++) { }
-                    // LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["audio"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
-                    for (int i = 0; i < fileTracks["subs"].Length; i++) { }
-                    // LogBook.Instance.addLogLine(Language.Instance.getExtention(fileTracks["subs"][i].language), fileDetails["name"][0] + "FileInfo", "", false);
-                }
-                catch (Exception error)
-                {
-                    LogBookController.Instance.addLogLine("Error getting language info. (" + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
-                    for (int i = 0; i < fileTracks["audio"].Length; i++)
-                        LogBookController.Instance.addLogLine("Audio: " + fileTracks["audio"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
-                    for (int i = 0; i < fileTracks["subs"].Length; i++)
-                        LogBookController.Instance.addLogLine("Subs: " + fileTracks["subs"][i].language + error.Source + ", " + error.Message + ", " + error.Data + ", " + error.ToString() + ")", LogMessageCategories.Error);
-
-                }
                 return true;
             }
             catch (Exception error)
@@ -144,7 +114,6 @@ namespace MiniTech.MiniCoder.Encoding
                         if (analyseVfr())
                             if (dgavcIndex())
                                 if (encodeAudio())
-                                    //  if (createAvs())
                                     if (encodeVideo())
                                         return muxFile();
 
@@ -185,7 +154,7 @@ namespace MiniTech.MiniCoder.Encoding
 
         public bool muxFile()
         {
-            // LogBook.Instance.addLogLine("Muxing File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "FileMuxing", false);
+            LogBookController.Instance.addLogLine("Muxing File", LogMessageCategories.Video);
 
             Container container = null;
             switch (encodeSet["container"])
@@ -355,7 +324,7 @@ namespace MiniTech.MiniCoder.Encoding
             SortedList<String, String[]> tempDetail = new SortedList<string, string[]>();
             MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(fileName);
 
-
+            LogBookController.Instance.addLogLine(mediaInfo.InfoCustom, LogMessageCategories.Video);
 
             Track[] videoTracks = new Track[mediaInfo.Video.Count];
             Track[] audioTracks;

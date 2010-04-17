@@ -17,11 +17,37 @@
 using System;
 using System.IO;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
 
 namespace Minitech.MiniCoder.Core.Other.Logging.Reports
 {
     public class ReportController
     {
+        public static Boolean createTextDocument(LogBook logbook)
+        {
+            try
+            {
+                String text = "";
+                foreach (LogMessageCategory cat in logbook.categories)
+                {
+                    text += cat.categoryName + "\r\n_______________________\r\n";
+                    foreach (LogMessage message in cat.messages)
+                    {
+                        text += message.time + " - " + message.message + "\r\n";
+                    }
+                }
+                StreamWriter writer = new StreamWriter(LocationManager.TempFolder + "logbook.txt");
+                writer.Write(text);
+                writer.Close();
+                return true;
+            }
+            catch (IOException ex)
+            {
+                Console.Write(ex);
+                return false;
+            }
+        }
+
         public static String generateDocument(LogBook logbook)
         {
             String path = Path.GetTempPath() + "tempReport.doc";
