@@ -59,7 +59,16 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             if (!String.IsNullOrEmpty(message))
             {
                 LogMessageCategory cat = (LogMessageCategory)categories[category];
-                mainForm.updateText(new LogMessage(message, cat));
+
+                if (message.Contains("\r\n"))
+                {
+                    String[] splitMessage = message.Split('\n');
+
+                    foreach(String mes in splitMessage)
+                        mainForm.updateText(new LogMessage(mes.Replace("&", "&amp;"), cat));
+                }
+                else
+                    mainForm.updateText(new LogMessage(message.Replace("&", "&amp;"), cat));
             }
         }
 
@@ -81,7 +90,7 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
                     File.Delete(Application.StartupPath + "\\temp\\" + "\\log.doc");
 
                 File.Copy(ReportController.generateDocument(logbook), Application.StartupPath + "\\temp\\" + "\\log.doc");
-
+                ReportController.createTextDocument(logbook);
                 createZip();
 
                 MessageBox.Show("There is a file named \"errorlog.zip\' in \"My Documents\". Please add it as an attachment on your erroreport on sourceforge!");
