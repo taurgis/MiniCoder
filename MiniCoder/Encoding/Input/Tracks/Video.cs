@@ -39,7 +39,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             this.codec = codec;
         }
 
-        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
+        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
         {
             try
             {
@@ -50,13 +50,13 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                 {
                     case "0":
                         videoEncoder = new x264();
-                        return videoEncoder.encode(tools["x264"], fileDetails, EncOpts, processWatcher, tracks);
+                        return videoEncoder.encode(tools["x264"], fileDetails, EncOpts, tracks);
                     case "1":
                         videoEncoder = new Xvid();
-                        return videoEncoder.encode(tools["xvid_encraw"], fileDetails, EncOpts, processWatcher, tracks); ;
+                        return videoEncoder.encode(tools["xvid_encraw"], fileDetails, EncOpts, tracks); ;
                     case "2":
                         videoEncoder = new Theora();
-                        return videoEncoder.encode(tools["theora"], fileDetails, EncOpts, processWatcher, tracks); ;
+                        return videoEncoder.encode(tools["theora"], fileDetails, EncOpts, tracks); ;
                 }
 
                 return false;

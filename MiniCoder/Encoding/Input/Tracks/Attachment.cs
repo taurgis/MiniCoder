@@ -37,7 +37,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             this.title = title;
         }
 
-        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
+        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
         {
             return true;
         }

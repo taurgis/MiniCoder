@@ -28,26 +28,27 @@ using MiniTech.MiniCoder.GUI;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Settings;
 using System.Diagnostics;
+using MiniTech.MiniCoder.Core.Managers;
 namespace MiniTech.MiniCoder.GUI.Controls
 {
     public partial class EncodeOptions : UserControl
     {
-        
-        Tools tools;
-        ProcessWatcher processWatcher = new ProcessWatcher();
-        MainForm mainForm;
- 
+
+        private Tools tools;
+
+        private MainForm mainForm;
+
         public EncodeOptions()
         {
             InitializeComponent();
             processPriority.SelectedIndex = 0;
-           
-   
+
+
         }
 
         public void setLanguage()
         {
-    
+
             outputSettings.Text = LanguageController.Instance.getLanguageString("outputSettingsTitle");
             titleAdvert.Text = LanguageController.Instance.getLanguageString("outputDisableVideoAdvert");
             outputDir.Text = LanguageController.Instance.getLanguageString("outputDirectory");
@@ -80,7 +81,7 @@ namespace MiniTech.MiniCoder.GUI.Controls
         }
         public SortedList<String, String> getSettings()
         {
-            SortedList<String, String> settings = new SortedList<string,string>();
+            SortedList<String, String> settings = new SortedList<string, string>();
 
             settings.Add("advertdisabled", titleAdvert.Checked.ToString());
             settings.Add("skipaudio", audioSkip.Checked.ToString());
@@ -92,10 +93,6 @@ namespace MiniTech.MiniCoder.GUI.Controls
             if (outPutLocation.Text != "")
                 settings.Add("customoutput", outPutLocation.Text + "\\");
             return settings;
-        }
-        public void setProcessWatcher(ProcessWatcher processWatcher)
-        {
-            this.processWatcher = processWatcher;
         }
 
         public void setTools(Tools tools)
@@ -113,7 +110,7 @@ namespace MiniTech.MiniCoder.GUI.Controls
 
             titleAdvert.Checked = settings.disableVideoAdvert;
             outPutLocation.Text = settings.outputPath;
-            processPriority.SelectedIndex= int.Parse(settings.processPriority);
+            processPriority.SelectedIndex = int.Parse(settings.processPriority);
             audioSkip.Checked = settings.ignoreAudio;
             ignoreAttachments.Checked = settings.ignoreAttachments;
             ignoreChapters.Checked = settings.ignoreChapters;
@@ -122,49 +119,13 @@ namespace MiniTech.MiniCoder.GUI.Controls
             languagesSelect.SelectedIndex = settings.language;
         }
 
-        private void EncodeOptions_Load(object sender, EventArgs e)
-        {
-           // processPriority.SelectedIndex = 0;
-        
-        }
+   
 
         private void processPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
-            processWatcher.setPriority(processPriority.SelectedIndex);
-            setPriority(processPriority.SelectedIndex);
-            
+            ProcessManager.Instance.setPriority(processPriority.SelectedIndex);
         }
-        private void setPriority(int i)
-        {
-            Process tempProcess = Process.GetCurrentProcess();
-            switch (i)
-            {
-                case 0:
-                    tempProcess.PriorityClass = ProcessPriorityClass.Idle;
-                    break;
-                case 1:
-                    tempProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
-                    break;
-                case 2:
-                    tempProcess.PriorityClass = ProcessPriorityClass.Normal;
-                    break;
-                case 3:
-                    tempProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
-                    break;
-                case 4:
-                    tempProcess.PriorityClass = ProcessPriorityClass.High;
-                    break;
-                case 5:
-                    tempProcess.PriorityClass = ProcessPriorityClass.RealTime;
-                    break;
-                default:
-                    tempProcess.PriorityClass = ProcessPriorityClass.Idle;
-                    break;
-
-
-            }
-
-        }
+  
 
         private void outputSelect_Click(object sender, EventArgs e)
         {

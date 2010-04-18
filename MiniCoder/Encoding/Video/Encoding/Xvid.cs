@@ -28,7 +28,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class Xvid : VideoEncoder
     {
-        public Boolean encode(Tool xvid_encraw, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
+        public Boolean encode(Tool xvid_encraw, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
@@ -74,7 +74,8 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 pass = "1";
                 proc = new XvidProcess(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess1");
                 proc.initProcess();
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
+
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
@@ -93,7 +94,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                 proc = new XvidProcess(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, int.Parse(fileDetails["framecount"][0]), fileDetails["name"][0] + "VideoEncodingProcess2");
                 proc.initProcess();
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
                 proc.setFilename(Path.Combine(xvid_encraw.getInstallPath(), "xvid_encraw.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

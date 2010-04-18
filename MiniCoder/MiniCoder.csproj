@@ -169,7 +169,6 @@
     <Compile Include="Core\Other\Language.cs" />
     <Compile Include="Core\Other\Logging\LogBook.cs" />
     <Compile Include="Core\Other\MiniSystem.cs" />
-    <Compile Include="Encoding\Process Management\ProcessWatcher.cs" />
     <Compile Include="Encoding\Video\DGAVCIndex.cs" />
     <Compile Include="Encoding\Video\Encoding\Calc.cs" />
     <Compile Include="Encoding\Video\Encoding\Theora.cs" />

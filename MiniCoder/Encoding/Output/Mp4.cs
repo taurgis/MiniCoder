@@ -28,7 +28,7 @@ namespace MiniTech.MiniCoder.Encoding.Output
 {
     public class Mp4Out : Container
     {
-        public Boolean mux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
+        public Boolean mux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {

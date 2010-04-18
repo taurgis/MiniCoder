@@ -30,7 +30,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
     public class Vfr
     {
-        public Boolean analyse(Tool vfr, Tool vfrMP4, SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
+        public Boolean analyse(Tool vfr, Tool vfrMP4, SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
                     LogBookController.Instance.addLogLine("Started analysing VFR", LogMessageCategories.Video);
 
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
-                    processWatcher.setProcess(proc);
+                    ProcessManager.Instance.process = proc;
 
                     if (!vfr.isInstalled())
                         vfr.download();
@@ -68,7 +68,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
                 {
                     LogBookController.Instance.addLogLine("Started analysing VFR", LogMessageCategories.Video);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
-                    processWatcher.setProcess(proc);
+                    ProcessManager.Instance.process = proc;
 
                     if (!vfrMP4.isInstalled())
                         vfrMP4.download();

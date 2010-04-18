@@ -32,17 +32,19 @@ using MiniTech.MiniCoder.Core.Settings;
 using System.Diagnostics;
 using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.GUI
 {
     public partial class MainForm : Form
     {
-        Thread encodeBatchTask;
-        Tools tools = new Tools(false);
-        ArrayList FileList = new ArrayList();
-        SortedList<String, String> encodeSet = new SortedList<string, string>();
-        ProcessWatcher processWatcher = new ProcessWatcher();
-        Boolean vfr;
+        private Thread encodeBatchTask;
+        private Tools tools = new Tools(false);
+        private ArrayList FileList = new ArrayList();
+        private SortedList<String, String> encodeSet = new SortedList<string, string>();
+        private Boolean vfr;
         private int curEncode = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -73,7 +75,6 @@ namespace MiniTech.MiniCoder.GUI
                 tools = new Tools(true);
 
                 encodeOptions.setTools(tools);
-                encodeOptions.setProcessWatcher(processWatcher);
 
                 if (MiniSystem.isConnected().Equals("Yes"))
                 {
@@ -240,7 +241,6 @@ namespace MiniTech.MiniCoder.GUI
         Encode tempEncode;
         private void encodeBatch()
         {
-            processWatcher.Activate();
             while (FileList.Count != 0)
             {
                 string[] files = Directory.GetFiles(Application.StartupPath + "\\temp\\");
@@ -261,12 +261,12 @@ namespace MiniTech.MiniCoder.GUI
                 if (vfr)
                     encodeSet.Add("vfr", "");
 
-                tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet, processWatcher);
+                tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet);
                 if (!tempEncode.fetchEncodeInfo())
                 {
                     setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                    //// LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
-                    // LogBook.Instance.sendmail(logView);
+
+                    LogBookController.Instance.sendmail();
                     break;
                 }
                 if (tempEncode.getExtention() == "avs")
@@ -280,16 +280,16 @@ namespace MiniTech.MiniCoder.GUI
                     }
                     else
                     {
-                        if (processWatcher.getProcess().getAbandonStatus())
+                        if (ProcessManager.Instance.abandonStatus)
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                         }
                         else
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                            //// LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
-                            if (!Boolean.Parse(encodeSet["aftererror"])) { }
-                            // LogBook.Instance.sendmail(logView);
+
+                            if (!Boolean.Parse(encodeSet["aftererror"]))
+                                LogBookController.Instance.sendmail();
                         }
                         if (!Boolean.Parse(encodeSet["aftererror"]))
                             break;
@@ -312,16 +312,16 @@ namespace MiniTech.MiniCoder.GUI
                     }
                     else
                     {
-                        if (processWatcher.getProcess().getAbandonStatus())
+                        if (ProcessManager.Instance.abandonStatus)
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                         }
                         else
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                            //// LogBook.Instance.addLogLine("infoLabel.Text, 2,"");
-                            if (!Boolean.Parse(encodeSet["aftererror"])) { }
-                            // LogBook.Instance.sendmail(logView);
+
+                            if (!Boolean.Parse(encodeSet["aftererror"]))
+                                LogBookController.Instance.sendmail();
                         }
                         if (!Boolean.Parse(encodeSet["aftererror"]))
                             break;
@@ -347,15 +347,15 @@ namespace MiniTech.MiniCoder.GUI
                     {
                         try
                         {
-                            if (processWatcher.getProcess().getAbandonStatus())
+                            if (ProcessManager.Instance.abandonStatus)
                             {
                                 setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                             }
                             else
                             {
                                 setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));
-                                if (!Boolean.Parse(encodeSet["aftererror"])) { }
-                                // LogBook.Instance.sendmail(logView);
+                                if (!Boolean.Parse(encodeSet["aftererror"]))
+                                    LogBookController.Instance.sendmail();
                             }
                             if (!Boolean.Parse(encodeSet["aftererror"]))
                                 break;
@@ -427,7 +427,6 @@ namespace MiniTech.MiniCoder.GUI
         {
             if (this.encodeSettings.InvokeRequired)
             {
-                // This is a worker thread so delegate the task.
                 this.encodeSettings.Invoke(new settingsRetreiver(this.getSettings));
             }
             else
@@ -437,35 +436,13 @@ namespace MiniTech.MiniCoder.GUI
                     encodeSet.Add(key, encodeOptions.getSettings()[key]);
             }
         }
-
-        public void setProcessPriority(int i)
-        {
-            try
-            {
-                processWatcher.setPriority(i);
-            }
-            catch
-            {
-
-            }
-        }
-
         #endregion
 
 
 
         private void stopButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                tempEncode.getProcessWatcher().abandon();
-                tempEncode.getProcessWatcher().getProcess().abandonProcess();
-                //LogBook.sendmail(logView);
-            }
-            catch
-            {
-            }
+            ProcessManager.Instance.abandonStatus = true;
         }
 
         private delegate void fileListUpdater(string status);
@@ -474,7 +451,6 @@ namespace MiniTech.MiniCoder.GUI
 
             if (this.infoLabel.InvokeRequired)
             {
-                // This is a worker thread so delegate the task.
                 this.infoLabel.Invoke(new fileListUpdater(this.setFileStatus), status);
             }
             else
@@ -578,7 +554,7 @@ namespace MiniTech.MiniCoder.GUI
 
         private void sendErrorReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // LogBook.Instance.sendmail(logView);
+            LogBookController.Instance.sendmail();
         }
 
         public void updateText(LogMessage message)

@@ -264,7 +264,6 @@
             this.Controls.Add(this.outputSettings);
             this.Name = "EncodeOptions";
             this.Size = new System.Drawing.Size(385, 309);
-            this.Load += new System.EventHandler(this.EncodeOptions_Load);
             this.encodingGroup.ResumeLayout(false);
             this.encodingGroup.PerformLayout();
             this.processSettings.ResumeLayout(false);

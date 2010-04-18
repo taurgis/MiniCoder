@@ -28,13 +28,13 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
    public class Lame : MiniEncoder
     {
-        public bool encode(Tool lame, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts, ProcessWatcher processWatcher)
+        public bool encode(Tool lame, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
         {
             try
             {
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
+                ProcessManager.Instance.process = proc;
 
-                processWatcher.setProcess(proc);
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);
 

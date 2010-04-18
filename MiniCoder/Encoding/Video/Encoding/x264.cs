@@ -30,7 +30,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class x264 : VideoEncoder
     {
-        public Boolean encode(Tool x264, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
+        public Boolean encode(Tool x264, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
@@ -123,7 +123,8 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 pass = "1";
                 proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
                 proc.initProcess();
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
+
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
@@ -144,7 +145,8 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                     proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
                     proc.initProcess();
-                    processWatcher.setProcess(proc);
+                    ProcessManager.Instance.process = proc;
+
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                     proc.stdErrDisabled(false);
                     proc.stdOutDisabled(false);
@@ -163,7 +165,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                 proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
                 proc.initProcess();
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

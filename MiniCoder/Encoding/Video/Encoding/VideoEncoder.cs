@@ -24,6 +24,6 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public interface VideoEncoder
     {
-        Boolean encode(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks);
+        Boolean encode(Tool tool, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks);
     }
 }

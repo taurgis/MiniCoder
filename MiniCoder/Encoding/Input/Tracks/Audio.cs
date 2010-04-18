@@ -43,16 +43,16 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             this.id = id;
         }
 
-        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
+        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
         {
             this.EncOpts = EncOpts;
-            if (decodeAudio(tools, fileDetails, processWatcher))
-                return encodeAudio(tools, fileDetails, processWatcher);
+            if (decodeAudio(tools, fileDetails))
+                return encodeAudio(tools, fileDetails);
 
             return false;
         }
 
-        private Boolean decodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
+        private Boolean decodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                         break;
                 }
 
-                return decoder.decode(tempTool, fileDetails, id, this, processWatcher);
+                return decoder.decode(tempTool, fileDetails, id, this);
             }
             catch (Exception error)
             {
@@ -106,7 +106,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             }
         }
 
-        private Boolean encodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, ProcessWatcher processWatcher)
+        private Boolean encodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails)
         {
             try
             {
@@ -123,12 +123,12 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                         break;
                     case "2":
                         encoder = new FFmpegAc3();
-                        return encoder.encode(tools["ffmpeg"], fileDetails, id, this, EncOpts, processWatcher);
+                        return encoder.encode(tools["ffmpeg"], fileDetails, id, this, EncOpts);
                     case "3":
                         encoder = new Lame();
-                        return encoder.encode(tools["lame"], fileDetails, id, this, EncOpts, processWatcher);
+                        return encoder.encode(tools["lame"], fileDetails, id, this, EncOpts);
                 }
-                return encoder.encode(tools["besweet"], fileDetails, id, this, EncOpts, processWatcher);
+                return encoder.encode(tools["besweet"], fileDetails, id, this, EncOpts);
             }
             catch (Exception error)
             {

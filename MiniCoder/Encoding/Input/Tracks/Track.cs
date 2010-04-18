@@ -30,6 +30,6 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
         String encodePath { get; set; }
         String length { get; set; }
         int id { get; set; }
-        Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks);
+        Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks);
     }
 }

@@ -34,12 +34,12 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Demuxing AVI - Using Vdubmod", LogMessageCategories.Video);
 
             MiniProcess proc = new DefaultProcess("Demuxing Avi", fileDetails["name"][0] + "DeMuxingProcess");
-            processWatcher.setProcess(proc);
+            ProcessManager.Instance.process = proc;
 
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);

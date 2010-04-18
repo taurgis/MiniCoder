@@ -34,14 +34,14 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Demuxing MP4 - Using mp4box", LogMessageCategories.Video);
 
             int exitCode = 0;
             MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
 
-            processWatcher.setProcess(proc);
+            ProcessManager.Instance.process = proc;
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
 

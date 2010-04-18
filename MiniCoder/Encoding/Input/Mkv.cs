@@ -36,28 +36,29 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        public Boolean demux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
-            if (demuxFiles(mkvtoolnix, fileDetails, tracks, processWatcher))
-                if (demuxAttachments(mkvtoolnix, fileDetails, tracks, processWatcher))
+            if (demuxFiles(mkvtoolnix, fileDetails, tracks))
+                if (demuxAttachments(mkvtoolnix, fileDetails, tracks))
                 {
                     if (!String.IsNullOrEmpty(fileDetails["chapters"][0]))
                     {
-                        return demuxChapters(mkvtoolnix, fileDetails, tracks, processWatcher);
+                        return demuxChapters(mkvtoolnix, fileDetails, tracks);
                     }
                     return true;
                 }
             return false;
         }
 
-        private Boolean demuxFiles(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        private Boolean demuxFiles(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             try
             {
                 LogBookController.Instance.addLogLine("Demuxing MKV - Using Mkvtoolnix", LogMessageCategories.Video);
 
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("demuxingMessage") + " MKV", fileDetails["name"][0] + "DeMuxingProcess");
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
+
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
 
@@ -99,7 +100,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             }
         }
 
-        private Boolean demuxAttachments(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        private Boolean demuxAttachments(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
 
             if (fileDetails["skipattachments"][0] == "True")
@@ -108,7 +109,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             LogBookController.Instance.addLogLine("Fetching MKV Attachments - Using MkvInfo", LogMessageCategories.Video);
 
             MiniProcess proc = new AttachmentProcess();
-            processWatcher.setProcess(proc);
+            ProcessManager.Instance.process = proc;
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMkvAttachments"));
             proc.initProcess();
 
@@ -171,7 +172,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             }
         }
 
-        private Boolean demuxChapters(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        private Boolean demuxChapters(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Fetching MKV Chapters - Using MkvExtract", LogMessageCategories.Video);
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMkvChapters"));
@@ -186,7 +187,8 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 }
 
                 MiniProcess proc = new AttachmentProcess();
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
+
                 proc.initProcess();
 
                 LogBookController.Instance.addLogLine("Attempt " + chapterFetchRetries + " to fetch chapters.", LogMessageCategories.Video);

@@ -33,12 +33,13 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        public Boolean demux(Tool ogmtools, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Demuxing OGM - Using OgmTools", LogMessageCategories.Video);
 
             MiniProcess proc = new DefaultProcess("Demuxing OGM", fileDetails["name"][0] + "DeMuxingProcess");
-            processWatcher.setProcess(proc);
+            ProcessManager.Instance.process = proc;
+
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
 
