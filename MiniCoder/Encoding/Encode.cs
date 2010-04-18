@@ -31,7 +31,7 @@ using MiniTech.MiniCoder.Core.Other.Logging;
 
 namespace MiniTech.MiniCoder.Encoding
 {
-    class Encode
+    public class Encode
     {
         private String fileName = "";
         private SortedList<String, Tool> tools;
@@ -65,8 +65,8 @@ namespace MiniTech.MiniCoder.Encoding
                 fileDetails = getFileDetails(fileName);
 
                 LogBookController.Instance.addLogLine("Encoding " + fileDetails["name"][0], LogMessageCategories.Video);
-                
-                foreach (string key in encodeSet.Keys)            
+
+                foreach (string key in encodeSet.Keys)
                     LogBookController.Instance.addLogLine(key + " : " + encodeSet[key], LogMessageCategories.Video);
 
                 LogBookController.Instance.addLogLine("Fetching File Info", LogMessageCategories.Video);
@@ -183,7 +183,7 @@ namespace MiniTech.MiniCoder.Encoding
         #region "AviSynth"
         private bool createAvs()
         {
-            // LogBook.Instance.addLogLine("Creating AVS File", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "AvsCreation", false);
+            LogBookController.Instance.addLogLine("Creating AVS File", LogMessageCategories.Video);
 
             AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet, tools);
             return avsCreator.getAvsFile(fileTracks);
@@ -198,9 +198,7 @@ namespace MiniTech.MiniCoder.Encoding
             for (int i = 0; i < fileTracks["audio"].Length; i++)
             {
                 if (!fileTracks["audio"][i].Encode(tools, fileDetails, encodeSet, processWatcher, fileTracks))
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -211,7 +209,8 @@ namespace MiniTech.MiniCoder.Encoding
 
         private bool dgavcIndex()
         {
-            // LogBook.Instance.addLogLine("DGAVCIndex Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DGAVCStep", false);
+            LogBookController.Instance.addLogLine("DGAVCIndex Step", LogMessageCategories.Video);
+            
             switch (fileTracks["video"][0].codec)
             {
                 case "x264":
@@ -220,23 +219,21 @@ namespace MiniTech.MiniCoder.Encoding
                 case "V_MPEG4/ISO/AVC":
                     DGAVCIndex dgIndex = new DGAVCIndex();
                     return dgIndex.index(tools["DGAVCIndex"], tools["DGAVCDecode"], fileDetails, fileTracks["video"][0], processWatcher);
-
                 default:
                     return true;
             }
-
-
-
         }
+
         public string getExtention()
         {
             return fileDetails["ext"][0];
         }
+
         private bool analyseVfr()
         {
-            // LogBook.Instance.addLogLine("VFR Step", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "VFRAnalyse", false);
-            Vfr vfr = new Vfr();
-            return vfr.analyse(tools["mkv2vfr"], tools["DtsEdit"], encodeSet, fileDetails, processWatcher);
+            LogBookController.Instance.addLogLine("VFR Step", LogMessageCategories.Video);
+
+            return new Vfr().analyse(tools["mkv2vfr"], tools["DtsEdit"], encodeSet, fileDetails, processWatcher);
         }
 
         #endregion
@@ -244,7 +241,8 @@ namespace MiniTech.MiniCoder.Encoding
         #region Demuxing
         private bool demuxFile()
         {
-            // LogBook.Instance.addLogLine("Demuxing", fileDetails["name"][0] + "Encode", fileDetails["name"][0] + "DeMuxing", false);
+            LogBookController.Instance.addLogLine("Demuxing", LogMessageCategories.Video);
+            
             switch (fileDetails["ext"][0].ToUpper())
             {
                 case "AVI":
@@ -265,7 +263,6 @@ namespace MiniTech.MiniCoder.Encoding
                     return demuxWmv();
 
             }
-            //  return false;
         }
 
         private Boolean demuxAvs()
@@ -279,6 +276,7 @@ namespace MiniTech.MiniCoder.Encoding
             InputFile input = new Vob();
             return input.demux(tools["DGIndex"], fileDetails, fileTracks, processWatcher);
         }
+
         private Boolean demuxWmv()
         {
             InputFile input = new Wmv();
@@ -288,33 +286,27 @@ namespace MiniTech.MiniCoder.Encoding
         private Boolean demuxAvi()
         {
             InputFile input = new Avi();
-
             return input.demux(tools["VirtualDubMod"], fileDetails, fileTracks, processWatcher);
         }
 
         private Boolean demuxMp4()
         {
             InputFile input = new Mp4();
-
             return input.demux(tools["mp4box"], fileDetails, fileTracks, processWatcher);
         }
 
         private Boolean demuxOgm()
         {
             InputFile input = new Ogm();
-
             return input.demux(tools["ogmtools"], fileDetails, fileTracks, processWatcher);
         }
 
         private Boolean demuxMkv()
         {
             InputFile input = new Mkv();
-
             return input.demux(tools["mkvtoolnix"], fileDetails, fileTracks, processWatcher);
         }
         #endregion
-
-
 
         private int crfValue = 0;
         public SortedList<String, String[]> getFileDetails(string fileName)
@@ -398,16 +390,13 @@ namespace MiniTech.MiniCoder.Encoding
                 encodeSet.Add("outDIR", (Path.GetDirectoryName(mediaInfo.General[0].CompleteName) + "\\"));
             tempDetail.Add("crfValue", crfValue.ToString().Split(Convert.ToChar(" ")));
 
-
-
-
-
             if (audioTracks.Length > 0)
             {
                 tempDetail.Add("audLength", (int.Parse(mediaInfo.Audio[0].Duration) / 1000).ToString().Split(Convert.ToChar(" ")));
                 if (mediaInfo.General[0].FileExtension.ToUpper() == ".VOB")
                     tempDetail.Add("audBitrate", mediaInfo.Audio[0].BitRate.ToString().Split(Convert.ToChar(" ")));
             }
+
             if (videoTracks.Length > 0)
             {
                 tempDetail.Add("width", mediaInfo.Video[0].Width.Split(Convert.ToChar(" ")));
@@ -416,13 +405,14 @@ namespace MiniTech.MiniCoder.Encoding
 
                 tempDetail.Add("framecount", mediaInfo.Video[0].FrameCount.Split(Convert.ToChar(" ")));
             }
+
             if (encodeSet["skipchapters"] == "True")
                 tempDetail.Add("chapters", "".Split(Char.Parse(" ")));
             else
             {
-
                 tempDetail.Add("chapters", "dontskip".Split(Char.Parse(" ")));
             }
+
             tempDetail.Add("vfrCode", null);
             tempDetail.Add("vfrName", null);
 
