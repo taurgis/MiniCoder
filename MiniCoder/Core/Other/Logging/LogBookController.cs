@@ -60,15 +60,7 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
             {
                 LogMessageCategory cat = (LogMessageCategory)categories[category];
 
-                if (message.Contains("\r\n"))
-                {
-                    String[] splitMessage = message.Split('\n');
-
-                    foreach(String mes in splitMessage)
-                        mainForm.updateText(new LogMessage(mes.Replace("&", "&amp;"), cat));
-                }
-                else
-                    mainForm.updateText(new LogMessage(message.Replace("&", "&amp;"), cat));
+                mainForm.updateText(new LogMessage(message.Replace("&", "&amp;"), cat));
             }
         }
 

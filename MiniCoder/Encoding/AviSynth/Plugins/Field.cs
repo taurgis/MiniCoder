@@ -33,7 +33,7 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
                         filter.download();
                     return "FieldDeinterlace()\r\n";
                 case "2":
-                    filter = tools["AAA"];
+                    filter = tools["BAAA"];
                     if (!filter.isInstalled())
                         filter.download();
                     return "AAA()\r\n";
