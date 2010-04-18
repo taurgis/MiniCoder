@@ -28,13 +28,13 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     public class Flac : MiniDecoder
     {
-        public Boolean decode(Tool flac, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
+        public Boolean decode(Tool flac, SortedList<String, String[]> fileDetails, int i, Track audio)
         {
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-             
-                processWatcher.setProcess(proc);
+
+                ProcessManager.Instance.process = proc;
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);

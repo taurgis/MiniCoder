@@ -35,7 +35,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        public Boolean demux(Tool vdubmod, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Analysing AVS file", LogMessageCategories.Video);
 

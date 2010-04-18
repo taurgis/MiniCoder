@@ -28,12 +28,13 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     public class Oggdec : MiniDecoder
     {
-        public Boolean decode(Tool oggdec, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
+        public Boolean decode(Tool oggdec, SortedList<String, String[]> fileDetails, int i, Track audio)
         {
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
+
                 proc.initProcess();
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
@@ -45,7 +46,7 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 
                 if (!oggdec.isInstalled())
                     oggdec.download();
-                
+
                 proc.setFilename(Path.Combine(oggdec.getInstallPath(), "oggdec.exe"));
                 proc.setArguments("-m -w \"" + decodedAudio + "\" \"" + audio.demuxPath + "\"");
 
@@ -54,7 +55,7 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
                 audio.demuxPath = decodedAudio;
 
                 LogBookController.Instance.addLogLine("Decoding completed", LogMessageCategories.Video);
-                
+
                 return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
             }
             catch (Exception error)

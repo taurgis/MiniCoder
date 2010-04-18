@@ -24,6 +24,6 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     interface MiniDecoder
     {
-        Boolean decode(Tool decoder, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher);
+        Boolean decode(Tool decoder, SortedList<String, String[]> fileDetails, int i, Track audio);
     }
 }

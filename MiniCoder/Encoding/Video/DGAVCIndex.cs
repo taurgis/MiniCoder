@@ -28,7 +28,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
     public class DGAVCIndex
     {
-        public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video, ProcessWatcher processWatcher)
+        public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video)
         {
 
             if (fileDetails["ext"][0].ToLower().Equals(".avi"))
@@ -36,7 +36,8 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
             try
             {
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("indexingAvc"), fileDetails["name"][0] + "DGAVCStepProcess");
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
+
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);
                 LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("indexingAvc"));

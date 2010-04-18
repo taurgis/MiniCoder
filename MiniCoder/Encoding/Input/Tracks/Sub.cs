@@ -23,7 +23,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
     public class Sub : Track
     {
-        public String title {get; set;}
+        public String title { get; set; }
         public String language { get; set; }
         public String codec { get; set; }
         public String demuxPath { get; set; }
@@ -38,7 +38,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             this.id = id;
         }
 
-        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> tracks)
+        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
         {
             return true;
         }

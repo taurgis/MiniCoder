@@ -24,6 +24,6 @@ namespace MiniTech.MiniCoder.Encoding.Output
 {
     public interface Container
     {
-        Boolean mux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks);
+        Boolean mux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks);
     }
 }

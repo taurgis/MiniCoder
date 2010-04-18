@@ -29,7 +29,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class Theora : VideoEncoder
     {
-        public Boolean encode(Tool theora, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
+        public Boolean encode(Tool theora, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                 proc = new TheoraProcess(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
                 proc.initProcess();
-                processWatcher.setProcess(proc);
+                ProcessManager.Instance.process = proc;
                 proc.setFilename(Path.Combine(theora.getInstallPath(), "theora.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

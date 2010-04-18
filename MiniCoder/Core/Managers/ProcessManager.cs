@@ -17,17 +17,85 @@
 using System;
 using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Process_Management;
+using System.Diagnostics;
 
 namespace MiniTech.MiniCoder.Core.Managers
 {
     public sealed class ProcessManager
     {
+        private static ProcessManager instance = null;
+        public MiniProcess process { get; set; }
+        public bool abandonStatus
+        {
+            get
+            {
+             return   process.getAbandonStatus();
+            }
+
+            set
+            {
+                if (value)
+                    process.abandonProcess();
+            }
+
+        }
+
+        public static ProcessManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new ProcessManager();
+
+                return instance;
+            }
+
+            set
+            {
+                instance = value;
+            }
+        }
+
+        public void setPriority(int i)
+        {
+            Process tempProcess = Process.GetCurrentProcess();
+            switch (i)
+            {
+                case 0:
+                    tempProcess.PriorityClass = ProcessPriorityClass.Idle;
+                    break;
+                case 1:
+                    tempProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
+                    break;
+                case 2:
+                    tempProcess.PriorityClass = ProcessPriorityClass.Normal;
+                    break;
+                case 3:
+                    tempProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
+                    break;
+                case 4:
+                    tempProcess.PriorityClass = ProcessPriorityClass.High;
+                    break;
+                case 5:
+                    tempProcess.PriorityClass = ProcessPriorityClass.RealTime;
+                    break;
+                default:
+                    tempProcess.PriorityClass = ProcessPriorityClass.Idle;
+                    break;
+
+
+            }
+            if(process != null)
+            process.setPriority(i);
+        }
+
+
         public static Boolean hasProcessExitedCorrectly(MiniProcess proc, int exitCode)
         {
             if (proc.getAbandonStatus())
             {
                 LogBookController.Instance.addLogLine("Process stopped.", LogMessageCategories.Video);
-                
+
                 return false;
             }
 

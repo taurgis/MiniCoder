@@ -28,7 +28,7 @@ namespace MiniTech.MiniCoder.Encoding.Output
 {
     class Matroska : Container
     {
-        public Boolean mux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, ProcessWatcher processWatcher, SortedList<String, Track[]> fileTracks)
+        public Boolean mux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {

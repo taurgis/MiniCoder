@@ -28,15 +28,15 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     public class Madplay : MiniDecoder
     {
-        public Boolean decode(Tool madplay, SortedList<String, String[]> fileDetails, int i, Track audio, ProcessWatcher processWatcher)
+        public Boolean decode(Tool madplay, SortedList<String, String[]> fileDetails, int i, Track audio)
         {
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-
+                ProcessManager.Instance.process = proc;
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(true);
-                processWatcher.setProcess(proc);
+               
                 proc.initProcess();
 
                 LogBookController.Instance.addLogLine("Decoding MPEG - Using madplay", LogMessageCategories.Video);

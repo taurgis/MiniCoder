@@ -35,17 +35,17 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        public Boolean demux(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
-            if (demuxFile(DGIndex, fileDetails, tracks, processWatcher))
-                if (demuxSubs(DGIndex, fileDetails, tracks, processWatcher))
-                    if (demuxChapters(DGIndex, fileDetails, tracks, processWatcher))
+            if (demuxFile(DGIndex, fileDetails, tracks))
+                if (demuxSubs(DGIndex, fileDetails, tracks))
+                    if (demuxChapters(DGIndex, fileDetails, tracks))
                         return true;
 
             return false;
         }
 
-        private Boolean demuxChapters(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        private Boolean demuxChapters(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 return true;
             }
         }
-        private Boolean demuxSubs(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        private Boolean demuxSubs(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Demuxing subs - Using Vobsub", LogMessageCategories.Video);
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingvobSubs"));
@@ -106,10 +106,10 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
         }
 
-        private Boolean demuxFile(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks, ProcessWatcher processWatcher)
+        private Boolean demuxFile(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             MiniProcess proc = new DefaultProcess("Indexing VOB", fileDetails["name"][0] + "DeMuxingProcess");
-            processWatcher.setProcess(proc);
+            ProcessManager.Instance.process = proc;
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
 
@@ -131,7 +131,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
             DirectoryInfo info = new DirectoryInfo(LocationManager.TempFolder);
             int count = 0;
-            
+
             foreach (FileInfo fInfo in info.GetFiles())
             {
                 if (fInfo.Extension == ".ac3")
