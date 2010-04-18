@@ -56,6 +56,9 @@ namespace MiniTech.MiniCoder.Core.Languages
                 case 3:
                     culture = CultureInfo.CreateSpecificCulture("tr-TR");
                     break;
+                case 4:
+                    culture = CultureInfo.CreateSpecificCulture("fr-FR");
+                    break;
                 default:
                     culture = CultureInfo.CreateSpecificCulture("");
                     break;

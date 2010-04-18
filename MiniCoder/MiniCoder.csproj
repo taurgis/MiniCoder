@@ -76,6 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Encoding\XmlValidator.cs" />
+    <Compile Include="Core\Languages\French.Designer.cs">
+      <DependentUpon>French.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Core\Languages\English.Designer.cs">
       <DependentUpon>English.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -253,6 +258,16 @@
       <LastGenOutput>English.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Core\Languages\French.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>French.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="bin\Debug\languages\language.fr-FR.resources" />
+    <EmbeddedResource Include="bin\Debug\languages\language.nl-NL.resources" />
+    <EmbeddedResource Include="bin\Debug\languages\language.pt-BR.resources" />
+    <EmbeddedResource Include="bin\Debug\languages\language.resources" />
+    <EmbeddedResource Include="bin\Debug\languages\language.tr-TR.resources" />
     <EmbeddedResource Include="Core\Other\Logging\LogbookControl.resx">
       <DependentUpon>LogbookControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -351,9 +366,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\languages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

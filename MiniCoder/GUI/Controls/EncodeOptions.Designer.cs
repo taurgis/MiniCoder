@@ -212,9 +212,9 @@
             // outPutLocation
             // 
             this.outPutLocation.Enabled = false;
-            this.outPutLocation.Location = new System.Drawing.Point(73, 46);
+            this.outPutLocation.Location = new System.Drawing.Point(105, 46);
             this.outPutLocation.Name = "outPutLocation";
-            this.outPutLocation.Size = new System.Drawing.Size(219, 20);
+            this.outPutLocation.Size = new System.Drawing.Size(187, 20);
             this.outPutLocation.TabIndex = 4;
             // 
             // outputDir
@@ -246,7 +246,8 @@
             "English",
             "Nederlands",
             "Português (Brasil)",
-            "Türkçe"});
+            "Türkçe",
+            "Français"});
             this.languagesSelect.Location = new System.Drawing.Point(260, 280);
             this.languagesSelect.Name = "languagesSelect";
             this.languagesSelect.Size = new System.Drawing.Size(100, 21);
