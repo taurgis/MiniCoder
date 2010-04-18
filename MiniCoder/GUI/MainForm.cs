@@ -122,6 +122,8 @@ namespace MiniTech.MiniCoder.GUI
             copyToolStripMenuItem.Text = LanguageController.Instance.getLanguageString("logMenuCopy");
             sendErrorReportToolStripMenuItem.Text = LanguageController.Instance.getLanguageString("logMenuSend");
 
+            encodeOptions.setLanguage();
+            encodeSettings.setLanguage();
         }
 
         void MainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)

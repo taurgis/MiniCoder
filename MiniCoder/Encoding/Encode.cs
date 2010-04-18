@@ -319,8 +319,6 @@ namespace MiniTech.MiniCoder.Encoding
         private int crfValue = 0;
         public SortedList<String, String[]> getFileDetails(string fileName)
         {
-
-
             SortedList<String, String[]> tempDetail = new SortedList<string, string[]>();
             MediaInfoWrapper.MediaInfo mediaInfo = new MediaInfoWrapper.MediaInfo(fileName);
 
@@ -328,6 +326,7 @@ namespace MiniTech.MiniCoder.Encoding
 
             Track[] videoTracks = new Track[mediaInfo.Video.Count];
             Track[] audioTracks;
+
             if (encodeSet["skipaudio"] != "True")
                 audioTracks = new Track[mediaInfo.AudioCount];
             else
