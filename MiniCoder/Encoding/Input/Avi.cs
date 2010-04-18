@@ -39,7 +39,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             LogBookController.Instance.addLogLine("Demuxing AVI - Using Vdubmod", LogMessageCategories.Video);
 
             MiniProcess proc = new DefaultProcess("Demuxing Avi", fileDetails["name"][0] + "DeMuxingProcess");
-            ProcessManager.Instance.process = proc;
+            ProcessManager.Instance.Process = proc;
 
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);

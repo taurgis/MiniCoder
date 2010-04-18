@@ -33,7 +33,7 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
             try
             {
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
 
                 proc.stdErrDisabled(true);
                 proc.stdOutDisabled(false);

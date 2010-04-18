@@ -40,7 +40,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
                     LogBookController.Instance.addLogLine("Started analysing VFR", LogMessageCategories.Video);
 
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
-                    ProcessManager.Instance.process = proc;
+                    ProcessManager.Instance.Process = proc;
 
                     if (!vfr.isInstalled())
                         vfr.download();
@@ -68,7 +68,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
                 {
                     LogBookController.Instance.addLogLine("Started analysing VFR", LogMessageCategories.Video);
                     MiniProcess proc = new DefaultProcess("Analysing for VFR", fileDetails["name"][0] + "VFRAnalyseProcess");
-                    ProcessManager.Instance.process = proc;
+                    ProcessManager.Instance.Process = proc;
 
                     if (!vfrMP4.isInstalled())
                         vfrMP4.download();
