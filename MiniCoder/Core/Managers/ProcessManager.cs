@@ -24,18 +24,18 @@ namespace MiniTech.MiniCoder.Core.Managers
     public sealed class ProcessManager
     {
         private static ProcessManager instance = null;
-        public MiniProcess process { get; set; }
-        public bool abandonStatus
+        public MiniProcess Process { get; set; }
+        public bool AbandonStatus
         {
             get
             {
-             return   process.getAbandonStatus();
+                return Process.getAbandonStatus();
             }
 
             set
             {
                 if (value)
-                    process.abandonProcess();
+                    Process.abandonProcess();
             }
 
         }
@@ -58,7 +58,7 @@ namespace MiniTech.MiniCoder.Core.Managers
 
         public void setPriority(int i)
         {
-            Process tempProcess = Process.GetCurrentProcess();
+            Process tempProcess = System.Diagnostics.Process.GetCurrentProcess();
             switch (i)
             {
                 case 0:
@@ -85,8 +85,8 @@ namespace MiniTech.MiniCoder.Core.Managers
 
 
             }
-            if(process != null)
-            process.setPriority(i);
+            if (Process != null)
+                Process.setPriority(i);
         }
 
 

@@ -36,7 +36,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
             try
             {
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("indexingAvc"), fileDetails["name"][0] + "DGAVCStepProcess");
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
 
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

@@ -109,7 +109,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
         private Boolean demuxFile(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             MiniProcess proc = new DefaultProcess("Indexing VOB", fileDetails["name"][0] + "DeMuxingProcess");
-            ProcessManager.Instance.process = proc;
+            ProcessManager.Instance.Process = proc;
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
 

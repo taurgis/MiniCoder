@@ -123,7 +123,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
                 pass = "1";
                 proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess1", fileDetails, encOpts);
                 proc.initProcess();
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
 
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                 proc.stdErrDisabled(false);
@@ -145,7 +145,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                     proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess2", fileDetails, encOpts);
                     proc.initProcess();
-                    ProcessManager.Instance.process = proc;
+                    ProcessManager.Instance.Process = proc;
 
                     proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                     proc.stdErrDisabled(false);
@@ -165,7 +165,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                 proc = new X264Process(LanguageController.Instance.getLanguageString("encodingVideoPass"), pass, fileDetails["name"][0] + "VideoEncodingProcess3", fileDetails, encOpts);
                 proc.initProcess();
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
                 proc.setFilename(Path.Combine(x264.getInstallPath(), "x264.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

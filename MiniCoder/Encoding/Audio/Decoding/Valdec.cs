@@ -33,7 +33,7 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
             try
             {
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
 
                 proc.initProcess();
                 proc.stdErrDisabled(true);

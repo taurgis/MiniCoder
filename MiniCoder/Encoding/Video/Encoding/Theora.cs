@@ -76,7 +76,7 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 
                 proc = new TheoraProcess(LanguageController.Instance.getLanguageString("encodingVideoTheora"));
                 proc.initProcess();
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
                 proc.setFilename(Path.Combine(theora.getInstallPath(), "theora.exe"));
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

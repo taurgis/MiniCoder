@@ -57,7 +57,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 LogBookController.Instance.addLogLine("Demuxing MKV - Using Mkvtoolnix", LogMessageCategories.Video);
 
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("demuxingMessage") + " MKV", fileDetails["name"][0] + "DeMuxingProcess");
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
 
                 if (!mkvtoolnix.isInstalled())
                     mkvtoolnix.download();
@@ -109,7 +109,8 @@ namespace MiniTech.MiniCoder.Encoding.Input
             LogBookController.Instance.addLogLine("Fetching MKV Attachments - Using MkvInfo", LogMessageCategories.Video);
 
             MiniProcess proc = new AttachmentProcess();
-            ProcessManager.Instance.process = proc;
+            ProcessManager.Instance.Process = proc;
+
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMkvAttachments"));
             proc.initProcess();
 
@@ -187,7 +188,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 }
 
                 MiniProcess proc = new AttachmentProcess();
-                ProcessManager.Instance.process = proc;
+                ProcessManager.Instance.Process = proc;
 
                 proc.initProcess();
 

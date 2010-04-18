@@ -15,24 +15,19 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
+using MiniTech.MiniCoder.Core.Other.Logging;
+using MiniTech.MiniCoder.Core.Settings;
+using MiniTech.MiniCoder.Encoding;
 using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.GUI.External;
-using MiniTech.MiniCoder.Encoding;
-using System.Threading;
-using System.Collections;
-using MiniTech.MiniCoder.Encoding.Process_Management;
-using MiniTech.MiniCoder.Core.Settings;
-using System.Diagnostics;
-using MiniTech.MiniCoder.Core.Languages;
-using MiniTech.MiniCoder.Core.Other.Logging;
-using MiniTech.MiniCoder.Core.Managers;
 
 namespace MiniTech.MiniCoder.GUI
 {
@@ -280,7 +275,7 @@ namespace MiniTech.MiniCoder.GUI
                     }
                     else
                     {
-                        if (ProcessManager.Instance.abandonStatus)
+                        if (ProcessManager.Instance.AbandonStatus)
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                         }
@@ -312,7 +307,7 @@ namespace MiniTech.MiniCoder.GUI
                     }
                     else
                     {
-                        if (ProcessManager.Instance.abandonStatus)
+                        if (ProcessManager.Instance.AbandonStatus)
                         {
                             setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                         }
@@ -347,7 +342,7 @@ namespace MiniTech.MiniCoder.GUI
                     {
                         try
                         {
-                            if (ProcessManager.Instance.abandonStatus)
+                            if (ProcessManager.Instance.AbandonStatus)
                             {
                                 setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusAborted"));
                             }
@@ -442,7 +437,7 @@ namespace MiniTech.MiniCoder.GUI
 
         private void stopButton_Click(object sender, EventArgs e)
         {
-            ProcessManager.Instance.abandonStatus = true;
+            ProcessManager.Instance.AbandonStatus = true;
         }
 
         private delegate void fileListUpdater(string status);

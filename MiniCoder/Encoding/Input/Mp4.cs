@@ -41,7 +41,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             int exitCode = 0;
             MiniProcess proc = new DefaultProcess("Demuxing MP4", fileDetails["name"][0] + "DeMuxingProcess");
 
-            ProcessManager.Instance.process = proc;
+            ProcessManager.Instance.Process = proc;
             proc.stdErrDisabled(false);
             proc.stdOutDisabled(false);
 
