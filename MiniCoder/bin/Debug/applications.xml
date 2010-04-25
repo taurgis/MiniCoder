@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<Applications>
+  <Application>
+    <Name>avs</Name>
+    <Type>exe</Type>
+    <registrySubpath>AviSynth\</registrySubpath>
+    <registrySubKey>plugindir2_5</registrySubKey>
+    <Download>http://www.gamerzzheaven.be/Avisynth_258.exe</Download>
+    <Category>other</Category>
+    <Custom_Path />
+    <LocalVersion>2.5.8</LocalVersion>
+  </Application>
+  <Application>
+    <Name>aWarpSharp</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/aWarpSharp.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>BAAA</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/AAA.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>besweet</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/BeSweet.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>1.5b31</LocalVersion>
+  </Application>
+  <Application>
+    <Name>ColorMatrix</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/ColorMatrix.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>Core</Name>
+    <Type>Core</Type>
+    <Download>http://www.gamerzzheaven.be/core.zip</Download>
+    <Category>core</Category>
+    <Custom_Path />
+    <LocalVersion>1.3.3.10</LocalVersion>
+  </Application>
+  <Application>
+    <Name>CoreUpdater</Name>
+    <Type>Core</Type>
+    <Download>http://www.gamerzzheaven.be/CoreUpdater.zip</Download>
+    <Category>core</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>Decomb</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/Decomb.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>Deen</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/Deen.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>DGAVCDecode</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/DGAVCDecode.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>DGAVCIndex</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/DGAVCIndex.zip</Download>
+    <Category>video</Category>
+    <Custom_Path />
+    <LocalVersion>1.0.9</LocalVersion>
+  </Application>
+  <Application>
+    <Name>DGDecode</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/DGDecode.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>DGIndex</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/dgindex.zip</Download>
+    <Category>muxer</Category>
+    <Custom_Path />
+    <LocalVersion>1.5.5</LocalVersion>
+  </Application>
+  <Application>
+    <Name>DtsEdit</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/DtsEdit.zip</Download>
+    <Category>video</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>faad</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/faad.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>2.6</LocalVersion>
+  </Application>
+  <Application>
+    <Name>ffmpeg</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/ffmpeg.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>r20260</LocalVersion>
+  </Application>
+  <Application>
+    <Name>flac</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/flac.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>1.2.1</LocalVersion>
+  </Application>
+  <Application>
+    <Name>FluxSmooth</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/FluxSmooth.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>HQDN3D</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/HQDN3D.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>lame</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/lame.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>3.98.2</LocalVersion>
+  </Application>
+  <Application>
+    <Name>Library</Name>
+    <Type>Core</Type>
+    <Download>http://www.gamerzzheaven.be/Library.zip</Download>
+    <Category>core</Category>
+    <Custom_Path />
+    <LocalVersion>1.3</LocalVersion>
+  </Application>
+  <Application>
+    <Name>madplay</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/madplay.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>0.15.2</LocalVersion>
+  </Application>
+  <Application>
+    <Name>mkv2vfr</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/mkv2vfr.zip</Download>
+    <Category>muxer</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>mkvtoolnix</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/mkvtoolnix.zip</Download>
+    <Category>muxer</Category>
+    <Custom_Path />
+    <LocalVersion>2.9.8</LocalVersion>
+  </Application>
+  <Application>
+    <Name>mp4box</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/mp4box.zip</Download>
+    <Category>muxer</Category>
+    <Custom_Path />
+    <LocalVersion>0.4.6</LocalVersion>
+  </Application>
+  <Application>
+    <Name>MSharpen</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/MSharpen.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>oggdec</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/oggdec.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>ogmtools</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/OGMTools.zip</Download>
+    <Category>muxer</Category>
+    <Custom_Path />
+    <LocalVersion>2.1r2</LocalVersion>
+  </Application>
+  <Application>
+    <Name>theora</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/theora.zip</Download>
+    <Category>video</Category>
+    <Custom_Path />
+    <LocalVersion>0.25</LocalVersion>
+  </Application>
+  <Application>
+    <Name>Toon-v1.0-lite</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/Toon-v1.0-lite.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>UnDot</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/UnDot.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>UnFilter</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/UnFilter.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>valdec</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/valdec.zip</Download>
+    <Category>audio</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>VirtualDubMod</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/VirtualDubMod.zip</Download>
+    <Category>muxer</Category>
+    <Custom_Path />
+    <LocalVersion>1.5.10</LocalVersion>
+  </Application>
+  <Application>
+    <Name>VSFilter</Name>
+    <Type>plugin</Type>
+    <Download>http://www.gamerzzheaven.be/VSFilter.zip</Download>
+    <Category>plugin</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+  <Application>
+    <Name>x264</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/x264.zip</Download>
+    <Category>video</Category>
+    <Custom_Path />
+    <LocalVersion>0.92.1510</LocalVersion>
+  </Application>
+  <Application>
+    <Name>xvid_encraw</Name>
+    <Type>zip</Type>
+    <Download>http://www.gamerzzheaven.be/xvid_encraw.zip</Download>
+    <Category>video</Category>
+    <Custom_Path />
+    <LocalVersion>1.0</LocalVersion>
+  </Application>
+</Applications>

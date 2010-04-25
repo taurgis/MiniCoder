@@ -287,11 +287,11 @@ namespace System.OS
             if (x64Detection)
             {
                 if (isWow64())
-                     osName += " x64";
+                    osName += " x64";
                 else osName += " x86";
             }
 
-         //   osName += " x64";
+            //   osName += " x64";
 
             return osName;
         }
@@ -325,7 +325,8 @@ namespace System.OS
 
                     IEnumerator etr = versions.GetEnumerator();
                     while (etr.MoveNext())
-                        fv = etr.Current + "";
+                        if (!String.IsNullOrEmpty(etr.Current.ToString()))
+                            fv = etr.Current + "";
                 }
                 catch
                 {
@@ -343,9 +344,10 @@ namespace System.OS
         /// 
         public static string DotNetVersionFormated(string dotNetVersion)
         {
+
             string dnvf = "unknown";
 
-            if (dotNetVersion != "unknown")
+            if (dotNetVersion != "unknown" && !String.IsNullOrEmpty(dotNetVersion))
             {
                 string[] versions = dotNetVersion.Split('.');
                 string major = versions[0].ToString();
