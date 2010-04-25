@@ -30,10 +30,12 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
     public class Vfr
     {
-        public Boolean analyse(Tool vfr, Tool vfrMP4, SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails)
+        public Boolean analyse(SortedList<String, String> encOpts, SortedList<String, String[]> fileDetails)
         {
             try
             {
+                ExtApplication vfr = ToolsManager.Instance.getTool("mkv2vfr");
+                ExtApplication vfrMP4 = ToolsManager.Instance.getTool("DtsEdit");
 
                 if (fileDetails["ext"][0].ToLower() == "mkv" && encOpts.ContainsKey("vfr"))
                 {

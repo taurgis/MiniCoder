@@ -15,6 +15,10 @@
     <ApplicationIcon>bigIcon.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,10 +33,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Core\Managers\ErrorManager.cs" />
     <Compile Include="Core\Managers\ProcessManager.cs" />
+    <Compile Include="Core\Managers\ToolsManager.cs" />
     <Compile Include="Core\Other\Codec.cs" />
     <Compile Include="Core\Other\Logging\LogbookControl.cs">
       <SubType>UserControl</SubType>
@@ -178,7 +179,7 @@
     <Compile Include="External\Core.cs" />
     <Compile Include="External\AvsPlugin.cs" />
     <Compile Include="External\RegistryApp.cs" />
-    <Compile Include="External\Tool.cs" />
+    <Compile Include="External\ExtApplication.cs" />
     <Compile Include="External\Zip.cs" />
     <Compile Include="GUI\AviSynth\CustomFilter.cs">
       <SubType>Form</SubType>
@@ -323,7 +324,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="External\Tools.cs" />
+    <Compile Include="External\Applications.cs" />
     <Compile Include="Templates\Simple\MainTemplate.cs" />
     <Compile Include="Templates\Simple\SimpleTemplateController.cs" />
   </ItemGroup>
@@ -339,6 +340,11 @@
     <None Include="Resources\Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
       <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
@@ -352,6 +358,11 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>

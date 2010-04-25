@@ -28,10 +28,11 @@ namespace MiniTech.MiniCoder.Encoding.Output
 {
     class Matroska : Container
     {
-        public Boolean mux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
+        public Boolean mux(SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
+                ExtApplication mkvtoolnix = ToolsManager.Instance.getTool("mkvtoolnix");
 
                 MiniProcess proc = new DefaultProcess("Muxing to MKV", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);

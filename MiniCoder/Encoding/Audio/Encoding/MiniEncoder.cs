@@ -24,6 +24,6 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
     public interface MiniEncoder
     {
-        bool encode(Tool encoder, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts);
+        bool encode(SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts);
     }
 }

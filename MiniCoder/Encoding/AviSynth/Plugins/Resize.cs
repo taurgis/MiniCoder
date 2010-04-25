@@ -23,7 +23,7 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
     public class Resize : Plugin
     {
-        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
+        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts)
         {
             switch (EncOpts["resize"])
             {

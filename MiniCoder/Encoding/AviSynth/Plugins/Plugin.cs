@@ -23,6 +23,6 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
     public interface Plugin
     {
-        string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools);
+        string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts);
     }
 }

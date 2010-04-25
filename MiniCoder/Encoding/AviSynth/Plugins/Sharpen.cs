@@ -18,33 +18,34 @@ using System;
 using System.Collections.Generic;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Core.Managers;
 
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
     public class Sharpen : Plugin
     {
-        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
+        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts)
         {
-            Tool filter;
+            ExtApplication filter;
             switch (EncOpts["sharpen"])
             {
                 case "1":
-                    filter = tools["UnFilter"];
+                    filter = ToolsManager.Instance.getTool("UnFilter");
                     if (!filter.isInstalled())
                         filter.download();
                     return "UnFilter(20,20)\r\n";
                 case "2":
-                    filter = tools["Toon-v1.0-lite"];
+                    filter = ToolsManager.Instance.getTool("Toon-v1.0-lite");
                     if (!filter.isInstalled())
                         filter.download();
                     return "ToonLite(strength=0.75)\r\n";
                 case "3":
-                    filter = tools["aWarpSharp"];
+                    filter = ToolsManager.Instance.getTool("aWarpSharp");
                     if (!filter.isInstalled())
                         filter.download();
                     return "aWarpSharp()\r\n";
                 case "4":
-                    filter = tools["MSharpen"];
+                    filter = ToolsManager.Instance.getTool("MSharpen");
                     if (!filter.isInstalled())
                         filter.download();
                     return "MSharpen()\r\n";

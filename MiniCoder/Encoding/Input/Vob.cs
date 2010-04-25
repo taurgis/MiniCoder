@@ -30,22 +30,24 @@ namespace MiniTech.MiniCoder.Encoding.Input
 {
     public class Vob : InputFile
     {
+        private ExtApplication DGIndex = ToolsManager.Instance.getTool("DGIndex");
+
         public SortedList<String, Track[]> getTracks()
         {
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        public Boolean demux(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
-            if (demuxFile(DGIndex, fileDetails, tracks))
-                if (demuxSubs(DGIndex, fileDetails, tracks))
-                    if (demuxChapters(DGIndex, fileDetails, tracks))
+            if (demuxFile(fileDetails, tracks))
+                if (demuxSubs(fileDetails, tracks))
+                    if (demuxChapters(fileDetails, tracks))
                         return true;
 
             return false;
         }
 
-        private Boolean demuxChapters(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        private Boolean demuxChapters(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             try
             {
@@ -74,7 +76,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
                 return true;
             }
         }
-        private Boolean demuxSubs(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        private Boolean demuxSubs(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Demuxing subs - Using Vobsub", LogMessageCategories.Video);
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingvobSubs"));
@@ -106,7 +108,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return ProcessManager.hasProcessExitedCorrectly(proc, exitCode);
         }
 
-        private Boolean demuxFile(Tool DGIndex, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        private Boolean demuxFile(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             MiniProcess proc = new DefaultProcess("Indexing VOB", fileDetails["name"][0] + "DeMuxingProcess");
             ProcessManager.Instance.Process = proc;

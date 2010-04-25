@@ -18,36 +18,36 @@ using System;
 using System.Collections.Generic;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
-
+using MiniTech.MiniCoder.Core.Managers;
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
     public class Denoise : Plugin
     {
-      public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
+      public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts)
         {
-            Tool filter;
+            ExtApplication filter;
             switch (EncOpts["denoise"])
             {
                 case "1":
-                    filter = tools["UnDot"];
+                    filter = ToolsManager.Instance.getTool("UnDot");
                     if (!filter.isInstalled())
                         filter.download();
                     return "UnDot()\r\n";
                 case "2":
-                    filter = tools["FluxSmooth"];
+                    filter = ToolsManager.Instance.getTool("FluxSmooth");
                     if (!filter.isInstalled())
                         filter.download();
                     return "FluxSmoothST()\r\n";
                 case "3":
-                    filter = tools["HQDN3D"];
+                    filter = ToolsManager.Instance.getTool("HQDN3D");
                     if (!filter.isInstalled())
                         filter.download();
                     return "HQDN3D()\r\n";
                 case "4":
-                    filter = tools["UnDot"];
+                    filter = ToolsManager.Instance.getTool("UnDot");
                     if (!filter.isInstalled())
                         filter.download();
-                    filter = tools["Deen"];
+                    filter = ToolsManager.Instance.getTool("Deen");
                     if (!filter.isInstalled())
                         filter.download();
                     return "UnDot.Deen()\r\n";

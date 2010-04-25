@@ -25,7 +25,7 @@ using System.Reflection;
 
 namespace MiniTech.MiniCoder.External
 {
-    class Core : Tool
+    class Core : ExtApplication
     {
         private string toolName;
         private string downloadPath;

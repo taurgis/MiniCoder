@@ -24,7 +24,7 @@ using System.Xml;
 
 namespace MiniTech.MiniCoder.External
 {
-    class RegistryApp : Tool
+    class RegistryApp : ExtApplication
     {
         private string toolName;
         private string downloadPath;

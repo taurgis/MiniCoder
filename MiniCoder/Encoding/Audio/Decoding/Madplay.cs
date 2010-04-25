@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     public class Madplay : MiniDecoder
     {
-        public Boolean decode(Tool madplay, SortedList<String, String[]> fileDetails, int i, Track audio)
+        public Boolean decode(SortedList<String, String[]> fileDetails, int i, Track audio)
         {
             try
             {
+                ExtApplication madplay = ToolsManager.Instance.getTool("madplay");
+
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 ProcessManager.Instance.Process = proc;
                 proc.stdErrDisabled(true);

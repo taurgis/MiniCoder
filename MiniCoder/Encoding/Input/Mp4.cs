@@ -34,8 +34,10 @@ namespace MiniTech.MiniCoder.Encoding.Input
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        public Boolean demux(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
+            ExtApplication mp4box = ToolsManager.Instance.getTool("mp4box");
+
             LogBookController.Instance.addLogLine("Demuxing MP4 - Using mp4box", LogMessageCategories.Video);
 
             int exitCode = 0;

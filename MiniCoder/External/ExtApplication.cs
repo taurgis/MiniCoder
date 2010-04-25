@@ -16,14 +16,24 @@
 
 using System;
 using System.Collections.Generic;
-using MiniTech.MiniCoder.Encoding.Input.Tracks;
-using MiniTech.MiniCoder.Encoding.Process_Management;
-using MiniTech.MiniCoder.External;
-
-namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
+using System.Text;
+using System.Xml;
+namespace MiniTech.MiniCoder.External
 {
-    interface MiniDecoder
+    public interface ExtApplication
     {
-        Boolean decode(SortedList<String, String[]> fileDetails, int i, Track audio);
+        void setCustomPath(string path);
+        Boolean isInstalled();
+        string getCategory();
+        string getAppType();
+        string getCustomPath();
+        string getInstallPath();
+        string getDownloadPath();
+        string localVersion { get; set; }
+        string onlineVersion { get; set; }
+        string registrySubpath { get; set; }
+        string registrySubKey { get; set; }
+        Boolean download();
+        void getOnlineVersion(XmlDocument doc);
     }
 }

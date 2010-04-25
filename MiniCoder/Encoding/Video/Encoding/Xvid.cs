@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class Xvid : VideoEncoder
     {
-        public Boolean encode(Tool xvid_encraw, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
+        public Boolean encode(SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
+                ExtApplication xvid_encraw = ToolsManager.Instance.getTool("xvid_encraw");
+
                 string pass = "0";
                 MiniProcess proc;
 

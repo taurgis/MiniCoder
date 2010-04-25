@@ -20,7 +20,7 @@ using MiniTech.MiniCoder.Core.Other.Logging;
 using MiniTech.MiniCoder.Encoding.Process_Management;
 using MiniTech.MiniCoder.Encoding.VideoEnc.Encoding;
 using MiniTech.MiniCoder.External;
-
+using MiniTech.MiniCoder.Core.Managers;
 namespace MiniTech.MiniCoder.Encoding.Input.Tracks
 {
     class Video : Track
@@ -39,7 +39,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             this.codec = codec;
         }
 
-        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
+        public Boolean Encode(SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
         {
             try
             {
@@ -50,13 +50,13 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                 {
                     case "0":
                         videoEncoder = new x264();
-                        return videoEncoder.encode(tools["x264"], fileDetails, EncOpts, tracks);
+                        return videoEncoder.encode(fileDetails, EncOpts, tracks);
                     case "1":
                         videoEncoder = new Xvid();
-                        return videoEncoder.encode(tools["xvid_encraw"], fileDetails, EncOpts, tracks); ;
+                        return videoEncoder.encode( fileDetails, EncOpts, tracks); ;
                     case "2":
                         videoEncoder = new Theora();
-                        return videoEncoder.encode(tools["theora"], fileDetails, EncOpts, tracks); ;
+                        return videoEncoder.encode( fileDetails, EncOpts, tracks); ;
                 }
 
                 return false;

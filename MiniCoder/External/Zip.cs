@@ -23,7 +23,7 @@ using MiniTech.MiniCoder.GUI;
 using System.Xml;
 namespace MiniTech.MiniCoder.External
 {
-    class Zip : Tool
+    class Zip : ExtApplication
     {
         private string toolName;
         private string downloadPath;

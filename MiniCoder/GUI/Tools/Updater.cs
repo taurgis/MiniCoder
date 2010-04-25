@@ -28,20 +28,20 @@ using System.Collections;
 using System.Diagnostics;
 using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.GUI.External
 {
     public partial class Updater : Form
     {
 
-        Hashtable applicationVersions = new Hashtable();
-        SortedList<String, Tool> toolInfo;
-        Boolean warnUser = false;
-        Tools tools;
- 
+        private Hashtable applicationVersions = new Hashtable();
+        private Boolean warnUser = false;
+       private  SortedList<String, ExtApplication> toolInfo = ToolsManager.Instance.getTools();
 
-        public Updater(Tools tools, Boolean hide)
+        public Updater(Boolean hide)
         {
-         
+
             InitializeComponent();
 
             this.Text = LanguageController.Instance.getLanguageString("updaterTitle");
@@ -91,12 +91,11 @@ namespace MiniTech.MiniCoder.GUI.External
             updateButton.Text = LanguageController.Instance.getLanguageString("updateUpdateButton");
             cancelButton.Text = LanguageController.Instance.getLanguageString("updateCancelButton");
 
-            this.tools = tools;
-            toolInfo = tools.getTools();
-           // LogBook.Instance.addLogLine("Update Manager", "UpdateChecking", "UpdateChecking", false);
+          
+
             foreach (string key in toolInfo.Keys)
             {
-                Tool tempTool = toolInfo[key];
+                ExtApplication tempTool = toolInfo[key];
 
                 String updateText = "";
                 if (tempTool.localVersion != tempTool.onlineVersion)
@@ -126,12 +125,12 @@ namespace MiniTech.MiniCoder.GUI.External
 
                 if (updateText.Equals("Update Required"))
                 {
-                   // LogBook.Instance.addLogLine("Updates available for " + key + ".", "UpdateChecking", "", false);
+                    // LogBook.Instance.addLogLine("Updates available for " + key + ".", "UpdateChecking", "", false);
                     if (hide)
                     {
                         if (MessageBox.Show(LanguageController.Instance.getLanguageString("updateMessage"), "Updates", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            Updater upd = new Updater(tools, false);
+                            Updater upd = new Updater(false);
                             this.Close();
                             upd.ShowDialog();
                             return;
@@ -189,12 +188,13 @@ namespace MiniTech.MiniCoder.GUI.External
             downloadProgress.Minimum = 0;
             downloadProgress.Maximum = audioList.CheckedItems.Count + videoList.CheckedItems.Count + muxingList.CheckedItems.Count + pluginsList.CheckedItems.Count + otherList.CheckedItems.Count + coreList.CheckedItems.Count;
 
+           
 
             for (int i = 0; i < audioList.Items.Count; i++)
             {
                 if (audioList.Items[i].Checked)
                 {
-                    Tool tempPackage = (Tool)toolInfo[audioList.Items[i].SubItems[1].Text];
+                    ExtApplication tempPackage = (ExtApplication)toolInfo[audioList.Items[i].SubItems[1].Text];
                     updateLog.Text = "Downloading " + audioList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                     if (!tempPackage.download())
                     {
@@ -207,7 +207,7 @@ namespace MiniTech.MiniCoder.GUI.External
                     audioList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                   // LogBook.Instance.addLogLine("Downloaded & Updated " + audioList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    // LogBook.Instance.addLogLine("Downloaded & Updated " + audioList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -215,7 +215,7 @@ namespace MiniTech.MiniCoder.GUI.External
             {
                 if (videoList.Items[i].Checked)
                 {
-                    Tool tempPackage = (Tool)toolInfo[videoList.Items[i].SubItems[1].Text];
+                    ExtApplication tempPackage = (ExtApplication)toolInfo[videoList.Items[i].SubItems[1].Text];
                     updateLog.Text = "Downloading " + videoList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                     if (!tempPackage.download())
                     {
@@ -228,7 +228,7 @@ namespace MiniTech.MiniCoder.GUI.External
                     videoList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                   // LogBook.Instance.addLogLine("Downloaded & Updated " + videoList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    // LogBook.Instance.addLogLine("Downloaded & Updated " + videoList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -238,7 +238,7 @@ namespace MiniTech.MiniCoder.GUI.External
             {
                 if (muxingList.Items[i].Checked)
                 {
-                    Tool tempPackage = (Tool)toolInfo[muxingList.Items[i].SubItems[1].Text];
+                    ExtApplication tempPackage = (ExtApplication)toolInfo[muxingList.Items[i].SubItems[1].Text];
                     updateLog.Text = "Downloading " + muxingList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                     if (!tempPackage.download())
                     {
@@ -251,7 +251,7 @@ namespace MiniTech.MiniCoder.GUI.External
                     muxingList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                   // LogBook.Instance.addLogLine("Downloaded & Updated " + muxingList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    // LogBook.Instance.addLogLine("Downloaded & Updated " + muxingList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -259,7 +259,7 @@ namespace MiniTech.MiniCoder.GUI.External
             {
                 if (otherList.Items[i].Checked)
                 {
-                    Tool tempPackage = (Tool)toolInfo[otherList.Items[i].SubItems[1].Text];
+                    ExtApplication tempPackage = (ExtApplication)toolInfo[otherList.Items[i].SubItems[1].Text];
                     updateLog.Text = "Downloading " + otherList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                     if (!tempPackage.download())
                     {
@@ -272,7 +272,7 @@ namespace MiniTech.MiniCoder.GUI.External
                     otherList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                   // LogBook.Instance.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    // LogBook.Instance.addLogLine("Downloaded & Updated " + otherList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
 
@@ -280,7 +280,7 @@ namespace MiniTech.MiniCoder.GUI.External
             {
                 if (pluginsList.Items[i].Checked)
                 {
-                    Tool tempPackage = (Tool)toolInfo[pluginsList.Items[i].SubItems[1].Text];
+                    ExtApplication tempPackage = (ExtApplication)toolInfo[pluginsList.Items[i].SubItems[1].Text];
                     updateLog.Text = "Downloading " + pluginsList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                     if (!tempPackage.download())
                     {
@@ -293,17 +293,17 @@ namespace MiniTech.MiniCoder.GUI.External
                     pluginsList.Items[i].Checked = false;
                     downloadProgress.Value++;
                     updateLog.Text += "Download & Install Complete .. \r\n";
-                   // LogBook.Instance.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                    // LogBook.Instance.addLogLine("Downloaded & Updated " + pluginsList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
                 }
             }
-            tools.SavePackages();
+            ToolsManager.Instance.saveTools();
             for (int i = coreList.Items.Count - 1; i >= 0; i--)
             {
                 if (coreList.Items[i].Checked)
                 {
                     if (coreList.Items[i].SubItems[1].Text == "Core")
                     {
-                        Tool tempPackage = (Tool)tools.getTools()["Core"];
+                        ExtApplication tempPackage = (ExtApplication)ToolsManager.Instance.getTool("Core");
                         updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                         if (!tempPackage.download())
                         {
@@ -320,7 +320,7 @@ namespace MiniTech.MiniCoder.GUI.External
                     }
                     else
                     {
-                        Tool tempPackage = (Tool)toolInfo[coreList.Items[i].SubItems[1].Text];
+                        ExtApplication tempPackage = (ExtApplication)toolInfo[coreList.Items[i].SubItems[1].Text];
                         updateLog.Text = "Downloading " + coreList.Items[i].SubItems[1].Text + " ...\r\n" + updateLog.Text;
                         if (!tempPackage.download())
                         {
@@ -333,8 +333,8 @@ namespace MiniTech.MiniCoder.GUI.External
                         coreList.Items[i].Checked = false;
                         downloadProgress.Value++;
                         updateLog.Text += "Download & Install Complete .. \r\n";
-                       // LogBook.Instance.addLogLine("Downloaded & Updated " + coreList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
-                        tools.SavePackages();
+                        // LogBook.Instance.addLogLine("Downloaded & Updated " + coreList.Items[i].SubItems[1].Text, "UpdateChecking", "", false);
+                        ToolsManager.Instance.saveTools();
                     }
                 }
             }
@@ -349,10 +349,10 @@ namespace MiniTech.MiniCoder.GUI.External
 
         private void customPath_Click(object sender, EventArgs e)
         {
-            AppLocation appLoc = new AppLocation(tools.getTools());
+            AppLocation appLoc = new AppLocation();
             appLoc.ShowDialog();
             if (appLoc.doSave())
-                tools.SavePackages();
+                ToolsManager.Instance.saveTools();
         }
 
         private void ignoreUpdatesMenuStrip_Click(object sender, EventArgs e)
@@ -361,10 +361,10 @@ namespace MiniTech.MiniCoder.GUI.External
             ContextMenuStrip tempMenu = (ContextMenuStrip)tempContext.Owner;
             ListView tempListbox = (ListView)tempMenu.SourceControl;
 
-            Tool tempPackage = (Tool)toolInfo[tempListbox.SelectedItems[0].SubItems[1].Text];
+            ExtApplication tempPackage = (ExtApplication)toolInfo[tempListbox.SelectedItems[0].SubItems[1].Text];
             tempPackage.localVersion = "Ignore";
 
-            tools.SavePackages();
+            ToolsManager.Instance.saveTools();
         }
 
 
@@ -374,10 +374,10 @@ namespace MiniTech.MiniCoder.GUI.External
             ToolStripMenuItem tempContext = (ToolStripMenuItem)sender;
             ContextMenuStrip tempMenu = (ContextMenuStrip)tempContext.Owner;
             ListView tempListbox = (ListView)tempMenu.SourceControl;
-            Tool tempPackage = (Tool)toolInfo[tempListbox.SelectedItems[0].SubItems[1].Text];
+            ExtApplication tempPackage = (ExtApplication)toolInfo[tempListbox.SelectedItems[0].SubItems[1].Text];
             tempPackage.localVersion = "Unignored";
 
-            tools.SavePackages();
+            ToolsManager.Instance.saveTools();
         }
 
         private void Updater_Load(object sender, EventArgs e)

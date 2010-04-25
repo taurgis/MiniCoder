@@ -22,7 +22,7 @@ using System.IO;
 using System.Xml;
 namespace MiniTech.MiniCoder.External
 {
-    class AvsPlugin : Tool
+    class AvsPlugin : ExtApplication
     {
         private string toolName;
         private string downloadPath;
@@ -33,8 +33,8 @@ namespace MiniTech.MiniCoder.External
         public string registrySubpath { get; set; }
         public string registrySubKey { get; set; }
 
-        private Tool aviSynth;
-        public AvsPlugin(string toolName, string downloadurl, string category, Tool aviSynth, string localVersion)
+        private ExtApplication aviSynth;
+        public AvsPlugin(string toolName, string downloadurl, string category, ExtApplication aviSynth, string localVersion)
         {
             this.toolName = toolName;
             this.localVersion = localVersion;
