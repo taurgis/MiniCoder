@@ -22,14 +22,14 @@ namespace MiniTech.MiniCoder.Core.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class French {
+    internal class Arabic {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal French() {
+        internal Arabic() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MiniTech.MiniCoder.Core.Languages.French", typeof(French).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MiniTech.MiniCoder.Core.Languages.Arabic", typeof(Arabic).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Programmes.
+        ///   Looks up a localized string similar to الأدوات.
         /// </summary>
         internal static string applicationsButton {
             get {
@@ -70,7 +70,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Débit:.
+        ///   Looks up a localized string similar to :معدل البت.
         /// </summary>
         internal static string audioBitrate {
             get {
@@ -79,7 +79,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Codec:.
+        ///   Looks up a localized string similar to :المرمز.
         /// </summary>
         internal static string audioCodec {
             get {
@@ -88,7 +88,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Decodage Audio en cours.
+        ///   Looks up a localized string similar to تحليل الصوت.
         /// </summary>
         internal static string audioDecodingMessage {
             get {
@@ -97,7 +97,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage audio en cours.
+        ///   Looks up a localized string similar to تحويل الصوت إلى.
         /// </summary>
         internal static string audioEncodingMessage {
             get {
@@ -106,7 +106,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage Piste Audio.
+        ///   Looks up a localized string similar to تحويل المسار الصوتي.
         /// </summary>
         internal static string audioEncodingTrack {
             get {
@@ -115,7 +115,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options Audio.
+        ///   Looks up a localized string similar to خيارات الصوت.
         /// </summary>
         internal static string audioOptionsTitle {
             get {
@@ -124,7 +124,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Audio.
+        ///   Looks up a localized string similar to الصوت.
         /// </summary>
         internal static string audioTabTitle {
             get {
@@ -133,7 +133,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format:.
+        ///   Looks up a localized string similar to :الصيغة.
         /// </summary>
         internal static string containerFormat {
             get {
@@ -142,7 +142,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conteneur.
+        ///   Looks up a localized string similar to الحاوي.
         /// </summary>
         internal static string containerOptionsTitle {
             get {
@@ -151,7 +151,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Noyau.
+        ///   Looks up a localized string similar to النواة.
         /// </summary>
         internal static string coreTabTitle {
             get {
@@ -160,7 +160,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Personnalisation.
+        ///   Looks up a localized string similar to تخصيص.
         /// </summary>
         internal static string customButton {
             get {
@@ -169,7 +169,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annuler.
+        ///   Looks up a localized string similar to إلغاء.
         /// </summary>
         internal static string customFilterCancel {
             get {
@@ -178,7 +178,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Si vous souhaitez désactiver un filtre par défaut, désactivez le dans la Page des Paramètres..
+        ///   Looks up a localized string similar to إذا أردت تعطيل المرشح الافتراضي، فعطله في تبويب الضبط.
         /// </summary>
         internal static string customFilterNote {
             get {
@@ -187,7 +187,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to موافق.
         /// </summary>
         internal static string customFilterOK {
             get {
@@ -196,7 +196,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrez Vos Filtres Avisynth Personnalisés.
+        ///   Looks up a localized string similar to المخصصة AviSynth أدخل إعدادات.
         /// </summary>
         internal static string customFilterText {
             get {
@@ -205,7 +205,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Filtres Personnalisés.
+        ///   Looks up a localized string similar to تخصيص المرشحات.
         /// </summary>
         internal static string customFilterTitle {
             get {
@@ -214,7 +214,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chemins Personnalisés.
+        ///   Looks up a localized string similar to مكان الملفات.
         /// </summary>
         internal static string customPathsTitle {
             get {
@@ -223,7 +223,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage Annulé.
+        ///   Looks up a localized string similar to فك التجميع.
         /// </summary>
         internal static string demuxingAbortedMessage {
             get {
@@ -232,7 +232,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage Complète.
+        ///   Looks up a localized string similar to انتهى التجميع.
         /// </summary>
         internal static string demuxingCompleteMessage {
             get {
@@ -241,7 +241,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage en cours.
+        ///   Looks up a localized string similar to التجميع.
         /// </summary>
         internal static string demuxingMessage {
             get {
@@ -250,7 +250,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage des Pistes MKV.
+        ///   Looks up a localized string similar to MKV فك تجميع الملفات من.
         /// </summary>
         internal static string demuxingMkv {
             get {
@@ -259,7 +259,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage des Fichiers Joints.
+        ///   Looks up a localized string similar to فك تجميع المرفقات.
         /// </summary>
         internal static string demuxingMkvAttachments {
             get {
@@ -268,7 +268,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage des Chapitres.
+        ///   Looks up a localized string similar to فك تجميع التشابترز.
         /// </summary>
         internal static string demuxingMkvChapters {
             get {
@@ -277,7 +277,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage Piste Audio MP4.
+        ///   Looks up a localized string similar to MP4 استخراج المسار الصوتي من.
         /// </summary>
         internal static string demuxingmp4Audio {
             get {
@@ -286,7 +286,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démultiplexage Piste Vidéo MP4.
+        ///   Looks up a localized string similar to MP4 استخراج الفيديو من.
         /// </summary>
         internal static string demuxingmp4Video {
             get {
@@ -295,7 +295,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lancement de l&apos;indexation des fichiers VOB.
+        ///   Looks up a localized string similar to VOB تتم فهرسة ملفات.
         /// </summary>
         internal static string demuxingVob {
             get {
@@ -304,7 +304,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lancement ajout des chapitres..
+        ///   Looks up a localized string similar to يتم استخراج التشابترز.
         /// </summary>
         internal static string demuxingvobChapters {
             get {
@@ -313,7 +313,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lancement ajout des sous-titres..
+        ///   Looks up a localized string similar to يتم استخراج الترجمة.
         /// </summary>
         internal static string demuxingvobSubs {
             get {
@@ -322,7 +322,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lancer.
+        ///   Looks up a localized string similar to ابدأ.
         /// </summary>
         internal static string encodeStartButton {
             get {
@@ -331,7 +331,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arrêter.
+        ///   Looks up a localized string similar to توقف.
         /// </summary>
         internal static string encodeStopButton {
             get {
@@ -340,7 +340,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage Complète.
+        ///   Looks up a localized string similar to انتهى الإنتاج.
         /// </summary>
         internal static string encodingComplete {
             get {
@@ -349,7 +349,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorer Fichiers Joints.
+        ///   Looks up a localized string similar to تجاهل المرفقات.
         /// </summary>
         internal static string encodingIgnoreAttachments {
             get {
@@ -358,7 +358,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorer Audio.
+        ///   Looks up a localized string similar to تجاهل الصوت.
         /// </summary>
         internal static string encodingIgnoreAudio {
             get {
@@ -367,7 +367,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorer Chapitres.
+        ///   Looks up a localized string similar to تجاهل التشابترز.
         /// </summary>
         internal static string encodingIgnoreChapters {
             get {
@@ -376,7 +376,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignorer Sous-titres.
+        ///   Looks up a localized string similar to تجاهل الترجمة.
         /// </summary>
         internal static string encodingIgnoreSubs {
             get {
@@ -385,7 +385,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continuer vers le prochain fichier après une erreur.
+        ///   Looks up a localized string similar to ابدأ بالعملية التالية في حال وجود خطأ في السابقة.
         /// </summary>
         internal static string encodingNextError {
             get {
@@ -394,7 +394,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Montrer le vidéo en avant-première (Débogage Seulement).
+        ///   Looks up a localized string similar to (اعرض الفيديو (لتصحيح الأخطاء فقط.
         /// </summary>
         internal static string encodingShowVideoPreview {
             get {
@@ -403,7 +403,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage.
+        ///   Looks up a localized string similar to الإنتاج.
         /// </summary>
         internal static string encodingTitle {
             get {
@@ -412,7 +412,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage vidéo.
+        ///   Looks up a localized string similar to إنتاج الفيديو.
         /// </summary>
         internal static string encodingVideoPass {
             get {
@@ -421,7 +421,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage Theora vidéo.
+        ///   Looks up a localized string similar to Theora إنتاج فيديو نوع.
         /// </summary>
         internal static string encodingVideoTheora {
             get {
@@ -430,7 +430,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Semble-t-il qu&apos;une erreur ai survenue! Voulez-vous envoyer un rapport d&apos;érreur?.
+        ///   Looks up a localized string similar to يبدو أن خطأً قد حدث، أتود أن ترسل تقريرًا؟.
         /// </summary>
         internal static string errorWarningMessage {
             get {
@@ -439,7 +439,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erreur!.
+        ///   Looks up a localized string similar to !خطأ.
         /// </summary>
         internal static string errorWarningTitle {
             get {
@@ -448,7 +448,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajout d&apos;Informations du Fichier.
+        ///   Looks up a localized string similar to تحليل معلومات الملف.
         /// </summary>
         internal static string fileInfoFetch {
             get {
@@ -457,7 +457,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options de Filtrage.
+        ///   Looks up a localized string similar to خيارات المرشحات.
         /// </summary>
         internal static string filterOptionsTitle {
             get {
@@ -466,7 +466,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexation AVC en cours.
+        ///   Looks up a localized string similar to AVC فهرسة.
         /// </summary>
         internal static string indexingAvc {
             get {
@@ -475,7 +475,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexation AVC Annulée.
+        ///   Looks up a localized string similar to أُلغيت الفهرسة.
         /// </summary>
         internal static string indexingAvcAbort {
             get {
@@ -484,7 +484,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexation AVC Complète.
+        ///   Looks up a localized string similar to AVC انتهت فهرسة.
         /// </summary>
         internal static string indexingAvcCompleted {
             get {
@@ -493,7 +493,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GUI Prêt.
+        ///   Looks up a localized string similar to وضع الاستعداد.
         /// </summary>
         internal static string infoLabel {
             get {
@@ -502,7 +502,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrée (Marquez si le fichier est VFR).
+        ///   Looks up a localized string similar to (المدخلات (حدد الملفات متغيرة الفريمات.
         /// </summary>
         internal static string inputColumn1Title {
             get {
@@ -511,7 +511,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annulé.
+        ///   Looks up a localized string similar to أُلغيت الفهرسة.
         /// </summary>
         internal static string inputColumn2StatusAborted {
             get {
@@ -520,7 +520,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Terminé.
+        ///   Looks up a localized string similar to انتهى.
         /// </summary>
         internal static string inputColumn2StatusDone {
             get {
@@ -529,7 +529,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encodage en cours.
+        ///   Looks up a localized string similar to الإنتاج.
         /// </summary>
         internal static string inputColumn2StatusEncoding {
             get {
@@ -538,7 +538,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erreur.
+        ///   Looks up a localized string similar to خطأ.
         /// </summary>
         internal static string inputColumn2StatusError {
             get {
@@ -547,7 +547,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prêt.
+        ///   Looks up a localized string similar to وضع الاستعداد.
         /// </summary>
         internal static string inputColumn2StatusReady {
             get {
@@ -556,7 +556,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Statut.
+        ///   Looks up a localized string similar to الحالة.
         /// </summary>
         internal static string inputColumn2StatusTitle {
             get {
@@ -565,7 +565,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrée.
+        ///   Looks up a localized string similar to المدخلات.
         /// </summary>
         internal static string inputTabTitle {
             get {
@@ -574,7 +574,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copier.
+        ///   Looks up a localized string similar to نسخ.
         /// </summary>
         internal static string logMenuCopy {
             get {
@@ -583,7 +583,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Envoyer message d&apos;erreur.
+        ///   Looks up a localized string similar to أرسل تقرير خلل في البرنامج.
         /// </summary>
         internal static string logMenuSend {
             get {
@@ -592,7 +592,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Archive.
+        ///   Looks up a localized string similar to السجل.
         /// </summary>
         internal static string logTabTitle {
             get {
@@ -601,7 +601,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter.
+        ///   Looks up a localized string similar to إضافة.
         /// </summary>
         internal static string menuAdd {
             get {
@@ -610,7 +610,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nettoyer.
+        ///   Looks up a localized string similar to حذف الكل.
         /// </summary>
         internal static string menuClear {
             get {
@@ -619,7 +619,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enlever.
+        ///   Looks up a localized string similar to حذف.
         /// </summary>
         internal static string menuRemove {
             get {
@@ -628,7 +628,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiplexage en.
+        ///   Looks up a localized string similar to تجميع إلى.
         /// </summary>
         internal static string muxingMessage {
             get {
@@ -637,7 +637,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiplexage/Démultiplexage.
+        ///   Looks up a localized string similar to تجميع\فك التجميع.
         /// </summary>
         internal static string muxingTabTitle {
             get {
@@ -646,7 +646,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Actualités.
+        ///   Looks up a localized string similar to أخبارنا.
         /// </summary>
         internal static string newsTabTitle {
             get {
@@ -655,7 +655,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options.
+        ///   Looks up a localized string similar to خيارات.
         /// </summary>
         internal static string optionsTabTitle {
             get {
@@ -664,7 +664,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autres.
+        ///   Looks up a localized string similar to أخرى.
         /// </summary>
         internal static string otherTabTitle {
             get {
@@ -673,7 +673,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rep. de Sortie:.
+        ///   Looks up a localized string similar to :مكان الإخراج.
         /// </summary>
         internal static string outputDirectory {
             get {
@@ -682,7 +682,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Désactiver l&apos;annonce du titre de la vidéo.
+        ///   Looks up a localized string similar to تعطيل خاصية تعديل أسماء الملفات المنتجة.
         /// </summary>
         internal static string outputDisableVideoAdvert {
             get {
@@ -691,7 +691,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paramètres de Sortie.
+        ///   Looks up a localized string similar to ضبط الإخراج.
         /// </summary>
         internal static string outputSettingsTitle {
             get {
@@ -700,7 +700,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Plugins.
+        ///   Looks up a localized string similar to الأدوات المساعدة.
         /// </summary>
         internal static string pluginsTabTitle {
             get {
@@ -709,7 +709,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Antibruit:.
+        ///   Looks up a localized string similar to تخفيف التشويش.
         /// </summary>
         internal static string postDenoiser {
             get {
@@ -718,7 +718,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aucune;Léger;Moyen;Fort;Accentué.
+        ///   Looks up a localized string similar to إلغاء;بسيطة;متوسطة;قوية;شديدة.
         /// </summary>
         internal static string postDenoiserOptions {
             get {
@@ -727,7 +727,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post-Traitement.
+        ///   Looks up a localized string similar to بعد العلمية.
         /// </summary>
         internal static string postprocessingOptionsTitle {
             get {
@@ -736,7 +736,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Netteté:.
+        ///   Looks up a localized string similar to :الشحذ.
         /// </summary>
         internal static string postSharpen {
             get {
@@ -745,7 +745,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aucune;Léger;Moyen;Fort;Accentué.
+        ///   Looks up a localized string similar to إلغاء;بسيطة;متوسطة;قوية;شديدة.
         /// </summary>
         internal static string postSharpenOptions {
             get {
@@ -754,7 +754,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sous-titre:.
+        ///   Looks up a localized string similar to :الترجمة.
         /// </summary>
         internal static string postSubtitle {
             get {
@@ -763,7 +763,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Champ:.
+        ///   Looks up a localized string similar to :الحقل.
         /// </summary>
         internal static string preField {
             get {
@@ -772,7 +772,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Avant Traitement.
+        ///   Looks up a localized string similar to قبل العملية.
         /// </summary>
         internal static string preprocessingOptionsTitle {
             get {
@@ -781,7 +781,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Redimen.:.
+        ///   Looks up a localized string similar to :الأبعاد.
         /// </summary>
         internal static string preResize {
             get {
@@ -790,7 +790,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aucune;Doux;Neutre;Net;Très Net (Lanczos64);Très Net (Spline36).
+        ///   Looks up a localized string similar to إلغاء;ناعم;معتدل;مشحوذ;(Lanczos64) مشحوذ جدًا;(spline36) مشحوذ جدًا.
         /// </summary>
         internal static string preResizeOptions {
             get {
@@ -799,7 +799,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Largeur/Hauteur:.
+        ///   Looks up a localized string similar to :الارتفاع/العرض.
         /// </summary>
         internal static string preWidthHeight {
             get {
@@ -808,7 +808,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Priorité:.
+        ///   Looks up a localized string similar to :الأولوية.
         /// </summary>
         internal static string processPriority {
             get {
@@ -817,7 +817,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bas;Dessous la Normale;Normale;Dessus la Normale;Haute;Temps Réel.
+        ///   Looks up a localized string similar to منخفضة;تحت الافتراضية;افتراضية;فوق الافتراضية;عالية;الزمن الفعلي.
         /// </summary>
         internal static string processPriorityOptions {
             get {
@@ -826,7 +826,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paramètres du Processus.
+        ///   Looks up a localized string similar to ضبط العملية.
         /// </summary>
         internal static string processSettingsTitle {
             get {
@@ -835,7 +835,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MiniCoder Encoding GUI.
+        ///   Looks up a localized string similar to MiniCoder برنامج الإنتاج.
         /// </summary>
         internal static string programTitle {
             get {
@@ -844,7 +844,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sauver.
+        ///   Looks up a localized string similar to حفظ.
         /// </summary>
         internal static string saveButton {
             get {
@@ -853,7 +853,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paramètres.
+        ///   Looks up a localized string similar to الضبط.
         /// </summary>
         internal static string settingsTabTitle {
             get {
@@ -862,7 +862,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Débit Audio Variable determine la qualité de la sortie audio.\r\nPlus le débit est haut, plus la qualité est bonne..
+        ///   Looks up a localized string similar to .معدل البت المتغير للصوت يحدد جودة الصوت المخرجة\r\n.فكلما ازداد معدل البت زادت جودة الصوت.
         /// </summary>
         internal static string tooltipAudioBr {
             get {
@@ -871,7 +871,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pas encore d&apos;aide.
+        ///   Looks up a localized string similar to لا توضيحات حاليًا.
         /// </summary>
         internal static string tooltipContainer {
             get {
@@ -880,7 +880,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Débruitage Video est le processus de suppression des bruit \r\ndepuis un signal vidéo.
+        ///   Looks up a localized string similar to تخفيف التشويش يقوم بإزالة البيكسلات الحمراء والزرقاء\r\n.وغيرهما، التي تشوش على الفيديو.
         /// </summary>
         internal static string tooltipDenoise {
             get {
@@ -889,7 +889,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pas encore d&apos;aide.
+        ///   Looks up a localized string similar to لا توضيحات حاليًا.
         /// </summary>
         internal static string tooltipField {
             get {
@@ -898,7 +898,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taille Fichier Voulue signifie que le programme essaiera \r\n d&apos;atteindre aussi proche de la taille déterminée que possible..
+        ///   Looks up a localized string similar to عند تحديديك لحجم الملف المخرج، سيقوم البرنامج بمحاولة\r\n.الحصول على حجم مقارب لما حددت.
         /// </summary>
         internal static string tooltipFileSize {
             get {
@@ -907,7 +907,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qualité determine la qualité de la vidéo du fchier de sortie..
+        ///   Looks up a localized string similar to .تحدد الجودة درجة وضوح الفيديو المنتج.
         /// </summary>
         internal static string tooltipQuality {
             get {
@@ -916,7 +916,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Avec un filtre de redimensionnement, vous pouvez aisement \r\n redimensionner un vidéo vers un ratio d&apos;affichage préféré. \r\n En employant ces filtres, vous pouvez soit adoucir soit auiguiser l&apos;image..
+        ///   Looks up a localized string similar to ،باستخدام مرشح الأبعاد يمكنك تعديل أبعاد الفيديو المنتج\r\n.مع تنعيم الفيديو أو شحذه.
         /// </summary>
         internal static string tooltipResize {
             get {
@@ -925,7 +925,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selectionner le fichier de sous-titres à utiliser.
+        ///   Looks up a localized string similar to اختر ملف الترجمة.
         /// </summary>
         internal static string tooltipSub {
             get {
@@ -934,7 +934,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Débit Moyen (Variable) est utilisé pour déterminer la meilleur qualité pour un minimum possible de quantizization \r\n en maintenant le débit moyen. Plus le débit est haut, plus la qualité de sorie est bonne..
+        ///   Looks up a localized string similar to معدل البت المتغير للفيديو يستخدم لتحديد أفضل جودة باستخدام أقل قيمة للمقسم\r\n.مع تناسب معدل البت المتغير. فكلما زاد معدل البت زادة جودة الفيديو.
         /// </summary>
         internal static string tooltipVideoBr {
             get {
@@ -943,7 +943,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pas encore d&apos;aide.
+        ///   Looks up a localized string similar to لا توضيحات حاليًا.
         /// </summary>
         internal static string tooltipVideoCodec {
             get {
@@ -952,7 +952,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La longueur et la hauteur de la vidéo reencodée..
+        ///   Looks up a localized string similar to عرض وارتفاع الفيديو المنتج.
         /// </summary>
         internal static string tooltipWidthHeight {
             get {
@@ -961,7 +961,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annuler.
+        ///   Looks up a localized string similar to إلغاء.
         /// </summary>
         internal static string updateCancelButton {
             get {
@@ -970,7 +970,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mettre à jour.
+        ///   Looks up a localized string similar to تحديث.
         /// </summary>
         internal static string updateColumn1 {
             get {
@@ -979,7 +979,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nom.
+        ///   Looks up a localized string similar to الاسم.
         /// </summary>
         internal static string updateColumn2 {
             get {
@@ -988,7 +988,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version Existante.
+        ///   Looks up a localized string similar to النسخة الحالية.
         /// </summary>
         internal static string updateColumn3 {
             get {
@@ -997,7 +997,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dernière Version.
+        ///   Looks up a localized string similar to أحدث نسخة.
         /// </summary>
         internal static string updateColumn4 {
             get {
@@ -1006,7 +1006,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Statut.
+        ///   Looks up a localized string similar to الحالة.
         /// </summary>
         internal static string updateColumn5 {
             get {
@@ -1015,7 +1015,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chemins Personnalisés.
+        ///   Looks up a localized string similar to تخصيص الأماكن.
         /// </summary>
         internal static string updateCustomPath {
             get {
@@ -1024,7 +1024,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mis-à-jour disponibles. Souhaiter vous les télécharger maintenant?.
+        ///   Looks up a localized string similar to التحديث متوفر. هل ترغب بالتحديث؟.
         /// </summary>
         internal static string updateMessage {
             get {
@@ -1033,7 +1033,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MiniCoder Updater.
+        ///   Looks up a localized string similar to MiniCoder مُحدث الـ.
         /// </summary>
         internal static string updaterTitle {
             get {
@@ -1042,7 +1042,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mettre à jour.
+        ///   Looks up a localized string similar to تحديث.
         /// </summary>
         internal static string updateUpdateButton {
             get {
@@ -1051,7 +1051,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Analyse VFR en cours.
+        ///   Looks up a localized string similar to يتم الآن ضبط معدل الفريمات.
         /// </summary>
         internal static string vfrParsing {
             get {
@@ -1060,7 +1060,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Analyse VFR annulée.
+        ///   Looks up a localized string similar to أُلغي ضبط الفريمات.
         /// </summary>
         internal static string vfrParsingAborted {
             get {
@@ -1069,7 +1069,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Analyse VFR complète.
+        ///   Looks up a localized string similar to انتهى ضبط الفريمات.
         /// </summary>
         internal static string vfrParsingCompleted {
             get {
@@ -1078,7 +1078,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Débit:.
+        ///   Looks up a localized string similar to :معدل البت.
         /// </summary>
         internal static string videoBitRate {
             get {
@@ -1087,7 +1087,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Codec:.
+        ///   Looks up a localized string similar to :المرمز.
         /// </summary>
         internal static string videoCodec {
             get {
@@ -1096,7 +1096,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taille Fichier:.
+        ///   Looks up a localized string similar to :حجم الملف.
         /// </summary>
         internal static string videoFileSize {
             get {
@@ -1105,7 +1105,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options Video.
+        ///   Looks up a localized string similar to a.
         /// </summary>
         internal static string videoOptionsTitle {
             get {
@@ -1114,7 +1114,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qualité:.
+        ///   Looks up a localized string similar to :الجودة.
         /// </summary>
         internal static string videoQuality {
             get {
@@ -1123,7 +1123,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Moyen;Haute;Très Haute;Très Haute (+50MB Animé);Très Haute (-50MB Animé);Très Haute (Séries TV/Films);CRF (Animé);Ipod;PSP;PS3/XBOX.
+        ///   Looks up a localized string similar to متوسطة;عالية;عالية جدًا;(عالية جدًا (أنيمي +50 مب;(عالية جدًا (أنيمي -50 مب;(عالية جدًا (برامج تلفزيونية\أفلام;CRF أنيمي;Ipod;PSP;PS3/XBOX.
         /// </summary>
         internal static string videoQualityOptions {
             get {
@@ -1132,7 +1132,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vidéo.
+        ///   Looks up a localized string similar to الفيديو.
         /// </summary>
         internal static string videoTabTitle {
             get {
@@ -1141,7 +1141,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Après être fini.
+        ///   Looks up a localized string similar to عند الانتهاء.
         /// </summary>
         internal static string whenDone {
             get {
@@ -1150,7 +1150,7 @@ namespace MiniTech.MiniCoder.Core.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ne rien Faire;Hiberner;Mettre en Veille;Etteindre.
+        ///   Looks up a localized string similar to لا تفعل شيئًا;بيات;سكون;إيقاف التشغيل.
         /// </summary>
         internal static string whenDoneOptions {
             get {

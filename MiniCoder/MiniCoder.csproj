@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MiniTech.MiniCoder</RootNamespace>
     <AssemblyName>MiniCoder</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>bigIcon.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -29,6 +29,10 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,11 +62,6 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="Interop.QuartzTypeLib, Version=1.0.0.0, Culture=neutral" />
     <Reference Include="MediaInfoWrapper, Version=0.7.27.0, Culture=neutral, processorArchitecture=MSIL" />
@@ -262,11 +261,6 @@
       <LastGenOutput>French.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="bin\Debug\languages\language.fr-FR.resources" />
-    <EmbeddedResource Include="bin\Debug\languages\language.nl-NL.resources" />
-    <EmbeddedResource Include="bin\Debug\languages\language.pt-BR.resources" />
-    <EmbeddedResource Include="bin\Debug\languages\language.resources" />
-    <EmbeddedResource Include="bin\Debug\languages\language.tr-TR.resources" />
     <EmbeddedResource Include="Core\Other\Logging\LogbookControl.resx">
       <DependentUpon>LogbookControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -335,8 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bigIcon.ico" />
-    <Content Include="bin\Debug\reports\errortemplate.xml" />
-    <Content Include="bin\Debug\reports\tr.txt" />
     <None Include="Properties\DataSources\MiniTech.MiniCoder.Core.Other.Logging.LogBook.datasource" />
     <None Include="Resources\bug-icon.png" />
     <None Include="Resources\ist2_4471156-bug-icons1.jpg" />

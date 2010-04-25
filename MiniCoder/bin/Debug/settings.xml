@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <outputPath />
+  <disableVideoAdvert>true</disableVideoAdvert>
+  <processPriority>5</processPriority>
+  <ignoreAudio>false</ignoreAudio>
+  <ignoreSubs>false</ignoreSubs>
+  <ignoreAttachments>false</ignoreAttachments>
+  <ignoreChapters>false</ignoreChapters>
+  <continueAfterError>false</continueAfterError>
+  <language>0</language>
+</settings>
