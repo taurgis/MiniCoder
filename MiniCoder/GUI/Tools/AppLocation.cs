@@ -24,18 +24,19 @@ using System.Windows.Forms;
 using System.Collections;
 using MiniTech.MiniCoder.External;
 using MiniTech.MiniCoder.Core.Languages;
+using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.GUI.External
 {
     public partial class AppLocation : Form
     {
 
-        SortedList<String, Tool> packages;
-
-        FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-        public AppLocation(SortedList<String, Tool> packages)
+        private SortedList<String, ExtApplication> packages = ToolsManager.Instance.getTools();
+        private FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+        public AppLocation()
         {
             InitializeComponent();
-            this.packages = packages;
+
             audioTab.Text = LanguageController.Instance.getLanguageString("audioTabTitle");
             videoTab.Text = LanguageController.Instance.getLanguageString("videoTabTitle");
             muxTab.Text = LanguageController.Instance.getLanguageString("muxingTabTitle");
@@ -53,6 +54,7 @@ namespace MiniTech.MiniCoder.GUI.External
 
         private void AppLocation_Load(object sender, EventArgs e)
         {
+           
             foreach (string key in packages.Keys)
             {
                 for (int i = 0; i < applicationTabs.TabCount; i++)
@@ -60,7 +62,7 @@ namespace MiniTech.MiniCoder.GUI.External
                     Control control = applicationTabs.TabPages[i].Controls[key + "Path"];
                     if (control != null)
                     {
-                        Tool package = (Tool)packages[key];
+                        ExtApplication package = (ExtApplication)packages[key];
                         control.Text = package.getInstallPath();
                     }
                 }
@@ -70,7 +72,7 @@ namespace MiniTech.MiniCoder.GUI.External
 
         private void customPath(string appName)
         {
-            Tool tempPackage = (Tool)packages[appName];
+            ExtApplication tempPackage = (ExtApplication)packages[appName];
             folderBrowser.ShowDialog();
             if (folderBrowser.SelectedPath != "")
                 tempPackage.setCustomPath(folderBrowser.SelectedPath);

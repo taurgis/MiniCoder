@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     public class Faad : MiniDecoder
     {
-        public Boolean decode(Tool faad, SortedList<String, String[]> fileDetails, int i, Track audio)
+        public Boolean decode(SortedList<String, String[]> fileDetails, int i, Track audio)
         {
             try
             {
+                ExtApplication faad = ToolsManager.Instance.getTool("faad");
+
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 ProcessManager.Instance.Process = proc;
 

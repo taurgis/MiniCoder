@@ -30,10 +30,12 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
     public class NeroAac : MiniEncoder
     {
-        public bool encode(Tool besweet, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
+        public bool encode(SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
         {
             try
             {
+                ExtApplication besweet = ToolsManager.Instance.getTool("besweet");
+
                 MiniProcess proc = new AudioProcess(fileDetails["audLength"][0], LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
                 ProcessManager.Instance.Process = proc;
                 

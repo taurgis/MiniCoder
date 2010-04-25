@@ -29,13 +29,11 @@ using MiniTech.MiniCoder.Core.Languages;
 using MiniTech.MiniCoder.Core.Settings;
 using System.Diagnostics;
 using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.GUI.Controls
 {
     public partial class EncodeOptions : UserControl
     {
-
-        private Tools tools;
-
         private MainForm mainForm;
 
         public EncodeOptions()
@@ -71,7 +69,7 @@ namespace MiniTech.MiniCoder.GUI.Controls
 
         private void btnApps_Click(object sender, EventArgs e)
         {
-            Updater updater = new Updater(tools, false);
+            Updater updater = new Updater(false);
             updater.Show();
         }
 
@@ -93,11 +91,6 @@ namespace MiniTech.MiniCoder.GUI.Controls
             if (outPutLocation.Text != "")
                 settings.Add("customoutput", outPutLocation.Text + "\\");
             return settings;
-        }
-
-        public void setTools(Tools tools)
-        {
-            this.tools = tools;
         }
 
         public void setLanguageDefault()

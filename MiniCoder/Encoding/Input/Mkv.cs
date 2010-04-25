@@ -31,26 +31,28 @@ namespace MiniTech.MiniCoder.Encoding.Input
 {
     public class Mkv : InputFile
     {
+        private ExtApplication mkvtoolnix = ToolsManager.Instance.getTool("mkvtoolnix");
+
         public SortedList<String, Track[]> getTracks()
         {
             return new SortedList<string, Track[]>();
         }
 
-        public Boolean demux(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        public Boolean demux(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
-            if (demuxFiles(mkvtoolnix, fileDetails, tracks))
-                if (demuxAttachments(mkvtoolnix, fileDetails, tracks))
+            if (demuxFiles(fileDetails, tracks))
+                if (demuxAttachments(fileDetails, tracks))
                 {
                     if (!String.IsNullOrEmpty(fileDetails["chapters"][0]))
                     {
-                        return demuxChapters(mkvtoolnix, fileDetails, tracks);
+                        return demuxChapters(fileDetails, tracks);
                     }
                     return true;
                 }
             return false;
         }
 
-        private Boolean demuxFiles(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        private Boolean demuxFiles(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             try
             {
@@ -100,7 +102,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             }
         }
 
-        private Boolean demuxAttachments(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        private Boolean demuxAttachments(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
 
             if (fileDetails["skipattachments"][0] == "True")
@@ -173,7 +175,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
             }
         }
 
-        private Boolean demuxChapters(Tool mkvtoolnix, SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
+        private Boolean demuxChapters(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
             LogBookController.Instance.addLogLine("Fetching MKV Chapters - Using MkvExtract", LogMessageCategories.Video);
             LogBookController.Instance.setInfoLabel(LanguageController.Instance.getLanguageString("demuxingMkvChapters"));

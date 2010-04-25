@@ -29,15 +29,13 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
     {
         private SortedList<String, String[]> fileDetails;
         private SortedList<String, String> EncOpts;
-        private SortedList<String, Tool> tools;
         private Track video;
 
-        public AvsCreator(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
+        public AvsCreator(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts)
         {
             this.fileDetails = fileDetails;
             this.video = video;
             this.EncOpts = EncOpts;
-            this.tools = tools;
         }
 
         public Boolean getAvsFile(SortedList<String, Track[]> fileTracks)
@@ -99,30 +97,30 @@ namespace MiniTech.MiniCoder.Encoding.AviSynth
         private string getSourceLine()
         {
             Plugin source = new Source();
-            return source.getAvsCode(fileDetails, video, EncOpts, tools);
+            return source.getAvsCode(fileDetails, video, EncOpts);
         }
 
         private string getFieldLine()
         {
             Plugin field = new Field();
-            return field.getAvsCode(fileDetails, video, EncOpts, tools);
+            return field.getAvsCode(fileDetails, video, EncOpts);
         }
 
         private string getResizeLine()
         {
             Plugin resize = new Resize();
-            return resize.getAvsCode(fileDetails, video, EncOpts, tools);
+            return resize.getAvsCode(fileDetails, video, EncOpts);
         }
 
         private string getDenoiseLine()
         {
             Plugin denoise = new Denoise();
-            return denoise.getAvsCode(fileDetails, video, EncOpts, tools);
+            return denoise.getAvsCode(fileDetails, video, EncOpts);
         }
         private string getSharpenLine()
         {
             Plugin sharpen = new Sharpen();
-            return sharpen.getAvsCode(fileDetails, video, EncOpts, tools);
+            return sharpen.getAvsCode(fileDetails, video, EncOpts);
         }
     }
 }

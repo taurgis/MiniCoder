@@ -34,12 +34,11 @@ namespace MiniTech.MiniCoder.Encoding
     public class Encode
     {
         private String fileName = "";
-        private SortedList<String, Tool> tools;
         private SortedList<String, String[]> fileDetails;
         private SortedList<String, String> encodeSet;
         private SortedList<String, Track[]> fileTracks = new SortedList<string, Track[]>();
 
-        public Encode(String fileName, SortedList<String, Tool> tools, SortedList<String, String> encodeSet)
+        public Encode(String fileName, SortedList<String, String> encodeSet)
         {
             try
             {
@@ -47,8 +46,6 @@ namespace MiniTech.MiniCoder.Encoding
                 this.fileName = fileName;
 
                 LogBookController.Instance.addLogLine("Fetching Created File Info", LogMessageCategories.Video);
-
-                this.tools = tools;
             }
             catch (Exception error)
             {
@@ -154,21 +151,21 @@ namespace MiniTech.MiniCoder.Encoding
             {
                 case "0":
                     container = new Matroska();
-                    return container.mux(tools["mkvtoolnix"], fileDetails, encodeSet, fileTracks);
+                    return container.mux( fileDetails, encodeSet, fileTracks);
 
                 case "1":
                     container = new Mp4Out();
-                    return container.mux(tools["mp4box"], fileDetails, encodeSet, fileTracks);
+                    return container.mux(fileDetails, encodeSet, fileTracks);
                 case "2":
                     container = new AviOut();
-                    return container.mux(tools["ffmpeg"], fileDetails, encodeSet, fileTracks);
+                    return container.mux( fileDetails, encodeSet, fileTracks);
             }
             return false;
         }
 
         public bool encodeVideo()
         {
-            return fileTracks["video"][0].Encode(tools, fileDetails, encodeSet, fileTracks);
+            return fileTracks["video"][0].Encode(fileDetails, encodeSet, fileTracks);
 
 
         }
@@ -178,7 +175,7 @@ namespace MiniTech.MiniCoder.Encoding
         {
             LogBookController.Instance.addLogLine("Creating AVS File", LogMessageCategories.Video);
 
-            AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet, tools);
+            AvsCreator avsCreator = new AvsCreator(fileDetails, fileTracks["video"][0], encodeSet);
             return avsCreator.getAvsFile(fileTracks);
 
         }
@@ -190,7 +187,7 @@ namespace MiniTech.MiniCoder.Encoding
         {
             for (int i = 0; i < fileTracks["audio"].Length; i++)
             {
-                if (!fileTracks["audio"][i].Encode(tools, fileDetails, encodeSet, fileTracks))
+                if (!fileTracks["audio"][i].Encode(fileDetails, encodeSet, fileTracks))
                     return false;
             }
             return true;
@@ -211,7 +208,7 @@ namespace MiniTech.MiniCoder.Encoding
                 case "H264":
                 case "V_MPEG4/ISO/AVC":
                     DGAVCIndex dgIndex = new DGAVCIndex();
-                    return dgIndex.index(tools["DGAVCIndex"], tools["DGAVCDecode"], fileDetails, fileTracks["video"][0]);
+                    return dgIndex.index( fileDetails, fileTracks["video"][0]);
                 default:
                     return true;
             }
@@ -226,7 +223,7 @@ namespace MiniTech.MiniCoder.Encoding
         {
             LogBookController.Instance.addLogLine("VFR Step", LogMessageCategories.Video);
 
-            return new Vfr().analyse(tools["mkv2vfr"], tools["DtsEdit"], encodeSet, fileDetails);
+            return new Vfr().analyse(encodeSet, fileDetails);
         }
 
         #endregion
@@ -261,43 +258,43 @@ namespace MiniTech.MiniCoder.Encoding
         private Boolean demuxAvs()
         {
             InputFile input = new Avs();
-            return input.demux(tools["DGIndex"], fileDetails, fileTracks);
+            return input.demux(fileDetails, fileTracks);
         }
 
         private Boolean demuxVob()
         {
             InputFile input = new Vob();
-            return input.demux(tools["DGIndex"], fileDetails, fileTracks);
+            return input.demux(fileDetails, fileTracks);
         }
 
         private Boolean demuxWmv()
         {
             InputFile input = new Wmv();
-            return input.demux(tools["mkvtoolnix"], fileDetails, fileTracks);
+            return input.demux( fileDetails, fileTracks);
         }
 
         private Boolean demuxAvi()
         {
             InputFile input = new Avi();
-            return input.demux(tools["VirtualDubMod"], fileDetails, fileTracks);
+            return input.demux(fileDetails, fileTracks);
         }
 
         private Boolean demuxMp4()
         {
             InputFile input = new Mp4();
-            return input.demux(tools["mp4box"], fileDetails, fileTracks);
+            return input.demux(fileDetails, fileTracks);
         }
 
         private Boolean demuxOgm()
         {
             InputFile input = new Ogm();
-            return input.demux(tools["ogmtools"], fileDetails, fileTracks);
+            return input.demux(fileDetails, fileTracks);
         }
 
         private Boolean demuxMkv()
         {
             InputFile input = new Mkv();
-            return input.demux(tools["mkvtoolnix"], fileDetails, fileTracks);
+            return input.demux(fileDetails, fileTracks);
         }
         #endregion
 

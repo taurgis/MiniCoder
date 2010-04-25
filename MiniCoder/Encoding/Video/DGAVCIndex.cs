@@ -28,8 +28,10 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc
 {
     public class DGAVCIndex
     {
-        public Boolean index(Tool dgavcindex, Tool dgavcdecode, SortedList<String, String[]> fileDetails, Track video)
+        public Boolean index(SortedList<String, String[]> fileDetails, Track video)
         {
+            ExtApplication dgavcindex = ToolsManager.Instance.getTool("DGAVCIndex");
+            ExtApplication dgavcdecode = ToolsManager.Instance.getTool("DGAVCDecode");
 
             if (fileDetails["ext"][0].ToLower().Equals(".avi"))
                 return true;

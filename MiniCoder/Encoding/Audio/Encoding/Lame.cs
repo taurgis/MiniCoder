@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
    public class Lame : MiniEncoder
     {
-        public bool encode(Tool lame, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
+        public bool encode(SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
         {
             try
             {
+                ExtApplication lame = ToolsManager.Instance.getTool("lame");
+
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
                 ProcessManager.Instance.Process = proc;
 

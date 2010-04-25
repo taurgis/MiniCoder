@@ -34,7 +34,6 @@ namespace MiniTech.MiniCoder.GUI
     public partial class MainForm : Form
     {
         private Thread encodeBatchTask;
-        private Tools tools = new Tools(false);
         private ArrayList FileList = new ArrayList();
         private SortedList<String, String> encodeSet = new SortedList<string, string>();
         private Boolean vfr;
@@ -67,13 +66,10 @@ namespace MiniTech.MiniCoder.GUI
                 loadSystemInfo();
 
                 cbAfterEncode.SelectedIndex = 0;
-                tools = new Tools(true);
-
-                encodeOptions.setTools(tools);
 
                 if (MiniSystem.isConnected().Equals("Yes"))
                 {
-                    Updater tempUpdater = new Updater(tools, true);
+                    Updater tempUpdater = new Updater(true);
                     tempUpdater.Dispose();
                     MiniOnline.GetNews(newsList);
                 }
@@ -256,7 +252,7 @@ namespace MiniTech.MiniCoder.GUI
                 if (vfr)
                     encodeSet.Add("vfr", "");
 
-                tempEncode = new Encode(FileList[0].ToString(), tools.getTools(), encodeSet);
+                tempEncode = new Encode(FileList[0].ToString(), encodeSet);
                 if (!tempEncode.fetchEncodeInfo())
                 {
                     setFileStatus(LanguageController.Instance.getLanguageString("inputColumn2StatusError"));

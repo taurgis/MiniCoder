@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.Output
 {
     public class AviOut : Container
     {
-        public Boolean mux(Tool ffmpeg, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
+        public Boolean mux(SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
+                ExtApplication ffmpeg = ToolsManager.Instance.getTool("ffmpeg");
+
                 LogBookController.Instance.addLogLine("Muxing to AVI", LogMessageCategories.Video);
 
                 MiniProcess proc = new DefaultProcess("Muxing to AVI", fileDetails["name"][0] + "FileMuxingProcess");

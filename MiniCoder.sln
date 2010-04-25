@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniCoder", "MiniCoder\MiniCoder.csproj", "{B60D7654-3F18-4057-87BA-95B8E5A33551}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MiniInstall", "MiniInstall\MiniInstall.vdproj", "{B1585AAC-2F15-4299-8646-62279908993B}"

@@ -43,61 +43,53 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             this.id = id;
         }
 
-        public Boolean Encode(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
+        public Boolean Encode(SortedList<String, String[]> fileDetails, SortedList<String, String> EncOpts, SortedList<String, Track[]> tracks)
         {
             this.EncOpts = EncOpts;
-            if (decodeAudio(tools, fileDetails))
-                return encodeAudio(tools, fileDetails);
+            if (decodeAudio(fileDetails))
+                return encodeAudio(fileDetails);
 
             return false;
         }
 
-        private Boolean decodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails)
+        private Boolean decodeAudio(SortedList<String, String[]> fileDetails)
         {
             try
             {
                 MiniDecoder decoder;
-                Tool tempTool;
-
                 LogBookController.Instance.addLogLine("Decoding Audio", LogMessageCategories.Video);
 
                 switch (Codec.Instance.getExtention(this.codec))
                 {
                     case "flac":
                         decoder = new Flac();
-                        tempTool = tools["flac"];
                         break;
 
                     case "ac3":
                     case "dts":
                         decoder = new Valdec();
-                        tempTool = tools["valdec"];
                         break;
 
                     case "ogg":
                         decoder = new Oggdec();
-                        tempTool = tools["oggdec"];
                         break;
 
                     case "aac":
                     case "mp4":
                         decoder = new Faad();
-                        tempTool = tools["faad"];
                         break;
 
                     case "mp2":
                     case "mp3":
                         decoder = new Madplay();
-                        tempTool = tools["madplay"];
                         break;
 
                     default:
                         decoder = new Ffmpeg();
-                        tempTool = tools["ffmpeg"];
                         break;
                 }
 
-                return decoder.decode(tempTool, fileDetails, id, this);
+                return decoder.decode(fileDetails, id, this);
             }
             catch (Exception error)
             {
@@ -106,7 +98,7 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
             }
         }
 
-        private Boolean encodeAudio(SortedList<String, Tool> tools, SortedList<String, String[]> fileDetails)
+        private Boolean encodeAudio( SortedList<String, String[]> fileDetails)
         {
             try
             {
@@ -123,12 +115,12 @@ namespace MiniTech.MiniCoder.Encoding.Input.Tracks
                         break;
                     case "2":
                         encoder = new FFmpegAc3();
-                        return encoder.encode(tools["ffmpeg"], fileDetails, id, this, EncOpts);
+                        return encoder.encode(fileDetails, id, this, EncOpts);
                     case "3":
                         encoder = new Lame();
-                        return encoder.encode(tools["lame"], fileDetails, id, this, EncOpts);
+                        return encoder.encode(fileDetails, id, this, EncOpts);
                 }
-                return encoder.encode(tools["besweet"], fileDetails, id, this, EncOpts);
+                return encoder.encode(fileDetails, id, this, EncOpts);
             }
             catch (Exception error)
             {

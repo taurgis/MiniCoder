@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Decoding
 {
     public class Valdec : MiniDecoder
     {
-        public Boolean decode(Tool valdec, SortedList<String, String[]> fileDetails, int i, Track audio)
+        public Boolean decode(SortedList<String, String[]> fileDetails, int i, Track audio)
         {
             try
             {
+                ExtApplication valdec = ToolsManager.Instance.getTool("oggdec");
+
                 MiniProcess proc = new DefaultProcess("Decoding Audio Track (ID = " + (i) + ")", fileDetails["name"][0] + "AudioDecodingProcess");
                 ProcessManager.Instance.Process = proc;
 

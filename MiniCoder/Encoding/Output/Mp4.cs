@@ -28,10 +28,12 @@ namespace MiniTech.MiniCoder.Encoding.Output
 {
     public class Mp4Out : Container
     {
-        public Boolean mux(Tool mp4box, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
+        public Boolean mux( SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
+                ExtApplication mp4box = ToolsManager.Instance.getTool("mp4box");
+
                 MiniProcess proc = new DefaultProcess("Muxing to MP4", fileDetails["name"][0] + "FileMuxingProcess");
                 proc.stdErrDisabled(false);
                 proc.stdOutDisabled(false);

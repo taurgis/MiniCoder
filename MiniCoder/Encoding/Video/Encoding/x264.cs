@@ -30,10 +30,12 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class x264 : VideoEncoder
     {
-        public Boolean encode(Tool x264, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
+        public Boolean encode(SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
+                ExtApplication x264 = ToolsManager.Instance.getTool("x264");
+
                 string pass = "0";
                 MiniProcess proc;
 

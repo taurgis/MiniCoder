@@ -18,22 +18,24 @@ using System;
 using System.Collections.Generic;
 using MiniTech.MiniCoder.Encoding.Input.Tracks;
 using MiniTech.MiniCoder.External;
+using MiniTech.MiniCoder.Core.Managers;
+
 namespace MiniTech.MiniCoder.Encoding.AviSynth.Plugins
 {
     public class Field : Plugin
     {
-        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts, SortedList<String, Tool> tools)
+        public string getAvsCode(SortedList<String, String[]> fileDetails, Track video, SortedList<String, String> EncOpts)
         {
-            Tool filter;
+            ExtApplication filter;
             switch (EncOpts["field"])
             {
                 case "1":
-                    filter = tools["Decomb"];
+                    filter =  ToolsManager.Instance.getTool("Decomb");
                     if (!filter.isInstalled())
                         filter.download();
                     return "FieldDeinterlace()\r\n";
                 case "2":
-                    filter = tools["BAAA"];
+                    filter = ToolsManager.Instance.getTool("BAAA");
                     if (!filter.isInstalled())
                         filter.download();
                     return "AAA()\r\n";

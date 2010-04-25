@@ -28,10 +28,11 @@ namespace MiniTech.MiniCoder.Encoding.Sound.Encoding
 {
     public class FFmpegAc3 : MiniEncoder
     {
-        public bool encode(Tool ffmpeg, SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
+        public bool encode(SortedList<String, String[]> fileDetails, int i, Track audio, SortedList<String, String> EncOpts)
         {
             try
             {
+                ExtApplication ffmpeg = ToolsManager.Instance.getTool("ffmpeg");
                 MiniProcess proc = new DefaultProcess(LanguageController.Instance.getLanguageString("audioEncodingTrack") + " (ID = " + (i) + ")", fileDetails["name"][0] + "AudioEncodingProcess");
                 ProcessManager.Instance.Process = proc;
 

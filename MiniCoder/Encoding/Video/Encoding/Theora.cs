@@ -29,10 +29,12 @@ namespace MiniTech.MiniCoder.Encoding.VideoEnc.Encoding
 {
     public class Theora : VideoEncoder
     {
-        public Boolean encode(Tool theora, SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
+        public Boolean encode( SortedList<String, String[]> fileDetails, SortedList<String, String> encOpts, SortedList<String, Track[]> fileTracks)
         {
             try
             {
+                ExtApplication theora = ToolsManager.Instance.getTool("theora");
+
                 LogBookController.Instance.addLogLine("Encoding to Theora", LogMessageCategories.Video);
 
                 MiniProcess proc;
