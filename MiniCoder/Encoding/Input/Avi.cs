@@ -36,7 +36,7 @@ namespace MiniTech.MiniCoder.Encoding.Input
 
         public Boolean demux(SortedList<String, String[]> fileDetails, SortedList<String, Track[]> tracks)
         {
-            ExtApplication vdubmod = ToolsManager.Instance.getTool("vdubmod");
+            ExtApplication vdubmod = ToolsManager.Instance.getTool("VirtualDubMod");
 
             LogBookController.Instance.addLogLine("Demuxing AVI - Using Vdubmod", LogMessageCategories.Video);
 

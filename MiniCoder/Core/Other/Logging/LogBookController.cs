@@ -81,7 +81,7 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
                 if (File.Exists(Application.StartupPath + "\\temp\\" + "\\log.doc"))
                     File.Delete(Application.StartupPath + "\\temp\\" + "\\log.doc");
 
-                File.Copy(ReportController.generateDocument(logbook), Application.StartupPath + "\\temp\\" + "\\log.doc");
+                File.Copy(ReportController.generateDocument(logbook), Application.StartupPath + "\\temp\\" + "\\log.xml");
                 ReportController.createTextDocument(logbook);
                 createZip();
 
@@ -92,7 +92,7 @@ namespace MiniTech.MiniCoder.Core.Other.Logging
 
         private void createZip()
         {
-            string fileFilter = @"\.avs;\.txt;\.xml;\.vcf;\.doc";
+            string fileFilter = ".avs;.txt;.xml;.vcf";
             using (FileStream stream = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\errorlog.zip", FileMode.Create, FileAccess.Write, FileShare.None, 1024, FileOptions.WriteThrough))
             {
                 FastZip tempZip = new FastZip();
