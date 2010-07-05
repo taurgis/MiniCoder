@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MiniCoder Reloaded Tests\MiniCoder.nunit" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-07-05" time="19:33:10">
+  <environment nunit-version="2.5.5.10112" clr-version="2.0.50727.4927" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\Program Files\NUnit 2.5.5\bin\net-2.0" machine-name="THOMASTHEUNEN" user="Thomas Theunen" user-domain="ThomasTheunen" />
+  <culture-info current-culture="nl-BE" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MiniCoder Reloaded Tests\MiniCoder.nunit" executed="True" result="Failure" success="False" time="0.452" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MiniCoder Reloaded Tests\bin\Debug\MiniCoder Reloaded Tests.dll" executed="True" result="Failure" success="False" time="0.440" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="MiniCoder_Reloaded_Tests" executed="True" result="Failure" success="False" time="0.437" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="MKV_Source_Tests" executed="True" result="Failure" success="False" time="0.434" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="FetchFileInfoTests" executed="True" result="Failure" success="False" time="0.232" asserts="0">
+                    <results>
+                      <test-case name="MiniCoder_Reloaded_Tests.MKV_Source_Tests.FetchFileInfoTests.IsNull" executed="True" result="Error" success="False" time="0.214" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.DllNotFoundException : Unable to load DLL 'MediaInfo.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)]]></message>
+                          <stack-trace><![CDATA[at MediaInfoWrapper.MediaInfo.MediaInfo_New()
+at MediaInfoWrapper.MediaInfo..ctor(String path) in C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MediaInfoWrapperDll\MediaInfoMain.cs:line 105
+at be.miniTech.minicoder.controller.EncodingController.fetchFileInfo(String fileName) in C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MiniCoder Reloaded\controller\EncodingController.cs:line 20
+at be.miniTech.minicoder.controller.EncodingController.startEncode(String fileName) in C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MiniCoder Reloaded\controller\EncodingController.cs:line 14
+at MiniCoder_Reloaded_Tests.MKV_Source_Tests.FetchFileInfoTests.IsNull() in C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MiniCoder Reloaded Tests\MKV Source Tests\FetchFileInfoTests.cs:line 17
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
