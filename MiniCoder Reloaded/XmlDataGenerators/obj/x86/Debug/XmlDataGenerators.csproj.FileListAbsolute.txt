@@ -1,0 +1,9 @@
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\bin\Debug\XmlDataGenerators.exe
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\bin\Debug\XmlDataGenerators.pdb
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\bin\Debug\MiniCoder Reloaded.exe
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\bin\Debug\MediaInfoWrapper.dll
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\bin\Debug\MiniCoder Reloaded.pdb
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\bin\Debug\MediaInfoWrapper.pdb
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\obj\x86\Debug\XmlDataGenerators.exe
+C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\XmlDataGenerators\obj\x86\Debug\XmlDataGenerators.pdb

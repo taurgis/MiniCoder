@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7BB00518-6ED1-40E8-89FE-7EC9AF60074A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9E23F7E6-DB56-4B2C-90E6-8ECCFF406334}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MiniCoder_Reloaded_Tests</RootNamespace>
-    <AssemblyName>MiniCoder Reloaded Tests</AssemblyName>
+    <RootNamespace>XmlDataGenerators</RootNamespace>
+    <AssemblyName>XmlDataGenerators</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -33,25 +33,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MediaInfoWrapperDll\MediaInfoWrapper.csproj">
-      <Project>{AB0E4816-51AE-46B1-B9D9-AF3B2CB96D27}</Project>
-      <Name>MediaInfoWrapper</Name>
-    </ProjectReference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\MiniCoder Reloaded\MiniCoder Reloaded.csproj">
       <Project>{EA77D6FC-E9BC-402D-AD7F-B4DB708DD110}</Project>
       <Name>MiniCoder Reloaded</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MKV Source Tests\FetchFileInfoTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
