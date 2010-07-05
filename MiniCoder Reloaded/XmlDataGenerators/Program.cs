@@ -49,14 +49,14 @@ namespace XmlDataGenerators
             list.Add(new Codec("mpg", new String[] { "V_MPEG1" }));
             list.Add(new Codec("m4v", new String[] { "V_MPEG4/ISO/ASP" }));
 
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Codec>));
+            XmlSerializer serializer = new XmlSerializer(typeof(Codec[]));
 
             //Serialize the OrderedTable to OrderedTable.xml
 
             using (StreamWriter writer = new StreamWriter("codecs.xml"))
             {
 
-                serializer.Serialize(writer, list);
+                serializer.Serialize(writer, list.ToArray());
                 
             }
 

@@ -13,16 +13,32 @@ namespace be.miniTech.minicoder.dao
         private List<Codec> loadCodecsFromFile()
         {
             XmlSerializer serializer =
-            new XmlSerializer(typeof(List<Codec>));
+            new XmlSerializer(typeof(Codec[]));
 
-            TextReader reader = new StreamReader("codecs.xml", Encoding.Unicode);
+            TextReader reader = new StreamReader("codecs.xml");
+           Codec[] returnList = (Codec[])serializer.Deserialize(reader);
+            reader.Close();
 
-            return (List<Codec>)serializer.Deserialize(reader);
+            return new List<Codec>(returnList);
         }
 
         public List<Codec> getAllCodecs()
         {
             return loadCodecsFromFile();
+        }
+
+        public Codec getCodecByKey(String key)
+        {
+            List<Codec> codecs = loadCodecsFromFile();
+            for (int i = 0; i < codecs.Count; i++)
+            {
+                Codec tempCodec = codecs[i];
+                String[] keys = tempCodec.ids;
+                if (keys.Contains(key))
+                    return tempCodec;
+            }
+
+            return null;
         }
     }
 }

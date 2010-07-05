@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using be.miniTech.minicoder.model.inputfile;
 using be.miniTech.minicoder.model.information;
+using be.miniTech.minicoder.dao;
 
 namespace be.miniTech.minicoder.controller
 {
@@ -29,7 +30,7 @@ namespace be.miniTech.minicoder.controller
                 AudioTrack audioTrack = new AudioTrack();
 
                 audioTrack.audioID = Int32.Parse(tempAudioTrack.ID);
-                audioTrack.codec = new model.information.Codec(tempAudioTrack.CodecIDInfo, tempAudioTrack.CodecID);
+                audioTrack.codec = new CodecDao().getCodecByKey(tempAudioTrack.CodecID);
                 audioTrack.duration = long.Parse(tempAudioTrack.Duration);
                 audioTrack.language = new Language(tempAudioTrack.LanguageString, tempAudioTrack.Language);
                 audioTrack.title = tempAudioTrack.Title;
