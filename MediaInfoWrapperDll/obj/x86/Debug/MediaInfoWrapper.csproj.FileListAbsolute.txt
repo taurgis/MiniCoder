@@ -1,5 +1,0 @@
-C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MediaInfoWrapperDll\bin\x86\Debug\MediaInfoWrapper.dll
-C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MediaInfoWrapperDll\bin\x86\Debug\MediaInfoWrapper.pdb
-C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MediaInfoWrapperDll\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MediaInfoWrapperDll\obj\x86\Debug\MediaInfoWrapper.dll
-C:\Users\Thomas Theunen\My Dropbox\MiniTech\Software\MiniCoder Reloaded\MediaInfoWrapperDll\obj\x86\Debug\MediaInfoWrapper.pdb
