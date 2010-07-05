@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\EncodingController.cs" />
+    <Compile Include="controller\AnalysisController.cs" />
+    <Compile Include="dao\CodecDao.cs" />
     <Compile Include="model\inputfile\AudioTrack.cs" />
     <Compile Include="model\information\Codec.cs" />
     <Compile Include="model\information\Language.cs" />

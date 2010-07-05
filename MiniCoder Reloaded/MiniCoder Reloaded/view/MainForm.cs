@@ -20,8 +20,8 @@ namespace MiniCoder_Reloaded
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            EncodingController controller = new EncodingController();
-            controller.startEncode("C:\\Users\\Thomas Theunen\\Downloads\\_5BRe-encoded_20by_20steveyk_5DKioBaJi-12.mkv");
+           
+            AnalysisController.fetchFileInfo("C:\\Users\\Thomas Theunen\\Downloads\\_5BRe-encoded_20by_20steveyk_5DKioBaJi-12.mkv");
         
         }
     }
