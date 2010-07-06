@@ -14,10 +14,30 @@ namespace be.miniTech.minicoder.controller
         {
             MediaInfoWrapper.MediaInfo info = new MediaInfoWrapper.MediaInfo(fileName);
             InputFile file = new InputFile();
-           
-            file.audioTracks = fetchAudioTracks(info);
 
+            file.audioTracks = fetchAudioTracks(info);
+            file.videoTracks = fetchVideoTracks(info);
             return file;
+        }
+
+        private static List<VideoTrack> fetchVideoTracks(MediaInfoWrapper.MediaInfo info)
+        {
+            List<VideoTrack> videoTracks = new List<VideoTrack>();
+            for (int i = 0; i < info.VideoCount; i++)
+            {
+                MediaInfoWrapper.VideoTrack tempVideoTrack = info.Video[i];
+                VideoTrack videoTrack = new VideoTrack();
+
+                videoTrack.id = tempVideoTrack.ID;
+                videoTrack.title = tempVideoTrack.Title;
+                videoTrack.language = new Language(tempVideoTrack.LanguageString, tempVideoTrack.Language);
+                videoTrack.codec = new CodecDao().getCodecByKey(tempVideoTrack.CodecID);
+                videoTrack.duration = long.Parse(tempVideoTrack.Duration);
+                videoTrack.frameCount = long.Parse(tempVideoTrack.FrameCount);
+                videoTrack.frameRate = Double.Parse(tempVideoTrack.FrameRate.Replace(".", ","));
+                videoTracks.Add(videoTrack);
+            }
+            return videoTracks;
         }
 
         private static List<AudioTrack> fetchAudioTracks(MediaInfoWrapper.MediaInfo info)
@@ -26,7 +46,6 @@ namespace be.miniTech.minicoder.controller
             for (int i = 0; i < info.AudioCount; i++)
             {
                 MediaInfoWrapper.AudioTrack tempAudioTrack = info.Audio[i];
-                InputFile infputFile = new InputFile();
                 AudioTrack audioTrack = new AudioTrack();
 
                 audioTrack.audioID = Int32.Parse(tempAudioTrack.ID);

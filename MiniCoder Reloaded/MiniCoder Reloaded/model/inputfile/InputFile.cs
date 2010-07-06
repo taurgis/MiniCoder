@@ -8,5 +8,6 @@ namespace be.miniTech.minicoder.model.inputfile
    public class InputFile
     {
        public List<AudioTrack> audioTracks { get; set; }
+       public List<VideoTrack> videoTracks { get; set; }
     }
 }
