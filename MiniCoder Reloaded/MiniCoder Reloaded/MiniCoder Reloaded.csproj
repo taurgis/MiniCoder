@@ -52,6 +52,7 @@
     <Compile Include="model\information\Codec.cs" />
     <Compile Include="model\information\Language.cs" />
     <Compile Include="model\inputfile\InputFile.cs" />
+    <Compile Include="model\inputfile\VideoTrack.cs" />
     <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

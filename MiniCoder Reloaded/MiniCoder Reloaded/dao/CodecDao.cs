@@ -12,11 +12,14 @@ namespace be.miniTech.minicoder.dao
     {
         private List<Codec> loadCodecsFromFile()
         {
+            if (!File.Exists("codecs.xml"))
+                return new List<Codec>();
+
             XmlSerializer serializer =
             new XmlSerializer(typeof(Codec[]));
 
             TextReader reader = new StreamReader("codecs.xml");
-           Codec[] returnList = (Codec[])serializer.Deserialize(reader);
+            Codec[] returnList = (Codec[])serializer.Deserialize(reader);
             reader.Close();
 
             return new List<Codec>(returnList);
@@ -38,7 +41,11 @@ namespace be.miniTech.minicoder.dao
                     return tempCodec;
             }
 
-            return null;
+            // Returning null codec, we do this to tell the program to use 
+            // FFMPEG to decode the audio since it has the most support for 
+            // all types of audio. When it is a video we can just use 
+            // DirectShowSource in avs.
+            return Codec.NULL_CODEC;
         }
     }
 }
