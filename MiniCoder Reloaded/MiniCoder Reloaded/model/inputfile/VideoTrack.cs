@@ -12,7 +12,8 @@ namespace be.miniTech.minicoder.model.inputfile
         public String title { get; set; }
         public Codec codec { get; set; }
         public Language language { get; set; }
-
-
+        public long duration { get; set; }
+        public long frameCount { get; set; }
+        public Double frameRate { get; set; }
     }
 }
