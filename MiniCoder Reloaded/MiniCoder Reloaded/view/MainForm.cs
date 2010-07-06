@@ -32,6 +32,9 @@ namespace MiniCoder_Reloaded
         {
             AudioInfoTab defaultAudioTab = new AudioInfoTab();
             audioTabDefault.Controls.Add(defaultAudioTab);
+
+            SubtitleInfoTab defaultSubtitleTab = new SubtitleInfoTab();
+            subtitleTabDefault.Controls.Add(defaultSubtitleTab);
         }
 
         private void openMenuItem_Click(object sender, EventArgs e)

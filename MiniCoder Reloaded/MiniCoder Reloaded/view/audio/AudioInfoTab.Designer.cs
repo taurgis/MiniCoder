@@ -41,6 +41,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 100);
+            this.label5.Location = new System.Drawing.Point(177, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 9;
@@ -137,7 +139,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(84, 98);
+            this.numericUpDown1.Location = new System.Drawing.Point(220, 100);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             -727379969,
             232,
@@ -149,7 +151,7 @@
             0,
             -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(74, 20);
             this.numericUpDown1.TabIndex = 10;
             // 
             // button1
@@ -164,16 +166,35 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(227, 100);
+            this.checkBox1.Location = new System.Drawing.Point(316, 101);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(184, 17);
+            this.checkBox1.Size = new System.Drawing.Size(123, 17);
             this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Decode to WAV before encoding";
+            this.checkBox1.Text = "Decode to WAV first";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(84, 99);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(81, 21);
+            this.comboBox4.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 102);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Language";
             // 
             // AudioInfoTab
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.numericUpDown1);
@@ -210,5 +231,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label6;
     }
 }

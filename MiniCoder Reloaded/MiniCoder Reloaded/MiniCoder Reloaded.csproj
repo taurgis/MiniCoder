@@ -60,6 +60,12 @@
     <Compile Include="view\audio\AudioInfoTab.Designer.cs">
       <DependentUpon>AudioInfoTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\audio\SubtitleInfoTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\audio\SubtitleInfoTab.Designer.cs">
+      <DependentUpon>SubtitleInfoTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="view\audio\AudioInfoTab.resx">
       <DependentUpon>AudioInfoTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\audio\SubtitleInfoTab.resx">
+      <DependentUpon>SubtitleInfoTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

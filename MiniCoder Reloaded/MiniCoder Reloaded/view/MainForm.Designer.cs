@@ -36,8 +36,11 @@
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.audioTabDefault = new System.Windows.Forms.TabPage();
             this.audioTabs = new System.Windows.Forms.TabControl();
+            this.subtitleTabs = new System.Windows.Forms.TabControl();
+            this.subtitleTabDefault = new System.Windows.Forms.TabPage();
             this.topMenu.SuspendLayout();
             this.audioTabs.SuspendLayout();
+            this.subtitleTabs.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusBar
@@ -90,7 +93,7 @@
             this.audioTabDefault.Location = new System.Drawing.Point(4, 22);
             this.audioTabDefault.Name = "audioTabDefault";
             this.audioTabDefault.Padding = new System.Windows.Forms.Padding(3);
-            this.audioTabDefault.Size = new System.Drawing.Size(445, 130);
+            this.audioTabDefault.Size = new System.Drawing.Size(441, 130);
             this.audioTabDefault.TabIndex = 0;
             this.audioTabDefault.Text = "Track 1";
             this.audioTabDefault.UseVisualStyleBackColor = true;
@@ -98,17 +101,37 @@
             // audioTabs
             // 
             this.audioTabs.Controls.Add(this.audioTabDefault);
-            this.audioTabs.Location = new System.Drawing.Point(0, 263);
+            this.audioTabs.Location = new System.Drawing.Point(2, 169);
             this.audioTabs.Name = "audioTabs";
             this.audioTabs.SelectedIndex = 0;
-            this.audioTabs.Size = new System.Drawing.Size(453, 156);
+            this.audioTabs.Size = new System.Drawing.Size(449, 156);
             this.audioTabs.TabIndex = 2;
+            // 
+            // subtitleTabs
+            // 
+            this.subtitleTabs.Controls.Add(this.subtitleTabDefault);
+            this.subtitleTabs.Location = new System.Drawing.Point(2, 327);
+            this.subtitleTabs.Name = "subtitleTabs";
+            this.subtitleTabs.SelectedIndex = 0;
+            this.subtitleTabs.Size = new System.Drawing.Size(449, 92);
+            this.subtitleTabs.TabIndex = 3;
+            // 
+            // subtitleTabDefault
+            // 
+            this.subtitleTabDefault.Location = new System.Drawing.Point(4, 22);
+            this.subtitleTabDefault.Name = "subtitleTabDefault";
+            this.subtitleTabDefault.Padding = new System.Windows.Forms.Padding(3);
+            this.subtitleTabDefault.Size = new System.Drawing.Size(441, 66);
+            this.subtitleTabDefault.TabIndex = 0;
+            this.subtitleTabDefault.Text = "Subtitle 1";
+            this.subtitleTabDefault.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 444);
+            this.Controls.Add(this.subtitleTabs);
             this.Controls.Add(this.audioTabs);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.topMenu);
@@ -119,6 +142,7 @@
             this.topMenu.ResumeLayout(false);
             this.topMenu.PerformLayout();
             this.audioTabs.ResumeLayout(false);
+            this.subtitleTabs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +158,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
         private System.Windows.Forms.TabPage audioTabDefault;
         private System.Windows.Forms.TabControl audioTabs;
+        private System.Windows.Forms.TabControl subtitleTabs;
+        private System.Windows.Forms.TabPage subtitleTabDefault;
     }
 }
 
