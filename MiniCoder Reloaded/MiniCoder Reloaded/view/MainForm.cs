@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MediaInfoWrapper;
 using be.miniTech.minicoder.controller;
 using be.miniTech.minicoder.model.inputfile;
+using be.miniTech.minicoder.view.audio;
 
 namespace MiniCoder_Reloaded
 {
@@ -23,9 +24,14 @@ namespace MiniCoder_Reloaded
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            loadEmptyInterfaceItems();
+           
+        }
 
-            //AnalysisController.fetchFileInfo("C:\\Users\\Thomas Theunen\\Downloads\\_5BRe-encoded_20by_20steveyk_5DKioBaJi-12.mkv");
-
+        private void loadEmptyInterfaceItems()
+        {
+            AudioInfoTab defaultAudioTab = new AudioInfoTab();
+            audioTabDefault.Controls.Add(defaultAudioTab);
         }
 
         private void openMenuItem_Click(object sender, EventArgs e)
