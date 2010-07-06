@@ -54,6 +54,12 @@
     <Compile Include="model\inputfile\InputFile.cs" />
     <Compile Include="model\inputfile\SubtitleTrack.cs" />
     <Compile Include="model\inputfile\VideoTrack.cs" />
+    <Compile Include="view\audio\AudioInfoTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\audio\AudioInfoTab.Designer.cs">
+      <DependentUpon>AudioInfoTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="view\audio\AudioInfoTab.resx">
+      <DependentUpon>AudioInfoTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
