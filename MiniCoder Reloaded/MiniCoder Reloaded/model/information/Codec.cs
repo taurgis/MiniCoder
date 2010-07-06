@@ -9,6 +9,8 @@ namespace be.miniTech.minicoder.model.information
     [XmlRoot("Codec")]
     public class Codec
     {
+        public static Codec NULL_CODEC = new Codec("UNKNOWN", new String[] { "UNKNOWN" });
+
         [XmlElement("name")]
         public String name { get; set; }
         [XmlArray("keys")]
