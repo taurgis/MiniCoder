@@ -17,7 +17,26 @@ namespace be.miniTech.minicoder.controller
 
             file.audioTracks = fetchAudioTracks(info);
             file.videoTracks = fetchVideoTracks(info);
+            file.hasChapters = (info.ChaptersCount > 0 ? true : false);
+            file.subtitleTracks = fetchSubtitleTracks(info);
+
             return file;
+        }
+
+        private static List<SubtitleTrack> fetchSubtitleTracks(MediaInfoWrapper.MediaInfo info)
+        {
+            List<SubtitleTrack> subtitleTracks = new List<SubtitleTrack>();
+            for (int i = 0; i < info.VideoCount; i++)
+            {
+                MediaInfoWrapper.TextTrack tempSubtitleTrack = info.Text[i];
+                SubtitleTrack subtitleTrack = new SubtitleTrack();
+
+                subtitleTrack.id = tempSubtitleTrack.ID;
+                subtitleTrack.codec = new CodecDao().getCodecByKey(tempSubtitleTrack.Codec);
+
+                subtitleTracks.Add(subtitleTrack);
+            }
+            return subtitleTracks;
         }
 
         private static List<VideoTrack> fetchVideoTracks(MediaInfoWrapper.MediaInfo info)
@@ -35,6 +54,7 @@ namespace be.miniTech.minicoder.controller
                 videoTrack.duration = long.Parse(tempVideoTrack.Duration);
                 videoTrack.frameCount = long.Parse(tempVideoTrack.FrameCount);
                 videoTrack.frameRate = Double.Parse(tempVideoTrack.FrameRate.Replace(".", ","));
+
                 videoTracks.Add(videoTrack);
             }
             return videoTracks;

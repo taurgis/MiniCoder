@@ -9,5 +9,8 @@ namespace be.miniTech.minicoder.model.inputfile
     {
        public List<AudioTrack> audioTracks { get; set; }
        public List<VideoTrack> videoTracks { get; set; }
+       public bool hasChapters { get; set; }
+
+       public List<SubtitleTrack> subtitleTracks { get; set; }
     }
 }
