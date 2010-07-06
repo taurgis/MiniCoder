@@ -70,19 +70,19 @@
             // openMenuItem
             // 
             this.openMenuItem.Name = "openMenuItem";
-            this.openMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openMenuItem.Text = "Open";
             this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(100, 6);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitMenuItem.Text = "Exit";
             // 
             // audioTabDefault
@@ -90,7 +90,7 @@
             this.audioTabDefault.Location = new System.Drawing.Point(4, 22);
             this.audioTabDefault.Name = "audioTabDefault";
             this.audioTabDefault.Padding = new System.Windows.Forms.Padding(3);
-            this.audioTabDefault.Size = new System.Drawing.Size(445, 171);
+            this.audioTabDefault.Size = new System.Drawing.Size(445, 130);
             this.audioTabDefault.TabIndex = 0;
             this.audioTabDefault.Text = "Track 1";
             this.audioTabDefault.UseVisualStyleBackColor = true;
@@ -98,10 +98,10 @@
             // audioTabs
             // 
             this.audioTabs.Controls.Add(this.audioTabDefault);
-            this.audioTabs.Location = new System.Drawing.Point(0, 222);
+            this.audioTabs.Location = new System.Drawing.Point(0, 263);
             this.audioTabs.Name = "audioTabs";
             this.audioTabs.SelectedIndex = 0;
-            this.audioTabs.Size = new System.Drawing.Size(453, 197);
+            this.audioTabs.Size = new System.Drawing.Size(453, 156);
             this.audioTabs.TabIndex = 2;
             // 
             // MainForm

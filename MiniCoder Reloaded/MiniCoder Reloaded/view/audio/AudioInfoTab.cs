@@ -15,5 +15,8 @@ namespace be.miniTech.minicoder.view.audio
         {
             InitializeComponent();
         }
+
+ 
+
     }
 }
