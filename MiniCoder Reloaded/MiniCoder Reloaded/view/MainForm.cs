@@ -49,5 +49,6 @@ namespace MiniCoder_Reloaded
                 currentFile = new AnalysisController().fetchFileInfo(openFileDialog.FileName);
             }
         }
+
     }
 }
