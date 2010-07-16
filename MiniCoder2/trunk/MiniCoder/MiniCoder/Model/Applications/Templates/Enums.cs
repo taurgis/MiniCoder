@@ -12,6 +12,6 @@ namespace MiniCoder2.Model.Applications.Templates
 
     public enum AudioEncodingProfile
     {
-        Automatic, LC, HE, HEv2
+        Automatic = "", LC = "-aacprofile_lc", HE= "-aacprofile_he", HEv2 = "-aacprofile_hev2"
     }
 }
