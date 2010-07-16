@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MiniCoder2
+namespace MiniCoder2.View.Audio
 {
-    public partial class Form1 : Form
+    public partial class Aac : Form
     {
-        public Form1()
+        public Aac()
         {
             InitializeComponent();
         }
