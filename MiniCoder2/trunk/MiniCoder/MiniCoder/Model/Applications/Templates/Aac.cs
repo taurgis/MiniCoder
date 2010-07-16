@@ -24,7 +24,6 @@ namespace MiniCoder2.Model.Applications.Templates
         {
             String audioQuality = "";
             String sampelingRate = "";
-            String profile = "";
 
             switch (Mode)
             {
@@ -37,30 +36,13 @@ namespace MiniCoder2.Model.Applications.Templates
                     break;
             }
 
-            switch (Profile)
-            {
-                case AudioEncodingProfile.Automatic:
-                    profile = "";
-                    break;
-                case AudioEncodingProfile.LC:
-                    profile = "-aacprofile_lc";
-                    break;
-                case AudioEncodingProfile.HE:
-                    profile = "-aacprofile_he";
-                    break;
-                case AudioEncodingProfile.HEv2:
-                    profile = "-aacprofile_hev2 ";
-                    break;
-                default:
-                    profile = "";
-                    break;
-            }
+           
 
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
 
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + " )";
+            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + Profile + " )";
         }
     }
 }
