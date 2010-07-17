@@ -13,14 +13,15 @@ namespace MiniCoder2.View.Audio
 {
     public partial class Aac : Form, TemplateForm
     {
-        private TemplateController templateController;
-        private AacTemplate aacTemplate;
+        private AacTemplateController controller;
+        private AacTemplate template;
 
         public Aac()
         {
             InitializeComponent();
-            this.aacTemplate = new AacTemplate("Default");
-            this.templateController = new TemplateController(this, aacTemplate);
+            this.template = new AacTemplate("Default");
+            this.controller = new AacTemplateController(this, template);
+            this.template.SetObserver(this);
         }
 
         private void Aac_Load(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace MiniCoder2.View.Audio
                 nudQuality.Enabled = false;
             }
 
-            UpdateCommandLine();
+            controller.ChangeMode(cbMode.SelectedIndex);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -57,19 +58,10 @@ namespace MiniCoder2.View.Audio
             cbChannels.SelectedIndex = 0;
         }
 
-        private void UpdateCommandLine()
-        {
-            // templateController.GenerateCommandLine();
-        }
-
+      
         private void btnOk_Click(object sender, EventArgs e)
         {
 
-        }
-
-        public void SetCommandLine(String commandLine)
-        {
-            txtCommandLine.Text = aacTemplate.GenerateCommandLine();
         }
 
         /// <summary>
