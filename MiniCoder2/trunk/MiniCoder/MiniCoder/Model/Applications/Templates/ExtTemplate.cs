@@ -9,17 +9,7 @@ namespace MiniCoder2.Model.Applications.Templates
     {
         public String Name { get; set; }
 
-        public ExtTemplate()
-        {
-            this.Name = "";
-        }
-
-        public ExtTemplate(String name)
-        {
-            this.Name = name;
-        }
-
-        public String GenerateCommandLine()
+        public virtual String GenerateCommandLine()
         {
             return "";
         }
