@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.View.Audio
 {
-    public partial class Aac : Form
+    public partial class Aac : Form, TemplateInterface
     {
         public Aac()
         {
@@ -46,6 +46,11 @@ namespace MiniCoder2.View.Audio
             cbProfile.SelectedIndex = 0;
             cbSampleRate.SelectedIndex = 0;
             cbChannels.SelectedIndex = 0;
+        }
+
+        public void ShowCommandLine()
+        {
+
         }
     }
 }

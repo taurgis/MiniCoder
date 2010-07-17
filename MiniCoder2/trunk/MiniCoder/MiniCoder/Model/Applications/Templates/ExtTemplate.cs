@@ -13,5 +13,10 @@ namespace MiniCoder2.Model.Applications.Templates
         {
             return "";
         }
+
+        public virtual Boolean IsValid()
+        {
+            return true;
+        }
     }
 }
