@@ -19,6 +19,11 @@ namespace MiniCoder2.Controller.Applications
             this.template = template;
         }
 
+        /// <summary>
+        /// Updates the model with the data from the interface. After that we check 
+        /// whether or not the template is valid. If the template is valid we update 
+        /// the command line.
+        /// </summary>
         public void GenerateCommandLine()
         {
             view.UpdateModel();
@@ -27,9 +32,5 @@ namespace MiniCoder2.Controller.Applications
                 view.SetCommandLine(template.GenerateCommandLine());
         }
 
-        private void UpdateModel()
-        {
-           
-        }
     }
 }

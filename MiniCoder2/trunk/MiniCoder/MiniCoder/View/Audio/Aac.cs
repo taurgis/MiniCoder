@@ -72,6 +72,9 @@ namespace MiniCoder2.View.Audio
             txtCommandLine.Text = commandLine;
         }
 
+        /// <summary>
+        /// Update the model with all the information selected in the GUI.
+        /// </summary>
         public void UpdateModel()
         {
             switch (cbMode.SelectedIndex)
