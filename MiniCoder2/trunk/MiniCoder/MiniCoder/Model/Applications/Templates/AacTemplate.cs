@@ -6,7 +6,7 @@ using MiniCoder2.Exceptions;
 
 namespace MiniCoder2.Model.Applications.Templates
 {
-    public class Aac : ExtTemplate
+    public class AacTemplate : ExtTemplate
     {
         public AudioEncodingMode Mode { get; set; }
         public Double Quality { get; set; }
@@ -16,7 +16,7 @@ namespace MiniCoder2.Model.Applications.Templates
         public short Channels { get; set; }
         public Int32 SampleRate { get; set; }
 
-        public Aac(String name)
+        public AacTemplate(String name)
         {
             this.Name = name;
         }
@@ -59,7 +59,6 @@ namespace MiniCoder2.Model.Applications.Templates
 
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
-
 
             return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + " )";
         }
