@@ -18,7 +18,7 @@ namespace MiniCoder2.View.Audio
 
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbMode.SelectedIndex != 0)
+            if (cbMode.SelectedIndex.Equals(0))
             {
                 nudBitrate.Enabled = false;
                 nudQuality.Enabled = true;
@@ -28,6 +28,24 @@ namespace MiniCoder2.View.Audio
                 nudBitrate.Enabled = true;
                 nudQuality.Enabled = false;
             }
+        }
+
+        private void Aac_Load(object sender, EventArgs e)
+        {
+            ResetInterface();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ResetInterface()
+        {
+            cbMode.SelectedIndex = 0;
+            cbProfile.SelectedIndex = 0;
+            cbSampleRate.SelectedIndex = 0;
+            cbChannels.SelectedIndex = 0;
         }
     }
 }

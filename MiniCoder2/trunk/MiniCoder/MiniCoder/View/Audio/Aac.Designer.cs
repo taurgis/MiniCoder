@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aac));
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnTemplates = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSampleRate = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbChannels = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbProfile = new System.Windows.Forms.ComboBox();
             this.nudBitrate = new System.Windows.Forms.NumericUpDown();
@@ -65,32 +65,33 @@
             this.textBox1.Size = new System.Drawing.Size(307, 20);
             this.textBox1.TabIndex = 14;
             // 
-            // button1
+            // btnTemplates
             // 
-            this.button1.Location = new System.Drawing.Point(123, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Templates";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTemplates.Location = new System.Drawing.Point(123, 136);
+            this.btnTemplates.Name = "btnTemplates";
+            this.btnTemplates.Size = new System.Drawing.Size(75, 23);
+            this.btnTemplates.TabIndex = 15;
+            this.btnTemplates.Text = "Templates";
+            this.btnTemplates.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnOk
             // 
-            this.button2.Location = new System.Drawing.Point(204, 136);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "OK";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnOk.Location = new System.Drawing.Point(204, 136);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(51, 23);
+            this.btnOk.TabIndex = 16;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnCancel
             // 
-            this.button3.Location = new System.Drawing.Point(261, 136);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(51, 23);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(261, 136);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(51, 23);
+            this.btnCancel.TabIndex = 17;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // gbSettings
             // 
@@ -99,7 +100,7 @@
             this.gbSettings.Controls.Add(this.numericUpDown1);
             this.gbSettings.Controls.Add(this.label6);
             this.gbSettings.Controls.Add(this.label5);
-            this.gbSettings.Controls.Add(this.comboBox1);
+            this.gbSettings.Controls.Add(this.cbChannels);
             this.gbSettings.Controls.Add(this.label4);
             this.gbSettings.Controls.Add(this.cbProfile);
             this.gbSettings.Controls.Add(this.nudBitrate);
@@ -127,6 +128,7 @@
             // 
             // cbSampleRate
             // 
+            this.cbSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSampleRate.FormattingEnabled = true;
             this.cbSampleRate.Items.AddRange(new object[] {
             "Original",
@@ -176,16 +178,17 @@
             this.label5.Text = "Channels:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // comboBox1
+            // cbChannels
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbChannels.FormattingEnabled = true;
+            this.cbChannels.Items.AddRange(new object[] {
             "Stereo",
             "5.1"});
-            this.comboBox1.Location = new System.Drawing.Point(78, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 22;
+            this.cbChannels.Location = new System.Drawing.Point(78, 65);
+            this.cbChannels.Name = "cbChannels";
+            this.cbChannels.Size = new System.Drawing.Size(104, 21);
+            this.cbChannels.TabIndex = 22;
             // 
             // label4
             // 
@@ -199,6 +202,7 @@
             // 
             // cbProfile
             // 
+            this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProfile.FormattingEnabled = true;
             this.cbProfile.Items.AddRange(new object[] {
             "Automatic",
@@ -212,6 +216,11 @@
             // 
             // nudBitrate
             // 
+            this.nudBitrate.Increment = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
             this.nudBitrate.Location = new System.Drawing.Point(249, 41);
             this.nudBitrate.Maximum = new decimal(new int[] {
             100000,
@@ -221,6 +230,11 @@
             this.nudBitrate.Name = "nudBitrate";
             this.nudBitrate.Size = new System.Drawing.Size(51, 20);
             this.nudBitrate.TabIndex = 19;
+            this.nudBitrate.Value = new decimal(new int[] {
+            48,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -234,6 +248,7 @@
             // 
             // nudQuality
             // 
+            this.nudQuality.DecimalPlaces = 1;
             this.nudQuality.Increment = new decimal(new int[] {
             1,
             0,
@@ -277,6 +292,7 @@
             // 
             // cbMode
             // 
+            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMode.FormattingEnabled = true;
             this.cbMode.Items.AddRange(new object[] {
             "VBR",
@@ -294,13 +310,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 197);
             this.Controls.Add(this.gbSettings);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnTemplates);
             this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Aac";
             this.Text = "Aac";
+            this.Load += new System.EventHandler(this.Aac_Load);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -314,16 +331,16 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnTemplates;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox gbSettings;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbSampleRate;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbChannels;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbProfile;
         private System.Windows.Forms.NumericUpDown nudBitrate;
