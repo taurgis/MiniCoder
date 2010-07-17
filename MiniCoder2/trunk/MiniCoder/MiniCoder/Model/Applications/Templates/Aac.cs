@@ -36,11 +36,8 @@ namespace MiniCoder2.Model.Applications.Templates
                     break;
             }
 
-           
-
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
-
 
             return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + Profile + " )";
         }
