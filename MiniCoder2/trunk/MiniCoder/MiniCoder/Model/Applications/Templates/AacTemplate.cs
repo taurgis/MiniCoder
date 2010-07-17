@@ -16,21 +16,86 @@ namespace MiniCoder2.Model.Applications.Templates
         {
             get
             {
-                return mode;
+                return this.mode;
             }
             set
             {
-                this.mode = value; 
+                this.mode = value;
                 UpdateView();
             }
         }
 
-        public Double Quality { get; set; }
-        public Int32 BitRate { get; set; }
-        public Int32 Delay { get; set; }
-        public AudioEncodingProfile Profile { get; set; }
-        public short Channels { get; set; }
-        public Int32 SampleRate { get; set; }
+        private Double quality;
+        public Double Quality
+        {
+            get
+            { return this.quality; }
+            set
+            {
+                this.quality = value;
+                UpdateView();
+            }
+        }
+
+        private Int32 bitRate;
+        public Int32 BitRate
+        {
+            get
+            { return this.bitRate; }
+            set
+            {
+                this.bitRate = value;
+                UpdateView();
+            }
+        }
+
+        private Int32 delay;
+        public Int32 Delay
+        {
+            get
+            { return this.delay; }
+            set
+            {
+                this.delay = value;
+                UpdateView();
+            }
+        }
+
+        private AudioEncodingProfile profile;
+        public AudioEncodingProfile Profile
+        {
+            get
+            { return this.profile; }
+            set
+            {
+                this.profile = value;
+                UpdateView();
+            }
+        }
+
+        private short channels;
+        public short Channels
+        {
+            get
+            { return this.channels; }
+            set
+            {
+                this.channels = value;
+                UpdateView();
+            }
+        }
+
+        private Int32 sampleRate;
+        public Int32 SampleRate
+        {
+            get
+            { return this.sampleRate; }
+            set
+            {
+                this.sampleRate = value;
+                UpdateView();
+            }
+        }
 
         public AacTemplate(String name)
         {
@@ -52,6 +117,10 @@ namespace MiniCoder2.Model.Applications.Templates
             String audioQuality = "";
             String sampelingRate = "";
             String profile = "";
+            String channelUsed = "";
+
+            if (channels == 6)
+                channelUsed = " -6chnew";
 
             switch (Mode)
             {
@@ -86,7 +155,7 @@ namespace MiniCoder2.Model.Applications.Templates
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + " )";
+            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed +" )";
         }
     }
 }

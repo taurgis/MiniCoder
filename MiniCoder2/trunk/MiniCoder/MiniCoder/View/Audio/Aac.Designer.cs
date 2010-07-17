@@ -36,7 +36,7 @@
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSampleRate = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudDelay = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cbChannels = new System.Windows.Forms.ComboBox();
@@ -49,7 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.gbSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +97,7 @@
             // 
             this.gbSettings.Controls.Add(this.label7);
             this.gbSettings.Controls.Add(this.cbSampleRate);
-            this.gbSettings.Controls.Add(this.numericUpDown1);
+            this.gbSettings.Controls.Add(this.nudDelay);
             this.gbSettings.Controls.Add(this.label6);
             this.gbSettings.Controls.Add(this.label5);
             this.gbSettings.Controls.Add(this.cbChannels);
@@ -140,23 +140,25 @@
             this.cbSampleRate.Name = "cbSampleRate";
             this.cbSampleRate.Size = new System.Drawing.Size(104, 21);
             this.cbSampleRate.TabIndex = 26;
+            this.cbSampleRate.SelectedIndexChanged += new System.EventHandler(this.cbSampleRate_SelectedIndexChanged);
             // 
-            // numericUpDown1
+            // nudDelay
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(248, 66);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudDelay.Location = new System.Drawing.Point(248, 66);
+            this.nudDelay.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nudDelay.Minimum = new decimal(new int[] {
             1000000,
             0,
             0,
             -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(52, 20);
-            this.numericUpDown1.TabIndex = 25;
+            this.nudDelay.Name = "nudDelay";
+            this.nudDelay.Size = new System.Drawing.Size(52, 20);
+            this.nudDelay.TabIndex = 25;
+            this.nudDelay.ValueChanged += new System.EventHandler(this.nudDelay_ValueChanged);
             // 
             // label6
             // 
@@ -189,6 +191,7 @@
             this.cbChannels.Name = "cbChannels";
             this.cbChannels.Size = new System.Drawing.Size(104, 21);
             this.cbChannels.TabIndex = 22;
+            this.cbChannels.SelectedIndexChanged += new System.EventHandler(this.cbChannels_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -213,6 +216,7 @@
             this.cbProfile.Name = "cbProfile";
             this.cbProfile.Size = new System.Drawing.Size(104, 21);
             this.cbProfile.TabIndex = 20;
+            this.cbProfile.SelectedIndexChanged += new System.EventHandler(this.cbProfile_SelectedIndexChanged);
             // 
             // nudBitrate
             // 
@@ -235,6 +239,7 @@
             0,
             0,
             0});
+            this.nudBitrate.ValueChanged += new System.EventHandler(this.nudBitrate_ValueChanged);
             // 
             // label3
             // 
@@ -260,15 +265,21 @@
             0,
             0,
             0});
+            this.nudQuality.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudQuality.Name = "nudQuality";
             this.nudQuality.Size = new System.Drawing.Size(51, 20);
             this.nudQuality.TabIndex = 17;
             this.nudQuality.Tag = "";
             this.nudQuality.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             65536});
+            this.nudQuality.ValueChanged += new System.EventHandler(this.nudQuality_ValueChanged);
             // 
             // label2
             // 
@@ -320,7 +331,7 @@
             this.Load += new System.EventHandler(this.Aac_Load);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).EndInit();
             this.ResumeLayout(false);
@@ -337,7 +348,7 @@
         private System.Windows.Forms.GroupBox gbSettings;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbSampleRate;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudDelay;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbChannels;
