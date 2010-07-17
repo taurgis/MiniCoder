@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MiniCoder2.Model.Applications.Templates;
 
 namespace MiniCoder2.View
 {
@@ -11,7 +12,6 @@ namespace MiniCoder2.View
     /// </summary>
     public interface TemplateForm
     {
-         void SetCommandLine(String commando);
-         void UpdateModel();
+        void UpdateData(ExtTemplate template);
     }
 }

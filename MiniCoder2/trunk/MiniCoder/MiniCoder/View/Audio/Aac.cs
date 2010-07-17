@@ -27,7 +27,7 @@ namespace MiniCoder2.View.Audio
         {
             ResetInterface();
         }
- 
+
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbMode.SelectedIndex.Equals(0))
@@ -59,7 +59,7 @@ namespace MiniCoder2.View.Audio
 
         private void UpdateCommandLine()
         {
-            templateController.GenerateCommandLine();
+            // templateController.GenerateCommandLine();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -69,26 +69,15 @@ namespace MiniCoder2.View.Audio
 
         public void SetCommandLine(String commandLine)
         {
-            txtCommandLine.Text = commandLine;
+            txtCommandLine.Text = aacTemplate.GenerateCommandLine();
         }
 
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateModel()
+        public void UpdateData(ExtTemplate template)
         {
-            switch (cbMode.SelectedIndex)
-            {
-                case 0:
-                    aacTemplate.Mode = AudioEncodingMode.VBR;
-                    break;
-                case 1:
-                    aacTemplate.Mode = AudioEncodingMode.CBR;
-                    break;
-                case 2:
-                    aacTemplate.Mode = AudioEncodingMode.ABR;
-                    break;
-            }
+            this.txtCommandLine.Text = template.GenerateCommandLine();
         }
 
     }

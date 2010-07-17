@@ -18,6 +18,11 @@ namespace MiniCoder2.Model.Applications.Templates
             return "";
         }
 
+        public virtual void Update(ExtTemplate template)
+        {
+            //Do nothing
+        }
+
         /// <summary>
         /// Checks whether or not the template contains valid values. This is determined
         /// by the paramaters set by the external program. These values are usually found

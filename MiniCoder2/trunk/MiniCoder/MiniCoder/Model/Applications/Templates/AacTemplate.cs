@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MiniCoder2.Exceptions;
+using MiniCoder2.View;
 
 namespace MiniCoder2.Model.Applications.Templates
 {
     public class AacTemplate : ExtTemplate
     {
+        private TemplateForm view;
+
         public AudioEncodingMode Mode { get; set; }
         public Double Quality { get; set; }
         public Int32 BitRate { get; set; }
@@ -19,6 +22,16 @@ namespace MiniCoder2.Model.Applications.Templates
         public AacTemplate(String name)
         {
             this.Name = name;
+        }
+
+        public void SetObserver(TemplateForm view)
+        {
+            this.view = view;
+        }
+
+        private void UpdateView()
+        {
+            view.UpdateData(this);
         }
 
         public override String GenerateCommandLine()
