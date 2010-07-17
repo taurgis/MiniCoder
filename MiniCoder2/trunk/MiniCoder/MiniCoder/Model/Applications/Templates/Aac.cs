@@ -22,24 +22,27 @@ namespace MiniCoder2.Model.Applications.Templates
 
         public override String GenerateCommandLine()
         {
-            String audioQuality = "";
-            String sampelingRate = "";
+            String quality = "";
+            String sampleRate = "";
 
             switch (Mode)
             {
                 case AudioEncodingMode.ABR:
                 case AudioEncodingMode.CBR:
-                    audioQuality = BitRate.ToString();
+                    quality = BitRate.ToString();
                     break;
                 case AudioEncodingMode.VBR:
-                    audioQuality = Quality.ToString();
+                    quality = Quality.ToString();
                     break;
             }
 
             if (SampleRate != 0)
-                sampelingRate = "-ssrc( --rate " + SampleRate + " )";
+                sampleRate = "-ssrc( --rate " + SampleRate + " )";
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + Profile + " )";
+            return "-core( -input <source> -output <target> ) -ota( -d " + 
+                Delay.ToString() + " -g max ) " + sampleRate + " -bsn( -" + 
+                Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + 
+                quality + " " + Profile + " )";
         }
     }
 }

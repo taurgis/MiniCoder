@@ -5,13 +5,14 @@ using System.Text;
 
 namespace MiniCoder2.Model.Applications.Templates
 {
-    public enum AudioEncodingMode
+    public enum AudioEncodingMode : byte
     {
         VBR, CBR, ABR
     }
 
     public enum AudioEncodingProfile
     {
-        Automatic = "", LC = "-aacprofile_lc", HE= "-aacprofile_he", HEv2 = "-aacprofile_hev2"
+        Automatic = "", LC = "-aacprofile_lc", HE= "-aacprofile_he", 
+        HEv2 = "-aacprofile_hev2"
     }
 }
