@@ -5,8 +5,9 @@ using System.Text;
 
 namespace MiniCoder2.View
 {
-    public interface TemplateInterface
+    public interface TemplateForm
     {
-         void ShowCommandLine();
+         void SetCommandLine(String commando);
+         void UpdateModel();
     }
 }

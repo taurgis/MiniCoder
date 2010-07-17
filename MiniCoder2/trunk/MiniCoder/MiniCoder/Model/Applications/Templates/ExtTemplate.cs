@@ -16,7 +16,10 @@ namespace MiniCoder2.Model.Applications.Templates
 
         public virtual Boolean IsValid()
         {
-            return true;
+            if (!String.IsNullOrEmpty(Name))
+                return true;
+            else
+                return false;
         }
     }
 }

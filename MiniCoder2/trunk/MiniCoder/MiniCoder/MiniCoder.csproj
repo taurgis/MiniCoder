@@ -75,7 +75,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Applications\Application.cs" />
-    <Compile Include="Model\Applications\Templates\Aac.cs" />
+    <Compile Include="Model\Applications\Templates\AacTemplate.cs" />
     <Compile Include="Model\Applications\Templates\Enums.cs" />
     <Compile Include="Model\Applications\Templates\ExtTemplate.cs" />
     <Compile Include="Model\Template.cs" />
@@ -87,7 +87,7 @@
     <Compile Include="View\Audio\Aac.Designer.cs">
       <DependentUpon>Aac.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TemplateInterface.cs" />
+    <Compile Include="View\TemplateForm.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

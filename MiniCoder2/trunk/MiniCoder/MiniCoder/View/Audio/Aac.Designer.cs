@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aac));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -54,16 +54,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtCommandLine
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(5, 165);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 20);
-            this.textBox1.TabIndex = 14;
+            this.txtCommandLine.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCommandLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCommandLine.Location = new System.Drawing.Point(5, 165);
+            this.txtCommandLine.Name = "txtCommandLine";
+            this.txtCommandLine.ReadOnly = true;
+            this.txtCommandLine.Size = new System.Drawing.Size(307, 20);
+            this.txtCommandLine.TabIndex = 14;
             // 
             // btnTemplates
             // 
@@ -82,6 +81,7 @@
             this.btnOk.TabIndex = 16;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -313,7 +313,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnTemplates);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCommandLine);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Aac";
             this.Text = "Aac";
@@ -330,7 +330,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCommandLine;
         private System.Windows.Forms.Button btnTemplates;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;

@@ -11,9 +11,9 @@ namespace MiniCoder2.Controller.Applications
     public class TemplateController
     {
         private ExtTemplate template;
-        private TemplateInterface view;
+        private TemplateForm view;
 
-        public TemplateController(TemplateInterface view, ExtTemplate template)
+        public TemplateController(TemplateForm view, ExtTemplate template)
         {
             this.view = view;
             this.template = template;
@@ -21,7 +21,15 @@ namespace MiniCoder2.Controller.Applications
 
         public void GenerateCommandLine()
         {
-            view.ShowCommandLine();
+            view.UpdateModel();
+
+            if (template.IsValid())
+                view.SetCommandLine(template.GenerateCommandLine());
+        }
+
+        private void UpdateModel()
+        {
+           
         }
     }
 }
