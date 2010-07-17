@@ -15,5 +15,19 @@ namespace MiniCoder2.View.Audio
         {
             InitializeComponent();
         }
+
+        private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbMode.SelectedIndex != 0)
+            {
+                nudBitrate.Enabled = false;
+                nudQuality.Enabled = true;
+            }
+            else
+            {
+                nudBitrate.Enabled = true;
+                nudQuality.Enabled = false;
+            }
+        }
     }
 }

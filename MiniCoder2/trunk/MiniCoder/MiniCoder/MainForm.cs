@@ -6,14 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MiniCoder2.View.Audio;
 
 namespace MiniCoder2
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void btnAAC_Click(object sender, EventArgs e)
+        {
+            Aac frmAac = new Aac();
+            frmAac.ShowDialog();
         }
     }
 }

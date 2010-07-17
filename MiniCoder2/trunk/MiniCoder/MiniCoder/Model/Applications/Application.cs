@@ -9,7 +9,4 @@ namespace MiniCoder2.Model.Applications
     {
         Besweet, X264
     }
-    class Application
-    {
-    }
 }
