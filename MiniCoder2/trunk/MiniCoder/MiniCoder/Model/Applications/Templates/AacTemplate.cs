@@ -11,7 +11,20 @@ namespace MiniCoder2.Model.Applications.Templates
     {
         private TemplateForm view;
 
-        public AudioEncodingMode Mode { get; set; }
+        private AudioEncodingMode mode;
+        public AudioEncodingMode Mode
+        {
+            get
+            {
+                return mode;
+            }
+            set
+            {
+                this.mode = value; 
+                UpdateView();
+            }
+        }
+
         public Double Quality { get; set; }
         public Int32 BitRate { get; set; }
         public Int32 Delay { get; set; }
