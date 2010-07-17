@@ -34,9 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 254);
+            this.ClientSize = new System.Drawing.Size(635, 504);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "MiniCoder 2.0";
             this.ResumeLayout(false);
 
         }
