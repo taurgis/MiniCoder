@@ -72,5 +72,35 @@ namespace MiniCoder2.View.Audio
             this.txtCommandLine.Text = template.GenerateCommandLine();
         }
 
+        private void nudQuality_ValueChanged(object sender, EventArgs e)
+        {
+            controller.ChangeQuality(Double.Parse(nudQuality.Value.ToString()));
+        }
+
+        private void nudBitrate_ValueChanged(object sender, EventArgs e)
+        {
+            controller.ChangeBitrate((Int32.Parse(nudBitrate.Value.ToString())));
+        }
+
+        private void nudDelay_ValueChanged(object sender, EventArgs e)
+        {
+            controller.ChangeDelay((Int32.Parse(nudDelay.Value.ToString())));
+        }
+
+        private void cbProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            controller.ChangeProfile(cbProfile.SelectedIndex);
+        }
+
+        private void cbChannels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            controller.ChangeChannels(cbChannels.SelectedIndex);
+        }
+
+        private void cbSampleRate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
+        }
+
     }
 }
