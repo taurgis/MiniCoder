@@ -7,7 +7,7 @@ namespace MiniCoder2.ApplicationManager.ApplicationUpdate
 {
     class LocalUpdate : IUpdate
     {
-        LocalUpdate()
+        public LocalUpdate()
         {
         }
 
