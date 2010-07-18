@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MiniCoder2.Exceptions;
-using MiniCoder2.View;
 
-namespace MiniCoder2.Model.Applications.Templates
+namespace MiniCoder2.Templating.Audio.AAC
 {
     public class AacTemplate : ExtTemplate
     {

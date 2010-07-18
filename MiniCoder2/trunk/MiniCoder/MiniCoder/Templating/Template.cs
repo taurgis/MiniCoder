@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using MiniCoder2.Model.Applications.Templates;
-
-namespace MiniCoder2.Model
+namespace MiniCoder2.Templating
 {
     public class Template
     {

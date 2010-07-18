@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MiniCoder2.Model.Applications.Templates
+namespace MiniCoder2.Templating
 {
     public abstract class ExtTemplate
     {
