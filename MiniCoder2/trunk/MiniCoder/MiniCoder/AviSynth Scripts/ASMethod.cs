@@ -26,7 +26,7 @@ namespace MiniCoder2.ASScript {
         /// <summary>
         /// The MediaWiki URL of the method.
         /// </summary>
-        public readonly string WikiUrl {
+        public string WikiUrl {
             get {
                 return "http://avisynth.org/mediawiki/" + this.Name;
             }
@@ -37,20 +37,28 @@ namespace MiniCoder2.ASScript {
         /// <summary>
         /// The method's arguments.
         /// </summary>
-        public readonly List<ASArgument> Arguments { get { return _Arguments; } }
+        public List<ASArgument> Arguments { get { return _Arguments; } }
 
     }
 
     /// <summary>
     /// An AviSynth method argument.
     /// </summary>
-    public struct ASArgument {
+    public class ASArgument {
         public ASArgument(string name, ASType type) {
             this.Name = name;
             this.Type = type;
         }
 
-        public ASType Type { get; set; }
+        private ASType _Type = ASType.@int;
+        public ASType Type {
+            get {
+                return _Type;
+            }
+            set {
+                _Type = value;
+            }
+        }
         public string Name { get; set; }
         public bool IsParamArray { get; set; }
     }
@@ -58,5 +66,5 @@ namespace MiniCoder2.ASScript {
     /// <summary>
     /// An AviSynth type.
     /// </summary>
-    public enum ASType { @bool, @int, @float, @string, clip }
+    public enum ASType { @bool = 0, @int, @float, @string, clip }
 }
