@@ -21,7 +21,6 @@ namespace MiniCoder2.View.Audio
             InitializeComponent();
             this.template = new AacTemplate("Default");
             this.controller = new AacTemplateController(this, template);
-            this.template.SetObserver(this);
         }
 
         private void Aac_Load(object sender, EventArgs e)
@@ -67,7 +66,7 @@ namespace MiniCoder2.View.Audio
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData()
         {
             this.txtCommandLine.Text = template.GenerateCommandLine();
         }

@@ -33,23 +33,30 @@ namespace MiniCoder2.Controller.Applications
                     template.Mode = AudioEncodingMode.ABR;
                     break;
             }
+
+            RefreshView();
         }
 
         public void ChangeQuality(Double quality)
         {
             if (quality > 0 && quality <= 1)
                 template.Quality = quality;
+
+            RefreshView();
         }
 
         public void ChangeBitrate(Int32 bitRate)
         {
             if (bitRate > 0)
                 template.BitRate = bitRate;
+
+            RefreshView();
         }
 
         public void ChangeDelay(Int32 delay)
         {
             template.Delay = delay;
+            RefreshView();
         }
 
         public void ChangeProfile(int selectedIndex)
@@ -70,6 +77,7 @@ namespace MiniCoder2.Controller.Applications
                     break;
 
             }
+            RefreshView();
         }
 
         public void ChangeChannels(int selectedIndex)
@@ -84,6 +92,8 @@ namespace MiniCoder2.Controller.Applications
                         template.Channels = 6;
                         break;
                 }
+
+            RefreshView();
         }
 
         public void ChangeSampleRate(int selectedIndex)
@@ -106,6 +116,12 @@ namespace MiniCoder2.Controller.Applications
                     template.SampleRate = 96000;
                     break;
             }
+            RefreshView();
+        }
+
+        private void RefreshView()
+        {
+            view.UpdateData();
         }
     }
 }
