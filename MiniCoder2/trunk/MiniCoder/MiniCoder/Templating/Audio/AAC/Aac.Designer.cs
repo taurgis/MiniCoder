@@ -92,7 +92,7 @@
             this.mnuLoad,
             this.saveToolStripMenuItem});
             this.mnuTemplates.Name = "mnuTemplates";
-            this.mnuTemplates.Size = new System.Drawing.Size(153, 98);
+            this.mnuTemplates.Size = new System.Drawing.Size(103, 76);
             // 
             // resetToolStripMenuItem
             // 

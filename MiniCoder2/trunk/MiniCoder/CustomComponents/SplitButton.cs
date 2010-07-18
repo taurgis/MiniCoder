@@ -268,7 +268,7 @@ namespace wyDay.Controls
             if (m_SplitMenu != null && e.Button == MouseButtons.Left && !isMouseEntered)
                 skipNextOpen = true;
 
-            if (dropDownRectangle.Contains(e.Location) && !isSplitMenuVisible && e.Button == MouseButtons.Left)
+            if (!isSplitMenuVisible && e.Button == MouseButtons.Left)
             {
                 ShowContextMenuStrip();
             }
