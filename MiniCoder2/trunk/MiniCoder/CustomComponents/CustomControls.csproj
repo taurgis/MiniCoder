@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplitButton.cs">
       <SubType>Component</SubType>

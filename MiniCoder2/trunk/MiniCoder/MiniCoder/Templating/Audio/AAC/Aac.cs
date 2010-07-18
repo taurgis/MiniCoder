@@ -101,8 +101,8 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InputBoxResult result = InputBox.Show("Please fill in a name", "Name", "Default");
-            template.Name = result.Text;
+            template.Name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", "Default");
+            
             controller.SaveTemplate();
         }
 
