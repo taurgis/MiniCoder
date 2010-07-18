@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MiniCoder2.ApplicationManager
 {
-    public enum Application
+    public enum ExtApplication
     {
         AviSynth,
         Besweet,
