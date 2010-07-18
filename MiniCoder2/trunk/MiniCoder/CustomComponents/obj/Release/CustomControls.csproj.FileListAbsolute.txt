@@ -1,5 +1,0 @@
-C:\Documents and Settings\Ryan\My Documents\My Dropbox\My Projects 2010\MiniCoder\CustomComponents\bin\Release\CustomControls.dll
-C:\Documents and Settings\Ryan\My Documents\My Dropbox\My Projects 2010\MiniCoder\CustomComponents\bin\Release\CustomControls.pdb
-C:\Documents and Settings\Ryan\My Documents\My Dropbox\My Projects 2010\MiniCoder\CustomComponents\obj\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\Ryan\My Documents\My Dropbox\My Projects 2010\MiniCoder\CustomComponents\obj\Release\CustomControls.dll
-C:\Documents and Settings\Ryan\My Documents\My Dropbox\My Projects 2010\MiniCoder\CustomComponents\obj\Release\CustomControls.pdb
