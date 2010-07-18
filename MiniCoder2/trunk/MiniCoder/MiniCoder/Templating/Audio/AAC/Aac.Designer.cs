@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aac));
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new wyDay.Controls.SplitButton();
+            this.mnuTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
@@ -50,6 +51,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).BeginInit();
@@ -68,12 +74,25 @@
             // 
             // btnTemplates
             // 
-            this.btnTemplates.Location = new System.Drawing.Point(163, 136);
+            this.btnTemplates.AutoSize = true;
+            this.btnTemplates.ContextMenuStrip = this.mnuTemplates;
+            this.btnTemplates.Location = new System.Drawing.Point(154, 136);
             this.btnTemplates.Name = "btnTemplates";
-            this.btnTemplates.Size = new System.Drawing.Size(75, 23);
+            this.btnTemplates.Size = new System.Drawing.Size(84, 23);
+            this.btnTemplates.SplitMenuStrip = this.mnuTemplates;
             this.btnTemplates.TabIndex = 15;
             this.btnTemplates.Text = "Templates";
             this.btnTemplates.UseVisualStyleBackColor = true;
+            // 
+            // mnuTemplates
+            // 
+            this.mnuTemplates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resetToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.loadToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.mnuTemplates.Name = "mnuTemplates";
+            this.mnuTemplates.Size = new System.Drawing.Size(153, 98);
             // 
             // btnOk
             // 
@@ -333,6 +352,29 @@
             this.ttSettings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttSettings.ToolTipTitle = "Settings";
             // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetToolStripMenuItem.Text = "Reset";
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
             // Aac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,12 +383,13 @@
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnTemplates);
             this.Controls.Add(this.txtCommandLine);
+            this.Controls.Add(this.btnTemplates);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Aac";
             this.Text = "Aac";
             this.Load += new System.EventHandler(this.Aac_Load);
+            this.mnuTemplates.ResumeLayout(false);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).EndInit();
@@ -379,6 +422,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.ToolTip ttSettings;
+        private System.Windows.Forms.ContextMenuStrip mnuTemplates;
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 
     }
 }
