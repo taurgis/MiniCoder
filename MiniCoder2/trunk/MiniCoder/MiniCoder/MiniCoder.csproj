@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationManager\FileControl\ExternalFile.cs" />
+    <Compile Include="ApplicationManager\FileControl\LocalFile.cs" />
+    <Compile Include="ApplicationManager\ApplicationUpdate\UpdateControl.cs" />
+    <Compile Include="ApplicationManager\ApplicationUpdate\ExternalUpdate.cs" />
+    <Compile Include="ApplicationManager\ApplicationUpdate\IUpdate.cs" />
+    <Compile Include="ApplicationManager\ApplicationUpdate\LocalUpdate.cs" />
     <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
     <Compile Include="Exceptions\TemplateExceptions.cs" />
     <Compile Include="MainForm.cs">
