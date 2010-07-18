@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MiniCoder2.ApplicationManager.UpdateControl
+namespace MiniCoder2.ApplicationManager.ApplicationUpdate
 {
-    class ExternalUpdate : IUpdate
+    public class ExternalUpdate : IUpdate
     {
         ExternalUpdate()
         {
