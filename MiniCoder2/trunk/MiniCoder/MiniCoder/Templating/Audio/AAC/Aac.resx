@@ -123,6 +123,9 @@
   <metadata name="ttSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="ttSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="cbProfile.ToolTip" xml:space="preserve">
     <value>LC (Low Complexity): 
 This is the standard kind of AAC used in iTunes etc used at bit rates of 80 kbps 
