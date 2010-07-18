@@ -9,16 +9,9 @@ using System.Text;
 using System.Windows.Forms;
 #endregion
 
-// Author: Ryan O'Hara
-// Please do not move into another folder.
-// I'm not sure which folder it belongs in or
-// your habits in naming folders, so I'll just
-// leave it here for now.
-
 namespace MiniCoder2.ASScript {
     public partial class AviSynth_Script_Editor : Form {
         public AviSynth_Script_Editor() {
-            InitializeComponent();
         }
 
         // IntelliSense popup system
@@ -30,6 +23,10 @@ namespace MiniCoder2.ASScript {
             title.Text = method.Name;
             title.Font = new Font("Trebuchet MS", 14.0f, FontStyle.Bold);
             Label info = new Label();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }
