@@ -140,7 +140,12 @@
   <ItemGroup>
     <Content Include="MiniCoder.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CustomComponents\CustomControls.csproj">
+      <Project>{4B262CA5-252C-4CBA-8970-35EC45314709}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
