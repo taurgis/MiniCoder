@@ -67,6 +67,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationManager\ApplicationControl.cs" />
+    <Compile Include="ApplicationManager\Enums.cs" />
     <Compile Include="ApplicationManager\FileControl\ExternalFile.cs" />
     <Compile Include="ApplicationManager\FileControl\LocalFile.cs" />
     <Compile Include="ApplicationManager\ApplicationUpdate\UpdateControl.cs" />
@@ -88,7 +90,6 @@
     </Compile>
     <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
     <Compile Include="Exceptions\TemplateExceptions.cs" />
-    <Compile Include="ApplicationManager\Application.cs" />
     <Compile Include="Templating\Audio\AAC\AacTemplate.cs" />
     <Compile Include="Templating\Enums.cs" />
     <Compile Include="Templating\ExtTemplate.cs" />

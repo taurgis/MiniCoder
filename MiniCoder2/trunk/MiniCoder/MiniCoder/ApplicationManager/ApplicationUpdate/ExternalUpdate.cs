@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MiniCoder2.ApplicationManager.ApplicationUpdate
 {
-    public class ExternalUpdate : IUpdate
+    class ExternalUpdate : IUpdate
     {
-        ExternalUpdate()
+        public ExternalUpdate()
         {
         }
 
