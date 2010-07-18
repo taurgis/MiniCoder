@@ -1,4 +1,4 @@
-﻿namespace MiniCoder2.View.Audio
+﻿namespace MiniCoder2.Templating.Audio.AAC
 {
     partial class Aac
     {
@@ -61,12 +61,12 @@
             this.txtCommandLine.Location = new System.Drawing.Point(5, 165);
             this.txtCommandLine.Name = "txtCommandLine";
             this.txtCommandLine.ReadOnly = true;
-            this.txtCommandLine.Size = new System.Drawing.Size(307, 20);
+            this.txtCommandLine.Size = new System.Drawing.Size(349, 20);
             this.txtCommandLine.TabIndex = 14;
             // 
             // btnTemplates
             // 
-            this.btnTemplates.Location = new System.Drawing.Point(123, 136);
+            this.btnTemplates.Location = new System.Drawing.Point(163, 136);
             this.btnTemplates.Name = "btnTemplates";
             this.btnTemplates.Size = new System.Drawing.Size(75, 23);
             this.btnTemplates.TabIndex = 15;
@@ -75,7 +75,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(204, 136);
+            this.btnOk.Location = new System.Drawing.Point(244, 136);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(51, 23);
             this.btnOk.TabIndex = 16;
@@ -85,7 +85,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(261, 136);
+            this.btnCancel.Location = new System.Drawing.Point(301, 136);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(51, 23);
             this.btnCancel.TabIndex = 17;
@@ -111,7 +111,7 @@
             this.gbSettings.Controls.Add(this.cbMode);
             this.gbSettings.Location = new System.Drawing.Point(5, 4);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(307, 126);
+            this.gbSettings.Size = new System.Drawing.Size(349, 126);
             this.gbSettings.TabIndex = 18;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
@@ -156,7 +156,7 @@
             0,
             -2147483648});
             this.nudDelay.Name = "nudDelay";
-            this.nudDelay.Size = new System.Drawing.Size(52, 20);
+            this.nudDelay.Size = new System.Drawing.Size(92, 20);
             this.nudDelay.TabIndex = 25;
             this.nudDelay.ValueChanged += new System.EventHandler(this.nudDelay_ValueChanged);
             // 
@@ -232,7 +232,7 @@
             0,
             0});
             this.nudBitrate.Name = "nudBitrate";
-            this.nudBitrate.Size = new System.Drawing.Size(51, 20);
+            this.nudBitrate.Size = new System.Drawing.Size(91, 20);
             this.nudBitrate.TabIndex = 19;
             this.nudBitrate.Value = new decimal(new int[] {
             48,
@@ -271,7 +271,7 @@
             0,
             65536});
             this.nudQuality.Name = "nudQuality";
-            this.nudQuality.Size = new System.Drawing.Size(51, 20);
+            this.nudQuality.Size = new System.Drawing.Size(91, 20);
             this.nudQuality.TabIndex = 17;
             this.nudQuality.Tag = "";
             this.nudQuality.Value = new decimal(new int[] {
@@ -319,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 197);
+            this.ClientSize = new System.Drawing.Size(357, 197);
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);

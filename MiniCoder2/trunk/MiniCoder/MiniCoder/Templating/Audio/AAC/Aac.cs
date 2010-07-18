@@ -6,10 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MiniCoder2.Controller.Applications;
-using MiniCoder2.Model.Applications.Templates;
 
-namespace MiniCoder2.View.Audio
+namespace MiniCoder2.Templating.Audio.AAC
 {
     public partial class Aac : Form, TemplateForm
     {

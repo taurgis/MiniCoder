@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MiniCoder2.View.Audio;
+using MiniCoder2.Templating.Audio.AAC;
 
 namespace MiniCoder2
 {

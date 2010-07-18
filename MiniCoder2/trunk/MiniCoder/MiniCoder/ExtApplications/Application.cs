@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MiniCoder2.Model.Applications
+namespace MiniCoder2.ExtApplications
 {
     public enum Application
     {
