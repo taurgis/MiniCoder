@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aac));
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
+            this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).BeginInit();
@@ -140,6 +142,8 @@
             this.cbSampleRate.Name = "cbSampleRate";
             this.cbSampleRate.Size = new System.Drawing.Size(104, 21);
             this.cbSampleRate.TabIndex = 26;
+            this.ttSettings.SetToolTip(this.cbSampleRate, "The sample rate of playback or recording determines the maximum \r\naudio frequency" +
+                    " that can be reproduced.");
             this.cbSampleRate.SelectedIndexChanged += new System.EventHandler(this.cbSampleRate_SelectedIndexChanged);
             // 
             // nudDelay
@@ -158,6 +162,7 @@
             this.nudDelay.Name = "nudDelay";
             this.nudDelay.Size = new System.Drawing.Size(92, 20);
             this.nudDelay.TabIndex = 25;
+            this.ttSettings.SetToolTip(this.nudDelay, "The delay in miliseconds.\r\n\r\n1000 ms = 1 second");
             this.nudDelay.ValueChanged += new System.EventHandler(this.nudDelay_ValueChanged);
             // 
             // label6
@@ -216,6 +221,7 @@
             this.cbProfile.Name = "cbProfile";
             this.cbProfile.Size = new System.Drawing.Size(104, 21);
             this.cbProfile.TabIndex = 20;
+            this.ttSettings.SetToolTip(this.cbProfile, resources.GetString("cbProfile.ToolTip"));
             this.cbProfile.SelectedIndexChanged += new System.EventHandler(this.cbProfile_SelectedIndexChanged);
             // 
             // nudBitrate
@@ -234,6 +240,8 @@
             this.nudBitrate.Name = "nudBitrate";
             this.nudBitrate.Size = new System.Drawing.Size(91, 20);
             this.nudBitrate.TabIndex = 19;
+            this.ttSettings.SetToolTip(this.nudBitrate, "The bitrate determines the quality and the output filesize.\r\nThe higher the bitra" +
+                    "te the better the quality, but the file will\r\nbe bigger aswell.");
             this.nudBitrate.Value = new decimal(new int[] {
             48,
             0,
@@ -274,6 +282,7 @@
             this.nudQuality.Size = new System.Drawing.Size(91, 20);
             this.nudQuality.TabIndex = 17;
             this.nudQuality.Tag = "";
+            this.ttSettings.SetToolTip(this.nudQuality, "The overal quality of the video. \r\n0.1: Low\r\n1.0: High");
             this.nudQuality.Value = new decimal(new int[] {
             1,
             0,
@@ -313,7 +322,16 @@
             this.cbMode.Name = "cbMode";
             this.cbMode.Size = new System.Drawing.Size(104, 21);
             this.cbMode.TabIndex = 14;
+            this.ttSettings.SetToolTip(this.cbMode, resources.GetString("cbMode.ToolTip"));
             this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
+            // 
+            // ttSettings
+            // 
+            this.ttSettings.AutomaticDelay = 1000;
+            this.ttSettings.BackColor = System.Drawing.Color.White;
+            this.ttSettings.IsBalloon = true;
+            this.ttSettings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ttSettings.ToolTipTitle = "Settings";
             // 
             // Aac
             // 
@@ -360,6 +378,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbMode;
+        private System.Windows.Forms.ToolTip ttSettings;
 
     }
 }

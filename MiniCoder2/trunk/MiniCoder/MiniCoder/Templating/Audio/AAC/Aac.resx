@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ttSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="cbProfile.ToolTip" xml:space="preserve">
+    <value>LC (Low Complexity): 
+This is the standard kind of AAC used in iTunes etc used at bit rates of 80 kbps 
+and above. This profile provides the highest audio quality at these bit rates 
+
+HE(High-Efficiency):
+This is a more efficient AAC profile used at very low bit rate levels.
+
+HEv2 (HE version 2): 
+This is a more efficient AAC profile used for extremely low bit rate levels.</value>
+  </data>
+  <data name="cbMode.ToolTip" xml:space="preserve">
+    <value>Variable bitrate (VBR): 
+Assigns a higher bitrate to complex scenes and lower to less 
+complex scenes. It has a better Quality/Filesize ratio. 
+
+Constant Bitrate (CBR): 
+Assigns a constant bitrate which will lead to an exact output 
+filesize.
+
+Adaptive Bitrate (ABR): 
+More controlled than VBR. The encoder will try to keep an 
+average bitrate to keep the file size under control.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
