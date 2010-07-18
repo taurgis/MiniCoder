@@ -84,6 +84,7 @@
     <Compile Include="Templating\Audio\AAC\AacTemplate.cs" />
     <Compile Include="Templating\Enums.cs" />
     <Compile Include="Templating\ExtTemplate.cs" />
+    <Compile Include="Templating\Files\TemplateDao.cs" />
     <Compile Include="Templating\Template.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

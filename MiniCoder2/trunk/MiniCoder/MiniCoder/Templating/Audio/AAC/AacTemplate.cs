@@ -3,19 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MiniCoder2.Exceptions;
+using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
     public class AacTemplate : ExtTemplate
     {
+        [XmlElement("Mode")]
         public AudioEncodingMode Mode;
+        [XmlElement("Quality")]
         public Double Quality;
+        [XmlElement("BitRate")]
         public Int32 BitRate;
+        [XmlElement("Delay")]
         public Int32 Delay;
+        [XmlElement("Profile")]
         public AudioEncodingProfile Profile;
+        [XmlElement("Channels")]
         public short Channels;
+        [XmlElement("SampleRate")]
         public Int32 SampleRate;
-        
+
+        /// <summary>
+        /// Empty constructor for serialization
+        /// </summary>
+        public AacTemplate()
+        {
+        }
+
         public AacTemplate(String name)
         {
             this.Name = name;
@@ -65,7 +80,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed +" )";
+            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed + " )";
         }
     }
 }

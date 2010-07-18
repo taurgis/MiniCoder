@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
@@ -96,7 +97,7 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         public void ChangeSampleRate(int selectedIndex)
         {
-            switch(selectedIndex)
+            switch (selectedIndex)
             {
                 case 0:
                     template.SampleRate = 0;
@@ -120,6 +121,12 @@ namespace MiniCoder2.Templating.Audio.AAC
         private void RefreshView()
         {
             view.UpdateData();
+        }
+
+        public void SaveTemplate()
+        {
+            if (!String.IsNullOrEmpty(template.Name))
+                TemplateDao.SaveTemplate(template, typeof(AacTemplate));
         }
     }
 }
