@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aac));
             this.txtCommandLine = new System.Windows.Forms.TextBox();
-            this.btnTemplates = new System.Windows.Forms.Button();
+            this.btnTemplates = new wyDay.Controls.SplitButton();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
@@ -360,7 +360,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtCommandLine;
-        private System.Windows.Forms.Button btnTemplates;
+        private wyDay.Controls.SplitButton btnTemplates;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox gbSettings;
