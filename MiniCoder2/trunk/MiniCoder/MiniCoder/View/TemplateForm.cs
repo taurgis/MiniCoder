@@ -12,6 +12,6 @@ namespace MiniCoder2.View
     /// </summary>
     public interface TemplateForm
     {
-        void UpdateData(ExtTemplate template);
+        void UpdateData();
     }
 }
