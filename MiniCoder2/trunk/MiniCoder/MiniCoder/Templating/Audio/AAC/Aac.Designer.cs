@@ -33,6 +33,10 @@
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new wyDay.Controls.SplitButton();
             this.mnuTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
@@ -51,10 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
@@ -89,10 +89,34 @@
             this.mnuTemplates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.loadToolStripMenuItem,
+            this.mnuLoad,
             this.saveToolStripMenuItem});
             this.mnuTemplates.Name = "mnuTemplates";
             this.mnuTemplates.Size = new System.Drawing.Size(153, 98);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetToolStripMenuItem.Text = "Reset";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuLoad
+            // 
+            this.mnuLoad.Name = "mnuLoad";
+            this.mnuLoad.Size = new System.Drawing.Size(152, 22);
+            this.mnuLoad.Text = "Load";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // btnOk
             // 
@@ -352,30 +376,6 @@
             this.ttSettings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttSettings.ToolTipTitle = "Settings";
             // 
-            // resetToolStripMenuItem
-            // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resetToolStripMenuItem.Text = "Reset";
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadToolStripMenuItem.Text = "Load";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
-            // 
             // Aac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,7 +426,7 @@
         private System.Windows.Forms.ContextMenuStrip mnuTemplates;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuLoad;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 
     }

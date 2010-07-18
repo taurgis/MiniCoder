@@ -128,5 +128,10 @@ namespace MiniCoder2.Templating.Audio.AAC
             if (!String.IsNullOrEmpty(template.Name))
                 TemplateDao.SaveTemplate(template, typeof(AacTemplate));
         }
+
+        public String[] FetchTemplateNames()
+        {
+            return TemplateDao.GetTemplatesByType(typeof(AacTemplate));
+        }
     }
 }
