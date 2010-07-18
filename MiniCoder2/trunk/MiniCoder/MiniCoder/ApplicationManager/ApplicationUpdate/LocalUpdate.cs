@@ -11,12 +11,12 @@ namespace MiniCoder2.ApplicationManager.UpdateControl
         {
         }
 
-        public Boolean UpdateApplication()
+        public Boolean UpdateApplication(List<String> application)
         {
             return true;
         }
 
-        public double GetVersion()
+        public double GetVersion(List<String> application)
         {
             return 1.0;
         }
