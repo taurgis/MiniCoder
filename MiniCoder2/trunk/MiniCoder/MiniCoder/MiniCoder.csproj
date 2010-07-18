@@ -73,14 +73,21 @@
     <Compile Include="ApplicationManager\ApplicationUpdate\ExternalUpdate.cs" />
     <Compile Include="ApplicationManager\ApplicationUpdate\IUpdate.cs" />
     <Compile Include="ApplicationManager\ApplicationUpdate\LocalUpdate.cs" />
-    <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
-    <Compile Include="Exceptions\TemplateExceptions.cs" />
+    <Compile Include="AviSynth Scripts\ASMethod.cs" />
+    <Compile Include="AviSynth Scripts\AviSynth Script Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AviSynth Scripts\AviSynth Script Editor.designer.cs">
+      <DependentUpon>AviSynth Script Editor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
+    <Compile Include="Exceptions\TemplateExceptions.cs" />
     <Compile Include="ApplicationManager\Application.cs" />
     <Compile Include="Templating\Audio\AAC\AacTemplate.cs" />
     <Compile Include="Templating\Enums.cs" />
@@ -96,6 +103,9 @@
       <DependentUpon>Aac.cs</DependentUpon>
     </Compile>
     <Compile Include="Templating\TemplateForm.cs" />
+    <EmbeddedResource Include="AviSynth Scripts\AviSynth Script Editor.resx">
+      <DependentUpon>AviSynth Script Editor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
