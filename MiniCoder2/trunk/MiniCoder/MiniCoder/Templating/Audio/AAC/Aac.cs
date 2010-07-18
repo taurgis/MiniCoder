@@ -24,6 +24,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         private void Aac_Load(object sender, EventArgs e)
         {
             ResetInterface();
+            UpdateTemplateList(controller.FetchTemplateNames());
         }
 
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,7 +56,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             cbChannels.SelectedIndex = 0;
         }
 
-      
+
         private void btnOk_Click(object sender, EventArgs e)
         {
 
@@ -102,8 +103,19 @@ namespace MiniCoder2.Templating.Audio.AAC
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             template.Name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", "Default");
-            
+
             controller.SaveTemplate();
+        }
+
+        private void UpdateTemplateList(String[] templateNames)
+        {
+            foreach (String templateName in templateNames)
+            {
+                ToolStripMenuItem tempMenuItem = new ToolStripMenuItem();
+                tempMenuItem.Text = templateName;
+
+                mnuLoad.DropDownItems.Add(tempMenuItem);
+            }
         }
 
     }
