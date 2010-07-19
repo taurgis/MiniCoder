@@ -17,19 +17,33 @@ namespace MiniCoder2.Templating.Files
         /// </summary>
         /// <param name="template">The template object</param>
         /// <param name="classType">The class type</param>
-        public static void SaveTemplate(ExtTemplate template, Type classType)
+        public Boolean SaveTemplate(ExtTemplate template, Type classType)
         {
-            XmlSerializer serializer = new XmlSerializer(classType);
-
             if (!Directory.Exists("templates"))
                 Directory.CreateDirectory("templates");
 
             if (!Directory.Exists("templates\\" + classType.Name))
                 Directory.CreateDirectory("templates\\" + classType.Name);
 
-            using (StreamWriter writer = new StreamWriter("templates\\" + classType.Name + "\\" + template.Name + ".xml"))
+            return ExportTemplate(template, classType, "templates\\" + classType.Name + "\\");
+        }
+
+        public Boolean ExportTemplate(ExtTemplate template, Type classType, String path)
+        {
+            try
             {
-                serializer.Serialize(writer, template);
+                XmlSerializer serializer = new XmlSerializer(classType);
+
+                using (StreamWriter writer = new StreamWriter(path + template.Name + ".xml"))
+                {
+                    serializer.Serialize(writer, template);
+                }
+
+                return true;
+            }
+            catch (IOException)
+            {
+                return false;
             }
         }
 
@@ -38,7 +52,7 @@ namespace MiniCoder2.Templating.Files
         /// </summary>
         /// <param name="classType">The classtype of the template.</param>
         /// <returns>Array of the template names.</returns>
-        public static String[] GetTemplatesByType(Type classType)
+        public String[] GetTemplatesByType(Type classType)
         {
             String[] files = Directory.GetFiles("templates\\" + classType.Name);
             //Using a list because not all files found will be returned.
@@ -59,7 +73,7 @@ namespace MiniCoder2.Templating.Files
         /// <param name="fileName">The filename.</param>
         /// <param name="classType">The class type.</param>
         /// <returns>Cleaned filename.</returns>
-        private static String RemoveUnwantedParts(String fileName, Type classType)
+        private String RemoveUnwantedParts(String fileName, Type classType)
         {
             return fileName.Replace(".xml", "").Replace("templates\\" + classType.Name + "\\", "");
         }
@@ -70,7 +84,7 @@ namespace MiniCoder2.Templating.Files
         /// <param name="name">The name of the template.</param>
         /// <param name="classType">The class type of the template.</param>
         /// <returns>The template class.</returns>
-        public static ExtTemplate LoadTemplate(String name, Type classType)
+        public ExtTemplate LoadTemplate(String name, Type classType)
         {
             String path = "templates\\" + classType.Name + "\\" + name + ".xml";
             if (!File.Exists(path))
@@ -85,5 +99,22 @@ namespace MiniCoder2.Templating.Files
 
             return template;
         }
+
+        public Boolean DeleteTemplate(String name, Type classType)
+        {
+            try
+            {
+                String path = "templates\\" + classType.Name + "\\" + name + ".xml";
+                if (File.Exists(path))
+                    File.Delete(path);
+                return true;
+            }
+            catch (IOException)
+            {
+                return false;
+            }
+        }
+
+
     }
 }

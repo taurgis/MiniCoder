@@ -11,11 +11,13 @@ namespace MiniCoder2.Templating.Audio.AAC
     {
         private AacTemplate template;
         private TemplateForm view;
+        private TemplateDao templateDao;
 
         public AacTemplateController(TemplateForm view, AacTemplate template)
         {
             this.view = view;
             this.template = template;
+            templateDao = new TemplateDao();
         }
 
         public void ChangeMode(int selectedIndex)
@@ -103,19 +105,24 @@ namespace MiniCoder2.Templating.Audio.AAC
             {
                 this.template.Name = name;
 
-                TemplateDao.SaveTemplate(template, typeof(AacTemplate));
+                templateDao.SaveTemplate(template, typeof(AacTemplate));
             }
         }
 
         public String[] FetchTemplateNames()
         {
-            return TemplateDao.GetTemplatesByType(typeof(AacTemplate));
+            return templateDao.GetTemplatesByType(typeof(AacTemplate));
         }
 
         public void LoadTemplate(String name)
         {
-            this.template = (AacTemplate)TemplateDao.LoadTemplate(name, typeof(AacTemplate));
+            this.template = (AacTemplate)templateDao.LoadTemplate(name, typeof(AacTemplate));
             view.UpdateData(this.template);
+        }
+
+        public Boolean DeleteTemplate(String name)
+        {
+            return templateDao.DeleteTemplate(name, typeof(AacTemplate));
         }
     }
 }

@@ -149,10 +149,12 @@ namespace MiniCoder2.Templating.Audio.AAC
             String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
 
             controller.SaveTemplate(name);
+            UpdateTemplateList(controller.FetchTemplateNames());
         }
 
         private void UpdateTemplateList(String[] templateNames)
         {
+            mnuLoad.DropDownItems.Clear();
             foreach (String templateName in templateNames)
             {
                 ToolStripMenuItem tempMenuItem = new ToolStripMenuItem();
@@ -172,6 +174,23 @@ namespace MiniCoder2.Templating.Audio.AAC
         private void mnuReset_Click(object sender, EventArgs e)
         {
             ResetInterface();
+        }
+
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (controller.DeleteTemplate(template.Name))
+                {
+                    MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetInterface();
+                }
+                else
+                    MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                UpdateTemplateList(controller.FetchTemplateNames());
+
+            }
         }
 
     }

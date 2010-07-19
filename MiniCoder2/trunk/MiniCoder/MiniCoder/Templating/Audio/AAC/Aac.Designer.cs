@@ -96,7 +96,7 @@
             this.toolStripMenuItem2,
             this.mnuDelete});
             this.mnuTemplates.Name = "mnuTemplates";
-            this.mnuTemplates.Size = new System.Drawing.Size(108, 104);
+            this.mnuTemplates.Size = new System.Drawing.Size(153, 126);
             // 
             // mnuReset
             // 
@@ -133,6 +133,7 @@
             this.mnuDelete.Name = "mnuDelete";
             this.mnuDelete.Size = new System.Drawing.Size(152, 22);
             this.mnuDelete.Text = "Delete";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // btnOk
             // 
