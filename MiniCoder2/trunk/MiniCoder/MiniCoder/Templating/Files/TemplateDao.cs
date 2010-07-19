@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.IO;
+using MiniCoder2.Exceptions;
 
 namespace MiniCoder2.Templating.Files
 {
@@ -63,9 +64,26 @@ namespace MiniCoder2.Templating.Files
             return fileName.Replace(".xml", "").Replace("templates\\" + classType.Name + "\\", "");
         }
 
-        public static void LoadTemplate(String name)
+        /// <summary>
+        /// Loads a specific template.
+        /// </summary>
+        /// <param name="name">The name of the template.</param>
+        /// <param name="classType">The class type of the template.</param>
+        /// <returns>The template class.</returns>
+        public static ExtTemplate LoadTemplate(String name, Type classType)
         {
+            String path = "templates\\" + classType.Name + "\\" + name + ".xml";
+            if (!File.Exists(path))
+                throw new TemplateNotFoundException(path);
 
+            XmlSerializer serializer =
+            new XmlSerializer(classType);
+
+            TextReader reader = new StreamReader(path);
+            ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
+            reader.Close();
+
+            return template;
         }
     }
 }

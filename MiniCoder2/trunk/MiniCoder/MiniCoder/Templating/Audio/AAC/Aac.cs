@@ -6,18 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MiniCoder2.Exceptions;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
     public partial class Aac : Form, TemplateForm
     {
         private AacTemplateController controller;
-        private AacTemplate template;
 
         public Aac()
         {
             InitializeComponent();
-            this.template = new AacTemplate("Default");
+            AacTemplate template = new AacTemplate("Default");
             this.controller = new AacTemplateController(this, template);
         }
 
@@ -65,9 +65,50 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData()
+        public void UpdateData(ExtTemplate template)
         {
+            AacTemplate aacTemplate = (AacTemplate)template;
             this.txtCommandLine.Text = template.GenerateCommandLine();
+
+            this.nudBitrate.Value = aacTemplate.BitRate;
+            this.nudDelay.Value = aacTemplate.Delay;
+            if (!aacTemplate.Quality.Equals(0.0))
+                this.nudQuality.Value = (Decimal)aacTemplate.Quality;
+
+            cbMode.SelectedIndex = (int)aacTemplate.Mode;
+            cbProfile.SelectedIndex = (int)aacTemplate.Profile;
+
+            switch (aacTemplate.Channels)
+            {
+                case 2:
+                    cbChannels.SelectedIndex = 0;
+                    break;
+                case 6:
+                    cbChannels.SelectedIndex = 1;
+                    break;
+                default:
+                    cbChannels.SelectedIndex = 0;
+                    break;
+            }
+
+            switch (aacTemplate.SampleRate)
+            {
+                case 0:
+                    cbSampleRate.SelectedIndex = 0;
+                    break;
+                case 44100:
+                    cbSampleRate.SelectedIndex = 1;
+                    break;
+                case 48000:
+                    cbSampleRate.SelectedIndex = 2;
+                    break;
+                case 88200:
+                    cbSampleRate.SelectedIndex = 3;
+                    break;
+                case 96000:
+                    cbSampleRate.SelectedIndex = 4;
+                    break;
+            }
         }
 
         private void nudQuality_ValueChanged(object sender, EventArgs e)
@@ -102,9 +143,9 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            template.Name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", "Default");
+            String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", "Default");
 
-            controller.SaveTemplate();
+            controller.SaveTemplate(name);
         }
 
         private void UpdateTemplateList(String[] templateNames)
@@ -113,9 +154,16 @@ namespace MiniCoder2.Templating.Audio.AAC
             {
                 ToolStripMenuItem tempMenuItem = new ToolStripMenuItem();
                 tempMenuItem.Text = templateName;
+                tempMenuItem.Click += new EventHandler(templateItemMenuItem_Click);
 
                 mnuLoad.DropDownItems.Add(tempMenuItem);
             }
+        }
+
+        private void templateItemMenuItem_Click(object sender, EventArgs e)
+        {
+            String name = ((ToolStripMenuItem)sender).Text;
+            controller.LoadTemplate(name);
         }
 
     }
