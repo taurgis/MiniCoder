@@ -7,12 +7,12 @@ namespace MiniCoder2.Templating
 {
     public enum AudioEncodingMode : byte
     {
-        VBR, CBR, ABR
+        VBR = 0, CBR = 1, ABR = 2
     }
 
     public enum AudioEncodingProfile
     {
-        Automatic, LC, HE,
-        HEv2
+        Automatic = 0, LC = 1, HE = 2,
+        HEv2 = 3
     }
 }

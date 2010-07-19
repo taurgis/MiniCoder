@@ -20,18 +20,7 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         public void ChangeMode(int selectedIndex)
         {
-            switch (selectedIndex)
-            {
-                case 0:
-                    template.Mode = AudioEncodingMode.VBR;
-                    break;
-                case 1:
-                    template.Mode = AudioEncodingMode.CBR;
-                    break;
-                case 2:
-                    template.Mode = AudioEncodingMode.ABR;
-                    break;
-            }
+            this.template.Mode = (AudioEncodingMode)selectedIndex;
 
             RefreshView();
         }
@@ -39,7 +28,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         public void ChangeQuality(Double quality)
         {
             if (quality > 0 && quality <= 1)
-                template.Quality = quality;
+                this.template.Quality = quality;
 
             RefreshView();
         }
@@ -47,35 +36,20 @@ namespace MiniCoder2.Templating.Audio.AAC
         public void ChangeBitrate(Int32 bitRate)
         {
             if (bitRate > 0)
-                template.BitRate = bitRate;
+                this.template.BitRate = bitRate;
 
             RefreshView();
         }
 
         public void ChangeDelay(Int32 delay)
         {
-            template.Delay = delay;
+            this.template.Delay = delay;
             RefreshView();
         }
 
         public void ChangeProfile(int selectedIndex)
         {
-            switch (selectedIndex)
-            {
-                case 0:
-                    template.Profile = AudioEncodingProfile.Automatic;
-                    break;
-                case 1:
-                    template.Profile = AudioEncodingProfile.LC;
-                    break;
-                case 2:
-                    template.Profile = AudioEncodingProfile.HE;
-                    break;
-                case 3:
-                    template.Profile = AudioEncodingProfile.HEv2;
-                    break;
-
-            }
+            this.template.Profile = (AudioEncodingProfile)selectedIndex;
             RefreshView();
         }
 
@@ -85,10 +59,10 @@ namespace MiniCoder2.Templating.Audio.AAC
                 switch (selectedIndex)
                 {
                     case 0:
-                        template.Channels = 2;
+                        this.template.Channels = 2;
                         break;
                     case 1:
-                        template.Channels = 6;
+                        this.template.Channels = 6;
                         break;
                 }
 
@@ -100,19 +74,19 @@ namespace MiniCoder2.Templating.Audio.AAC
             switch (selectedIndex)
             {
                 case 0:
-                    template.SampleRate = 0;
+                    this.template.SampleRate = 0;
                     break;
                 case 1:
-                    template.SampleRate = 44100;
+                    this.template.SampleRate = 44100;
                     break;
                 case 2:
-                    template.SampleRate = 48000;
+                    this.template.SampleRate = 48000;
                     break;
                 case 3:
-                    template.SampleRate = 88200;
+                    this.template.SampleRate = 88200;
                     break;
                 case 4:
-                    template.SampleRate = 96000;
+                    this.template.SampleRate = 96000;
                     break;
             }
             RefreshView();
@@ -120,18 +94,28 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         private void RefreshView()
         {
-            view.UpdateData();
+            view.UpdateData(template);
         }
 
-        public void SaveTemplate()
+        public void SaveTemplate(String name)
         {
-            if (!String.IsNullOrEmpty(template.Name))
+            if (!String.IsNullOrEmpty(name))
+            {
+                this.template.Name = name;
+
                 TemplateDao.SaveTemplate(template, typeof(AacTemplate));
+            }
         }
 
         public String[] FetchTemplateNames()
         {
             return TemplateDao.GetTemplatesByType(typeof(AacTemplate));
+        }
+
+        public void LoadTemplate(String name)
+        {
+            this.template = (AacTemplate)TemplateDao.LoadTemplate(name, typeof(AacTemplate));
+            view.UpdateData(this.template);
         }
     }
 }
