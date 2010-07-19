@@ -13,11 +13,11 @@ namespace MiniCoder2.Templating.Audio.AAC
     public partial class Aac : Form, TemplateForm
     {
         private AacTemplateController controller;
-
+        private AacTemplate template;
         public Aac()
         {
             InitializeComponent();
-            AacTemplate template = new AacTemplate("Default");
+            this.template = new AacTemplate("Default");
             this.controller = new AacTemplateController(this, template);
         }
 
@@ -54,6 +54,9 @@ namespace MiniCoder2.Templating.Audio.AAC
             cbProfile.SelectedIndex = 0;
             cbSampleRate.SelectedIndex = 0;
             cbChannels.SelectedIndex = 0;
+            nudQuality.Value = (Decimal)0.5;
+            nudDelay.Value = 0;
+            nudBitrate.Value = 160;
         }
 
 
@@ -67,18 +70,18 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// </summary>
         public void UpdateData(ExtTemplate template)
         {
-            AacTemplate aacTemplate = (AacTemplate)template;
+            this.template = (AacTemplate)template;
             this.txtCommandLine.Text = template.GenerateCommandLine();
 
-            this.nudBitrate.Value = aacTemplate.BitRate;
-            this.nudDelay.Value = aacTemplate.Delay;
-            if (!aacTemplate.Quality.Equals(0.0))
-                this.nudQuality.Value = (Decimal)aacTemplate.Quality;
+            this.nudBitrate.Value = this.template.BitRate;
+            this.nudDelay.Value = this.template.Delay;
+            if (!this.template.Quality.Equals(0.0))
+                this.nudQuality.Value = (Decimal)this.template.Quality;
 
-            cbMode.SelectedIndex = (int)aacTemplate.Mode;
-            cbProfile.SelectedIndex = (int)aacTemplate.Profile;
+            cbMode.SelectedIndex = (int)this.template.Mode;
+            cbProfile.SelectedIndex = (int)this.template.Profile;
 
-            switch (aacTemplate.Channels)
+            switch (this.template.Channels)
             {
                 case 2:
                     cbChannels.SelectedIndex = 0;
@@ -91,7 +94,7 @@ namespace MiniCoder2.Templating.Audio.AAC
                     break;
             }
 
-            switch (aacTemplate.SampleRate)
+            switch (this.template.SampleRate)
             {
                 case 0:
                     cbSampleRate.SelectedIndex = 0;
@@ -143,7 +146,7 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", "Default");
+            String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
 
             controller.SaveTemplate(name);
         }
@@ -164,6 +167,11 @@ namespace MiniCoder2.Templating.Audio.AAC
         {
             String name = ((ToolStripMenuItem)sender).Text;
             controller.LoadTemplate(name);
+        }
+
+        private void mnuReset_Click(object sender, EventArgs e)
+        {
+            ResetInterface();
         }
 
     }

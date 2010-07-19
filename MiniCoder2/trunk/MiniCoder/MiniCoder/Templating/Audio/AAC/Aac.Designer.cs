@@ -33,10 +33,12 @@
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new wyDay.Controls.SplitButton();
             this.mnuTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReset = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
@@ -87,18 +89,21 @@
             // mnuTemplates
             // 
             this.mnuTemplates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resetToolStripMenuItem,
+            this.mnuReset,
             this.toolStripMenuItem1,
             this.mnuLoad,
-            this.saveToolStripMenuItem});
+            this.mnuSave,
+            this.toolStripMenuItem2,
+            this.mnuDelete});
             this.mnuTemplates.Name = "mnuTemplates";
-            this.mnuTemplates.Size = new System.Drawing.Size(103, 76);
+            this.mnuTemplates.Size = new System.Drawing.Size(108, 104);
             // 
-            // resetToolStripMenuItem
+            // mnuReset
             // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resetToolStripMenuItem.Text = "Reset";
+            this.mnuReset.Name = "mnuReset";
+            this.mnuReset.Size = new System.Drawing.Size(152, 22);
+            this.mnuReset.Text = "Reset";
+            this.mnuReset.Click += new System.EventHandler(this.mnuReset_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -111,12 +116,23 @@
             this.mnuLoad.Size = new System.Drawing.Size(152, 22);
             this.mnuLoad.Text = "Load";
             // 
-            // saveToolStripMenuItem
+            // mnuSave
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuSave.Text = "Save";
+            this.mnuSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(152, 22);
+            this.mnuDelete.Text = "Delete";
             // 
             // btnOk
             // 
@@ -386,7 +402,10 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtCommandLine);
             this.Controls.Add(this.btnTemplates);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Aac";
             this.Text = "Aac";
             this.Load += new System.EventHandler(this.Aac_Load);
@@ -424,10 +443,12 @@
         private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.ToolTip ttSettings;
         private System.Windows.Forms.ContextMenuStrip mnuTemplates;
-        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuReset;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuLoad;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mnuDelete;
 
     }
 }
