@@ -15,4 +15,10 @@ namespace MiniCoder2.Templating
         Automatic = 0, LC = 1, HE = 2,
         HEv2 = 3
     }
+
+    public enum XvidEncodingMode : byte
+    {
+        CBR = 0, CQ = 1, TwoPassFirst = 2, 
+        TwoPassSecond = 3, AutoTwoPass = 4
+    }
 }
