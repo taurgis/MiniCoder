@@ -76,6 +76,9 @@
     <Compile Include="ApplicationManager\ApplicationUpdate\IUpdate.cs" />
     <Compile Include="ApplicationManager\ApplicationUpdate\LocalUpdate.cs" />
     <Compile Include="AviSynth Scripts\ASMethod.cs" />
+    <Compile Include="AviSynth Scripts\ASTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AviSynth Scripts\AviSynth Script Editor.cs">
       <SubType>Form</SubType>
     </Compile>
