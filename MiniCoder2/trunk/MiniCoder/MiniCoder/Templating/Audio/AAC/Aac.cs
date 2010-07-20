@@ -193,16 +193,35 @@ namespace MiniCoder2.Templating.Audio.AAC
             }
         }
 
-        private void mnuImport_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void mnuExport_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
-            searchFolderDialog.ShowDialog();
-            controller.ExportTemplate(searchFolderDialog.SelectedPath);
+            if (searchFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (controller.ExportTemplate(searchFolderDialog.SelectedPath))
+                    MessageBox.Show("File exported!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Error exporting file!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void mnuImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Template XML (*.xml)|*.xml";
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName);
+                if (!template.Equals(null))
+                {
+                    MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
+                    UpdateData((AacTemplate)template);
+                    UpdateTemplateList(controller.FetchTemplateNames());
+                }
+            }
+
         }
 
     }

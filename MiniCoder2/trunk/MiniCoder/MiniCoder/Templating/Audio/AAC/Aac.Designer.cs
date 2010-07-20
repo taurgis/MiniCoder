@@ -57,14 +57,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
-            this.sharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSharing = new wyDay.Controls.SplitButton();
+            this.mnuSharing = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).BeginInit();
+            this.mnuSharing.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCommandLine
@@ -96,46 +98,45 @@
             this.toolStripMenuItem1,
             this.mnuLoad,
             this.mnuSave,
-            this.sharingToolStripMenuItem,
             this.toolStripMenuItem2,
             this.mnuDelete});
             this.mnuTemplates.Name = "mnuTemplates";
-            this.mnuTemplates.Size = new System.Drawing.Size(153, 148);
+            this.mnuTemplates.Size = new System.Drawing.Size(108, 104);
             // 
             // mnuReset
             // 
             this.mnuReset.Name = "mnuReset";
-            this.mnuReset.Size = new System.Drawing.Size(152, 22);
+            this.mnuReset.Size = new System.Drawing.Size(107, 22);
             this.mnuReset.Text = "Reset";
             this.mnuReset.Click += new System.EventHandler(this.mnuReset_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
             // 
             // mnuLoad
             // 
             this.mnuLoad.Name = "mnuLoad";
-            this.mnuLoad.Size = new System.Drawing.Size(152, 22);
+            this.mnuLoad.Size = new System.Drawing.Size(107, 22);
             this.mnuLoad.Text = "Load";
             // 
             // mnuSave
             // 
             this.mnuSave.Name = "mnuSave";
-            this.mnuSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuSave.Size = new System.Drawing.Size(107, 22);
             this.mnuSave.Text = "Save";
             this.mnuSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(104, 6);
             // 
             // mnuDelete
             // 
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(152, 22);
+            this.mnuDelete.Size = new System.Drawing.Size(107, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
@@ -397,21 +398,25 @@
             this.ttSettings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttSettings.ToolTipTitle = "Settings";
             // 
-            // sharingToolStripMenuItem
+            // btnSharing
             // 
-            this.sharingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuImport,
-            this.mnuExport});
-            this.sharingToolStripMenuItem.Name = "sharingToolStripMenuItem";
-            this.sharingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sharingToolStripMenuItem.Text = "Sharing";
+            this.btnSharing.AutoSize = true;
+            this.btnSharing.ContextMenuStrip = this.mnuSharing;
+            this.btnSharing.Location = new System.Drawing.Point(83, 136);
+            this.btnSharing.Name = "btnSharing";
+            this.btnSharing.Size = new System.Drawing.Size(65, 23);
+            this.btnSharing.SplitMenuStrip = this.mnuSharing;
+            this.btnSharing.TabIndex = 19;
+            this.btnSharing.Text = "Share";
+            this.btnSharing.UseVisualStyleBackColor = true;
             // 
-            // mnuImport
+            // mnuSharing
             // 
-            this.mnuImport.Name = "mnuImport";
-            this.mnuImport.Size = new System.Drawing.Size(152, 22);
-            this.mnuImport.Text = "Import";
-            this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
+            this.mnuSharing.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExport,
+            this.mnuImport});
+            this.mnuSharing.Name = "mnuTemplates";
+            this.mnuSharing.Size = new System.Drawing.Size(153, 70);
             // 
             // mnuExport
             // 
@@ -420,11 +425,19 @@
             this.mnuExport.Text = "Export";
             this.mnuExport.Click += new System.EventHandler(this.mnuExport_Click);
             // 
+            // mnuImport
+            // 
+            this.mnuImport.Name = "mnuImport";
+            this.mnuImport.Size = new System.Drawing.Size(152, 22);
+            this.mnuImport.Text = "Import";
+            this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
+            // 
             // Aac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(357, 197);
+            this.Controls.Add(this.btnSharing);
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -443,6 +456,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).EndInit();
+            this.mnuSharing.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,9 +491,10 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSave;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
-        private System.Windows.Forms.ToolStripMenuItem sharingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuImport;
+        private wyDay.Controls.SplitButton btnSharing;
+        private System.Windows.Forms.ContextMenuStrip mnuSharing;
         private System.Windows.Forms.ToolStripMenuItem mnuExport;
+        private System.Windows.Forms.ToolStripMenuItem mnuImport;
 
     }
 }

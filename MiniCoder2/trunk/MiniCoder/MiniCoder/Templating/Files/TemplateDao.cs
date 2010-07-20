@@ -87,17 +87,8 @@ namespace MiniCoder2.Templating.Files
         public ExtTemplate LoadTemplate(String name, Type classType)
         {
             String path = "templates\\" + classType.Name + "\\" + name + ".xml";
-            if (!File.Exists(path))
-                throw new TemplateNotFoundException(path);
 
-            XmlSerializer serializer =
-            new XmlSerializer(classType);
-
-            TextReader reader = new StreamReader(path);
-            ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
-            reader.Close();
-
-            return template;
+            return ImportTemplate(path, classType);
         }
 
         public Boolean DeleteTemplate(String name, Type classType)
@@ -115,6 +106,28 @@ namespace MiniCoder2.Templating.Files
             }
         }
 
+        public ExtTemplate ImportTemplate(String path, Type classType)
+        {
+            try
+            {
+                if (!File.Exists(path))
+                    throw new TemplateNotFoundException(path);
 
+                XmlSerializer serializer =
+                new XmlSerializer(classType);
+
+                TextReader reader = new StreamReader(path);
+                ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
+                reader.Close();
+
+                SaveTemplate(template, classType);
+
+                return template;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
     }
 }

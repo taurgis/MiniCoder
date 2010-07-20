@@ -129,5 +129,10 @@ namespace MiniCoder2.Templating.Audio.AAC
         {
             return templateDao.ExportTemplate(this.template, typeof(AacTemplate), path + "\\");
         }
+
+        public ExtTemplate ImportTemplate(String path)
+        {
+            return templateDao.ImportTemplate(path, typeof(AacTemplate));
+        }
     }
 }
