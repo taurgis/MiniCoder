@@ -57,6 +57,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
+            this.sharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
@@ -93,10 +96,11 @@
             this.toolStripMenuItem1,
             this.mnuLoad,
             this.mnuSave,
+            this.sharingToolStripMenuItem,
             this.toolStripMenuItem2,
             this.mnuDelete});
             this.mnuTemplates.Name = "mnuTemplates";
-            this.mnuTemplates.Size = new System.Drawing.Size(153, 126);
+            this.mnuTemplates.Size = new System.Drawing.Size(153, 148);
             // 
             // mnuReset
             // 
@@ -393,6 +397,29 @@
             this.ttSettings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttSettings.ToolTipTitle = "Settings";
             // 
+            // sharingToolStripMenuItem
+            // 
+            this.sharingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuImport,
+            this.mnuExport});
+            this.sharingToolStripMenuItem.Name = "sharingToolStripMenuItem";
+            this.sharingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sharingToolStripMenuItem.Text = "Sharing";
+            // 
+            // mnuImport
+            // 
+            this.mnuImport.Name = "mnuImport";
+            this.mnuImport.Size = new System.Drawing.Size(152, 22);
+            this.mnuImport.Text = "Import";
+            this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
+            // 
+            // mnuExport
+            // 
+            this.mnuExport.Name = "mnuExport";
+            this.mnuExport.Size = new System.Drawing.Size(152, 22);
+            this.mnuExport.Text = "Export";
+            this.mnuExport.Click += new System.EventHandler(this.mnuExport_Click);
+            // 
             // Aac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +477,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSave;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
+        private System.Windows.Forms.ToolStripMenuItem sharingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuImport;
+        private System.Windows.Forms.ToolStripMenuItem mnuExport;
 
     }
 }

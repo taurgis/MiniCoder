@@ -180,7 +180,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         {
             if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (controller.DeleteTemplate(template.Name))
+                if (controller.DeleteTemplate())
                 {
                     MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetInterface();
@@ -189,8 +189,20 @@ namespace MiniCoder2.Templating.Audio.AAC
                     MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 UpdateTemplateList(controller.FetchTemplateNames());
-
+                Application.Exit();
             }
+        }
+
+        private void mnuImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuExport_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
+            searchFolderDialog.ShowDialog();
+            controller.ExportTemplate(searchFolderDialog.SelectedPath);
         }
 
     }
