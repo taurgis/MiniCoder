@@ -94,14 +94,14 @@
     <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
     <Compile Include="Exceptions\TemplateExceptions.cs" />
     <Compile Include="Templating\Audio\AAC\AacTemplate.cs" />
-    <Compile Include="Templating\Audio\Xvid\Xvid.cs">
+    <Compile Include="Templating\Video\Xvid\Xvid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Templating\Audio\Xvid\Xvid.Designer.cs">
+    <Compile Include="Templating\Video\Xvid\Xvid.Designer.cs">
       <DependentUpon>Xvid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templating\Audio\Xvid\XvidTemplate.cs" />
-    <Compile Include="Templating\Audio\Xvid\XvidTemplateController.cs" />
+    <Compile Include="Templating\Video\Xvid\XvidTemplate.cs" />
+    <Compile Include="Templating\Video\Xvid\XvidTemplateController.cs" />
     <Compile Include="Templating\Enums.cs" />
     <Compile Include="Templating\ExtTemplate.cs" />
     <Compile Include="Templating\Files\TemplateDao.cs" />
@@ -134,7 +134,7 @@
     <EmbeddedResource Include="Templating\Audio\AAC\Aac.resx">
       <DependentUpon>Aac.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Templating\Audio\Xvid\Xvid.resx">
+    <EmbeddedResource Include="Templating\Video\Xvid\Xvid.resx">
       <DependentUpon>Xvid.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
