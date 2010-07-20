@@ -120,9 +120,14 @@ namespace MiniCoder2.Templating.Audio.AAC
             view.UpdateData(this.template);
         }
 
-        public Boolean DeleteTemplate(String name)
+        public Boolean DeleteTemplate()
         {
-            return templateDao.DeleteTemplate(name, typeof(AacTemplate));
+            return templateDao.DeleteTemplate(template.Name, typeof(AacTemplate));
+        }
+
+        public Boolean ExportTemplate(String path)
+        {
+            return templateDao.ExportTemplate(this.template, typeof(AacTemplate), path + "\\");
         }
     }
 }
