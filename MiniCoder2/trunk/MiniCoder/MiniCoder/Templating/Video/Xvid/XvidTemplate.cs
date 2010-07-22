@@ -31,8 +31,6 @@ namespace MiniCoder2.Templating.Audio.Xvid
 
         public override string GenerateCommandLine()
         {
-            bool OutputRequired = true;
-
             String OutputCommand = " -o <output> ";
             String Mode;
 
@@ -46,15 +44,15 @@ namespace MiniCoder2.Templating.Audio.Xvid
                     break;
                 case XvidEncodingMode.TwoPassFirst:
                     Mode = "-pass 1 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
+                    OutputCommand = "";
+                    break;
+                case XvidEncodingMode.TwoPassSecond:
+                    Mode = "-pass 2 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
                     break;
                 ///MORE TO COME
             }
 
-            if (!OutputRequired)
-                OutputCommand = "";
-
             return "program -i <input> " + XMode + " -nopacked -threads 1 " + OutputCommand;
         }
-
     }
 }
