@@ -33,12 +33,14 @@
             this.BitrateLabel = new System.Windows.Forms.Label();
             this.ModeLabel = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
+            this.CommandDisplay = new System.Windows.Forms.TextBox();
             this.Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BitrateBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Settings
             // 
+            this.Settings.Controls.Add(this.CommandDisplay);
             this.Settings.Controls.Add(this.BitrateBox);
             this.Settings.Controls.Add(this.BitrateLabel);
             this.Settings.Controls.Add(this.ModeLabel);
@@ -97,6 +99,13 @@
             this.cbMode.Size = new System.Drawing.Size(104, 21);
             this.cbMode.TabIndex = 15;
             // 
+            // CommandDisplay
+            // 
+            this.CommandDisplay.Location = new System.Drawing.Point(15, 161);
+            this.CommandDisplay.Name = "CommandDisplay";
+            this.CommandDisplay.Size = new System.Drawing.Size(371, 20);
+            this.CommandDisplay.TabIndex = 20;
+            // 
             // Xvid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,5 +129,6 @@
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.Label BitrateLabel;
         private System.Windows.Forms.NumericUpDown BitrateBox;
+        private System.Windows.Forms.TextBox CommandDisplay;
     }
 }
