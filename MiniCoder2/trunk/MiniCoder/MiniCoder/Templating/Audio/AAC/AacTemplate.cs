@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MiniCoder2.Exceptions;
 using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Audio.AAC
