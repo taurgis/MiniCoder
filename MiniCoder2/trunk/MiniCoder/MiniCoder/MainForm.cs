@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MiniCoder2.Templating.Audio.AAC;
+using MiniCoder2.Templating.Video.Xvid;
 
 namespace MiniCoder2
 {
@@ -21,6 +22,12 @@ namespace MiniCoder2
         {
             Aac frmAac = new Aac();
             frmAac.ShowDialog();
+        }
+
+        private void btnXvid_Click(object sender, EventArgs e)
+        {
+            Xvid frmXvid = new Xvid();
+            frmXvid.ShowDialog();
         }
     }
 }
