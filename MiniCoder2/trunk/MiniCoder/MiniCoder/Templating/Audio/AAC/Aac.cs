@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MiniCoder2.Exceptions;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
@@ -14,6 +7,7 @@ namespace MiniCoder2.Templating.Audio.AAC
     {
         private AacTemplateController controller;
         private AacTemplate template;
+
         public Aac()
         {
             InitializeComponent();
@@ -27,6 +21,10 @@ namespace MiniCoder2.Templating.Audio.AAC
             UpdateTemplateList(controller.FetchTemplateNames());
         }
 
+        /// <summary>
+        /// When variable bitrate is selected only the quality matters and bitrate is calculated
+        /// automatically. On other modes quality is disabled and the bitrate is editable.
+        /// </summary>
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbMode.SelectedIndex.Equals(0))
@@ -48,6 +46,9 @@ namespace MiniCoder2.Templating.Audio.AAC
             this.Close();
         }
 
+        /// <summary>
+        /// Reset the interface to its default settings.
+        /// </summary>
         private void ResetInterface()
         {
             cbMode.SelectedIndex = 0;
@@ -57,12 +58,6 @@ namespace MiniCoder2.Templating.Audio.AAC
             nudQuality.Value = (Decimal)0.5;
             nudDelay.Value = 0;
             nudBitrate.Value = 160;
-        }
-
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -152,6 +147,10 @@ namespace MiniCoder2.Templating.Audio.AAC
             UpdateTemplateList(controller.FetchTemplateNames());
         }
 
+        /// <summary>
+        /// Show all templates for this type in the splitbutton menu.
+        /// </summary>
+        /// <param name="templateNames">Array of template names.</param>
         private void UpdateTemplateList(String[] templateNames)
         {
             mnuLoad.DropDownItems.Clear();
@@ -176,6 +175,9 @@ namespace MiniCoder2.Templating.Audio.AAC
             ResetInterface();
         }
 
+        /// <summary>
+        /// Delete the current active template.
+        /// </summary>
         private void mnuDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
@@ -189,10 +191,8 @@ namespace MiniCoder2.Templating.Audio.AAC
                     MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 UpdateTemplateList(controller.FetchTemplateNames());
-                Application.Exit();
             }
         }
-
 
 
         private void mnuExport_Click(object sender, EventArgs e)
@@ -222,6 +222,17 @@ namespace MiniCoder2.Templating.Audio.AAC
                 }
             }
 
+        }
+
+        /// <summary>
+        /// When the user clicks ok the form will close and the main form will select
+        /// this template.
+        /// 
+        /// TODO: Link to the main form. (Milestone 2)
+        /// </summary>
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
