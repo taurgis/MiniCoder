@@ -1,4 +1,4 @@
-﻿namespace MiniCoder2.Templating.Audio.Xvid
+﻿namespace MiniCoder2.Templating.Video.Xvid
 {
     partial class Xvid
     {

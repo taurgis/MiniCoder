@@ -5,7 +5,7 @@ using System.Text;
 using MiniCoder2.Exceptions;
 using System.Xml.Serialization;
 
-namespace MiniCoder2.Templating.Audio.Xvid
+namespace MiniCoder2.Templating.Video.Xvid
 {
     class XvidTemplate : ExtTemplate
     {

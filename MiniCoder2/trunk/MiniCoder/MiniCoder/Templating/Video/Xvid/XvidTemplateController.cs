@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using MiniCoder2.Templating.Files;
 
-namespace MiniCoder2.Templating.Audio.Xvid
+namespace MiniCoder2.Templating.Video.Xvid
 {
     class XvidTemplateController
     {

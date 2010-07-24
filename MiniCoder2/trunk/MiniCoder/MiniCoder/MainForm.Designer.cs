@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAAC = new System.Windows.Forms.Button();
-            this.XvidButton = new System.Windows.Forms.Button();
+            this.btnXvid = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAAC
@@ -42,21 +42,22 @@
             this.btnAAC.UseVisualStyleBackColor = true;
             this.btnAAC.Click += new System.EventHandler(this.btnAAC_Click);
             // 
-            // XvidButton
+            // btnXvid
             // 
-            this.XvidButton.Location = new System.Drawing.Point(437, 101);
-            this.XvidButton.Name = "XvidButton";
-            this.XvidButton.Size = new System.Drawing.Size(75, 23);
-            this.XvidButton.TabIndex = 1;
-            this.XvidButton.Text = "Xvid";
-            this.XvidButton.UseVisualStyleBackColor = true;
+            this.btnXvid.Location = new System.Drawing.Point(437, 101);
+            this.btnXvid.Name = "btnXvid";
+            this.btnXvid.Size = new System.Drawing.Size(75, 23);
+            this.btnXvid.TabIndex = 1;
+            this.btnXvid.Text = "Xvid";
+            this.btnXvid.UseVisualStyleBackColor = true;
+            this.btnXvid.Click += new System.EventHandler(this.btnXvid_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 504);
-            this.Controls.Add(this.XvidButton);
+            this.Controls.Add(this.btnXvid);
             this.Controls.Add(this.btnAAC);
             this.Name = "MainForm";
             this.Text = "MiniCoder 2.0";
@@ -67,7 +68,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnAAC;
-        private System.Windows.Forms.Button XvidButton;
+        private System.Windows.Forms.Button btnXvid;
     }
 }
 

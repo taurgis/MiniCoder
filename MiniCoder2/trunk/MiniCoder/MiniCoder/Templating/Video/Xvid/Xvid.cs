@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MiniCoder2.Templating.Audio.Xvid
+namespace MiniCoder2.Templating.Video.Xvid
 {
-    public partial class Xvid : Form
+    public partial class Xvid : Form, TemplateForm
     {
         public Xvid()
         {
@@ -32,6 +32,11 @@ namespace MiniCoder2.Templating.Audio.Xvid
         }
 
         private void Xvid_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        public void UpdateData(ExtTemplate template) 
         {
 
         }
