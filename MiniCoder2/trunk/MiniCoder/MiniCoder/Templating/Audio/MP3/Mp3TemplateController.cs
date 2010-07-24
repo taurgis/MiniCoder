@@ -1,15 +1,15 @@
 ﻿using System;
 using MiniCoder2.Templating.Files;
 
-namespace MiniCoder2.Templating.Audio.AAC
+namespace MiniCoder2.Templating.Audio.MP3
 {
-    public class AacTemplateController
+    public class Mp3TemplateController
     {
-        private AacTemplate template;
+        private Mp3Template template;
         private TemplateForm view;
         private TemplateDao templateDao;
 
-        public AacTemplateController(TemplateForm view, AacTemplate template)
+        public Mp3TemplateController(TemplateForm view, Mp3Template template)
         {
             this.view = view;
             this.template = template;
@@ -32,6 +32,7 @@ namespace MiniCoder2.Templating.Audio.AAC
                 this.template.BitRate = 16 + ((int)(quality * (double)10) * 16);
                 this.template.Quality = quality;
             }
+
             RefreshView();
         }
 
@@ -46,28 +47,6 @@ namespace MiniCoder2.Templating.Audio.AAC
         public void ChangeDelay(Int32 delay)
         {
             this.template.Delay = delay;
-            RefreshView();
-        }
-
-        public void ChangeProfile(int selectedIndex)
-        {
-            this.template.Profile = (AudioEncodingProfile)selectedIndex;
-            RefreshView();
-        }
-
-        public void ChangeChannels(int selectedIndex)
-        {
-            if (selectedIndex <= 1)
-                switch (selectedIndex)
-                {
-                    case 0:
-                        this.template.Channels = 2;
-                        break;
-                    case 1:
-                        this.template.Channels = 6;
-                        break;
-                }
-
             RefreshView();
         }
 
@@ -111,7 +90,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(AacTemplate));
+                templateDao.SaveTemplate(template, typeof(Mp3Template));
             }
         }
 
@@ -121,7 +100,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <param name="name">The name of the template.</param>
         public void LoadTemplate(String name)
         {
-            this.template = (AacTemplate)templateDao.LoadTemplate(name, typeof(AacTemplate));
+            this.template = (Mp3Template)templateDao.LoadTemplate(name, typeof(Mp3Template));
             view.UpdateData(this.template);
         }
 
@@ -131,7 +110,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>Array of template names.</returns>
         public String[] FetchTemplateNames()
         {
-            return templateDao.GetTemplatesByType(typeof(AacTemplate));
+            return templateDao.GetTemplatesByType(typeof(Mp3Template));
         }
 
         /// <summary>
@@ -140,7 +119,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>Wether or not it was successfull.</returns>
         public Boolean DeleteTemplate()
         {
-            return templateDao.DeleteTemplate(template.Name, typeof(AacTemplate));
+            return templateDao.DeleteTemplate(template.Name, typeof(Mp3Template));
         }
 
         /// <summary>
@@ -150,7 +129,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>Wether or not it was successfull.</returns>
         public Boolean ExportTemplate(String path)
         {
-            return templateDao.ExportTemplate(this.template, typeof(AacTemplate), path + "\\");
+            return templateDao.ExportTemplate(this.template, typeof(Mp3Template), path + "\\");
         }
 
         /// <summary>
@@ -160,7 +139,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>The template class for the imported file.</returns>
         public ExtTemplate ImportTemplate(String path)
         {
-            return templateDao.ImportTemplate(path, typeof(AacTemplate));
+            return templateDao.ImportTemplate(path, typeof(Mp3Template));
         }
     }
 }
