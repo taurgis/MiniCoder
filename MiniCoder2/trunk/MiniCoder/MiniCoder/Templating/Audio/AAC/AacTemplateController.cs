@@ -29,7 +29,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         {
             if (quality > 0 && quality <= 1)
             {
-                this.template.BitRate = 16 + ((int)(quality * (double)10) * 16);
+                this.template.BitRate = ((int)(quality * (double)10) * 32);
                 this.template.Quality = quality;
             }
             RefreshView();
