@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using MiniCoder2.Templating.Audio.AAC;
 using MiniCoder2.Templating.Video.Xvid;
+using MiniCoder2.Templating.Audio.MP3;
 
 namespace MiniCoder2
 {
@@ -28,6 +29,12 @@ namespace MiniCoder2
         {
             Xvid frmXvid = new Xvid();
             frmXvid.ShowDialog();
+        }
+
+        private void btnMP3_Click(object sender, EventArgs e)
+        {
+            Mp3 frmMp3 = new Mp3();
+            frmMp3.ShowDialog();
         }
     }
 }

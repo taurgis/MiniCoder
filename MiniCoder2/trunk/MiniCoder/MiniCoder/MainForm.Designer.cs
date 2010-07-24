@@ -30,6 +30,7 @@
         {
             this.btnAAC = new System.Windows.Forms.Button();
             this.btnXvid = new System.Windows.Forms.Button();
+            this.btnMP3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAAC
@@ -52,11 +53,22 @@
             this.btnXvid.UseVisualStyleBackColor = true;
             this.btnXvid.Click += new System.EventHandler(this.btnXvid_Click);
             // 
+            // btnMP3
+            // 
+            this.btnMP3.Location = new System.Drawing.Point(518, 72);
+            this.btnMP3.Name = "btnMP3";
+            this.btnMP3.Size = new System.Drawing.Size(75, 23);
+            this.btnMP3.TabIndex = 2;
+            this.btnMP3.Text = "MP3";
+            this.btnMP3.UseVisualStyleBackColor = true;
+            this.btnMP3.Click += new System.EventHandler(this.btnMP3_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 504);
+            this.Controls.Add(this.btnMP3);
             this.Controls.Add(this.btnXvid);
             this.Controls.Add(this.btnAAC);
             this.Name = "MainForm";
@@ -69,6 +81,7 @@
 
         private System.Windows.Forms.Button btnAAC;
         private System.Windows.Forms.Button btnXvid;
+        private System.Windows.Forms.Button btnMP3;
     }
 }
 

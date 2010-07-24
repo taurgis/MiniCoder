@@ -54,6 +54,8 @@ namespace MiniCoder2.Templating.Files
         /// <returns>Array of the template names.</returns>
         public String[] GetTemplatesByType(Type classType)
         {
+            if (!Directory.Exists("templates\\" + classType.Name))
+                Directory.CreateDirectory("templates\\" + classType.Name);
             String[] files = Directory.GetFiles("templates\\" + classType.Name);
             //Using a list because not all files found will be returned.
             List<String> returnNames = new List<string>();
