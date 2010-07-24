@@ -26,5 +26,24 @@ namespace MiniCoder2.ApplicationManager
                     return @"\";
             }
         }
+
+        public static String ApplicationRefrence(int ApplicationIndex)
+        {
+            switch (ApplicationIndex)
+            {
+                case 0:
+                    return "X264";
+                case 1:
+                    return "AviSyth";
+                case 2:
+                    return "Besweet";
+                case 3:
+                    return "MKVToolnix";
+                case 4:
+                    return "MP4Box";
+                default:
+                    return "";
+            }
+        }
     }
 }

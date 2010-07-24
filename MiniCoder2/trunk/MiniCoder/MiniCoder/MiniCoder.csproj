@@ -75,6 +75,12 @@
     <Compile Include="ApplicationManager\ApplicationUpdate\ExternalUpdate.cs" />
     <Compile Include="ApplicationManager\ApplicationUpdate\IUpdate.cs" />
     <Compile Include="ApplicationManager\ApplicationUpdate\LocalUpdate.cs" />
+    <Compile Include="ApplicationManager\Gui\ApplicationUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationManager\Gui\ApplicationUpdateForm.Designer.cs">
+      <DependentUpon>ApplicationUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AviSynth Scripts\ASMethod.cs" />
     <Compile Include="AviSynth Scripts\ASTextBox.cs">
       <SubType>Component</SubType>
@@ -115,6 +121,9 @@
       <DependentUpon>Aac.cs</DependentUpon>
     </Compile>
     <Compile Include="Templating\TemplateForm.cs" />
+    <EmbeddedResource Include="ApplicationManager\Gui\ApplicationUpdateForm.resx">
+      <DependentUpon>ApplicationUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AviSynth Scripts\AviSynth Script Editor.resx">
       <DependentUpon>AviSynth Script Editor.cs</DependentUpon>
     </EmbeddedResource>
