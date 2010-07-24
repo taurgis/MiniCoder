@@ -8,6 +8,6 @@ namespace MiniCoder2.ApplicationManager.ApplicationUpdate
     interface IUpdate
     {
         Boolean UpdateApplication(List<String> application);
-        double GetVersion(List<String> application);
+        String[] GetVersion(List<String> application);
     }
 }

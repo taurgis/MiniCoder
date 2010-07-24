@@ -7,10 +7,10 @@ namespace MiniCoder2.ApplicationManager
 {
     public enum ExtApplication
     {
+        X264,
         AviSynth,
         Besweet,
         MKVToolnix,
         MP4Box,
-        X264,
     }
 }

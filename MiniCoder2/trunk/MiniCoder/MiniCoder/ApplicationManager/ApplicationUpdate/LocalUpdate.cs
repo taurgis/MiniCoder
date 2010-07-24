@@ -16,9 +16,11 @@ namespace MiniCoder2.ApplicationManager.ApplicationUpdate
             return true;
         }
 
-        public double GetVersion(List<String> application)
+        public String[] GetVersion(List<String> application)
         {
-            return 1.0;
+            String[] versionList = new String[1];
+            versionList[0] = "1.0";
+            return versionList; //return curerent application version
         }
     }
 }

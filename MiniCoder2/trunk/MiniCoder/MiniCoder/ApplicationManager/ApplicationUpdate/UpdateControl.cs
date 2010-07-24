@@ -7,34 +7,40 @@ namespace MiniCoder2.ApplicationManager.ApplicationUpdate
 {
     class UpdateControl
     {
-        public List<String> applicationList {get; set;}
+        public List<String> ApplicationList {get; set;}
+        public String[] VersionList {get; set;}
+
         IUpdate AppUpdate = null;
 
-        UpdateControl()
+        public UpdateControl()
         {
-            this.applicationList = null;
+            this.ApplicationList = null;
         }
 
-        UpdateControl(List<String> applicationList)
+        public UpdateControl(List<String> applicationList)
         {
-            this.applicationList = applicationList;
+            this.ApplicationList = applicationList;
         }
 
+        /// <summary>
+        /// Check to see if each external application in the list of applications
+        /// is up to date
+        /// </summary>
         public void CheckForUpdates()
         {
-            if (applicationList != null)
+            if (ApplicationList != null)
             {
                 AppUpdate = new ExternalUpdate();
-                AppUpdate.GetVersion(applicationList);
+                VersionList = AppUpdate.GetVersion(ApplicationList);
             }
         }
 
         public void UpdateApplication()
         {
-            if (applicationList != null)
+            if (ApplicationList != null)
             {
                 AppUpdate = new ExternalUpdate();
-                AppUpdate.UpdateApplication(applicationList);
+                AppUpdate.UpdateApplication(ApplicationList);
             }
         }
 
