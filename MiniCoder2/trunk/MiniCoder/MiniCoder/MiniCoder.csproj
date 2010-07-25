@@ -100,6 +100,14 @@
     <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
     <Compile Include="Exceptions\TemplateExceptions.cs" />
     <Compile Include="Templating\Audio\AAC\AacTemplate.cs" />
+    <Compile Include="Templating\Audio\Vorbis\Vorbis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templating\Audio\Vorbis\Vorbis.Designer.cs">
+      <DependentUpon>Vorbis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templating\Audio\Vorbis\VorbisTemplate.cs" />
+    <Compile Include="Templating\Audio\Vorbis\VorbisTemplateController.cs" />
     <Compile Include="Templating\Audio\MP3\Mp3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +158,9 @@
     </Compile>
     <EmbeddedResource Include="Templating\Audio\AAC\Aac.resx">
       <DependentUpon>Aac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templating\Audio\Vorbis\Vorbis.resx">
+      <DependentUpon>Vorbis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templating\Audio\MP3\Mp3.resx">
       <DependentUpon>Mp3.cs</DependentUpon>

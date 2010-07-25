@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MiniCoder2.Templating.Audio.AAC;
 using MiniCoder2.Templating.Video.Xvid;
 using MiniCoder2.Templating.Audio.MP3;
+using MiniCoder2.Templating.Audio.Vorbis;
 
 namespace MiniCoder2
 {
@@ -35,6 +36,12 @@ namespace MiniCoder2
         {
             Mp3 frmMp3 = new Mp3();
             frmMp3.ShowDialog();
+        }
+
+        private void btnVorbis_Click(object sender, EventArgs e)
+        {
+            Vorbis frmVorbis = new Vorbis();
+            frmVorbis.ShowDialog();
         }
     }
 }
