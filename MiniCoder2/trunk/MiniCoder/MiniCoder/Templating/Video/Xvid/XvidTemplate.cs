@@ -11,14 +11,23 @@ namespace MiniCoder2.Templating.Video.Xvid
     {
         [XmlElement("XMode")]
         public XvidEncodingMode XMode;
+        [XmlElement("XMotionSearch")]
+        public XVidMotionSearch XMotionSearch;
+        [XmlElement("XHVSMasking")]
+        public XVidHVSMasking XHVSMasking;
+        [XmlElement("XVHQMode")]
+        public XvidVHQMode XVHQMode;
         [XmlElement("XBitRate")]
-        public Int32 XBitRate;
+        public Int32 XBitRate;        
+        [XmlElement("XThreads")]
+        public Int32 XThreads;        
         [XmlElement("XQuantizer")]
         public Int32 XQuantizer;
-        [XmlElement("XLogFile")]
-        public String XLogFile;
         [XmlElement("XKBoost")]
         public Int32 XKBoost;
+        [XmlElement("XLogFile")]
+        public String XLogFile;
+
 
         public XvidTemplate() 
         {
@@ -55,10 +64,9 @@ namespace MiniCoder2.Templating.Video.Xvid
                 default:
                     Mode = "";
                     break;
-                ///MORE TO COME
             }
 
-            return "program -i <input> " + Mode + " -nopacked -threads 1 " + OutputCommand;
+            return "program -i <input> " + Mode + " -nopacked -threads 1 " + OutputCommand + (int)XVHQMode;
         }
     }
 }
