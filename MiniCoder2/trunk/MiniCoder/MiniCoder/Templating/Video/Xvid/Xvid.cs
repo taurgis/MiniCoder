@@ -29,12 +29,7 @@ namespace MiniCoder2.Templating.Video.Xvid
         {           
         }
 
-        private void Xvid_load(object sender, EventArgs e)
-        {
-            ResetInterface();
-        }
-
-        private void Xvid_Load_1(object sender, EventArgs e)
+        private void Xvid_Load(object sender, EventArgs e)
         {
             ResetInterface();
         }
@@ -42,7 +37,11 @@ namespace MiniCoder2.Templating.Video.Xvid
         private void ResetInterface()
         {
             cbMode.SelectedIndex = (int)XvidEncodingMode.CBR;
+            cbMotionSearch.SelectedIndex = (int)XVidMotionSearch.None;
+            cbVHQMode.SelectedIndex = (int)XvidVHQMode.Off;
+            cbHVSMasking.SelectedIndex = (int)XVidHVSMasking.None;
             BitrateBox.Value = 150;
+
         }
 
         public void UpdateData(ExtTemplate template) 
@@ -61,14 +60,24 @@ namespace MiniCoder2.Templating.Video.Xvid
             this.xController.ChangeBitrate(Int32.Parse(BitrateBox.Value.ToString()));
         }
 
-        private void BitrateLabel_Click(object sender, EventArgs e)
+        private void cbVHQMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.xController.ChangeVHQMode(cbVHQMode.SelectedIndex);
         }
 
-        private void HVSMaskingLabel_Click(object sender, EventArgs e)
+        private void cbHVSMasking_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.xController.ChangeHVSMasking(cbMotionSearch.SelectedIndex);
+        }
 
+        private void cbMotionSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.xController.ChangeMotionSearch(cbMotionSearch.SelectedIndex);
+        }
+
+        private void nudThreads_ValueChanged(object sender, EventArgs e)
+        {
+            this.xController.ChangeThreads(Int32.Parse(nudThreads.Value.ToString()));
         }
     }
 }

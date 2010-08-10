@@ -38,5 +38,78 @@ namespace MiniCoder2.Templating.Video.Xvid
 
             RefreshView();
         }
+
+        public void ChangeVHQMode(int vhqMode)
+        {
+            this.xTemplate.XVHQMode = (XvidVHQMode) vhqMode;
+            RefreshView();
+        }
+
+        public void ChangeThreads(int threads)
+        {
+            this.xTemplate.XThreads = threads;
+            RefreshView();
+        }
+
+        public void ChangeHVSMasking(int hvsMode)
+        {
+            this.xTemplate.XHVSMasking = (XVidHVSMasking) hvsMode;
+            RefreshView();
+        }
+
+        public void ChangeMotionSearch(int motionSearch)
+        {
+            this.xTemplate.XMotionSearch = (XVidMotionSearch) motionSearch;
+        }
+
+        public void SelectInterlaced()
+        {
+
+        }
+
+        public void SelectTurbo()
+        {
+
+        }
+
+        public void SelectTrellisQuant()
+        {
+
+        }
+
+        public void SelectPackedBitstream()
+        {
+
+        }
+
+        public void SelectAdaptiveQuant()
+        {
+
+        }
+
+        public void SelectQPel()
+        {
+
+        }
+
+        public void SelectGMC()
+        {
+
+        }
+
+        public void SelectChromaMotion()
+        {
+
+        }
+
+        public void SelectVHQBFrames()
+        {
+
+        }
+
+        public void SelectClosedGOP()
+        {
+
+        }
     }
 }
