@@ -13,7 +13,7 @@ namespace MiniCoder2.Templating.Video.Xvid
         private TemplateForm xView;
         private TemplateDao xTemplateDao;
 
-        public XvidTemplateController(XvidTemplate template, TemplateForm view)
+        public XvidTemplateController(TemplateForm view, XvidTemplate template)
         {
             this.xTemplate = template;
             this.xView = view;
@@ -28,7 +28,6 @@ namespace MiniCoder2.Templating.Video.Xvid
         public void ChangeMode(int mode)
         {
             this.xTemplate.XMode = (XvidEncodingMode) mode;
-
             RefreshView();
         }
 

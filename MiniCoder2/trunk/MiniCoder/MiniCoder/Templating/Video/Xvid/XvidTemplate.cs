@@ -49,10 +49,16 @@ namespace MiniCoder2.Templating.Video.Xvid
                 case XvidEncodingMode.TwoPassSecond:
                     Mode = "-pass 2 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
                     break;
+                case XvidEncodingMode.AutoTwoPass:
+                    Mode = "";
+                    break;
+                default:
+                    Mode = "";
+                    break;
                 ///MORE TO COME
             }
 
-            return "program -i <input> " + XMode + " -nopacked -threads 1 " + OutputCommand;
+            return "program -i <input> " + Mode + " -nopacked -threads 1 " + OutputCommand;
         }
     }
 }
