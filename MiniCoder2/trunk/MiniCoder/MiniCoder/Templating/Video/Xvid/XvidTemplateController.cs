@@ -25,91 +25,115 @@ namespace MiniCoder2.Templating.Video.Xvid
             this.xView.UpdateData(xTemplate);
         }
 
-        public void ChangeMode(int mode)
-        {
-            this.xTemplate.XMode = (XvidEncodingMode) mode;
-            RefreshView();
-        }
-
         public void ChangeBitrate(int bitrate)
         {
-            if(bitrate > 0 && bitrate < 10000)
+            if(bitrate > 0 && bitrate <= 10000)
                 this.xTemplate.XBitRate = bitrate;
-
-            RefreshView();
-        }
-
-        public void ChangeVHQMode(int vhqMode)
-        {
-            this.xTemplate.XVHQMode = (XvidVHQMode) vhqMode;
             RefreshView();
         }
 
         public void ChangeThreads(int threads)
         {
-            this.xTemplate.XThreads = threads;
+            if(threads > 0 && threads <= 100)
+                this.xTemplate.XThreads = threads;
+            RefreshView();
+        }
+
+        public void ChangeBFrames(int bframes)
+        {
+            if(bframes >= 0 && bframes <= 4)
+                this.xTemplate.XBFrames = bframes;
+            RefreshView();
+        }
+
+        public void ChangeMode(int mode)
+        {
+            this.xTemplate.XMode = (XVidEncodingMode)mode;
+            RefreshView();
+        }
+
+        public void ChangeVHQMode(int vhqMode)
+        {
+            this.xTemplate.XVHQMode = (XVidVHQMode) vhqMode;
+            RefreshView();
+        }
+
+        public void ChangeProfile(int profile)
+        {
+            this.xTemplate.XProfile = (XVidProfile)profile;
             RefreshView();
         }
 
         public void ChangeHVSMasking(int hvsMode)
         {
-            this.xTemplate.XHVSMasking = (XVidHVSMasking) hvsMode;
+            this.xTemplate.XHVSMasking = (XVidHVSMasking)hvsMode;
             RefreshView();
         }
 
         public void ChangeMotionSearch(int motionSearch)
         {
-            this.xTemplate.XMotionSearch = (XVidMotionSearch) motionSearch;
+            this.xTemplate.XMotionSearch = (XVidMotionSearch)motionSearch;
+            RefreshView();
+        }
+                        
+        public void SelectInterlaced(bool interlaced)
+        {
+            this.xTemplate.XInterlace = interlaced;
+            RefreshView();
         }
 
-        public void SelectInterlaced()
+        public void SelectTurbo(bool turbo)
         {
-
+            this.xTemplate.XTurbo = turbo;
+            RefreshView();
         }
 
-        public void SelectTurbo()
+        public void SelectTrellisQuant(bool trellis)
         {
-
+            this.xTemplate.XTrellisQuant = trellis;
+            RefreshView();
         }
 
-        public void SelectTrellisQuant()
+        public void SelectPackedBitstream(bool pBitstream)
         {
-
+            this.xTemplate.XPackedBitstream = pBitstream;
+            RefreshView();
         }
 
-        public void SelectPackedBitstream()
+        public void SelectAdaptiveQuant(bool aQuant)
         {
-
+            this.xTemplate.XAdaptiveQuant = aQuant;
+            RefreshView();
         }
 
-        public void SelectAdaptiveQuant()
+        public void SelectQPel(bool qPel)
         {
-
+            this.xTemplate.XQPel = qPel;
+            RefreshView();
         }
 
-        public void SelectQPel()
+        public void SelectGMC(bool gmc)
         {
-
+            this.xTemplate.XGMC = gmc;
+            RefreshView();
         }
 
-        public void SelectGMC()
+        public void SelectChromaMotion(bool cMotion)
         {
-
+            this.xTemplate.XChromaMotion = cMotion;
+            RefreshView();
         }
 
-        public void SelectChromaMotion()
+        public void SelectVHQBFrames(bool vhqBframes)
         {
-
+            this.xTemplate.XVHQBFrames = vhqBframes;
+            RefreshView();
         }
 
-        public void SelectVHQBFrames()
+        public void SelectClosedGOP(bool closedGOP)
         {
-
-        }
-
-        public void SelectClosedGOP()
-        {
-
+            this.xTemplate.XClosedGOP = closedGOP;
+            RefreshView();
         }
     }
 }
