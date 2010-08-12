@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.Settings = new System.Windows.Forms.GroupBox();
+            this.cbProfile = new System.Windows.Forms.ComboBox();
+            this.ProfileLabel = new System.Windows.Forms.Label();
+            this.nudBFrames = new System.Windows.Forms.NumericUpDown();
+            this.BFramesLabel = new System.Windows.Forms.Label();
+            this.cbMode = new System.Windows.Forms.ComboBox();
             this.cbMotionSearch = new System.Windows.Forms.ComboBox();
             this.MotionSearchLabel = new System.Windows.Forms.Label();
             this.cbHVSMasking = new System.Windows.Forms.ComboBox();
@@ -37,32 +42,37 @@
             this.VHQLabel = new System.Windows.Forms.Label();
             this.nudThreads = new System.Windows.Forms.NumericUpDown();
             this.ThreadsLabel = new System.Windows.Forms.Label();
-            this.BitrateBox = new System.Windows.Forms.NumericUpDown();
+            this.nudBitframes = new System.Windows.Forms.NumericUpDown();
             this.BitrateLabel = new System.Windows.Forms.Label();
             this.ModeLabel = new System.Windows.Forms.Label();
-            this.cbMode = new System.Windows.Forms.ComboBox();
             this.CommandDisplay = new System.Windows.Forms.TextBox();
             this.OtherSettingsBox = new System.Windows.Forms.GroupBox();
-            this.cbTurbo = new System.Windows.Forms.CheckBox();
-            this.cbPackedBitstream = new System.Windows.Forms.CheckBox();
-            this.cbInterlaced = new System.Windows.Forms.CheckBox();
-            this.cbAdaptiveQuantization = new System.Windows.Forms.CheckBox();
-            this.cbTrellis = new System.Windows.Forms.CheckBox();
+            this.tbTurbo = new System.Windows.Forms.CheckBox();
+            this.tbPackedBitstream = new System.Windows.Forms.CheckBox();
+            this.tbInterlaced = new System.Windows.Forms.CheckBox();
+            this.tbAdaptiveQuantization = new System.Windows.Forms.CheckBox();
+            this.tbTrellis = new System.Windows.Forms.CheckBox();
             this.ToolsBox = new System.Windows.Forms.GroupBox();
-            this.CloseGOPBox = new System.Windows.Forms.CheckBox();
-            this.VHQBFramesBox = new System.Windows.Forms.CheckBox();
-            this.ChromaMotionBox = new System.Windows.Forms.CheckBox();
-            this.GMCBox = new System.Windows.Forms.CheckBox();
-            this.QPelBox = new System.Windows.Forms.CheckBox();
+            this.tbCloseGOP = new System.Windows.Forms.CheckBox();
+            this.tbVHQBFrames = new System.Windows.Forms.CheckBox();
+            this.tbChromaMotion = new System.Windows.Forms.CheckBox();
+            this.tbGMC = new System.Windows.Forms.CheckBox();
+            this.tbQPel = new System.Windows.Forms.CheckBox();
             this.Settings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBFrames)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreads)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BitrateBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBitframes)).BeginInit();
             this.OtherSettingsBox.SuspendLayout();
             this.ToolsBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // Settings
             // 
+            this.Settings.Controls.Add(this.cbProfile);
+            this.Settings.Controls.Add(this.ProfileLabel);
+            this.Settings.Controls.Add(this.nudBFrames);
+            this.Settings.Controls.Add(this.BFramesLabel);
+            this.Settings.Controls.Add(this.cbMode);
             this.Settings.Controls.Add(this.cbMotionSearch);
             this.Settings.Controls.Add(this.MotionSearchLabel);
             this.Settings.Controls.Add(this.cbHVSMasking);
@@ -71,10 +81,9 @@
             this.Settings.Controls.Add(this.VHQLabel);
             this.Settings.Controls.Add(this.nudThreads);
             this.Settings.Controls.Add(this.ThreadsLabel);
-            this.Settings.Controls.Add(this.BitrateBox);
+            this.Settings.Controls.Add(this.nudBitframes);
             this.Settings.Controls.Add(this.BitrateLabel);
             this.Settings.Controls.Add(this.ModeLabel);
-            this.Settings.Controls.Add(this.cbMode);
             this.Settings.Location = new System.Drawing.Point(12, 12);
             this.Settings.Name = "Settings";
             this.Settings.Size = new System.Drawing.Size(422, 135);
@@ -82,6 +91,65 @@
             this.Settings.TabStop = false;
             this.Settings.Text = "Settings";
             this.Settings.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cbProfile
+            // 
+            this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProfile.FormattingEnabled = true;
+            this.cbProfile.Items.AddRange(new object[] {
+            "None"});
+            this.cbProfile.Location = new System.Drawing.Point(290, 98);
+            this.cbProfile.Name = "cbProfile";
+            this.cbProfile.Size = new System.Drawing.Size(112, 21);
+            this.cbProfile.TabIndex = 30;
+            this.cbProfile.SelectedIndexChanged += new System.EventHandler(this.cbProfile_SelectedIndexChanged);
+            // 
+            // ProfileLabel
+            // 
+            this.ProfileLabel.AutoSize = true;
+            this.ProfileLabel.Location = new System.Drawing.Point(221, 101);
+            this.ProfileLabel.Name = "ProfileLabel";
+            this.ProfileLabel.Size = new System.Drawing.Size(39, 13);
+            this.ProfileLabel.TabIndex = 29;
+            this.ProfileLabel.Text = "Profile:";
+            // 
+            // nudBFrames
+            // 
+            this.nudBFrames.Location = new System.Drawing.Point(290, 45);
+            this.nudBFrames.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.nudBFrames.Name = "nudBFrames";
+            this.nudBFrames.Size = new System.Drawing.Size(112, 20);
+            this.nudBFrames.TabIndex = 28;
+            this.nudBFrames.ValueChanged += new System.EventHandler(this.nudBFrames_ValueChanged);
+            // 
+            // BFramesLabel
+            // 
+            this.BFramesLabel.AutoSize = true;
+            this.BFramesLabel.Location = new System.Drawing.Point(220, 47);
+            this.BFramesLabel.Name = "BFramesLabel";
+            this.BFramesLabel.Size = new System.Drawing.Size(51, 13);
+            this.BFramesLabel.TabIndex = 27;
+            this.BFramesLabel.Text = "BFrames:";
+            // 
+            // cbMode
+            // 
+            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMode.FormattingEnabled = true;
+            this.cbMode.Items.AddRange(new object[] {
+            "CBR",
+            "CQ",
+            "2Pass - 1st Pass",
+            "2Pass - 2nd Pass",
+            "Auto 2Pass"});
+            this.cbMode.Location = new System.Drawing.Point(93, 17);
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Size = new System.Drawing.Size(112, 21);
+            this.cbMode.TabIndex = 15;
+            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
             // 
             // cbMotionSearch
             // 
@@ -97,7 +165,7 @@
             "Ultra High"});
             this.cbMotionSearch.Location = new System.Drawing.Point(93, 99);
             this.cbMotionSearch.Name = "cbMotionSearch";
-            this.cbMotionSearch.Size = new System.Drawing.Size(117, 21);
+            this.cbMotionSearch.Size = new System.Drawing.Size(112, 21);
             this.cbMotionSearch.TabIndex = 26;
             this.cbMotionSearch.SelectedIndexChanged += new System.EventHandler(this.cbMotionSearch_SelectedIndexChanged);
             // 
@@ -120,7 +188,7 @@
             "Variance"});
             this.cbHVSMasking.Location = new System.Drawing.Point(93, 72);
             this.cbHVSMasking.Name = "cbHVSMasking";
-            this.cbHVSMasking.Size = new System.Drawing.Size(117, 21);
+            this.cbHVSMasking.Size = new System.Drawing.Size(112, 21);
             this.cbHVSMasking.TabIndex = 24;
             this.cbHVSMasking.SelectedIndexChanged += new System.EventHandler(this.cbHVSMasking_SelectedIndexChanged);
             // 
@@ -145,7 +213,7 @@
             "Wide Search"});
             this.cbVHQMode.Location = new System.Drawing.Point(93, 44);
             this.cbVHQMode.Name = "cbVHQMode";
-            this.cbVHQMode.Size = new System.Drawing.Size(117, 21);
+            this.cbVHQMode.Size = new System.Drawing.Size(112, 21);
             this.cbVHQMode.TabIndex = 22;
             this.cbVHQMode.SelectedIndexChanged += new System.EventHandler(this.cbVHQMode_SelectedIndexChanged);
             // 
@@ -160,43 +228,58 @@
             // 
             // nudThreads
             // 
-            this.nudThreads.Location = new System.Drawing.Point(304, 50);
-            this.nudThreads.Maximum = new decimal(new int[] {
-            10000,
+            this.nudThreads.Location = new System.Drawing.Point(290, 72);
+            this.nudThreads.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.nudThreads.Name = "nudThreads";
             this.nudThreads.Size = new System.Drawing.Size(112, 20);
             this.nudThreads.TabIndex = 21;
+            this.nudThreads.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudThreads.ValueChanged += new System.EventHandler(this.nudThreads_ValueChanged);
             // 
             // ThreadsLabel
             // 
             this.ThreadsLabel.AutoSize = true;
-            this.ThreadsLabel.Location = new System.Drawing.Point(234, 52);
+            this.ThreadsLabel.Location = new System.Drawing.Point(220, 74);
             this.ThreadsLabel.Name = "ThreadsLabel";
             this.ThreadsLabel.Size = new System.Drawing.Size(49, 13);
             this.ThreadsLabel.TabIndex = 20;
             this.ThreadsLabel.Text = "Threads:";
             // 
-            // BitrateBox
+            // nudBitframes
             // 
-            this.BitrateBox.Location = new System.Drawing.Point(304, 20);
-            this.BitrateBox.Maximum = new decimal(new int[] {
+            this.nudBitframes.Location = new System.Drawing.Point(290, 19);
+            this.nudBitframes.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.BitrateBox.Name = "BitrateBox";
-            this.BitrateBox.Size = new System.Drawing.Size(112, 20);
-            this.BitrateBox.TabIndex = 19;
-            this.BitrateBox.ValueChanged += new System.EventHandler(this.BitrateBox_ValueChanged);
+            this.nudBitframes.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudBitframes.Name = "nudBitframes";
+            this.nudBitframes.Size = new System.Drawing.Size(112, 20);
+            this.nudBitframes.TabIndex = 19;
+            this.nudBitframes.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudBitframes.ValueChanged += new System.EventHandler(this.BitrateBox_ValueChanged);
             // 
             // BitrateLabel
             // 
             this.BitrateLabel.AutoSize = true;
-            this.BitrateLabel.Location = new System.Drawing.Point(234, 22);
+            this.BitrateLabel.Location = new System.Drawing.Point(220, 21);
             this.BitrateLabel.Name = "BitrateLabel";
             this.BitrateLabel.Size = new System.Drawing.Size(40, 13);
             this.BitrateLabel.TabIndex = 18;
@@ -212,22 +295,6 @@
             this.ModeLabel.Text = "Mode:";
             this.ModeLabel.Click += new System.EventHandler(this.Mode_Click);
             // 
-            // cbMode
-            // 
-            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMode.FormattingEnabled = true;
-            this.cbMode.Items.AddRange(new object[] {
-            "CBR",
-            "CQ",
-            "2Pass - 1st Pass",
-            "2Pass - 2nd Pass",
-            "Auto 2Pass"});
-            this.cbMode.Location = new System.Drawing.Point(93, 17);
-            this.cbMode.Name = "cbMode";
-            this.cbMode.Size = new System.Drawing.Size(117, 21);
-            this.cbMode.TabIndex = 15;
-            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
-            // 
             // CommandDisplay
             // 
             this.CommandDisplay.Location = new System.Drawing.Point(12, 295);
@@ -237,137 +304,147 @@
             // 
             // OtherSettingsBox
             // 
-            this.OtherSettingsBox.Controls.Add(this.cbTurbo);
-            this.OtherSettingsBox.Controls.Add(this.cbPackedBitstream);
-            this.OtherSettingsBox.Controls.Add(this.cbInterlaced);
-            this.OtherSettingsBox.Controls.Add(this.cbAdaptiveQuantization);
-            this.OtherSettingsBox.Controls.Add(this.cbTrellis);
+            this.OtherSettingsBox.Controls.Add(this.tbTurbo);
+            this.OtherSettingsBox.Controls.Add(this.tbPackedBitstream);
+            this.OtherSettingsBox.Controls.Add(this.tbInterlaced);
+            this.OtherSettingsBox.Controls.Add(this.tbAdaptiveQuantization);
+            this.OtherSettingsBox.Controls.Add(this.tbTrellis);
             this.OtherSettingsBox.Location = new System.Drawing.Point(12, 153);
             this.OtherSettingsBox.Name = "OtherSettingsBox";
-            this.OtherSettingsBox.Size = new System.Drawing.Size(210, 136);
+            this.OtherSettingsBox.Size = new System.Drawing.Size(205, 136);
             this.OtherSettingsBox.TabIndex = 21;
             this.OtherSettingsBox.TabStop = false;
             this.OtherSettingsBox.Text = "Other Settings";
             // 
-            // cbTurbo
+            // tbTurbo
             // 
-            this.cbTurbo.AutoSize = true;
-            this.cbTurbo.Location = new System.Drawing.Point(15, 44);
-            this.cbTurbo.Name = "cbTurbo";
-            this.cbTurbo.Size = new System.Drawing.Size(54, 17);
-            this.cbTurbo.TabIndex = 4;
-            this.cbTurbo.Text = "Turbo";
-            this.cbTurbo.UseVisualStyleBackColor = true;
+            this.tbTurbo.AutoSize = true;
+            this.tbTurbo.Location = new System.Drawing.Point(15, 44);
+            this.tbTurbo.Name = "tbTurbo";
+            this.tbTurbo.Size = new System.Drawing.Size(54, 17);
+            this.tbTurbo.TabIndex = 4;
+            this.tbTurbo.Text = "Turbo";
+            this.tbTurbo.UseVisualStyleBackColor = true;
+            this.tbTurbo.CheckedChanged += new System.EventHandler(this.tbTurbo_CheckedChanged);
             // 
-            // cbPackedBitstream
+            // tbPackedBitstream
             // 
-            this.cbPackedBitstream.AutoSize = true;
-            this.cbPackedBitstream.Location = new System.Drawing.Point(15, 90);
-            this.cbPackedBitstream.Name = "cbPackedBitstream";
-            this.cbPackedBitstream.Size = new System.Drawing.Size(109, 17);
-            this.cbPackedBitstream.TabIndex = 3;
-            this.cbPackedBitstream.Text = "Packed Bitstream";
-            this.cbPackedBitstream.UseVisualStyleBackColor = true;
+            this.tbPackedBitstream.AutoSize = true;
+            this.tbPackedBitstream.Location = new System.Drawing.Point(15, 90);
+            this.tbPackedBitstream.Name = "tbPackedBitstream";
+            this.tbPackedBitstream.Size = new System.Drawing.Size(109, 17);
+            this.tbPackedBitstream.TabIndex = 3;
+            this.tbPackedBitstream.Text = "Packed Bitstream";
+            this.tbPackedBitstream.UseVisualStyleBackColor = true;
+            this.tbPackedBitstream.CheckedChanged += new System.EventHandler(this.tbPackedBitstream_CheckedChanged);
             // 
-            // cbInterlaced
+            // tbInterlaced
             // 
-            this.cbInterlaced.AutoSize = true;
-            this.cbInterlaced.Location = new System.Drawing.Point(15, 20);
-            this.cbInterlaced.Name = "cbInterlaced";
-            this.cbInterlaced.Size = new System.Drawing.Size(73, 17);
-            this.cbInterlaced.TabIndex = 2;
-            this.cbInterlaced.Text = "Interlaced";
-            this.cbInterlaced.UseVisualStyleBackColor = true;
+            this.tbInterlaced.AutoSize = true;
+            this.tbInterlaced.Location = new System.Drawing.Point(15, 20);
+            this.tbInterlaced.Name = "tbInterlaced";
+            this.tbInterlaced.Size = new System.Drawing.Size(73, 17);
+            this.tbInterlaced.TabIndex = 2;
+            this.tbInterlaced.Text = "Interlaced";
+            this.tbInterlaced.UseVisualStyleBackColor = true;
+            this.tbInterlaced.CheckedChanged += new System.EventHandler(this.tbInterlaced_CheckedChanged);
             // 
-            // cbAdaptiveQuantization
+            // tbAdaptiveQuantization
             // 
-            this.cbAdaptiveQuantization.AutoSize = true;
-            this.cbAdaptiveQuantization.Location = new System.Drawing.Point(15, 113);
-            this.cbAdaptiveQuantization.Name = "cbAdaptiveQuantization";
-            this.cbAdaptiveQuantization.Size = new System.Drawing.Size(130, 17);
-            this.cbAdaptiveQuantization.TabIndex = 1;
-            this.cbAdaptiveQuantization.Text = "Adaptive Quantization";
-            this.cbAdaptiveQuantization.UseVisualStyleBackColor = true;
+            this.tbAdaptiveQuantization.AutoSize = true;
+            this.tbAdaptiveQuantization.Location = new System.Drawing.Point(15, 113);
+            this.tbAdaptiveQuantization.Name = "tbAdaptiveQuantization";
+            this.tbAdaptiveQuantization.Size = new System.Drawing.Size(130, 17);
+            this.tbAdaptiveQuantization.TabIndex = 1;
+            this.tbAdaptiveQuantization.Text = "Adaptive Quantization";
+            this.tbAdaptiveQuantization.UseVisualStyleBackColor = true;
+            this.tbAdaptiveQuantization.CheckedChanged += new System.EventHandler(this.tbAdaptiveQuantization_CheckedChanged);
             // 
-            // cbTrellis
+            // tbTrellis
             // 
-            this.cbTrellis.AutoSize = true;
-            this.cbTrellis.Location = new System.Drawing.Point(15, 67);
-            this.cbTrellis.Name = "cbTrellis";
-            this.cbTrellis.Size = new System.Drawing.Size(115, 17);
-            this.cbTrellis.TabIndex = 0;
-            this.cbTrellis.Text = "Trellis Quantization";
-            this.cbTrellis.UseVisualStyleBackColor = true;
+            this.tbTrellis.AutoSize = true;
+            this.tbTrellis.Location = new System.Drawing.Point(15, 67);
+            this.tbTrellis.Name = "tbTrellis";
+            this.tbTrellis.Size = new System.Drawing.Size(115, 17);
+            this.tbTrellis.TabIndex = 0;
+            this.tbTrellis.Text = "Trellis Quantization";
+            this.tbTrellis.UseVisualStyleBackColor = true;
+            this.tbTrellis.CheckedChanged += new System.EventHandler(this.tbTrellis_CheckedChanged);
             // 
             // ToolsBox
             // 
-            this.ToolsBox.Controls.Add(this.CloseGOPBox);
-            this.ToolsBox.Controls.Add(this.VHQBFramesBox);
-            this.ToolsBox.Controls.Add(this.ChromaMotionBox);
-            this.ToolsBox.Controls.Add(this.GMCBox);
-            this.ToolsBox.Controls.Add(this.QPelBox);
-            this.ToolsBox.Location = new System.Drawing.Point(228, 154);
+            this.ToolsBox.Controls.Add(this.tbCloseGOP);
+            this.ToolsBox.Controls.Add(this.tbVHQBFrames);
+            this.ToolsBox.Controls.Add(this.tbChromaMotion);
+            this.ToolsBox.Controls.Add(this.tbGMC);
+            this.ToolsBox.Controls.Add(this.tbQPel);
+            this.ToolsBox.Location = new System.Drawing.Point(226, 154);
             this.ToolsBox.Name = "ToolsBox";
-            this.ToolsBox.Size = new System.Drawing.Size(206, 135);
+            this.ToolsBox.Size = new System.Drawing.Size(208, 135);
             this.ToolsBox.TabIndex = 22;
             this.ToolsBox.TabStop = false;
             this.ToolsBox.Text = "Tools";
             // 
-            // CloseGOPBox
+            // tbCloseGOP
             // 
-            this.CloseGOPBox.AutoSize = true;
-            this.CloseGOPBox.Location = new System.Drawing.Point(6, 112);
-            this.CloseGOPBox.Name = "CloseGOPBox";
-            this.CloseGOPBox.Size = new System.Drawing.Size(84, 17);
-            this.CloseGOPBox.TabIndex = 26;
-            this.CloseGOPBox.Text = "Closed GOP";
-            this.CloseGOPBox.UseVisualStyleBackColor = true;
+            this.tbCloseGOP.AutoSize = true;
+            this.tbCloseGOP.Location = new System.Drawing.Point(6, 112);
+            this.tbCloseGOP.Name = "tbCloseGOP";
+            this.tbCloseGOP.Size = new System.Drawing.Size(84, 17);
+            this.tbCloseGOP.TabIndex = 26;
+            this.tbCloseGOP.Text = "Closed GOP";
+            this.tbCloseGOP.UseVisualStyleBackColor = true;
+            this.tbCloseGOP.CheckedChanged += new System.EventHandler(this.tbCloseGOP_CheckedChanged);
             // 
-            // VHQBFramesBox
+            // tbVHQBFrames
             // 
-            this.VHQBFramesBox.AutoSize = true;
-            this.VHQBFramesBox.Location = new System.Drawing.Point(6, 89);
-            this.VHQBFramesBox.Name = "VHQBFramesBox";
-            this.VHQBFramesBox.Size = new System.Drawing.Size(108, 17);
-            this.VHQBFramesBox.TabIndex = 25;
-            this.VHQBFramesBox.Text = "VHQ for BFrames";
-            this.VHQBFramesBox.UseVisualStyleBackColor = true;
+            this.tbVHQBFrames.AutoSize = true;
+            this.tbVHQBFrames.Location = new System.Drawing.Point(6, 89);
+            this.tbVHQBFrames.Name = "tbVHQBFrames";
+            this.tbVHQBFrames.Size = new System.Drawing.Size(108, 17);
+            this.tbVHQBFrames.TabIndex = 25;
+            this.tbVHQBFrames.Text = "VHQ for BFrames";
+            this.tbVHQBFrames.UseVisualStyleBackColor = true;
+            this.tbVHQBFrames.CheckedChanged += new System.EventHandler(this.tbVHQBFrames_CheckedChanged);
             // 
-            // ChromaMotionBox
+            // tbChromaMotion
             // 
-            this.ChromaMotionBox.AutoSize = true;
-            this.ChromaMotionBox.Location = new System.Drawing.Point(7, 66);
-            this.ChromaMotionBox.Name = "ChromaMotionBox";
-            this.ChromaMotionBox.Size = new System.Drawing.Size(97, 17);
-            this.ChromaMotionBox.TabIndex = 24;
-            this.ChromaMotionBox.Text = "Chroma Motion";
-            this.ChromaMotionBox.UseVisualStyleBackColor = true;
+            this.tbChromaMotion.AutoSize = true;
+            this.tbChromaMotion.Location = new System.Drawing.Point(7, 66);
+            this.tbChromaMotion.Name = "tbChromaMotion";
+            this.tbChromaMotion.Size = new System.Drawing.Size(97, 17);
+            this.tbChromaMotion.TabIndex = 24;
+            this.tbChromaMotion.Text = "Chroma Motion";
+            this.tbChromaMotion.UseVisualStyleBackColor = true;
+            this.tbChromaMotion.CheckedChanged += new System.EventHandler(this.tbChromaMotion_CheckedChanged);
             // 
-            // GMCBox
+            // tbGMC
             // 
-            this.GMCBox.AutoSize = true;
-            this.GMCBox.Location = new System.Drawing.Point(7, 43);
-            this.GMCBox.Name = "GMCBox";
-            this.GMCBox.Size = new System.Drawing.Size(50, 17);
-            this.GMCBox.TabIndex = 23;
-            this.GMCBox.Text = "GMC";
-            this.GMCBox.UseVisualStyleBackColor = true;
+            this.tbGMC.AutoSize = true;
+            this.tbGMC.Location = new System.Drawing.Point(7, 43);
+            this.tbGMC.Name = "tbGMC";
+            this.tbGMC.Size = new System.Drawing.Size(50, 17);
+            this.tbGMC.TabIndex = 23;
+            this.tbGMC.Text = "GMC";
+            this.tbGMC.UseVisualStyleBackColor = true;
+            this.tbGMC.CheckedChanged += new System.EventHandler(this.tbGMC_CheckedChanged);
             // 
-            // QPelBox
+            // tbQPel
             // 
-            this.QPelBox.AutoSize = true;
-            this.QPelBox.Location = new System.Drawing.Point(7, 20);
-            this.QPelBox.Name = "QPelBox";
-            this.QPelBox.Size = new System.Drawing.Size(49, 17);
-            this.QPelBox.TabIndex = 0;
-            this.QPelBox.Text = "QPel";
-            this.QPelBox.UseVisualStyleBackColor = true;
+            this.tbQPel.AutoSize = true;
+            this.tbQPel.Location = new System.Drawing.Point(7, 20);
+            this.tbQPel.Name = "tbQPel";
+            this.tbQPel.Size = new System.Drawing.Size(49, 17);
+            this.tbQPel.TabIndex = 0;
+            this.tbQPel.Text = "QPel";
+            this.tbQPel.UseVisualStyleBackColor = true;
+            this.tbQPel.CheckedChanged += new System.EventHandler(this.tbQPel_CheckedChanged);
             // 
             // Xvid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 322);
+            this.ClientSize = new System.Drawing.Size(442, 322);
             this.Controls.Add(this.ToolsBox);
             this.Controls.Add(this.OtherSettingsBox);
             this.Controls.Add(this.Settings);
@@ -377,8 +454,9 @@
             this.Load += new System.EventHandler(this.Xvid_Load);
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBFrames)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreads)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BitrateBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBitframes)).EndInit();
             this.OtherSettingsBox.ResumeLayout(false);
             this.OtherSettingsBox.PerformLayout();
             this.ToolsBox.ResumeLayout(false);
@@ -394,27 +472,31 @@
         private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.Label BitrateLabel;
-        private System.Windows.Forms.NumericUpDown BitrateBox;
+        private System.Windows.Forms.NumericUpDown nudBitframes;
         private System.Windows.Forms.TextBox CommandDisplay;
         private System.Windows.Forms.GroupBox OtherSettingsBox;
         private System.Windows.Forms.ComboBox cbVHQMode;
         private System.Windows.Forms.Label VHQLabel;
         private System.Windows.Forms.NumericUpDown nudThreads;
         private System.Windows.Forms.Label ThreadsLabel;
-        private System.Windows.Forms.CheckBox cbTurbo;
-        private System.Windows.Forms.CheckBox cbPackedBitstream;
-        private System.Windows.Forms.CheckBox cbInterlaced;
-        private System.Windows.Forms.CheckBox cbAdaptiveQuantization;
-        private System.Windows.Forms.CheckBox cbTrellis;
+        private System.Windows.Forms.CheckBox tbTurbo;
+        private System.Windows.Forms.CheckBox tbPackedBitstream;
+        private System.Windows.Forms.CheckBox tbInterlaced;
+        private System.Windows.Forms.CheckBox tbAdaptiveQuantization;
+        private System.Windows.Forms.CheckBox tbTrellis;
         private System.Windows.Forms.GroupBox ToolsBox;
-        private System.Windows.Forms.CheckBox CloseGOPBox;
-        private System.Windows.Forms.CheckBox VHQBFramesBox;
-        private System.Windows.Forms.CheckBox ChromaMotionBox;
-        private System.Windows.Forms.CheckBox GMCBox;
-        private System.Windows.Forms.CheckBox QPelBox;
+        private System.Windows.Forms.CheckBox tbCloseGOP;
+        private System.Windows.Forms.CheckBox tbVHQBFrames;
+        private System.Windows.Forms.CheckBox tbChromaMotion;
+        private System.Windows.Forms.CheckBox tbGMC;
+        private System.Windows.Forms.CheckBox tbQPel;
         private System.Windows.Forms.Label HVSMaskingLabel;
         private System.Windows.Forms.ComboBox cbHVSMasking;
         private System.Windows.Forms.ComboBox cbMotionSearch;
         private System.Windows.Forms.Label MotionSearchLabel;
+        private System.Windows.Forms.NumericUpDown nudBFrames;
+        private System.Windows.Forms.Label BFramesLabel;
+        private System.Windows.Forms.ComboBox cbProfile;
+        private System.Windows.Forms.Label ProfileLabel;
     }
 }

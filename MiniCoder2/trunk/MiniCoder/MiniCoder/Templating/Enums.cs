@@ -16,13 +16,13 @@ namespace MiniCoder2.Templating
         HEv2 = 3
     }
 
-    public enum XvidEncodingMode : byte
+    public enum XVidEncodingMode : byte
     {
         CBR = 0, CQ = 1, TwoPassFirst = 2, 
         TwoPassSecond = 3, AutoTwoPass = 4
     }
 
-    public enum XvidVHQMode : byte
+    public enum XVidVHQMode : byte
     {
         Off = 0, ModeDecision = 1, 
         LimitedSearch = 2, MediumSearch = 3, 
@@ -39,5 +39,10 @@ namespace MiniCoder2.Templating
         None = 0, VeryLow = 1, Low = 2, 
         Medium = 3, High = 4, VeryHigh = 5,
         UltraHigh = 6
+    }
+
+    public enum XVidProfile : byte
+    {
+        None = 0
     }
 }

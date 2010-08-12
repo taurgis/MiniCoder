@@ -10,24 +10,47 @@ namespace MiniCoder2.Templating.Video.Xvid
     class XvidTemplate : ExtTemplate
     {
         [XmlElement("XMode")]
-        public XvidEncodingMode XMode;
+        public XVidEncodingMode XMode;
         [XmlElement("XMotionSearch")]
         public XVidMotionSearch XMotionSearch;
         [XmlElement("XHVSMasking")]
         public XVidHVSMasking XHVSMasking;
         [XmlElement("XVHQMode")]
-        public XvidVHQMode XVHQMode;
+        public XVidVHQMode XVHQMode;
+        [XmlElement("XProfile")]
+        public XVidProfile XProfile;
         [XmlElement("XBitRate")]
         public Int32 XBitRate;        
         [XmlElement("XThreads")]
         public Int32 XThreads;        
         [XmlElement("XQuantizer")]
         public Int32 XQuantizer;
-        [XmlElement("XKBoost")]
-        public Int32 XKBoost;
+        [XmlElement("XBFrames")]
+        public Int32 XBFrames;
         [XmlElement("XLogFile")]
-        public String XLogFile;
-
+        public String XLogFile;        
+        [XmlElement("XKBoost")]
+        public bool XKBoost;
+        [XmlElement("XChromaMotion")]
+        public bool XChromaMotion;
+        [XmlElement("XTrellisQuant")]
+        public bool XTrellisQuant;
+        [XmlElement("XClosedGOP")]
+        public bool XClosedGOP;
+        [XmlElement("XInterlace")]
+        public bool XInterlace;
+        [XmlElement("XTurbo")]
+        public bool XTurbo;
+        [XmlElement("XPackedBitstream")]
+        public bool XPackedBitstream;
+        [XmlElement("XAdaptiveQuant")]
+        public bool XAdaptiveQuant;
+        [XmlElement("XQPel")]
+        public bool XQPel;
+        [XmlElement("XGMC")]
+        public bool XGMC;
+        [XmlElement("XVHQBFrames")]
+        public bool XVHQBFrames;
 
         public XvidTemplate() 
         {
@@ -45,20 +68,20 @@ namespace MiniCoder2.Templating.Video.Xvid
 
             switch (XMode)
             {
-                case XvidEncodingMode.CBR:
+                case XVidEncodingMode.CBR:
                     Mode = "-single -bitrate " + XBitRate.ToString() + " -smoother 0";
                     break;
-                case XvidEncodingMode.CQ:
+                case XVidEncodingMode.CQ:
                     Mode = "-single -cq " + XQuantizer.ToString() + " -smoother 0";
                     break;
-                case XvidEncodingMode.TwoPassFirst:
+                case XVidEncodingMode.TwoPassFirst:
                     Mode = "-pass 1 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
                     OutputCommand = "";
                     break;
-                case XvidEncodingMode.TwoPassSecond:
+                case XVidEncodingMode.TwoPassSecond:
                     Mode = "-pass 2 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
                     break;
-                case XvidEncodingMode.AutoTwoPass:
+                case XVidEncodingMode.AutoTwoPass:
                     Mode = "";
                     break;
                 default:
