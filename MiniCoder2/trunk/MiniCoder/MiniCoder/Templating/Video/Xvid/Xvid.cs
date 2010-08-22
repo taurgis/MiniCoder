@@ -37,14 +37,15 @@ namespace MiniCoder2.Templating.Video.Xvid
         private void ResetInterface()
         {
             cbMode.SelectedIndex = (int)XVidEncodingMode.CBR;
-            cbMotionSearch.SelectedIndex = (int)XVidMotionSearch.None;
-            cbVHQMode.SelectedIndex = (int)XVidVHQMode.Off;
+            cbMotionSearch.SelectedIndex = (int)XVidMotionSearch.UltraHigh;
+            cbVHQMode.SelectedIndex = (int)XVidVHQMode.ModeDecision;
             cbHVSMasking.SelectedIndex = (int)XVidHVSMasking.None;
             cbProfile.SelectedIndex = (int)XVidProfile.None;
             tbChromaMotion.Checked = true;
             tbTrellis.Checked = true;
             tbCloseGOP.Checked = true;
             nudBitframes.Value = 700;
+            nudBFrames.Value = 2;
         }
 
         public void UpdateData(ExtTemplate template) 
