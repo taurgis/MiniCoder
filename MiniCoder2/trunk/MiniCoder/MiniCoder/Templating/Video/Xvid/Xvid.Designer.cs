@@ -42,9 +42,10 @@
             this.VHQLabel = new System.Windows.Forms.Label();
             this.nudThreads = new System.Windows.Forms.NumericUpDown();
             this.ThreadsLabel = new System.Windows.Forms.Label();
-            this.nudBitframes = new System.Windows.Forms.NumericUpDown();
-            this.BitrateLabel = new System.Windows.Forms.Label();
+            this.nudBitrate = new System.Windows.Forms.NumericUpDown();
+            this.CompressionLabel = new System.Windows.Forms.Label();
             this.ModeLabel = new System.Windows.Forms.Label();
+            this.nudQuantization = new System.Windows.Forms.NumericUpDown();
             this.CommandDisplay = new System.Windows.Forms.TextBox();
             this.OtherSettingsBox = new System.Windows.Forms.GroupBox();
             this.tbTurbo = new System.Windows.Forms.CheckBox();
@@ -61,7 +62,8 @@
             this.Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBFrames)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreads)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBitframes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantization)).BeginInit();
             this.OtherSettingsBox.SuspendLayout();
             this.ToolsBox.SuspendLayout();
             this.SuspendLayout();
@@ -81,16 +83,16 @@
             this.Settings.Controls.Add(this.VHQLabel);
             this.Settings.Controls.Add(this.nudThreads);
             this.Settings.Controls.Add(this.ThreadsLabel);
-            this.Settings.Controls.Add(this.nudBitframes);
-            this.Settings.Controls.Add(this.BitrateLabel);
+            this.Settings.Controls.Add(this.nudBitrate);
+            this.Settings.Controls.Add(this.CompressionLabel);
             this.Settings.Controls.Add(this.ModeLabel);
+            this.Settings.Controls.Add(this.nudQuantization);
             this.Settings.Location = new System.Drawing.Point(12, 12);
             this.Settings.Name = "Settings";
             this.Settings.Size = new System.Drawing.Size(422, 135);
             this.Settings.TabIndex = 0;
             this.Settings.TabStop = false;
             this.Settings.Text = "Settings";
-            this.Settings.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cbProfile
             // 
@@ -253,37 +255,37 @@
             this.ThreadsLabel.TabIndex = 20;
             this.ThreadsLabel.Text = "Threads:";
             // 
-            // nudBitframes
+            // nudBitrate
             // 
-            this.nudBitframes.Location = new System.Drawing.Point(290, 19);
-            this.nudBitframes.Maximum = new decimal(new int[] {
+            this.nudBitrate.Location = new System.Drawing.Point(290, 19);
+            this.nudBitrate.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.nudBitframes.Minimum = new decimal(new int[] {
+            this.nudBitrate.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudBitframes.Name = "nudBitframes";
-            this.nudBitframes.Size = new System.Drawing.Size(112, 20);
-            this.nudBitframes.TabIndex = 19;
-            this.nudBitframes.Value = new decimal(new int[] {
+            this.nudBitrate.Name = "nudBitrate";
+            this.nudBitrate.Size = new System.Drawing.Size(112, 20);
+            this.nudBitrate.TabIndex = 19;
+            this.nudBitrate.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudBitframes.ValueChanged += new System.EventHandler(this.BitrateBox_ValueChanged);
+            this.nudBitrate.ValueChanged += new System.EventHandler(this.nudBitrate_ValueChanged);
             // 
-            // BitrateLabel
+            // CompressionLabel
             // 
-            this.BitrateLabel.AutoSize = true;
-            this.BitrateLabel.Location = new System.Drawing.Point(220, 21);
-            this.BitrateLabel.Name = "BitrateLabel";
-            this.BitrateLabel.Size = new System.Drawing.Size(40, 13);
-            this.BitrateLabel.TabIndex = 18;
-            this.BitrateLabel.Text = "Bitrate:";
+            this.CompressionLabel.AutoSize = true;
+            this.CompressionLabel.Location = new System.Drawing.Point(220, 21);
+            this.CompressionLabel.Name = "CompressionLabel";
+            this.CompressionLabel.Size = new System.Drawing.Size(40, 13);
+            this.CompressionLabel.TabIndex = 18;
+            this.CompressionLabel.Text = "Bitrate:";
             // 
             // ModeLabel
             // 
@@ -293,7 +295,30 @@
             this.ModeLabel.Size = new System.Drawing.Size(37, 13);
             this.ModeLabel.TabIndex = 16;
             this.ModeLabel.Text = "Mode:";
-            this.ModeLabel.Click += new System.EventHandler(this.Mode_Click);
+            // 
+            // nudQuantization
+            // 
+            this.nudQuantization.DecimalPlaces = 1;
+            this.nudQuantization.Location = new System.Drawing.Point(290, 19);
+            this.nudQuantization.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.nudQuantization.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQuantization.Name = "nudQuantization";
+            this.nudQuantization.Size = new System.Drawing.Size(112, 20);
+            this.nudQuantization.TabIndex = 31;
+            this.nudQuantization.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQuantization.ValueChanged += new System.EventHandler(this.nudQuantization_ValueChanged);
             // 
             // CommandDisplay
             // 
@@ -456,7 +481,8 @@
             this.Settings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBFrames)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreads)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBitframes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantization)).EndInit();
             this.OtherSettingsBox.ResumeLayout(false);
             this.OtherSettingsBox.PerformLayout();
             this.ToolsBox.ResumeLayout(false);
@@ -471,8 +497,8 @@
         private System.Windows.Forms.GroupBox Settings;
         private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.Label ModeLabel;
-        private System.Windows.Forms.Label BitrateLabel;
-        private System.Windows.Forms.NumericUpDown nudBitframes;
+        private System.Windows.Forms.Label CompressionLabel;
+        private System.Windows.Forms.NumericUpDown nudBitrate;
         private System.Windows.Forms.TextBox CommandDisplay;
         private System.Windows.Forms.GroupBox OtherSettingsBox;
         private System.Windows.Forms.ComboBox cbVHQMode;
@@ -498,5 +524,6 @@
         private System.Windows.Forms.Label BFramesLabel;
         private System.Windows.Forms.ComboBox cbProfile;
         private System.Windows.Forms.Label ProfileLabel;
+        private System.Windows.Forms.NumericUpDown nudQuantization;
     }
 }

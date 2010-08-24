@@ -21,14 +21,6 @@ namespace MiniCoder2.Templating.Video.Xvid
             this.xController = new XvidTemplateController(this, xTemplate);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-        }
-
-        private void Mode_Click(object sender, EventArgs e)
-        {           
-        }
-
         private void Xvid_Load(object sender, EventArgs e)
         {
             ResetInterface();
@@ -41,11 +33,15 @@ namespace MiniCoder2.Templating.Video.Xvid
             cbVHQMode.SelectedIndex = (int)XVidVHQMode.ModeDecision;
             cbHVSMasking.SelectedIndex = (int)XVidHVSMasking.None;
             cbProfile.SelectedIndex = (int)XVidProfile.None;
-            tbChromaMotion.Checked = true;
-            tbTrellis.Checked = true;
-            tbCloseGOP.Checked = true;
-            nudBitframes.Value = 700;
+
+            xTemplate.InitialiseOptions();
+            tbChromaMotion.Checked = (bool)xTemplate.XOptions["XChromaMotion"];
+            tbTrellis.Checked = (bool)xTemplate.XOptions["XTrellisQuant"]; ;
+            tbCloseGOP.Checked = (bool)xTemplate.XOptions["XClosedGOP"]; ;
+            nudBitrate.Value = 700;
+            nudQuantization.Value = 8.0M;
             nudBFrames.Value = 2;
+            nudThreads.Value = 1;
         }
 
         public void UpdateData(ExtTemplate template) 
@@ -56,12 +52,30 @@ namespace MiniCoder2.Templating.Video.Xvid
 
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbMode.SelectedIndex == (int)XVidEncodingMode.CQ)
+            {
+                nudBitrate.Hide();
+                nudQuantization.Show();
+                CompressionLabel.Text = "Quantization:";
+            }
+            else
+            {
+                nudQuantization.Hide();
+                nudBitrate.Show();
+                CompressionLabel.Text = "Bitrate:"; 
+            }
+
             this.xController.ChangeMode(cbMode.SelectedIndex);
         }
 
-        private void BitrateBox_ValueChanged(object sender, EventArgs e)
+        private void nudBitrate_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeBitrate(Int32.Parse(nudBitframes.Value.ToString()));
+            this.xController.ChangeBitrate(Int32.Parse(nudBitrate.Value.ToString()));
+        }       
+
+        private void nudQuantization_ValueChanged(object sender, EventArgs e)
+        {
+            this.xController.ChangeQuantization(decimal.Parse(nudQuantization.Value.ToString()));
         }
 
         private void cbVHQMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,7 +157,5 @@ namespace MiniCoder2.Templating.Video.Xvid
         {
 
         }
-
-       
     }
 }

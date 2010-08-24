@@ -25,10 +25,15 @@ namespace MiniCoder2.Templating.Video.Xvid
             this.xView.UpdateData(xTemplate);
         }
 
-        public void ChangeBitrate(int bitrate)
+        public void ChangeBitrate(int compressionFactor)
         {
-            if(bitrate > 0 && bitrate <= 10000)
-                this.xTemplate.XBitRate = bitrate;
+            this.xTemplate.XBitRate = compressionFactor;            
+            RefreshView();
+        }
+
+        public void ChangeQuantization(decimal quant)
+        {
+            this.xTemplate.XQuantizer = quant;
             RefreshView();
         }
 
@@ -78,61 +83,61 @@ namespace MiniCoder2.Templating.Video.Xvid
                         
         public void SelectInterlaced(bool interlaced)
         {
-            this.xTemplate.XInterlace = interlaced;
+            this.xTemplate.XOptions["XInterlace"] = interlaced;
             RefreshView();
         }
 
         public void SelectTurbo(bool turbo)
         {
-            this.xTemplate.XTurbo = turbo;
+            this.xTemplate.XOptions["XTurbo"] = turbo;
             RefreshView();
         }
 
         public void SelectTrellisQuant(bool trellis)
         {
-            this.xTemplate.XTrellisQuant = trellis;
+            this.xTemplate.XOptions["XTrellisQuant"] = trellis;
             RefreshView();
         }
 
         public void SelectPackedBitstream(bool pBitstream)
         {
-            this.xTemplate.XPackedBitstream = pBitstream;
+            this.xTemplate.XOptions["XPackedBitstream"] = pBitstream;
             RefreshView();
         }
 
         public void SelectAdaptiveQuant(bool aQuant)
         {
-            this.xTemplate.XAdaptiveQuant = aQuant;
+            this.xTemplate.XOptions["XAdaptiveQuant"] = aQuant;
             RefreshView();
         }
 
         public void SelectQPel(bool qPel)
         {
-            this.xTemplate.XQPel = qPel;
+            this.xTemplate.XOptions["XQPel"] = qPel;
             RefreshView();
         }
 
         public void SelectGMC(bool gmc)
         {
-            this.xTemplate.XGMC = gmc;
+            this.xTemplate.XOptions["XGMC"] = gmc;
             RefreshView();
         }
 
         public void SelectChromaMotion(bool cMotion)
         {
-            this.xTemplate.XChromaMotion = cMotion;
+            this.xTemplate.XOptions["XChromaMotion"] = cMotion;
             RefreshView();
         }
 
         public void SelectVHQBFrames(bool vhqBframes)
         {
-            this.xTemplate.XVHQBFrames = vhqBframes;
+            this.xTemplate.XOptions["XVHQBFrames"] = vhqBframes;
             RefreshView();
         }
 
         public void SelectClosedGOP(bool closedGOP)
         {
-            this.xTemplate.XClosedGOP = closedGOP;
+            this.xTemplate.XOptions["XClosedGOP"] = closedGOP;
             RefreshView();
         }
     }
