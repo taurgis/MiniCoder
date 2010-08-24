@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using MiniCoder2.Exceptions;
@@ -23,42 +23,36 @@ namespace MiniCoder2.Templating.Video.Xvid
         public Int32 XBitRate;        
         [XmlElement("XThreads")]
         public Int32 XThreads;        
-        [XmlElement("XQuantizer")]
-        public Int32 XQuantizer;
         [XmlElement("XBFrames")]
         public Int32 XBFrames;
-        [XmlElement("XLogFile")]
-        public String XLogFile;        
         [XmlElement("XKBoost")]
-        public bool XKBoost;
-        [XmlElement("XChromaMotion")]
-        public bool XChromaMotion;
-        [XmlElement("XTrellisQuant")]
-        public bool XTrellisQuant;
-        [XmlElement("XClosedGOP")]
-        public bool XClosedGOP;
-        [XmlElement("XInterlace")]
-        public bool XInterlace;
-        [XmlElement("XTurbo")]
-        public bool XTurbo;
-        [XmlElement("XPackedBitstream")]
-        public bool XPackedBitstream;
-        [XmlElement("XAdaptiveQuant")]
-        public bool XAdaptiveQuant;
-        [XmlElement("XQPel")]
-        public bool XQPel;
-        [XmlElement("XGMC")]
-        public bool XGMC;
-        [XmlElement("XVHQBFrames")]
-        public bool XVHQBFrames;
+        public Int32 XKBoost;
+        [XmlElement("XQuantizer")]
+        public Decimal XQuantizer;
+        [XmlElement("XOptions")]
+        public Hashtable XOptions;
 
-        public XvidTemplate() 
-        {
-        }
-
-        public XvidTemplate(String name)
+        public XvidTemplate(String name = "")
         {
             this.Name = name;
+            InitialiseOptions();            
+        }
+
+        public void InitialiseOptions()
+        {
+            XOptions = new Hashtable() 
+            {
+                 {"XChromaMotion", true}, 
+                 {"XTrellisQuant", true}, 
+                 {"XClosedGOP", true},
+                 {"XInterlace", false}, 
+                 {"XTurbo" , false}, 
+                 {"XPackedBitstream" , false},
+                 {"XAdaptiveQuant" , false}, 
+                 {"XQPel" , false}, 
+                 {"XGMC" , false},
+                 {"XVHQBFrames" , false}
+            };
         }
 
         public override string GenerateCommandLine()
@@ -75,13 +69,16 @@ namespace MiniCoder2.Templating.Video.Xvid
                     Mode = "-single -cq " + XQuantizer.ToString() + " -smoother 0";
                     break;
                 case XVidEncodingMode.TwoPassFirst:
-                    Mode = "-pass 1 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
+                    XKBoost = 100;
+                    Mode = "-pass 1 -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
                     OutputCommand = "";
                     break;
                 case XVidEncodingMode.TwoPassSecond:
-                    Mode = "-pass 2 " + XLogFile + " -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
+                    XKBoost = 100;
+                    Mode = "-pass 2 -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
                     break;
                 case XVidEncodingMode.AutoTwoPass:
+                    XKBoost = 100;
                     Mode = "";
                     break;
                 default:
