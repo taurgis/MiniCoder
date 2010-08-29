@@ -39,8 +39,7 @@ namespace MiniCoder2.Templating.Video.Xvid
 
         public void ChangeThreads(int threads)
         {
-            if(threads > 0 && threads <= 100)
-                this.xTemplate.XThreads = threads;
+            this.xTemplate.XThreads = threads;
             RefreshView();
         }
 

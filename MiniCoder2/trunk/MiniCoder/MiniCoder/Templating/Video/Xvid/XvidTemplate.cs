@@ -22,11 +22,11 @@ namespace MiniCoder2.Templating.Video.Xvid
         [XmlElement("XBitRate")]
         public Int32 XBitRate;        
         [XmlElement("XThreads")]
-        public Int32 XThreads;        
+        public Int32 XThreads = 1;        
         [XmlElement("XBFrames")]
         public Int32 XBFrames;
         [XmlElement("XKBoost")]
-        public Int32 XKBoost;
+        public Int32 XKBoost = 100;
         [XmlElement("XQuantizer")]
         public Decimal XQuantizer;
         [XmlElement("XOptions")]
@@ -57,36 +57,98 @@ namespace MiniCoder2.Templating.Video.Xvid
 
         public override string GenerateCommandLine()
         {
+            String InitialCommand = "program -i <input> ";
             String OutputCommand = " -o <output> ";
-            String Mode;
+            String Threads = " -threads " + XThreads;
+            String Mode = "";            
+            String Options = "";
 
             switch (XMode)
             {
                 case XVidEncodingMode.CBR:
-                    Mode = "-single -bitrate " + XBitRate.ToString() + " -smoother 0";
+                    Mode = "-single -bitrate " + XBitRate + " -smoother 0";
                     break;
                 case XVidEncodingMode.CQ:
-                    Mode = "-single -cq " + XQuantizer.ToString() + " -smoother 0";
+                    Mode = "-single -cq " + XQuantizer + " -smoother 0";
                     break;
                 case XVidEncodingMode.TwoPassFirst:
-                    XKBoost = 100;
-                    Mode = "-pass 1 -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
+                    Mode = "-pass 1 -bitrate " + XBitRate + " -kboost " + XKBoost;
                     OutputCommand = "";
                     break;
                 case XVidEncodingMode.TwoPassSecond:
-                    XKBoost = 100;
-                    Mode = "-pass 2 -bitrate " + XBitRate.ToString() + " -kboost " + XKBoost.ToString();
+                    Mode = "-pass 2 -bitrate " + XBitRate + " -kboost " + XKBoost;
                     break;
                 case XVidEncodingMode.AutoTwoPass:
-                    XKBoost = 100;
                     Mode = "";
                     break;
                 default:
                     Mode = "";
                     break;
             }
+            
+            Options = GenerateOptions();
 
-            return "program -i <input> " + Mode + " -nopacked -threads 1 " + OutputCommand + (int)XVHQMode;
+            return InitialCommand + Mode + Threads + OutputCommand + Options;
         }
+
+        public string GenerateOptions()
+        {
+            string result = "";
+            foreach (DictionaryEntry dEntry in XOptions)
+            {
+                if ((bool)dEntry.Value)
+                {
+                    switch ((string)dEntry.Key)
+                    {
+                        case "XInterlace":
+                            result += " -interlaced ";
+                            break;
+                        case "XTurbo":
+                            if(XMode >= XVidEncodingMode.TwoPassFirst)
+                                result += " -turbo ";
+                            break;
+                        case "XPackedBitstream":
+                            result += "";
+                            break;
+                        case "XAdaptiveQuant":
+                            result += "";
+                            break;
+                        case "XQPel":
+                            result += " -qpel ";
+                            break;
+                        case "XGMC":
+                            result += " -gmc ";
+                            break;
+                        case "XVHQBFrames":
+                            result += " -bvhq ";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    switch ((string)dEntry.Key)
+                    {
+                        case "XChromaMotion":
+                            result += " -nochromame ";
+                            break;
+                        case "XTrellisQuant":
+                            result += " -notrellis ";
+                            break;
+                        case "XClosedGOP":
+                            result += " -noclosed_gop ";
+                            break;
+                        case "XPackedBitstream":
+                            result += " -nopacked ";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 }
