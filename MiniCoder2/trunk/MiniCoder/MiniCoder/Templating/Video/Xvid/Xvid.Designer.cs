@@ -59,6 +59,8 @@
             this.tbChromaMotion = new System.Windows.Forms.CheckBox();
             this.tbGMC = new System.Windows.Forms.CheckBox();
             this.tbQPel = new System.Windows.Forms.CheckBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
             this.Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBFrames)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreads)).BeginInit();
@@ -465,11 +467,33 @@
             this.tbQPel.UseVisualStyleBackColor = true;
             this.tbQPel.CheckedChanged += new System.EventHandler(this.tbQPel_CheckedChanged);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(359, 326);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(278, 326);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 24;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
             // Xvid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 322);
+            this.ClientSize = new System.Drawing.Size(445, 361);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.ToolsBox);
             this.Controls.Add(this.OtherSettingsBox);
             this.Controls.Add(this.Settings);
@@ -525,5 +549,7 @@
         private System.Windows.Forms.ComboBox cbProfile;
         private System.Windows.Forms.Label ProfileLabel;
         private System.Windows.Forms.NumericUpDown nudQuantization;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOk;
     }
 }

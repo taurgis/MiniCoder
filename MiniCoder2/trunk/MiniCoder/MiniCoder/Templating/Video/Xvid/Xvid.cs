@@ -70,12 +70,12 @@ namespace MiniCoder2.Templating.Video.Xvid
 
         private void nudBitrate_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeBitrate(Int32.Parse(nudBitrate.Value.ToString()));
+            this.xController.ChangeBitrate((int)nudBitrate.Value);
         }       
 
         private void nudQuantization_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeQuantization(decimal.Parse(nudQuantization.Value.ToString()));
+            this.xController.ChangeQuantization(nudQuantization.Value);
         }
 
         private void cbVHQMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,67 +95,77 @@ namespace MiniCoder2.Templating.Video.Xvid
 
         private void nudThreads_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeThreads(Int32.Parse(nudThreads.Value.ToString()));
+            this.xController.ChangeThreads((int)nudThreads.Value);
         }
 
         private void nudBFrames_ValueChanged(object sender, EventArgs e)
         {
-            
+            this.xController.ChangeBFrames((int)nudBFrames.Value);
         }
 
         private void cbProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //this.xController.ChangeProfile(Int32.Parse(cbProfile.Text));
         }
 
         private void tbInterlaced_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectInterlaced(tbInterlaced.Checked);
         }
 
         private void tbTurbo_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectTurbo(tbTurbo.Checked);
         }
 
         private void tbTrellis_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectTrellisQuant(tbTrellis.Checked);
         }
 
         private void tbPackedBitstream_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectPackedBitstream(tbPackedBitstream.Checked);
         }
 
         private void tbAdaptiveQuantization_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectAdaptiveQuant(tbAdaptiveQuantization.Checked);
         }
 
         private void tbQPel_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectQPel(tbQPel.Checked);
         }
 
         private void tbGMC_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectGMC(tbGMC.Checked);
         }
 
         private void tbChromaMotion_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectChromaMotion(tbChromaMotion.Checked);
         }
 
         private void tbVHQBFrames_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.xController.SelectVHQBFrames(tbVHQBFrames.Checked);
         }
 
         private void tbCloseGOP_CheckedChanged(object sender, EventArgs e)
         {
+            this.xController.SelectClosedGOP(tbCloseGOP.Checked);
+        }
 
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
