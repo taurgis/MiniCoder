@@ -12,6 +12,7 @@ using MiniCoder2.Templating.Audio.MP3;
 using MiniCoder2.Templating.Audio.Vorbis;
 using MiniCoder2.Templating.Audio.DTS;
 using MiniCoder2.Templating.Audio.FLAC;
+using MiniCoder2.Templating.Audio.AC3;
 
 namespace MiniCoder2
 {
@@ -56,6 +57,12 @@ namespace MiniCoder2
         {
             Flac frmFlac = new Flac();
             frmFlac.ShowDialog();
+        }
+
+        private void btnAc3_Click(object sender, EventArgs e)
+        {
+            Ac3 frmAc3 = new Ac3();
+            frmAc3.ShowDialog();
         }
     }
 }
