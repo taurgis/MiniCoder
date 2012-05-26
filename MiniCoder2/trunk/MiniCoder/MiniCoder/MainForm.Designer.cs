@@ -35,6 +35,7 @@
             this.btnDTS = new System.Windows.Forms.Button();
             this.btnFlac = new System.Windows.Forms.Button();
             this.btnAc3 = new System.Windows.Forms.Button();
+            this.btnWav = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAAC
@@ -107,11 +108,22 @@
             this.btnAc3.UseVisualStyleBackColor = true;
             this.btnAc3.Click += new System.EventHandler(this.btnAc3_Click);
             // 
+            // btnWav
+            // 
+            this.btnWav.Location = new System.Drawing.Point(59, 76);
+            this.btnWav.Name = "btnWav";
+            this.btnWav.Size = new System.Drawing.Size(75, 23);
+            this.btnWav.TabIndex = 7;
+            this.btnWav.Text = "WAV";
+            this.btnWav.UseVisualStyleBackColor = true;
+            this.btnWav.Click += new System.EventHandler(this.btnWav_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 504);
+            this.Controls.Add(this.btnWav);
             this.Controls.Add(this.btnAc3);
             this.Controls.Add(this.btnFlac);
             this.Controls.Add(this.btnDTS);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button btnDTS;
         private System.Windows.Forms.Button btnFlac;
         private System.Windows.Forms.Button btnAc3;
+        private System.Windows.Forms.Button btnWav;
     }
 }
 
