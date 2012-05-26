@@ -100,6 +100,14 @@
     <Compile Include="Templating\Audio\AAC\AacTemplateController.cs" />
     <Compile Include="Exceptions\TemplateExceptions.cs" />
     <Compile Include="Templating\Audio\AAC\AacTemplate.cs" />
+    <Compile Include="Templating\Audio\FLAC\Flac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templating\Audio\FLAC\Flac.Designer.cs">
+      <DependentUpon>Flac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templating\Audio\FLAC\FlacTemplate.cs" />
+    <Compile Include="Templating\Audio\FLAC\FlacTemplateController.cs" />
     <Compile Include="Templating\Audio\DTS\Dts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +174,9 @@
     </Compile>
     <EmbeddedResource Include="Templating\Audio\AAC\Aac.resx">
       <DependentUpon>Aac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templating\Audio\FLAC\Flac.resx">
+      <DependentUpon>Flac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templating\Audio\DTS\Dts.resx">
       <DependentUpon>Dts.cs</DependentUpon>

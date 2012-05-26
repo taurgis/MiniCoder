@@ -33,6 +33,7 @@
             this.btnMP3 = new System.Windows.Forms.Button();
             this.btnVorbis = new System.Windows.Forms.Button();
             this.btnDTS = new System.Windows.Forms.Button();
+            this.btnFlac = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAAC
@@ -85,11 +86,22 @@
             this.btnDTS.UseVisualStyleBackColor = true;
             this.btnDTS.Click += new System.EventHandler(this.btnDTS_Click);
             // 
+            // btnFlac
+            // 
+            this.btnFlac.Location = new System.Drawing.Point(221, 76);
+            this.btnFlac.Name = "btnFlac";
+            this.btnFlac.Size = new System.Drawing.Size(75, 23);
+            this.btnFlac.TabIndex = 5;
+            this.btnFlac.Text = "FLAC";
+            this.btnFlac.UseVisualStyleBackColor = true;
+            this.btnFlac.Click += new System.EventHandler(this.btnFlac_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 504);
+            this.Controls.Add(this.btnFlac);
             this.Controls.Add(this.btnDTS);
             this.Controls.Add(this.btnVorbis);
             this.Controls.Add(this.btnMP3);
@@ -108,6 +120,7 @@
         private System.Windows.Forms.Button btnMP3;
         private System.Windows.Forms.Button btnVorbis;
         private System.Windows.Forms.Button btnDTS;
+        private System.Windows.Forms.Button btnFlac;
     }
 }
 
