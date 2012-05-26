@@ -47,20 +47,20 @@ namespace MiniCoder2.Templating.Audio.DTS
                     break;
             }
 
-            if(Delay > 0)
+            if (Delay > 0)
             {
                 delay = " +" + Delay + "ms";
             }
             else if (Delay < 0)
             {
-                 delay = " " + Delay + "ms";
+                delay = " " + Delay + "ms";
             }
 
             if (Normalize)
                 normalize = " -normalize";
 
             if (SampleRate != 0)
-                sampelingRate = " -resampleTo"  + SampleRate;
+                sampelingRate = " -resampleTo" + SampleRate;
 
             if (DownConvert)
                 downConvert = " -down16";

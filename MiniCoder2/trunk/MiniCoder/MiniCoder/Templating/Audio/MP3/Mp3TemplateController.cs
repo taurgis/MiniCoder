@@ -73,6 +73,12 @@ namespace MiniCoder2.Templating.Audio.MP3
             RefreshView();
         }
 
+        public void ChangeNormalize(Boolean normalize)
+        {
+            this.template.Normalize = normalize;
+            RefreshView();
+        }
+
         private void RefreshView()
         {
             view.UpdateData(template);
