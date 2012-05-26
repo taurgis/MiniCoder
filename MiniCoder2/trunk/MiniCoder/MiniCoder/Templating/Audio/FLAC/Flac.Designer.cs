@@ -1,6 +1,6 @@
-﻿namespace MiniCoder2.Templating.Audio.DTS
+﻿namespace MiniCoder2.Templating.Audio.FLAC
 {
-    partial class Dts
+    partial class Flac
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Flac));
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new wyDay.Controls.SplitButton();
             this.mnuTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -43,7 +43,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.cbDownConvert = new System.Windows.Forms.CheckBox();
-            this.cbExtractDtsCore = new System.Windows.Forms.CheckBox();
             this.cbNormalize = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSampleRate = new System.Windows.Forms.ComboBox();
@@ -156,7 +155,6 @@
             // gbSettings
             // 
             this.gbSettings.Controls.Add(this.cbDownConvert);
-            this.gbSettings.Controls.Add(this.cbExtractDtsCore);
             this.gbSettings.Controls.Add(this.cbNormalize);
             this.gbSettings.Controls.Add(this.label7);
             this.gbSettings.Controls.Add(this.cbSampleRate);
@@ -181,17 +179,6 @@
             this.cbDownConvert.Text = "Downconvert to 16 bit";
             this.cbDownConvert.UseVisualStyleBackColor = true;
             this.cbDownConvert.CheckedChanged += new System.EventHandler(this.cbDownConvert_CheckedChanged);
-            // 
-            // cbExtractDtsCore
-            // 
-            this.cbExtractDtsCore.AutoSize = true;
-            this.cbExtractDtsCore.Location = new System.Drawing.Point(191, 81);
-            this.cbExtractDtsCore.Name = "cbExtractDtsCore";
-            this.cbExtractDtsCore.Size = new System.Drawing.Size(109, 17);
-            this.cbExtractDtsCore.TabIndex = 29;
-            this.cbExtractDtsCore.Text = "Extract DTS Core";
-            this.cbExtractDtsCore.UseVisualStyleBackColor = true;
-            this.cbExtractDtsCore.CheckedChanged += new System.EventHandler(this.cbExtractDtsCore_CheckedChanged);
             // 
             // cbNormalize
             // 
@@ -327,7 +314,7 @@
             this.mnuImport.Text = "Import";
             this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
             // 
-            // Dts
+            // Flac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -342,8 +329,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Dts";
-            this.Text = "DTS";
+            this.Name = "Flac";
+            this.Text = "FLAC";
             this.Load += new System.EventHandler(this.Aac_Load);
             this.mnuTemplates.ResumeLayout(false);
             this.gbSettings.ResumeLayout(false);
@@ -381,7 +368,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuExport;
         private System.Windows.Forms.ToolStripMenuItem mnuImport;
         private System.Windows.Forms.CheckBox cbDownConvert;
-        private System.Windows.Forms.CheckBox cbExtractDtsCore;
         private System.Windows.Forms.CheckBox cbNormalize;
 
     }

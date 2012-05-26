@@ -11,6 +11,7 @@ using MiniCoder2.Templating.Video.Xvid;
 using MiniCoder2.Templating.Audio.MP3;
 using MiniCoder2.Templating.Audio.Vorbis;
 using MiniCoder2.Templating.Audio.DTS;
+using MiniCoder2.Templating.Audio.FLAC;
 
 namespace MiniCoder2
 {
@@ -49,6 +50,12 @@ namespace MiniCoder2
         {
             Dts frmDTS = new Dts();
             frmDTS.ShowDialog();
+        }
+
+        private void btnFlac_Click(object sender, EventArgs e)
+        {
+            Flac frmFlac = new Flac();
+            frmFlac.ShowDialog();
         }
     }
 }
