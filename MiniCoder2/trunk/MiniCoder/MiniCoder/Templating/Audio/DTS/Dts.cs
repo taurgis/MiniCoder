@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MiniCoder2.Templating.Audio.AAC
+namespace MiniCoder2.Templating.Audio.DTS
 {
-    public partial class Aac : Form, TemplateForm
+    public partial class Dts : Form, TemplateForm
     {
-        private AacTemplateController controller;
-        private AacTemplate template;
+        private DtsTemplateController controller;
+        private DtsTemplate template;
 
-        public Aac()
+        public Dts()
         {
             InitializeComponent();
-            this.template = new AacTemplate("Default");
-            this.controller = new AacTemplateController(this, template);
+            this.template = new DtsTemplate("Default");
+            this.controller = new DtsTemplateController(this, template);
         }
 
         private void Aac_Load(object sender, EventArgs e)
@@ -21,25 +21,6 @@ namespace MiniCoder2.Templating.Audio.AAC
             UpdateTemplateList(controller.FetchTemplateNames());
         }
 
-        /// <summary>
-        /// When variable bitrate is selected only the quality matters and bitrate is calculated
-        /// automatically. On other modes quality is disabled and the bitrate is editable.
-        /// </summary>
-        private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbMode.SelectedIndex.Equals(0))
-            {
-                nudBitrate.Enabled = false;
-                nudQuality.Enabled = true;
-            }
-            else
-            {
-                nudBitrate.Enabled = true;
-                nudQuality.Enabled = false;
-            }
-
-            controller.ChangeMode(cbMode.SelectedIndex);
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -51,14 +32,12 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// </summary>
         private void ResetInterface()
         {
-            cbMode.SelectedIndex = 0;
-            cbProfile.SelectedIndex = 0;
             cbSampleRate.SelectedIndex = 0;
             cbChannels.SelectedIndex = 0;
-            nudQuality.Value = (Decimal)0.5;
             nudDelay.Value = 0;
-            nudBitrate.Value = 160;
+            cbDownConvert.Checked = false;
             cbNormalize.Checked = true;
+            cbExtractDtsCore.Checked = false;
         }
 
         /// <summary>
@@ -66,26 +45,21 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// </summary>
         public void UpdateData(ExtTemplate template)
         {
-            this.template = (AacTemplate)template;
+            this.template = (DtsTemplate)template;
             this.txtCommandLine.Text = template.GenerateCommandLine();
-
-            this.nudBitrate.Value = this.template.BitRate;
             this.nudDelay.Value = this.template.Delay;
-            if (!this.template.Quality.Equals(0.0))
-                this.nudQuality.Value = (Decimal)this.template.Quality;
 
-            cbMode.SelectedIndex = (int)this.template.Mode;
-            cbProfile.SelectedIndex = (int)this.template.Profile;
-
-            cbNormalize.Checked = this.template.Normalize;
 
             switch (this.template.Channels)
             {
-                case 2:
+                case 1:
                     cbChannels.SelectedIndex = 0;
                     break;
-                case 6:
+                case 2:
                     cbChannels.SelectedIndex = 1;
+                    break;
+                case 6:
+                    cbChannels.SelectedIndex = 2;
                     break;
                 default:
                     cbChannels.SelectedIndex = 0;
@@ -110,26 +84,17 @@ namespace MiniCoder2.Templating.Audio.AAC
                     cbSampleRate.SelectedIndex = 4;
                     break;
             }
+
+            cbExtractDtsCore.Checked = this.template.ExtractDtsCore;
+            cbDownConvert.Checked = this.template.DownConvert;
+            cbNormalize.Checked = this.template.Normalize;
+
         }
 
-        private void nudQuality_ValueChanged(object sender, EventArgs e)
-        {
-            controller.ChangeQuality(Double.Parse(nudQuality.Value.ToString()));
-        }
-
-        private void nudBitrate_ValueChanged(object sender, EventArgs e)
-        {
-            controller.ChangeBitrate((Int32.Parse(nudBitrate.Value.ToString())));
-        }
 
         private void nudDelay_ValueChanged(object sender, EventArgs e)
         {
             controller.ChangeDelay((Int32.Parse(nudDelay.Value.ToString())));
-        }
-
-        private void cbProfile_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            controller.ChangeProfile(cbProfile.SelectedIndex);
         }
 
         private void cbChannels_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,9 +107,19 @@ namespace MiniCoder2.Templating.Audio.AAC
             controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
         }
 
+        private void cbDownConvert_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.ChangeDownConvert(cbDownConvert.Checked);
+        }
+
         private void cbNormalize_CheckedChanged(object sender, EventArgs e)
         {
             controller.ChangeNormalize(cbNormalize.Checked);
+        }
+
+        private void cbExtractDtsCore_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.ChangeExtractDTSCore(cbExtractDtsCore.Checked);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -225,7 +200,7 @@ namespace MiniCoder2.Templating.Audio.AAC
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
-                    UpdateData((AacTemplate)template);
+                    UpdateData((DtsTemplate)template);
                     UpdateTemplateList(controller.FetchTemplateNames());
                 }
             }

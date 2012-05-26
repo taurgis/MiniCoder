@@ -27,11 +27,7 @@ namespace MiniCoder2.ApplicationManager.Gui
             Uc = new UpdateControl();
             Uc.ApplicationList = ApplicationList;
             Uc.CheckForUpdates();
-            if(Uc.VersionList.GetValue((int)ExtApplication.X264) != ("0.1")) //"0.1" string value to be replaced by a local version list
-            {
-                clbApplicationList.SelectedIndex = (int)ExtApplication.X264;
-                clbApplicationList.Items[0] += "    0.1 >>> " + Uc.VersionList.GetValue((int)ExtApplication.X264);
-            }
+         
         }
 
         private void lbxApplicationList_SelectedIndexChanged(object sender, EventArgs e)

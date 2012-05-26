@@ -10,6 +10,7 @@ using MiniCoder2.Templating.Audio.AAC;
 using MiniCoder2.Templating.Video.Xvid;
 using MiniCoder2.Templating.Audio.MP3;
 using MiniCoder2.Templating.Audio.Vorbis;
+using MiniCoder2.Templating.Audio.DTS;
 
 namespace MiniCoder2
 {
@@ -42,6 +43,12 @@ namespace MiniCoder2
         {
             Vorbis frmVorbis = new Vorbis();
             frmVorbis.ShowDialog();
+        }
+
+        private void btnDTS_Click(object sender, EventArgs e)
+        {
+            Dts frmDTS = new Dts();
+            frmDTS.ShowDialog();
         }
     }
 }

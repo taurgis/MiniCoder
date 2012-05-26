@@ -19,6 +19,8 @@ namespace MiniCoder2.Templating.Audio.AAC
         public short Channels;
         [XmlElement("SampleRate")]
         public Int32 SampleRate;
+        [XmlElement("Normalize")]
+        public Boolean Normalize;
 
         /// <summary>
         /// Empty constructor for serialization
@@ -76,7 +78,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed + " )";
+            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : (""))  + " ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed + " )";
         }
     }
 }
