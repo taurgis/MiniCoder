@@ -34,6 +34,7 @@
             this.btnVorbis = new System.Windows.Forms.Button();
             this.btnDTS = new System.Windows.Forms.Button();
             this.btnFlac = new System.Windows.Forms.Button();
+            this.btnAc3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAAC
@@ -96,11 +97,22 @@
             this.btnFlac.UseVisualStyleBackColor = true;
             this.btnFlac.Click += new System.EventHandler(this.btnFlac_Click);
             // 
+            // btnAc3
+            // 
+            this.btnAc3.Location = new System.Drawing.Point(140, 76);
+            this.btnAc3.Name = "btnAc3";
+            this.btnAc3.Size = new System.Drawing.Size(75, 23);
+            this.btnAc3.TabIndex = 6;
+            this.btnAc3.Text = "AC3";
+            this.btnAc3.UseVisualStyleBackColor = true;
+            this.btnAc3.Click += new System.EventHandler(this.btnAc3_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 504);
+            this.Controls.Add(this.btnAc3);
             this.Controls.Add(this.btnFlac);
             this.Controls.Add(this.btnDTS);
             this.Controls.Add(this.btnVorbis);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button btnVorbis;
         private System.Windows.Forms.Button btnDTS;
         private System.Windows.Forms.Button btnFlac;
+        private System.Windows.Forms.Button btnAc3;
     }
 }
 
