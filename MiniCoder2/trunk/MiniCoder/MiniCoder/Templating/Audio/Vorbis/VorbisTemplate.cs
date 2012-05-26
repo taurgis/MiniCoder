@@ -16,6 +16,8 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         public Int32 Delay;
         [XmlElement("SampleRate")]
         public Int32 SampleRate;
+        [XmlElement("Normalize")]
+        public Boolean Normalize;
 
         /// <summary>
         /// Empty constructor for serialization
@@ -52,7 +54,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             if (SampleRate != 0)
                 sampelingRate = "-ssrc( --rate " + SampleRate + " )";
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max ) " + sampelingRate + " -ogg( " + bitrate + " )";
+            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -ogg( " + bitrate + " )";
         }
     }
 }

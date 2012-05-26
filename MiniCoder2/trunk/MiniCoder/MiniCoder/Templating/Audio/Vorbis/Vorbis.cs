@@ -56,6 +56,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             nudQuality.Value = (Decimal)0.5;
             nudDelay.Value = 0;
             nudBitrate.Value = 160;
+            cbNormalize.Checked = true;
         }
 
         /// <summary>
@@ -72,7 +73,8 @@ namespace MiniCoder2.Templating.Audio.Vorbis
                 this.nudQuality.Value = (Decimal)this.template.Quality;
 
             cbMode.SelectedIndex = (int)this.template.Mode;
-           
+            cbNormalize.Checked = this.template.Normalize;
+
             switch (this.template.SampleRate)
             {
                 case 0:
@@ -111,6 +113,11 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         private void cbSampleRate_SelectedIndexChanged(object sender, EventArgs e)
         {
             controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
+        }
+
+        private void cbNormalize_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.ChangeNormalize(cbNormalize.Checked);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,6 +215,5 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         {
             this.Close();
         }
-
     }
 }
