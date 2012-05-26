@@ -73,6 +73,12 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             RefreshView();
         }
 
+        public void ChangeNormalize(Boolean normalize)
+        {
+            this.template.Normalize = normalize;
+            RefreshView();
+        }
+
         private void RefreshView()
         {
             view.UpdateData(template);
