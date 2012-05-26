@@ -1,15 +1,15 @@
 ﻿using System;
 using MiniCoder2.Templating.Files;
 
-namespace MiniCoder2.Templating.Audio.AAC
+namespace MiniCoder2.Templating.Audio.DTS
 {
-    public class AacTemplateController
+    public class DtsTemplateController
     {
-        private AacTemplate template;
+        private DtsTemplate template;
         private TemplateForm view;
         private TemplateDao templateDao;
 
-        public AacTemplateController(TemplateForm view, AacTemplate template)
+        public DtsTemplateController(TemplateForm view, DtsTemplate template)
         {
             this.view = view;
             this.template = template;
@@ -17,53 +17,25 @@ namespace MiniCoder2.Templating.Audio.AAC
         }
 
         #region "Model - Interface linking"
-
-        public void ChangeMode(int selectedIndex)
-        {
-            this.template.Mode = (AudioEncodingMode)selectedIndex;
-
-            RefreshView();
-        }
-
-        public void ChangeQuality(Double quality)
-        {
-            if (quality > 0 && quality <= 1)
-            {
-                this.template.BitRate = ((int)(quality * (double)10) * 32);
-                this.template.Quality = quality;
-            }
-            RefreshView();
-        }
-
-        public void ChangeBitrate(Int32 bitRate)
-        {
-            if (bitRate > 0)
-                this.template.BitRate = bitRate;
-
-            RefreshView();
-        }
-
+      
         public void ChangeDelay(Int32 delay)
         {
             this.template.Delay = delay;
             RefreshView();
         }
-
-        public void ChangeProfile(int selectedIndex)
-        {
-            this.template.Profile = (AudioEncodingProfile)selectedIndex;
-            RefreshView();
-        }
-
+     
         public void ChangeChannels(int selectedIndex)
         {
-            if (selectedIndex <= 1)
+            if (selectedIndex <= 2)
                 switch (selectedIndex)
                 {
                     case 0:
-                        this.template.Channels = 2;
+                        this.template.Channels = 1;
                         break;
                     case 1:
+                        this.template.Channels = 2;
+                        break;
+                    case 2:
                         this.template.Channels = 6;
                         break;
                 }
@@ -94,11 +66,24 @@ namespace MiniCoder2.Templating.Audio.AAC
             RefreshView();
         }
 
+        public void ChangeDownConvert(Boolean isChecked)
+        {
+            this.template.DownConvert = isChecked;
+            RefreshView();
+        }
+
         public void ChangeNormalize(Boolean normalize)
         {
             this.template.Normalize = normalize;
             RefreshView();
         }
+
+        public void ChangeExtractDTSCore(Boolean extract)
+        {
+            this.template.ExtractDtsCore = extract;
+            RefreshView();
+        }
+
 
         private void RefreshView()
         {
@@ -117,7 +102,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(AacTemplate));
+                templateDao.SaveTemplate(template, typeof(DtsTemplate));
             }
         }
 
@@ -127,7 +112,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <param name="name">The name of the template.</param>
         public void LoadTemplate(String name)
         {
-            this.template = (AacTemplate)templateDao.LoadTemplate(name, typeof(AacTemplate));
+            this.template = (DtsTemplate)templateDao.LoadTemplate(name, typeof(DtsTemplate));
             view.UpdateData(this.template);
         }
 
@@ -137,7 +122,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>Array of template names.</returns>
         public String[] FetchTemplateNames()
         {
-            return templateDao.GetTemplatesByType(typeof(AacTemplate));
+            return templateDao.GetTemplatesByType(typeof(DtsTemplate));
         }
 
         /// <summary>
@@ -146,7 +131,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>Wether or not it was successfull.</returns>
         public Boolean DeleteTemplate()
         {
-            return templateDao.DeleteTemplate(template.Name, typeof(AacTemplate));
+            return templateDao.DeleteTemplate(template.Name, typeof(DtsTemplate));
         }
 
         /// <summary>
@@ -156,7 +141,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>Wether or not it was successfull.</returns>
         public Boolean ExportTemplate(String path)
         {
-            return templateDao.ExportTemplate(this.template, typeof(AacTemplate), path + "\\");
+            return templateDao.ExportTemplate(this.template, typeof(DtsTemplate), path + "\\");
         }
 
         /// <summary>
@@ -166,7 +151,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <returns>The template class for the imported file.</returns>
         public ExtTemplate ImportTemplate(String path)
         {
-            return templateDao.ImportTemplate(path, typeof(AacTemplate));
+            return templateDao.ImportTemplate(path, typeof(DtsTemplate));
         }
     }
 }

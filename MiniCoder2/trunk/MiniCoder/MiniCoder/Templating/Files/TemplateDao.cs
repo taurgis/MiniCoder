@@ -93,6 +93,12 @@ namespace MiniCoder2.Templating.Files
             return ImportTemplate(path, classType);
         }
 
+        /// <summary>
+        /// Deletes a specific template
+        /// </summary>
+        /// <param name="name">The name of the template.</param>
+        /// <param name="classType">The class type of the template.</param>
+        /// <returns>Wether or not the template has been deleted successfully or not.</returns>
         public Boolean DeleteTemplate(String name, Type classType)
         {
             try
@@ -108,6 +114,12 @@ namespace MiniCoder2.Templating.Files
             }
         }
 
+        /// <summary>
+        /// Imports a specific template
+        /// </summary>
+        /// <param name="name">The name of the template.</param>
+        /// <param name="classType">The class type of the template.</param>
+        /// <returns>The imported template</returns>
         public ExtTemplate ImportTemplate(String path, Type classType)
         {
             try

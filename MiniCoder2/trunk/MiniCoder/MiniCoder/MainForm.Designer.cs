@@ -32,6 +32,7 @@
             this.btnXvid = new System.Windows.Forms.Button();
             this.btnMP3 = new System.Windows.Forms.Button();
             this.btnVorbis = new System.Windows.Forms.Button();
+            this.btnDTS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAAC
@@ -74,11 +75,22 @@
             this.btnVorbis.UseVisualStyleBackColor = true;
             this.btnVorbis.Click += new System.EventHandler(this.btnVorbis_Click);
             // 
+            // btnDTS
+            // 
+            this.btnDTS.Location = new System.Drawing.Point(302, 76);
+            this.btnDTS.Name = "btnDTS";
+            this.btnDTS.Size = new System.Drawing.Size(75, 23);
+            this.btnDTS.TabIndex = 4;
+            this.btnDTS.Text = "DTS";
+            this.btnDTS.UseVisualStyleBackColor = true;
+            this.btnDTS.Click += new System.EventHandler(this.btnDTS_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 504);
+            this.Controls.Add(this.btnDTS);
             this.Controls.Add(this.btnVorbis);
             this.Controls.Add(this.btnMP3);
             this.Controls.Add(this.btnXvid);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.Button btnXvid;
         private System.Windows.Forms.Button btnMP3;
         private System.Windows.Forms.Button btnVorbis;
+        private System.Windows.Forms.Button btnDTS;
     }
 }
 

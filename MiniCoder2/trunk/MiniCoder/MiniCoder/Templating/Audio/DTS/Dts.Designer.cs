@@ -1,6 +1,6 @@
-﻿namespace MiniCoder2.Templating.Audio.AAC
+﻿namespace MiniCoder2.Templating.Audio.DTS
 {
-    partial class Aac
+    partial class Dts
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aac));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dts));
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnTemplates = new wyDay.Controls.SplitButton();
             this.mnuTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -42,31 +42,23 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
+            this.cbDownConvert = new System.Windows.Forms.CheckBox();
+            this.cbExtractDtsCore = new System.Windows.Forms.CheckBox();
+            this.cbNormalize = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSampleRate = new System.Windows.Forms.ComboBox();
             this.nudDelay = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cbChannels = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbProfile = new System.Windows.Forms.ComboBox();
-            this.nudBitrate = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nudQuality = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbMode = new System.Windows.Forms.ComboBox();
             this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
             this.btnSharing = new wyDay.Controls.SplitButton();
             this.mnuSharing = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbNormalize = new System.Windows.Forms.CheckBox();
             this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).BeginInit();
             this.mnuSharing.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +66,7 @@
             // 
             this.txtCommandLine.BackColor = System.Drawing.SystemColors.Control;
             this.txtCommandLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCommandLine.Location = new System.Drawing.Point(5, 165);
+            this.txtCommandLine.Location = new System.Drawing.Point(5, 154);
             this.txtCommandLine.Name = "txtCommandLine";
             this.txtCommandLine.ReadOnly = true;
             this.txtCommandLine.Size = new System.Drawing.Size(349, 20);
@@ -84,7 +76,7 @@
             // 
             this.btnTemplates.AutoSize = true;
             this.btnTemplates.ContextMenuStrip = this.mnuTemplates;
-            this.btnTemplates.Location = new System.Drawing.Point(154, 136);
+            this.btnTemplates.Location = new System.Drawing.Point(154, 125);
             this.btnTemplates.Name = "btnTemplates";
             this.btnTemplates.Size = new System.Drawing.Size(84, 23);
             this.btnTemplates.SplitMenuStrip = this.mnuTemplates;
@@ -143,7 +135,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(244, 136);
+            this.btnOk.Location = new System.Drawing.Point(244, 125);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(51, 23);
             this.btnOk.TabIndex = 16;
@@ -153,7 +145,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(301, 136);
+            this.btnCancel.Location = new System.Drawing.Point(301, 125);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(51, 23);
             this.btnCancel.TabIndex = 17;
@@ -163,6 +155,8 @@
             // 
             // gbSettings
             // 
+            this.gbSettings.Controls.Add(this.cbDownConvert);
+            this.gbSettings.Controls.Add(this.cbExtractDtsCore);
             this.gbSettings.Controls.Add(this.cbNormalize);
             this.gbSettings.Controls.Add(this.label7);
             this.gbSettings.Controls.Add(this.cbSampleRate);
@@ -170,25 +164,50 @@
             this.gbSettings.Controls.Add(this.label6);
             this.gbSettings.Controls.Add(this.label5);
             this.gbSettings.Controls.Add(this.cbChannels);
-            this.gbSettings.Controls.Add(this.label4);
-            this.gbSettings.Controls.Add(this.cbProfile);
-            this.gbSettings.Controls.Add(this.nudBitrate);
-            this.gbSettings.Controls.Add(this.label3);
-            this.gbSettings.Controls.Add(this.nudQuality);
-            this.gbSettings.Controls.Add(this.label2);
-            this.gbSettings.Controls.Add(this.label1);
-            this.gbSettings.Controls.Add(this.cbMode);
             this.gbSettings.Location = new System.Drawing.Point(5, 4);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(349, 126);
+            this.gbSettings.Size = new System.Drawing.Size(349, 113);
             this.gbSettings.TabIndex = 18;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
             // 
+            // cbDownConvert
+            // 
+            this.cbDownConvert.AutoSize = true;
+            this.cbDownConvert.Location = new System.Drawing.Point(191, 25);
+            this.cbDownConvert.Name = "cbDownConvert";
+            this.cbDownConvert.Size = new System.Drawing.Size(131, 17);
+            this.cbDownConvert.TabIndex = 30;
+            this.cbDownConvert.Text = "Downconvert to 16 bit";
+            this.cbDownConvert.UseVisualStyleBackColor = true;
+            this.cbDownConvert.CheckedChanged += new System.EventHandler(this.cbDownConvert_CheckedChanged);
+            // 
+            // cbExtractDtsCore
+            // 
+            this.cbExtractDtsCore.AutoSize = true;
+            this.cbExtractDtsCore.Location = new System.Drawing.Point(191, 81);
+            this.cbExtractDtsCore.Name = "cbExtractDtsCore";
+            this.cbExtractDtsCore.Size = new System.Drawing.Size(109, 17);
+            this.cbExtractDtsCore.TabIndex = 29;
+            this.cbExtractDtsCore.Text = "Extract DTS Core";
+            this.cbExtractDtsCore.UseVisualStyleBackColor = true;
+            this.cbExtractDtsCore.CheckedChanged += new System.EventHandler(this.cbExtractDtsCore_CheckedChanged);
+            // 
+            // cbNormalize
+            // 
+            this.cbNormalize.AutoSize = true;
+            this.cbNormalize.Location = new System.Drawing.Point(191, 54);
+            this.cbNormalize.Name = "cbNormalize";
+            this.cbNormalize.Size = new System.Drawing.Size(72, 17);
+            this.cbNormalize.TabIndex = 28;
+            this.cbNormalize.Text = "Normalize";
+            this.cbNormalize.UseVisualStyleBackColor = true;
+            this.cbNormalize.CheckedChanged += new System.EventHandler(this.cbNormalize_CheckedChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1, 95);
+            this.label7.Location = new System.Drawing.Point(1, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 27;
@@ -205,7 +224,7 @@
             "48000 Hz",
             "88200 Hz",
             "96000 Hz"});
-            this.cbSampleRate.Location = new System.Drawing.Point(78, 92);
+            this.cbSampleRate.Location = new System.Drawing.Point(78, 52);
             this.cbSampleRate.Name = "cbSampleRate";
             this.cbSampleRate.Size = new System.Drawing.Size(104, 21);
             this.cbSampleRate.TabIndex = 26;
@@ -215,7 +234,7 @@
             // 
             // nudDelay
             // 
-            this.nudDelay.Location = new System.Drawing.Point(248, 66);
+            this.nudDelay.Location = new System.Drawing.Point(78, 78);
             this.nudDelay.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -227,7 +246,7 @@
             0,
             -2147483648});
             this.nudDelay.Name = "nudDelay";
-            this.nudDelay.Size = new System.Drawing.Size(92, 20);
+            this.nudDelay.Size = new System.Drawing.Size(104, 20);
             this.nudDelay.TabIndex = 25;
             this.ttSettings.SetToolTip(this.nudDelay, "The delay in miliseconds.\r\n\r\n1000 ms = 1 second");
             this.nudDelay.ValueChanged += new System.EventHandler(this.nudDelay_ValueChanged);
@@ -235,7 +254,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(191, 68);
+            this.label6.Location = new System.Drawing.Point(1, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 24;
@@ -245,7 +264,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 68);
+            this.label5.Location = new System.Drawing.Point(1, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 23;
@@ -257,140 +276,14 @@
             this.cbChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbChannels.FormattingEnabled = true;
             this.cbChannels.Items.AddRange(new object[] {
+            "Mono",
             "Stereo",
             "5.1"});
-            this.cbChannels.Location = new System.Drawing.Point(78, 65);
+            this.cbChannels.Location = new System.Drawing.Point(78, 22);
             this.cbChannels.Name = "cbChannels";
             this.cbChannels.Size = new System.Drawing.Size(104, 21);
             this.cbChannels.TabIndex = 22;
             this.cbChannels.SelectedIndexChanged += new System.EventHandler(this.cbChannels_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Profile:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // cbProfile
-            // 
-            this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProfile.FormattingEnabled = true;
-            this.cbProfile.Items.AddRange(new object[] {
-            "Automatic",
-            "LC",
-            "HE",
-            "HEv2"});
-            this.cbProfile.Location = new System.Drawing.Point(78, 40);
-            this.cbProfile.Name = "cbProfile";
-            this.cbProfile.Size = new System.Drawing.Size(104, 21);
-            this.cbProfile.TabIndex = 20;
-            this.ttSettings.SetToolTip(this.cbProfile, resources.GetString("cbProfile.ToolTip"));
-            this.cbProfile.SelectedIndexChanged += new System.EventHandler(this.cbProfile_SelectedIndexChanged);
-            // 
-            // nudBitrate
-            // 
-            this.nudBitrate.Increment = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.nudBitrate.Location = new System.Drawing.Point(249, 41);
-            this.nudBitrate.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudBitrate.Name = "nudBitrate";
-            this.nudBitrate.Size = new System.Drawing.Size(91, 20);
-            this.nudBitrate.TabIndex = 19;
-            this.ttSettings.SetToolTip(this.nudBitrate, "The bitrate determines the quality and the output filesize.\r\nThe higher the bitra" +
-        "te the better the quality, but the file will\r\nbe bigger aswell.");
-            this.nudBitrate.Value = new decimal(new int[] {
-            48,
-            0,
-            0,
-            0});
-            this.nudBitrate.ValueChanged += new System.EventHandler(this.nudBitrate_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(191, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Bitrate:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // nudQuality
-            // 
-            this.nudQuality.DecimalPlaces = 1;
-            this.nudQuality.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudQuality.Location = new System.Drawing.Point(249, 14);
-            this.nudQuality.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQuality.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudQuality.Name = "nudQuality";
-            this.nudQuality.Size = new System.Drawing.Size(91, 20);
-            this.nudQuality.TabIndex = 17;
-            this.nudQuality.Tag = "";
-            this.ttSettings.SetToolTip(this.nudQuality, "The overal quality of the video. \r\n0.1: Low\r\n1.0: High");
-            this.nudQuality.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudQuality.ValueChanged += new System.EventHandler(this.nudQuality_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(191, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Quality:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Mode:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // cbMode
-            // 
-            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMode.FormattingEnabled = true;
-            this.cbMode.Items.AddRange(new object[] {
-            "VBR",
-            "CBR",
-            "ABR"});
-            this.cbMode.Location = new System.Drawing.Point(78, 13);
-            this.cbMode.Name = "cbMode";
-            this.cbMode.Size = new System.Drawing.Size(104, 21);
-            this.cbMode.TabIndex = 14;
-            this.ttSettings.SetToolTip(this.cbMode, resources.GetString("cbMode.ToolTip"));
-            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
             // 
             // ttSettings
             // 
@@ -404,7 +297,7 @@
             // 
             this.btnSharing.AutoSize = true;
             this.btnSharing.ContextMenuStrip = this.mnuSharing;
-            this.btnSharing.Location = new System.Drawing.Point(83, 136);
+            this.btnSharing.Location = new System.Drawing.Point(83, 125);
             this.btnSharing.Name = "btnSharing";
             this.btnSharing.Size = new System.Drawing.Size(65, 23);
             this.btnSharing.SplitMenuStrip = this.mnuSharing;
@@ -434,22 +327,11 @@
             this.mnuImport.Text = "Import";
             this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
             // 
-            // cbNormalize
-            // 
-            this.cbNormalize.AutoSize = true;
-            this.cbNormalize.Location = new System.Drawing.Point(194, 95);
-            this.cbNormalize.Name = "cbNormalize";
-            this.cbNormalize.Size = new System.Drawing.Size(72, 17);
-            this.cbNormalize.TabIndex = 29;
-            this.cbNormalize.Text = "Normalize";
-            this.cbNormalize.UseVisualStyleBackColor = true;
-            this.cbNormalize.CheckedChanged += new System.EventHandler(this.cbNormalize_CheckedChanged);
-            // 
-            // Aac
+            // Dts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 197);
+            this.ClientSize = new System.Drawing.Size(357, 186);
             this.Controls.Add(this.btnSharing);
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.btnCancel);
@@ -460,15 +342,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Aac";
+            this.Name = "Dts";
             this.Text = "Aac";
             this.Load += new System.EventHandler(this.Aac_Load);
             this.mnuTemplates.ResumeLayout(false);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBitrate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuality)).EndInit();
             this.mnuSharing.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -488,14 +368,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbChannels;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbProfile;
-        private System.Windows.Forms.NumericUpDown nudBitrate;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudQuality;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.ToolTip ttSettings;
         private System.Windows.Forms.ContextMenuStrip mnuTemplates;
         private System.Windows.Forms.ToolStripMenuItem mnuReset;
@@ -508,6 +380,8 @@
         private System.Windows.Forms.ContextMenuStrip mnuSharing;
         private System.Windows.Forms.ToolStripMenuItem mnuExport;
         private System.Windows.Forms.ToolStripMenuItem mnuImport;
+        private System.Windows.Forms.CheckBox cbDownConvert;
+        private System.Windows.Forms.CheckBox cbExtractDtsCore;
         private System.Windows.Forms.CheckBox cbNormalize;
 
     }
