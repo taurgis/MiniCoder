@@ -13,6 +13,7 @@ using MiniCoder2.Templating.Audio.Vorbis;
 using MiniCoder2.Templating.Audio.DTS;
 using MiniCoder2.Templating.Audio.FLAC;
 using MiniCoder2.Templating.Audio.AC3;
+using MiniCoder2.Templating.Audio.WAV;
 
 namespace MiniCoder2
 {
@@ -63,6 +64,12 @@ namespace MiniCoder2
         {
             Ac3 frmAc3 = new Ac3();
             frmAc3.ShowDialog();
+        }
+
+        private void btnWav_Click(object sender, EventArgs e)
+        {
+            Wav frmWav = new Wav();
+            frmWav.ShowDialog();
         }
     }
 }

@@ -108,6 +108,14 @@
     </Compile>
     <Compile Include="Templating\Audio\AC3\Ac3Template.cs" />
     <Compile Include="Templating\Audio\AC3\Ac3TemplateController.cs" />
+    <Compile Include="Templating\Audio\WAV\Wav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templating\Audio\WAV\Wav.Designer.cs">
+      <DependentUpon>Wav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templating\Audio\WAV\WavTemplate.cs" />
+    <Compile Include="Templating\Audio\WAV\WavTemplateController.cs" />
     <Compile Include="Templating\Audio\FLAC\Flac.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Templating\Audio\AC3\Ac3.resx">
       <DependentUpon>Ac3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templating\Audio\WAV\Wav.resx">
+      <DependentUpon>Wav.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templating\Audio\FLAC\Flac.resx">
       <DependentUpon>Flac.cs</DependentUpon>
