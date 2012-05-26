@@ -57,6 +57,7 @@
             this.mnuSharing = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbNormalize = new System.Windows.Forms.CheckBox();
             this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
@@ -158,6 +159,7 @@
             // 
             // gbSettings
             // 
+            this.gbSettings.Controls.Add(this.cbNormalize);
             this.gbSettings.Controls.Add(this.label7);
             this.gbSettings.Controls.Add(this.cbSampleRate);
             this.gbSettings.Controls.Add(this.nudDelay);
@@ -200,7 +202,7 @@
             this.cbSampleRate.Size = new System.Drawing.Size(104, 21);
             this.cbSampleRate.TabIndex = 26;
             this.ttSettings.SetToolTip(this.cbSampleRate, "The sample rate of playback or recording determines the maximum \r\naudio frequency" +
-                    " that can be reproduced.");
+        " that can be reproduced.");
             this.cbSampleRate.SelectedIndexChanged += new System.EventHandler(this.cbSampleRate_SelectedIndexChanged);
             // 
             // nudDelay
@@ -249,7 +251,7 @@
             this.nudBitrate.Size = new System.Drawing.Size(91, 20);
             this.nudBitrate.TabIndex = 19;
             this.ttSettings.SetToolTip(this.nudBitrate, "The bitrate determines the quality and the output filesize.\r\nThe higher the bitra" +
-                    "te the better the quality, but the file will\r\nbe bigger aswell.");
+        "te the better the quality, but the file will\r\nbe bigger aswell.");
             this.nudBitrate.Value = new decimal(new int[] {
             48,
             0,
@@ -359,21 +361,32 @@
             this.mnuExport,
             this.mnuImport});
             this.mnuSharing.Name = "mnuTemplates";
-            this.mnuSharing.Size = new System.Drawing.Size(153, 70);
+            this.mnuSharing.Size = new System.Drawing.Size(111, 48);
             // 
             // mnuExport
             // 
             this.mnuExport.Name = "mnuExport";
-            this.mnuExport.Size = new System.Drawing.Size(152, 22);
+            this.mnuExport.Size = new System.Drawing.Size(110, 22);
             this.mnuExport.Text = "Export";
             this.mnuExport.Click += new System.EventHandler(this.mnuExport_Click);
             // 
             // mnuImport
             // 
             this.mnuImport.Name = "mnuImport";
-            this.mnuImport.Size = new System.Drawing.Size(152, 22);
+            this.mnuImport.Size = new System.Drawing.Size(110, 22);
             this.mnuImport.Text = "Import";
             this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
+            // 
+            // cbNormalize
+            // 
+            this.cbNormalize.AutoSize = true;
+            this.cbNormalize.Location = new System.Drawing.Point(4, 69);
+            this.cbNormalize.Name = "cbNormalize";
+            this.cbNormalize.Size = new System.Drawing.Size(72, 17);
+            this.cbNormalize.TabIndex = 30;
+            this.cbNormalize.Text = "Normalize";
+            this.cbNormalize.UseVisualStyleBackColor = true;
+            this.cbNormalize.CheckedChanged += new System.EventHandler(this.cbNormalize_CheckedChanged);
             // 
             // Mp3
             // 
@@ -434,6 +447,7 @@
         private System.Windows.Forms.ContextMenuStrip mnuSharing;
         private System.Windows.Forms.ToolStripMenuItem mnuExport;
         private System.Windows.Forms.ToolStripMenuItem mnuImport;
+        private System.Windows.Forms.CheckBox cbNormalize;
 
     }
 }
