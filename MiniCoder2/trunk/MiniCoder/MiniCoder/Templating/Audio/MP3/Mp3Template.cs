@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Audio.MP3
 {
-    public class Mp3Template : ExtTemplate
+    public class Mp3Template : AudioTemplate
     {
         [XmlElement("Mode")]
         public AudioEncodingMode Mode;
@@ -11,18 +11,6 @@ namespace MiniCoder2.Templating.Audio.MP3
         public Double Quality;
         [XmlElement("BitRate")]
         public Int32 BitRate;
-        [XmlElement("Delay")]
-        public Int32 Delay;
-        [XmlIgnore]
-        public SampleRate SampleRate;
-        [XmlElement("SampleRate")]
-        public byte SampleRateByte
-        {
-            get { return (byte)SampleRate; }
-            set { SampleRate = (SampleRate)value; }
-        }
-        [XmlElement("Normalize")]
-        public Boolean Normalize;
 
         /// <summary>
         /// Empty constructor for serialization
