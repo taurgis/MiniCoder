@@ -50,4 +50,9 @@ namespace MiniCoder2.Templating
     {
         Mono = 1, Stereo = 2, Surround = 6
     }
+
+    public enum SampleRate : byte
+    {
+        Original = 0, Hz44100 =  1, Hz48000 = 2, Hz88200 = 3, Hz96000 = 4 
+    }
 }

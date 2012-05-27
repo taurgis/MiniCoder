@@ -15,8 +15,14 @@ namespace MiniCoder2.Templating.Audio.DTS
             get { return (byte)Channels; }
             set { Channels = (AudioChannels)value; }
         }
+        [XmlIgnore]
+        public SampleRate SampleRate;
         [XmlElement("SampleRate")]
-        public Int32 SampleRate;
+        public byte SampleRateByte
+        {
+            get { return (byte)SampleRate; }
+            set { SampleRate = (SampleRate)value; }
+        }
         [XmlElement("DownConvert")]
         public Boolean DownConvert;
         [XmlElement("Normalize")]
@@ -65,8 +71,21 @@ namespace MiniCoder2.Templating.Audio.DTS
             if (Normalize)
                 normalize = " -normalize";
 
-            if (SampleRate != 0)
-                sampelingRate = " -resampleTo" + SampleRate;
+            switch (SampleRate)
+            {
+                case Templating.SampleRate.Hz44100:
+                    sampelingRate = " -resampleTo44100";
+                    break;
+                case Templating.SampleRate.Hz48000:
+                    sampelingRate = " -resampleTo48000";
+                    break;
+                case Templating.SampleRate.Hz88200:
+                    sampelingRate = " -resampleTo88200";
+                    break;
+                case Templating.SampleRate.Hz96000:
+                    sampelingRate = " -resampleTo96000";
+                    break;
+            }
 
             if (DownConvert)
                 downConvert = " -down16";

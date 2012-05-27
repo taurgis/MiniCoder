@@ -55,19 +55,19 @@ namespace MiniCoder2.Templating.Audio.MP3
             switch (selectedIndex)
             {
                 case 0:
-                    this.template.SampleRate = 0;
+                    this.template.SampleRate = SampleRate.Original;
                     break;
                 case 1:
-                    this.template.SampleRate = 44100;
+                    this.template.SampleRate = SampleRate.Hz44100;
                     break;
                 case 2:
-                    this.template.SampleRate = 48000;
+                    this.template.SampleRate = SampleRate.Hz48000;
                     break;
                 case 3:
-                    this.template.SampleRate = 88200;
+                    this.template.SampleRate = SampleRate.Hz88200;
                     break;
                 case 4:
-                    this.template.SampleRate = 96000;
+                    this.template.SampleRate = SampleRate.Hz96000;
                     break;
             }
             RefreshView();

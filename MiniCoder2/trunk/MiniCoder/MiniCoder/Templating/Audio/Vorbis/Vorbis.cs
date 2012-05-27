@@ -80,16 +80,16 @@ namespace MiniCoder2.Templating.Audio.Vorbis
                 case 0:
                     cbSampleRate.SelectedIndex = 0;
                     break;
-                case 44100:
+                case SampleRate.Hz44100:
                     cbSampleRate.SelectedIndex = 1;
                     break;
-                case 48000:
+                case SampleRate.Hz48000:
                     cbSampleRate.SelectedIndex = 2;
                     break;
-                case 88200:
+                case SampleRate.Hz88200:
                     cbSampleRate.SelectedIndex = 3;
                     break;
-                case 96000:
+                case SampleRate.Hz96000:
                     cbSampleRate.SelectedIndex = 4;
                     break;
             }
