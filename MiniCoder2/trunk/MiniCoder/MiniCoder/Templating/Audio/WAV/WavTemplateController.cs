@@ -3,7 +3,7 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.WAV
 {
-    public class WavTemplateController : AudioTemplateController<WavTemplate>
+    public class WavTemplateController : TemplateController<WavTemplate>
     {
         public WavTemplateController(TemplateForm<WavTemplate> view, WavTemplate template)
             : base(view, template)

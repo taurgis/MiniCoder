@@ -3,7 +3,7 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.MP3
 {
-    public class Mp3TemplateController : AudioTemplateController<Mp3Template>
+    public class Mp3TemplateController : TemplateController<Mp3Template>
     {
         public Mp3TemplateController(TemplateForm<Mp3Template> view, Mp3Template template) : base(view, template)
         {

@@ -6,13 +6,13 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio
 {
-    public abstract class AudioTemplateController<T>
+    public abstract class TemplateController<T>
     {
         public TemplateDao templateDao;
         public TemplateForm<T> view;
         public T template;
 
-        public AudioTemplateController(TemplateForm<T> view, T template)
+        public TemplateController(TemplateForm<T> view, T template)
         {
             this.view = view;
             this.template = template;
