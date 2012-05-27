@@ -3,20 +3,14 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.Vorbis
 {
-    public class VorbisTemplateController
+    public class VorbisTemplateController : AudioTemplateController<VorbisTemplate>
     {
-        private VorbisTemplate template;
-        private TemplateForm<VorbisTemplate> view;
-        private TemplateDao templateDao;
-
         public VorbisTemplateController(TemplateForm<VorbisTemplate> view, VorbisTemplate template)
+            : base(view, template)
         {
             this.view = view;
             this.template = template;
-            templateDao = new TemplateDao();
         }
-
-        #region "Model - Interface linking"
 
         public void ChangeMode(int selectedIndex)
         {
@@ -77,75 +71,6 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         {
             this.template.Normalize = normalize;
             RefreshView();
-        }
-
-        private void RefreshView()
-        {
-            view.UpdateData(template);
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Save a template to a file.
-        /// </summary>
-        /// <param name="name">The name of the template.</param>
-        public void SaveTemplate(String name)
-        {
-            if (!String.IsNullOrEmpty(name))
-            {
-                this.template.Name = name;
-
-                templateDao.SaveTemplate(name, template, typeof(VorbisTemplate));
-            }
-        }
-
-        /// <summary>
-        /// Load a template from file.
-        /// </summary>
-        /// <param name="name">The name of the template.</param>
-        public void LoadTemplate(String name)
-        {
-            this.template = (VorbisTemplate)templateDao.LoadTemplate(name, typeof(VorbisTemplate));
-            view.UpdateData(this.template);
-        }
-
-        /// <summary>
-        /// Get all templates for this type.
-        /// </summary>
-        /// <returns>Array of template names.</returns>
-        public String[] FetchTemplateNames()
-        {
-            return templateDao.GetTemplatesByType(typeof(VorbisTemplate));
-        }
-
-        /// <summary>
-        /// Delete a template.
-        /// </summary>
-        /// <returns>Wether or not it was successfull.</returns>
-        public Boolean DeleteTemplate()
-        {
-            return templateDao.DeleteTemplate(template.Name, typeof(VorbisTemplate));
-        }
-
-        /// <summary>
-        /// Export a template
-        /// </summary>
-        /// <param name="path">The path to save the file.</param>
-        /// <returns>Wether or not it was successfull.</returns>
-        public Boolean ExportTemplate(String path)
-        {
-            return templateDao.ExportTemplate(this.template, typeof(VorbisTemplate), path + "\\");
-        }
-
-        /// <summary>
-        /// Import a template.
-        /// </summary>
-        /// <param name="path">The import file path.</param>
-        /// <returns>The template class for the imported file.</returns>
-        public ExtTemplate ImportTemplate(String path)
-        {
-            return templateDao.ImportTemplate(path, typeof(VorbisTemplate));
         }
     }
 }

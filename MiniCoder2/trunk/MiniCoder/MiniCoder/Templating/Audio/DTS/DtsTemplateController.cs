@@ -5,7 +5,8 @@ namespace MiniCoder2.Templating.Audio.DTS
 {
     public class DtsTemplateController : AudioTemplateController<DtsTemplate>
     {
-        public DtsTemplateController(TemplateForm<DtsTemplate> view, DtsTemplate template) : base(view, template)
+        public DtsTemplateController(TemplateForm<DtsTemplate> view, DtsTemplate template)
+            : base(view, template)
         {
             this.view = view;
             this.template = template;
@@ -16,7 +17,7 @@ namespace MiniCoder2.Templating.Audio.DTS
             this.template.Delay = delay;
             RefreshView();
         }
-     
+
         public void ChangeChannels(int selectedIndex)
         {
             if (selectedIndex <= 2)
