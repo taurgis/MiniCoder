@@ -6,10 +6,10 @@ namespace MiniCoder2.Templating.Audio.DTS
     public class DtsTemplateController
     {
         private DtsTemplate template;
-        private TemplateForm view;
+        private TemplateForm<DtsTemplate> view;
         private TemplateDao templateDao;
 
-        public DtsTemplateController(TemplateForm view, DtsTemplate template)
+        public DtsTemplateController(TemplateForm<DtsTemplate> view, DtsTemplate template)
         {
             this.view = view;
             this.template = template;
@@ -102,7 +102,7 @@ namespace MiniCoder2.Templating.Audio.DTS
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(DtsTemplate));
+                templateDao.SaveTemplate(name, template, typeof(DtsTemplate));
             }
         }
 

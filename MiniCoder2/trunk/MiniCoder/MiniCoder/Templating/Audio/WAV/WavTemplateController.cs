@@ -6,10 +6,10 @@ namespace MiniCoder2.Templating.Audio.WAV
     public class WavTemplateController
     {
         private WavTemplate template;
-        private TemplateForm view;
+        private TemplateForm<WavTemplate> view;
         private TemplateDao templateDao;
 
-        public WavTemplateController(TemplateForm view, WavTemplate template)
+        public WavTemplateController(TemplateForm<WavTemplate> view, WavTemplate template)
         {
             this.view = view;
             this.template = template;
@@ -103,7 +103,7 @@ namespace MiniCoder2.Templating.Audio.WAV
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(WavTemplate));
+                templateDao.SaveTemplate(name, template, typeof(WavTemplate));
             }
         }
 

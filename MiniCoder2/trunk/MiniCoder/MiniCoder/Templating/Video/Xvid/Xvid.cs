@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Video.Xvid
 {
-    public partial class Xvid : Form, TemplateForm
+    public partial class Xvid : Form, TemplateForm<XvidTemplate>
     {
         XvidTemplate template;
         XvidTemplateController controller;
@@ -41,7 +41,7 @@ namespace MiniCoder2.Templating.Video.Xvid
             nudThreads.Value = 1;
         }
 
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
             this.template = (XvidTemplate)template;
             this.txtCommandLine.Text = this.template.GenerateCommandLine();

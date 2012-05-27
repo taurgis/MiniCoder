@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Audio.Vorbis
 {
-    public partial class Vorbis : Form, TemplateForm
+    public partial class Vorbis : Form, TemplateForm<VorbisTemplate>
     {
         private VorbisTemplateController controller;
         private VorbisTemplate template;
@@ -62,10 +62,10 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
             this.template = (VorbisTemplate)template;
-            this.txtCommandLine.Text = template.GenerateCommandLine();
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
 
             this.nudBitrate.Value = this.template.BitRate;
             this.nudDelay.Value = this.template.Delay;

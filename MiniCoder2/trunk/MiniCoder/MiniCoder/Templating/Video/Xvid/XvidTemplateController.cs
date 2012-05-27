@@ -10,10 +10,10 @@ namespace MiniCoder2.Templating.Video.Xvid
     class XvidTemplateController
     {
         private XvidTemplate template;
-        private TemplateForm view;
+        private TemplateForm<XvidTemplate> view;
         private TemplateDao templateDao;
 
-        public XvidTemplateController(TemplateForm view, XvidTemplate template)
+        public XvidTemplateController(TemplateForm<XvidTemplate> view, XvidTemplate template)
         {
             this.template = template;
             this.view = view;
@@ -150,7 +150,7 @@ namespace MiniCoder2.Templating.Video.Xvid
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(XvidTemplate));
+                templateDao.SaveTemplate(name, template, typeof(XvidTemplate));
             }
         }
 

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Audio.WAV
 {
-    public partial class Wav : Form, TemplateForm
+    public partial class Wav : Form, TemplateForm<WavTemplate>
     {
         private WavTemplateController controller;
         private WavTemplate template;
@@ -43,10 +43,10 @@ namespace MiniCoder2.Templating.Audio.WAV
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
             this.template = (WavTemplate)template;
-            this.txtCommandLine.Text = template.GenerateCommandLine();
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
             this.nudDelay.Value = this.template.Delay;
             this.nudBitrate.Value = this.template.BitRate;
 

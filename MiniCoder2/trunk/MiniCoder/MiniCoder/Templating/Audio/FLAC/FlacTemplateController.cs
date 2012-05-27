@@ -6,10 +6,10 @@ namespace MiniCoder2.Templating.Audio.FLAC
     public class FlacTemplateController
     {
         private FlacTemplate template;
-        private TemplateForm view;
+        private TemplateForm<FlacTemplate> view;
         private TemplateDao templateDao;
 
-        public FlacTemplateController(TemplateForm view, FlacTemplate template)
+        public FlacTemplateController(TemplateForm<FlacTemplate> view, FlacTemplate template)
         {
             this.view = view;
             this.template = template;
@@ -95,7 +95,7 @@ namespace MiniCoder2.Templating.Audio.FLAC
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(FlacTemplate));
+                templateDao.SaveTemplate(name, template, typeof(FlacTemplate));
             }
         }
 

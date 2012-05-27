@@ -6,10 +6,10 @@ namespace MiniCoder2.Templating.Audio.MP3
     public class Mp3TemplateController
     {
         private Mp3Template template;
-        private TemplateForm view;
+        private TemplateForm<Mp3Template> view;
         private TemplateDao templateDao;
 
-        public Mp3TemplateController(TemplateForm view, Mp3Template template)
+        public Mp3TemplateController(TemplateForm<Mp3Template> view, Mp3Template template)
         {
             this.view = view;
             this.template = template;
@@ -96,7 +96,7 @@ namespace MiniCoder2.Templating.Audio.MP3
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(Mp3Template));
+                templateDao.SaveTemplate(name, template, typeof(Mp3Template));
             }
         }
 

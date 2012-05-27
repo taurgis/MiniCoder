@@ -17,26 +17,30 @@ namespace MiniCoder2.Templating.Files
         /// </summary>
         /// <param name="template">The template object</param>
         /// <param name="classType">The class type</param>
-        public Boolean SaveTemplate(ExtTemplate template, Type classType)
+        public Boolean SaveTemplate(String name, Object template, Type classType)
         {
+            ExtTemplate convertedTemplate = (ExtTemplate)template;
+            convertedTemplate.Name = name;
             if (!Directory.Exists("templates"))
                 Directory.CreateDirectory("templates");
 
             if (!Directory.Exists("templates\\" + classType.Name))
                 Directory.CreateDirectory("templates\\" + classType.Name);
 
-            return ExportTemplate(template, classType, "templates\\" + classType.Name + "\\");
+            return ExportTemplate(convertedTemplate, classType, "templates\\" + classType.Name + "\\");
         }
 
-        public Boolean ExportTemplate(ExtTemplate template, Type classType, String path)
+        public Boolean ExportTemplate(Object template, Type classType, String path)
         {
             try
             {
+                ExtTemplate convertedTemplate = (ExtTemplate)template;
                 XmlSerializer serializer = new XmlSerializer(classType);
 
-                using (StreamWriter writer = new StreamWriter(path + template.Name + ".xml"))
+                using (StreamWriter writer = new StreamWriter(path + convertedTemplate.Name + ".xml", false))
                 {
                     serializer.Serialize(writer, template);
+                    writer.Close();
                 }
 
                 return true;
@@ -86,11 +90,19 @@ namespace MiniCoder2.Templating.Files
         /// <param name="name">The name of the template.</param>
         /// <param name="classType">The class type of the template.</param>
         /// <returns>The template class.</returns>
-        public ExtTemplate LoadTemplate(String name, Type classType)
+        public Object LoadTemplate(String name, Type classType)
         {
             String path = "templates\\" + classType.Name + "\\" + name + ".xml";
+            if (!File.Exists(path))
+                throw new TemplateNotFoundException(path);
 
-            return ImportTemplate(path, classType);
+            XmlSerializer serializer =
+            new XmlSerializer(classType);
+
+            TextReader reader = new StreamReader(path);
+            ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
+            reader.Close();
+            return template;
         }
 
         /// <summary>
@@ -134,7 +146,7 @@ namespace MiniCoder2.Templating.Files
                 ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
                 reader.Close();
 
-                SaveTemplate(template, classType);
+                SaveTemplate(template.Name, template, classType);
 
                 return template;
             }

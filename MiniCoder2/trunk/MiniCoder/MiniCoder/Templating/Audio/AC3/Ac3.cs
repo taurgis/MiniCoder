@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Audio.AC3
 {
-    public partial class Ac3 : Form, TemplateForm
+    public partial class Ac3 : Form, TemplateForm<Ac3Template>
     {
         private Ac3TemplateController controller;
         private Ac3Template template;
@@ -43,10 +43,10 @@ namespace MiniCoder2.Templating.Audio.AC3
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
             this.template = (Ac3Template)template;
-            this.txtCommandLine.Text = template.GenerateCommandLine();
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
             this.nudDelay.Value = this.template.Delay;
             this.nudBitrate.Value = this.template.BitRate;
 
