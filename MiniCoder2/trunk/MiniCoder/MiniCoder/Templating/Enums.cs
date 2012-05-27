@@ -45,4 +45,9 @@ namespace MiniCoder2.Templating
     {
         None = 0
     }
+
+    public enum AudioChannels : byte
+    {
+        Mono = 1, Stereo = 2, Surround = 6
+    }
 }

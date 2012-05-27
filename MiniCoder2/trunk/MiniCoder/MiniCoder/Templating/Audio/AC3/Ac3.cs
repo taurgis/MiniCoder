@@ -52,13 +52,13 @@ namespace MiniCoder2.Templating.Audio.AC3
 
             switch (this.template.Channels)
             {
-                case 1:
+                case AudioChannels.Mono:
                     cbChannels.SelectedIndex = 0;
                     break;
-                case 2:
+                case AudioChannels.Stereo:
                     cbChannels.SelectedIndex = 1;
                     break;
-                case 6:
+                case AudioChannels.Surround:
                     cbChannels.SelectedIndex = 2;
                     break;
                 default:

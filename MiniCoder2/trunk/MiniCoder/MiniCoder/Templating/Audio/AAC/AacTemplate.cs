@@ -15,8 +15,14 @@ namespace MiniCoder2.Templating.Audio.AAC
         public Int32 Delay;
         [XmlElement("Profile")]
         public AudioEncodingProfile Profile;
+        [XmlIgnore]
+        public AudioChannels Channels;
         [XmlElement("Channels")]
-        public short Channels;
+        public byte ChannelsByte
+        {
+            get { return (byte)Channels; }
+            set { Channels = (AudioChannels)value; }
+        }
         [XmlElement("SampleRate")]
         public Int32 SampleRate;
         [XmlElement("Normalize")]
@@ -42,7 +48,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             String profile = "";
             String channelUsed = "";
 
-            if (Channels == 6)
+            if (Channels == AudioChannels.Surround)
                 channelUsed = " -6chnew";
 
             switch (Mode)

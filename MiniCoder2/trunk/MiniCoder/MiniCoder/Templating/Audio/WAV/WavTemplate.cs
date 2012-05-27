@@ -7,8 +7,14 @@ namespace MiniCoder2.Templating.Audio.WAV
     {
         [XmlElement("Delay")]
         public Int32 Delay;
+        [XmlIgnore]
+        public AudioChannels Channels;
         [XmlElement("Channels")]
-        public short Channels;
+        public byte ChannelsByte
+        {
+            get { return (byte)Channels; }
+            set { Channels = (AudioChannels)value; }
+        }
         [XmlElement("SampleRate")]
         public Int32 SampleRate;
         [XmlElement("DownConvert")]
@@ -38,10 +44,10 @@ namespace MiniCoder2.Templating.Audio.WAV
             String delay = "";
             switch (Channels)
             {
-                case 2:
+                case AudioChannels.Stereo:
                     channelUsed = " -down2";
                     break;
-                case 6:
+                case AudioChannels.Surround:
                     channelUsed = " -down6";
                     break;
             }

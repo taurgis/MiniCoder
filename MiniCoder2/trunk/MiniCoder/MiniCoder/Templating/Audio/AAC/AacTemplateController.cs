@@ -57,14 +57,17 @@ namespace MiniCoder2.Templating.Audio.AAC
 
         public void ChangeChannels(int selectedIndex)
         {
-            if (selectedIndex <= 1)
+            if (selectedIndex <= 2)
                 switch (selectedIndex)
                 {
                     case 0:
-                        this.template.Channels = 2;
+                        this.template.Channels = AudioChannels.Mono;
                         break;
                     case 1:
-                        this.template.Channels = 6;
+                        this.template.Channels = AudioChannels.Stereo;
+                        break;
+                    case 2:
+                        this.template.Channels = AudioChannels.Surround;
                         break;
                 }
 
