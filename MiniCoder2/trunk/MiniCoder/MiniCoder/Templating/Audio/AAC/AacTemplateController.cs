@@ -5,7 +5,8 @@ namespace MiniCoder2.Templating.Audio.AAC
 {
     public class AacTemplateController : AudioTemplateController<AacTemplate>
     {
-        public AacTemplateController(TemplateForm<AacTemplate> view, AacTemplate template) : base(view, template)
+        public AacTemplateController(TemplateForm<AacTemplate> view, AacTemplate template)
+            : base(view, template)
         {
             this.view = view;
             this.template = template;
@@ -96,9 +97,5 @@ namespace MiniCoder2.Templating.Audio.AAC
             RefreshView();
         }
 
-        private void RefreshView()
-        {
-            view.UpdateData(this.template);
-        }
     }
 }

@@ -75,5 +75,11 @@ namespace MiniCoder2.Templating.Audio
         {
             return templateDao.ImportTemplate(path, classType);
         }
+
+
+        public void RefreshView()
+        {
+            view.UpdateData(this.template);
+        }
     }
 }
