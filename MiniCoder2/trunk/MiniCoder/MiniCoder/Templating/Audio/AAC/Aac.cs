@@ -95,24 +95,7 @@ namespace MiniCoder2.Templating.Audio.AAC
                     break;
             }
 
-            switch (this.template.SampleRate)
-            {
-                case 0:
-                    cbSampleRate.SelectedIndex = 0;
-                    break;
-                case 44100:
-                    cbSampleRate.SelectedIndex = 1;
-                    break;
-                case 48000:
-                    cbSampleRate.SelectedIndex = 2;
-                    break;
-                case 88200:
-                    cbSampleRate.SelectedIndex = 3;
-                    break;
-                case 96000:
-                    cbSampleRate.SelectedIndex = 4;
-                    break;
-            }
+            cbSampleRate.SelectedIndex = (int)this.template.SampleRate;
         }
 
         private void nudQuality_ValueChanged(object sender, EventArgs e)

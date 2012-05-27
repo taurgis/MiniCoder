@@ -23,8 +23,14 @@ namespace MiniCoder2.Templating.Audio.AAC
             get { return (byte)Channels; }
             set { Channels = (AudioChannels)value; }
         }
+        [XmlIgnore]
+        public SampleRate SampleRate;
         [XmlElement("SampleRate")]
-        public Int32 SampleRate;
+        public byte SampleRateByte
+        {
+            get { return (byte)SampleRate; }
+            set { SampleRate = (SampleRate)value; }
+        }
         [XmlElement("Normalize")]
         public Boolean Normalize;
 
@@ -81,8 +87,21 @@ namespace MiniCoder2.Templating.Audio.AAC
                     break;
             }
 
-            if (SampleRate != 0)
-                sampelingRate = "-ssrc( --rate " + SampleRate + " )";
+            switch (SampleRate)
+            {
+                case Templating.SampleRate.Hz44100:
+                    sampelingRate = "-ssrc( --rate 44100 )";
+                    break;
+                case Templating.SampleRate.Hz48000:
+                    sampelingRate = "-ssrc( --rate 48000 )";
+                    break;
+                case Templating.SampleRate.Hz88200:
+                    sampelingRate = "-ssrc( --rate 88200 )";
+                    break;
+                case Templating.SampleRate.Hz96000:
+                    sampelingRate = "-ssrc( --rate 96000 )";
+                    break;
+            }
 
             return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed + " )";
         }
