@@ -4,7 +4,7 @@ using MiniCoder2.Exceptions;
 
 namespace MiniCoder2.Templating.Audio.Vorbis
 {
-    public class VorbisTemplate : ExtTemplate
+    public class VorbisTemplate : AudioTemplate
     {
         [XmlElement("Mode")]
         public AudioEncodingMode Mode;
@@ -12,26 +12,6 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         public Double Quality;
         [XmlElement("BitRate")]
         public Int32 BitRate;
-        [XmlElement("Delay")]
-        public Int32 Delay;
-        [XmlIgnore]
-        public SampleRate SampleRate;
-        [XmlElement("SampleRate")]
-        public byte SampleRateByte
-        {
-            get { return (byte)SampleRate; }
-            set { SampleRate = (SampleRate)value; }
-        }
-        [XmlElement("Normalize")]
-        public Boolean Normalize;
-        [XmlIgnore]
-        public AudioChannels Channels;
-        [XmlElement("Channels")]
-        public byte ChannelsByte
-        {
-            get { return (byte)Channels; }
-            set { Channels = (AudioChannels)value; }
-        }
 
         /// <summary>
         /// Empty constructor for serialization

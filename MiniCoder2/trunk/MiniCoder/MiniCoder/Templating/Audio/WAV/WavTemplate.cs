@@ -9,6 +9,7 @@ namespace MiniCoder2.Templating.Audio.WAV
         public Boolean DownConvert;
         [XmlElement("BitRate")]
         public Int32 BitRate;
+
         /// <summary>
         /// Empty constructor for serialization
         /// </summary>
