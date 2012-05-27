@@ -11,14 +11,14 @@ namespace MiniCoder2.Templating.Video.Xvid
 {
     public partial class Xvid : Form, TemplateForm
     {
-        XvidTemplate xTemplate;
-        XvidTemplateController xController;
+        XvidTemplate template;
+        XvidTemplateController controller;
 
         public Xvid()
         {
             InitializeComponent();
-            this.xTemplate = new XvidTemplate("Default");
-            this.xController = new XvidTemplateController(this, xTemplate);
+            this.template = new XvidTemplate("Default");
+            this.controller = new XvidTemplateController(this, template);
         }
 
         private void Xvid_Load(object sender, EventArgs e)
@@ -34,20 +34,17 @@ namespace MiniCoder2.Templating.Video.Xvid
             cbHVSMasking.SelectedIndex = (int)XVidHVSMasking.None;
             cbProfile.SelectedIndex = (int)XVidProfile.None;
 
-            xTemplate.InitialiseOptions();
-            tbChromaMotion.Checked = (bool)xTemplate.XOptions["XChromaMotion"];
-            tbTrellis.Checked = (bool)xTemplate.XOptions["XTrellisQuant"]; ;
-            tbCloseGOP.Checked = (bool)xTemplate.XOptions["XClosedGOP"]; ;
+       
             nudBitrate.Value = 700;
             nudQuantization.Value = 8.0M;
             nudBFrames.Value = 2;
             nudThreads.Value = 1;
         }
 
-        public void UpdateData(ExtTemplate template) 
+        public void UpdateData(ExtTemplate template)
         {
-            this.xTemplate = (XvidTemplate)template;
-            this.CommandDisplay.Text = this.xTemplate.GenerateCommandLine();
+            this.template = (XvidTemplate)template;
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
         }
 
         private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,45 +59,45 @@ namespace MiniCoder2.Templating.Video.Xvid
             {
                 nudQuantization.Hide();
                 nudBitrate.Show();
-                CompressionLabel.Text = "Bitrate:"; 
+                CompressionLabel.Text = "Bitrate:";
             }
 
-            this.xController.ChangeMode(cbMode.SelectedIndex);
+            this.controller.ChangeMode(cbMode.SelectedIndex);
         }
 
         private void nudBitrate_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeBitrate((int)nudBitrate.Value);
-        }       
+            this.controller.ChangeBitrate((int)nudBitrate.Value);
+        }
 
         private void nudQuantization_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeQuantization(nudQuantization.Value);
+            this.controller.ChangeQuantization(nudQuantization.Value);
         }
 
         private void cbVHQMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeVHQMode(cbVHQMode.SelectedIndex);
+            this.controller.ChangeVHQMode(cbVHQMode.SelectedIndex);
         }
 
         private void cbHVSMasking_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeHVSMasking(cbMotionSearch.SelectedIndex);
+            this.controller.ChangeHVSMasking(cbMotionSearch.SelectedIndex);
         }
 
         private void cbMotionSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeMotionSearch(cbMotionSearch.SelectedIndex);
+            this.controller.ChangeMotionSearch(cbMotionSearch.SelectedIndex);
         }
 
         private void nudThreads_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeThreads((int)nudThreads.Value);
+            this.controller.ChangeThreads((int)nudThreads.Value);
         }
 
         private void nudBFrames_ValueChanged(object sender, EventArgs e)
         {
-            this.xController.ChangeBFrames((int)nudBFrames.Value);
+            this.controller.ChangeBFrames((int)nudBFrames.Value);
         }
 
         private void cbProfile_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,52 +107,52 @@ namespace MiniCoder2.Templating.Video.Xvid
 
         private void tbInterlaced_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectInterlaced(tbInterlaced.Checked);
+            this.controller.SelectInterlaced(tbInterlaced.Checked);
         }
 
         private void tbTurbo_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectTurbo(tbTurbo.Checked);
+            this.controller.SelectTurbo(tbTurbo.Checked);
         }
 
         private void tbTrellis_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectTrellisQuant(tbTrellis.Checked);
+            this.controller.SelectTrellisQuant(tbTrellis.Checked);
         }
 
         private void tbPackedBitstream_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectPackedBitstream(tbPackedBitstream.Checked);
+            this.controller.SelectPackedBitstream(tbPackedBitstream.Checked);
         }
 
         private void tbAdaptiveQuantization_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectAdaptiveQuant(tbAdaptiveQuantization.Checked);
+            this.controller.SelectAdaptiveQuant(tbAdaptiveQuantization.Checked);
         }
 
         private void tbQPel_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectQPel(tbQPel.Checked);
+            this.controller.SelectQPel(tbQPel.Checked);
         }
 
         private void tbGMC_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectGMC(tbGMC.Checked);
+            this.controller.SelectGMC(tbGMC.Checked);
         }
 
         private void tbChromaMotion_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectChromaMotion(tbChromaMotion.Checked);
+            this.controller.SelectChromaMotion(tbChromaMotion.Checked);
         }
 
         private void tbVHQBFrames_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectVHQBFrames(tbVHQBFrames.Checked);
+            this.controller.SelectVHQBFrames(tbVHQBFrames.Checked);
         }
 
         private void tbCloseGOP_CheckedChanged(object sender, EventArgs e)
         {
-            this.xController.SelectClosedGOP(tbCloseGOP.Checked);
+            this.controller.SelectClosedGOP(tbCloseGOP.Checked);
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -166,6 +163,91 @@ namespace MiniCoder2.Templating.Video.Xvid
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
+
+            controller.SaveTemplate(name);
+            UpdateTemplateList(controller.FetchTemplateNames());
+        }
+
+        /// <summary>
+        /// Show all templates for this type in the splitbutton menu.
+        /// </summary>
+        /// <param name="templateNames">Array of template names.</param>
+        private void UpdateTemplateList(String[] templateNames)
+        {
+            mnuLoad.DropDownItems.Clear();
+            foreach (String templateName in templateNames)
+            {
+                ToolStripMenuItem tempMenuItem = new ToolStripMenuItem();
+                tempMenuItem.Text = templateName;
+                tempMenuItem.Click += new EventHandler(templateItemMenuItem_Click);
+
+                mnuLoad.DropDownItems.Add(tempMenuItem);
+            }
+        }
+
+        private void templateItemMenuItem_Click(object sender, EventArgs e)
+        {
+            String name = ((ToolStripMenuItem)sender).Text;
+            controller.LoadTemplate(name);
+        }
+
+        private void mnuReset_Click(object sender, EventArgs e)
+        {
+            ResetInterface();
+        }
+
+        /// <summary>
+        /// Delete the current active template.
+        /// </summary>
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (controller.DeleteTemplate())
+                {
+                    MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetInterface();
+                }
+                else
+                    MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                UpdateTemplateList(controller.FetchTemplateNames());
+            }
+        }
+
+
+        private void mnuExport_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
+            if (searchFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (controller.ExportTemplate(searchFolderDialog.SelectedPath))
+                    MessageBox.Show("File exported!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Error exporting file!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void mnuImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Template XML (*.xml)|*.xml";
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName);
+                if (!template.Equals(null))
+                {
+                    MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
+                    UpdateData((XvidTemplate)template);
+                    UpdateTemplateList(controller.FetchTemplateNames());
+                }
+            }
+
         }
     }
 }
