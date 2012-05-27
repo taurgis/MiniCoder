@@ -16,7 +16,7 @@ namespace MiniCoder2.Templating.Audio
         {
             this.view = view;
             this.template = template;
-            templateDao = new TemplateDao();
+            this.templateDao = new TemplateDao();
         }
 
         /// <summary>
@@ -71,12 +71,14 @@ namespace MiniCoder2.Templating.Audio
         /// </summary>
         /// <param name="path">The import file path.</param>
         /// <returns>The template class for the imported file.</returns>
-        public ExtTemplate ImportTemplate(String path, Type classType)
+        public Template ImportTemplate(String path, Type classType)
         {
             return templateDao.ImportTemplate(path, classType);
         }
 
-
+        /// <summary>
+        /// Refresh the view with the updated parameters.
+        /// </summary>
         public void RefreshView()
         {
             view.UpdateData(this.template);

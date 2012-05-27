@@ -195,7 +195,7 @@ namespace MiniCoder2.Templating.Audio.MP3
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName, typeof(Mp3Template));
+                Template template = controller.ImportTemplate(openFileDialog.FileName, typeof(Mp3Template));
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);

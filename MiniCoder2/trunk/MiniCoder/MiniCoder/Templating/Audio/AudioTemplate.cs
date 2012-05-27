@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Audio
 {
-    public class AudioTemplate : ExtTemplate
+    public class AudioTemplate : Template
     {
         [XmlElement("Normalize")]
         public Boolean Normalize;

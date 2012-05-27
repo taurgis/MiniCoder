@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 namespace MiniCoder2.Templating
 {
     [XmlRoot("Template")]
-    public abstract class ExtTemplate
+    public abstract class Template
     {
         [XmlElement("Name")]
         public String Name { get; set; }

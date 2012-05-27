@@ -194,7 +194,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName, typeof(VorbisTemplate));
+                Template template = controller.ImportTemplate(openFileDialog.FileName, typeof(VorbisTemplate));
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);

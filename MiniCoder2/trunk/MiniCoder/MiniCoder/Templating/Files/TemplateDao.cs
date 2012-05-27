@@ -19,7 +19,7 @@ namespace MiniCoder2.Templating.Files
         /// <param name="classType">The class type</param>
         public Boolean SaveTemplate(String name, Object template, Type classType)
         {
-            ExtTemplate convertedTemplate = (ExtTemplate)template;
+            Template convertedTemplate = (Template)template;
             convertedTemplate.Name = name;
             if (!Directory.Exists("templates"))
                 Directory.CreateDirectory("templates");
@@ -34,7 +34,7 @@ namespace MiniCoder2.Templating.Files
         {
             try
             {
-                ExtTemplate convertedTemplate = (ExtTemplate)template;
+                Template convertedTemplate = (Template)template;
                 XmlSerializer serializer = new XmlSerializer(classType);
 
                 using (StreamWriter writer = new StreamWriter(path + convertedTemplate.Name + ".xml", false))
@@ -100,7 +100,7 @@ namespace MiniCoder2.Templating.Files
             new XmlSerializer(classType);
 
             TextReader reader = new StreamReader(path);
-            ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
+            Template template = (Template)serializer.Deserialize(reader);
             reader.Close();
             return template;
         }
@@ -132,7 +132,7 @@ namespace MiniCoder2.Templating.Files
         /// <param name="name">The name of the template.</param>
         /// <param name="classType">The class type of the template.</param>
         /// <returns>The imported template</returns>
-        public ExtTemplate ImportTemplate(String path, Type classType)
+        public Template ImportTemplate(String path, Type classType)
         {
             try
             {
@@ -143,7 +143,7 @@ namespace MiniCoder2.Templating.Files
                 new XmlSerializer(classType);
 
                 TextReader reader = new StreamReader(path);
-                ExtTemplate template = (ExtTemplate)serializer.Deserialize(reader);
+                Template template = (Template)serializer.Deserialize(reader);
                 reader.Close();
 
                 SaveTemplate(template.Name, template, classType);

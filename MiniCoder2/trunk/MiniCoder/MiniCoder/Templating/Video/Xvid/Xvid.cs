@@ -239,7 +239,7 @@ namespace MiniCoder2.Templating.Video.Xvid
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName);
+                Template template = controller.ImportTemplate(openFileDialog.FileName);
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
