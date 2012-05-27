@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Video.Xvid
 {
-    public class XvidTemplate : ExtTemplate
+    public class XvidTemplate : Template
     {
         [XmlIgnore]
         public XVidEncodingMode Mode;

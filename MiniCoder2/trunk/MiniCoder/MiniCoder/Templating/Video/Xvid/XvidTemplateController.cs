@@ -197,7 +197,7 @@ namespace MiniCoder2.Templating.Video.Xvid
         /// </summary>
         /// <param name="path">The import file path.</param>
         /// <returns>The template class for the imported file.</returns>
-        public ExtTemplate ImportTemplate(String path)
+        public Template ImportTemplate(String path)
         {
             return templateDao.ImportTemplate(path, typeof(XvidTemplate));
         }

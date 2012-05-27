@@ -196,7 +196,7 @@ namespace MiniCoder2.Templating.Audio.DTS
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName, typeof(DtsTemplate));
+                Template template = controller.ImportTemplate(openFileDialog.FileName, typeof(DtsTemplate));
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
