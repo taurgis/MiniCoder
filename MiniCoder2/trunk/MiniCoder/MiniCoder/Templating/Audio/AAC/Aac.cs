@@ -81,11 +81,14 @@ namespace MiniCoder2.Templating.Audio.AAC
 
             switch (this.template.Channels)
             {
-                case 2:
+                case AudioChannels.Mono:
                     cbChannels.SelectedIndex = 0;
                     break;
-                case 6:
+                case AudioChannels.Stereo:
                     cbChannels.SelectedIndex = 1;
+                    break;
+                case AudioChannels.Surround:
+                    cbChannels.SelectedIndex = 2;
                     break;
                 default:
                     cbChannels.SelectedIndex = 0;

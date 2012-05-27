@@ -42,6 +42,7 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
+            this.cbNormalize = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSampleRate = new System.Windows.Forms.ComboBox();
             this.nudDelay = new System.Windows.Forms.NumericUpDown();
@@ -61,7 +62,6 @@
             this.mnuSharing = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbNormalize = new System.Windows.Forms.CheckBox();
             this.mnuTemplates.SuspendLayout();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDelay)).BeginInit();
@@ -185,6 +185,17 @@
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
             // 
+            // cbNormalize
+            // 
+            this.cbNormalize.AutoSize = true;
+            this.cbNormalize.Location = new System.Drawing.Point(194, 95);
+            this.cbNormalize.Name = "cbNormalize";
+            this.cbNormalize.Size = new System.Drawing.Size(72, 17);
+            this.cbNormalize.TabIndex = 29;
+            this.cbNormalize.Text = "Normalize";
+            this.cbNormalize.UseVisualStyleBackColor = true;
+            this.cbNormalize.CheckedChanged += new System.EventHandler(this.cbNormalize_CheckedChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -257,6 +268,7 @@
             this.cbChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbChannels.FormattingEnabled = true;
             this.cbChannels.Items.AddRange(new object[] {
+            "Mono",
             "Stereo",
             "5.1"});
             this.cbChannels.Location = new System.Drawing.Point(78, 65);
@@ -433,17 +445,6 @@
             this.mnuImport.Size = new System.Drawing.Size(110, 22);
             this.mnuImport.Text = "Import";
             this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
-            // 
-            // cbNormalize
-            // 
-            this.cbNormalize.AutoSize = true;
-            this.cbNormalize.Location = new System.Drawing.Point(194, 95);
-            this.cbNormalize.Name = "cbNormalize";
-            this.cbNormalize.Size = new System.Drawing.Size(72, 17);
-            this.cbNormalize.TabIndex = 29;
-            this.cbNormalize.Text = "Normalize";
-            this.cbNormalize.UseVisualStyleBackColor = true;
-            this.cbNormalize.CheckedChanged += new System.EventHandler(this.cbNormalize_CheckedChanged);
             // 
             // Aac
             // 

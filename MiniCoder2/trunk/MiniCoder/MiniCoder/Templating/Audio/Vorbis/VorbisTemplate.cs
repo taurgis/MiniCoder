@@ -18,6 +18,14 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         public Int32 SampleRate;
         [XmlElement("Normalize")]
         public Boolean Normalize;
+        [XmlIgnore]
+        public AudioChannels Channels;
+        [XmlElement("Channels")]
+        public byte ChannelsByte
+        {
+            get { return (byte)Channels; }
+            set { Channels = (AudioChannels)value; }
+        }
 
         /// <summary>
         /// Empty constructor for serialization
