@@ -3,7 +3,7 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.DTS
 {
-    public class DtsTemplateController : AudioTemplateController<DtsTemplate>
+    public class DtsTemplateController : TemplateController<DtsTemplate>
     {
         public DtsTemplateController(TemplateForm<DtsTemplate> view, DtsTemplate template)
             : base(view, template)

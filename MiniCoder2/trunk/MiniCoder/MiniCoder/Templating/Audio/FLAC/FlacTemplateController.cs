@@ -3,7 +3,7 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.FLAC
 {
-    public class FlacTemplateController : AudioTemplateController<FlacTemplate>
+    public class FlacTemplateController : TemplateController<FlacTemplate>
     {
         public FlacTemplateController(TemplateForm<FlacTemplate> view, FlacTemplate template)
             : base(view, template)

@@ -3,7 +3,7 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.Vorbis
 {
-    public class VorbisTemplateController : AudioTemplateController<VorbisTemplate>
+    public class VorbisTemplateController : TemplateController<VorbisTemplate>
     {
         public VorbisTemplateController(TemplateForm<VorbisTemplate> view, VorbisTemplate template)
             : base(view, template)

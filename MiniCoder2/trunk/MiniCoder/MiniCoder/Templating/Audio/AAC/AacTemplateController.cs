@@ -3,7 +3,7 @@ using MiniCoder2.Templating.Files;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
-    public class AacTemplateController : AudioTemplateController<AacTemplate>
+    public class AacTemplateController : TemplateController<AacTemplate>
     {
         public AacTemplateController(TemplateForm<AacTemplate> view, AacTemplate template)
             : base(view, template)

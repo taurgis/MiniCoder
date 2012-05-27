@@ -109,7 +109,7 @@
     <Compile Include="Templating\Audio\AC3\Ac3Template.cs" />
     <Compile Include="Templating\Audio\AC3\Ac3TemplateController.cs" />
     <Compile Include="Templating\Audio\AudioTemplate.cs" />
-    <Compile Include="Templating\Audio\AudioTemplateController.cs" />
+    <Compile Include="Templating\TemplateController.cs" />
     <Compile Include="Templating\Audio\WAV\Wav.cs">
       <SubType>Form</SubType>
     </Compile>
