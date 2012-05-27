@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Audio.DTS
 {
-    public partial class Dts : Form, TemplateForm
+    public partial class Dts : Form, TemplateForm<DtsTemplate>
     {
         private DtsTemplateController controller;
         private DtsTemplate template;
@@ -43,10 +43,10 @@ namespace MiniCoder2.Templating.Audio.DTS
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
             this.template = (DtsTemplate)template;
-            this.txtCommandLine.Text = template.GenerateCommandLine();
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
             this.nudDelay.Value = this.template.Delay;
 
 

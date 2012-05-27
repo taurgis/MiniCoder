@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Audio.FLAC
 {
-    public partial class Flac : Form, TemplateForm
+    public partial class Flac : Form, TemplateForm<FlacTemplate>
     {
         private FlacTemplateController controller;
         private FlacTemplate template;
@@ -42,10 +42,10 @@ namespace MiniCoder2.Templating.Audio.FLAC
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
             this.template = (FlacTemplate)template;
-            this.txtCommandLine.Text = template.GenerateCommandLine();
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
             this.nudDelay.Value = this.template.Delay;
 
 

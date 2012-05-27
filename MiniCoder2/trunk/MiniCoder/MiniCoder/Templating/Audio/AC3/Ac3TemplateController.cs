@@ -6,10 +6,10 @@ namespace MiniCoder2.Templating.Audio.AC3
     public class Ac3TemplateController
     {
         private Ac3Template template;
-        private TemplateForm view;
+        private TemplateForm<Ac3Template> view;
         private TemplateDao templateDao;
 
-        public Ac3TemplateController(TemplateForm view, Ac3Template template)
+        public Ac3TemplateController(TemplateForm<Ac3Template> view, Ac3Template template)
         {
             this.view = view;
             this.template = template;
@@ -103,7 +103,7 @@ namespace MiniCoder2.Templating.Audio.AC3
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(Ac3Template));
+                templateDao.SaveTemplate(name, template, typeof(Ac3Template));
             }
         }
 

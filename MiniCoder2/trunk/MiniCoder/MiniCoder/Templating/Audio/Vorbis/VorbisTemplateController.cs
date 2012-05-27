@@ -6,10 +6,10 @@ namespace MiniCoder2.Templating.Audio.Vorbis
     public class VorbisTemplateController
     {
         private VorbisTemplate template;
-        private TemplateForm view;
+        private TemplateForm<VorbisTemplate> view;
         private TemplateDao templateDao;
 
-        public VorbisTemplateController(TemplateForm view, VorbisTemplate template)
+        public VorbisTemplateController(TemplateForm<VorbisTemplate> view, VorbisTemplate template)
         {
             this.view = view;
             this.template = template;
@@ -96,7 +96,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(template, typeof(VorbisTemplate));
+                templateDao.SaveTemplate(name, template, typeof(VorbisTemplate));
             }
         }
 

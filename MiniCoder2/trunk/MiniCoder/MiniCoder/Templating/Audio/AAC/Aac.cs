@@ -3,10 +3,11 @@ using System.Windows.Forms;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
-    public partial class Aac : Form, TemplateForm
+    public partial class Aac : Form, TemplateForm<AacTemplate>
     {
         private AacTemplateController controller;
         private AacTemplate template;
+        private Boolean loading;
 
         public Aac()
         {
@@ -18,7 +19,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         private void Aac_Load(object sender, EventArgs e)
         {
             ResetInterface();
-            UpdateTemplateList(controller.FetchTemplateNames());
+            UpdateTemplateList(controller.FetchTemplateNames(typeof(AacTemplate)));
         }
 
         /// <summary>
@@ -64,10 +65,11 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// <summary>
         /// Update the model with all the information selected in the GUI.
         /// </summary>
-        public void UpdateData(ExtTemplate template)
+        public void UpdateData(Object template)
         {
+            this.loading = true;
             this.template = (AacTemplate)template;
-            this.txtCommandLine.Text = template.GenerateCommandLine();
+            this.txtCommandLine.Text = this.template.GenerateCommandLine();
 
             this.nudBitrate.Value = this.template.BitRate;
             this.nudDelay.Value = this.template.Delay;
@@ -96,49 +98,57 @@ namespace MiniCoder2.Templating.Audio.AAC
             }
 
             cbSampleRate.SelectedIndex = (int)this.template.SampleRate;
+            this.loading = false;
         }
 
         private void nudQuality_ValueChanged(object sender, EventArgs e)
         {
-            controller.ChangeQuality(Double.Parse(nudQuality.Value.ToString()));
+            if (!loading)
+                controller.ChangeQuality(Double.Parse(nudQuality.Value.ToString()));
         }
 
         private void nudBitrate_ValueChanged(object sender, EventArgs e)
         {
-            controller.ChangeBitrate((Int32.Parse(nudBitrate.Value.ToString())));
+            if (!loading)
+                controller.ChangeBitrate((Int32.Parse(nudBitrate.Value.ToString())));
         }
 
         private void nudDelay_ValueChanged(object sender, EventArgs e)
         {
-            controller.ChangeDelay((Int32.Parse(nudDelay.Value.ToString())));
+            if (!loading)
+                controller.ChangeDelay((Int32.Parse(nudDelay.Value.ToString())));
         }
 
         private void cbProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            controller.ChangeProfile(cbProfile.SelectedIndex);
+            if (!loading)
+                controller.ChangeProfile(cbProfile.SelectedIndex);
         }
 
         private void cbChannels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            controller.ChangeChannels(cbChannels.SelectedIndex);
+            if (!loading)
+                controller.ChangeChannels(cbChannels.SelectedIndex);
         }
 
         private void cbSampleRate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
+            if (!loading)
+                controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
         }
 
         private void cbNormalize_CheckedChanged(object sender, EventArgs e)
         {
-            controller.ChangeNormalize(cbNormalize.Checked);
+            if (!loading)
+                controller.ChangeNormalize(cbNormalize.Checked);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
 
-            controller.SaveTemplate(name);
-            UpdateTemplateList(controller.FetchTemplateNames());
+            controller.SaveTemplate(name, typeof(AacTemplate));
+            UpdateTemplateList(controller.FetchTemplateNames(typeof(AacTemplate)));
         }
 
         /// <summary>
@@ -161,7 +171,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         private void templateItemMenuItem_Click(object sender, EventArgs e)
         {
             String name = ((ToolStripMenuItem)sender).Text;
-            controller.LoadTemplate(name);
+            controller.LoadTemplate(name, typeof(AacTemplate));
         }
 
         private void mnuReset_Click(object sender, EventArgs e)
@@ -176,7 +186,7 @@ namespace MiniCoder2.Templating.Audio.AAC
         {
             if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (controller.DeleteTemplate())
+                if (controller.DeleteTemplate(this.template.Name, typeof(AacTemplate)))
                 {
                     MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetInterface();
@@ -184,7 +194,7 @@ namespace MiniCoder2.Templating.Audio.AAC
                 else
                     MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                UpdateTemplateList(controller.FetchTemplateNames());
+                UpdateTemplateList(controller.FetchTemplateNames(typeof(AacTemplate)));
             }
         }
 
@@ -194,7 +204,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
             if (searchFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (controller.ExportTemplate(searchFolderDialog.SelectedPath))
+                if (controller.ExportTemplate(searchFolderDialog.SelectedPath, typeof(AacTemplate)))
                     MessageBox.Show("File exported!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Error exporting file!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -207,12 +217,12 @@ namespace MiniCoder2.Templating.Audio.AAC
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName);
+                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName, typeof(AacTemplate));
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
                     UpdateData((AacTemplate)template);
-                    UpdateTemplateList(controller.FetchTemplateNames());
+                    UpdateTemplateList(controller.FetchTemplateNames(typeof(AacTemplate)));
                 }
             }
 

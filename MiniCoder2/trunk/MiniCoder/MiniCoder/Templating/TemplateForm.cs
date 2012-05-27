@@ -9,8 +9,8 @@ namespace MiniCoder2.Templating
     /// An interface for all GUI's that where made for templating. 
     /// These are the functions that the controller needs from the view.
     /// </summary>
-    public interface TemplateForm
+    public interface TemplateForm<T>
     {
-        void UpdateData(ExtTemplate template);
+        void UpdateData(Object template);
     }
 }
