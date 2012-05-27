@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Settings = new System.Windows.Forms.GroupBox();
             this.cbProfile = new System.Windows.Forms.ComboBox();
             this.ProfileLabel = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.CompressionLabel = new System.Windows.Forms.Label();
             this.ModeLabel = new System.Windows.Forms.Label();
             this.nudQuantization = new System.Windows.Forms.NumericUpDown();
-            this.CommandDisplay = new System.Windows.Forms.TextBox();
             this.OtherSettingsBox = new System.Windows.Forms.GroupBox();
             this.tbTurbo = new System.Windows.Forms.CheckBox();
             this.tbPackedBitstream = new System.Windows.Forms.CheckBox();
@@ -61,6 +61,20 @@
             this.tbQPel = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
+            this.mnuSharing = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSharing = new wyDay.Controls.SplitButton();
+            this.mnuTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.ttSettings = new System.Windows.Forms.ToolTip(this.components);
+            this.btnTemplates = new wyDay.Controls.SplitButton();
+            this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBFrames)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreads)).BeginInit();
@@ -68,6 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantization)).BeginInit();
             this.OtherSettingsBox.SuspendLayout();
             this.ToolsBox.SuspendLayout();
+            this.mnuSharing.SuspendLayout();
+            this.mnuTemplates.SuspendLayout();
             this.SuspendLayout();
             // 
             // Settings
@@ -322,13 +338,6 @@
             0});
             this.nudQuantization.ValueChanged += new System.EventHandler(this.nudQuantization_ValueChanged);
             // 
-            // CommandDisplay
-            // 
-            this.CommandDisplay.Location = new System.Drawing.Point(12, 295);
-            this.CommandDisplay.Name = "CommandDisplay";
-            this.CommandDisplay.Size = new System.Drawing.Size(422, 20);
-            this.CommandDisplay.TabIndex = 20;
-            // 
             // OtherSettingsBox
             // 
             this.OtherSettingsBox.Controls.Add(this.tbTurbo);
@@ -469,7 +478,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(359, 326);
+            this.btnCancel.Location = new System.Drawing.Point(359, 296);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 23;
@@ -479,7 +488,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(278, 326);
+            this.btnOk.Location = new System.Drawing.Point(278, 296);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 24;
@@ -487,17 +496,132 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // mnuSharing
+            // 
+            this.mnuSharing.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExport,
+            this.mnuImport});
+            this.mnuSharing.Name = "mnuTemplates";
+            this.mnuSharing.Size = new System.Drawing.Size(153, 70);
+            // 
+            // mnuExport
+            // 
+            this.mnuExport.Name = "mnuExport";
+            this.mnuExport.Size = new System.Drawing.Size(152, 22);
+            this.mnuExport.Text = "Export";
+            this.mnuExport.Click += new System.EventHandler(this.mnuExport_Click);
+            // 
+            // mnuImport
+            // 
+            this.mnuImport.Name = "mnuImport";
+            this.mnuImport.Size = new System.Drawing.Size(152, 22);
+            this.mnuImport.Text = "Import";
+            this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
+            // 
+            // btnSharing
+            // 
+            this.btnSharing.AutoSize = true;
+            this.btnSharing.ContextMenuStrip = this.mnuSharing;
+            this.btnSharing.Location = new System.Drawing.Point(118, 296);
+            this.btnSharing.Name = "btnSharing";
+            this.btnSharing.Size = new System.Drawing.Size(65, 23);
+            this.btnSharing.SplitMenuStrip = this.mnuSharing;
+            this.btnSharing.TabIndex = 28;
+            this.btnSharing.Text = "Share";
+            this.btnSharing.UseVisualStyleBackColor = true;
+            // 
+            // mnuTemplates
+            // 
+            this.mnuTemplates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuReset,
+            this.toolStripMenuItem1,
+            this.mnuLoad,
+            this.mnuSave,
+            this.toolStripMenuItem2,
+            this.mnuDelete});
+            this.mnuTemplates.Name = "mnuTemplates";
+            this.mnuTemplates.Size = new System.Drawing.Size(108, 104);
+            // 
+            // mnuReset
+            // 
+            this.mnuReset.Name = "mnuReset";
+            this.mnuReset.Size = new System.Drawing.Size(107, 22);
+            this.mnuReset.Text = "Reset";
+            this.mnuReset.Click += new System.EventHandler(this.mnuReset_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
+            // 
+            // mnuLoad
+            // 
+            this.mnuLoad.Name = "mnuLoad";
+            this.mnuLoad.Size = new System.Drawing.Size(107, 22);
+            this.mnuLoad.Text = "Load";
+            // 
+            // mnuSave
+            // 
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(107, 22);
+            this.mnuSave.Text = "Save";
+            this.mnuSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(104, 6);
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(107, 22);
+            this.mnuDelete.Text = "Delete";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
+            // 
+            // ttSettings
+            // 
+            this.ttSettings.AutomaticDelay = 1000;
+            this.ttSettings.BackColor = System.Drawing.Color.White;
+            this.ttSettings.IsBalloon = true;
+            this.ttSettings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ttSettings.ToolTipTitle = "Settings";
+            // 
+            // btnTemplates
+            // 
+            this.btnTemplates.AutoSize = true;
+            this.btnTemplates.ContextMenuStrip = this.mnuTemplates;
+            this.btnTemplates.Location = new System.Drawing.Point(189, 296);
+            this.btnTemplates.Name = "btnTemplates";
+            this.btnTemplates.Size = new System.Drawing.Size(84, 23);
+            this.btnTemplates.SplitMenuStrip = this.mnuTemplates;
+            this.btnTemplates.TabIndex = 27;
+            this.btnTemplates.Text = "Templates";
+            this.btnTemplates.UseVisualStyleBackColor = true;
+            // 
+            // txtCommandLine
+            // 
+            this.txtCommandLine.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCommandLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCommandLine.Location = new System.Drawing.Point(12, 329);
+            this.txtCommandLine.Name = "txtCommandLine";
+            this.txtCommandLine.ReadOnly = true;
+            this.txtCommandLine.Size = new System.Drawing.Size(421, 20);
+            this.txtCommandLine.TabIndex = 29;
+            // 
             // Xvid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 361);
+            this.Controls.Add(this.txtCommandLine);
+            this.Controls.Add(this.btnSharing);
+            this.Controls.Add(this.btnTemplates);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.ToolsBox);
             this.Controls.Add(this.OtherSettingsBox);
             this.Controls.Add(this.Settings);
-            this.Controls.Add(this.CommandDisplay);
             this.Name = "Xvid";
             this.Text = "Xvid";
             this.Load += new System.EventHandler(this.Xvid_Load);
@@ -511,6 +635,8 @@
             this.OtherSettingsBox.PerformLayout();
             this.ToolsBox.ResumeLayout(false);
             this.ToolsBox.PerformLayout();
+            this.mnuSharing.ResumeLayout(false);
+            this.mnuTemplates.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,7 +649,6 @@
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.Label CompressionLabel;
         private System.Windows.Forms.NumericUpDown nudBitrate;
-        private System.Windows.Forms.TextBox CommandDisplay;
         private System.Windows.Forms.GroupBox OtherSettingsBox;
         private System.Windows.Forms.ComboBox cbVHQMode;
         private System.Windows.Forms.Label VHQLabel;
@@ -551,5 +676,19 @@
         private System.Windows.Forms.NumericUpDown nudQuantization;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.ContextMenuStrip mnuSharing;
+        private System.Windows.Forms.ToolStripMenuItem mnuExport;
+        private System.Windows.Forms.ToolStripMenuItem mnuImport;
+        private wyDay.Controls.SplitButton btnSharing;
+        private System.Windows.Forms.ContextMenuStrip mnuTemplates;
+        private System.Windows.Forms.ToolStripMenuItem mnuReset;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuLoad;
+        private System.Windows.Forms.ToolStripMenuItem mnuSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mnuDelete;
+        private System.Windows.Forms.ToolTip ttSettings;
+        private wyDay.Controls.SplitButton btnTemplates;
+        private System.Windows.Forms.TextBox txtCommandLine;
     }
 }
