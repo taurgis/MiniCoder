@@ -18,7 +18,7 @@ namespace MiniCoder2.Templating.Audio.FLAC
         private void Aac_Load(object sender, EventArgs e)
         {
             ResetInterface();
-            UpdateTemplateList(controller.FetchTemplateNames());
+            UpdateTemplateList(controller.FetchTemplateNames(typeof(FlacTemplate)));
         }
 
 
@@ -119,8 +119,8 @@ namespace MiniCoder2.Templating.Audio.FLAC
         {
             String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
 
-            controller.SaveTemplate(name);
-            UpdateTemplateList(controller.FetchTemplateNames());
+            controller.SaveTemplate(name, typeof(FlacTemplate));
+            UpdateTemplateList(controller.FetchTemplateNames(typeof(FlacTemplate)));
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace MiniCoder2.Templating.Audio.FLAC
         private void templateItemMenuItem_Click(object sender, EventArgs e)
         {
             String name = ((ToolStripMenuItem)sender).Text;
-            controller.LoadTemplate(name);
+            controller.LoadTemplate(name, typeof(FlacTemplate));
         }
 
         private void mnuReset_Click(object sender, EventArgs e)
@@ -158,7 +158,7 @@ namespace MiniCoder2.Templating.Audio.FLAC
         {
             if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (controller.DeleteTemplate())
+                if (controller.DeleteTemplate(this.template.Name, typeof(FlacTemplate)))
                 {
                     MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetInterface();
@@ -166,7 +166,7 @@ namespace MiniCoder2.Templating.Audio.FLAC
                 else
                     MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                UpdateTemplateList(controller.FetchTemplateNames());
+                UpdateTemplateList(controller.FetchTemplateNames(typeof(FlacTemplate)));
             }
         }
 
@@ -176,7 +176,7 @@ namespace MiniCoder2.Templating.Audio.FLAC
             FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
             if (searchFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (controller.ExportTemplate(searchFolderDialog.SelectedPath))
+                if (controller.ExportTemplate(searchFolderDialog.SelectedPath, typeof(FlacTemplate)))
                     MessageBox.Show("File exported!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Error exporting file!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -189,12 +189,12 @@ namespace MiniCoder2.Templating.Audio.FLAC
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName);
+                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName, typeof(FlacTemplate));
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
                     UpdateData((FlacTemplate)template);
-                    UpdateTemplateList(controller.FetchTemplateNames());
+                    UpdateTemplateList(controller.FetchTemplateNames(typeof(FlacTemplate)));
                 }
             }
 

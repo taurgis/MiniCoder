@@ -18,7 +18,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         private void Aac_Load(object sender, EventArgs e)
         {
             ResetInterface();
-            UpdateTemplateList(controller.FetchTemplateNames());
+            UpdateTemplateList(controller.FetchTemplateNames(typeof(VorbisTemplate)));
         }
 
         /// <summary>
@@ -124,8 +124,8 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         {
             String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
 
-            controller.SaveTemplate(name);
-            UpdateTemplateList(controller.FetchTemplateNames());
+            controller.SaveTemplate(name, typeof(VorbisTemplate));
+            UpdateTemplateList(controller.FetchTemplateNames(typeof(VorbisTemplate)));
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         private void templateItemMenuItem_Click(object sender, EventArgs e)
         {
             String name = ((ToolStripMenuItem)sender).Text;
-            controller.LoadTemplate(name);
+            controller.LoadTemplate(name, typeof(VorbisTemplate));
         }
 
         private void mnuReset_Click(object sender, EventArgs e)
@@ -163,7 +163,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         {
             if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (controller.DeleteTemplate())
+                if (controller.DeleteTemplate(this.template.Name, typeof(VorbisTemplate)))
                 {
                     MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetInterface();
@@ -171,7 +171,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
                 else
                     MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                UpdateTemplateList(controller.FetchTemplateNames());
+                UpdateTemplateList(controller.FetchTemplateNames(typeof(VorbisTemplate)));
             }
         }
 
@@ -181,7 +181,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
             if (searchFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (controller.ExportTemplate(searchFolderDialog.SelectedPath))
+                if (controller.ExportTemplate(searchFolderDialog.SelectedPath, typeof(VorbisTemplate)))
                     MessageBox.Show("File exported!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Error exporting file!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -194,12 +194,12 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName);
+                ExtTemplate template = controller.ImportTemplate(openFileDialog.FileName, typeof(VorbisTemplate));
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
                     UpdateData((VorbisTemplate)template);
-                    UpdateTemplateList(controller.FetchTemplateNames());
+                    UpdateTemplateList(controller.FetchTemplateNames(typeof(VorbisTemplate)));
                 }
             }
 
