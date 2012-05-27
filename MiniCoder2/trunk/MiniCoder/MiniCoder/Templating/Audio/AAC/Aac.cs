@@ -7,7 +7,6 @@ namespace MiniCoder2.Templating.Audio.AAC
     {
         private AacTemplateController controller;
         private AacTemplate template;
-        private Boolean loading;
 
         public Aac()
         {
@@ -67,7 +66,6 @@ namespace MiniCoder2.Templating.Audio.AAC
         /// </summary>
         public void UpdateData(Object template)
         {
-            this.loading = true;
             this.template = (AacTemplate)template;
             this.txtCommandLine.Text = this.template.GenerateCommandLine();
 
@@ -98,49 +96,41 @@ namespace MiniCoder2.Templating.Audio.AAC
             }
 
             cbSampleRate.SelectedIndex = (int)this.template.SampleRate;
-            this.loading = false;
         }
 
         private void nudQuality_ValueChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeQuality(Double.Parse(nudQuality.Value.ToString()));
+            controller.ChangeQuality(Double.Parse(nudQuality.Value.ToString()));
         }
 
         private void nudBitrate_ValueChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeBitrate((Int32.Parse(nudBitrate.Value.ToString())));
+            controller.ChangeBitrate((Int32.Parse(nudBitrate.Value.ToString())));
         }
 
         private void nudDelay_ValueChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeDelay((Int32.Parse(nudDelay.Value.ToString())));
+            controller.ChangeDelay((Int32.Parse(nudDelay.Value.ToString())));
         }
 
         private void cbProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeProfile(cbProfile.SelectedIndex);
+            controller.ChangeProfile(cbProfile.SelectedIndex);
         }
 
         private void cbChannels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeChannels(cbChannels.SelectedIndex);
+            controller.ChangeChannels(cbChannels.SelectedIndex);
         }
 
         private void cbSampleRate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
+            controller.ChangeSampleRate(cbSampleRate.SelectedIndex);
         }
 
         private void cbNormalize_CheckedChanged(object sender, EventArgs e)
         {
-            if (!loading)
-                controller.ChangeNormalize(cbNormalize.Checked);
+            controller.ChangeNormalize(cbNormalize.Checked);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
