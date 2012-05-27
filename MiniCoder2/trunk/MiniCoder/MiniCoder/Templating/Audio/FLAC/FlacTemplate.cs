@@ -3,30 +3,10 @@ using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Audio.FLAC
 {
-    public class FlacTemplate : ExtTemplate
-    {
-        [XmlElement("Delay")]
-        public Int32 Delay;
-        [XmlIgnore]
-        public AudioChannels Channels;
-        [XmlElement("Channels")]
-        public byte ChannelsByte
-        {
-            get { return (byte)Channels; }
-            set { Channels = (AudioChannels)value; }
-        }
-        [XmlIgnore]
-        public SampleRate SampleRate;
-        [XmlElement("SampleRate")]
-        public byte SampleRateByte
-        {
-            get { return (byte)SampleRate; }
-            set { SampleRate = (SampleRate)value; }
-        }
+    public class FlacTemplate : AudioTemplate
+    { 
         [XmlElement("DownConvert")]
         public Boolean DownConvert;
-        [XmlElement("Normalize")]
-        public Boolean Normalize;
 
         /// <summary>
         /// Empty constructor for serialization

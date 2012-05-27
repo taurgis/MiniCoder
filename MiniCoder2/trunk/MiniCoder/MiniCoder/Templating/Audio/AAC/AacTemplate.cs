@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace MiniCoder2.Templating.Audio.AAC
 {
-    public class AacTemplate : ExtTemplate
+    public class AacTemplate : AudioTemplate
     {
         [XmlElement("Mode")]
         public AudioEncodingMode Mode;
@@ -11,28 +11,8 @@ namespace MiniCoder2.Templating.Audio.AAC
         public Double Quality;
         [XmlElement("BitRate")]
         public Int32 BitRate;
-        [XmlElement("Delay")]
-        public Int32 Delay;
         [XmlElement("Profile")]
         public AudioEncodingProfile Profile;
-        [XmlIgnore]
-        public AudioChannels Channels;
-        [XmlElement("Channels")]
-        public byte ChannelsByte
-        {
-            get { return (byte)Channels; }
-            set { Channels = (AudioChannels)value; }
-        }
-        [XmlIgnore]
-        public SampleRate SampleRate;
-        [XmlElement("SampleRate")]
-        public byte SampleRateByte
-        {
-            get { return (byte)SampleRate; }
-            set { SampleRate = (SampleRate)value; }
-        }
-        [XmlElement("Normalize")]
-        public Boolean Normalize;
 
         /// <summary>
         /// Empty constructor for serialization
