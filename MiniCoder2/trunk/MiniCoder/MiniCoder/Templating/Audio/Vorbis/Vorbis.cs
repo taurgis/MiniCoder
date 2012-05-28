@@ -57,6 +57,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             nudDelay.Value = 0;
             nudBitrate.Value = 160;
             cbNormalize.Checked = true;
+            cbChannels.SelectedIndex = 1;
         }
 
         /// <summary>
@@ -74,6 +75,22 @@ namespace MiniCoder2.Templating.Audio.Vorbis
 
             cbMode.SelectedIndex = (int)this.template.Mode;
             cbNormalize.Checked = this.template.Normalize;
+
+            switch (this.template.Channels)
+            {
+                case AudioChannels.Mono:
+                    cbChannels.SelectedIndex = 0;
+                    break;
+                case AudioChannels.Stereo:
+                    cbChannels.SelectedIndex = 1;
+                    break;
+                case AudioChannels.Surround:
+                    cbChannels.SelectedIndex = 2;
+                    break;
+                default:
+                    cbChannels.SelectedIndex = 0;
+                    break;
+            }
 
             switch (this.template.SampleRate)
             {
@@ -118,6 +135,11 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         private void cbNormalize_CheckedChanged(object sender, EventArgs e)
         {
             controller.ChangeNormalize(cbNormalize.Checked);
+        }
+
+        private void cbChannels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            controller.ChangeChannels(cbChannels.SelectedIndex);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

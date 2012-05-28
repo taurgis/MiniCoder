@@ -54,7 +54,7 @@ namespace MiniCoder2.Templating.Audio.AAC
             cbMode.SelectedIndex = 0;
             cbProfile.SelectedIndex = 0;
             cbSampleRate.SelectedIndex = 0;
-            cbChannels.SelectedIndex = 0;
+            cbChannels.SelectedIndex = 1;
             nudQuality.Value = (Decimal)0.5;
             nudDelay.Value = 0;
             nudBitrate.Value = 160;
