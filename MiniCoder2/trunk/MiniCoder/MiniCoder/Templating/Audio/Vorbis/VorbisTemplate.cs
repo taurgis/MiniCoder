@@ -30,7 +30,10 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         {
             String sampelingRate = "";
             String bitrate = "";
+            String channelUsed = "";
 
+            if (Channels == AudioChannels.Surround)
+                channelUsed = " -6chnew";
             switch (Mode)
             {
                 case AudioEncodingMode.VBR:
@@ -47,20 +50,39 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             switch (SampleRate)
             {
                 case Templating.SampleRate.Hz44100:
-                    sampelingRate = "-ssrc( --rate 44100 )";
+                    if (Channels != AudioChannels.Surround)
+                        sampelingRate = "-ssrc( --rate 44100 )";
+                    else
+                        sampelingRate = " -ar 44100";
                     break;
                 case Templating.SampleRate.Hz48000:
-                    sampelingRate = "-ssrc( --rate 48000 )";
+                    if (Channels != AudioChannels.Surround)
+                        sampelingRate = "-ssrc( --rate 48000 )";
+                    else
+                        sampelingRate = " -ar 48000";
                     break;
                 case Templating.SampleRate.Hz88200:
-                    sampelingRate = "-ssrc( --rate 88200 )";
+                    if (Channels != AudioChannels.Surround)
+                        sampelingRate = "-ssrc( --rate 88200 )";
+                    else
+                        sampelingRate = " -ar 88200";
                     break;
                 case Templating.SampleRate.Hz96000:
-                    sampelingRate = "-ssrc( --rate 96000 )";
+                    if (Channels != AudioChannels.Surround)
+                        sampelingRate = "-ssrc( --rate 96000 )";
+                    else
+                        sampelingRate = " -ar 96000";
                     break;
             }
 
-            return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -ogg( " + bitrate + " )";
+            if (Channels == AudioChannels.Surround)
+            {
+                return " -i \"<source>\"" + ((this.Mode == AudioEncodingMode.VBR) ? (" -aq " + (Quality * 10)) : (" -ab " + BitRate + "k")) + " -acodec libvorbis -ac 6" + sampelingRate + " -y \"<target>\"";
+            }
+            else
+            {
+                return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -ogg( " + bitrate + " )";
+            }
         }
     }
 }
