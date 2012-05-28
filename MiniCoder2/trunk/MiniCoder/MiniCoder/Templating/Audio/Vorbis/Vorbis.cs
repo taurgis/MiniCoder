@@ -140,6 +140,8 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         private void cbChannels_SelectedIndexChanged(object sender, EventArgs e)
         {
             controller.ChangeChannels(cbChannels.SelectedIndex);
+
+            nudDelay.Enabled = (cbChannels.SelectedIndex != 2);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
