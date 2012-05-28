@@ -150,7 +150,7 @@ namespace MiniCoder2.Templating.Video.Xvid
             {
                 this.template.Name = name;
 
-                templateDao.SaveTemplate(name, template, typeof(XvidTemplate));
+                templateDao.SaveTemplate(name, template);
             }
         }
 
@@ -189,7 +189,7 @@ namespace MiniCoder2.Templating.Video.Xvid
         /// <returns>Wether or not it was successfull.</returns>
         public Boolean ExportTemplate(String path)
         {
-            return templateDao.ExportTemplate(this.template, typeof(XvidTemplate), path + "\\");
+            return templateDao.ExportTemplate(this.template, path + "\\");
         }
 
         /// <summary>

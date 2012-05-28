@@ -26,7 +26,7 @@ namespace MiniCoder2.Templating
         public void SaveTemplate(String name)
         {
             
-           templateDao.SaveTemplate(name, template, this.template.GetType());
+           templateDao.SaveTemplate(name, this.template);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace MiniCoder2.Templating
         /// <returns>Wether or not it was successfull.</returns>
         public Boolean ExportTemplate(String path)
         {
-            return templateDao.ExportTemplate(this.template, this.template.GetType(), path + "\\");
+            return templateDao.ExportTemplate(this.template, path + "\\");
         }
 
         /// <summary>
