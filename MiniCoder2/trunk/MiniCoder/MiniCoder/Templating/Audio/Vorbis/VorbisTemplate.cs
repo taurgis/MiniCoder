@@ -30,10 +30,7 @@ namespace MiniCoder2.Templating.Audio.Vorbis
         {
             String sampelingRate = "";
             String bitrate = "";
-            String channelUsed = "";
 
-            if (Channels == AudioChannels.Surround)
-                channelUsed = " -6chnew";
             switch (Mode)
             {
                 case AudioEncodingMode.VBR:
@@ -83,6 +80,14 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             {
                 return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -ogg( " + bitrate + " )";
             }
+        }
+
+        public Software getSoftware()
+        {
+            if (Channels == AudioChannels.Surround)
+                return Software.Eac3to;
+            else
+                return Software.BeSweet;
         }
     }
 }

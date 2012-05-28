@@ -5,6 +5,11 @@ using System.Text;
 
 namespace MiniCoder2.Templating
 {
+    public enum Software : byte
+    {
+        Unnknown = 0, BeSweet = 1, Eac3to = 2, ffmpeg = 3
+    }
+
     public enum AudioEncodingMode : byte
     {
         VBR = 0, CBR = 1, ABR = 2

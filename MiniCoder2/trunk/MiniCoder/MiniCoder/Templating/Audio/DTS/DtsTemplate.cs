@@ -72,5 +72,10 @@ namespace MiniCoder2.Templating.Audio.DTS
 
             return "\"<source>\" \"<target>\" " + ((ExtractDtsCore) ? ("-core") : (normalize + downConvert + channelUsed + sampelingRate)) + delay + " -progressnumbers";
         }
+
+        public Software getSoftware()
+        {
+            return Software.Eac3to;
+        }
     }
 }

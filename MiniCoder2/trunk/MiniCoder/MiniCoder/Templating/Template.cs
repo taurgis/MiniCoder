@@ -36,5 +36,10 @@ namespace MiniCoder2.Templating
             else
                 return false;
         }
+
+        public abstract Software getSoftware()
+        {
+            return Software.Unnknown;
+        }
     }
 }
