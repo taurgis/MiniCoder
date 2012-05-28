@@ -33,7 +33,7 @@ namespace MiniCoder2.Templating.Audio.DTS
         private void ResetInterface()
         {
             cbSampleRate.SelectedIndex = 0;
-            cbChannels.SelectedIndex = 0;
+            cbChannels.SelectedIndex = 1;
             nudDelay.Value = 0;
             cbDownConvert.Checked = false;
             cbNormalize.Checked = true;

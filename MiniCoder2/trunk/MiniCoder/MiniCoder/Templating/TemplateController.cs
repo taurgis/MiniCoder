@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using MiniCoder2.Templating.Files;
 
-namespace MiniCoder2.Templating.Audio
+namespace MiniCoder2.Templating
 {
     public abstract class TemplateController<T>
     {

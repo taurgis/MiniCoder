@@ -72,5 +72,24 @@ namespace MiniCoder2.Templating.Audio.Vorbis
             this.template.Normalize = normalize;
             RefreshView();
         }
+
+        public void ChangeChannels(int selectedIndex)
+        {
+            if (selectedIndex <= 2)
+                switch (selectedIndex)
+                {
+                    case 0:
+                        this.template.Channels = AudioChannels.Mono;
+                        break;
+                    case 1:
+                        this.template.Channels = AudioChannels.Stereo;
+                        break;
+                    case 2:
+                        this.template.Channels = AudioChannels.Surround;
+                        break;
+                }
+
+            RefreshView();
+        }
     }
 }
