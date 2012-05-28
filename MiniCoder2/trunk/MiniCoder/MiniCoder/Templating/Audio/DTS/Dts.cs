@@ -18,7 +18,7 @@ namespace MiniCoder2.Templating.Audio.DTS
         private void Aac_Load(object sender, EventArgs e)
         {
             ResetInterface();
-            UpdateTemplateList(controller.FetchTemplateNames(typeof(DtsTemplate)));
+            UpdateTemplateList(controller.FetchTemplateNames());
         }
 
 
@@ -126,8 +126,8 @@ namespace MiniCoder2.Templating.Audio.DTS
         {
             String name = Microsoft.VisualBasic.Interaction.InputBox("Please fill in a name", "Name", this.template.Name);
 
-            controller.SaveTemplate(name, typeof(DtsTemplate));
-            UpdateTemplateList(controller.FetchTemplateNames(typeof(DtsTemplate)));
+            controller.SaveTemplate(name);
+            UpdateTemplateList(controller.FetchTemplateNames());
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace MiniCoder2.Templating.Audio.DTS
         private void templateItemMenuItem_Click(object sender, EventArgs e)
         {
             String name = ((ToolStripMenuItem)sender).Text;
-            controller.LoadTemplate(name, typeof(DtsTemplate));
+            controller.LoadTemplate(name);
         }
 
         private void mnuReset_Click(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace MiniCoder2.Templating.Audio.DTS
         {
             if (MessageBox.Show("Are you sure you want to delete template " + this.template.Name + "?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (controller.DeleteTemplate(this.template.Name, typeof(DtsTemplate)))
+                if (controller.DeleteTemplate(this.template.Name))
                 {
                     MessageBox.Show("Template deleted!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetInterface();
@@ -173,7 +173,7 @@ namespace MiniCoder2.Templating.Audio.DTS
                 else
                     MessageBox.Show("Error deleting template.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                UpdateTemplateList(controller.FetchTemplateNames(typeof(DtsTemplate)));
+                UpdateTemplateList(controller.FetchTemplateNames());
             }
         }
 
@@ -183,7 +183,7 @@ namespace MiniCoder2.Templating.Audio.DTS
             FolderBrowserDialog searchFolderDialog = new FolderBrowserDialog();
             if (searchFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (controller.ExportTemplate(searchFolderDialog.SelectedPath, typeof(DtsTemplate)))
+                if (controller.ExportTemplate(searchFolderDialog.SelectedPath))
                     MessageBox.Show("File exported!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Error exporting file!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -196,12 +196,12 @@ namespace MiniCoder2.Templating.Audio.DTS
             openFileDialog.Filter = "Template XML (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Template template = controller.ImportTemplate(openFileDialog.FileName, typeof(DtsTemplate));
+                Template template = controller.ImportTemplate(openFileDialog.FileName);
                 if (!template.Equals(null))
                 {
                     MessageBox.Show("Import successfull!", "Success", MessageBoxButtons.OK);
                     UpdateData((DtsTemplate)template);
-                    UpdateTemplateList(controller.FetchTemplateNames(typeof(DtsTemplate)));
+                    UpdateTemplateList(controller.FetchTemplateNames());
                 }
             }
 

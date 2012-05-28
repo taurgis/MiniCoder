@@ -23,18 +23,19 @@ namespace MiniCoder2.Templating
         /// Save a template to a file.
         /// </summary>
         /// <param name="name">The name of the template.</param>
-        public void SaveTemplate(String name, Type classType)
+        public void SaveTemplate(String name)
         {
-           templateDao.SaveTemplate(name, template, classType);
+            
+           templateDao.SaveTemplate(name, template, this.template.GetType());
         }
 
         /// <summary>
         /// Load a template from file.
         /// </summary>
         /// <param name="name">The name of the template.</param>
-        public void LoadTemplate(String name, Type classType)
+        public void LoadTemplate(String name)
         {
-            this.template = (T)templateDao.LoadTemplate(name, classType);
+            this.template = (T)templateDao.LoadTemplate(name, this.template.GetType());
             view.UpdateData(this.template);
         }
 
@@ -42,18 +43,18 @@ namespace MiniCoder2.Templating
         /// Get all templates for this type.
         /// </summary>
         /// <returns>Array of template names.</returns>
-        public String[] FetchTemplateNames(Type classType)
+        public String[] FetchTemplateNames()
         {
-            return templateDao.GetTemplatesByType(classType);
+            return templateDao.GetTemplatesByType(this.template.GetType());
         }
 
         /// <summary>
         /// Delete a template.
         /// </summary>
         /// <returns>Wether or not it was successfull.</returns>
-        public Boolean DeleteTemplate(String name, Type classType)
+        public Boolean DeleteTemplate(String name)
         {
-            return templateDao.DeleteTemplate(name, classType);
+            return templateDao.DeleteTemplate(name, this.template.GetType());
         }
 
         /// <summary>
@@ -61,9 +62,9 @@ namespace MiniCoder2.Templating
         /// </summary>
         /// <param name="path">The path to save the file.</param>
         /// <returns>Wether or not it was successfull.</returns>
-        public Boolean ExportTemplate(String path, Type classType)
+        public Boolean ExportTemplate(String path)
         {
-            return templateDao.ExportTemplate(this.template, classType, path + "\\");
+            return templateDao.ExportTemplate(this.template, this.template.GetType(), path + "\\");
         }
 
         /// <summary>
@@ -71,9 +72,9 @@ namespace MiniCoder2.Templating
         /// </summary>
         /// <param name="path">The import file path.</param>
         /// <returns>The template class for the imported file.</returns>
-        public Template ImportTemplate(String path, Type classType)
+        public Template ImportTemplate(String path)
         {
-            return templateDao.ImportTemplate(path, classType);
+            return templateDao.ImportTemplate(path, this.template.GetType());
         }
 
         /// <summary>
