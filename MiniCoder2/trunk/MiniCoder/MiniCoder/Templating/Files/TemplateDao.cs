@@ -17,25 +17,25 @@ namespace MiniCoder2.Templating.Files
         /// </summary>
         /// <param name="template">The template object</param>
         /// <param name="classType">The class type</param>
-        public Boolean SaveTemplate(String name, Object template, Type classType)
+        public Boolean SaveTemplate(String name, Object template)
         {
             Template convertedTemplate = (Template)template;
             convertedTemplate.Name = name;
             if (!Directory.Exists("templates"))
                 Directory.CreateDirectory("templates");
 
-            if (!Directory.Exists("templates\\" + classType.Name))
-                Directory.CreateDirectory("templates\\" + classType.Name);
+            if (!Directory.Exists("templates\\" + template.GetType().Name))
+                Directory.CreateDirectory("templates\\" + template.GetType().Name);
 
-            return ExportTemplate(convertedTemplate, classType, "templates\\" + classType.Name + "\\");
+            return ExportTemplate(convertedTemplate, "templates\\" + template.GetType().Name + "\\");
         }
 
-        public Boolean ExportTemplate(Object template, Type classType, String path)
+        public Boolean ExportTemplate(Object template, String path)
         {
             try
             {
                 Template convertedTemplate = (Template)template;
-                XmlSerializer serializer = new XmlSerializer(classType);
+                XmlSerializer serializer = new XmlSerializer(template.GetType());
 
                 using (StreamWriter writer = new StreamWriter(path + convertedTemplate.Name + ".xml", false))
                 {
@@ -146,7 +146,7 @@ namespace MiniCoder2.Templating.Files
                 Template template = (Template)serializer.Deserialize(reader);
                 reader.Close();
 
-                SaveTemplate(template.Name, template, classType);
+                SaveTemplate(template.Name, template);
 
                 return template;
             }
