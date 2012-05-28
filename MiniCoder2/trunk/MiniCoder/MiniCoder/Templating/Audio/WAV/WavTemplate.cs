@@ -72,5 +72,10 @@ namespace MiniCoder2.Templating.Audio.WAV
 
             return "\"<source>\" \"<target>\" " + "-"+BitRate + normalize + downConvert + channelUsed + sampelingRate + delay + " -progressnumbers";
         }
+
+        public Software getSoftware()
+        {
+            return Software.Eac3to;
+        }
     }
 }

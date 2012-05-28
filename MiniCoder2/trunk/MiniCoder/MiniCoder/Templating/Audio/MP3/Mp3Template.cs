@@ -74,5 +74,10 @@ namespace MiniCoder2.Templating.Audio.MP3
 
             return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -lame( " + bitrate + " )";
         }
+
+        public Software getSoftware()
+        {
+            return Software.BeSweet;
+        }
     }
 }

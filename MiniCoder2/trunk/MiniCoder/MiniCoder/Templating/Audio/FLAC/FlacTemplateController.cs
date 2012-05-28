@@ -71,5 +71,10 @@ namespace MiniCoder2.Templating.Audio.FLAC
             this.template.Normalize = normalize;
             RefreshView();
         }
+
+        public Software getSoftware()
+        {
+            return Software.Eac3to;
+        }
     }
 }

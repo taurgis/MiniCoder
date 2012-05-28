@@ -85,5 +85,10 @@ namespace MiniCoder2.Templating.Audio.AAC
 
             return "-core( -input <source> -output <target> ) -ota( -d " + Delay.ToString() + " -g max" + ((Normalize) ? (" -norm 0.97 ") : ("")) + " ) " + sampelingRate + " -bsn( -" + Enum.GetName(typeof(AudioEncodingMode), Mode) + " " + audioQuality + " " + profile + channelUsed + " )";
         }
+
+        public Software getSoftware()
+        {
+            return Software.BeSweet;
+        }
     }
 }
